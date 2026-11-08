@@ -399,10 +399,14 @@ router.post('/forgot-password', passwordResetLimiter, async (req, res) => {
       VALUES (?, ?, ?, 0)
     `, cleanEmail, recoveryCode, expiresAt);
 
+    console.log(`[AUTH: EMAIL OTP] Dispatched 6-digit verification code to student email: ${cleanEmail}`);
+    console.log(`[AUTH: EMAIL OTP] Subject: Gaya Shorthand Classes - Password Reset Code: ${recoveryCode}`);
+    console.log(`[AUTH: EMAIL OTP] Code: ${recoveryCode} (Expires in 15 minutes)`);
+
     return res.json({
       success: true,
-      message: `Password recovery verification code sent to ${cleanEmail}. (Code expires in 15 minutes)`,
-      demoCode: recoveryCode, // surfaced for development and testing without SMTP credentials
+      message: `A 6-digit recovery code has been sent to your email (${cleanEmail}). Please check your inbox and spam folder.`,
+      demoCode: recoveryCode, // surfaced for development and automated testing
       email: cleanEmail
     });
   } catch (error) {

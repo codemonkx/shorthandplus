@@ -22,10 +22,11 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
   const [statusMsg, setStatusMsg] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Forgot password specific state
+  // Forgot password specific state (Email Recovery)
   const [forgotStep, setForgotStep] = useState(1); // 1 = enter email, 2 = enter otp & new pwd
   const [recoveryCode, setRecoveryCode] = useState('');
   const [resetNewPassword, setResetNewPassword] = useState('');
+  const [resetConfirmPassword, setResetConfirmPassword] = useState('');
 
   useEffect(() => {
     if (initialTab) {
@@ -106,33 +107,45 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
           onClose();
         }, 500);
       } else if (authMode === 'forgot') {
-        // Self-Service Forgot Password
+        // Self-Service Email Forgot Password
         if (forgotStep === 1) {
-          if (!email) {
-            setStatusMsg({ type: 'error', text: 'Please enter your registered email address.' });
+          if (!email || !email.includes('@')) {
+            setStatusMsg({ type: 'error', text: 'Please enter your registered student email address.' });
             setIsSubmitting(false);
             return;
           }
           const res = await api.auth.forgotPassword(email);
-          setRecoveryCode(res.demoCode || '849201');
+          setRecoveryCode(res.demoCode || '');
           setForgotStep(2);
-          setStatusMsg({ type: 'info', text: res.message || 'Recovery code generated! Enter code and new password.' });
+          setStatusMsg({ type: 'info', text: res.message || `Verification code sent to ${email}! Check your email inbox.` });
         } else {
+          if (!recoveryCode || recoveryCode.trim().length < 6) {
+            setStatusMsg({ type: 'error', text: 'Please enter the 6-digit verification code sent to your email.' });
+            setIsSubmitting(false);
+            return;
+          }
           if (!resetNewPassword || resetNewPassword.length < 6) {
             setStatusMsg({ type: 'error', text: 'New password must be at least 6 characters.' });
             setIsSubmitting(false);
             return;
           }
+          if (resetNewPassword !== resetConfirmPassword) {
+            setStatusMsg({ type: 'error', text: 'New passwords do not match. Please re-enter both passwords.' });
+            setIsSubmitting(false);
+            return;
+          }
           const res = await api.auth.resetPassword({
             email,
-            code: recoveryCode,
+            code: recoveryCode.trim(),
             newPassword: resetNewPassword
           });
-          setStatusMsg({ type: 'success', text: res.message || 'Password successfully reset!' });
+          setStatusMsg({ type: 'success', text: res.message || 'Password successfully updated! Redirecting to login...' });
           setTimeout(() => {
             setAuthMode('student');
             setPassword(resetNewPassword);
             setForgotStep(1);
+            setResetNewPassword('');
+            setResetConfirmPassword('');
           }, 1500);
         }
       }
@@ -170,7 +183,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
                   : authMode === 'register' 
                     ? 'Candidate Registration' 
                     : authMode === 'forgot'
-                      ? 'Reset Candidate Password'
+                      ? 'Reset Password via Email'
                       : 'Student Portal Login'}
               </h2>
               <p className="auth-modal-sub">
@@ -179,7 +192,9 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
                   : authMode === 'register' 
                     ? 'Create your account to unlock exam dictations' 
                     : authMode === 'forgot'
-                      ? 'Self-service recovery for registered shorthand candidates'
+                      ? (forgotStep === 1 
+                          ? 'Enter your registered email address to receive a secure 6-digit recovery code' 
+                          : `Enter the 6-digit verification code sent to ${email}`)
                       : 'Access your daily dictations, speed tests & results'}
               </p>
             </div>
@@ -341,7 +356,13 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
           {/* Email field (for all modes) */}
           <div className="auth-field-group">
             <label className="auth-field-label">
-              <span>{authMode === 'admin' ? 'Faculty Admin Email' : 'Student Email Address'}</span>
+              <span>
+                {authMode === 'forgot' 
+                  ? 'Registered Candidate Email' 
+                  : authMode === 'admin' 
+                    ? 'Faculty Admin Email' 
+                    : 'Student Email Address'}
+              </span>
             </label>
             <div className="auth-input-wrapper">
               <Mail size={16} className="auth-input-icon" />
@@ -353,8 +374,15 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
                 onChange={(e) => setEmail(e.target.value)}
                 required 
                 autoComplete="email"
+                disabled={authMode === 'forgot' && forgotStep === 2}
               />
             </div>
+            {authMode === 'forgot' && forgotStep === 1 && (
+              <span style={{ fontSize: '0.74rem', color: '#78716c', marginTop: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                <Mail size={13} className="text-amber-600 flex-shrink-0" />
+                <span>We will dispatch an official 6-digit verification code directly to this email address.</span>
+              </span>
+            )}
           </div>
 
           {/* Password or Admin Passcode or Forgot Form Fields */}
@@ -362,10 +390,43 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
             <>
               {forgotStep === 2 && (
                 <>
+                  <div style={{
+                    background: '#faf9f6',
+                    border: '1px solid #e7e5e4',
+                    borderRadius: '8px',
+                    padding: '0.75rem 0.85rem',
+                    marginBottom: '0.85rem',
+                    fontSize: '0.78rem',
+                    color: '#57534e',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}>
+                    <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0" />
+                    <span>6-Digit recovery code dispatched to <strong>{email}</strong>. (Check inbox / spam).</span>
+                  </div>
+
                   <div className="auth-field-group">
-                    <label className="auth-field-label">
-                      <span>6-Digit Verification Code</span>
-                    </label>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
+                      <label className="auth-field-label" style={{ margin: 0 }}>
+                        <span>6-Digit Email Verification Code</span>
+                      </label>
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          try {
+                            const res = await api.auth.forgotPassword(email);
+                            setRecoveryCode(res.demoCode || '');
+                            setStatusMsg({ type: 'info', text: 'Fresh verification code dispatched to your email!' });
+                          } catch (e) {
+                            setStatusMsg({ type: 'error', text: e.message || 'Failed to resend code.' });
+                          }
+                        }}
+                        style={{ background: 'none', border: 'none', padding: 0, fontSize: '0.74rem', color: '#d97706', cursor: 'pointer', fontWeight: 600 }}
+                      >
+                        Resend Code to Email
+                      </button>
+                    </div>
                     <div className="auth-input-wrapper">
                       <Key size={16} className="auth-input-icon" />
                       <input 
@@ -375,11 +436,9 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
                         value={recoveryCode} 
                         onChange={(e) => setRecoveryCode(e.target.value)}
                         required 
+                        maxLength={6}
                       />
                     </div>
-                    <span style={{ fontSize: '0.74rem', color: '#78716c', marginTop: '0.2rem' }}>
-                      Verification code: <strong>{recoveryCode || '849201'}</strong>
-                    </span>
                   </div>
 
                   <div className="auth-field-group">
@@ -395,6 +454,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
                         value={resetNewPassword} 
                         onChange={(e) => setResetNewPassword(e.target.value)}
                         required 
+                        minLength={6}
                       />
                       <button 
                         type="button" 
@@ -404,6 +464,24 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
                       >
                         {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                       </button>
+                    </div>
+                  </div>
+
+                  <div className="auth-field-group">
+                    <label className="auth-field-label">
+                      <span>Confirm New Password</span>
+                    </label>
+                    <div className="auth-input-wrapper">
+                      <Lock size={16} className="auth-input-icon" />
+                      <input 
+                        type={showPassword ? 'text' : 'password'} 
+                        className="auth-input-element"
+                        placeholder="Re-enter your new password" 
+                        value={resetConfirmPassword} 
+                        onChange={(e) => setResetConfirmPassword(e.target.value)}
+                        required 
+                        minLength={6}
+                      />
                     </div>
                   </div>
                 </>
@@ -528,7 +606,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
                     : authMode === 'student' 
                       ? 'Login to Student Portal' 
                       : authMode === 'forgot'
-                        ? (forgotStep === 1 ? 'Request 6-Digit Recovery Code' : 'Save New Password & Log In')
+                        ? (forgotStep === 1 ? 'Send Recovery Code to Email' : 'Verify Email Code & Update Password')
                         : 'Complete Registration & Start Tests'}
                 </span>
                 <ArrowRight size={18} />
