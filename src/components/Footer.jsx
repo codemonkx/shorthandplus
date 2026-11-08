@@ -1,7 +1,7 @@
 import React from 'react';
 import { GraduationCap, ShieldCheck, Award, Phone, Mail, MapPin, Clock, ArrowRight, Lock } from 'lucide-react';
 
-export default function Footer({ onOpenCheckout, setCurrentTab }) {
+export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
   return (
     <footer className="clean-footer-wrapper">
       <div className="clean-footer-container">
@@ -134,6 +134,17 @@ export default function Footer({ onOpenCheckout, setCurrentTab }) {
             </a>
           </div>
 
+        </div>
+
+        {/* Compliance & Legal Policies Strip (Razorpay & IT Rules Compliant) */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', justifyContent: 'center', alignItems: 'center', padding: '1rem 0', borderTop: '1px solid rgba(255,255,255,0.08)', fontSize: '0.74rem', color: '#a8a29e' }}>
+          <button onClick={() => onOpenLegal && onOpenLegal('terms')} style={{ background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer', padding: 0 }}>Terms & Conditions</button>
+          <span>•</span>
+          <button onClick={() => onOpenLegal && onOpenLegal('privacy')} style={{ background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer', padding: 0 }}>Privacy Policy</button>
+          <span>•</span>
+          <button onClick={() => onOpenLegal && onOpenLegal('refund')} style={{ background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer', padding: 0 }}>Cancellation & Refund Policy</button>
+          <span>•</span>
+          <button onClick={() => onOpenLegal && onOpenLegal('contact')} style={{ background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer', padding: 0 }}>Grievance Officer & Center Support</button>
         </div>
 
         {/* Bottom Copyright & Verification Strip */}

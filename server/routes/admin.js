@@ -1,6 +1,7 @@
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
+import bcrypt from 'bcryptjs';
 import { fileURLToPath } from 'url';
 import db from '../db/database.js';
 import { verifyToken, requireAdmin } from '../middleware/auth.js';
@@ -145,6 +146,77 @@ router.put('/students/:id/status', verifyToken, requireAdmin, async (req, res) =
   } catch (error) {
     console.error('Error toggling student status:', error);
     return res.status(500).json({ success: false, message: 'Failed to update student status.' });
+  }
+});
+
+// Extend Candidate Subscription Pass (Admin Action)
+router.post('/students/:id/extend-pass', verifyToken, requireAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { days = 30 } = req.body;
+    const user = await db.get('SELECT id, name, roll_no FROM users WHERE id = ?', id);
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'Student not found.' });
+    }
+
+    const currentEnrollment = await db.get(`
+      SELECT * FROM enrollments 
+      WHERE user_id = ? AND status = 'Active' AND expires_at > CURRENT_TIMESTAMP
+      ORDER BY expires_at DESC LIMIT 1
+    `, id);
+
+    let newExpiry;
+    if (currentEnrollment) {
+      newExpiry = new Date(new Date(currentEnrollment.expires_at).getTime() + days * 24 * 60 * 60 * 1000).toISOString();
+      await db.run('UPDATE enrollments SET expires_at = ? WHERE id = ?', newExpiry, currentEnrollment.id);
+    } else {
+      newExpiry = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toISOString();
+      await db.run(`
+        INSERT INTO enrollments (user_id, plan_name, expires_at, status)
+        VALUES (?, 'Director Special Grant (30 Days)', ?, 'Active')
+      `, id, newExpiry);
+    }
+
+    return res.json({
+      success: true,
+      message: `Successfully extended subscription pass by ${days} days for ${user.name}.`,
+      expiresAt: newExpiry
+    });
+  } catch (error) {
+    console.error('Error extending student pass:', error);
+    return res.status(500).json({ success: false, message: 'Failed to extend pass.' });
+  }
+});
+
+// Admin Manual Password Reset
+router.post('/students/:id/reset-password', verifyToken, requireAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { newPassword } = req.body;
+    const user = await db.get('SELECT id, name, email FROM users WHERE id = ?', id);
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'Student not found.' });
+    }
+
+    const tempPassword = newPassword && newPassword.trim().length >= 6 
+      ? newPassword.trim() 
+      : `Gaya@${Math.floor(100000 + Math.random() * 900000)}`;
+
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(tempPassword, salt);
+
+    await db.run('UPDATE users SET password_hash = ? WHERE id = ?', hash, id);
+
+    return res.json({
+      success: true,
+      message: `Password reset successfully for ${user.name}.`,
+      tempPassword
+    });
+  } catch (error) {
+    console.error('Error resetting student password by admin:', error);
+    return res.status(500).json({ success: false, message: 'Failed to reset student password.' });
   }
 });
 

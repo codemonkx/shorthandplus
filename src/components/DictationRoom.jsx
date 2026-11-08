@@ -31,7 +31,26 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
   const [volume, setVolume] = useState(1.0);
   const [audioCompleted, setAudioCompleted] = useState(false);
   const [showDigitalCanvas, setShowDigitalCanvas] = useState(false);
+  const [inReadingPhase, setInReadingPhase] = useState(false);
+  const [readingTimeLeft, setReadingTimeLeft] = useState(300); // 5 minutes reading timer
   const audioRef = useRef(null);
+
+  useEffect(() => {
+    let timer = null;
+    if (inReadingPhase && readingTimeLeft > 0) {
+      timer = setInterval(() => {
+        setReadingTimeLeft(prev => {
+          if (prev <= 1) {
+            clearInterval(timer);
+            onProceedToTyping();
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [inReadingPhase, readingTimeLeft, onProceedToTyping]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -430,33 +449,85 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
             
             {/* 1. PRIMARY PROCEED CALL TO ACTION */}
             <div className="dict-launch-box">
-              <div className="launch-box-badge-row">
-                <Award size={16} className="text-burgundy" />
-                <span className="launch-stage-tag">STAGE 2 • COMPUTER TRANSCRIPTION</span>
-              </div>
-              
-              <h3 className="launch-box-title">Ready for Transcription?</h3>
-              <p className="launch-box-desc">
-                Transcribe your pencil shorthand outlines into the government-certified examination engine for algorithmic speed and accuracy evaluation.
-              </p>
+              {inReadingPhase ? (
+                <div style={{ textAlign: 'center' }}>
+                  <div className="launch-box-badge-row" style={{ justifyContent: 'center' }}>
+                    <Clock size={16} className="text-amber-600 animate-pulse" />
+                    <span className="launch-stage-tag" style={{ background: '#FEF3C7', color: '#92400E' }}>STAGE 2 • 5-MINUTE READING PERIOD</span>
+                  </div>
+                  
+                  <div style={{ margin: '1.25rem 0' }}>
+                    <div style={{ fontSize: '2.75rem', fontWeight: 800, fontFamily: 'monospace', color: '#D97706', letterSpacing: '2px' }}>
+                      {formatTime(readingTimeLeft)}
+                    </div>
+                    <div style={{ fontSize: '0.74rem', color: '#78716C', marginTop: '0.25rem', fontWeight: 600 }}>
+                      SILENT READING TIME REMAINING
+                    </div>
+                  </div>
 
-              <button 
-                className="btn-proceed-transcription"
-                onClick={onProceedToTyping}
-                id="btn-proceed-to-transcription"
-              >
-                <span>Begin Typing Transcription (Stage 2)</span>
-                <ArrowRight size={20} />
-              </button>
-              
-              <div className="launch-shortcut-hint">
-                <Zap size={13} className="text-burgundy" />
-                <span>Quick shortcut: Press <strong>Ctrl + Enter</strong> anytime to proceed</span>
-              </div>
+                  <p className="launch-box-desc" style={{ fontSize: '0.78rem', color: '#57534E', lineHeight: 1.5 }}>
+                    Read through your handwritten pencil shorthand notes. Review ambiguous strokes, vowels, and punctuation. Typing will automatically launch when the timer expires.
+                  </p>
 
-              <p className="launch-guarantee-note">
-                Transitions directly to the full-screen typing engine with real-time error calculation, backspace audits, and instant score certificate.
-              </p>
+                  <button 
+                    className="btn-proceed-transcription"
+                    onClick={onProceedToTyping}
+                    style={{ background: '#1C1917', width: '100%', marginTop: '0.75rem' }}
+                  >
+                    <span>Skip Reading & Begin Typing Now →</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => { setInReadingPhase(false); setReadingTimeLeft(300); }}
+                    style={{ background: 'none', border: 'none', color: '#78716C', fontSize: '0.74rem', marginTop: '0.75rem', cursor: 'pointer', textDecoration: 'underline' }}
+                  >
+                    Cancel Reading Phase & Return
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <div className="launch-box-badge-row">
+                    <Award size={16} className="text-burgundy" />
+                    <span className="launch-stage-tag">STAGE 2 • TRANSCRIPTION WORKFLOW</span>
+                  </div>
+                  
+                  <h3 className="launch-box-title">Ready for Transcription?</h3>
+                  <p className="launch-box-desc">
+                    Transcribe your pencil shorthand outlines into the government-certified examination engine for algorithmic speed and accuracy evaluation.
+                  </p>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                    <button 
+                      className="btn-proceed-transcription"
+                      onClick={() => setInReadingPhase(true)}
+                      style={{ background: '#D97706', borderColor: '#B45309', color: '#FFFFFF' }}
+                    >
+                      <Clock size={18} />
+                      <span>Start Official 5-Min Reading Period</span>
+                    </button>
+
+                    <button 
+                      className="btn-proceed-transcription"
+                      onClick={onProceedToTyping}
+                      id="btn-proceed-to-transcription"
+                      style={{ background: '#1C1917' }}
+                    >
+                      <span>Direct Typing (Skip Reading Phase)</span>
+                      <ArrowRight size={18} />
+                    </button>
+                  </div>
+                  
+                  <div className="launch-shortcut-hint">
+                    <Zap size={13} className="text-burgundy" />
+                    <span>Quick shortcut: Press <strong>Ctrl + Enter</strong> anytime to proceed</span>
+                  </div>
+
+                  <p className="launch-guarantee-note">
+                    Official SSC Grade C/D & High Court guidelines enforce a 5-minute silent reading window before typing begins.
+                  </p>
+                </>
+              )}
             </div>
 
             {/* 2. SECURITY & EXAMINATION PROTOCOLS */}

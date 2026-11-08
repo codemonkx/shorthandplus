@@ -18,7 +18,7 @@ import confetti from 'canvas-confetti';
 import { PRICING_PLANS } from '../data/mockData';
 import api from '../services/api';
 
-export default function CheckoutModal({ isOpen, onClose, selectedPlanId, onActivatePlan, user }) {
+export default function CheckoutModal({ isOpen, onClose, selectedPlanId, onActivatePlan, user, onOpenLegal }) {
   const [selectedPlan, setSelectedPlan] = useState(
     PRICING_PLANS.find(p => p.id === selectedPlanId) || PRICING_PLANS[0]
   );
@@ -420,6 +420,25 @@ export default function CheckoutModal({ isOpen, onClose, selectedPlanId, onActiv
                 <div className="checkout-security-footer">
                   <ShieldCheck size={14} className="text-emerald-600" />
                   <span>Instant unblocking • 100% Secure automated activation</span>
+                </div>
+
+                <div style={{ textAlign: 'center', marginTop: '0.65rem', fontSize: '0.72rem', color: '#78716c' }}>
+                  By completing payment, you agree to our{' '}
+                  <button 
+                    type="button" 
+                    onClick={() => onOpenLegal && onOpenLegal('terms')} 
+                    style={{ background: 'none', border: 'none', color: '#d97706', textDecoration: 'underline', cursor: 'pointer', padding: 0, fontSize: '0.72rem' }}
+                  >
+                    Terms
+                  </button>
+                  {' '}&{' '}
+                  <button 
+                    type="button" 
+                    onClick={() => onOpenLegal && onOpenLegal('refund')} 
+                    style={{ background: 'none', border: 'none', color: '#d97706', textDecoration: 'underline', cursor: 'pointer', padding: 0, fontSize: '0.72rem' }}
+                  >
+                    Refund Policy
+                  </button>
                 </div>
               </div>
             </div>

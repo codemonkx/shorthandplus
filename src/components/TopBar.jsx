@@ -79,7 +79,13 @@ export default function TopBar({
           {user ? (
             <div className="sub-status-chip" onClick={onOpenCheckout} title="Click to view subscription passes">
               <Crown size={13} className="text-amber" />
-              <span className="chip-text">12-Mo Pro Active</span>
+              <span className="chip-text">
+                {user.role === 'admin' 
+                  ? 'Director Faculty Pass' 
+                  : user.subscription?.status === 'Active'
+                    ? `${user.subscription?.plan || 'Active Pass'} (${user.subscription?.daysRemaining ?? 7}d)`
+                    : 'Pass Expired (Click to Renew)'}
+              </span>
             </div>
           ) : (
             <button className="btn btn-primary btn-sm" onClick={onOpenAuth}>

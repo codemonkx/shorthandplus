@@ -79,9 +79,26 @@ export default function EvaluationResult({
             </span>
           </div>
           <div className="scorecard-actions-btn-group">
-            <button className="btn-scorecard-action outline" onClick={() => window.print()}>
+            <button 
+              className="btn-scorecard-action outline" 
+              onClick={() => generateCandidateDossierPdf(user, {
+                name: test.title || test.name || 'Official Examination Bench',
+                category: test.category || 'Skill Test Evaluation',
+                speed: `${grossWpm} WPM`,
+                marks: `${accuracy}%`,
+                fullMistakes,
+                halfMistakes,
+                effectiveErrors,
+                totalWords: totalMasterWords,
+                typedWords: totalTypedWords,
+                status: isQualified ? 'Qualified' : 'Needs Practice',
+                statusType: isQualified ? 'qualified' : 'disqualified',
+                date: new Date().toLocaleDateString('en-GB')
+              })}
+              title="Download official candidate PDF merit scorecard"
+            >
               <Download size={14} />
-              <span>Print Scorecard</span>
+              <span>Download Scorecard PDF</span>
             </button>
             <button className="btn-scorecard-action primary" onClick={onRetake}>
               <RotateCcw size={14} />

@@ -16,7 +16,10 @@ import {
   Users,
   Copy,
   Check,
-  Keyboard
+  Keyboard,
+  Search,
+  BookOpen,
+  Zap
 } from 'lucide-react';
 import { ANNOUNCEMENTS } from '../data/mockData';
 import ShorthandCanvas from '../components/ShorthandCanvas';
@@ -76,10 +79,148 @@ const DAILY_BATCHES = [
   }
 ];
 
+const SHORTHAND_OUTLINES_DATA = [
+  {
+    id: 'out-1',
+    term: "Hon'ble High Court",
+    category: "Legal & Judicial",
+    speedTier: "80 - 120 WPM",
+    shorthandStroke: "H-N-B-L // K-R-T",
+    hindiEquivalent: "माननीय उच्च न्यायालय",
+    ruleType: "Intersection & Doubling",
+    ruleDesc: "Intersected Hay with N-hook crossing through ray line with Kay-Ray-Tee stroke.",
+    speedTip: "Write without lifting pencil; the intersection automatically denotes 'Court'."
+  },
+  {
+    id: 'out-2',
+    term: "Parliamentary Standing Committee",
+    category: "Parliamentary",
+    speedTier: "100 - 120 WPM",
+    shorthandStroke: "P-R-L-M // S-T-N-D // K-M-T",
+    hindiEquivalent: "संसदीय स्थायी समिति",
+    ruleType: "Contraction & Prefix",
+    ruleDesc: "P stroke on line with R-hook, halved Tee for standing, Kay loop for committee.",
+    speedTip: "Standard Rajya Sabha & Lok Sabha debate phrase."
+  },
+  {
+    id: 'out-3',
+    term: "Criminal Procedure Code (CrPC)",
+    category: "Legal & Judicial",
+    speedTier: "80 - 100 WPM",
+    shorthandStroke: "K-R-M // P-R-S-D-R",
+    hindiEquivalent: "दंड प्रक्रिया संहिता",
+    ruleType: "Compound Contraction",
+    ruleDesc: "Kay-Ray with em-hook, joined to P-Ray with Ses-circle on line.",
+    speedTip: "Frequent in Patna, Jharkhand & Delhi High Court morning judicial dictations."
+  },
+  {
+    id: 'out-4',
+    term: "Special Leave Petition (SLP)",
+    category: "Legal & Judicial",
+    speedTier: "100 - 120 WPM",
+    shorthandStroke: "S-P-L-V // P-T-S-H-N",
+    hindiEquivalent: "विशेष अनुमति याचिका",
+    ruleType: "Abbreviated Outline",
+    ruleDesc: "Circle S with Pee-Lay stroke joined to Tee-Shun hook below the line.",
+    speedTip: "Supreme Court appellate judgment favorite."
+  },
+  {
+    id: 'out-5',
+    term: "Capital Expenditure & Revenue",
+    category: "Administrative & Govt",
+    speedTier: "80 - 100 WPM",
+    shorthandStroke: "K-P-T-L // K-S-P-N-D",
+    hindiEquivalent: "पूंजीगत व्यय एवं राजस्व",
+    ruleType: "Halving Principle",
+    ruleDesc: "Kay-Pee halved for Tee, joined to Kay-circle-Pee with end-hook.",
+    speedTip: "Union Budget and Ministry of Finance standard terminology."
+  },
+  {
+    id: 'out-6',
+    term: "Constitutional Bench of India",
+    category: "Legal & Judicial",
+    speedTier: "100 - 120 WPM",
+    shorthandStroke: "K-N-S-T-T // B-N-C-H",
+    hindiEquivalent: "भारत की संविधान पीठ",
+    ruleType: "Intersected Stroke",
+    ruleDesc: "Con-dot omitted, Ses-circle on Tee followed by Bee with N-hook crossing.",
+    speedTip: "Essential for 5-Judge bench judgment transcription."
+  },
+  {
+    id: 'out-7',
+    term: "Superintendent of Police (SP)",
+    category: "Administrative & Govt",
+    speedTier: "80 - 100 WPM",
+    shorthandStroke: "S-P-R-N-T // P-L-S",
+    hindiEquivalent: "पुलिस अधीक्षक",
+    ruleType: "Doubling Principle",
+    ruleDesc: "Circle S with Pee doubled for 'ender' sound, joined to Lay-circle.",
+    speedTip: "Police FIR and criminal writ petition standard outline."
+  },
+  {
+    id: 'out-8',
+    term: "Prima Facie Case",
+    category: "Legal & Judicial",
+    speedTier: "80 - 120 WPM",
+    shorthandStroke: "P-R-M // F-S-H-K-S",
+    hindiEquivalent: "प्रथम दृष्टया मामला",
+    ruleType: "Latin Phraseography",
+    ruleDesc: "P-Ray first position above line, Ef stroke with circle-S crossing.",
+    speedTip: "Do not insert first-position vowel during speed; outline shape is unique."
+  },
+  {
+    id: 'out-9',
+    term: "Affidavit in Opposition",
+    category: "Legal & Judicial",
+    speedTier: "100 - 120 WPM",
+    shorthandStroke: "F-D-V-T // P-Z-S-H-N",
+    hindiEquivalent: "प्रति-शपथ पत्र",
+    ruleType: "Halving & Shun Hook",
+    ruleDesc: "Ef stroke with Dee halved for Tee, joined to Pee with large Shun hook.",
+    speedTip: "Standard civil procedure motion terminology."
+  },
+  {
+    id: 'out-10',
+    term: "Supplementary Demands for Grants",
+    category: "Parliamentary",
+    speedTier: "100 - 120 WPM",
+    shorthandStroke: "S-P-L-M // D-M-N-D // G-R-N-T",
+    hindiEquivalent: "अनुपूरक अनुदान मांगें",
+    ruleType: "Advanced Phraseography",
+    ruleDesc: "Circle-S on Pee-Lay, Dee halved for End-hook, Gay-Ray halved for Tee.",
+    speedTip: "Lok Sabha financial business favorite outline."
+  },
+  {
+    id: 'out-11',
+    term: "Cross-Examination of Witnesses",
+    category: "Legal & Judicial",
+    speedTier: "80 - 100 WPM",
+    shorthandStroke: "K-R-S // S-G-Z-M-N // W-T-N-S",
+    hindiEquivalent: "गवाहों से जिरह",
+    ruleType: "Compound Intersection",
+    ruleDesc: "Ray-circle-S crossed through Ses-Gay-Em, Way stroke with En-circle.",
+    speedTip: "Trial court deposition dictation essential."
+  },
+  {
+    id: 'out-12',
+    term: "Socio-Economic Development",
+    category: "Administrative & Govt",
+    speedTier: "80 - 100 WPM",
+    shorthandStroke: "S-S-H-K-N // D-V-L-P",
+    hindiEquivalent: "सामाजिक-आर्थिक विकास",
+    ruleType: "Contraction Principle",
+    ruleDesc: "Circle-S on Ish stroke joined to Kay-En, Dee with Vee-Lay stroke on line.",
+    speedTip: "NITI Aayog & Planning Commission editorial standard."
+  }
+];
+
 export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClasses = [], onSelectClass }) {
-  const [activeTab, setActiveTab] = useState('online-live'); // 'online-live' | 'batches' | 'timetable' | 'diplomas' | 'notices'
+  const [activeTab, setActiveTab] = useState('online-live'); // 'online-live' | 'batches' | 'timetable' | 'diplomas' | 'notices' | 'outlines'
   const [copiedId, setCopiedId] = useState(false);
   const [showLiveCanvas, setShowLiveCanvas] = useState(false);
+  const [outlineSearch, setOutlineSearch] = useState('');
+  const [outlineCategory, setOutlineCategory] = useState('All');
+  const [copiedOutlineId, setCopiedOutlineId] = useState(null);
 
   // Active highlighted class: priority to isLive class, else first class
   const activeClass = (onlineClasses && onlineClasses.length > 0)
@@ -142,6 +283,13 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               onClick={() => setActiveTab('notices')}
             >
               <span>🔔 Recruitment Notices</span>
+            </button>
+            <button 
+              className={`class-nav-tab ${activeTab === 'outlines' ? 'active tab-live-active' : ''}`}
+              onClick={() => setActiveTab('outlines')}
+            >
+              <Zap size={13} className="text-amber-500 inline mr-1" />
+              <span>⚡ Shorthand Outlines & Strokes</span>
             </button>
           </div>
         </div>
@@ -606,6 +754,170 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {/* TAB 5: SHORTHAND OUTLINES & PHRASEOGRAPHY DICTIONARY */}
+        {activeTab === 'outlines' && (
+          <div className="classes-notices-view">
+            <div className="section-header-compact text-center">
+              <span className="badge-subheading" style={{ background: '#FEF3C7', color: '#92400E' }}>PHRASEOGRAPHY VAULT</span>
+              <h2 className="section-title-large">Shorthand Outlines & Legal Strokes Dictionary</h2>
+              <p className="section-description-text">
+                Master standardized Pitman & Hindi contractions, legal intersections, and high-frequency parliamentary speed phrases.
+              </p>
+            </div>
+
+            {/* Search Bar & Category Filters */}
+            <div style={{ maxWidth: '750px', margin: '1.5rem auto 1rem auto', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <div style={{ position: 'relative', width: '100%' }}>
+                <Search size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#78716c' }} />
+                <input
+                  type="text"
+                  value={outlineSearch}
+                  onChange={(e) => setOutlineSearch(e.target.value)}
+                  placeholder="Search terminology, e.g. High Court, Parliament, Police, SLP, Affidavit..."
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 1rem 0.75rem 2.5rem',
+                    borderRadius: '8px',
+                    border: '1px solid #e7e5e4',
+                    background: '#ffffff',
+                    fontSize: '0.85rem',
+                    color: '#1c1917',
+                    outline: 'none',
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+                  }}
+                />
+                {outlineSearch && (
+                  <button
+                    onClick={() => setOutlineSearch('')}
+                    style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer' }}
+                  >
+                    ✕
+                  </button>
+                )}
+              </div>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}>
+                {['All', 'Legal & Judicial', 'Parliamentary', 'Administrative & Govt'].map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setOutlineCategory(cat)}
+                    style={{
+                      padding: '0.35rem 0.85rem',
+                      borderRadius: '6px',
+                      fontSize: '0.75rem',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      border: '1px solid',
+                      borderColor: outlineCategory === cat ? '#d97706' : '#e7e5e4',
+                      background: outlineCategory === cat ? '#fef3c7' : '#ffffff',
+                      color: outlineCategory === cat ? '#92400e' : '#57534e',
+                      transition: 'all 0.15s ease'
+                    }}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Outlines Cards Grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem', marginTop: '1.25rem' }}>
+              {SHORTHAND_OUTLINES_DATA
+                .filter(item => {
+                  const matchCat = outlineCategory === 'All' || item.category === outlineCategory;
+                  const matchSearch = !outlineSearch.trim() || 
+                    item.term.toLowerCase().includes(outlineSearch.toLowerCase()) ||
+                    item.hindiEquivalent.toLowerCase().includes(outlineSearch.toLowerCase()) ||
+                    item.ruleDesc.toLowerCase().includes(outlineSearch.toLowerCase()) ||
+                    item.shorthandStroke.toLowerCase().includes(outlineSearch.toLowerCase());
+                  return matchCat && matchSearch;
+                })
+                .map(item => (
+                  <div
+                    key={item.id}
+                    style={{
+                      background: '#ffffff',
+                      border: '1px solid #e7e5e4',
+                      borderRadius: '10px',
+                      padding: '1.25rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.02)'
+                    }}
+                  >
+                    <div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                        <span style={{ fontSize: '0.68rem', fontWeight: 700, padding: '0.2rem 0.5rem', borderRadius: '4px', background: '#f5f5f4', color: '#57534e', textTransform: 'uppercase' }}>
+                          {item.category}
+                        </span>
+                        <span style={{ fontSize: '0.72rem', fontWeight: 600, color: '#d97706' }}>
+                          ⚡ {item.speedTier}
+                        </span>
+                      </div>
+
+                      <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#1c1917', margin: '0 0 0.25rem 0' }}>
+                        {item.term}
+                      </h3>
+                      <div style={{ fontSize: '0.8rem', color: '#78716c', marginBottom: '0.85rem' }}>
+                        {item.hindiEquivalent}
+                      </div>
+
+                      {/* Stroke Box */}
+                      <div style={{
+                        background: '#faf9f6',
+                        border: '1px dashed #d6d3d1',
+                        borderRadius: '6px',
+                        padding: '0.6rem 0.8rem',
+                        marginBottom: '0.75rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between'
+                      }}>
+                        <div>
+                          <div style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: '#78716c', fontWeight: 700 }}>
+                            Outline Formula (Pitman)
+                          </div>
+                          <div style={{ fontFamily: 'monospace', fontWeight: 700, fontSize: '0.95rem', color: '#1c1917', letterSpacing: '0.5px' }}>
+                            {item.shorthandStroke}
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => {
+                            navigator.clipboard.writeText(item.shorthandStroke);
+                            setCopiedOutlineId(item.id);
+                            setTimeout(() => setCopiedOutlineId(null), 1500);
+                          }}
+                          style={{
+                            background: copiedOutlineId === item.id ? '#ecfdf5' : '#ffffff',
+                            border: '1px solid',
+                            borderColor: copiedOutlineId === item.id ? '#10b981' : '#e7e5e4',
+                            borderRadius: '4px',
+                            padding: '0.3rem 0.5rem',
+                            fontSize: '0.7rem',
+                            color: copiedOutlineId === item.id ? '#047857' : '#57534e',
+                            cursor: 'pointer'
+                          }}
+                          title="Copy Stroke Formula"
+                        >
+                          {copiedOutlineId === item.id ? '✓ Copied' : 'Copy'}
+                        </button>
+                      </div>
+
+                      {/* Rule & Pacing Tip */}
+                      <div style={{ fontSize: '0.76rem', color: '#44403c', marginBottom: '0.4rem', lineHeight: 1.4 }}>
+                        <strong>Rule:</strong> {item.ruleType} — {item.ruleDesc}
+                      </div>
+                      <div style={{ fontSize: '0.74rem', color: '#92400e', background: '#fffbeb', padding: '0.4rem 0.6rem', borderRadius: '4px', lineHeight: 1.35 }}>
+                        💡 <strong>Speed Tip:</strong> {item.speedTip}
+                      </div>
+                    </div>
+                  </div>
+                ))}
             </div>
           </div>
         )}

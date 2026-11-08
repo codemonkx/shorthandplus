@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import AuthModal from './components/AuthModal';
 import CheckoutModal from './components/CheckoutModal';
 import ProfileSettingsModal from './components/ProfileSettingsModal';
+import LegalPolicyModal from './components/LegalPolicyModal';
 import DictationRoom from './components/DictationRoom';
 import ExamEngine from './components/ExamEngine';
 import EvaluationResult from './components/EvaluationResult';
@@ -78,6 +79,13 @@ export default function App() {
   const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
   const [profileModalOpen, setProfileModalOpen] = useState(false);
   const [selectedPlanId, setSelectedPlanId] = useState('plan-1mo');
+  const [legalModalOpen, setLegalModalOpen] = useState(false);
+  const [legalModalTab, setLegalModalTab] = useState('terms');
+
+  const handleOpenLegal = (tab = 'terms') => {
+    setLegalModalTab(tab);
+    setLegalModalOpen(true);
+  };
 
   // Set TryHackMe Cyber Dark Theme
   useEffect(() => {
@@ -652,6 +660,7 @@ export default function App() {
         <Footer 
           onOpenCheckout={() => handleOpenCheckoutWithPlan()}
           setCurrentTab={setCurrentTab}
+          onOpenLegal={handleOpenLegal}
         />
 
         <AuthModal
@@ -666,6 +675,7 @@ export default function App() {
           selectedPlanId={selectedPlanId}
           onActivatePlan={handleActivatePlan}
           user={user}
+          onOpenLegal={handleOpenLegal}
         />
         <ProfileSettingsModal
           isOpen={profileModalOpen}
@@ -678,6 +688,11 @@ export default function App() {
             } catch {}
           }}
           onOpenCheckout={handleOpenCheckoutWithPlan}
+        />
+        <LegalPolicyModal
+          isOpen={legalModalOpen}
+          initialTab={legalModalTab}
+          onClose={() => setLegalModalOpen(false)}
         />
       </div>
     );
@@ -827,6 +842,7 @@ export default function App() {
         selectedPlanId={selectedPlanId}
         onActivatePlan={handleActivatePlan}
         user={user}
+        onOpenLegal={handleOpenLegal}
       />
       <ProfileSettingsModal
         isOpen={profileModalOpen}
@@ -839,6 +855,11 @@ export default function App() {
           } catch {}
         }}
         onOpenCheckout={handleOpenCheckoutWithPlan}
+      />
+      <LegalPolicyModal
+        isOpen={legalModalOpen}
+        initialTab={legalModalTab}
+        onClose={() => setLegalModalOpen(false)}
       />
     </div>
   );

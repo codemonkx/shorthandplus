@@ -125,3 +125,4 @@ export async function sendPasswordResetEmail({ toEmail, code, candidateName = 'C
     return { delivered: false, error: error.message };
   }
 }
+

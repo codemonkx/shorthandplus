@@ -698,14 +698,30 @@ export default function AdminPortalView({
     }
   };
 
-  const extendStudentPlan = (id) => {
-    setStudents(students.map(s => {
-      if (s.id === id) {
-        return { ...s, daysRemaining: s.daysRemaining + 30, status: 'Active' };
-      }
-      return s;
-    }));
-    alert("Candidate subscription extended by +30 Days!");
+  const extendStudentPlan = async (id) => {
+    try {
+      const res = await api.admin.extendStudentPass(id, 30);
+      setStudents(students.map(s => {
+        if (s.id === id) {
+          return { ...s, daysRemaining: (s.daysRemaining || 0) + 30, status: 'Active' };
+        }
+        return s;
+      }));
+      alert(res.message || "Candidate subscription extended by +30 Days!");
+    } catch (e) {
+      alert(`Failed to extend plan: ${e.message}`);
+    }
+  };
+
+  const resetStudentPassword = async (id, name) => {
+    const customPass = prompt(`Set new password for ${name} (or leave blank to auto-generate):`, "");
+    if (customPass === null) return;
+    try {
+      const res = await api.admin.resetStudentPassword(id, customPass.trim() || undefined);
+      alert(`Success! Password for ${name} reset to:\n\n${res.tempPassword || customPass}\n\nPlease share this directly with the student.`);
+    } catch (e) {
+      alert(`Failed to reset password: ${e.message}`);
+    }
   };
 
   const deleteTest = (id) => {
@@ -1366,10 +1382,19 @@ export default function AdminPortalView({
                             <button 
                               className="admin-btn-action btn-extend"
                               onClick={() => extendStudentPlan(s.id)}
-                              title="Extend validity +30 days"
+                              title="Extend validity +30 days (Saved to Database)"
                             >
                               <Clock size={12} />
                               <span>+30d</span>
+                            </button>
+                            <button 
+                              className="admin-btn-action"
+                              onClick={() => resetStudentPassword(s.id, s.name)}
+                              title="Set or generate temporary password for student"
+                              style={{ background: '#f5f5f4', color: '#1c1917', border: '1px solid #e7e5e4' }}
+                            >
+                              <Key size={12} />
+                              <span>Reset Pwd</span>
                             </button>
                             <button 
                               className={`admin-btn-action ${s.status === 'Active' && s.daysRemaining > 0 ? 'btn-suspend' : 'btn-activate'}`}
