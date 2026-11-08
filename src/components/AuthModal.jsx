@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  X, Lock, Mail, User, Phone, MapPin, Globe, CheckCircle2, 
+  X, Lock, Mail, User, MapPin, Globe, CheckCircle2, 
   ArrowRight, ShieldCheck, GraduationCap, Key, Eye, EyeOff, 
   AlertCircle, Info, Loader2, Sparkles, UserPlus 
 } from 'lucide-react';
@@ -14,7 +14,6 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [mobile, setMobile] = useState('');
   const [state, setState] = useState('Bihar');
   const [language, setLanguage] = useState('English');
   const [adminPasscode, setAdminPasscode] = useState('');
@@ -94,7 +93,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
         }, 500);
       } else if (authMode === 'register') {
         // Register Mode
-        const res = await api.auth.register({ name, email, password, mobile, state, language });
+        const res = await api.auth.register({ name, email, password, state, language });
         if (res.token) setToken(res.token);
 
         try {
@@ -316,41 +315,23 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
 
         {/* Main Authentication Form */}
         <form onSubmit={handleSubmit} className="auth-form-stack">
-          {/* Register Mode Exclusive Name & Mobile */}
+          {/* Register Mode Exclusive Candidate Name */}
           {authMode === 'register' && (
-            <>
-              <div className="auth-field-group">
-                <label className="auth-field-label">Candidate Full Name</label>
-                <div className="auth-input-wrapper">
-                  <User size={16} className="auth-input-icon" />
-                  <input 
-                    type="text" 
-                    className="auth-input-element"
-                    placeholder="e.g. Rahul Sharma" 
-                    value={name} 
-                    onChange={(e) => setName(e.target.value)}
-                    required 
-                    autoComplete="name"
-                  />
-                </div>
+            <div className="auth-field-group">
+              <label className="auth-field-label">Candidate Full Name</label>
+              <div className="auth-input-wrapper">
+                <User size={16} className="auth-input-icon" />
+                <input 
+                  type="text" 
+                  className="auth-input-element"
+                  placeholder="e.g. Rahul Sharma" 
+                  value={name} 
+                  onChange={(e) => setName(e.target.value)}
+                  required 
+                  autoComplete="name"
+                />
               </div>
-
-              <div className="auth-field-group">
-                <label className="auth-field-label">Mobile Number (SMS & Exam Updates)</label>
-                <div className="auth-input-wrapper">
-                  <Phone size={16} className="auth-input-icon" />
-                  <input 
-                    type="tel" 
-                    className="auth-input-element"
-                    placeholder="10-digit mobile number" 
-                    value={mobile} 
-                    onChange={(e) => setMobile(e.target.value)}
-                    required 
-                    autoComplete="tel"
-                  />
-                </div>
-              </div>
-            </>
+            </div>
           )}
 
           {/* Email field (for all modes) */}

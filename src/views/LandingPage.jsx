@@ -230,7 +230,6 @@ export default function LandingPage({
   const [loginEmail, setLoginEmail] = useState('shadabca@gmail.com');
   const [loginPassword, setLoginPassword] = useState('shadab12345');
   const [regName, setRegName] = useState('');
-  const [regMobile, setRegMobile] = useState('');
   const [regEmail, setRegEmail] = useState('');
   const [regPassword, setRegPassword] = useState('');
   const [regLang, setRegLang] = useState('English');
@@ -378,7 +377,6 @@ export default function LandingPage({
         name: regName.trim(),
         email: regEmail.trim(),
         password: regPassword.trim(),
-        mobile: regMobile.trim(),
         language: regLang,
         state: 'Bihar'
       });
@@ -812,29 +810,16 @@ export default function LandingPage({
                       />
                     </div>
 
-                    <div className="form-grid-two">
-                      <div className="form-group-field">
-                        <label className="field-label">Mobile Number</label>
-                        <input 
-                          type="tel" 
-                          className="field-input" 
-                          value={regMobile}
-                          onChange={(e) => setRegMobile(e.target.value)}
-                          placeholder="9876543210" 
-                          required 
-                        />
-                      </div>
-                      <div className="form-group-field">
-                        <label className="field-label">Email Address</label>
-                        <input 
-                          type="email" 
-                          className="field-input" 
-                          value={regEmail}
-                          onChange={(e) => setRegEmail(e.target.value)}
-                          placeholder="you@email.com" 
-                          required 
-                        />
-                      </div>
+                    <div className="form-group-field">
+                      <label className="field-label">Student Email Address</label>
+                      <input 
+                        type="email" 
+                        className="field-input" 
+                        value={regEmail}
+                        onChange={(e) => setRegEmail(e.target.value)}
+                        placeholder="you@email.com" 
+                        required 
+                      />
                     </div>
 
                     <div className="form-group-field">
