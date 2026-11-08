@@ -16,7 +16,8 @@ import {
   ArrowLeft,
   LifeBuoy,
   Video,
-  LogOut
+  LogOut,
+  Trophy
 } from 'lucide-react';
 
 export default function Sidebar({ 
@@ -36,6 +37,7 @@ export default function Sidebar({
     { id: 'steno-vault', label: 'Steno Dictation Vault', icon: Headphones },
     { id: 'typing-studio', label: 'Typing Speed Studio', icon: Keyboard },
     { id: 'results', label: 'My Scorecards & History', icon: BarChart3 },
+    { id: 'leaderboard', label: 'All-India Leaderboard', icon: Trophy, badge: 'RANK' },
     { id: 'pricing', label: 'Subscription & Passes', icon: CreditCard },
   ];
 

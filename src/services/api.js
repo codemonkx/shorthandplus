@@ -103,7 +103,11 @@ export const api = {
     update: (id, test) => request(`/tests/${id}`, { method: 'PUT', body: JSON.stringify(test) }),
     delete: (id) => request(`/tests/${id}`, { method: 'DELETE' }),
     submitResult: (result) => request('/tests/submit-result', { method: 'POST', body: JSON.stringify(result) }),
-    getMyHistory: () => request('/tests/my-history')
+    getMyHistory: () => request('/tests/my-history'),
+    getLeaderboard: (params = {}) => {
+      const query = new URLSearchParams(params).toString();
+      return request(`/tests/leaderboard${query ? `?${query}` : ''}`);
+    }
   },
 
   // Live Classes

@@ -208,3 +208,4 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
     </div>
   );
 }
+

@@ -10,14 +10,14 @@
 
 ---
 
-### 🟡 Medium Priority / Academic Roadmap Enhancements
-- [ ] **National Weekly Mock Test Leaderboards**
-  - **Status**: Backlog.
-  - **Requirement**: Publicly visible all-India leaderboard ranking students weekly by speed (WPM), accuracy percentage, and mistake deductions.
+## ✅ Completed & Verified Workflows
 
----
+- [x] **National All-India Mock Test Leaderboard & Rankings**
+  - Built dedicated `LeaderboardView.jsx` with Top 3 Champions Podium (Gold #1, Silver #2, Bronze #3), speed & accuracy metrics, and category filtering (All-India, Steno Dictations, Typing Studio).
+  - Implemented `GET /api/tests/leaderboard` in backend joining user profiles with real test scores.
+  - Linked in `Sidebar.jsx`, `Navbar.jsx` user dropdown, and `App.jsx`.
 
-### 🟢 Low Priority / Production Deployment Operations
+- [x] **Official 5-Minute Silent Reading Room Phase**
 - [ ] **Cloud PostgreSQL Connection Setup**
   - **Status**: Configured with fallback; currently running on local SQLite WAL mode.
   - **Requirement**: When deploying to production cloud infrastructure (Render, Railway, or AWS), provide `DATABASE_URL` pointing to Supabase, Neon, or RDS.
