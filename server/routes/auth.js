@@ -406,7 +406,7 @@ router.post('/forgot-password', passwordResetLimiter, async (req, res) => {
     return res.json({
       success: true,
       message: `A 6-digit recovery code has been sent to your email (${cleanEmail}). Please check your inbox and spam folder.`,
-      demoCode: recoveryCode, // surfaced for development and automated testing
+      demoCode: process.env.NODE_ENV === 'production' ? undefined : recoveryCode, // surfaced only in dev/test
       email: cleanEmail
     });
   } catch (error) {
