@@ -26,6 +26,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
   const [recoveryCode, setRecoveryCode] = useState('');
   const [resetNewPassword, setResetNewPassword] = useState('');
   const [resetConfirmPassword, setResetConfirmPassword] = useState('');
+  const [smtpConfigured, setSmtpConfigured] = useState(true);
 
   useEffect(() => {
     if (initialTab) {
@@ -114,9 +115,18 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
             return;
           }
           const res = await api.auth.forgotPassword(email);
-          setRecoveryCode(res.demoCode || '');
+          setRecoveryCode(''); // Keep blank so candidate types in the code from their email
           setForgotStep(2);
-          setStatusMsg({ type: 'info', text: res.message || `Verification code sent to ${email}! Check your email inbox.` });
+          if (res.smtpConfigured === false) {
+            setSmtpConfigured(false);
+            setStatusMsg({ 
+              type: 'error', 
+              text: res.message || 'Outbound SMTP is not configured in .env. Real email could not be delivered.' 
+            });
+          } else {
+            setSmtpConfigured(true);
+            setStatusMsg({ type: 'info', text: res.message || `Verification code sent to ${email}! Check your email inbox.` });
+          }
         } else {
           if (!recoveryCode || recoveryCode.trim().length < 6) {
             setStatusMsg({ type: 'error', text: 'Please enter the 6-digit verification code sent to your email.' });
@@ -371,21 +381,42 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
             <>
               {forgotStep === 2 && (
                 <>
-                  <div style={{
-                    background: '#faf9f6',
-                    border: '1px solid #e7e5e4',
-                    borderRadius: '8px',
-                    padding: '0.75rem 0.85rem',
-                    marginBottom: '0.85rem',
-                    fontSize: '0.78rem',
-                    color: '#57534e',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem'
-                  }}>
-                    <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0" />
-                    <span>6-Digit recovery code dispatched to <strong>{email}</strong>. (Check inbox / spam).</span>
-                  </div>
+                  {!smtpConfigured ? (
+                    <div style={{
+                      background: '#fffbeb',
+                      border: '1px solid #fde68a',
+                      borderRadius: '8px',
+                      padding: '0.75rem 0.85rem',
+                      marginBottom: '0.85rem',
+                      fontSize: '0.76rem',
+                      color: '#92400e',
+                      lineHeight: 1.45
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 700, marginBottom: '0.2rem' }}>
+                        <AlertCircle size={15} className="text-amber-600 flex-shrink-0" />
+                        <span>SMTP Email Server Not Configured</span>
+                      </div>
+                      <p style={{ margin: 0 }}>
+                        Real email could not be sent to <strong>{email}</strong> because <code>SMTP_USER</code> and <code>SMTP_PASS</code> are not set in <code>.env</code>. The code was logged to your server terminal for testing.
+                      </p>
+                    </div>
+                  ) : (
+                    <div style={{
+                      background: '#faf9f6',
+                      border: '1px solid #e7e5e4',
+                      borderRadius: '8px',
+                      padding: '0.75rem 0.85rem',
+                      marginBottom: '0.85rem',
+                      fontSize: '0.78rem',
+                      color: '#57534e',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem'
+                    }}>
+                      <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0" />
+                      <span>6-Digit recovery code dispatched to <strong>{email}</strong>. (Check inbox / spam).</span>
+                    </div>
+                  )}
 
                   <div className="auth-field-group">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
@@ -397,8 +428,14 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
                         onClick={async () => {
                           try {
                             const res = await api.auth.forgotPassword(email);
-                            setRecoveryCode(res.demoCode || '');
-                            setStatusMsg({ type: 'info', text: 'Fresh verification code dispatched to your email!' });
+                            setRecoveryCode('');
+                            if (res.smtpConfigured === false) {
+                              setSmtpConfigured(false);
+                              setStatusMsg({ type: 'error', text: res.message || 'Outbound SMTP is not configured in .env.' });
+                            } else {
+                              setSmtpConfigured(true);
+                              setStatusMsg({ type: 'info', text: 'Fresh verification code dispatched to your email!' });
+                            }
                           } catch (e) {
                             setStatusMsg({ type: 'error', text: e.message || 'Failed to resend code.' });
                           }
@@ -415,9 +452,10 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
                         className="auth-input-element font-mono"
                         placeholder="e.g. 849201" 
                         value={recoveryCode} 
-                        onChange={(e) => setRecoveryCode(e.target.value)}
+                        onChange={(e) => setRecoveryCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                         required 
                         maxLength={6}
+                        autoFocus
                       />
                     </div>
                   </div>

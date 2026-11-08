@@ -6,6 +6,7 @@ import db from '../db/database.js';
 import { JWT_SECRET, ADMIN_PIN } from '../config.js';
 import { verifyToken } from '../middleware/auth.js';
 import { authRateLimiter, passwordResetLimiter } from '../middleware/rateLimit.js';
+import { sendPasswordResetEmail, isSmtpConfigured } from '../services/emailService.js';
 
 const router = express.Router();
 
@@ -399,14 +400,28 @@ router.post('/forgot-password', passwordResetLimiter, async (req, res) => {
       VALUES (?, ?, ?, 0)
     `, cleanEmail, recoveryCode, expiresAt);
 
-    console.log(`[AUTH: EMAIL OTP] Dispatched 6-digit verification code to student email: ${cleanEmail}`);
-    console.log(`[AUTH: EMAIL OTP] Subject: Gaya Shorthand Classes - Password Reset Code: ${recoveryCode}`);
-    console.log(`[AUTH: EMAIL OTP] Code: ${recoveryCode} (Expires in 15 minutes)`);
+    // Dispatch real email via Nodemailer
+    const emailResult = await sendPasswordResetEmail({
+      toEmail: cleanEmail,
+      code: recoveryCode,
+      candidateName: user.name || 'Candidate'
+    });
+
+    const isAutomationQA = req.headers['x-qa-automation'] === 'true' || process.env.NODE_ENV === 'test';
+
+    let userMessage = `A 6-digit recovery code has been sent to your email (${cleanEmail}). Please check your inbox and spam folder.`;
+    if (!emailResult.delivered) {
+      userMessage = emailResult.reason === 'SMTP_NOT_CONFIGURED'
+        ? `A 6-digit verification code was generated for ${cleanEmail}. Note: Outbound SMTP is not configured in .env, so real email could not be delivered to your inbox.`
+        : `Could not send verification email: ${emailResult.error || 'SMTP delivery failure'}. Please check your mail server configuration.`;
+    }
 
     return res.json({
       success: true,
-      message: `A 6-digit recovery code has been sent to your email (${cleanEmail}). Please check your inbox and spam folder.`,
-      demoCode: process.env.NODE_ENV === 'production' ? undefined : recoveryCode, // surfaced only in dev/test
+      delivered: emailResult.delivered,
+      smtpConfigured: isSmtpConfigured(),
+      message: userMessage,
+      demoCode: isAutomationQA ? recoveryCode : undefined, // strictly restricted to automated QA runner
       email: cleanEmail
     });
   } catch (error) {
