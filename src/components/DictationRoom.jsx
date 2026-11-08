@@ -6,29 +6,31 @@ import {
   RotateCw,
   Volume2, 
   VolumeX, 
-  Clock, 
   ArrowRight, 
-  ArrowLeft,
+  ArrowLeft, 
   Headphones, 
   CheckCircle2, 
-  ShieldCheck,
-  SlidersHorizontal,
-  Sparkles,
-  RefreshCw,
-  Lock,
-  FileText
+  ShieldCheck, 
+  SlidersHorizontal, 
+  Sparkles, 
+  Lock, 
+  FileText,
+  Award,
+  Zap,
+  PenTool
 } from 'lucide-react';
+import ShorthandCanvas from './ShorthandCanvas';
 
 export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
   const currentTest = test || {};
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState(1.0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(currentTest.audioDuration || 320);
+  const [duration, setDuration] = useState(currentTest.audioDuration || 300);
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(1.0);
-  const [readingTimer, setReadingTimer] = useState(300);
-  const [readingTimerActive, setReadingTimerActive] = useState(false);
+  const [audioCompleted, setAudioCompleted] = useState(false);
+  const [showDigitalCanvas, setShowDigitalCanvas] = useState(false);
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -42,6 +44,22 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
       audioRef.current.volume = isMuted ? 0 : volume;
     }
   }, [volume, isMuted]);
+
+  // Global keyboard shortcuts (Space = Play/Pause, Ctrl+Enter or Enter = Proceed)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'BUTTON') {
+        e.preventDefault();
+        togglePlay();
+      }
+      if (e.code === 'Enter' && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        onProceedToTyping();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isPlaying, onProceedToTyping]);
 
   const togglePlay = () => {
     if (!audioRef.current) return;
@@ -65,7 +83,7 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
 
   const handleAudioEnded = () => {
     setIsPlaying(false);
-    setReadingTimerActive(true);
+    setAudioCompleted(true);
   };
 
   const handleSeek = (e) => {
@@ -98,119 +116,96 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
     }
   };
 
-  // 5-Minute Shorthand Reading Timer
-  useEffect(() => {
-    let interval;
-    if (readingTimerActive && readingTimer > 0) {
-      interval = setInterval(() => {
-        setReadingTimer((prev) => {
-          if (prev <= 1) {
-            setReadingTimerActive(false);
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-    }
-    return () => clearInterval(interval);
-  }, [readingTimerActive, readingTimer]);
-
-  const handleResetReadingTimer = () => {
-    setReadingTimerActive(false);
-    setReadingTimer(300);
-  };
-
   const formatTime = (secs) => {
     const m = Math.floor(secs / 60);
     const s = Math.floor(secs % 60);
     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
-  const category = currentTest.category || 'SSC Steno Grade C & D';
-  const speed = currentTest.speed || '80 WPM';
+  const category = currentTest.category || 'Patna High Court';
+  const speed = currentTest.speed || '100 WPM';
   const language = currentTest.language || 'English';
-  const title = currentTest.title || 'OCT 6 BENCH - Election Expenditure & Reforms';
-  const totalWords = currentTest.totalWords || 437;
-  const testDuration = currentTest.duration || '10 Mins';
-
-  // Reading room progress percentage (from 300 down to 0)
-  const readingProgress = Math.max(0, Math.min(100, ((300 - readingTimer) / 300) * 100));
+  const title = currentTest.title || 'Patna High Court Legal Dictation - Criminal Appeal No. 412';
+  const totalWords = currentTest.totalWords || 512;
+  const testDuration = currentTest.duration || '5 Mins Total';
 
   return (
     <div className="dictation-station-root">
       <audio
         ref={audioRef}
-        src={currentTest.audioUrl || '/assets/sample-dictation.mp3'}
+        src={currentTest.audioUrl || (language?.toLowerCase().includes('hindi') ? '/assets/sample-dictation-hindi.mp3' : '/assets/sample-dictation.mp3')}
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleAudioEnded}
       />
 
       <div className="dictation-station-container">
         
-        {/* TOP COMMAND HUD BAR */}
-        <header className="dict-hud-card">
-          <div className="dict-hud-left">
-            <button className="dict-btn-exit" onClick={onCancel} id="btn-exit-exam-hud">
-              <ArrowLeft size={16} />
-              <span>Exit Exam</span>
-            </button>
-            <div className="dict-hud-divider" />
-            <div className="dict-hud-badges-wrap">
-              <span className="dict-pill dict-pill-blue">{category}</span>
-              <span className="dict-pill dict-pill-emerald">{speed}</span>
-              <span className="dict-pill dict-pill-amber">{language}</span>
-              <span className="dict-pill dict-pill-slate">{totalWords} Words</span>
-              <span className="dict-pill dict-pill-slate">{testDuration} Total</span>
+        {/* EXECUTIVE STENO COMMAND HUD (Consolidated & Compact) */}
+        <header className="dict-executive-hud">
+          <div className="dict-hud-top-row">
+            <div className="dict-hud-left-group">
+              <button className="dict-btn-exit" onClick={onCancel} id="btn-exit-exam-hud" title="Exit to Steno Vault">
+                <ArrowLeft size={15} />
+                <span>Exit Exam</span>
+              </button>
+              
+              <div className="dict-hud-divider" />
+              
+              <div className="dict-badge-row">
+                <span className="badge-official-bench">
+                  <Sparkles size={12} className="text-burgundy" />
+                  <span>OFFICIAL STENOGRAPHY EXAMINATION SIMULATION</span>
+                </span>
+                <span className="dict-pill dict-pill-burgundy">{category}</span>
+                <span className="dict-pill dict-pill-emerald">{speed}</span>
+                <span className="dict-pill dict-pill-slate">{language}</span>
+                <span className="dict-pill dict-pill-slate">{totalWords} Words</span>
+                <span className="dict-pill dict-pill-slate">{testDuration}</span>
+              </div>
+            </div>
+
+            <div className="dict-hud-right-group">
+              <div className="dict-security-badge">
+                <span className="pulse-dot-green" />
+                <span>Exam Environment Active</span>
+              </div>
+              <button 
+                className="btn-quick-transcription-cta"
+                onClick={onProceedToTyping}
+                title="Proceed directly to Typing Transcription"
+              >
+                <span>Begin Transcription (Stage 2)</span>
+                <ArrowRight size={15} />
+              </button>
             </div>
           </div>
 
-          <div className="dict-hud-center">
+          <div className="dict-hud-bottom-row">
+            <div className="dict-title-wrap">
+              <h1 className="dict-main-title">{title}</h1>
+              <p className="dict-main-subtitle">
+                Listen to the soundproof studio dictation audio and take down shorthand outlines in your notebook. When ready, proceed directly to typing transcription.
+              </p>
+            </div>
+
             <div className="dict-stepper">
               <div className="dict-step-item active">
                 <span className="step-num-bubble">1</span>
                 <span>Audio Dictation</span>
               </div>
               <span className="step-arrow-divider">→</span>
-              <div className={`dict-step-item ${readingTimerActive ? 'active-amber' : ''}`}>
-                <span className="step-num-bubble">2</span>
-                <span>5-Min Reading</span>
-              </div>
-              <span className="step-arrow-divider">→</span>
               <div className="dict-step-item upcoming">
-                <span className="step-num-bubble">3</span>
-                <span>Transcription</span>
+                <span className="step-num-bubble">2</span>
+                <span>Typing Transcription</span>
               </div>
-            </div>
-          </div>
-
-          <div className="dict-hud-right">
-            <div className="dict-security-badge">
-              <span className="pulse-dot-green" />
-              <span>Exam Environment Active</span>
             </div>
           </div>
         </header>
 
-        {/* TITLE & HEADER BANNER */}
-        <section className="dict-banner-header">
-          <div className="banner-title-column">
-            <div className="dict-badge-row">
-              <span className="badge-official-bench">
-                <Sparkles size={13} className="text-royal-blue" />
-                <span>OFFICIAL STENOGRAPHY EXAMINATION SIMULATION</span>
-              </span>
-            </div>
-            <h1 className="dict-main-title">{title}</h1>
-            <p className="dict-main-subtitle">
-              Listen to the soundproof studio dictation audio and take down pencil shorthand notes in your notebook. After the dictation, you have a mandatory 5-minute reading clock to review outlines before transcription.
-            </p>
-          </div>
-        </section>
-
         {/* MAIN 2-COLUMN WORKSTATION */}
         <main className="dict-workstation-layout">
           
-          {/* COLUMN 1 (60%): STUDIO AUDIO DECK & DICTATION BLUEPRINT */}
+          {/* COLUMN 1 (60%): STUDIO AUDIO DECK & PROTOCOL */}
           <div className="dict-left-column">
             
             {/* 1. PROFESSIONAL STUDIO AUDIO CONSOLE */}
@@ -218,12 +213,12 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
               <div className="deck-header-row">
                 <div className="deck-source-info">
                   <div className="audio-studio-chip">
-                    <Headphones size={15} />
+                    <Headphones size={14} />
                     <span>Soundproof Studio Recording • 320kbps</span>
                   </div>
                   <div className={`deck-live-pill ${isPlaying ? 'playing' : ''}`}>
                     <span className="pulse-audio-dot" />
-                    <span>{isPlaying ? 'Dictation Playing' : 'Dictation Ready'}</span>
+                    <span>{isPlaying ? 'Dictation Audio Playing' : audioCompleted ? 'Dictation Completed' : 'Dictation Ready'}</span>
                   </div>
                 </div>
 
@@ -238,20 +233,29 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
               <div 
                 className="deck-waveform-wrapper" 
                 onClick={togglePlay}
-                title="Click anywhere to Play / Pause"
+                title="Click anywhere on waveform to Play / Pause audio (or press Space)"
               >
-                {Array.from({ length: 54 }).map((_, i) => {
+                {Array.from({ length: 56 }).map((_, i) => {
                   const progress = currentTime / (duration || 1);
-                  const barProgress = i / 54;
+                  const barProgress = i / 56;
                   const isActive = barProgress <= progress;
-                  const height = isPlaying 
-                    ? `${Math.max(22, Math.sin(i * 0.38 + currentTime * 3.5) * 48 + 48)}%` 
-                    : `${Math.max(16, ((i % 6) + 2) * 13)}%`;
+                  
+                  // Waveform height calculation
+                  let heightPct;
+                  if (isPlaying) {
+                    const wave = Math.sin(i * 0.42 + currentTime * 4.2) * 0.4 + 0.6;
+                    const harmonic = Math.cos(i * 0.2 + currentTime * 2.8) * 0.2;
+                    heightPct = Math.max(18, Math.min(96, (wave + harmonic) * 85));
+                  } else {
+                    const staticProfile = Math.sin(i * 0.25) * 0.35 + 0.55;
+                    heightPct = Math.max(16, staticProfile * 75);
+                  }
+
                   return (
                     <div
                       key={i}
                       className={`deck-waveform-bar ${isActive ? 'active' : ''}`}
-                      style={{ height }}
+                      style={{ height: `${heightPct}%` }}
                     />
                   );
                 })}
@@ -275,12 +279,12 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
               <div className="deck-controls-toolbar">
                 <div className="transport-cluster">
                   <button 
-                    className="btn-master-play" 
+                    className={`btn-master-play ${isPlaying ? 'is-playing' : ''}`}
                     onClick={togglePlay}
-                    title={isPlaying ? "Pause Dictation" : "Start Dictation Audio"}
+                    title={isPlaying ? "Pause Dictation (Space)" : "Start Dictation Audio (Space)"}
                     id="btn-master-play"
                   >
-                    {isPlaying ? <Pause size={24} /> : <Play size={24} className="play-icon-nudge" />}
+                    {isPlaying ? <Pause size={22} /> : <Play size={22} className="play-icon-nudge" />}
                   </button>
 
                   <button 
@@ -288,7 +292,7 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
                     onClick={() => handleSkip(-10)} 
                     title="Rewind 10 Seconds"
                   >
-                    <RotateCcw size={17} />
+                    <RotateCcw size={16} />
                     <span className="icon-subtext">-10s</span>
                   </button>
 
@@ -297,14 +301,14 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
                     onClick={() => handleSkip(10)} 
                     title="Forward 10 Seconds"
                   >
-                    <RotateCw size={17} />
+                    <RotateCw size={16} />
                     <span className="icon-subtext">+10s</span>
                   </button>
 
                   {/* Volume Control */}
                   <div className="volume-control-wrap">
-                    <button className="btn-deck-icon" onClick={toggleMute} title={isMuted ? "Unmute" : "Mute"}>
-                      {isMuted || volume === 0 ? <VolumeX size={18} /> : <Volume2 size={18} />}
+                    <button className="btn-deck-icon-subtle" onClick={toggleMute} title={isMuted ? "Unmute" : "Mute"}>
+                      {isMuted || volume === 0 ? <VolumeX size={16} /> : <Volume2 size={16} />}
                     </button>
                     <input 
                       type="range" 
@@ -322,7 +326,7 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
                 {/* Speed Multiplier Presets */}
                 <div className="deck-speed-cluster">
                   <span className="speed-group-label">
-                    <SlidersHorizontal size={14} />
+                    <SlidersHorizontal size={13} />
                     <span>Speed:</span>
                   </span>
                   {[0.8, 0.9, 1.0, 1.1, 1.2].map((spd) => (
@@ -338,16 +342,52 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
               </div>
             </div>
 
-            {/* 2. CANDIDATE SHORTHAND DICTATION GUIDELINES */}
+            {/* DIGITAL CANVAS TOGGLE STRIP */}
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.75rem', marginBottom: '0.75rem' }}>
+              <button
+                type="button"
+                onClick={() => setShowDigitalCanvas(!showDigitalCanvas)}
+                style={{
+                  padding: '0.45rem 0.85rem',
+                  borderRadius: 8,
+                  border: '1px solid #1c1917',
+                  background: showDigitalCanvas ? '#1c1917' : '#ffffff',
+                  color: showDigitalCanvas ? '#fafaf9' : '#1c1917',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.06)'
+                }}
+              >
+                <PenTool size={14} />
+                <span>{showDigitalCanvas ? 'Hide Digital Stylus Canvas' : 'Draw Outlines On-Screen (Digital Stylus Pad)'}</span>
+              </button>
+            </div>
+
+            {/* EMBEDDED DIGITAL SHORTHAND CANVAS */}
+            {showDigitalCanvas && (
+              <div style={{ marginBottom: '1.25rem' }}>
+                <ShorthandCanvas 
+                  audioUrl={currentTest.audioUrl || '/assets/sample-dictation.mp3'}
+                  title={`Digital Shorthand Pad • ${currentTest.title || 'Official Exam Dictation'}`}
+                  topic={currentTest.title || 'Official Parliamentary Dictation Bench'}
+                />
+              </div>
+            )}
+
+            {/* 2. CANDIDATE SHORTHAND DICTATION GUIDELINES & BENCHMARKS */}
             <div className="dictation-guidelines-card">
               <div className="guidelines-header">
-                <FileText size={18} className="text-royal-blue" />
-                <h3 className="guidelines-title">Candidate Shorthand Writing Protocol</h3>
+                <FileText size={17} className="text-burgundy" />
+                <h3 className="guidelines-title">Candidate Shorthand Writing Protocol & Benchmarks</h3>
               </div>
 
               <div className="guidelines-metrics-strip">
                 <div className="g-metric-item">
-                  <div className="g-metric-num text-royal-blue">{speed}</div>
+                  <div className="g-metric-num text-burgundy">{speed}</div>
                   <div className="g-metric-label">Target Certified Speed</div>
                 </div>
                 <div className="g-metric-divider" />
@@ -360,103 +400,77 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
                   <div className="g-metric-num">{totalWords}</div>
                   <div className="g-metric-label">Passage Word Length</div>
                 </div>
+                <div className="g-metric-divider" />
+                <div className="g-metric-item">
+                  <div className="g-metric-num text-emerald-600">95.0%</div>
+                  <div className="g-metric-label">Min Passing Accuracy</div>
+                </div>
               </div>
 
               <ul className="guidelines-points-list">
                 <li>
-                  <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0" />
-                  <span><strong>Maintain steady stroke pacing:</strong> Do not pause or lift pencil excessively during natural audio pauses.</span>
+                  <CheckCircle2 size={15} className="text-emerald-600 flex-shrink-0" />
+                  <span><strong>Maintain steady pencil stroke pacing:</strong> Do not pause or lift pencil excessively during natural audio pauses.</span>
                 </li>
                 <li>
-                  <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0" />
-                  <span><strong>Omission strategy:</strong> If an outline is missed, proceed immediately with the next sentence; do not cross out or scribble.</span>
+                  <CheckCircle2 size={15} className="text-emerald-600 flex-shrink-0" />
+                  <span><strong>Omission strategy:</strong> If an outline is missed, proceed immediately with the next sentence; never scribble or cross out outlines in notebook.</span>
                 </li>
                 <li>
-                  <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0" />
-                  <span><strong>Automatic transition:</strong> When the dictation audio completes, the 5-minute reading clock will begin automatically.</span>
+                  <CheckCircle2 size={15} className="text-emerald-600 flex-shrink-0" />
+                  <span><strong>Direct transition:</strong> When you are ready, launch typing transcription to transcribe your notes into the examination engine.</span>
                 </li>
               </ul>
             </div>
 
           </div>
 
-          {/* COLUMN 2 (40%): 5-MIN READING CLOCK, SECURITY RULES & PROCEED ACTION */}
+          {/* COLUMN 2 (40%): PRIMARY LAUNCH ACTION, METRICS & SECURITY RULES */}
           <div className="dict-right-column">
             
-            {/* 3. OFFICIAL 5-MINUTE SHORTHAND READING CLOCK */}
-            <div className={`dict-reading-room-card ${readingTimerActive ? 'timer-running' : ''}`}>
-              <div className="reading-room-top">
-                <div className="reading-badge-row">
-                  <Clock size={18} className="text-amber-600" />
-                  <span className="reading-badge-pill">MANDATORY EXAMINATION STAGE</span>
-                </div>
-                <h3 className="reading-card-title">Official 5-Minute Shorthand Reading Time</h3>
-                <p className="reading-card-desc">
-                  Carefully read, examine, and vocalize your written pencil shorthand notes before touching the computer keyboard.
-                </p>
+            {/* 1. PRIMARY PROCEED CALL TO ACTION */}
+            <div className="dict-launch-box">
+              <div className="launch-box-badge-row">
+                <Award size={16} className="text-burgundy" />
+                <span className="launch-stage-tag">STAGE 2 • COMPUTER TRANSCRIPTION</span>
+              </div>
+              
+              <h3 className="launch-box-title">Ready for Transcription?</h3>
+              <p className="launch-box-desc">
+                Transcribe your pencil shorthand outlines into the government-certified examination engine for algorithmic speed and accuracy evaluation.
+              </p>
+
+              <button 
+                className="btn-proceed-transcription"
+                onClick={onProceedToTyping}
+                id="btn-proceed-to-transcription"
+              >
+                <span>Begin Typing Transcription (Stage 2)</span>
+                <ArrowRight size={20} />
+              </button>
+              
+              <div className="launch-shortcut-hint">
+                <Zap size={13} className="text-burgundy" />
+                <span>Quick shortcut: Press <strong>Ctrl + Enter</strong> anytime to proceed</span>
               </div>
 
-              {/* BIG DIGITAL COUNTDOWN CLOCK */}
-              <div className="reading-clock-container">
-                <div className="reading-clock-big font-mono">
-                  {formatTime(readingTimer)}
-                </div>
-                <div className="reading-clock-caption">
-                  {readingTimerActive ? '⏳ Reading Room Clock Running...' : 'Click Start to begin 5-minute countdown'}
-                </div>
-                <div className="reading-progress-track">
-                  <div 
-                    className="reading-progress-fill" 
-                    style={{ width: `${readingProgress}%` }} 
-                  />
-                </div>
-              </div>
-
-              {/* TIMER CONTROLS */}
-              <div className="reading-timer-actions">
-                {!readingTimerActive ? (
-                  <button 
-                    className="btn-timer-primary" 
-                    onClick={() => setReadingTimerActive(true)}
-                    id="btn-start-reading-timer"
-                  >
-                    <Play size={16} />
-                    <span>Start 5-Min Timer Now</span>
-                  </button>
-                ) : (
-                  <button 
-                    className="btn-timer-secondary" 
-                    onClick={() => setReadingTimerActive(false)}
-                    id="btn-pause-reading-timer"
-                  >
-                    <Pause size={16} />
-                    <span>Pause Timer</span>
-                  </button>
-                )}
-                
-                <button 
-                  className="btn-timer-reset" 
-                  onClick={handleResetReadingTimer} 
-                  title="Reset timer to 05:00"
-                >
-                  <RefreshCw size={14} />
-                  <span>Reset</span>
-                </button>
-              </div>
+              <p className="launch-guarantee-note">
+                Transitions directly to the full-screen typing engine with real-time error calculation, backspace audits, and instant score certificate.
+              </p>
             </div>
 
-            {/* 4. SECURITY & EXAMINATION PROTOCOLS */}
+            {/* 2. SECURITY & EXAMINATION PROTOCOLS */}
             <div className="dict-security-rules-card">
               <div className="security-rules-header">
-                <ShieldCheck size={18} className="text-blue-600" />
+                <ShieldCheck size={17} className="text-burgundy" />
                 <h4 className="security-title">Strict Government Examination Protocols</h4>
               </div>
 
               <div className="security-rules-grid">
                 <div className="security-rule-item">
-                  <Lock size={15} className="text-amber-600 flex-shrink-0" />
+                  <Lock size={15} className="text-rose-600 flex-shrink-0" />
                   <div>
-                    <strong>Strict Backspace Lock:</strong> Configured on next screen as per Patna High Court / SSC rules.
+                    <strong>Strict Backspace Lock:</strong> Configured on typing screen as per High Court and SSC commission rules.
                   </div>
                 </div>
                 <div className="security-rule-item">
@@ -472,26 +486,12 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* 5. PRIMARY PROCEED CALL TO ACTION */}
-            <div className="dict-launch-box">
-              <button 
-                className="btn-proceed-transcription"
-                onClick={onProceedToTyping}
-                id="btn-proceed-to-transcription"
-              >
-                <span>Begin Typing Transcription (Stage 2)</span>
-                <ArrowRight size={20} />
-              </button>
-              
-              <p className="launch-guarantee-note">
-                Transitions directly to the full-screen typing engine with real-time error calculation, backspace audits, and instant score certificate.
-              </p>
-
-              <button className="btn-cancel-test-link" onClick={onCancel}>
-                Cancel Test & Return
-              </button>
+              <div className="security-card-footer">
+                <button className="btn-cancel-test-link" onClick={onCancel}>
+                  Cancel Test & Return to Vault
+                </button>
+              </div>
             </div>
 
           </div>

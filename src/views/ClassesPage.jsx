@@ -19,6 +19,7 @@ import {
   Keyboard
 } from 'lucide-react';
 import { ANNOUNCEMENTS } from '../data/mockData';
+import ShorthandCanvas from '../components/ShorthandCanvas';
 
 const DAILY_BATCHES = [
   {
@@ -78,6 +79,7 @@ const DAILY_BATCHES = [
 export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClasses = [], onSelectClass }) {
   const [activeTab, setActiveTab] = useState('online-live'); // 'online-live' | 'batches' | 'timetable' | 'diplomas' | 'notices'
   const [copiedId, setCopiedId] = useState(false);
+  const [showLiveCanvas, setShowLiveCanvas] = useState(false);
 
   // Active highlighted class: priority to isLive class, else first class
   const activeClass = (onlineClasses && onlineClasses.length > 0)
@@ -265,9 +267,19 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     </div>
                   </div>
 
-                  <div className="mini-stream-footer">
+                  <div className="mini-stream-footer" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                     <button 
                       className="btn-mini-launch"
+                      type="button"
+                      onClick={() => setShowLiveCanvas(!showLiveCanvas)}
+                      style={{ background: showLiveCanvas ? '#d97706' : '#292524', color: '#fafaf9', border: 'none' }}
+                      title="Toggle interactive drawing canvas"
+                    >
+                      <span>{showLiveCanvas ? 'Hide Whiteboard Canvas' : 'Draw Outlines On-Screen'}</span>
+                    </button>
+                    <button 
+                      className="btn-mini-launch"
+                      type="button"
                       onClick={() => setCurrentTab('online-classes')}
                     >
                       <span>Join Interactive Session Now</span>
@@ -278,10 +290,22 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               </div>
             </div>
 
+            {/* Embedded Live Stylus Shorthand Canvas */}
+            {showLiveCanvas && (
+              <div className="mt-4 mb-3 animate-fade-in">
+                <ShorthandCanvas 
+                  audioUrl="/assets/sample-dictation.mp3"
+                  title="Live Studio Whiteboard • Interactive HTML5 Stylus Canvas"
+                  topic="Parliamentary Motion on State Infrastructure & Expenditure Audit"
+                  initialNotes="Mr. Speaker Sir, the motion was introduced in the House concerning national infrastructure expenditure and audited revenue accounts for the fiscal year 2025-2026..."
+                />
+              </div>
+            )}
+
             {/* Online Classes Features Trio */}
             <div className="online-features-cards-grid mt-4">
               <div className="online-feat-card">
-                <div className="feat-icon-squircle bg-blue-50 text-blue-600">
+                <div className="feat-icon-squircle bg-stone-100 text-stone-800">
                   <Video size={22} />
                 </div>
                 <h3>Dual-Mode Shorthand Whiteboard</h3>

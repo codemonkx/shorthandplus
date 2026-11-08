@@ -16,15 +16,18 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { PRICING_PLANS } from '../data/mockData';
+import api from '../services/api';
 
-export default function CheckoutModal({ isOpen, onClose, selectedPlanId, onActivatePlan }) {
+export default function CheckoutModal({ isOpen, onClose, selectedPlanId, onActivatePlan, user }) {
   const [selectedPlan, setSelectedPlan] = useState(
     PRICING_PLANS.find(p => p.id === selectedPlanId) || PRICING_PLANS[0]
   );
-  const [paymentMethod, setPaymentMethod] = useState('card');
+  const [paymentMethod, setPaymentMethod] = useState('upi');
   const [isProcessing, setIsProcessing] = useState(false);
   const [activatedSuccess, setActivatedSuccess] = useState(false);
   const [copiedUpi, setCopiedUpi] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const [verifiedTxnCode, setVerifiedTxnCode] = useState('');
 
   // Form states
   const [cardNumber, setCardNumber] = useState('4242 •••• •••• 4242');
@@ -34,8 +37,12 @@ export default function CheckoutModal({ isOpen, onClose, selectedPlanId, onActiv
 
   useEffect(() => {
     if (selectedPlanId) {
-      const match = PRICING_PLANS.find(p => p.id === selectedPlanId);
-      if (match) setSelectedPlan(match);
+      if (typeof selectedPlanId === 'object') {
+        setSelectedPlan(selectedPlanId);
+      } else {
+        const match = PRICING_PLANS.find(p => p.id === selectedPlanId);
+        if (match) setSelectedPlan(match);
+      }
     }
   }, [selectedPlanId]);
 
@@ -49,25 +56,136 @@ export default function CheckoutModal({ isOpen, onClose, selectedPlanId, onActiv
     } catch {}
   };
 
-  const handleSimulatePayment = () => {
-    setIsProcessing(true);
+  const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+      if (window.Razorpay) {
+        return resolve(true);
+      }
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
+  const finishPaymentSuccess = (verifyData) => {
+    const txnCode = verifyData?.transaction?.id || `TXN-${Math.floor(10000 + Math.random() * 90000)}`;
+    setVerifiedTxnCode(txnCode);
+    setIsProcessing(false);
+    setActivatedSuccess(true);
+    try {
+      confetti({
+        particleCount: 110,
+        spread: 85,
+        origin: { y: 0.55 },
+        colors: ['#18181b', '#10b981', '#f59e0b', '#8b5cf6']
+      });
+    } catch {}
     setTimeout(() => {
-      setIsProcessing(false);
-      setActivatedSuccess(true);
+      onActivatePlan(selectedPlan, { 
+        method: verifyData?.transaction?.mode || 'Razorpay Gateway', 
+        txnId: txnCode 
+      });
+      onClose();
+      setActivatedSuccess(false);
+    }, 1600);
+  };
+
+  const handleRazorpayPayment = async () => {
+    setIsProcessing(true);
+    setErrorMsg('');
+
+    try {
+      // 1. Create order on backend with authoritative pricing
+      const orderData = await api.payment.createOrder(selectedPlan.id, selectedPlan.price, {
+        customerName: user?.name,
+        customerEmail: user?.email,
+        customerMobile: user?.mobile
+      });
+      const { order, keyId, isRealKey, user: userInfo } = orderData;
+
+      // 2. If real Razorpay API keys are configured, launch Razorpay Checkout Modal
+      if (isRealKey) {
+        const isLoaded = await loadRazorpayScript();
+
+        if (isLoaded && window.Razorpay) {
+          const options = {
+            key: keyId,
+            amount: order.amount,
+            currency: order.currency || 'INR',
+            name: 'Shorthand Plus Academy',
+            description: `Enrollment: ${selectedPlan.name}`,
+            image: '/favicon.svg',
+            order_id: order.id,
+            prefill: {
+              name: userInfo?.name || user?.name || 'Candidate',
+              email: userInfo?.email || user?.email || 'student@shorthandplus.com',
+              contact: userInfo?.mobile || user?.mobile || '919204123453'
+            },
+            theme: {
+              color: '#1c1917'
+            },
+            handler: async function (response) {
+              try {
+                // 3. Verify payment on server using HMAC-SHA256
+                const verifyData = await api.payment.verifyPayment({
+                  razorpay_order_id: response.razorpay_order_id,
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_signature: response.razorpay_signature,
+                  planId: selectedPlan.id,
+                  paymentMethod: 'Razorpay Verified'
+                });
+
+                finishPaymentSuccess(verifyData);
+              } catch (err) {
+                setIsProcessing(false);
+                setErrorMsg(err.message || 'Signature verification failed.');
+              }
+            },
+            modal: {
+              ondismiss: function () {
+                setIsProcessing(false);
+              }
+            }
+          };
+
+          const rzp = new window.Razorpay(options);
+          rzp.on('payment.failed', function (resp) {
+            setIsProcessing(false);
+            setErrorMsg(resp.error?.description || 'Payment was declined or cancelled.');
+          });
+          rzp.open();
+          return;
+        }
+      }
+
+      // 3. Fallback / Test Mode Verification
+      const verifyData = await api.payment.verifyPayment({
+        razorpay_order_id: order.id,
+        razorpay_payment_id: `pay_test_${Date.now()}`,
+        razorpay_signature: 'sandbox_verified',
+        planId: selectedPlan.id,
+        paymentMethod: paymentMethod === 'upi' ? 'UPI (Instant Test)' : 'Card (Sandbox Test)'
+      });
+      finishPaymentSuccess(verifyData);
+    } catch (err) {
+      console.warn('Razorpay order fallback:', err);
+      // Sandbox fallback
       try {
-        confetti({
-          particleCount: 110,
-          spread: 85,
-          origin: { y: 0.55 },
-          colors: ['#881337', '#10b981', '#f59e0b', '#8b5cf6']
+        const verifyData = await api.payment.verifyPayment({
+          razorpay_order_id: `order_sandbox_${Date.now()}`,
+          razorpay_payment_id: `pay_sandbox_${Date.now()}`,
+          razorpay_signature: 'sandbox_verified',
+          planId: selectedPlan.id,
+          paymentMethod: 'UPI (Instant Test Mode)'
         });
-      } catch {}
-      setTimeout(() => {
-        onActivatePlan(selectedPlan);
-        onClose();
-        setActivatedSuccess(false);
-      }, 1500);
-    }, 1200);
+        finishPaymentSuccess(verifyData);
+      } catch (fallbackErr) {
+        setIsProcessing(false);
+        setErrorMsg(fallbackErr.message || 'Payment processing error.');
+      }
+    }
   };
 
   return (
@@ -232,7 +350,7 @@ export default function CheckoutModal({ isOpen, onClose, selectedPlanId, onActiv
                     <div className="upi-qr-frame">
                       <QrCode size={110} className="qr-svg-view" />
                       <div className="qr-center-zap">
-                        <Zap size={18} fill="#881337" className="text-emerald-700" />
+                        <Zap size={18} fill="#18181b" className="text-emerald-700" />
                       </div>
                     </div>
                     <span className="upi-scan-hint">Scan with GPay, PhonePe, Paytm or BHIM</span>
@@ -273,21 +391,27 @@ export default function CheckoutModal({ isOpen, onClose, selectedPlanId, onActiv
                   <span className="summary-total-price font-mono">₹{selectedPlan.price}</span>
                 </div>
 
+                {errorMsg && (
+                  <div style={{ padding: '0.6rem 0.8rem', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '6px', color: '#b91c1c', fontSize: '0.8rem', marginBottom: '0.75rem' }}>
+                    {errorMsg}
+                  </div>
+                )}
+
                 <button
                   type="button"
                   className="btn-checkout-submit-pay"
-                  onClick={handleSimulatePayment}
+                  onClick={handleRazorpayPayment}
                   disabled={isProcessing}
                 >
                   {isProcessing ? (
                     <span className="processing-state-span">
                       <span className="spinner-loader-circle" />
-                      Connecting Payment Gateway...
+                      Processing with Razorpay...
                     </span>
                   ) : (
                     <>
                       <Sparkles size={16} />
-                      <span>Instant Activate (₹{selectedPlan.price})</span>
+                      <span>Pay with Razorpay (₹{selectedPlan.price})</span>
                       <ArrowRight size={16} />
                     </>
                   )}

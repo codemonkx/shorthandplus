@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Award, 
   CheckCircle2, 
@@ -13,9 +13,12 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { MOCK_LEADERBOARD } from '../data/mockData';
+import { generateCandidateDossierPdf } from '../utils/pdfGenerator';
+import { evaluateTranscription } from '../utils/diffEvaluation';
 
 export default function EvaluationResult({ 
   submission, 
+  user,
   onRetake, 
   onBackToDashboard, 
   onBackToTests 
@@ -24,41 +27,27 @@ export default function EvaluationResult({
   const [filterMode, setFilterMode] = useState('all');
   const [activeTab, setActiveTab] = useState('diff');
 
-  const masterWords = test.passageText.trim().split(/\s+/);
-  const userWords = (typedText || '').trim().split(/\s+/).filter(Boolean);
+  // Compute accurate LCS-based word alignment and official metrics
+  const evalMetrics = useMemo(() => {
+    return evaluateTranscription(test.passageText, typedText, timeTakenSecs);
+  }, [test.passageText, typedText, timeTakenSecs]);
 
-  let correctCount = 0;
-  let fullMistakes = 0;
-  let missingCount = 0;
-  let extraCount = 0;
-
-  const diffTokens = [];
-  const maxLen = Math.max(masterWords.length, userWords.length);
-
-  for (let i = 0; i < maxLen; i++) {
-    const masterW = masterWords[i] || '';
-    const userW = userWords[i] || '';
-
-    if (!userW && masterW) {
-      missingCount++;
-      diffTokens.push({ type: 'missing', master: masterW, user: '', index: i });
-    } else if (!masterW && userW) {
-      extraCount++;
-      diffTokens.push({ type: 'extra', master: '', user: userW, index: i });
-    } else if (masterW.toLowerCase().replace(/[^a-z0-9]/gi, '') === userW.toLowerCase().replace(/[^a-z0-9]/gi, '')) {
-      correctCount++;
-      diffTokens.push({ type: 'correct', master: masterW, user: userW, index: i });
-    } else {
-      fullMistakes++;
-      diffTokens.push({ type: 'wrong', master: masterW, user: userW, index: i });
-    }
-  }
-
-  const totalMasterWords = masterWords.length;
-  const accuracy = Math.max(0, Math.round(((totalMasterWords - fullMistakes - missingCount) / totalMasterWords) * 100));
-  const timeMinutes = Math.max(0.5, (timeTakenSecs || 300) / 60);
-  const grossWpm = Math.round(userWords.length / timeMinutes);
-  const netWpm = Math.max(0, Math.round((correctCount - fullMistakes) / timeMinutes));
+  const {
+    diffTokens,
+    masterWords,
+    userWords,
+    totalMasterWords,
+    totalTypedWords,
+    correctCount,
+    fullMistakes,
+    halfMistakes,
+    effectiveErrors,
+    errorPercentage,
+    accuracy,
+    grossWpm,
+    netWpm,
+    isQualified
+  } = evalMetrics;
 
   useEffect(() => {
     if (accuracy >= 80) {
@@ -360,10 +349,31 @@ export default function EvaluationResult({
             <span>View Candidate Dashboard</span>
           </button>
         </div>
-        <button className="btn btn-primary ml-auto" onClick={onRetake}>
-          <RotateCcw size={16} />
-          <span>Retake This Dictation</span>
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginLeft: 'auto' }}>
+          <button 
+            className="btn btn-secondary"
+            onClick={() => generateCandidateDossierPdf(user || { name: 'Shadab Khan', rollNo: 'SP-2026-084' }, {
+              name: test.title,
+              speed: `${netWpm} WPM`,
+              speedNum: netWpm,
+              marks: `${accuracy}%`,
+              marksNum: accuracy,
+              totalWords: totalMasterWords,
+              typedWords: userWords.length,
+              fullMistakes: fullMistakes,
+              halfMistakes: missingCount,
+              effectiveErrors: Math.round(fullMistakes + missingCount * 0.5)
+            })}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+          >
+            <Download size={16} className="text-rose-600" />
+            <span>Download Official PDF Dossier</span>
+          </button>
+          <button className="btn btn-primary" onClick={onRetake}>
+            <RotateCcw size={16} />
+            <span>Retake This Dictation</span>
+          </button>
+        </div>
       </div>
     </div>
   );

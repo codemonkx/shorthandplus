@@ -15,7 +15,8 @@ import {
   ChevronRight,
   ArrowLeft,
   LifeBuoy,
-  Video
+  Video,
+  LogOut
 } from 'lucide-react';
 
 export default function Sidebar({ 
@@ -25,10 +26,12 @@ export default function Sidebar({
   onOpenCheckout, 
   onStartQuickTest,
   isOpen, 
-  onClose 
+  onClose,
+  onLogout,
+  onOpenProfileSettings
 }) {
   const menuItems = [
-    { id: 'dashboard', label: 'Dashboard & Telemetry', icon: LayoutDashboard },
+    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'online-classes', label: 'Online Class', icon: Video, badge: 'LIVE' },
     { id: 'steno-vault', label: 'Steno Dictation Vault', icon: Headphones },
     { id: 'typing-studio', label: 'Typing Speed Studio', icon: Keyboard },
@@ -70,7 +73,12 @@ export default function Sidebar({
 
         {/* Candidate Profile Widget */}
         {user && (
-          <div className="sidebar-user-card">
+          <div 
+            className="sidebar-user-card" 
+            onClick={onOpenProfileSettings}
+            style={{ cursor: 'pointer' }}
+            title="Click to view candidate profile & settings"
+          >
             <div className="user-card-top">
               <div className="user-avatar-wrap">
                 <div className="user-initial-bubble">{user.name.charAt(0)}</div>
@@ -121,17 +129,19 @@ export default function Sidebar({
             );
           })}
 
-          <button
-            className={`sidebar-nav-item ${currentTab === 'admin' ? 'active' : ''}`}
-            onClick={() => handleNav('admin')}
-            style={{ marginTop: '0.5rem', borderTop: '1px solid #f1f5f9' }}
-            title="Director & Faculty Admin Console"
-          >
-            <ShieldCheck size={17} className="text-royal-blue" />
-            <span style={{ flex: 1, textAlign: 'left' }}>Admin Console</span>
-            <span className="sidebar-live-pill" style={{ background: '#fef2f2', color: '#991b1b', border: '1px solid #fecdd3', fontSize: '0.68rem', padding: '0.15rem 0.45rem' }}>Staff</span>
-            {currentTab === 'admin' && <div className="active-indicator-bar" />}
-          </button>
+          {user?.role === 'admin' && (
+            <button
+              className={`sidebar-nav-item ${currentTab === 'admin' ? 'active' : ''}`}
+              onClick={() => handleNav('admin')}
+              style={{ marginTop: '0.5rem', borderTop: '1px solid #f1f5f9' }}
+              title="Director & Faculty Admin Console"
+            >
+              <ShieldCheck size={17} className="text-royal-blue" />
+              <span style={{ flex: 1, textAlign: 'left' }}>Admin Console</span>
+              <span className="sidebar-live-pill" style={{ background: '#fef2f2', color: '#991b1b', border: '1px solid #fecdd3', fontSize: '0.68rem', padding: '0.15rem 0.45rem' }}>Staff</span>
+              {currentTab === 'admin' && <div className="active-indicator-bar" />}
+            </button>
+          )}
         </nav>
 
         {/* Minimalist Institutional Footer Strip */}
@@ -144,6 +154,20 @@ export default function Sidebar({
             <ArrowLeft size={13} />
             <span>Return to Public Website</span>
           </button>
+
+          {user && onLogout && (
+            <button 
+              className="sidebar-logout-link"
+              onClick={() => {
+                if (onClose) onClose();
+                onLogout();
+              }}
+              title="Sign Out to Homepage"
+            >
+              <LogOut size={13} />
+              <span>Sign Out</span>
+            </button>
+          )}
 
           <div className="sidebar-institute-stamp">
             <span className="stamp-title">Gaya Shorthand Classes</span>

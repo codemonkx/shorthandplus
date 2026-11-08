@@ -78,7 +78,7 @@ export default function AboutAcademyView({ onOpenCheckout, setCurrentTab }) {
             <a 
               href="tel:+919204123453"
               className="btn-director-wa"
-              style={{ background: '#881337' }}
+              style={{ background: '#18181b' }}
             >
               <Phone size={16} />
               <span>Direct Academy Helpline (+91 9204123453)</span>

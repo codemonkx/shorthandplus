@@ -34,6 +34,7 @@ import {
 import { PRICING_PLANS } from '../data/mockData';
 import AcademyIllustration from '../components/AcademyIllustration';
 import CustomSelect from '../components/CustomSelect';
+import { api, setToken } from '../services/api';
 
 const DEMO_SENTENCES = [
   "At the same time this is also opposed by some people who say that it will not reduce the election expenditure and will be an additional burden on the Government Exchequer.",
@@ -59,7 +60,7 @@ const GOOGLE_REVIEWS = [
     badgeType: "teal",
     rating: 5,
     title: "“My speed jumped from 60 to 100 WPM!”",
-    text: "Amazing tool for stenography students. The variety of dictations and practice materials is outstanding. Rapid Steno made my SSC preparation very structured and effective.",
+    text: "Amazing tool for stenography students. The variety of dictations and practice materials is outstanding. Shorthand Plus made my SSC preparation very structured and effective.",
     avatarBg: "#ffedd5",
     avatarColor: "#ea580c"
   },
@@ -67,11 +68,11 @@ const GOOGLE_REVIEWS = [
     id: 2,
     name: "Suresh Yadav",
     location: "Patna",
-    badge: "GOLD PASS",
+    badge: "PRO PASS",
     badgeType: "emerald",
     rating: 5,
     title: "“Sab kuch ek hi jagah mil gaya!”",
-    text: "Pehle alag alag jagah se dictation, typing aur mock test dhundne padte the. Rapid Steno mein sab ek hi dashboard par hai. Gold Pass lene ke baad mujhe kisi aur cheez ki zaroorat hi nahi padi. Bahut hi cost-effective aur comprehensive platform hai.",
+    text: "Pehle alag alag jagah se dictation, typing aur mock test dhundne padte the. Shorthand Plus mein sab ek hi dashboard par hai. Pro Pass lene ke baad mujhe kisi aur cheez ki zaroorat hi nahi padi. Bahut hi cost-effective aur comprehensive platform hai.",
     avatarBg: "#dcfce7",
     avatarColor: "#15803d"
   },
@@ -79,13 +80,13 @@ const GOOGLE_REVIEWS = [
     id: 3,
     name: "Vikram Singh",
     location: "Allahabad",
-    badge: "GOLD PASS",
+    badge: "PRO PASS",
     badgeType: "emerald",
     rating: 5,
     title: "“Worth every single penny!”",
-    text: "Rapid Steno is a game-changer! The exam-style practice and progress tracking features are exactly what I needed. The mock tests feel just like the real exam environment.",
-    avatarBg: "#f1f5f9",
-    avatarColor: "#475569"
+    text: "Shorthand Plus is a game-changer! The exam-style practice and progress tracking features are exactly what I needed. The mock tests feel just like the real exam environment.",
+    avatarBg: "#f5f4f0",
+    avatarColor: "#57534e"
   },
   {
     id: 4,
@@ -120,8 +121,8 @@ const GOOGLE_REVIEWS = [
     rating: 5,
     title: "“Best Shorthand class in bihar level must join!”",
     text: "Best Shorthand class in bihar level must join and decide. Teachers are very skilled and helpful. Exam timer and exact court test simulations give you immense confidence.",
-    avatarBg: "#e0e7ff",
-    avatarColor: "#4338ca"
+    avatarBg: "#faf9f6",
+    avatarColor: "#1c1917"
   },
   {
     id: 7,
@@ -156,8 +157,8 @@ const GOOGLE_REVIEWS = [
     rating: 5,
     title: "“5-minute reading clock cracked my court test!”",
     text: "The 5-minute reading clock and strict backspace lock simulation helped me crack the Patna High Court Personal Assistant exam. Daily dictations have exact legal phrasing and high-speed accuracy.",
-    avatarBg: "#fff1f2",
-    avatarColor: "#881337"
+    avatarBg: "#f4f4f5",
+    avatarColor: "#18181b"
   }
 ];
 
@@ -234,6 +235,7 @@ export default function LandingPage({
   const [regPassword, setRegPassword] = useState('');
   const [regLang, setRegLang] = useState('English');
   const [isSubmittingAuth, setIsSubmittingAuth] = useState(false);
+  const [authError, setAuthError] = useState(null);
 
   // Interactive Live Test Preview in Hero / Sandbox
   const [activePreviewTab, setActivePreviewTab] = useState('steno'); // 'steno' | 'typing'
@@ -333,81 +335,67 @@ export default function LandingPage({
     handleResetTyping();
   };
 
-  const handleHeroLoginSubmit = (e) => {
+  const handleHeroLoginSubmit = async (e) => {
     e.preventDefault();
     if (!loginEmail.trim() || !loginPassword.trim()) return;
 
     setIsSubmittingAuth(true);
+    setAuthError(null);
 
-    setTimeout(() => {
+    try {
+      const res = await api.auth.login({
+        email: loginEmail.trim(),
+        password: loginPassword.trim()
+      });
+
+      if (res?.token) setToken(res.token);
       fireConfetti();
-      
-      const candidateUser = {
-        name: loginEmail.toLowerCase().includes('shadab') ? 'Shadab Khan' : loginEmail.split('@')[0].replace('.', ' ').replace(/^./, str => str.toUpperCase()),
-        email: loginEmail,
-        rollNo: loginEmail.toLowerCase().includes('shadab') ? 'SP-2026-084' : `SP-2026-${Math.floor(100 + Math.random() * 900)}`,
-        language: 'English',
-        role: loginEmail.toLowerCase().includes('admin') ? 'admin' : 'student',
-        subscription: {
-          plan: '12 Month Unlimited Pro',
-          status: 'Active',
-          daysRemaining: 248,
-          isPaid: true
-        },
-        stats: {
-          currentStreak: 14,
-          testsCompleted: 38,
-          avgSpeed: 84,
-          avgAccuracy: 95.8
-        }
-      };
 
       if (onLoginSuccess) {
-        onLoginSuccess(candidateUser);
+        onLoginSuccess(res.user);
       } else if (setCurrentTab) {
         setCurrentTab('dashboard');
       }
+    } catch (err) {
+      setAuthError(err.message || 'Login failed. Please check your email and password.');
+    } finally {
       setIsSubmittingAuth(false);
-    }, 350);
+    }
   };
 
-  const handleHeroRegisterSubmit = (e) => {
+  const handleHeroRegisterSubmit = async (e) => {
     e.preventDefault();
-    if (!regName.trim() || !regEmail.trim()) return;
+    if (!regName.trim() || !regEmail.trim() || !regPassword.trim()) {
+      setAuthError('Please fill in your name, email, and password.');
+      return;
+    }
 
     setIsSubmittingAuth(true);
+    setAuthError(null);
 
-    setTimeout(() => {
-      fireConfetti();
-
-      const newCandidate = {
+    try {
+      const res = await api.auth.register({
         name: regName.trim(),
         email: regEmail.trim(),
+        password: regPassword.trim(),
         mobile: regMobile.trim(),
-        rollNo: `SP-2026-${Math.floor(100 + Math.random() * 900)}`,
         language: regLang,
-        role: 'student',
-        subscription: {
-          plan: 'Scholar Free Pass',
-          status: 'Active',
-          daysRemaining: 30,
-          isPaid: true
-        },
-        stats: {
-          currentStreak: 1,
-          testsCompleted: 0,
-          avgSpeed: 0,
-          avgAccuracy: 0
-        }
-      };
+        state: 'Bihar'
+      });
+
+      if (res?.token) setToken(res.token);
+      fireConfetti();
 
       if (onLoginSuccess) {
-        onLoginSuccess(newCandidate);
+        onLoginSuccess(res.user);
       } else if (setCurrentTab) {
         setCurrentTab('dashboard');
       }
+    } catch (err) {
+      setAuthError(err.message || 'Registration failed. Please try again.');
+    } finally {
       setIsSubmittingAuth(false);
-    }, 350);
+    }
   };
 
   const examBatches = [
@@ -717,6 +705,21 @@ export default function LandingPage({
                 {/* LOGIN TAB CONTENT */}
                 {authTab === 'login' ? (
                   <form className="portal-form" onSubmit={handleHeroLoginSubmit}>
+                    {authError && (
+                      <div style={{
+                        padding: '0.55rem 0.75rem',
+                        marginBottom: '0.75rem',
+                        background: '#fef2f2',
+                        border: '1px solid #fecdd3',
+                        color: '#991b1b',
+                        borderRadius: 6,
+                        fontSize: '0.8rem',
+                        fontWeight: 500
+                      }}>
+                        {authError}
+                      </div>
+                    )}
+
                     <div className="form-group-field">
                       <label className="field-label">Registered Email Address</label>
                       <input 
@@ -734,7 +737,7 @@ export default function LandingPage({
                         <label className="field-label">Password</label>
                         <button 
                           type="button"
-                          onClick={() => alert("Please contact academy director at director@shorthandplus.in or +91 9204123453 to reset your candidate password.")}
+                          onClick={() => onOpenAuth ? onOpenAuth('forgot') : null}
                           className="forgot-link"
                           style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
                         >
@@ -765,7 +768,7 @@ export default function LandingPage({
                         className="btn-demo-pill"
                         onClick={() => onStartFullTest(534)}
                       >
-                        <Play size={14} className="text-blue" />
+                        <Play size={14} className="text-amber-600" />
                         <span>Demo Steno Tests</span>
                       </button>
 
@@ -782,6 +785,21 @@ export default function LandingPage({
                 ) : (
                   /* REGISTER TAB CONTENT */
                   <form className="portal-form" onSubmit={handleHeroRegisterSubmit}>
+                    {authError && (
+                      <div style={{
+                        padding: '0.55rem 0.75rem',
+                        marginBottom: '0.75rem',
+                        background: '#fef2f2',
+                        border: '1px solid #fecdd3',
+                        color: '#991b1b',
+                        borderRadius: 6,
+                        fontSize: '0.8rem',
+                        fontWeight: 500
+                      }}>
+                        {authError}
+                      </div>
+                    )}
+
                     <div className="form-group-field">
                       <label className="field-label">Student Full Name</label>
                       <input 
@@ -817,6 +835,18 @@ export default function LandingPage({
                           required 
                         />
                       </div>
+                    </div>
+
+                    <div className="form-group-field">
+                      <label className="field-label">Create Password</label>
+                      <input 
+                        type="password" 
+                        className="field-input" 
+                        value={regPassword}
+                        onChange={(e) => setRegPassword(e.target.value)}
+                        placeholder="Create a secure password (min 6 chars)" 
+                        required 
+                      />
                     </div>
 
                     <div className="form-group-field">
@@ -1326,7 +1356,7 @@ export default function LandingPage({
               <span>100% Secure 256-Bit SSL Gateway</span>
             </div>
             <div className="trust-pill-item">
-              <Zap size={16} className="text-blue-600" />
+              <Zap size={16} className="text-amber-600" />
               <span>Instant Automated Activation via UPI & QR</span>
             </div>
             <div className="trust-pill-item">

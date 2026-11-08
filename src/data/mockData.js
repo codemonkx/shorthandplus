@@ -168,7 +168,7 @@ export const STENO_TESTS = [
     language: "Hindi (Kruti Dev)",
     duration: "10 Mins",
     totalWords: 410,
-    audioUrl: "/assets/sample-dictation.mp3",
+    audioUrl: "/assets/sample-dictation-hindi.mp3",
     audioDuration: 305,
     attempts: 284,
     difficulty: "Medium",
@@ -482,6 +482,98 @@ export const ONLINE_CLASSES_DATA = [
       { stroke: 'R-Z-L-U-S-H-N', phrase: 'Government Resolution', rule: 'Ray stroke through line', path: [[40, 60], [80, 20], [110, 40], [130, 60]] },
       { stroke: 'S-P-K-R // S-R', phrase: 'Mr. Speaker, Sir', rule: 'Special reporter prefix', path: [[30, 50], [60, 20], [90, 50], [120, 20]] }
     ]
+  }
+];
+
+export const INITIAL_TRANSACTIONS = [
+  { id: "TXN-98421", student: "Shadab Khan", rollNo: "SP-2026-084", plan: "Monthly Test Series (Auto-Renews)", amount: 249, mode: "UPI (Paytm)", date: "Today, 14:20", billingCycle: "Monthly Subscription", status: "Auto-Verified" },
+  { id: "TXN-98420", student: "Vishnupriya S.", rollNo: "SP-2026-005", plan: "12-Month Annual Career Master", amount: 1200, mode: "UPI (GPay)", date: "Today, 11:05", billingCycle: "Annual", status: "Auto-Verified" },
+  { id: "TXN-98419", student: "Rakesh Ranjan", rollNo: "SP-2026-092", plan: "Monthly Test Series", amount: 249, mode: "Debit Card", date: "Yesterday, 19:40", billingCycle: "Monthly Subscription", status: "Auto-Verified" },
+  { id: "TXN-98418", student: "Pooja Verma", rollNo: "SP-2026-033", plan: "High Court Judicial Speed Series", amount: 700, mode: "UPI (PhonePe)", date: "Yesterday, 16:15", billingCycle: "Monthly Course", status: "Auto-Verified" },
+  { id: "TXN-98417", student: "Sagar Kumar Singh", rollNo: "SP-2026-009", plan: "6-Month Pro Scholar", amount: 899, mode: "Net Banking", date: "09 Oct 2026", billingCycle: "6-Month", status: "Auto-Verified" },
+  { id: "TXN-98416", student: "Vikramaditya Roy", rollNo: "SP-2026-041", plan: "1-Day Skill Sprint", amount: 20, mode: "UPI (BHIM)", date: "08 Oct 2026", billingCycle: "1-Day Pass", status: "Auto-Verified" }
+];
+
+export const INITIAL_ACADEMY_COURSES = [
+  {
+    id: 'course-pitman',
+    title: 'Basic Pitman Shorthand Masterclass',
+    category: 'Foundation',
+    badge: 'Beginner to 80 WPM',
+    tagColor: 'badge-blue',
+    speedTarget: '0 → 80 WPM',
+    duration: '3 to 4 Months',
+    fee: '₹6,000 (Complete)',
+    description: 'Comprehensive foundation course starting from stroke geometry, vowel positions, circles, loops, hooks, to grammalogues and speed phrasing.',
+    syllabus: [
+      'Complete Pitman Shorthand Theory (All 24 Chapters)',
+      'Handwritten Outline Checks & Daily Correction by Gagan Sir',
+      'Grammalogues, Contractions & Phraseography Drill',
+      'Progressive Speed Dictations: 40 → 60 → 80 WPM',
+      'Includes Official Book & Printed Practice Workbook'
+    ],
+    mode: 'Offline Classroom (Gaya) + Audio Lab Access',
+    popular: true
+  },
+  {
+    id: 'course-court',
+    title: 'High Court Judicial Speed & Legal Series',
+    category: 'Judicial Bench',
+    badge: 'Patna & Jharkhand HC',
+    tagColor: 'badge-emerald',
+    speedTarget: '80 → 110 WPM',
+    duration: '2 to 3 Months',
+    fee: '₹700 / Month',
+    description: 'Specialized courtroom transcription batch designed specifically for Patna High Court, Jharkhand Civil Courts, and State Judiciary Stenographer exams.',
+    syllabus: [
+      'Authentic High Court Criminal & Civil Judgment Audio',
+      'Legal Phrasing, Latin Maxims & Judicial Nomenclature',
+      'Enforced 5-Minute Shorthand Reading Room Clock',
+      'Strict Backspace Lock & Mechanical Keyboard Simulation',
+      'Previous 10 Years Solved High Court Dictations'
+    ],
+    mode: 'Dual Mode: Offline Gaya Center or Online Portal',
+    popular: false
+  },
+  {
+    id: 'course-ssc',
+    title: 'SSC Stenographer Grade C & D Crash Batch',
+    category: 'Central Govt',
+    badge: 'SSC Grade C & D',
+    tagColor: 'badge-amber',
+    speedTarget: '80 & 100 WPM',
+    duration: '3 Months Intensive',
+    fee: '₹249 / Month (Pass)',
+    description: 'Targeted preparation for Staff Selection Commission Grade C and D skill tests with real exam audio speed fluctuations and automated error calculation.',
+    syllabus: [
+      'Parliamentary Speeches & Government Budget Passages',
+      'SSC Strict Mistake Formula (Full & Half Mistake Evaluation)',
+      'Daily 8:00 AM & 5:00 PM Live Speed Benchmark Tests',
+      'All-India Batch Rank & Percentile Scorecards',
+      'Kruti Dev 010 & Mangal Inscript Hindi Transcription'
+    ],
+    mode: 'Daily Live Dictation + Unlimited Audio Archive',
+    popular: false
+  },
+  {
+    id: 'course-diplomas',
+    title: 'Computer Diplomas & Certified Typing (DCA / ADCA)',
+    category: 'Govt Diplomas',
+    badge: 'Govt. Recognized',
+    tagColor: 'badge-purple',
+    speedTarget: '30 → 50+ WPM Typing',
+    duration: '6 to 12 Months',
+    fee: 'Nominal Registration',
+    description: 'Government-accredited computer applications diplomas accepted in all Central & State government document verifications and ministerial clerk posts.',
+    syllabus: [
+      'DCA (6 Months) & ADCA (1 Year) Curriculum',
+      'Tally Prime with GST Certification',
+      'English QWERTY & Hindi (Kruti Dev / Mangal) Typing Studio',
+      'Certificate Verification System with Official QR Code',
+      'Valid for High Courts, BSSC, SSC, Banking & Railways'
+    ],
+    mode: 'Gaya Offline Lab & Document Verification Support',
+    popular: false
   }
 ];
 

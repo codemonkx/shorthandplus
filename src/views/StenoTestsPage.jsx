@@ -17,7 +17,12 @@ import {
 import { STENO_TESTS, TYPING_TESTS } from '../data/mockData';
 import CustomSelect from '../components/CustomSelect';
 
-export default function StenoTestsPage({ onStartTest, onStartTypingTest }) {
+export default function StenoTestsPage({ 
+  onStartTest, 
+  onStartTypingTest, 
+  tests = STENO_TESTS, 
+  typingTests = TYPING_TESTS 
+}) {
   const [activeTab, setActiveTab] = useState('steno'); // 'steno' | 'typing'
   const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'list'
   const [searchQuery, setSearchQuery] = useState('');
@@ -41,7 +46,10 @@ export default function StenoTestsPage({ onStartTest, onStartTypingTest }) {
   const languages = ['All', 'English', 'Hindi (Kruti Dev)'];
   const typingLangs = ['All', 'English', 'Hindi (Kruti Dev)', 'Hindi (Mangal)'];
 
-  const filteredTests = STENO_TESTS.filter((test) => {
+  const allStenoTests = tests && tests.length > 0 ? tests : STENO_TESTS;
+  const allTypingTests = typingTests && typingTests.length > 0 ? typingTests : TYPING_TESTS;
+
+  const filteredTests = allStenoTests.filter((test) => {
     const matchesSearch = test.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           test.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           test.passageText.toLowerCase().includes(searchQuery.toLowerCase());
@@ -51,7 +59,7 @@ export default function StenoTestsPage({ onStartTest, onStartTypingTest }) {
     return matchesSearch && matchesCategory && matchesSpeed && matchesLanguage;
   });
 
-  const filteredTyping = TYPING_TESTS.filter((t) => {
+  const filteredTyping = allTypingTests.filter((t) => {
     const matchesLang = selectedTypingLang === 'All' || t.language.includes(selectedTypingLang);
     const matchesSearch = t.name.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesLang && matchesSearch;
@@ -78,7 +86,7 @@ export default function StenoTestsPage({ onStartTest, onStartTypingTest }) {
           >
             <Headphones size={15} />
             <span>Audio Dictations</span>
-            <span className="calm-tab-count font-mono">{STENO_TESTS.length}</span>
+            <span className="calm-tab-count font-mono">{allStenoTests.length}</span>
           </button>
           <button 
             type="button"
@@ -87,7 +95,7 @@ export default function StenoTestsPage({ onStartTest, onStartTypingTest }) {
           >
             <Keyboard size={15} />
             <span>Typing Speed Drills</span>
-            <span className="calm-tab-count font-mono">{TYPING_TESTS.length}</span>
+            <span className="calm-tab-count font-mono">{allTypingTests.length}</span>
           </button>
         </div>
 

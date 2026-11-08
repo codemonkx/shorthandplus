@@ -21,6 +21,7 @@ import {
   GraduationCap, 
   TrendingUp, 
   LayoutDashboard, 
+  LayoutGrid, 
   Globe, 
   Award, 
   Bell, 
@@ -56,10 +57,12 @@ import {
   Zap,
   Share2,
   Send,
-  ArrowRight
+  ArrowRight,
+  LogOut
 } from 'lucide-react';
 import CustomSelect from '../components/CustomSelect';
-import { STENO_TESTS, TYPING_TESTS, PRICING_PLANS } from '../data/mockData';
+import { STENO_TESTS, TYPING_TESTS, PRICING_PLANS, INITIAL_ACADEMY_COURSES } from '../data/mockData';
+import api from '../services/api';
 
 const INITIAL_ADMIN_STUDENTS = [
   { id: 1, name: "Shadab Khan", rollNo: "SP-2026-084", email: "shadabca@gmail.com", targetExam: "Patna High Court", plan: "12-Month Pro Active", speed: 96, accuracy: 92.4, daysRemaining: 248, status: "Active" },
@@ -84,6 +87,7 @@ const INITIAL_TRANSACTIONS = [
 export default function AdminPortalView({ 
   user, 
   setCurrentTab, 
+  onLogout,
   onStartTest, 
   onStartTypingTest,
   onlineClasses = [],
@@ -91,7 +95,18 @@ export default function AdminPortalView({
   onToggleLiveOnlineClass,
   onDeleteOnlineClass,
   onUpdateOnlineClass,
-  onJoinClassAsAdmin 
+  onJoinClassAsAdmin,
+  stenoTests,
+  onAddStenoTest,
+  onDeleteStenoTest,
+  typingTests: propTypingTests,
+  onAddTypingTest,
+  onDeleteTypingTest,
+  transactions: propTransactions,
+  courses: propCourses,
+  onAddCourse,
+  onUpdateCourse,
+  onDeleteCourse
 }) {
   // Check if already authenticated via session or role
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(() => {
@@ -108,23 +123,22 @@ export default function AdminPortalView({
   const [passcodeError, setPasscodeError] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
 
-  const handlePasscodeSubmit = (e) => {
+  const handlePasscodeSubmit = async (e) => {
     e.preventDefault();
     setIsVerifying(true);
     setPasscodeError('');
 
-    const validCodes = ['8080', 'admin@gaya', 'gaya2026', 'admin'];
-    setTimeout(() => {
-      if (validCodes.includes(passcode.trim().toLowerCase())) {
-        try {
-          sessionStorage.setItem('shorthand_admin_authenticated', 'true');
-        } catch {}
-        setIsAdminAuthenticated(true);
-      } else {
-        setPasscodeError('Invalid Director PIN or Passcode. Access restricted to authorized faculty.');
-      }
+    try {
+      await api.auth.verifyAdminPin(passcode);
+      try {
+        sessionStorage.setItem('shorthand_admin_authenticated', 'true');
+      } catch {}
+      setIsAdminAuthenticated(true);
+    } catch (err) {
+      setPasscodeError(err.message || 'Invalid Director PIN or Passcode. Access restricted to authorized faculty.');
+    } finally {
       setIsVerifying(false);
-    }, 200);
+    }
   };
 
   const handleLockConsole = () => {
@@ -137,8 +151,28 @@ export default function AdminPortalView({
 
   const [activeTab, setActiveTab] = useState('overview'); // 'overview' | 'students' | 'tests' | 'finance' | 'announcements'
   const [students, setStudents] = useState(INITIAL_ADMIN_STUDENTS);
-  const [tests, setTests] = useState(STENO_TESTS);
-  const [transactions, setTransactions] = useState(INITIAL_TRANSACTIONS);
+
+  // Fetch real students and cohort stats from backend when admin unlocked
+  useEffect(() => {
+    if (isAdminAuthenticated) {
+      api.admin.getStudents().then((res) => {
+        if (res?.students && res.students.length > 0) {
+          setStudents(res.students);
+        }
+      }).catch(() => {});
+    }
+  }, [isAdminAuthenticated]);
+  
+  // Use centralized props if passed, otherwise fallback to local/mockData
+  const [localTests, setLocalTests] = useState(STENO_TESTS);
+  const tests = stenoTests && stenoTests.length > 0 ? stenoTests : localTests;
+
+  const [localTypingTests, setLocalTypingTests] = useState(TYPING_TESTS);
+  const typingTests = propTypingTests && propTypingTests.length > 0 ? propTypingTests : localTypingTests;
+
+  const [localTransactions, setLocalTransactions] = useState(INITIAL_TRANSACTIONS);
+  const transactions = propTransactions && propTransactions.length > 0 ? propTransactions : localTransactions;
+
   const [searchQuery, setSearchQuery] = useState('');
   const [filterPlan, setFilterPlan] = useState('All');
   const [statusFilter, setStatusFilter] = useState('All'); // 'All' | 'Active' | 'Expiring' | 'Expired'
@@ -149,12 +183,157 @@ export default function AdminPortalView({
   const [newTypingModalOpen, setNewTypingModalOpen] = useState(false);
   const [newClassModalOpen, setNewClassModalOpen] = useState(false);
   const [vaultViewMode, setVaultViewMode] = useState('audio'); // 'audio' | 'typing'
-  const [typingTests, setTypingTests] = useState(TYPING_TESTS);
   const [classFilterStatus, setClassFilterStatus] = useState('all'); // 'all' | 'live' | 'upcoming' | 'replays'
   const [classViewMode, setClassViewMode] = useState('grid'); // 'grid' | 'timetable'
   const [classSearchQuery, setClassSearchQuery] = useState('');
   const [copiedClassId, setCopiedClassId] = useState(null);
   const [editingClass, setEditingClass] = useState(null);
+
+  // Course Catalog Management State
+  const [localCourses, setLocalCourses] = useState(INITIAL_ACADEMY_COURSES || []);
+  const coursesList = propCourses && propCourses.length > 0 ? propCourses : localCourses;
+
+  const [newCourseModalOpen, setNewCourseModalOpen] = useState(false);
+  const [editingCourse, setEditingCourse] = useState(null);
+  const [courseFilterCategory, setCourseFilterCategory] = useState('All');
+  const [courseSearchQuery, setCourseSearchQuery] = useState('');
+
+  const [courseForm, setCourseForm] = useState({
+    title: '',
+    category: 'Foundation',
+    badge: 'Beginner to 80 WPM',
+    speedTarget: '0 → 80 WPM',
+    duration: '3 to 4 Months',
+    fee: '₹700 / Month',
+    mode: 'Online Live Zoom + Audio Lab',
+    popular: false,
+    description: '',
+    syllabusText: ''
+  });
+
+  const handleOpenAddCourse = () => {
+    setEditingCourse(null);
+    setCourseForm({
+      title: '',
+      category: 'Foundation',
+      badge: 'Beginner to 80 WPM',
+      speedTarget: '0 → 80 WPM',
+      duration: '3 to 4 Months',
+      fee: '₹700 / Month',
+      mode: 'Online Live Zoom + Audio Lab Access',
+      popular: false,
+      description: 'Comprehensive curriculum with daily outlines, speed dictations, and error calculation.',
+      syllabusText: 'Complete Theory & Stroke Geometry\nDaily Handwritten Outline Corrections\nGrammalogues & Phraseography Drills\nProgressive Speed Dictations: 40 → 60 → 80 WPM'
+    });
+    setNewCourseModalOpen(true);
+  };
+
+  const handleOpenEditCourse = (course) => {
+    setEditingCourse(course);
+    setCourseForm({
+      title: course.title || '',
+      category: course.category || 'Foundation',
+      badge: course.badge || '',
+      speedTarget: course.speedTarget || '',
+      duration: course.duration || '',
+      fee: course.fee || '',
+      mode: course.mode || '',
+      popular: !!course.popular,
+      description: course.description || '',
+      syllabusText: Array.isArray(course.syllabus) ? course.syllabus.join('\n') : (course.syllabus || '')
+    });
+    setNewCourseModalOpen(true);
+  };
+
+  const handleSaveCourse = (e) => {
+    e.preventDefault();
+    if (!courseForm.title.trim()) return;
+
+    const syllabusArray = courseForm.syllabusText
+      .split('\n')
+      .map(s => s.trim())
+      .filter(Boolean);
+
+    const tagColors = {
+      'Foundation': 'badge-blue',
+      'Judicial Bench': 'badge-emerald',
+      'Central Govt': 'badge-amber',
+      'Govt Diplomas': 'badge-purple',
+      'State Exams': 'badge-rose'
+    };
+
+    if (editingCourse) {
+      const updated = {
+        ...editingCourse,
+        title: courseForm.title.trim(),
+        category: courseForm.category,
+        badge: courseForm.badge.trim() || courseForm.category,
+        tagColor: tagColors[courseForm.category] || 'badge-blue',
+        speedTarget: courseForm.speedTarget.trim() || '80 WPM',
+        duration: courseForm.duration.trim() || '3 Months',
+        fee: courseForm.fee.trim() || '₹499 / Month',
+        mode: courseForm.mode.trim() || 'Online Live Zoom',
+        popular: !!courseForm.popular,
+        description: courseForm.description.trim(),
+        syllabus: syllabusArray.length > 0 ? syllabusArray : ['Complete official curriculum & exam speed tests']
+      };
+
+      if (onUpdateCourse) {
+        onUpdateCourse(updated);
+      } else {
+        setLocalCourses(prev => prev.map(c => c.id === updated.id ? updated : c));
+      }
+    } else {
+      const newCourse = {
+        id: `course-${Date.now()}`,
+        title: courseForm.title.trim(),
+        category: courseForm.category,
+        badge: courseForm.badge.trim() || courseForm.category,
+        tagColor: tagColors[courseForm.category] || 'badge-blue',
+        speedTarget: courseForm.speedTarget.trim() || '80 WPM',
+        duration: courseForm.duration.trim() || '3 Months',
+        fee: courseForm.fee.trim() || '₹499 / Month',
+        mode: courseForm.mode.trim() || 'Online Live Zoom',
+        popular: !!courseForm.popular,
+        description: courseForm.description.trim(),
+        syllabus: syllabusArray.length > 0 ? syllabusArray : ['Complete official curriculum & exam speed tests']
+      };
+
+      if (onAddCourse) {
+        onAddCourse(newCourse);
+      } else {
+        setLocalCourses(prev => [newCourse, ...prev]);
+      }
+    }
+
+    setNewCourseModalOpen(false);
+    setEditingCourse(null);
+  };
+
+  const handleDeleteCourseClick = (courseId, courseTitle) => {
+    if (window.confirm(`Are you sure you want to delete the course "${courseTitle}" from the public catalog?`)) {
+      if (onDeleteCourse) {
+        onDeleteCourse(courseId);
+      } else {
+        setLocalCourses(prev => prev.filter(c => c.id !== courseId));
+      }
+    }
+  };
+
+  const filteredCoursesList = coursesList.filter(course => {
+    if (courseFilterCategory !== 'All' && course.category !== courseFilterCategory) {
+      return false;
+    }
+    if (courseSearchQuery.trim()) {
+      const q = courseSearchQuery.toLowerCase();
+      const matchTitle = (course.title || '').toLowerCase().includes(q);
+      const matchCat = (course.category || '').toLowerCase().includes(q);
+      const matchSpeed = (course.speedTarget || '').toLowerCase().includes(q);
+      const matchDesc = (course.description || '').toLowerCase().includes(q);
+      return matchTitle || matchCat || matchSpeed || matchDesc;
+    }
+    return true;
+  });
   
   // Live Announcement broadcast state
   const [broadcastNoticeText, setBroadcastNoticeText] = useState('');
@@ -334,15 +513,32 @@ export default function AdminPortalView({
       setAudioFile(file);
       setAudioFileName(file.name);
       setAudioFileSize((file.size / (1024 * 1024)).toFixed(2) + ' MB');
-      const url = URL.createObjectURL(file);
-      setAudioUrl(url);
+      const localUrl = URL.createObjectURL(file);
+      setAudioUrl(localUrl);
 
-      const tempAudio = new Audio(url);
+      const tempAudio = new Audio(localUrl);
       tempAudio.onloadedmetadata = () => {
         if (tempAudio.duration && !isNaN(tempAudio.duration)) {
           setAudioDuration(Math.round(tempAudio.duration));
         }
       };
+
+      // Asynchronously upload to server storage for permanent persistence across devices
+      const reader = new FileReader();
+      reader.onload = async () => {
+        try {
+          const res = await api.admin.uploadAudio({
+            fileName: file.name,
+            data: reader.result
+          });
+          if (res?.url) {
+            setAudioUrl(res.url);
+          }
+        } catch (err) {
+          console.warn('Backend audio storage fallback to local blob:', err);
+        }
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -452,7 +648,11 @@ export default function AdminPortalView({
       audioFileName: audioFileName || 'calibrated-dictation.mp3'
     };
 
-    setTests([newTest, ...tests]);
+    if (onAddStenoTest) {
+      onAddStenoTest(newTest);
+    } else {
+      setLocalTests((prev) => [newTest, ...prev]);
+    }
     setNewTestModalOpen(false);
     setTestTitle('');
     setTestPassage('');
@@ -489,13 +689,13 @@ export default function AdminPortalView({
     alert(`Candidate "${newStudent.name}" enrolled successfully with Roll No ${newStudent.rollNo}!`);
   };
 
-  const toggleStudentStatus = (id) => {
-    setStudents(students.map(s => {
-      if (s.id === id) {
-        return { ...s, status: s.status === 'Active' ? 'Suspended' : 'Active' };
-      }
-      return s;
-    }));
+  const toggleStudentStatus = async (id) => {
+    try {
+      const res = await api.admin.toggleStudentStatus(id);
+      setStudents(students.map(s => s.id === id ? { ...s, status: res.status } : s));
+    } catch {
+      setStudents(students.map(s => s.id === id ? { ...s, status: s.status === 'Active' ? 'Suspended' : 'Active' } : s));
+    }
   };
 
   const extendStudentPlan = (id) => {
@@ -510,7 +710,11 @@ export default function AdminPortalView({
 
   const deleteTest = (id) => {
     if (confirm("Are you sure you want to remove this dictation test from the active vault?")) {
-      setTests(tests.filter(t => t.id !== id));
+      if (onDeleteStenoTest) {
+        onDeleteStenoTest(id);
+      } else {
+        setLocalTests((prev) => prev.filter(t => t.id !== id));
+      }
     }
   };
 
@@ -565,8 +769,11 @@ export default function AdminPortalView({
       passageText: typingPassage
     };
 
-    TYPING_TESTS.unshift(newExercise);
-    setTypingTests([newExercise, ...typingTests]);
+    if (onAddTypingTest) {
+      onAddTypingTest(newExercise);
+    } else {
+      setLocalTypingTests((prev) => [newExercise, ...prev]);
+    }
     setNewTypingModalOpen(false);
     
     // Reset form
@@ -581,9 +788,11 @@ export default function AdminPortalView({
 
   const deleteTypingTest = (id) => {
     if (confirm("Are you sure you want to delete this text typing exercise?")) {
-      setTypingTests(prev => prev.filter(t => t.id !== id));
-      const idx = TYPING_TESTS.findIndex(t => t.id === id);
-      if (idx !== -1) TYPING_TESTS.splice(idx, 1);
+      if (onDeleteTypingTest) {
+        onDeleteTypingTest(id);
+      } else {
+        setLocalTypingTests((prev) => prev.filter(t => t.id !== id));
+      }
     }
   };
 
@@ -633,11 +842,11 @@ export default function AdminPortalView({
   });
 
   const getPassBadgeClass = (plan) => {
-    if (!plan) return 'pass-default';
-    if (plan.includes('12-Month')) return 'pass-annual';
-    if (plan.includes('6-Month')) return 'pass-scholar';
+    if (!plan || plan.includes('No Active')) return 'pass-default';
+    if (plan.includes('12-Month') || plan.includes('12 Month') || plan.includes('Annual')) return 'pass-annual';
+    if (plan.includes('6-Month') || plan.includes('6 Month') || plan.includes('Scholar')) return 'pass-scholar';
     if (plan.includes('Monthly')) return 'pass-monthly';
-    if (plan.includes('1-Day')) return 'pass-sprint';
+    if (plan.includes('1-Day') || plan.includes('1 Day') || plan.includes('Sprint')) return 'pass-sprint';
     return 'pass-default';
   };
 
@@ -703,10 +912,13 @@ export default function AdminPortalView({
               <button 
                 type="button" 
                 className="btn btn-secondary w-full"
-                onClick={() => setCurrentTab('landing')}
+                onClick={() => {
+                  if (onLogout) onLogout();
+                  else setCurrentTab('landing');
+                }}
               >
                 <ArrowLeft size={15} />
-                <span>Public Website</span>
+                <span>Return to Homepage</span>
               </button>
               <button 
                 type="submit" 
@@ -741,70 +953,71 @@ export default function AdminPortalView({
         <div className="admin-header-container">
           <div className="admin-brand-cluster">
             <div className="admin-badge-squircle">
-              <ShieldCheck size={22} color="#ffffff" />
+              <ShieldCheck size={22} color="#ffffff" strokeWidth={2.4} />
             </div>
             <div>
               <div className="admin-brand-title">
                 <span>Director Administration Console</span>
-                <span className="badge-admin-role">Super Admin</span>
+                <span className="badge-admin-role">
+                  <Crown size={11} className="text-amber-600" />
+                  <span>Super Admin</span>
+                </span>
               </div>
-              <span className="admin-brand-sub">Gaya Shorthand Classes • ShorthandPlus Unified Management</span>
+              <div className="admin-brand-sub-row">
+                <span>Gaya Shorthand Classes • ShorthandPlus Unified Management</span>
+                <span className="admin-dot-divider">•</span>
+                <span className="admin-status-live">
+                  <span className="admin-live-pulse-dot" />
+                  <span>Clearance Active</span>
+                </span>
+              </div>
             </div>
           </div>
 
           <div className="admin-header-actions">
-            <button 
-              className="btn btn-secondary btn-sm"
-              onClick={() => setCurrentTab('dashboard')}
-              title="Switch to Student Candidate View"
-            >
-              <LayoutDashboard size={15} />
-              <span>Student Portal</span>
-            </button>
-            <button 
-              className="btn btn-secondary btn-sm"
-              onClick={() => setCurrentTab('landing')}
-              title="Return to Public Website"
-            >
-              <Globe size={15} />
-              <span>Public Website</span>
-            </button>
-            <button 
-              className="btn btn-primary btn-sm"
-              onClick={() => setNewTestModalOpen(true)}
-            >
-              <Plus size={15} />
-              <span>New Audio Dictation</span>
-            </button>
-            <button 
-              className="btn btn-sm"
-              onClick={() => setNewTypingModalOpen(true)}
-              title="Upload Pure Text Typing Exercise (No Audio)"
-              style={{ background: '#059669', color: '#ffffff', borderColor: '#059669', display: 'inline-flex', alignItems: 'center', gap: '0.45rem', fontWeight: '700' }}
-            >
-              <Keyboard size={15} />
-              <span>+ New Text Typing Test</span>
-            </button>
-            <button 
-              className="btn btn-sm"
-              onClick={() => {
-                loadClassTemplate('ssc80');
-                setNewClassModalOpen(true);
-              }}
-              title="Schedule or Go Live with an Online Zoom Class"
-              style={{ background: '#881337', color: '#ffffff', borderColor: '#881337', display: 'inline-flex', alignItems: 'center', gap: '0.45rem', fontWeight: '700' }}
-            >
-              <Video size={15} />
-              <span>+ Schedule Live Class</span>
-            </button>
-            <button 
-              className="btn btn-secondary btn-sm text-rose"
-              onClick={handleLockConsole}
-              title="Lock Console & Clear Clearance Session"
-            >
-              <Lock size={14} />
-              <span>Lock Console</span>
-            </button>
+            {/* 1. Portal Navigation Switchers */}
+            <div className="admin-nav-group">
+              <button 
+                className="admin-toolbar-btn admin-btn-neutral"
+                onClick={() => setCurrentTab('dashboard')}
+                title="Switch to Student Candidate View"
+              >
+                <LayoutDashboard size={14} />
+                <span>Student Portal</span>
+              </button>
+              <button 
+                className="admin-toolbar-btn admin-btn-neutral"
+                onClick={() => setCurrentTab('landing')}
+                title="Return to Public Website"
+              >
+                <Globe size={14} />
+                <span>Public Website</span>
+              </button>
+            </div>
+
+            <div className="admin-toolbar-divider" />
+
+            {/* 2. Security & Session */}
+            <div className="admin-session-group">
+              <button 
+                className="admin-toolbar-btn admin-btn-neutral"
+                onClick={handleLockConsole}
+                title="Lock Console & Clear Clearance Session"
+              >
+                <Lock size={13} />
+                <span>Lock Console</span>
+              </button>
+              {onLogout && (
+                <button 
+                  className="admin-toolbar-btn admin-btn-signout"
+                  onClick={onLogout}
+                  title="Sign Out to Homepage"
+                >
+                  <LogOut size={13} />
+                  <span>Sign Out</span>
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </header>
@@ -815,8 +1028,8 @@ export default function AdminPortalView({
         {/* KPI Summary Cards */}
         <div className="admin-kpi-grid">
           <div className="saas-card admin-kpi-card">
-            <div className="kpi-icon-wrap bg-blue-subtle">
-              <Users size={20} className="text-blue" />
+            <div className="kpi-icon-wrap bg-stone-100">
+              <Users size={20} className="text-stone-800" />
             </div>
             <div className="kpi-info-col">
               <span className="kpi-label-text">Total Enrolled Aspirants</span>
@@ -837,13 +1050,13 @@ export default function AdminPortalView({
           </div>
 
           <div className="saas-card admin-kpi-card">
-            <div className="kpi-icon-wrap bg-purple-subtle">
-              <Headphones size={20} className="text-royal-blue" />
+            <div className="kpi-icon-wrap bg-amber-50">
+              <Headphones size={20} className="text-amber-700" />
             </div>
             <div className="kpi-info-col">
               <span className="kpi-label-text">Active Audio Dictations</span>
               <div className="kpi-val-number font-mono">{tests.length + 1716} Tests</div>
-              <span className="kpi-trend text-blue font-mono">80, 100, 120, 140 WPM</span>
+              <span className="kpi-trend text-stone-700 font-mono">80, 100, 120, 140 WPM</span>
             </div>
           </div>
 
@@ -880,8 +1093,17 @@ export default function AdminPortalView({
             <Video size={16} />
             <span>Live Zoom Classes</span>
             <span className="admin-tab-count-pill font-mono">
-              {onlineClasses.length} ({onlineClasses.filter(c => c.isLive).length} Live)
+              {onlineClasses.filter(c => c.isLive).length > 0 ? `${onlineClasses.filter(c => c.isLive).length} Live` : onlineClasses.length}
             </span>
+          </button>
+          <button 
+            type="button"
+            className={`admin-nav-tab ${activeTab === 'courses' ? 'active' : ''}`}
+            onClick={() => setActiveTab('courses')}
+          >
+            <GraduationCap size={16} />
+            <span>Course Catalog</span>
+            <span className="admin-tab-count-pill font-mono">{coursesList.length}</span>
           </button>
           <button 
             type="button"
@@ -944,14 +1166,17 @@ export default function AdminPortalView({
                 </div>
               </div>
 
-              <div className="admin-header-actions-right">
-                <button 
+              <div className="admin-header-actions-right" style={{ display: 'flex', gap: '0.65rem' }}>
+                <a 
+                  href={api.admin.getResultsCsvUrl()}
+                  download="shorthand_results_register.csv"
                   className="btn-add-candidate-glow"
-                  onClick={() => setNewStudentModalOpen(true)}
+                  style={{ background: '#fff', color: '#18181b', border: '1px solid #e4e4e7', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                  title="Download complete examination results register as CSV"
                 >
-                  <Plus size={16} />
-                  <span>Add Candidate</span>
-                </button>
+                  <Download size={15} />
+                  <span>Export Results (CSV)</span>
+                </a>
               </div>
             </div>
 
@@ -1072,7 +1297,7 @@ export default function AdminPortalView({
                     </tr>
                   ) : (
                     filteredStudents.map((s) => (
-                      <tr key={s.id}>
+                      <tr key={`stud-${s.id}`}>
                         <td>
                           <div className="admin-user-cell">
                             <div className="admin-avatar-bubble">
@@ -1123,7 +1348,7 @@ export default function AdminPortalView({
                         <td>
                           <div className="admin-speed-widget">
                             <div className="speed-main-val">
-                              <Gauge size={13} className="text-royal-blue" />
+                              <Gauge size={13} style={{ color: '#d97706' }} />
                               <span className="speed-number">{s.speed}</span>
                               <span className="speed-unit">WPM</span>
                             </div>
@@ -1220,7 +1445,7 @@ export default function AdminPortalView({
                     </thead>
                     <tbody>
                       {tests.map((t) => (
-                        <tr key={t.id}>
+                        <tr key={`steno-test-${t.id}`}>
                           <td>
                             <div className="admin-dictation-cell">
                               <div className="dictation-audio-bubble">
@@ -1311,7 +1536,7 @@ export default function AdminPortalView({
                     </thead>
                     <tbody>
                       {typingTests.map((t) => (
-                        <tr key={t.id}>
+                        <tr key={`typing-test-${t.id}`}>
                           <td>
                             <div className="admin-dictation-cell">
                               <div className="dictation-audio-bubble" style={{ background: '#ecfdf5', borderColor: '#a7f3d0' }}>
@@ -1357,7 +1582,6 @@ export default function AdminPortalView({
                                   }
                                 }}
                                 title="Launch test in Typing Studio"
-                                style={{ background: '#ecfdf5', color: '#047857', borderColor: '#a7f3d0' }}
                               >
                                 <Play size={12} />
                                 <span>Preview</span>
@@ -1411,7 +1635,7 @@ export default function AdminPortalView({
                 </thead>
                 <tbody>
                   {transactions.map((t) => (
-                    <tr key={t.id}>
+                    <tr key={`txn-${t.id}`}>
                       <td><span className="admin-roll-capsule font-mono">{t.id}</span></td>
                       <td>
                         <div className="admin-user-cell">
@@ -1464,7 +1688,7 @@ export default function AdminPortalView({
 
             <div className="admin-diploma-grid">
               <div className="saas-card diploma-stat-box">
-                <GraduationCap size={28} className="text-blue" />
+                <GraduationCap size={28} className="text-amber-700" />
                 <h4 className="stat-number font-mono">248</h4>
                 <p className="stat-desc">DCA Diplomas Issued (6 Months)</p>
               </div>
@@ -1486,28 +1710,43 @@ export default function AdminPortalView({
         {activeTab === 'classes' && (
           <div className="saas-card admin-content-card">
             
-            {/* Top Header Control Row */}
-            <div className="table-header-control-row">
-              <div>
-                <div className="flex items-center gap-2">
-                  <h3 className="section-title-sm">Live Online Zoom Batches & Dictation Studio</h3>
-                  <span className={`badge ${onlineClasses.some(c => c.isLive) ? 'badge-live' : 'badge-replay'}`}>
-                    {onlineClasses.filter(c => c.isLive).length} Class(es) Live Now
-                  </span>
+            {/* 1. Executive Studio Header Command Bar */}
+            <div className="admin-studio-header-card">
+              <div className="admin-studio-header-main">
+                <div className="admin-studio-brand-icon">
+                  <Radio size={24} className="text-white" />
+                  {onlineClasses.some(c => c.isLive) && (
+                    <span className="studio-icon-pulse-badge" />
+                  )}
                 </div>
-                <p className="section-sub-sm">
-                  Schedule, broadcast, and manage real-time Zoom video classrooms. Any class marked "Live" is instantly pushed to candidate portals with 1-click joining.
-                </p>
+                <div className="admin-studio-brand-info">
+                  <div className="flex items-center gap-2.5 flex-wrap">
+                    <h3 className="admin-studio-title">Live Online Zoom Batches & Dictation Studio</h3>
+                    {onlineClasses.some(c => c.isLive) ? (
+                      <span className="admin-studio-live-badge">
+                        <span className="live-pulsing-dot-admin" />
+                        <span>{onlineClasses.filter(c => c.isLive).length} Class Live On-Air</span>
+                      </span>
+                    ) : (
+                      <span className="admin-studio-standby-badge">
+                        <Clock size={11} />
+                        <span>All Studios Standby</span>
+                      </span>
+                    )}
+                  </div>
+                  <p className="admin-studio-desc">
+                    Schedule, broadcast, and orchestrate real-time Zoom video classrooms. Any class marked "Live" is instantly pushed to candidate portals with 1-click joining.
+                  </p>
+                </div>
               </div>
 
-              {/* Action Buttons Toolbar */}
-              <div className="flex items-center gap-2 flex-wrap">
+              {/* Studio Action Suite */}
+              <div className="admin-studio-actions">
                 <button 
                   type="button"
-                  className="btn btn-secondary btn-sm"
+                  className={`btn-studio-action btn-studio-notice ${isBroadcastingNotice ? 'active' : ''}`}
                   onClick={() => setIsBroadcastingNotice(!isBroadcastingNotice)}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', fontWeight: '700' }}
-                  title="Broadcast a live banner announcement to all online students"
+                  title="Broadcast a live announcement ticker to all student dashboards"
                 >
                   <Megaphone size={14} className="text-amber-600" />
                   <span>{isBroadcastingNotice ? 'Close Notice Form' : 'Broadcast Notice'}</span>
@@ -1515,26 +1754,25 @@ export default function AdminPortalView({
 
                 <button 
                   type="button"
-                  className="btn btn-secondary btn-sm"
+                  className="btn-studio-action btn-studio-instant"
                   onClick={handleQuickStartLive}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', fontWeight: '700', color: '#dc2626', borderColor: '#fca5a5', background: '#fff1f2' }}
                   title="Instantly launch an impromptu live broadcast on Zoom"
                 >
-                  <Zap size={14} className="text-rose-600 fill-rose-600" />
-                  <span>⚡ Instant Live Class</span>
+                  <Zap size={14} className="fill-rose-500 text-rose-500" />
+                  <span>Instant Live Class</span>
                 </button>
 
                 <button 
                   type="button"
-                  className="btn btn-primary btn-sm"
+                  className="btn-studio-action btn-studio-primary"
                   onClick={() => {
                     loadClassTemplate('ssc80');
                     setNewClassModalOpen(true);
                   }}
-                  style={{ background: '#881337', borderColor: '#881337', display: 'inline-flex', alignItems: 'center', gap: '0.45rem', fontWeight: '700' }}
+                  title="Schedule and configure a new Zoom online class batch"
                 >
-                  <Video size={15} />
-                  <span>+ Schedule Live Online Class</span>
+                  <Plus size={15} />
+                  <span>Schedule Live Online Class</span>
                 </button>
               </div>
             </div>
@@ -1579,10 +1817,15 @@ export default function AdminPortalView({
 
             {/* Active Live Notice Banner Display (if set) */}
             {activeBroadcastNotice && (
-              <div className="admin-active-notice-banner mt-3 mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="notice-badge-pill">📢 LIVE STUDENT ALERT ACTIVE</span>
-                  <span className="notice-text-content">{activeBroadcastNotice}</span>
+              <div className="admin-active-notice-banner animate-fade-in mt-3 mb-2">
+                <div className="admin-notice-left-content">
+                  <span className="notice-badge-pill">
+                    <span className="live-pulsing-dot-admin" style={{ background: '#f59e0b', boxShadow: '0 0 0 0 rgba(245, 158, 11, 0.7)' }} />
+                    <span>STUDENT ALERT ACTIVE</span>
+                  </span>
+                  <p className="notice-text-content">
+                    <span>{activeBroadcastNotice}</span>
+                  </p>
                 </div>
                 <button 
                   type="button" 
@@ -1596,55 +1839,68 @@ export default function AdminPortalView({
               </div>
             )}
 
-            {/* 4 Mini KPI Studio Cards */}
+            {/* 4 Executive KPI Studio Telemetry Cards */}
             <div className="admin-class-kpi-row mt-3 mb-3">
-              <div className="class-kpi-capsule">
-                <div className="capsule-icon bg-rose-50 text-rose-600">
-                  <Radio size={16} />
+              {/* Card 1: Live Broadcasts */}
+              <div className={`class-kpi-capsule kpi-card-broadcasts ${onlineClasses.some(c => c.isLive) ? 'is-on-air' : ''}`}>
+                <div className="capsule-icon-wrap bg-rose-50 text-rose-600 border-rose-100">
+                  <Radio size={18} />
                 </div>
                 <div className="capsule-col">
                   <span className="capsule-label">Live Broadcasts</span>
-                  <strong className="capsule-val font-mono">
-                    {onlineClasses.filter(c => c.isLive).length} On-Air
-                  </strong>
-                  <span className="capsule-sub text-rose-600">
+                  <div className="capsule-val-row">
+                    <strong className="capsule-val font-mono">
+                      {onlineClasses.filter(c => c.isLive).length} On-Air
+                    </strong>
+                    {onlineClasses.some(c => c.isLive) && <span className="kpi-live-beacon" />}
+                  </div>
+                  <span className="capsule-sub-badge badge-sub-rose">
                     {onlineClasses.some(c => c.isLive) ? 'Pulsing live call active' : 'All studios on standby'}
                   </span>
                 </div>
               </div>
 
-              <div className="class-kpi-capsule">
-                <div className="capsule-icon bg-blue-50 text-blue-600">
-                  <Calendar size={16} />
+              {/* Card 2: Total Batches */}
+              <div className="class-kpi-capsule kpi-card-batches">
+                <div className="capsule-icon-wrap bg-amber-50 text-amber-700 border-stone-200">
+                  <Calendar size={18} />
                 </div>
                 <div className="capsule-col">
                   <span className="capsule-label">Total Batches</span>
-                  <strong className="capsule-val font-mono">{onlineClasses.length} Scheduled</strong>
-                  <span className="capsule-sub text-muted">Covering 6:00 AM – 7:30 PM</span>
+                  <div className="capsule-val-row">
+                    <strong className="capsule-val font-mono">{onlineClasses.length} Scheduled</strong>
+                  </div>
+                  <span className="capsule-sub-badge badge-sub-amber">Covering 6:00 AM – 7:30 PM</span>
                 </div>
               </div>
 
-              <div className="class-kpi-capsule">
-                <div className="capsule-icon bg-emerald-50 text-emerald-600">
-                  <Users size={16} />
+              {/* Card 3: Enrolled Students */}
+              <div className="class-kpi-capsule kpi-card-learners">
+                <div className="capsule-icon-wrap bg-emerald-50 text-emerald-600 border-emerald-100">
+                  <Users size={18} />
                 </div>
                 <div className="capsule-col">
                   <span className="capsule-label">Enrolled Students</span>
-                  <strong className="capsule-val font-mono">
-                    {onlineClasses.reduce((acc, c) => acc + (c.attendees || 1), 0)} Aspirants
-                  </strong>
-                  <span className="capsule-sub text-emerald-600">Active zoom learners</span>
+                  <div className="capsule-val-row">
+                    <strong className="capsule-val font-mono">
+                      {onlineClasses.reduce((acc, c) => acc + (c.attendees || 1), 0)} Aspirants
+                    </strong>
+                  </div>
+                  <span className="capsule-sub-badge badge-sub-emerald">Active zoom learners</span>
                 </div>
               </div>
 
-              <div className="class-kpi-capsule">
-                <div className="capsule-icon bg-purple-50 text-purple-600">
-                  <ShieldCheck size={16} />
+              {/* Card 4: Student Sync Engine */}
+              <div className="class-kpi-capsule kpi-card-sync">
+                <div className="capsule-icon-wrap bg-purple-50 text-purple-600 border-purple-100">
+                  <ShieldCheck size={18} />
                 </div>
                 <div className="capsule-col">
                   <span className="capsule-label">Student Sync Engine</span>
-                  <strong className="capsule-val font-mono text-emerald-700">✓ 100% Active</strong>
-                  <span className="capsule-sub text-muted">Instant push to candidate app</span>
+                  <div className="capsule-val-row">
+                    <strong className="capsule-val font-mono text-emerald-600">✓ 100% Active</strong>
+                  </div>
+                  <span className="capsule-sub-badge badge-sub-indigo">Instant push to candidate app</span>
                 </div>
               </div>
             </div>
@@ -1657,7 +1913,8 @@ export default function AdminPortalView({
                   className={`class-filter-pill ${classFilterStatus === 'all' ? 'active' : ''}`}
                   onClick={() => setClassFilterStatus('all')}
                 >
-                  All Classes ({onlineClasses.length})
+                  <span>All Classes</span>
+                  <span className="pill-count-tag">{onlineClasses.length}</span>
                 </button>
                 <button 
                   type="button" 
@@ -1665,21 +1922,24 @@ export default function AdminPortalView({
                   onClick={() => setClassFilterStatus('live')}
                 >
                   <span className="live-dot-mini" />
-                  Live Now ({onlineClasses.filter(c => c.isLive).length})
+                  <span>Live Now</span>
+                  <span className="pill-count-tag">{onlineClasses.filter(c => c.isLive).length}</span>
                 </button>
                 <button 
                   type="button" 
                   className={`class-filter-pill ${classFilterStatus === 'upcoming' ? 'active' : ''}`}
                   onClick={() => setClassFilterStatus('upcoming')}
                 >
-                  Upcoming Scheduled ({onlineClasses.filter(c => !c.isLive && c.badgeClass !== 'badge-replay').length})
+                  <span>Upcoming Scheduled</span>
+                  <span className="pill-count-tag">{onlineClasses.filter(c => !c.isLive && c.badgeClass !== 'badge-replay').length}</span>
                 </button>
                 <button 
                   type="button" 
                   className={`class-filter-pill ${classFilterStatus === 'replays' ? 'active' : ''}`}
                   onClick={() => setClassFilterStatus('replays')}
                 >
-                  Archives & Replays ({onlineClasses.filter(c => c.badgeClass === 'badge-replay').length})
+                  <span>Archives & Replays</span>
+                  <span className="pill-count-tag">{onlineClasses.filter(c => c.badgeClass === 'badge-replay').length}</span>
                 </button>
               </div>
 
@@ -1689,7 +1949,7 @@ export default function AdminPortalView({
                   <Search size={14} className="text-muted" />
                   <input 
                     type="text" 
-                    placeholder="Search batch, Meeting ID, speed..."
+                    placeholder="Search batch, instructor, room, speed..."
                     value={classSearchQuery}
                     onChange={(e) => setClassSearchQuery(e.target.value)}
                     className="admin-mini-search-input"
@@ -1709,6 +1969,7 @@ export default function AdminPortalView({
                     onClick={() => setClassViewMode('grid')}
                     title="Grid Card View"
                   >
+                    <LayoutGrid size={13} />
                     <span>Cards</span>
                   </button>
                   <button 
@@ -1717,6 +1978,7 @@ export default function AdminPortalView({
                     onClick={() => setClassViewMode('timetable')}
                     title="Daily Timetable Table View"
                   >
+                    <Calendar size={13} />
                     <span>Timetable</span>
                   </button>
                 </div>
@@ -1800,7 +2062,7 @@ export default function AdminPortalView({
                         <div className="faculty-sub-sleek">
                           <span><Clock size={11} className="inline mr-1 text-slate-400" />{item.time}</span>
                           <span className="dot-sep">•</span>
-                          <span className="text-blue-700 font-semibold">{item.attendees || 1} Aspirants</span>
+                          <span className="text-stone-700 font-semibold">{item.attendees || 1} Aspirants</span>
                         </div>
                       </div>
                     </div>
@@ -2022,6 +2284,234 @@ export default function AdminPortalView({
           </div>
         )}
 
+        {/* TAB: Course Catalog & Examination Batches Management */}
+        {activeTab === 'courses' && (
+          <div className="saas-card admin-content-card">
+            
+            {/* Top Header Control Row */}
+            <div className="table-header-control-row">
+              <div>
+                <div className="flex items-center gap-2">
+                  <h3 className="section-title-sm">Academy Courses & Examination Batches</h3>
+                  <span className="badge badge-blue">
+                    {coursesList.length} Active Published Programs
+                  </span>
+                </div>
+                <p className="section-sub-sm">
+                  Publish, modify, and manage institutional curriculum displayed to candidates on the public Courses page. Any changes or new batches automatically sync with the enrollment and checkout flow.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button 
+                  type="button"
+                  className="btn btn-secondary btn-sm"
+                  onClick={() => setCurrentTab('courses')}
+                  title="View how candidates see the course page"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+                >
+                  <Eye size={14} />
+                  <span>View Public Page</span>
+                </button>
+
+                <button 
+                  type="button"
+                  className="btn btn-primary btn-sm"
+                  onClick={handleOpenAddCourse}
+                  style={{ background: '#1c1917', borderColor: '#1c1917', color: '#ffffff', display: 'inline-flex', alignItems: 'center', gap: '0.45rem', fontWeight: '700' }}
+                >
+                  <Plus size={15} />
+                  <span>+ Add New Course Batch</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Filter and Search Bar */}
+            <div className="search-filter-pair mt-2" style={{ maxWidth: '100%' }}>
+              <div className="admin-search-box" style={{ flex: '1 1 320px' }}>
+                <Search size={15} className="text-muted" />
+                <input 
+                  type="text" 
+                  placeholder="Search courses by name, category, or speed target..."
+                  value={courseSearchQuery}
+                  onChange={(e) => setCourseSearchQuery(e.target.value)}
+                />
+                {courseSearchQuery && (
+                  <button 
+                    type="button" 
+                    onClick={() => setCourseSearchQuery('')} 
+                    style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#94a3b8' }}
+                  >
+                    <X size={14} />
+                  </button>
+                )}
+              </div>
+
+              <div className="admin-filter-select-wrapper" style={{ minWidth: '220px' }}>
+                <CustomSelect
+                  value={courseFilterCategory}
+                  onChange={(val) => setCourseFilterCategory(val)}
+                  options={[
+                    { value: 'All', label: 'All Categories' },
+                    { value: 'Foundation', label: 'Foundation (Pitman)' },
+                    { value: 'Judicial Bench', label: 'Judicial Bench (Court)' },
+                    { value: 'Central Govt', label: 'Central Govt (SSC)' },
+                    { value: 'Govt Diplomas', label: 'Govt Diplomas (DCA/ADCA)' },
+                    { value: 'State Exams', label: 'State & Police Exams' }
+                  ]}
+                />
+              </div>
+
+              <span className="text-xs text-muted font-mono" style={{ whiteSpace: 'nowrap' }}>
+                Showing {filteredCoursesList.length} of {coursesList.length} courses
+              </span>
+            </div>
+
+            {/* Courses Cards Grid */}
+            {filteredCoursesList.length === 0 ? (
+              <div className="table-empty-state" style={{ padding: '3.5rem 2rem', textAlign: 'center' }}>
+                <GraduationCap size={40} className="text-stone-400 mx-auto mb-2" />
+                <h4 style={{ fontWeight: 700, color: '#1c1917', marginBottom: '0.35rem' }}>No Courses Found</h4>
+                <p style={{ color: '#78716c', fontSize: '0.875rem', marginBottom: '1.25rem' }}>
+                  No course matched your filter criteria. Try clearing the search or add a new course batch.
+                </p>
+                <button 
+                  type="button" 
+                  className="btn btn-primary btn-sm" 
+                  onClick={handleOpenAddCourse}
+                  style={{ background: '#1c1917', borderColor: '#1c1917', color: '#ffffff' }}
+                >
+                  <Plus size={14} />
+                  <span>Create New Course</span>
+                </button>
+              </div>
+            ) : (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '1.25rem', marginTop: '0.5rem' }}>
+                {filteredCoursesList.map((course) => (
+                  <div 
+                    key={course.id}
+                    style={{
+                      background: '#ffffff',
+                      border: course.popular ? '1.5px solid #d6d3d1' : '1px solid #e7e5e4',
+                      borderRadius: '16px',
+                      padding: '1.4rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      position: 'relative',
+                      boxShadow: course.popular ? '0 10px 25px -5px rgba(28, 25, 23, 0.08)' : '0 4px 12px -2px rgba(28, 25, 23, 0.03)',
+                      transition: 'all 0.2s ease'
+                    }}
+                  >
+                    {course.popular && (
+                      <div style={{
+                        position: 'absolute',
+                        top: '12px',
+                        right: '12px',
+                        background: '#1c1917',
+                        color: '#ffffff',
+                        fontSize: '0.68rem',
+                        fontWeight: '800',
+                        padding: '0.2rem 0.55rem',
+                        borderRadius: '9999px',
+                        letterSpacing: '0.04em'
+                      }}>
+                        ⭐ FLAGSHIP BATCH
+                      </div>
+                    )}
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.65rem' }}>
+                      <span className={`badge ${course.tagColor || 'badge-amber'}`} style={{ fontSize: '0.72rem' }}>
+                        {course.badge || course.category}
+                      </span>
+                      <span className="font-mono" style={{ fontSize: '0.75rem', fontWeight: '700', color: '#1c1917', background: '#faf9f6', border: '1px solid #e7e5e4', padding: '0.15rem 0.45rem', borderRadius: '4px' }}>
+                        {course.speedTarget}
+                      </span>
+                    </div>
+
+                    <h4 style={{ fontSize: '1.1rem', fontWeight: '800', color: '#1c1917', marginBottom: '0.4rem', lineHeight: 1.3 }}>
+                      {course.title}
+                    </h4>
+
+                    <p style={{ fontSize: '0.825rem', color: '#57534e', lineHeight: 1.45, marginBottom: '0.85rem', flex: '1 0 auto' }}>
+                      {course.description}
+                    </p>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', background: '#faf9f6', border: '1px solid #e7e5e4', padding: '0.75rem 0.85rem', borderRadius: '10px', marginBottom: '0.9rem', fontSize: '0.78rem', color: '#44403c' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                        <Clock size={13} style={{ color: '#78716c' }} />
+                        <span><strong>Duration:</strong> {course.duration}</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                        <GraduationCap size={13} style={{ color: '#78716c' }} />
+                        <span><strong>Mode:</strong> {course.mode}</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                        <CreditCard size={13} style={{ color: '#047857' }} />
+                        <span><strong>Fee:</strong> <strong className="font-mono" style={{ color: '#047857', fontSize: '0.875rem' }}>{course.fee}</strong></span>
+                      </div>
+                    </div>
+
+                    {/* Syllabus snippet */}
+                    {Array.isArray(course.syllabus) && course.syllabus.length > 0 && (
+                      <div style={{ marginBottom: '1rem', borderTop: '1px dashed #e7e5e4', paddingTop: '0.65rem' }}>
+                        <span style={{ fontSize: '0.72rem', fontWeight: '700', color: '#78716c', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                          Curriculum Highlights ({course.syllabus.length} Topics):
+                        </span>
+                        <ul style={{ margin: '0.4rem 0 0 0', paddingLeft: '1.1rem', fontSize: '0.75rem', color: '#57534e', lineHeight: 1.4 }}>
+                          {course.syllabus.slice(0, 3).map((item, idx) => (
+                            <li key={idx} style={{ marginBottom: '0.2rem' }}>{item}</li>
+                          ))}
+                          {course.syllabus.length > 3 && (
+                            <li style={{ color: '#1c1917', fontWeight: '600', listStyle: 'none', marginLeft: '-1.1rem', marginTop: '0.2rem' }}>
+                              +{course.syllabus.length - 3} more curriculum topics included
+                            </li>
+                          )}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* Actions Bar */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', borderTop: '1px solid #f1f5f9', paddingTop: '0.85rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                        <button 
+                          type="button"
+                          className="btn btn-secondary btn-sm"
+                          onClick={() => handleOpenEditCourse(course)}
+                          title="Edit course details, fee or syllabus"
+                          style={{ fontSize: '0.75rem', padding: '0.35rem 0.65rem', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+                        >
+                          <Edit3 size={13} />
+                          <span>Edit</span>
+                        </button>
+                        <button 
+                          type="button"
+                          className="btn btn-secondary btn-sm"
+                          onClick={() => handleDeleteCourseClick(course.id, course.title)}
+                          title="Delete course from catalog"
+                          style={{ fontSize: '0.75rem', padding: '0.35rem 0.55rem', color: '#e11d48' }}
+                        >
+                          <Trash2 size={13} />
+                        </button>
+                      </div>
+
+                      <button 
+                        type="button"
+                        className="btn btn-sm"
+                        onClick={() => setCurrentTab('courses')}
+                        style={{ background: '#f5f4f0', color: '#1c1917', fontSize: '0.75rem', padding: '0.35rem 0.65rem', display: 'inline-flex', alignItems: 'center', gap: '0.3rem', border: '1px solid #e7e5e4' }}
+                        title="View on candidate course enrollment page"
+                      >
+                        <span>Preview</span>
+                        <ArrowRight size={12} />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+          </div>
+        )}
       </div>
 
       {/* MODAL 1: Upload New Dictation Test */}
@@ -2038,8 +2528,8 @@ export default function AdminPortalView({
 
             <div className="modal-header">
               <div className="modal-title-wrap">
-                <div className="modal-icon-squircle bg-blue-subtle">
-                  <Headphones size={22} className="text-royal-blue" />
+                <div className="modal-icon-squircle bg-amber-50">
+                  <Headphones size={22} className="text-amber-700" />
                 </div>
                 <div>
                   <h3 className="modal-main-title">Upload New Studio Dictation Audio Test</h3>
@@ -2506,7 +2996,7 @@ export default function AdminPortalView({
           <div className="saas-card modal-window">
             <div className="modal-header">
               <div className="modal-title-wrap">
-                <Users size={20} className="text-blue" />
+                <Users size={20} className="text-stone-800" />
                 <h3>Manual Student Enrollment & Pass Assignment</h3>
               </div>
               <button className="modal-close-btn" onClick={() => setNewStudentModalOpen(false)}>
@@ -2813,7 +3303,7 @@ export default function AdminPortalView({
 
                     <div className="transcript-stats-strip">
                       <div className="stats-left">
-                        <span>Total Words: <strong style={{ color: typingWords > 0 ? '#047857' : '#0f172a' }}>{typingWords} words</strong></span>
+                        <span>Total Words: <strong style={{ color: typingWords > 0 ? '#047857' : '#1c1917' }}>{typingWords} words</strong></span>
                         <span>Total Characters: <strong>{typingPassage.length} chars</strong></span>
                         <span>Target Speed: <strong style={{ color: '#059669' }}>{typingTargetSpeed}</strong></span>
                         <span>Duration: <strong>{typingDuration}</strong></span>
@@ -2904,7 +3394,7 @@ export default function AdminPortalView({
               <div className="modal-header">
                 <div>
                   <div className="modal-title-with-badge">
-                    <span className="badge badge-purple" style={{ background: '#eff6ff', color: '#1d4ed8', borderColor: '#bfdbfe' }}>
+                    <span className="badge badge-purple" style={{ background: '#f5f4f0', color: '#1c1917', borderColor: '#e7e5e4' }}>
                       <Video size={13} />
                       <span>Live Classroom Studio</span>
                     </span>
@@ -2924,16 +3414,16 @@ export default function AdminPortalView({
               </div>
 
               {/* Quick Template Presets Bar */}
-              <div className="modal-quick-presets-strip" style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', padding: '0.65rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
-                <span style={{ fontSize: '0.78rem', fontWeight: '700', color: '#475569', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                  <Sparkles size={13} style={{ color: '#2563eb' }} />
+              <div className="modal-quick-presets-strip" style={{ background: '#f5f4f0', borderBottom: '1px solid #e7e5e4', padding: '0.65rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '0.78rem', fontWeight: '700', color: '#57534e', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                  <Sparkles size={13} style={{ color: '#d97706' }} />
                   <span>Quick Presets:</span>
                 </span>
                 <button 
                   type="button" 
                   className="btn-template-pill"
                   onClick={() => loadClassTemplate('ssc80')}
-                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid #cbd5e1', background: '#ffffff', cursor: 'pointer', fontWeight: '600', color: '#1e293b' }}
+                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid #e7e5e4', background: '#ffffff', cursor: 'pointer', fontWeight: '600', color: '#1c1917' }}
                 >
                   ⚡ SSC Steno (80 WPM Morning)
                 </button>
@@ -2941,7 +3431,7 @@ export default function AdminPortalView({
                   type="button" 
                   className="btn-template-pill"
                   onClick={() => loadClassTemplate('judicial100')}
-                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid #cbd5e1', background: '#ffffff', cursor: 'pointer', fontWeight: '600', color: '#1e293b' }}
+                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid #e7e5e4', background: '#ffffff', cursor: 'pointer', fontWeight: '600', color: '#1c1917' }}
                 >
                   ⚖️ High Court Bench (100 WPM)
                 </button>
@@ -2949,7 +3439,7 @@ export default function AdminPortalView({
                   type="button" 
                   className="btn-template-pill"
                   onClick={() => loadClassTemplate('reporter120')}
-                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid #cbd5e1', background: '#ffffff', cursor: 'pointer', fontWeight: '600', color: '#1e293b' }}
+                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid #e7e5e4', background: '#ffffff', cursor: 'pointer', fontWeight: '600', color: '#1c1917' }}
                 >
                   🏛️ Parliament Reporter (120+ WPM)
                 </button>
@@ -3085,12 +3575,12 @@ export default function AdminPortalView({
                   {/* Immediate Go-Live Radio Selector */}
                   <div style={{ marginTop: '0.85rem', padding: '0.75rem', background: '#ffffff', borderRadius: '8px', border: '1px solid #86efac', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                      <Radio size={18} style={{ color: newClassIsLive ? '#dc2626' : '#64748b' }} />
+                      <Radio size={18} style={{ color: newClassIsLive ? '#dc2626' : '#78716c' }} />
                       <div>
-                        <div style={{ fontWeight: '700', fontSize: '0.85rem', color: '#0f172a' }}>
+                        <div style={{ fontWeight: '700', fontSize: '0.85rem', color: '#1c1917' }}>
                           Broadcast Status for Students:
                         </div>
-                        <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
+                        <div style={{ fontSize: '0.75rem', color: '#78716c' }}>
                           {newClassIsLive 
                             ? '🔴 Marked LIVE NOW — shows pulsing red badge and enables 1-click In-Browser Video Studio.' 
                             : '⏳ Scheduled for Upcoming — candidates see start time and can bookmark.'}
@@ -3110,8 +3600,8 @@ export default function AdminPortalView({
                           fontWeight: '700',
                           cursor: 'pointer',
                           background: newClassIsLive ? '#dc2626' : '#ffffff',
-                          color: newClassIsLive ? '#ffffff' : '#64748b',
-                          borderColor: newClassIsLive ? '#dc2626' : '#cbd5e1'
+                          color: newClassIsLive ? '#ffffff' : '#78716c',
+                          borderColor: newClassIsLive ? '#dc2626' : '#d6d3d1'
                         }}
                       >
                         ● Go Live Now
@@ -3126,9 +3616,9 @@ export default function AdminPortalView({
                           fontSize: '0.76rem',
                           fontWeight: '700',
                           cursor: 'pointer',
-                          background: !newClassIsLive ? '#2563eb' : '#ffffff',
-                          color: !newClassIsLive ? '#ffffff' : '#64748b',
-                          borderColor: !newClassIsLive ? '#2563eb' : '#cbd5e1'
+                          background: !newClassIsLive ? '#1c1917' : '#ffffff',
+                          color: !newClassIsLive ? '#ffffff' : '#78716c',
+                          borderColor: !newClassIsLive ? '#1c1917' : '#d6d3d1'
                         }}
                       >
                         ⏳ Schedule Upcoming
@@ -3138,10 +3628,10 @@ export default function AdminPortalView({
                 </div>
 
                 {/* Row 5: Today's Dictation Topic & Live Whiteboard Master Passage */}
-                <div className="dictation-section-block" style={{ background: '#f8fafc', borderColor: '#e2e8f0', marginTop: '1rem' }}>
+                <div className="dictation-section-block" style={{ background: '#faf9f6', borderColor: '#e7e5e4', marginTop: '1rem' }}>
                   <div className="section-block-header">
                     <div className="header-left">
-                      <span className="section-step-num" style={{ background: '#2563eb' }}>Dictation</span>
+                      <span className="section-step-num" style={{ background: '#1c1917', color: '#ffffff' }}>Dictation</span>
                       <div>
                         <h4 className="section-block-title">Today's Live Dictation Topic & Reference Passage *</h4>
                         <p className="section-block-desc">
@@ -3177,24 +3667,24 @@ export default function AdminPortalView({
                 </div>
 
                 {/* Instant Availability Verification Strip */}
-                <div className="dictation-sync-verify-strip" style={{ background: '#eff6ff', borderColor: '#bfdbfe', marginTop: '0.75rem' }}>
+                <div className="dictation-sync-verify-strip" style={{ background: '#f5f4f0', borderColor: '#e7e5e4', marginTop: '0.75rem' }}>
                   <div className="sync-col">
-                    <span className="sync-label" style={{ color: '#1e40af' }}>Target Speed</span>
-                    <span className="sync-status is-ready font-mono" style={{ color: '#1d4ed8' }}>
+                    <span className="sync-label" style={{ color: '#57534e' }}>Target Speed</span>
+                    <span className="sync-status is-ready font-mono" style={{ color: '#1c1917' }}>
                       {newClassSpeed}
                     </span>
                   </div>
-                  <div className="sync-divider" style={{ background: '#bfdbfe' }} />
+                  <div className="sync-divider" style={{ background: '#e7e5e4' }} />
                   <div className="sync-col">
-                    <span className="sync-label" style={{ color: '#1e40af' }}>Zoom Direct Link</span>
-                    <span className="sync-status is-ready font-mono" style={{ color: '#1d4ed8', fontSize: '0.75rem' }}>
+                    <span className="sync-label" style={{ color: '#57534e' }}>Zoom Direct Link</span>
+                    <span className="sync-status is-ready font-mono" style={{ color: '#1c1917', fontSize: '0.75rem' }}>
                       zoom.us/j/{newClassMeetingId.replace(/\s+/g, '')}
                     </span>
                   </div>
-                  <div className="sync-divider" style={{ background: '#bfdbfe' }} />
+                  <div className="sync-divider" style={{ background: '#e7e5e4' }} />
                   <div className="sync-col">
-                    <span className="sync-label" style={{ color: '#1e40af' }}>Student Real-Time Sync</span>
-                    <span className="sync-status is-ready font-mono" style={{ color: '#16a34a' }}>
+                    <span className="sync-label" style={{ color: '#57534e' }}>Student Real-Time Sync</span>
+                    <span className="sync-status is-ready font-mono" style={{ color: '#059669' }}>
                       ✓ Instant Push to Candidate Portal
                     </span>
                   </div>
@@ -3204,7 +3694,7 @@ export default function AdminPortalView({
               {/* Sticky Footer Actions */}
               <div className="admin-modal-footer-sticky">
                 <span className="footer-hint-text">
-                  <ShieldCheck size={14} style={{ color: '#2563eb' }} />
+                  <ShieldCheck size={14} style={{ color: '#10b981' }} />
                   <span>Verified Zoom Classroom • Students can join via In-Browser Studio or Zoom Desktop App</span>
                 </span>
 
@@ -3220,8 +3710,8 @@ export default function AdminPortalView({
                     type="submit" 
                     className="btn btn-primary"
                     style={{ 
-                      background: 'linear-gradient(135deg, #881337 0%, #4c0519 100%)', 
-                      borderColor: '#881337', 
+                      background: 'linear-gradient(135deg, #18181b 0%, #4c0519 100%)', 
+                      borderColor: '#18181b', 
                       color: '#ffffff',
                       boxShadow: '0 4px 14px rgba(136, 19, 55, 0.3)' 
                     }}
@@ -3378,15 +3868,247 @@ export default function AdminPortalView({
 
               <div className="admin-modal-footer-sticky">
                 <span className="footer-hint-text">
-                  <ShieldCheck size={14} className="text-blue-600" />
+                  <ShieldCheck size={14} className="text-emerald-600" />
                   <span>Changes will immediately sync with all candidates</span>
                 </span>
                 <div className="admin-modal-footer-actions">
                   <button type="button" className="btn btn-secondary" onClick={() => setEditingClass(null)}>
                     Cancel
                   </button>
-                  <button type="submit" className="btn btn-primary" style={{ background: '#881337' }}>
+                  <button type="submit" className="btn btn-primary" style={{ background: '#18181b' }}>
                     Save & Update Class
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL 5: Add / Edit Course Catalog Batch */}
+      {newCourseModalOpen && (
+        <div className="modal-backdrop">
+          <div className="saas-card modal-window admin-modal-wide">
+            <form onSubmit={handleSaveCourse} className="admin-modal-form-wrapper">
+              
+              {/* Header */}
+              <div className="modal-header">
+                <div>
+                  <div className="modal-title-with-badge">
+                    <span className="badge badge-blue">
+                      <GraduationCap size={13} />
+                      <span>Academy Curriculum</span>
+                    </span>
+                    <h3 className="modal-title">
+                      {editingCourse ? 'Edit Academy Course Batch' : 'Create New Academy Course Batch'}
+                    </h3>
+                  </div>
+                  <p className="modal-subtitle">
+                    Configure curriculum details, speed benchmarks, and tuition fee. Once saved, this batch immediately displays on the candidate portal with automatic checkout mapping.
+                  </p>
+                </div>
+                <button 
+                  type="button" 
+                  className="btn-modal-close" 
+                  onClick={() => {
+                    setNewCourseModalOpen(false);
+                    setEditingCourse(null);
+                  }}
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* Form Body */}
+              <div className="admin-modal-body-scrollable">
+                <div className="modal-grid-two-col">
+                  {/* Field: Title */}
+                  <div className="field-group span-two">
+                    <label className="field-label">
+                      <span>Course Title *</span>
+                      <span className="field-sub">Official name of the preparation program or batch</span>
+                    </label>
+                    <input 
+                      type="text" 
+                      className="field-input font-bold" 
+                      placeholder="e.g. RRB Stenographer & Clerk Exam Mastery 2026"
+                      value={courseForm.title}
+                      onChange={(e) => setCourseForm({ ...courseForm, title: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  {/* Field: Category */}
+                  <div className="field-group">
+                    <label className="field-label">
+                      <span>Exam Category *</span>
+                      <span className="field-sub">Curriculum classification</span>
+                    </label>
+                    <CustomSelect
+                      value={courseForm.category}
+                      onChange={(val) => setCourseForm({ ...courseForm, category: val })}
+                      options={[
+                        { value: 'Foundation', label: 'Foundation (Pitman Shorthand)' },
+                        { value: 'Judicial Bench', label: 'Judicial Bench (High Courts)' },
+                        { value: 'Central Govt', label: 'Central Govt (SSC Grade C & D)' },
+                        { value: 'Govt Diplomas', label: 'Govt Diplomas (DCA / ADCA)' },
+                        { value: 'State Exams', label: 'State & Police Stenographer' }
+                      ]}
+                    />
+                  </div>
+
+                  {/* Field: Badge Tag */}
+                  <div className="field-group">
+                    <label className="field-label">
+                      <span>Badge / Tag Label</span>
+                      <span className="field-sub">e.g. Beginner to 80 WPM, Patna & Jharkhand HC</span>
+                    </label>
+                    <input 
+                      type="text" 
+                      className="field-input" 
+                      placeholder="e.g. SSC Grade C & D Special"
+                      value={courseForm.badge}
+                      onChange={(e) => setCourseForm({ ...courseForm, badge: e.target.value })}
+                    />
+                  </div>
+
+                  {/* Field: Target Speed */}
+                  <div className="field-group">
+                    <label className="field-label">
+                      <span>Target Speed Benchmark *</span>
+                      <span className="field-sub">e.g. 0 → 80 WPM, 80 & 100 WPM, 120 WPM</span>
+                    </label>
+                    <input 
+                      type="text" 
+                      className="field-input font-mono" 
+                      placeholder="e.g. 80 → 110 WPM"
+                      value={courseForm.speedTarget}
+                      onChange={(e) => setCourseForm({ ...courseForm, speedTarget: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  {/* Field: Duration */}
+                  <div className="field-group">
+                    <label className="field-label">
+                      <span>Duration *</span>
+                      <span className="field-sub">e.g. 3 to 4 Months, 1 Month Intensive</span>
+                    </label>
+                    <input 
+                      type="text" 
+                      className="field-input" 
+                      placeholder="e.g. 3 Months Intensive"
+                      value={courseForm.duration}
+                      onChange={(e) => setCourseForm({ ...courseForm, duration: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  {/* Field: Fee */}
+                  <div className="field-group">
+                    <label className="field-label">
+                      <span>Course Fee / Pricing *</span>
+                      <span className="field-sub">Display fee (e.g. ₹700 / Month, ₹6,000 (Complete))</span>
+                    </label>
+                    <input 
+                      type="text" 
+                      className="field-input font-mono font-bold" 
+                      placeholder="e.g. ₹700 / Month"
+                      value={courseForm.fee}
+                      onChange={(e) => setCourseForm({ ...courseForm, fee: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  {/* Field: Delivery Mode */}
+                  <div className="field-group">
+                    <label className="field-label">
+                      <span>Delivery Mode</span>
+                      <span className="field-sub">Offline Center or Online Live Zoom</span>
+                    </label>
+                    <input 
+                      type="text" 
+                      className="field-input" 
+                      placeholder="e.g. Online Live Zoom + Audio Lab Access"
+                      value={courseForm.mode}
+                      onChange={(e) => setCourseForm({ ...courseForm, mode: e.target.value })}
+                    />
+                  </div>
+
+                  {/* Field: Flagship Popular Toggle */}
+                  <div className="field-group span-two" style={{ background: '#f4f4f5', padding: '0.85rem 1rem', borderRadius: '10px', border: '1px solid #e4e4e7' }}>
+                    <label style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', cursor: 'pointer' }}>
+                      <input 
+                        type="checkbox" 
+                        checked={courseForm.popular}
+                        onChange={(e) => setCourseForm({ ...courseForm, popular: e.target.checked })}
+                        style={{ width: '18px', height: '18px', accentColor: '#18181b', cursor: 'pointer' }}
+                      />
+                      <div>
+                        <strong style={{ color: '#18181b', fontSize: '0.9rem' }}>⭐ Flagship / Featured Course Badge</strong>
+                        <p style={{ margin: 0, fontSize: '0.78rem', color: '#78716c' }}>
+                          Highlight this program at the top of the course catalog with a golden "FLAGSHIP BATCH" banner.
+                        </p>
+                      </div>
+                    </label>
+                  </div>
+
+                  {/* Field: Description */}
+                  <div className="field-group span-two">
+                    <label className="field-label">
+                      <span>Course Overview & Summary</span>
+                      <span className="field-sub">Explain who this course is for and the key benefits</span>
+                    </label>
+                    <textarea 
+                      className="field-textarea" 
+                      rows={3}
+                      placeholder="Comprehensive shorthand training designed specifically for government exam aspirants..."
+                      value={courseForm.description}
+                      onChange={(e) => setCourseForm({ ...courseForm, description: e.target.value })}
+                    />
+                  </div>
+
+                  {/* Field: Syllabus Textarea */}
+                  <div className="field-group span-two">
+                    <label className="field-label">
+                      <span>Curriculum & Syllabus Highlights (One topic per line)</span>
+                      <span className="field-sub">These will display as checkmark bullet points on the course card</span>
+                    </label>
+                    <textarea 
+                      className="field-textarea font-mono" 
+                      rows={5}
+                      placeholder="Complete Theory & Stroke Geometry&#10;Handwritten Outline Checks Daily&#10;Grammalogues & Phraseography Drills&#10;Previous 10 Years Solved Dictations"
+                      value={courseForm.syllabusText}
+                      onChange={(e) => setCourseForm({ ...courseForm, syllabusText: e.target.value })}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Modal Footer */}
+              <div className="admin-modal-footer-sticky">
+                <span className="footer-hint-text">
+                  <ShieldCheck size={14} className="text-emerald-600" />
+                  <span>Immediate synchronization with public course catalog & checkout</span>
+                </span>
+                <div className="admin-modal-footer-actions">
+                  <button 
+                    type="button" 
+                    className="btn btn-secondary" 
+                    onClick={() => {
+                      setNewCourseModalOpen(false);
+                      setEditingCourse(null);
+                    }}
+                  >
+                    Cancel
+                  </button>
+                  <button 
+                    type="submit" 
+                    className="btn btn-primary" 
+                    style={{ background: '#1c1917', borderColor: '#1c1917', color: '#ffffff', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+                  >
+                    <CheckCircle2 size={15} />
+                    <span>{editingCourse ? 'Save & Update Course' : 'Publish Course Batch'}</span>
                   </button>
                 </div>
               </div>

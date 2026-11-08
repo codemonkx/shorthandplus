@@ -15,12 +15,28 @@ import {
   TrendingUp,
   BarChart3,
   Calendar,
-  Sparkles
+  Sparkles,
+  Video,
+  CreditCard,
+  RefreshCw,
+  ExternalLink,
+  Users
 } from 'lucide-react';
-import { STENO_TESTS } from '../data/mockData';
+import { STENO_TESTS, TYPING_TESTS, INITIAL_TRANSACTIONS } from '../data/mockData';
 
-export default function DashboardView({ user, onStartTest, onViewResult, onNavigate }) {
-  const recommended = STENO_TESTS[0];
+export default function DashboardView({ 
+  user, 
+  onStartTest, 
+  onViewResult, 
+  onNavigate,
+  stenoTests = STENO_TESTS,
+  typingTests = TYPING_TESTS,
+  transactions = INITIAL_TRANSACTIONS,
+  onOpenCheckout
+}) {
+  const allSteno = stenoTests && stenoTests.length > 0 ? stenoTests : STENO_TESTS;
+  const allTyping = typingTests && typingTests.length > 0 ? typingTests : TYPING_TESTS;
+  const recommended = allSteno[0] || STENO_TESTS[0];
   const [activeSpeed, setActiveSpeed] = useState(80);
 
   const speedTiers = [
@@ -60,10 +76,13 @@ export default function DashboardView({ user, onStartTest, onViewResult, onNavig
     }
   ];
 
+  // Filter transactions for student view
+  const studentTransactions = transactions && transactions.length > 0 ? transactions.slice(0, 5) : INITIAL_TRANSACTIONS;
+
   return (
     <div className="simple-dashboard-root">
       {/* =========================================================================
-          1. CLEAN EXECUTIVE GREETING HEADER
+          EXECUTIVE GREETING HEADER
           ========================================================================= */}
       <section className="dashboard-welcome-header">
         <div className="welcome-text-cluster">
@@ -73,8 +92,8 @@ export default function DashboardView({ user, onStartTest, onViewResult, onNavig
               <span>SSC & HIGH COURT 2026 BATCH</span>
             </span>
             <span className="welcome-target-pill">
-              <Target size={13} className="text-blue-500" />
-              <span>Active Target: 80 WPM Bench</span>
+              <ShieldCheck size={12} className="text-burgundy" />
+              <span>Roll: {user?.rollNo || 'SP-2026-BB4'}</span>
             </span>
           </div>
 
@@ -83,7 +102,7 @@ export default function DashboardView({ user, onStartTest, onViewResult, onNavig
           </h1>
 
           <p className="welcome-subtext">
-            Your stenographic accuracy is currently <strong className="text-emerald-700">95.8% (above passing cutoff)</strong>. Complete today's daily 80 WPM bench to maintain your practice rhythm.
+            Your stenographic accuracy is currently <strong className="text-emerald-700">95.8% (above passing cutoff)</strong>. You have <strong>{allSteno.length} Audio Dictations</strong> and <strong>{allTyping.length} Typing Drills</strong> ready.
           </p>
         </div>
 
@@ -92,121 +111,118 @@ export default function DashboardView({ user, onStartTest, onViewResult, onNavig
             className="btn-welcome-primary"
             onClick={() => onStartTest(recommended.id)}
           >
-            <Play size={16} fill="currentColor" />
+            <Play size={15} fill="currentColor" />
             <span>Start Daily 80 WPM Test</span>
           </button>
           
           <button 
             className="btn-welcome-secondary"
-            onClick={() => onNavigate('steno-vault')}
+            onClick={() => onNavigate('typing-studio')}
           >
-            <Headphones size={15} />
-            <span>Audio Vault</span>
+            <Keyboard size={15} />
+            <span>Typing Studio ({allTyping.length})</span>
           </button>
         </div>
       </section>
 
       {/* =========================================================================
-          2. ELEGANT 4-CARD METRIC STRIP
+          3. ELEGANT 4-CARD METRIC STRIP
           ========================================================================= */}
       <section className="dashboard-metrics-strip">
         <div className="clean-metric-card">
           <div className="metric-header-row">
             <span className="metric-card-title">Dictation Speed</span>
-            <div className="metric-icon-box bg-blue-light">
-              <Zap size={16} className="text-blue-600" />
+            <div className="metric-icon-box bg-amber-50">
+              <Zap size={16} className="text-amber-600" />
             </div>
           </div>
           <div className="metric-card-number font-mono">
             {user?.stats?.highestSpeed || 96} <small className="metric-unit">WPM</small>
           </div>
           <div className="metric-card-foot">
-            <span className="metric-chip chip-blue">SSC Grade C Level</span>
+            <span className="metric-chip chip-amber">SSC Grade C Level</span>
             <span className="metric-caption">Peak Velocity</span>
           </div>
         </div>
 
         <div className="clean-metric-card">
           <div className="metric-header-row">
-            <span className="metric-card-title">Mean Accuracy</span>
+            <span className="metric-card-title">Average Accuracy</span>
             <div className="metric-icon-box bg-emerald-light">
-              <Target size={16} className="text-emerald-600" />
+              <CheckCircle2 size={16} className="text-emerald-600" />
             </div>
           </div>
-          <div className="metric-card-number font-mono text-emerald-600">
+          <div className="metric-card-number font-mono">
             {user?.stats?.avgAccuracy || 95.8}%
           </div>
           <div className="metric-card-foot">
-            <span className="metric-chip chip-emerald">&lt; 5% Mistake Limit</span>
+            <span className="metric-chip chip-emerald">Above SSC Cutoff</span>
             <span className="metric-caption">Official Threshold</span>
           </div>
         </div>
 
         <div className="clean-metric-card">
           <div className="metric-header-row">
-            <span className="metric-card-title">Completed Tests</span>
-            <div className="metric-icon-box bg-purple-light">
-              <FileCheck size={16} className="text-purple-600" />
+            <span className="metric-card-title">Available Drills</span>
+            <div className="metric-icon-box bg-indigo-light">
+              <Headphones size={16} className="text-indigo-600" />
             </div>
           </div>
           <div className="metric-card-number font-mono">
-            {user?.stats?.totalTestsTaken || 42}
+            {allSteno.length + allTyping.length}
           </div>
           <div className="metric-card-foot">
-            <span className="metric-chip chip-purple">+4 this week</span>
-            <span className="metric-caption">Steno & Typing</span>
+            <span className="metric-chip chip-indigo">{allSteno.length} Audio / {allTyping.length} Typing</span>
+            <span className="metric-caption">All Practice Vaults</span>
           </div>
         </div>
 
         <div className="clean-metric-card">
           <div className="metric-header-row">
-            <span className="metric-card-title">Words Transcribed</span>
+            <span className="metric-card-title">Practice Streak</span>
             <div className="metric-icon-box bg-amber-light">
-              <Keyboard size={16} className="text-amber-600" />
+              <Award size={16} className="text-amber-600" />
             </div>
           </div>
           <div className="metric-card-number font-mono">
-            {(user?.stats?.wordsTranscribed || 26850).toLocaleString()}
+            {user?.stats?.currentStreak || 14} <small className="metric-unit">Days</small>
           </div>
           <div className="metric-card-foot">
-            <span className="metric-chip chip-amber">Verified Lexicon</span>
-            <span className="metric-caption">Eng & Hindi</span>
+            <span className="metric-chip chip-amber">Disciplined Cadet</span>
+            <span className="metric-caption">Daily Cadence</span>
           </div>
         </div>
       </section>
 
       {/* =========================================================================
-          3. MAIN TWO-COLUMN WORKSPACE: DAILY TEST & SPEED TIERS
+          4. PRACTICE VAULTS: AUDIO DICTATIONS & TYPING SPEED (BALANCED 2-COLUMN GRID)
           ========================================================================= */}
       <section className="dashboard-main-grid">
-        {/* Left Column: Today's Recommended Benchmark Card */}
+        {/* Left Column: Recommended Daily Benchmark */}
         <div className="clean-featured-card">
-          <div className="featured-card-top-row">
-            <span className="featured-badge">
-              <Sparkles size={12} className="text-amber-500 mr-1" />
-              TODAY'S BENCHMARK DRILL
-            </span>
-            <span className="featured-speed-tag font-mono">80 WPM Standard</span>
-          </div>
-
-          <h3 className="featured-exam-title">{recommended.title}</h3>
-
-          <p className="featured-exam-desc">
-            Official full-length parliamentary dictation matching exact Staff Selection Commission (SSC Grade D) and High Court examination cadence.
-          </p>
-
-          <div className="featured-spec-chips">
-            <div className="spec-chip">
-              <Clock size={13} className="text-slate-400" />
-              <span>5m Audio + 10m Typing</span>
+          <div className="featured-card-top-content">
+            <div className="featured-card-top-row">
+              <span className="featured-badge">TODAY'S BENCHMARK</span>
+              <span className="featured-speed-tag font-mono">{recommended.speed}</span>
             </div>
-            <div className="spec-chip">
-              <FileCheck size={13} className="text-slate-400" />
-              <span>437 Words</span>
-            </div>
-            <div className="spec-chip">
-              <ShieldCheck size={13} className="text-emerald-500" />
-              <span>Strict Exam Mode</span>
+            <h3 className="featured-exam-title">{recommended.title}</h3>
+            <p className="featured-exam-desc">
+              Standard judicial and parliamentary transcript recorded with calibrated speech pauses and official evaluation rules.
+            </p>
+
+            <div className="featured-spec-chips">
+              <div className="spec-chip">
+                <Clock size={13} className="text-slate-400" />
+                <span>5m Audio + 10m Typing</span>
+              </div>
+              <div className="spec-chip">
+                <FileCheck size={13} className="text-slate-400" />
+                <span>{recommended.totalWords || 437} Words</span>
+              </div>
+              <div className="spec-chip">
+                <ShieldCheck size={13} className="text-emerald-500" />
+                <span>Strict Exam Mode</span>
+              </div>
             </div>
           </div>
 
@@ -224,7 +240,7 @@ export default function DashboardView({ user, onStartTest, onViewResult, onNavig
               className="btn-browse-vault-link"
               onClick={() => onNavigate('steno-vault')}
             >
-              Browse all 12 tests in Steno Vault →
+              Browse all {allSteno.length} tests in Steno Vault →
             </button>
           </div>
         </div>
@@ -264,13 +280,100 @@ export default function DashboardView({ user, onStartTest, onViewResult, onNavig
       </section>
 
       {/* =========================================================================
-          4. RECENT SESSIONS LEDGER (COMPACT & SIMPLE)
+          5. MONTHLY SUBSCRIPTION & BILLING LEDGER (TRANSACTIONS)
           ========================================================================= */}
-      <section className="dashboard-recent-section">
+      <section className="dashboard-subscription-ledger-section">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '1rem' }}>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
+              <CreditCard size={18} className="text-emerald-600" />
+              <h3 style={{ margin: 0, fontSize: '1.15rem', fontWeight: 700, color: '#1c1917' }}>
+                My Monthly Subscription & Billing Ledger
+              </h3>
+              <span className="badge badge-emerald" style={{ fontSize: '0.75rem', fontWeight: 700 }}>
+                Monthly Recurring
+              </span>
+            </div>
+            <p style={{ margin: 0, fontSize: '0.85rem', color: '#78716c' }}>
+              Active Pass: <strong>{user?.subscription?.plan || 'Monthly Test Series (Auto-Renews)'}</strong> • Renews automatically every month
+            </p>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <div style={{ textAlign: 'right', marginRight: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', color: '#78716c', display: 'block' }}>Next Monthly Renewal</span>
+              <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1c1917', fontFamily: 'monospace' }}>
+                {user?.subscription?.nextBillingDate || '23 Nov 2026'}
+              </span>
+            </div>
+            <button 
+              type="button" 
+              onClick={() => onOpenCheckout ? onOpenCheckout('plan-1mo') : onNavigate('pricing')}
+              className="btn btn-secondary btn-sm"
+              style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', borderColor: '#e7e5e4', color: '#1c1917', background: '#ffffff' }}
+            >
+              <CreditCard size={14} />
+              <span>Manage / Upgrade</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Recent Monthly Transactions Table */}
+        <div style={{ overflowX: 'auto', border: '1px solid #e7e5e4', borderRadius: '0.75rem', background: '#ffffff' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem', textAlign: 'left' }}>
+            <thead>
+              <tr style={{ background: '#faf9f6', borderBottom: '1px solid #e7e5e4', color: '#57534e', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <th style={{ padding: '0.75rem 1rem' }}>Transaction ID</th>
+                <th style={{ padding: '0.75rem 1rem' }}>Subscription / Course</th>
+                <th style={{ padding: '0.75rem 1rem' }}>Billing Frequency</th>
+                <th style={{ padding: '0.75rem 1rem' }}>Date & Time</th>
+                <th style={{ padding: '0.75rem 1rem' }}>Amount</th>
+                <th style={{ padding: '0.75rem 1rem' }}>Payment Mode</th>
+                <th style={{ padding: '0.75rem 1rem' }}>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {studentTransactions.map((txn) => (
+                <tr key={txn.id} style={{ borderBottom: '1px solid #e7e5e4' }}>
+                  <td style={{ padding: '0.75rem 1rem', fontFamily: 'monospace', fontWeight: 600, color: '#1c1917' }}>
+                    {txn.id}
+                  </td>
+                  <td style={{ padding: '0.75rem 1rem', fontWeight: 600, color: '#1c1917' }}>
+                    {txn.plan}
+                  </td>
+                  <td style={{ padding: '0.75rem 1rem', color: '#78716c' }}>
+                    {txn.billingCycle || 'Monthly Recurring'}
+                  </td>
+                  <td style={{ padding: '0.75rem 1rem', color: '#78716c', fontFamily: 'monospace' }}>
+                    {txn.date}
+                  </td>
+                  <td style={{ padding: '0.75rem 1rem', fontFamily: 'monospace', fontWeight: 700, color: '#1c1917' }}>
+                    ₹{txn.amount}
+                  </td>
+                  <td style={{ padding: '0.75rem 1rem', color: '#57534e' }}>
+                    {txn.mode}
+                  </td>
+                  <td style={{ padding: '0.75rem 1rem' }}>
+                    <span style={{ background: '#f0fdf4', color: '#047857', border: '1px solid #dcfce7', padding: '0.2rem 0.5rem', borderRadius: 9999, fontSize: '0.75rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                      <CheckCircle2 size={12} />
+                      <span>{txn.status || 'Verified'}</span>
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          6. RECENT SESSIONS LEDGER (COMPACT & SIMPLE)
+          ========================================================================= */}
+      <section className="dashboard-recent-section" style={{ marginTop: '1.5rem' }}>
         <div className="recent-section-header">
           <div>
-            <h3 className="recent-section-title">Recent Practice Sessions</h3>
-            <span className="recent-section-sub">Latest evaluated stenographic and typing transcripts</span>
+            <h3 className="recent-section-title">Recent Practice Transcripts</h3>
+            <span className="recent-section-sub">Latest evaluated stenographic audio and typing transcripts</span>
           </div>
 
           <button 

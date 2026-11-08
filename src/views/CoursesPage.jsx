@@ -93,15 +93,20 @@ const ACADEMY_COURSES = [
   }
 ];
 
-export default function CoursesPage({ onSelectPlan, onOpenCheckout, setCurrentTab }) {
+export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, onOpenCheckout, setCurrentTab }) {
   const [filterCategory, setFilterCategory] = useState('all');
 
-  const filteredCourses = ACADEMY_COURSES.filter((course) => {
+  const displayCourses = courses && courses.length > 0 ? courses : ACADEMY_COURSES;
+
+  const filteredCourses = displayCourses.filter((course) => {
     if (filterCategory === 'all') return true;
-    if (filterCategory === 'pitman') return course.id === 'course-pitman';
-    if (filterCategory === 'court') return course.id === 'course-court';
-    if (filterCategory === 'ssc') return course.id === 'course-ssc';
-    if (filterCategory === 'diplomas') return course.id === 'course-diplomas';
+    const cat = (course.category || '').toLowerCase();
+    const id = (course.id || '').toLowerCase();
+    const title = (course.title || '').toLowerCase();
+    if (filterCategory === 'pitman') return cat.includes('foundation') || id.includes('pitman') || title.includes('pitman');
+    if (filterCategory === 'court') return cat.includes('judicial') || id.includes('court') || title.includes('court');
+    if (filterCategory === 'ssc') return cat.includes('central') || id.includes('ssc') || title.includes('ssc');
+    if (filterCategory === 'diplomas') return cat.includes('diploma') || id.includes('diploma') || title.includes('diploma') || title.includes('dca');
     return true;
   });
 
@@ -219,7 +224,21 @@ export default function CoursesPage({ onSelectPlan, onOpenCheckout, setCurrentTa
                   <button 
                     className="btn-enroll-course"
                     onClick={() => {
-                      if (onOpenCheckout) onOpenCheckout('plan-1mo');
+                      const coursePlanMap = {
+                        'course-pitman': { id: 'course-pitman', name: 'Basic Pitman Shorthand Masterclass', price: 6000, duration: 'Complete Foundation Course', description: 'Full Pitman theory, workbook checks & audio vault access.' },
+                        'course-court': { id: 'course-court', name: 'High Court Judicial Speed Series', price: 700, duration: 'Monthly Subscription', description: 'Specialized High Court courtroom reporter transcription batch.' },
+                        'course-ssc': { id: 'course-ssc', name: 'SSC Stenographer Crash Batch', price: 249, duration: 'Monthly Subscription', description: 'Parliamentary speeches, live speed tests, and automated error calculation.' },
+                        'course-diplomas': { id: 'course-diplomas', name: 'Computer Diplomas (DCA / ADCA)', price: 1200, duration: 'Govt. Diploma Registration', description: 'Official government-accredited computer applications diploma.' }
+                      };
+                      const numFee = parseInt(String(course.fee || '').replace(/\D/g, '')) || 499;
+                      const planToOpen = coursePlanMap[course.id] || {
+                        id: course.id,
+                        name: course.title,
+                        price: numFee,
+                        duration: course.duration || 'Academy Batch Access',
+                        description: course.description || 'Complete batch curriculum with live and archive dictation access.'
+                      };
+                      if (onOpenCheckout) onOpenCheckout(planToOpen);
                     }}
                   >
                     <span>Enroll Now</span>

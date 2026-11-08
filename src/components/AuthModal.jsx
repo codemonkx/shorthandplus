@@ -1,186 +1,490 @@
-import React, { useState } from 'react';
-import { X, Lock, Mail, User, Phone, MapPin, Globe, CheckCircle2, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { 
+  X, Lock, Mail, User, Phone, MapPin, Globe, CheckCircle2, 
+  ArrowRight, ShieldCheck, GraduationCap, Key, Eye, EyeOff, 
+  AlertCircle, Info, Loader2, Sparkles, UserPlus 
+} from 'lucide-react';
 import confetti from 'canvas-confetti';
 import CustomSelect from './CustomSelect';
+import { api, setToken } from '../services/api';
 
-export default function AuthModal({ isOpen, onClose, onLoginSuccess }) {
-  const [isLoginTab, setIsLoginTab] = useState(true);
+export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab = 'student' }) {
+  // authMode: 'student' | 'admin' | 'register' | 'forgot'
+  const [authMode, setAuthMode] = useState(initialTab);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [mobile, setMobile] = useState('');
   const [state, setState] = useState('Bihar');
   const [language, setLanguage] = useState('English');
+  const [adminPasscode, setAdminPasscode] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [statusMsg, setStatusMsg] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Forgot password specific state
+  const [forgotStep, setForgotStep] = useState(1); // 1 = enter email, 2 = enter otp & new pwd
+  const [recoveryCode, setRecoveryCode] = useState('');
+  const [resetNewPassword, setResetNewPassword] = useState('');
+
+  useEffect(() => {
+    if (initialTab) {
+      setAuthMode(initialTab);
+      setStatusMsg(null);
+    }
+  }, [initialTab, isOpen]);
 
   if (!isOpen) return null;
 
-  const handleFillDemo = () => {
+  const handleFillStudentDemo = () => {
     setEmail('shadabca@gmail.com');
     setPassword('shadab12345');
-    setStatusMsg({ type: 'info', text: 'Pre-filled with Shadab credentials!' });
+    setStatusMsg({ 
+      type: 'info', 
+      text: 'Student demo credentials pre-filled! Click "Login to Student Portal" below.' 
+    });
   };
 
-  const handleSubmit = (e) => {
+  const handleFillAdminDemo = () => {
+    setEmail('admin@gaya.com');
+    setAdminPasscode('8080');
+    setStatusMsg({ 
+      type: 'info', 
+      text: 'Faculty Director credentials pre-filled! Click "Login to Faculty Admin Portal" below.' 
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isLoginTab) {
-      if (email === 'shadabca@gmail.com' && password === 'shadab12345') {
-        setStatusMsg({ type: 'success', text: 'Welcome back, Shadab! Logging in...' });
+    setIsSubmitting(true);
+    setStatusMsg(null);
+
+    try {
+      if (authMode === 'admin') {
+        const res = await api.auth.login({ 
+          mode: 'admin', 
+          email: email || 'admin@gaya.com', 
+          adminPasscode: adminPasscode || '8080' 
+        });
+
+        if (res.token) setToken(res.token);
+        try {
+          sessionStorage.setItem('shorthand_admin_authenticated', 'true');
+          confetti({ particleCount: 75, spread: 65, origin: { y: 0.55 }, colors: ['#1c1917', '#d97706', '#f59e0b'] });
+        } catch {}
+
+        setStatusMsg({ type: 'success', text: 'Faculty Director verified! Opening Admin Portal...' });
+        setTimeout(() => {
+          onLoginSuccess(res.user);
+          onClose();
+        }, 500);
+      } else if (authMode === 'student') {
+        const res = await api.auth.login({ email, password });
+        if (res.token) setToken(res.token);
+
         try {
           confetti({ particleCount: 75, spread: 65, origin: { y: 0.55 } });
         } catch {}
+
+        setStatusMsg({ type: 'success', text: 'Welcome back! Logging into your candidate dashboard...' });
         setTimeout(() => {
-          onLoginSuccess({
-            name: 'Shadab Khan',
-            email: 'shadabca@gmail.com',
-            rollNo: 'SP-2026-084',
-            language: 'English',
-            subscription: {
-              plan: '12 Month Unlimited',
-              status: 'Active',
-              daysRemaining: 248,
-              isPaid: true
-            }
-          });
+          onLoginSuccess(res.user);
           onClose();
-        }, 600);
-      } else {
-        setStatusMsg({ type: 'error', text: 'Please enter valid registered credentials or use Quick Demo.' });
-      }
-    } else {
-      setStatusMsg({ type: 'success', text: `Welcome ${name}! Your account has been registered.` });
-      try {
-        confetti({ particleCount: 85, spread: 70, origin: { y: 0.55 } });
-      } catch {}
-      setTimeout(() => {
-        onLoginSuccess({
-          name: name || 'Candidate',
-          email: email,
-          rollNo: 'SP-2026-' + Math.floor(100 + Math.random() * 900),
-          language: language,
-          subscription: {
-            plan: '1-Day Free Trial',
-            status: 'Active',
-            daysRemaining: 1,
-            isPaid: true
+        }, 500);
+      } else if (authMode === 'register') {
+        // Register Mode
+        const res = await api.auth.register({ name, email, password, mobile, state, language });
+        if (res.token) setToken(res.token);
+
+        try {
+          confetti({ particleCount: 85, spread: 70, origin: { y: 0.55 } });
+        } catch {}
+
+        setStatusMsg({ type: 'success', text: `Welcome ${name}! Your student roll number has been generated.` });
+        setTimeout(() => {
+          onLoginSuccess(res.user);
+          onClose();
+        }, 500);
+      } else if (authMode === 'forgot') {
+        // Self-Service Forgot Password
+        if (forgotStep === 1) {
+          if (!email) {
+            setStatusMsg({ type: 'error', text: 'Please enter your registered email address.' });
+            setIsSubmitting(false);
+            return;
           }
-        });
-        onClose();
-      }, 700);
+          const res = await api.auth.forgotPassword(email);
+          setRecoveryCode(res.demoCode || '849201');
+          setForgotStep(2);
+          setStatusMsg({ type: 'info', text: res.message || 'Recovery code generated! Enter code and new password.' });
+        } else {
+          if (!resetNewPassword || resetNewPassword.length < 6) {
+            setStatusMsg({ type: 'error', text: 'New password must be at least 6 characters.' });
+            setIsSubmitting(false);
+            return;
+          }
+          const res = await api.auth.resetPassword({
+            email,
+            code: recoveryCode,
+            newPassword: resetNewPassword
+          });
+          setStatusMsg({ type: 'success', text: res.message || 'Password successfully reset!' });
+          setTimeout(() => {
+            setAuthMode('student');
+            setPassword(resetNewPassword);
+            setForgotStep(1);
+          }, 1500);
+        }
+      }
+    } catch (err) {
+      setStatusMsg({ 
+        type: 'error', 
+        text: err.message || 'Authentication failed. Please verify your credentials and try again.' 
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="modal-backdrop">
-      <div className="modal-card glass-panel-glow">
-        <div className="modal-header">
-          <div className="modal-tabs">
-            <button 
-              className={`modal-tab-btn ${isLoginTab ? 'active' : ''}`}
-              onClick={() => { setIsLoginTab(true); setStatusMsg(null); }}
-            >
-              Sign In
-            </button>
-            <button 
-              className={`modal-tab-btn ${!isLoginTab ? 'active' : ''}`}
-              onClick={() => { setIsLoginTab(false); setStatusMsg(null); }}
-            >
-              Register New Account
-            </button>
+    <div className="modal-backdrop" onClick={onClose}>
+      <div className="modal-card" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 490 }}>
+        {/* Brand Header */}
+        <div className="auth-modal-header">
+          <div className="auth-header-brand-row">
+            <div className="auth-brand-badge">
+              {authMode === 'admin' ? (
+                <ShieldCheck size={22} />
+              ) : authMode === 'register' ? (
+                <UserPlus size={22} />
+              ) : authMode === 'forgot' ? (
+                <Key size={22} />
+              ) : (
+                <GraduationCap size={22} />
+              )}
+            </div>
+            <div className="auth-header-texts">
+              <h2 className="auth-modal-title">
+                {authMode === 'admin' 
+                  ? 'Faculty Admin Portal' 
+                  : authMode === 'register' 
+                    ? 'Candidate Registration' 
+                    : authMode === 'forgot'
+                      ? 'Reset Candidate Password'
+                      : 'Student Portal Login'}
+              </h2>
+              <p className="auth-modal-sub">
+                {authMode === 'admin' 
+                  ? 'Authorized director & faculty access gate' 
+                  : authMode === 'register' 
+                    ? 'Create your account to unlock exam dictations' 
+                    : authMode === 'forgot'
+                      ? 'Self-service recovery for registered shorthand candidates'
+                      : 'Access your daily dictations, speed tests & results'}
+              </p>
+            </div>
           </div>
-          <button className="modal-close-btn" onClick={onClose}>
-            <X size={20} />
+          <button 
+            type="button" 
+            className="modal-close-icon-btn" 
+            onClick={onClose} 
+            aria-label="Close dialog"
+          >
+            <X size={18} />
           </button>
         </div>
 
-        {isLoginTab && (
-          <div className="demo-credentials-banner">
-            <div>
-              <p className="demo-banner-title">Quick Demo Credentials</p>
-              <p className="demo-banner-sub">shadabca@gmail.com / shadab12345</p>
-            </div>
-            <button type="button" className="btn btn-secondary btn-sm" onClick={handleFillDemo}>
-              Auto-Fill
+        {/* Segmented Tab Switcher or Forgot Back Banner */}
+        {authMode === 'forgot' ? (
+          <div style={{ margin: '0.5rem 1.25rem 0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <button 
+              type="button"
+              className="auth-switch-link"
+              onClick={() => { setAuthMode('student'); setStatusMsg(null); setForgotStep(1); }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.82rem', fontWeight: 600, color: '#1c1917', background: '#f5f5f4', padding: '0.35rem 0.75rem', borderRadius: 6, border: '1px solid #e7e5e4' }}
+            >
+              ← Back to Student Login
+            </button>
+            <span style={{ fontSize: '0.75rem', color: '#78716c' }} className="font-mono">
+              Step {forgotStep} of 2
+            </span>
+          </div>
+        ) : (
+          <div className="auth-tabs-segmented">
+            <button 
+              type="button"
+              className={`auth-segmented-btn ${authMode === 'student' ? 'active' : ''}`}
+              onClick={() => { setAuthMode('student'); setStatusMsg(null); }}
+            >
+              <GraduationCap size={15} />
+              <span>Student Login</span>
+            </button>
+            <button 
+              type="button"
+              className={`auth-segmented-btn ${authMode === 'admin' ? 'active' : ''}`}
+              onClick={() => { setAuthMode('admin'); setStatusMsg(null); }}
+            >
+              <ShieldCheck size={15} />
+              <span>Admin Login</span>
+            </button>
+            <button 
+              type="button"
+              className={`auth-segmented-btn ${authMode === 'register' ? 'active' : ''}`}
+              onClick={() => { setAuthMode('register'); setStatusMsg(null); }}
+            >
+              <User size={15} />
+              <span>Register</span>
             </button>
           </div>
         )}
 
-        {statusMsg && (
-          <div className={`status-toast ${statusMsg.type}`}>
-            {statusMsg.type === 'success' && <CheckCircle2 size={16} />}
-            <span>{statusMsg.text}</span>
+        {/* One-Click Demo Helper Cards */}
+        {authMode === 'student' && (
+          <div className="auth-demo-card">
+            <div className="auth-demo-info">
+              <div className="auth-demo-avatar">
+                <Sparkles size={16} />
+              </div>
+              <div className="auth-demo-texts">
+                <span className="auth-demo-title">Student Demo Account</span>
+                <span className="auth-demo-creds">shadabca@gmail.com • shadab12345</span>
+              </div>
+            </div>
+            <button 
+              type="button" 
+              className="auth-demo-btn" 
+              onClick={handleFillStudentDemo}
+            >
+              <span>Auto-Fill</span>
+            </button>
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="auth-form-content">
-          {!isLoginTab && (
+        {authMode === 'admin' && (
+          <div className="auth-demo-card" style={{ background: '#faf9f6', borderColor: '#e7e5e4' }}>
+            <div className="auth-demo-info">
+              <div className="auth-demo-avatar" style={{ background: '#f5f4f0', color: '#1c1917' }}>
+                <Key size={16} />
+              </div>
+              <div className="auth-demo-texts">
+                <span className="auth-demo-title" style={{ color: '#1c1917' }}>Director Demo Access</span>
+                <span className="auth-demo-creds" style={{ color: '#78716c' }}>admin@gaya.com • Passcode: 8080</span>
+              </div>
+            </div>
+            <button 
+              type="button" 
+              className="auth-demo-btn" 
+              onClick={handleFillAdminDemo}
+              style={{ borderColor: '#d6d3d1', color: '#1c1917' }}
+            >
+              <span>Auto-Fill</span>
+            </button>
+          </div>
+        )}
+
+        {/* Prominent High-Contrast Alert Banner */}
+        {statusMsg && (
+          <div className={`auth-alert-banner ${statusMsg.type}`}>
+            <div className="auth-alert-icon">
+              {statusMsg.type === 'error' && <AlertCircle size={18} />}
+              {statusMsg.type === 'success' && <CheckCircle2 size={18} />}
+              {statusMsg.type === 'info' && <Info size={18} />}
+            </div>
+            <div className="auth-alert-body">
+              <span className="auth-alert-title">
+                {statusMsg.type === 'error' ? 'Authentication Failed' : statusMsg.type === 'success' ? 'Verification Complete' : 'Quick Notice'}
+              </span>
+              <p className="auth-alert-text">{statusMsg.text}</p>
+            </div>
+          </div>
+        )}
+
+        {/* Main Authentication Form */}
+        <form onSubmit={handleSubmit} className="auth-form-stack">
+          {/* Register Mode Exclusive Name & Mobile */}
+          {authMode === 'register' && (
             <>
-              <div className="form-field">
-                <label>Full Name</label>
-                <div className="input-group">
-                  <User size={16} className="input-icon" />
+              <div className="auth-field-group">
+                <label className="auth-field-label">Candidate Full Name</label>
+                <div className="auth-input-wrapper">
+                  <User size={16} className="auth-input-icon" />
                   <input 
                     type="text" 
+                    className="auth-input-element"
                     placeholder="e.g. Rahul Sharma" 
                     value={name} 
                     onChange={(e) => setName(e.target.value)}
                     required 
+                    autoComplete="name"
                   />
                 </div>
               </div>
 
-              <div className="form-field">
-                <label>Mobile Number</label>
-                <div className="input-group">
-                  <Phone size={16} className="input-icon" />
+              <div className="auth-field-group">
+                <label className="auth-field-label">Mobile Number (SMS & Exam Updates)</label>
+                <div className="auth-input-wrapper">
+                  <Phone size={16} className="auth-input-icon" />
                   <input 
                     type="tel" 
+                    className="auth-input-element"
                     placeholder="10-digit mobile number" 
                     value={mobile} 
                     onChange={(e) => setMobile(e.target.value)}
                     required 
+                    autoComplete="tel"
                   />
                 </div>
               </div>
             </>
           )}
 
-          <div className="form-field">
-            <label>Email Address</label>
-            <div className="input-group">
-              <Mail size={16} className="input-icon" />
+          {/* Email field (for all modes) */}
+          <div className="auth-field-group">
+            <label className="auth-field-label">
+              <span>{authMode === 'admin' ? 'Faculty Admin Email' : 'Student Email Address'}</span>
+            </label>
+            <div className="auth-input-wrapper">
+              <Mail size={16} className="auth-input-icon" />
               <input 
                 type="email" 
-                placeholder="your.email@example.com" 
+                className="auth-input-element"
+                placeholder={authMode === 'admin' ? 'admin@gaya.com' : 'shadabca@gmail.com'} 
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)}
                 required 
+                autoComplete="email"
               />
             </div>
           </div>
 
-          <div className="form-field">
-            <label>Password</label>
-            <div className="input-group">
-              <Lock size={16} className="input-icon" />
-              <input 
-                type="password" 
-                placeholder="••••••••" 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)}
-                required 
-              />
-            </div>
-          </div>
+          {/* Password or Admin Passcode or Forgot Form Fields */}
+          {authMode === 'forgot' ? (
+            <>
+              {forgotStep === 2 && (
+                <>
+                  <div className="auth-field-group">
+                    <label className="auth-field-label">
+                      <span>6-Digit Verification Code</span>
+                    </label>
+                    <div className="auth-input-wrapper">
+                      <Key size={16} className="auth-input-icon" />
+                      <input 
+                        type="text" 
+                        className="auth-input-element font-mono"
+                        placeholder="e.g. 849201" 
+                        value={recoveryCode} 
+                        onChange={(e) => setRecoveryCode(e.target.value)}
+                        required 
+                      />
+                    </div>
+                    <span style={{ fontSize: '0.74rem', color: '#78716c', marginTop: '0.2rem' }}>
+                      Verification code: <strong>{recoveryCode || '849201'}</strong>
+                    </span>
+                  </div>
 
-          {!isLoginTab && (
-            <div className="form-grid-2">
-              <div className="form-field">
-                <label>State</label>
-                <div className="input-group">
-                  <MapPin size={16} className="input-icon" />
+                  <div className="auth-field-group">
+                    <label className="auth-field-label">
+                      <span>Create New Password (Min 6 Characters)</span>
+                    </label>
+                    <div className="auth-input-wrapper">
+                      <Lock size={16} className="auth-input-icon" />
+                      <input 
+                        type={showPassword ? 'text' : 'password'} 
+                        className="auth-input-element"
+                        placeholder="Enter your new password" 
+                        value={resetNewPassword} 
+                        onChange={(e) => setResetNewPassword(e.target.value)}
+                        required 
+                      />
+                      <button 
+                        type="button" 
+                        className="auth-toggle-pwd-btn"
+                        onClick={() => setShowPassword(!showPassword)}
+                        aria-label={showPassword ? 'Hide password' : 'Show password'}
+                      >
+                        {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                      </button>
+                    </div>
+                  </div>
+                </>
+              )}
+            </>
+          ) : authMode === 'admin' ? (
+            <div className="auth-field-group">
+              <label className="auth-field-label">Director Security Passcode</label>
+              <div className="auth-input-wrapper">
+                <Key size={16} className="auth-input-icon" />
+                <input 
+                  type={showPassword ? 'text' : 'password'} 
+                  className="auth-input-element"
+                  placeholder="Master passcode (e.g. 8080)" 
+                  value={adminPasscode} 
+                  onChange={(e) => setAdminPasscode(e.target.value)}
+                  required 
+                  autoComplete="current-password"
+                />
+                <button 
+                  type="button" 
+                  className="auth-toggle-pwd-btn"
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? 'Hide passcode' : 'Show passcode'}
+                >
+                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                </button>
+              </div>
+              <span style={{ fontSize: '0.74rem', color: '#78716c', marginTop: '0.2rem' }}>
+                Default security PIN: <strong>8080</strong>
+              </span>
+            </div>
+          ) : (
+            <div className="auth-field-group">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginBottom: '0.35rem' }}>
+                <label className="auth-field-label" style={{ margin: 0 }}>
+                  <span>{authMode === 'register' ? 'Create Password' : 'Password'}</span>
+                </label>
+                {authMode === 'student' && (
+                  <button 
+                    type="button" 
+                    onClick={() => { setAuthMode('forgot'); setStatusMsg(null); setForgotStep(1); }}
+                    style={{ background: 'none', border: 'none', padding: 0, fontSize: '0.78rem', color: '#d97706', cursor: 'pointer', fontWeight: 600 }}
+                  >
+                    Forgot Password?
+                  </button>
+                )}
+              </div>
+              <div className="auth-input-wrapper">
+                <Lock size={16} className="auth-input-icon" />
+                <input 
+                  type={showPassword ? 'text' : 'password'} 
+                  className="auth-input-element"
+                  placeholder={authMode === 'register' ? 'Min 6 characters' : 'Enter your password'} 
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)}
+                  required 
+                  autoComplete={authMode === 'register' ? 'new-password' : 'current-password'}
+                />
+                <button 
+                  type="button" 
+                  className="auth-toggle-pwd-btn"
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Register Mode Medium & State */}
+          {authMode === 'register' && (
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+              <div className="auth-field-group">
+                <label className="auth-field-label">State / UT</label>
+                <div className="auth-input-wrapper">
+                  <MapPin size={16} className="auth-input-icon" />
                   <input 
                     type="text" 
+                    className="auth-input-element"
                     placeholder="e.g. Bihar" 
                     value={state} 
                     onChange={(e) => setState(e.target.value)}
@@ -189,32 +493,108 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess }) {
                 </div>
               </div>
 
-              <div className="form-field">
-                <label>Primary Medium</label>
+              <div className="auth-field-group">
+                <label className="auth-field-label">Exam Medium</label>
                 <CustomSelect 
                   value={language} 
                   onChange={(val) => setLanguage(val)}
                   prefixIcon={<Globe size={16} />}
                   options={[
-                    { value: 'English', label: 'English (Steno+Typing)' },
-                    { value: 'Hindi Kruti Dev', label: 'Hindi Krutidev (Steno+Typing)' },
-                    { value: 'Hindi Mangal', label: 'Hindi Inscript Mangal' }
+                    { value: 'English', label: 'English (Pitman)' },
+                    { value: 'Hindi Kruti Dev', label: 'Hindi (Kruti Dev)' },
+                    { value: 'Hindi Mangal', label: 'Hindi (Mangal)' }
                   ]}
                 />
               </div>
             </div>
           )}
 
-          <div className="form-submit-row">
-            <button type="submit" className="btn btn-primary btn-lg w-full">
-              <span>{isLoginTab ? 'Sign In to Portal' : 'Complete Registration'}</span>
-              <ArrowRight size={18} />
-            </button>
-          </div>
+          {/* Submit Action Button */}
+          <button 
+            type="submit" 
+            className="auth-submit-btn"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2 size={18} className="animate-spin" />
+                <span>Authenticating with Portal...</span>
+              </>
+            ) : (
+              <>
+                <span>
+                  {authMode === 'admin' 
+                    ? 'Login to Faculty Admin Portal' 
+                    : authMode === 'student' 
+                      ? 'Login to Student Portal' 
+                      : authMode === 'forgot'
+                        ? (forgotStep === 1 ? 'Request 6-Digit Recovery Code' : 'Save New Password & Log In')
+                        : 'Complete Registration & Start Tests'}
+                </span>
+                <ArrowRight size={18} />
+              </>
+            )}
+          </button>
         </form>
 
-        <div className="modal-footer-note">
-          <p>Protected by 256-bit SSL encryption. All rights reserved.</p>
+        {/* Footer Navigation Switcher */}
+        <div className="auth-switch-footer">
+          {authMode === 'forgot' && (
+            <p style={{ margin: 0 }}>
+              Remembered your password?{' '}
+              <button 
+                type="button" 
+                className="auth-switch-link"
+                onClick={() => { setAuthMode('student'); setStatusMsg(null); setForgotStep(1); }}
+              >
+                Sign In to Student Portal
+              </button>
+            </p>
+          )}
+
+          {authMode === 'student' && (
+            <p style={{ margin: 0 }}>
+              New aspirant?{' '}
+              <button 
+                type="button" 
+                className="auth-switch-link"
+                onClick={() => { setAuthMode('register'); setStatusMsg(null); }}
+              >
+                Create a Free Student Account
+              </button>
+            </p>
+          )}
+
+          {authMode === 'register' && (
+            <p style={{ margin: 0 }}>
+              Already registered?{' '}
+              <button 
+                type="button" 
+                className="auth-switch-link"
+                onClick={() => { setAuthMode('student'); setStatusMsg(null); }}
+              >
+                Sign In to Your Account
+              </button>
+            </p>
+          )}
+
+          {authMode === 'admin' && (
+            <p style={{ margin: 0 }}>
+              Student or Aspirant?{' '}
+              <button 
+                type="button" 
+                className="auth-switch-link"
+                onClick={() => { setAuthMode('student'); setStatusMsg(null); }}
+              >
+                Go to Student Login
+              </button>
+            </p>
+          )}
+
+          <div className="auth-ssl-badge">
+            <Lock size={12} />
+            <span>256-Bit SSL Encrypted • Shorthand Plus Enterprise Authentication</span>
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   BarChart3, 
   Search, 
@@ -27,14 +27,27 @@ import {
   List
 } from 'lucide-react';
 import CustomSelect from '../components/CustomSelect';
+import { generateCandidateDossierPdf, generateCompletionCertificatePdf } from '../utils/pdfGenerator';
+import api from '../services/api';
 
-export default function ResultsHistoryPage({ onViewResult }) {
+export default function ResultsHistoryPage({ onViewResult, user }) {
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedStatus, setSelectedStatus] = useState('All');
   const [sortBy, setSortBy] = useState('date-desc');
   const [viewMode, setViewMode] = useState('table'); // 'table' | 'cards'
   const [showMarkingGuide, setShowMarkingGuide] = useState(false);
+  const [dbHistory, setDbHistory] = useState([]);
+
+  useEffect(() => {
+    api.tests.getMyHistory()
+      .then(res => {
+        if (res?.history && Array.isArray(res.history)) {
+          setDbHistory(res.history);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const myHistory = [
     {
@@ -149,8 +162,31 @@ export default function ResultsHistoryPage({ onViewResult }) {
 
   const categories = ['All', 'SSC Steno Grade D', 'Patna High Court', 'High Court Bench', 'Parliament Reporter', 'Typing Studio'];
 
+  const allHistory = useMemo(() => {
+    const formattedDb = dbHistory.map(d => ({
+      id: d.id,
+      date: d.date || 'Today',
+      name: d.name || 'Dictation Bench Examination',
+      category: d.type === 'typing' ? 'Typing Studio' : 'SSC Steno Grade D',
+      authority: 'Staff Selection Commission (SSC)',
+      totalWords: d.totalWords || 400,
+      typedWords: d.typedWords || 395,
+      speed: d.speed || `${d.speedNum || 80} WPM`,
+      speedNum: Number(d.speedNum) || 80,
+      fullMistakes: d.fullMistakes || 0,
+      halfMistakes: d.halfMistakes || 0,
+      effectiveErrors: d.effectiveErrors || 0,
+      marks: d.marks || `${d.marksNum || 95}%`,
+      marksNum: Number(d.marksNum) || 95,
+      status: d.status || 'Qualified',
+      statusType: d.statusType || 'qualified'
+    }));
+
+    return [...formattedDb, ...myHistory];
+  }, [dbHistory]);
+
   const filteredHistory = useMemo(() => {
-    return myHistory.filter((item) => {
+    return allHistory.filter((item) => {
       const matchesSearch = 
         item.name.toLowerCase().includes(search.toLowerCase()) ||
         item.category.toLowerCase().includes(search.toLowerCase()) ||
@@ -165,7 +201,7 @@ export default function ResultsHistoryPage({ onViewResult }) {
       if (sortBy === 'marks-asc') return a.marksNum - b.marksNum;
       return 0; // Default date order
     });
-  }, [myHistory, search, selectedCategory, selectedStatus, sortBy]);
+  }, [allHistory, search, selectedCategory, selectedStatus, sortBy]);
 
   return (
     <div className="results-history-page-container">
@@ -208,7 +244,7 @@ export default function ResultsHistoryPage({ onViewResult }) {
 
               <button 
                 className="btn-results-download-report"
-                onClick={() => alert("Candidate Performance Dossier generated and downloaded as PDF.")}
+                onClick={() => generateCandidateDossierPdf(user, filteredHistory[0] || myHistory[0])}
               >
                 <Download size={15} />
                 <span>Export Official Dossier (PDF)</span>
@@ -261,7 +297,7 @@ export default function ResultsHistoryPage({ onViewResult }) {
       {showMarkingGuide && (
         <div className="official-marking-guide-card">
           <div className="guide-header">
-            <ShieldCheck size={18} className="text-blue-500" />
+            <ShieldCheck size={18} className="text-amber-600" />
             <h3 className="guide-title">Official Government Examination Mistake Classification Standards</h3>
           </div>
 
@@ -310,20 +346,20 @@ export default function ResultsHistoryPage({ onViewResult }) {
         <div className="results-kpi-card">
           <div className="kpi-card-header">
             <span className="kpi-card-label">Total Attempted Tests</span>
-            <div className="kpi-icon-bubble bg-blue-subtle">
-              <FileCheck size={18} className="text-blue-600" />
+            <div className="kpi-icon-bubble bg-stone-100">
+              <FileCheck size={18} className="text-stone-800" />
             </div>
           </div>
           <div className="kpi-card-value font-mono">42</div>
           <div className="kpi-card-meta">
-            <span className="kpi-badge-chip chip-blue">32 Steno • 10 Typing</span>
+            <span className="kpi-badge-chip chip-amber">32 Steno • 10 Typing</span>
             <span className="kpi-sub-trend text-emerald-600 font-semibold">
               <TrendingUp size={12} className="inline mr-1" />
               +5 this week
             </span>
           </div>
           <div className="kpi-progress-bar-bg">
-            <div className="kpi-progress-bar-fill bg-blue-500" style={{ width: '100%' }} />
+            <div className="kpi-progress-bar-fill bg-stone-900" style={{ width: '100%' }} />
           </div>
         </div>
 
@@ -340,7 +376,7 @@ export default function ResultsHistoryPage({ onViewResult }) {
           </div>
           <div className="kpi-card-meta">
             <span className="kpi-badge-chip chip-emerald">Within SSC Cutoff</span>
-            <span className="kpi-sub-trend text-blue-600 font-semibold">
+            <span className="kpi-sub-trend text-stone-700 font-semibold">
               Target: 80.0 WPM (97.5%)
             </span>
           </div>
@@ -396,7 +432,7 @@ export default function ResultsHistoryPage({ onViewResult }) {
       <div className="recent-velocity-strip-card">
         <div className="strip-header">
           <div className="strip-header-left">
-            <Sparkles size={16} className="text-blue-500" />
+            <Sparkles size={16} className="text-amber-600" />
             <h4 className="strip-title">Recent 6 Submissions Velocity & Accuracy Curve</h4>
           </div>
           <span className="strip-tag">Latest Active Evaluation Cycle</span>
@@ -545,7 +581,7 @@ export default function ResultsHistoryPage({ onViewResult }) {
                           </span>
                           <span className="dossier-meta-bullet">•</span>
                           <span className="dossier-authority-text">
-                            <ShieldCheck size={11} className="inline mr-1 text-blue-500" />
+                            <ShieldCheck size={11} className="inline mr-1 text-stone-600" />
                             {row.authority}
                           </span>
                         </div>
@@ -586,15 +622,35 @@ export default function ResultsHistoryPage({ onViewResult }) {
 
                       {/* Column 5: Action */}
                       <td className="text-right">
-                        <button 
-                          className="btn-inspect-diff-action"
-                          onClick={() => onViewResult(row.id)}
-                          title="Inspect forensic word-by-word diff transcript"
-                        >
-                          <Eye size={13} />
-                          <span>Inspect Diff</span>
-                          <ArrowRight size={12} className="arrow-icon" />
-                        </button>
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                          <button 
+                            className="btn-inspect-diff-action"
+                            onClick={() => onViewResult(row.id)}
+                            title="Inspect forensic word-by-word diff transcript"
+                          >
+                            <Eye size={13} />
+                            <span>Inspect</span>
+                            <ArrowRight size={12} className="arrow-icon" />
+                          </button>
+                          <button 
+                            className="btn-inspect-diff-action"
+                            onClick={() => generateCandidateDossierPdf(user, row)}
+                            title="Download Certified Candidate PDF Dossier"
+                            style={{ background: '#ffffff', borderColor: '#e7e5e4', color: '#1c1917' }}
+                          >
+                            <Download size={13} />
+                            <span>Scorecard</span>
+                          </button>
+                          <button 
+                            className="btn-inspect-diff-action"
+                            onClick={() => generateCompletionCertificatePdf(user, row)}
+                            title="Download Verified Merit Certificate PDF"
+                            style={{ background: '#fef3c7', borderColor: '#fde68a', color: '#92400e' }}
+                          >
+                            <Award size={13} />
+                            <span>Certificate</span>
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   );
@@ -621,7 +677,7 @@ export default function ResultsHistoryPage({ onViewResult }) {
                   <h4 className="card-exam-title">{row.name}</h4>
                   
                   <div className="card-authority-text text-xs text-slate-500">
-                    <ShieldCheck size={12} className="inline mr-1 text-blue-500" />
+                    <ShieldCheck size={12} className="inline mr-1 text-stone-600" />
                     {row.authority}
                   </div>
 
@@ -629,7 +685,7 @@ export default function ResultsHistoryPage({ onViewResult }) {
                   <div className="card-spec-grid">
                     <div className="card-spec-tile">
                       <span className="card-spec-label">Speed</span>
-                      <span className="card-spec-val font-mono text-blue-600">{row.speed}</span>
+                      <span className="card-spec-val font-mono text-stone-900 font-bold">{row.speed}</span>
                     </div>
                     <div className="card-spec-tile">
                       <span className="card-spec-label">Words</span>
@@ -648,14 +704,25 @@ export default function ResultsHistoryPage({ onViewResult }) {
                       <span className="card-rank-sub text-xs text-emerald-700 font-semibold">{row.status}</span>
                     </div>
 
-                    <button 
-                      className="btn-inspect-diff-action"
-                      onClick={() => onViewResult(row.id)}
-                    >
-                      <Eye size={13} />
-                      <span>Inspect Diff</span>
-                      <ArrowRight size={12} className="arrow-icon" />
-                    </button>
+                    <div style={{ display: 'inline-flex', gap: '6px' }}>
+                      <button 
+                        className="btn-inspect-diff-action"
+                        onClick={() => onViewResult(row.id)}
+                      >
+                        <Eye size={13} />
+                        <span>Inspect</span>
+                        <ArrowRight size={12} className="arrow-icon" />
+                      </button>
+                      <button 
+                        className="btn-inspect-diff-action"
+                        onClick={() => generateCompletionCertificatePdf(user, row)}
+                        style={{ background: '#fef3c7', borderColor: '#fde68a', color: '#92400e' }}
+                        title="Download Verified Merit Certificate PDF"
+                      >
+                        <Award size={13} />
+                        <span>Certificate</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               );

@@ -22,9 +22,13 @@ import {
   Share2,
   Flame,
   Radio,
-  BookOpen
+  BookOpen,
+  Sun,
+  Compass,
+  Moon
 } from 'lucide-react';
 import { STENO_TESTS, TYPING_TESTS } from '../data/mockData';
+import ShorthandCanvas from '../components/ShorthandCanvas';
 
 const ONLINE_CLASSES_DATA = [
   {
@@ -37,7 +41,7 @@ const ONLINE_CLASSES_DATA = [
     speed: '80 WPM Standard',
     attendees: 142,
     isLive: true,
-    tag: '🔴 ZOOM LIVE CALL ACTIVE',
+    tag: 'LIVE ON ZOOM',
     badgeClass: 'badge-live',
     zoomMeetingId: '842 9104 2281',
     zoomPasscode: 'GAYA80WPM',
@@ -65,7 +69,7 @@ const ONLINE_CLASSES_DATA = [
     speed: 'Beginners (0 - 60 WPM)',
     attendees: 98,
     isLive: false,
-    tag: "TODAY'S REPLAY & ZOOM ARCHIVE",
+    tag: "REPLAY ARCHIVE",
     badgeClass: 'badge-replay',
     zoomMeetingId: '815 6742 9904',
     zoomPasscode: 'PITMAN2026',
@@ -92,7 +96,7 @@ const ONLINE_CLASSES_DATA = [
     speed: '100 WPM Judicial',
     attendees: 115,
     isLive: false,
-    tag: 'STARTS AT 3:00 PM ON ZOOM',
+    tag: 'STARTS AT 3:00 PM',
     badgeClass: 'badge-upcoming',
     zoomMeetingId: '879 3341 5520',
     zoomPasscode: 'COURT100',
@@ -119,7 +123,7 @@ const ONLINE_CLASSES_DATA = [
     speed: '120 - 140 WPM Elite',
     attendees: 64,
     isLive: false,
-    tag: 'STARTS AT 5:30 PM ON ZOOM',
+    tag: 'STARTS AT 5:30 PM',
     badgeClass: 'badge-upcoming',
     zoomMeetingId: '891 4059 1133',
     zoomPasscode: 'ELITE120',
@@ -544,7 +548,7 @@ export default function OnlineClassView({
                 
                 <div className="briefing-panel-header">
                   <div className="flex items-center gap-2">
-                    <FileText size={15} style={{ color: '#881337' }} />
+                    <FileText size={15} style={{ color: '#18181b' }} />
                     <span className="briefing-title">TODAY'S DICTATION BRIEFING</span>
                   </div>
                   <span className="briefing-speed-pill font-mono">{selectedBatch.speed}</span>
@@ -618,18 +622,36 @@ export default function OnlineClassView({
         </div>
       </section>
 
+      {/* 5B. INTERACTIVE SHORTHAND WHITEBOARD & DIGITAL STYLUS STUDIO */}
+      <section className="interactive-shorthand-studio-section mt-2 mb-5">
+        <ShorthandCanvas 
+          audioUrl="/assets/sample-dictation.mp3"
+          title={`Studio Whiteboard Feed • ${selectedBatch.title}`}
+          topic={selectedBatch.todayTopic || "Parliamentary Motion on State Infrastructure & Expenditure Audit"}
+          initialNotes={selectedBatch.passageSnippet || ""}
+        />
+      </section>
+
       {/* 6. ALL DAILY ZOOM BATCHES & TIMETABLE GRID */}
       <section className="online-schedule-grid-section">
         <div className="schedule-section-header">
           <div>
+            <div className="schedule-badge-row">
+              <span className="schedule-badge-pill">
+                <Video size={12} style={{ color: '#18181b' }} />
+                <span>DAILY ZOOM TIMETABLE & DIRECT ENTRANCE</span>
+              </span>
+            </div>
             <h3 className="schedule-section-title">All Daily Zoom Online Batches & Links</h3>
             <p className="schedule-section-sub">
-              Access live Zoom Meeting rooms, Meeting IDs, passcodes, and recorded video archives for all batches.
+              Access live Zoom Meeting rooms, verified Meeting IDs, passcodes, and recorded video archives for all batches.
             </p>
           </div>
 
-          <div className="schedule-count-pill font-mono">
-            Showing {filteredBatches.length} Batches
+          <div className="schedule-meta-cluster">
+            <span className="schedule-count-pill font-mono">
+              <strong>{filteredBatches.length}</strong> Active Batches
+            </span>
           </div>
         </div>
 
@@ -645,42 +667,69 @@ export default function OnlineClassView({
                 className={`all-class-card ${isCurrentlySelected ? 'is-selected' : ''}`}
                 onClick={() => setSelectedBatch(batch)}
               >
-                {/* Top Strip: Shift Tag & Status Badge */}
-                <div className="card-top-strip">
-                  <span className="card-shift-tag">{batch.shift}</span>
-                  <span className={`card-status-pill ${batch.badgeClass}`}>
-                    {batch.isLive && <span className="live-dot-mini" />}
-                    {batch.tag || (batch.isLive ? 'LIVE' : 'UPCOMING')}
-                  </span>
+                {/* Top Status & Shift Header */}
+                <div className="card-header-line">
+                  <div className="header-status-left">
+                    {batch.isLive ? (
+                      <span className="live-status-pill">
+                        <span className="live-pulsing-dot" />
+                        <span>LIVE NOW</span>
+                      </span>
+                    ) : (
+                      <span className="upcoming-status-pill">
+                        <Clock size={12} />
+                        <span>{batch.tag || 'UPCOMING'}</span>
+                      </span>
+                    )}
+                    <span className="batch-shift-name">{batch.shift}</span>
+                  </div>
+
+                  <div className="header-badge-right">
+                    <span className="batch-speed-badge font-mono">{batch.speed}</span>
+                    {isCurrentlySelected && (
+                      <span className="active-view-chip">
+                        <Check size={11} strokeWidth={3} />
+                        <span>Active</span>
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 {/* Batch Title */}
-                <h4 className="card-batch-title">{batch.title}</h4>
+                <h3 className="card-batch-title">{batch.title}</h3>
 
-                {/* Compact Credentials Strip */}
-                <div className="card-zoom-cred-strip font-mono">
-                  <div className="cred-cell-mini">
-                    <span className="lbl-mini">Zoom ID:</span>
-                    <strong className="val-mini">{batch.zoomMeetingId}</strong>
+                {/* Session Topic (Clean Editorial Text) */}
+                <p className="card-topic-excerpt">
+                  <BookOpen size={13} className="topic-icon" />
+                  <strong>Focus:</strong> {batch.todayTopic}
+                </p>
+
+                {/* Single-Line Live Zoom Credentials Strip */}
+                <div className="card-zoom-credentials-dock">
+                  <div className="cred-dock-group">
+                    <span className="dock-label">ID:</span>
+                    <span className="dock-val font-mono">{batch.zoomMeetingId}</span>
                     <button 
                       type="button" 
-                      className="btn-cred-copy-nano"
+                      className={`btn-copy-dock ${copiedType === `batch-id-${batch.id}` ? 'copied' : ''}`}
                       onClick={(e) => {
                         e.stopPropagation();
                         handleCopy(batch.zoomMeetingId, `batch-id-${batch.id}`);
                       }}
-                      title="Copy Meeting ID"
+                      title="Copy Zoom Meeting ID"
                     >
                       {copiedType === `batch-id-${batch.id}` ? <Check size={11} className="text-emerald-500" /> : <Copy size={11} />}
                     </button>
                   </div>
 
-                  <div className="cred-cell-mini">
-                    <span className="lbl-mini">Pass:</span>
-                    <strong className="val-mini">{batch.zoomPasscode}</strong>
+                  <span className="dock-sep">•</span>
+
+                  <div className="cred-dock-group">
+                    <span className="dock-label">PASS:</span>
+                    <span className="dock-val font-mono font-bold">{batch.zoomPasscode}</span>
                     <button 
                       type="button" 
-                      className="btn-cred-copy-nano"
+                      className={`btn-copy-dock ${copiedType === `batch-pwd-${batch.id}` ? 'copied' : ''}`}
                       onClick={(e) => {
                         e.stopPropagation();
                         handleCopy(batch.zoomPasscode, `batch-pwd-${batch.id}`);
@@ -692,61 +741,64 @@ export default function OnlineClassView({
                   </div>
                 </div>
 
-                {/* Specs Row: Timing & Speed */}
-                <div className="card-specs-row">
-                  <div className="spec-item">
-                    <Clock size={12} className="text-slate-400" />
+                {/* Metadata Row: Timing, Learners, Room */}
+                <div className="card-meta-row">
+                  <span className="meta-item">
+                    <Clock size={12} className="meta-icon" />
                     <span>{batch.time}</span>
-                  </div>
-                  <div className="spec-item">
-                    <Target size={12} className="text-rose-600" />
-                    <span className="font-semibold text-rose-800">{batch.speed}</span>
-                  </div>
-                  <div className="spec-item">
-                    <Users size={12} style={{ color: '#881337' }} />
+                  </span>
+                  <span className="meta-dot">•</span>
+                  <span className="meta-item">
+                    <Users size={12} className="meta-icon" />
                     <span>{batch.attendees || 1} Learners</span>
-                  </div>
+                  </span>
+                  <span className="meta-dot">•</span>
+                  <span className="meta-item font-mono">
+                    <span>{batch.roomNo ? batch.roomNo.split('(')[0].trim() : 'Studio #01'}</span>
+                  </span>
                 </div>
 
-                {/* Focus Topic Strip */}
-                <div className="card-topic-strip">
-                  <span className="topic-lbl">Focus:</span>
-                  <span className="topic-val">{batch.todayTopic}</span>
-                </div>
-
-                {/* Card Footer: Faculty & Actions */}
-                <div className="card-footer-strip">
-                  <div className="faculty-info">
-                    <span className="fac-name">{batch.instructor}</span>
-                    <span className="fac-room font-mono">{batch.roomNo || 'Zoom Room #01'}</span>
+                {/* Card Footer: Instructor & Join CTA */}
+                <div className="card-action-footer">
+                  <div className="faculty-profile">
+                    <div className="faculty-avatar">
+                      {batch.instructor?.split(' ').map(n => n[0]).join('').slice(0, 2) || 'GS'}
+                      {batch.isLive && <span className="online-dot" />}
+                    </div>
+                    <div className="faculty-meta">
+                      <span className="faculty-name">{batch.instructor}</span>
+                      <span className="faculty-role">{batch.instructorRole || 'Head Faculty'}</span>
+                    </div>
                   </div>
 
-                  <div className="card-actions">
+                  <div className="action-buttons-group">
                     <a 
                       href={batchDirectUrl}
                       target="_blank" 
                       rel="noreferrer"
-                      className="btn-card-zoom-join"
+                      className="btn-join-zoom-direct"
                       onClick={(e) => e.stopPropagation()}
-                      title="Open directly in Zoom"
+                      title="Launch live Zoom meeting directly in App or Browser"
                     >
                       <Video size={13} />
-                      <span>Join Zoom</span>
-                      <ExternalLink size={10} />
+                      <span>{batch.isLive ? 'Join Live Class' : 'Open Zoom'}</span>
+                      <ExternalLink size={10} className="ext-icon" />
                     </a>
 
-                    <button 
-                      type="button" 
-                      className={`btn-card-select-batch ${isCurrentlySelected ? 'is-active-btn' : ''}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedBatch(batch);
-                        window.scrollTo({ top: 120, behavior: 'smooth' });
-                      }}
-                    >
-                      <span>{isCurrentlySelected ? 'Selected' : 'Select'}</span>
-                      <ArrowRight size={12} />
-                    </button>
+                    {!isCurrentlySelected && (
+                      <button 
+                        type="button" 
+                        className="btn-select-batch-ghost"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedBatch(batch);
+                          window.scrollTo({ top: 120, behavior: 'smooth' });
+                        }}
+                        title="Select this batch to view full dictation briefing"
+                      >
+                        Select
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

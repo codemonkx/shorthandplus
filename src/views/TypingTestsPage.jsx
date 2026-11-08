@@ -31,7 +31,7 @@ import {
 import { TYPING_TESTS } from '../data/mockData';
 import CustomSelect from '../components/CustomSelect';
 
-export default function TypingTestsPage({ onStartTypingTest }) {
+export default function TypingTestsPage({ onStartTypingTest, typingTests = TYPING_TESTS }) {
   const [selectedLang, setSelectedLang] = useState('All');
   const [selectedDifficulty, setSelectedDifficulty] = useState('All');
   const [search, setSearch] = useState('');
@@ -43,15 +43,47 @@ export default function TypingTestsPage({ onStartTypingTest }) {
   const languages = ['All', 'English', 'Hindi (Kruti Dev)', 'Hindi (Mangal)'];
   const difficulties = ['All', 'Easy', 'Medium', 'Hard'];
 
+  const allTypingExercises = typingTests && typingTests.length > 0 ? typingTests : TYPING_TESTS;
+
+  const isKrutiTest = (t) => {
+    const str = `${t?.language || ''} ${t?.name || ''} ${t?.category || ''}`.toLowerCase();
+    return str.includes('kruti') || str.includes('कृति') || str.includes('dev 010') || str.includes('dev010');
+  };
+
+  const isMangalTest = (t) => {
+    const str = `${t?.language || ''} ${t?.name || ''} ${t?.category || ''}`.toLowerCase();
+    return str.includes('mangal') || str.includes('मंगल') || str.includes('inscript') || str.includes('remington');
+  };
+
+  const isHindiTest = (t) => {
+    const str = `${t?.language || ''} ${t?.name || ''}`.toLowerCase();
+    return isKrutiTest(t) || isMangalTest(t) || str.includes('hindi') || str.includes('हिंदी');
+  };
+
+  const isEnglishTest = (t) => {
+    const str = `${t?.language || ''}`.toLowerCase();
+    return str.includes('english') || (!isHindiTest(t));
+  };
+
   // Counts
-  const engCount = useMemo(() => TYPING_TESTS.filter(t => t.language === 'English').length, []);
-  const krutiCount = useMemo(() => TYPING_TESTS.filter(t => t.language.includes('Kruti')).length, []);
-  const mangalCount = useMemo(() => TYPING_TESTS.filter(t => t.language.includes('Mangal')).length, []);
+  const engCount = useMemo(() => allTypingExercises.filter(isEnglishTest).length, [allTypingExercises]);
+  const krutiCount = useMemo(() => allTypingExercises.filter(t => isKrutiTest(t) || (isHindiTest(t) && !isMangalTest(t))).length, [allTypingExercises]);
+  const mangalCount = useMemo(() => allTypingExercises.filter(isMangalTest).length, [allTypingExercises]);
 
   // Filtered and sorted tests
   const filtered = useMemo(() => {
-    return TYPING_TESTS.filter((t) => {
-      const matchesLang = selectedLang === 'All' || t.language.includes(selectedLang);
+    return allTypingExercises.filter((t) => {
+      let matchesLang = true;
+      if (selectedLang === 'English') {
+        matchesLang = isEnglishTest(t);
+      } else if (selectedLang.includes('Kruti')) {
+        matchesLang = isKrutiTest(t) || (isHindiTest(t) && !isMangalTest(t));
+      } else if (selectedLang.includes('Mangal')) {
+        matchesLang = isMangalTest(t);
+      } else if (selectedLang !== 'All') {
+        matchesLang = t.language === selectedLang || t.language?.includes(selectedLang);
+      }
+
       const matchesDiff = selectedDifficulty === 'All' || t.difficulty === selectedDifficulty;
       const query = search.toLowerCase();
       const matchesSearch = 
@@ -69,7 +101,7 @@ export default function TypingTestsPage({ onStartTypingTest }) {
       }
       return 0;
     });
-  }, [selectedLang, selectedDifficulty, search, sortBy]);
+  }, [allTypingExercises, selectedLang, selectedDifficulty, search, sortBy]);
 
   // Warmup drill
   const warmupDrill = useMemo(() => {
@@ -93,13 +125,13 @@ export default function TypingTestsPage({ onStartTypingTest }) {
                 <span>OFFICIAL GOVT EXAM SPEED BENCHMARK</span>
               </span>
               <span className="hero-compliance-pill">
-                <ShieldCheck size={13} className="text-rose-300" />
+                <ShieldCheck size={13} className="text-amber-600" />
                 <span>SSC CGL Tier-II & High Court Calibrated</span>
               </span>
             </div>
 
-            <h1 className="typing-hero-title">
-              Digital Typing Studio <span className="typing-hero-title-accent">& Keystroke Lab</span>
+            <h1 className="typing-hero-title" spellCheck="false">
+              Digital Typing Studio <span className="typing-hero-title-accent" spellCheck="false">& Keystroke Lab</span>
             </h1>
 
             <p className="typing-hero-description">
@@ -253,7 +285,7 @@ export default function TypingTestsPage({ onStartTypingTest }) {
                 onClick={() => setSelectedLang('All')}
               >
                 <span>All Layouts</span>
-                <span className="pill-count-bubble">{TYPING_TESTS.length}</span>
+                <span className="pill-count-bubble">{allTypingExercises.length}</span>
               </button>
               <button 
                 className={`segmented-pill ${selectedLang === 'English' ? 'active' : ''}`}
@@ -337,7 +369,7 @@ export default function TypingTestsPage({ onStartTypingTest }) {
                 {/* Card Top Authority & Badges */}
                 <div className="card-authority-strip">
                   <div className="authority-tag">
-                    <ShieldCheck size={13} className="text-blue-500" />
+                    <ShieldCheck size={13} className="text-stone-600" />
                     <span>{item.authority || 'SSC Standard'}</span>
                   </div>
 
@@ -375,7 +407,7 @@ export default function TypingTestsPage({ onStartTypingTest }) {
                 {/* Key Spec Chips */}
                 <div className="card-telemetry-chips-row">
                   <div className="telemetry-chip">
-                    <Clock size={13} className="chip-icon text-blue-500" />
+                    <Clock size={13} className="chip-icon text-stone-600" />
                     <span>{item.time}</span>
                   </div>
                   <div className="telemetry-chip">
@@ -445,7 +477,7 @@ export default function TypingTestsPage({ onStartTypingTest }) {
                     <td>
                       <div className="table-exercise-title">{item.name}</div>
                       <div className="table-exercise-authority">
-                        <ShieldCheck size={12} className="text-blue-500 inline mr-1" />
+                        <ShieldCheck size={12} className="text-stone-600 inline mr-1" />
                         <span>{item.authority || 'SSC Standard'} • {item.category}</span>
                       </div>
                     </td>

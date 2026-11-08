@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   Menu, 
-  Target, 
   Crown, 
   ChevronDown, 
   CreditCard, 
@@ -24,7 +23,8 @@ export default function TopBar({
   onToggleSidebar, 
   onOpenCheckout, 
   onOpenAuth, 
-  onLogout 
+  onLogout,
+  onOpenProfileSettings
 }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -46,7 +46,7 @@ export default function TopBar({
 
   const getPageTitle = (tab) => {
     switch(tab) {
-      case 'dashboard': return 'Candidate Dashboard & Telemetry';
+      case 'dashboard': return 'Candidate Dashboard';
       case 'online-classes': return 'Live Online Classroom & Daily Broadcasts';
       case 'steno-vault': return 'Stenography Dictation Vault';
       case 'typing-studio': return 'Typing Speed Studio';
@@ -73,15 +73,8 @@ export default function TopBar({
       </div>
 
       <div className="topbar-right">
-        {/* Telemetry Group */}
+        {/* Right Status & Action Cluster */}
         <div className="topbar-telemetry-cluster">
-          {/* Speed Target */}
-          <div className="telemetry-pill target-pill" title="Current Examination Target Speed">
-            <Target size={15} className="text-blue" />
-            <span className="pill-bold font-mono">80 WPM</span>
-            <span className="pill-sub">Target Goal</span>
-          </div>
-
           {/* Subscription Status Chip */}
           {user ? (
             <div className="sub-status-chip" onClick={onOpenCheckout} title="Click to view subscription passes">
@@ -94,15 +87,17 @@ export default function TopBar({
             </button>
           )}
 
-          {/* Admin Quick Switcher */}
-          <button 
-            className="topbar-admin-btn"
-            onClick={() => setCurrentTab('admin')}
-            title="Director & Faculty Admin Console"
-          >
-            <ShieldCheck size={14} className="text-royal-blue" />
-            <span>Admin</span>
-          </button>
+          {/* Admin Quick Switcher - Only visible to Director/Faculty */}
+          {user?.role === 'admin' && (
+            <button 
+              className="topbar-admin-btn"
+              onClick={() => setCurrentTab('admin')}
+              title="Director & Faculty Admin Console"
+            >
+              <ShieldCheck size={14} className="text-royal-blue" />
+              <span>Admin</span>
+            </button>
+          )}
         </div>
 
         {/* User Profile Menu */}
@@ -172,10 +167,23 @@ export default function TopBar({
 
                   <button 
                     className="popover-menu-link" 
+                    onClick={() => { setDropdownOpen(false); if (onOpenProfileSettings) onOpenProfileSettings(); }}
+                  >
+                    <div className="popover-icon-box" style={{ background: '#f5f5f4', color: '#1c1917' }}>
+                      <UserCheck size={14} />
+                    </div>
+                    <div className="popover-link-text">
+                      <span className="popover-link-title">Profile & Settings</span>
+                      <span className="popover-link-desc">Candidate profile & password</span>
+                    </div>
+                  </button>
+
+                  <button 
+                    className="popover-menu-link" 
                     onClick={() => { setDropdownOpen(false); setCurrentTab('dashboard'); }}
                   >
-                    <div className="popover-icon-box bg-blue-soft">
-                      <LayoutDashboard size={14} className="text-blue-600" />
+                    <div className="popover-icon-box bg-stone-100">
+                      <LayoutDashboard size={14} className="text-stone-700" />
                     </div>
                     <div className="popover-link-text">
                       <span className="popover-link-title">Candidate Dashboard</span>
@@ -228,25 +236,27 @@ export default function TopBar({
                     <ExternalLink size={12} className="text-slate-400" />
                   </button>
 
-                  <button 
-                    className="popover-menu-link" 
-                    onClick={() => { setDropdownOpen(false); setCurrentTab('admin'); }}
-                  >
-                    <div className="popover-icon-box bg-indigo-soft">
-                      <ShieldCheck size={14} className="text-indigo-600" />
-                    </div>
-                    <div className="popover-link-text">
-                      <span className="popover-link-title">Admin Management</span>
-                      <span className="popover-link-desc">Batch & audio moderation</span>
-                    </div>
-                    <span className="popover-admin-badge">Staff</span>
-                  </button>
+                  {user?.role === 'admin' && (
+                    <button 
+                      className="popover-menu-link" 
+                      onClick={() => { setDropdownOpen(false); setCurrentTab('admin'); }}
+                    >
+                      <div className="popover-icon-box bg-indigo-soft">
+                        <ShieldCheck size={14} className="text-indigo-600" />
+                      </div>
+                      <div className="popover-link-text">
+                        <span className="popover-link-title">Admin Management</span>
+                        <span className="popover-link-desc">Batch & audio moderation</span>
+                      </div>
+                      <span className="popover-admin-badge">Staff</span>
+                    </button>
+                  )}
 
                   <div className="popover-menu-divider" />
 
                   <button 
                     className="popover-menu-link popover-signout-btn" 
-                    onClick={() => { setDropdownOpen(false); onLogout(); }}
+                    onClick={() => { setDropdownOpen(false); if (onLogout) onLogout(); }}
                   >
                     <div className="popover-icon-box bg-rose-soft">
                       <LogOut size={14} className="text-rose-600" />

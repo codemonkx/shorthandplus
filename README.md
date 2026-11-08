@@ -40,18 +40,40 @@ Run the install command to download all required packages:
 npm install
 ```
 
-### 3. Start the Development Server
-Launch the local development server:
+### 3. Start the Website (Frontend + Backend Together)
+You can run both the frontend and the backend server together with a single command:
 ```bash
-npm run dev
+npm run dev:all
 ```
 
+Alternatively, you can run them in two separate terminal windows:
+- **Terminal 1 (Backend API + SQLite Database):**
+  ```bash
+  npm run server
+  ```
+- **Terminal 2 (Frontend Web App):**
+  ```bash
+  npm run dev
+  ```
+
 ### 4. Open in Your Browser
-Once the server starts, open your browser and navigate to:
+Open your browser and navigate to:
 ```
 http://localhost:5173
 ```
-*(If port 5173 is in use, Vite will automatically select the next available port like `http://localhost:5174`)*
+- **Frontend URL:** `http://localhost:5173`
+- **Backend API & Healthcheck:** `http://localhost:5000/api/health`
+
+---
+
+## 🔑 Pre-Configured Demo Accounts
+
+| Role | Email / ID | Password / PIN | Access Level |
+| :--- | :--- | :--- | :--- |
+| **Student** | `shadabca@gmail.com` | `shadab12345` | Active 12-Month Pass, full test suite & score history |
+| **Faculty Director (Admin)** | `admin@gaya.com` | `8080` (or `admin`) | Candidate roster, course catalog, live class scheduling, CSV results export |
+
+*(You can also click the "Auto-Fill Demo" button in the Login modal to sign in with one click.)*
 
 ---
 
@@ -61,10 +83,12 @@ In the project directory, you can run:
 
 | Command | Description |
 | :--- | :--- |
-| `npm run dev` | Starts the local development server with instant Hot Module Replacement (HMR). |
+| `npm run dev:all` | **(Recommended)** Runs both the Express backend API and the Vite frontend simultaneously. |
+| `npm run dev` | Starts only the Vite frontend dev server on `http://localhost:5173`. |
+| `npm run server` | Starts only the Express backend server on `http://localhost:5000`. |
 | `npm run build` | Compiles and minifies the production build into the `dist/` directory. |
 | `npm run preview` | Runs a local web server to preview the production build. |
-| `npm run lint` | Runs the Oxlint linter to check for code issues. |
+| `npm run lint` | Runs Oxlint to check code quality. |
 
 ---
 

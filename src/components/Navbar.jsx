@@ -9,7 +9,9 @@ import {
   ChevronDown,
   LogOut,
   CreditCard,
-  Headphones
+  Headphones,
+  LogIn,
+  Video
 } from 'lucide-react';
 
 export default function Navbar({ 
@@ -17,12 +19,25 @@ export default function Navbar({
   setCurrentTab, 
   user, 
   onOpenCheckout, 
-  onLogout 
+  onLogout,
+  onOpenAuth
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const userMenuRef = useRef(null);
+
+  // Sliding Nav Indicator State & Refs
+  const navContainerRef = useRef(null);
+  const navItemRefs = useRef({});
+  const [hasMounted, setHasMounted] = useState(false);
+  const [indicatorStyle, setIndicatorStyle] = useState({
+    left: 0,
+    top: 0,
+    width: 0,
+    height: 0,
+    opacity: 0,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,13 +67,6 @@ export default function Navbar({
     { id: 'about', label: 'About' },
   ];
 
-  const handleNavClick = (id) => {
-    setMobileMenuOpen(false);
-    setUserDropdownOpen(false);
-    setCurrentTab(id);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const isNavActive = (id) => {
     if (id === 'landing') return currentTab === 'landing';
     if (id === 'courses') return currentTab === 'courses' || currentTab === 'pricing';
@@ -66,6 +74,57 @@ export default function Navbar({
     if (id === 'tests') return currentTab === 'tests' || currentTab === 'steno-vault' || currentTab === 'typing-studio';
     if (id === 'about') return currentTab === 'about';
     return currentTab === id;
+  };
+
+  const updateIndicator = (overrideId) => {
+    const targetId = overrideId || navItems.find((item) => isNavActive(item.id))?.id;
+    if (targetId && navItemRefs.current[targetId] && navContainerRef.current) {
+      const activeEl = navItemRefs.current[targetId];
+      const containerEl = navContainerRef.current;
+      
+      const activeRect = activeEl.getBoundingClientRect();
+      const containerRect = containerEl.getBoundingClientRect();
+
+      setIndicatorStyle({
+        left: activeRect.left - containerRect.left,
+        top: activeRect.top - containerRect.top,
+        width: activeRect.width,
+        height: activeRect.height,
+        opacity: 1,
+      });
+    } else if (!targetId) {
+      setIndicatorStyle((prev) => ({ ...prev, opacity: 0 }));
+    }
+  };
+
+  useEffect(() => {
+    updateIndicator();
+    
+    // Enable animation after initial positioning so it doesn't fly in on page load
+    const timer = setTimeout(() => {
+      updateIndicator();
+      setHasMounted(true);
+    }, 40);
+
+    const handleResize = () => updateIndicator();
+    window.addEventListener('resize', handleResize);
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => updateIndicator());
+    }
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [currentTab]);
+
+  const handleNavClick = (id) => {
+    setMobileMenuOpen(false);
+    setUserDropdownOpen(false);
+    updateIndicator(id);
+    setCurrentTab(id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -80,13 +139,26 @@ export default function Navbar({
           <span className="brand-name-text">Shorthand Plus</span>
         </div>
 
-        {/* Center Navigation Links: Home, Courses, Classes, Tests, About */}
-        <nav className="shorthand-nav-links">
+        {/* Center Navigation Links: Home, Courses, Classes, Tests, About with Animated Sliding Pill */}
+        <nav className="shorthand-nav-links" ref={navContainerRef}>
+          {/* Animated Moving Pill Indicator */}
+          <span 
+            className={`nav-sliding-pill ${hasMounted ? 'is-animated' : ''}`}
+            style={{
+              transform: `translate3d(${indicatorStyle.left}px, ${indicatorStyle.top}px, 0)`,
+              width: `${indicatorStyle.width}px`,
+              height: `${indicatorStyle.height}px`,
+              opacity: indicatorStyle.opacity,
+            }}
+            aria-hidden="true"
+          />
+
           {navItems.map((item) => {
             const active = isNavActive(item.id);
             return (
               <button
                 key={item.id}
+                ref={(el) => { navItemRefs.current[item.id] = el; }}
                 onClick={() => handleNavClick(item.id)}
                 className={`nav-pill-item ${active ? 'active-pill' : 'inactive-link'}`}
               >
@@ -98,18 +170,38 @@ export default function Navbar({
 
         {/* Right Section: Admin, Login, Sign Up / User Dropdown */}
         <div className="shorthand-nav-actions">
-
+          {/* Unauthenticated State: Show Sign In Button */}
+          {!user && (
+            <button 
+              type="button"
+              className="btn-pill-portal"
+              onClick={() => onOpenAuth ? onOpenAuth('student') : handleNavClick('dashboard')}
+              title="Sign In to Student or Admin Portal"
+            >
+              <LogIn size={15} />
+              <span>Sign In</span>
+            </button>
+          )}
 
           {/* User Logged In State with Dropdown Menu */}
-          {user ? (
+          {user && (
             <div className="logged-user-actions" ref={userMenuRef}>
               <button 
                 className="btn-pill-portal"
-                onClick={() => handleNavClick('dashboard')}
-                title="Go to Candidate Dashboard"
+                onClick={() => handleNavClick(user?.role === 'admin' ? 'admin' : 'dashboard')}
+                title={user?.role === 'admin' ? "Go to Director Admin Console" : "Go to Candidate Practice Dashboard"}
               >
-                <LayoutDashboard size={15} />
-                <span>Dashboard</span>
+                {user?.role === 'admin' ? (
+                  <>
+                    <ShieldCheck size={15} className="text-amber-400" />
+                    <span>Admin Hub</span>
+                  </>
+                ) : (
+                  <>
+                    <LayoutDashboard size={15} />
+                    <span>Dashboard</span>
+                  </>
+                )}
               </button>
 
               <div 
@@ -117,7 +209,11 @@ export default function Navbar({
                 onClick={() => setUserDropdownOpen(!userDropdownOpen)}
                 title="Account & Subscription Menu"
               >
-                <Crown size={14} className="text-amber" />
+                {user?.role === 'admin' ? (
+                  <ShieldCheck size={14} className="text-amber-500" />
+                ) : (
+                  <Crown size={14} className="text-amber" />
+                )}
                 <span>{user.name.split(' ')[0]}</span>
                 <ChevronDown size={13} className={`transition-transform duration-200 ${userDropdownOpen ? 'rotate-180' : ''}`} />
               </div>
@@ -129,8 +225,12 @@ export default function Navbar({
                     <strong className="user-dropdown-name">{user.name}</strong>
                     <span className="user-dropdown-email">{user.email}</span>
                     <div className="user-dropdown-badge-row">
-                      <span className="badge badge-blue">Roll: {user.rollNo}</span>
-                      <span className="badge badge-emerald">Pro Active</span>
+                      <span className="badge badge-blue">
+                        {user.role === 'admin' ? 'Faculty Admin' : `Roll: ${user.rollNo}`}
+                      </span>
+                      <span className="badge badge-emerald">
+                        {user.role === 'admin' ? 'Director Console' : (user.subscription?.isMonthlySubscription ? 'Monthly Pro' : 'Pro Active')}
+                      </span>
                     </div>
                   </div>
 
@@ -143,6 +243,14 @@ export default function Navbar({
                     >
                       <LayoutDashboard size={15} className="text-royal-blue" />
                       <span>Candidate Dashboard</span>
+                    </button>
+
+                    <button 
+                      className="nav-dropdown-link-btn"
+                      onClick={() => handleNavClick('online-classes')}
+                    >
+                      <Video size={15} className="text-rose-600" />
+                      <span>Live Zoom Online Class</span>
                     </button>
 
                     <button 
@@ -161,16 +269,18 @@ export default function Navbar({
                       }}
                     >
                       <CreditCard size={15} className="text-emerald" />
-                      <span>Subscription Passes</span>
+                      <span>Monthly Subscription Passes</span>
                     </button>
 
-                    <button 
-                      className="nav-dropdown-link-btn"
-                      onClick={() => handleNavClick('admin')}
-                    >
-                      <ShieldCheck size={15} className="text-royal-blue" />
-                      <span>Admin Console (Staff)</span>
-                    </button>
+                    {user?.role === 'admin' && (
+                      <button 
+                        className="nav-dropdown-link-btn"
+                        onClick={() => handleNavClick('admin')}
+                      >
+                        <ShieldCheck size={15} className="text-royal-blue" />
+                        <span>Director Admin Console</span>
+                      </button>
+                    )}
                   </div>
 
                   <div className="nav-dropdown-divider" />
@@ -188,18 +298,26 @@ export default function Navbar({
                 </div>
               )}
             </div>
-          ) : null}
+          )}
 
-          {/* Dedicated Full-Right Admin Button */}
-          <button 
-            type="button"
-            className={`btn-navbar-admin-right ${currentTab === 'admin' ? 'active' : ''}`}
-            onClick={() => handleNavClick('admin')}
-            title="Director & Faculty Admin Console"
-          >
-            <ShieldCheck size={15} className="admin-icon-shield" />
-            <span>Admin</span>
-          </button>
+          {/* Dedicated Full-Right Admin Button (displayed for visitors; logged-in users have Admin Hub or Dashboard above) */}
+          {!user && (
+            <button 
+              type="button"
+              className={`btn-navbar-admin-right ${currentTab === 'admin' ? 'active' : ''}`}
+              onClick={() => {
+                if (onOpenAuth) {
+                  onOpenAuth('admin');
+                } else {
+                  handleNavClick('admin');
+                }
+              }}
+              title="Director & Faculty Admin Console"
+            >
+              <ShieldCheck size={15} className="admin-icon-shield" />
+              <span>Admin</span>
+            </button>
+          )}
 
           {/* Mobile Menu Hamburger */}
           <button 
@@ -227,13 +345,15 @@ export default function Navbar({
               </button>
             ))}
 
-            <button
-              onClick={() => handleNavClick('admin')}
-              className={`mobile-nav-link-row ${currentTab === 'admin' ? 'active' : ''}`}
-            >
-              <ShieldCheck size={16} className="text-royal-blue inline mr-2" />
-              <span>Admin Console</span>
-            </button>
+            {(!user || user?.role === 'admin') && (
+              <button
+                onClick={() => handleNavClick('admin')}
+                className={`mobile-nav-link-row ${currentTab === 'admin' ? 'active' : ''}`}
+              >
+                <ShieldCheck size={16} className="text-royal-blue inline mr-2" />
+                <span>Admin Console</span>
+              </button>
+            )}
 
             {user ? (
               <div className="mobile-drawer-user-section">
