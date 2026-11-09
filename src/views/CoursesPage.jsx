@@ -36,6 +36,31 @@ const ACADEMY_COURSES = [
     popular: true
   },
   {
+    id: 'course-hindi-steno',
+    title: 'Hindi Shorthand (हिंदी आशुलिपि)',
+    category: 'Shorthand Course (Hindi)',
+    badge: 'Hindi Steno & Court Special',
+    tagColor: 'badge-amber',
+    speedTarget: '50, 80, 100 & 120+ WPM',
+    duration: '3 to 6 Months',
+    fee: '₹6,000 (Complete)',
+    description: 'Learn Hindi Shorthand from Basic to Advanced Level through practical classes, regular dictation and transcription practice. This course is designed for students preparing for Hindi Stenographer, Court Stenographer and various government recruitment examinations.',
+    syllabus: [
+      'Basic Hindi Shorthand Theory',
+      'Hindi Shorthand Signs and Symbols',
+      'Vowels and Consonants (स्वर एवं व्यंजन)',
+      'Word Formation and Sentence Writing',
+      'Shorthand Rules and Principles',
+      'Daily Hindi Dictation Practice',
+      'Speed Practice (50, 80, 100 & 120 WPM)',
+      'Reading and Transcription (Kruti Dev 010 & Mangal)',
+      'Accuracy Improvement Techniques',
+      'Exam-Oriented Practice Tests'
+    ],
+    mode: 'Classroom (Gaya Center) + Online Audio Portal Access',
+    popular: true
+  },
+  {
     id: 'course-court',
     title: 'High Court Judicial Speed & Legal Series',
     category: 'Judicial Bench',
@@ -109,6 +134,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
     const id = (course.id || '').toLowerCase();
     const title = (course.title || '').toLowerCase();
     if (filterCategory === 'pitman') return cat.includes('foundation') || id.includes('pitman') || title.includes('pitman');
+    if (filterCategory === 'hindi') return cat.includes('hindi') || id.includes('hindi') || title.includes('hindi') || title.includes('हिंदी');
     if (filterCategory === 'court') return cat.includes('judicial') || id.includes('court') || title.includes('court');
     if (filterCategory === 'ssc') return cat.includes('central') || id.includes('ssc') || title.includes('ssc');
     if (filterCategory === 'diplomas') return cat.includes('diploma') || id.includes('diploma') || title.includes('diploma') || title.includes('dca');
@@ -144,7 +170,13 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               className={`course-cat-pill ${filterCategory === 'pitman' ? 'active' : ''}`}
               onClick={() => setFilterCategory('pitman')}
             >
-              <span>✍️ Pitman Foundation (0-80 WPM)</span>
+              <span>✍️ English Pitman (0-120 WPM)</span>
+            </button>
+            <button 
+              className={`course-cat-pill ${filterCategory === 'hindi' ? 'active' : ''}`}
+              onClick={() => setFilterCategory('hindi')}
+            >
+              <span>🇮🇳 Hindi Shorthand (हिंदी आशुलिपि)</span>
             </button>
             <button 
               className={`course-cat-pill ${filterCategory === 'court' ? 'active' : ''}`}

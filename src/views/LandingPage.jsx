@@ -490,6 +490,22 @@ export default function LandingPage({
       popular: true
     },
     {
+      id: "hindi-steno-course",
+      badge: "Hindi Steno & Court Special",
+      title: "Hindi Shorthand (हिंदी आशुलिपि)",
+      speed: "50, 80, 100 & 120+ WPM",
+      lang: "Basic to Advanced (हिंदी)",
+      desc: "Learn Hindi Shorthand from Basic to Advanced Level through practical classes, regular dictation and transcription practice. Specially designed for Hindi Stenographer, Court Stenographer and government recruitment exams.",
+      features: [
+        "Basic Hindi Shorthand Theory, Signs & Symbols",
+        "Vowels & Consonants (स्वर एवं व्यंजन)",
+        "Word Formation & Sentence Writing Principles",
+        "Daily Hindi Dictation & Speed Practice",
+        "Reading, Transcription (Kruti Dev & Mangal) & Mock Tests"
+      ],
+      popular: true
+    },
+    {
       id: "assembly-reporter",
       badge: "High Speed Series",
       title: "Parliament & Vidhan Sabha Reporter Batch",

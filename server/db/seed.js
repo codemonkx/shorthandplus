@@ -115,6 +115,32 @@ export async function seedDatabase() {
           popular: 1
         },
         {
+          id: 'course-hindi-steno',
+          title: 'Hindi Shorthand (हिंदी आशुलिपि)',
+          category: 'Shorthand Course (Hindi)',
+          badge: 'Hindi Steno & Court Special',
+          tagColor: 'badge-amber',
+          speedTarget: '50, 80, 100 & 120+ WPM',
+          duration: '3 to 6 Months',
+          fee: '₹6,000 (Complete)',
+          price: 6000,
+          description: 'Learn Hindi Shorthand from Basic to Advanced Level through practical classes, regular dictation and transcription practice. This course is designed for students preparing for Hindi Stenographer, Court Stenographer and various government recruitment examinations.',
+          syllabus: JSON.stringify([
+            'Basic Hindi Shorthand Theory',
+            'Hindi Shorthand Signs and Symbols',
+            'Vowels and Consonants (स्वर एवं व्यंजन)',
+            'Word Formation and Sentence Writing',
+            'Shorthand Rules and Principles',
+            'Daily Hindi Dictation Practice',
+            'Speed Practice (50, 80, 100 & 120 WPM)',
+            'Reading and Transcription (Kruti Dev 010 & Mangal)',
+            'Accuracy Improvement Techniques',
+            'Exam-Oriented Practice Tests'
+          ]),
+          mode: 'Classroom (Gaya Center) + Online Audio Portal Access',
+          popular: 1
+        },
+        {
           id: 'course-court',
           title: 'High Court Judicial Speed & Legal Series',
           category: 'Judicial Bench',

@@ -29,6 +29,22 @@
     - Offline Center: `Gaya Shorthand Classes, Near Railway Station / Tower Chowk, Gaya, Bihar - 823001`
   - Propagated to `Footer.jsx`, `LandingPage.jsx`, `AboutAcademyView.jsx`, `CoursesPage.jsx`, `LegalPolicyModal.jsx`, `emailService.js`, `mockData.js`, and database `courses`.
 
+- [x] **Course #2: Hindi Shorthand (हिंदी आशुलिपि)**
+  - Course Name: `Hindi Shorthand (हिंदी आशुलिपि)`.
+  - Details: `Learn Hindi Shorthand from Basic to Advanced Level through practical classes, regular dictation and transcription practice. This course is designed for students preparing for Hindi Stenographer, Court Stenographer and various government recruitment examinations.`
+  - Added all 10 Curriculum Features:
+    1. Basic Hindi Shorthand Theory
+    2. Hindi Shorthand Signs and Symbols
+    3. Vowels and Consonants (स्वर एवं व्यंजन)
+    4. Word Formation and Sentence Writing
+    5. Shorthand Rules and Principles
+    6. Daily Hindi Dictation Practice
+    7. Speed Practice (50, 80, 100 & 120 WPM)
+    8. Reading and Transcription (Kruti Dev 010 & Mangal)
+    9. Accuracy Improvement Techniques
+    10. Exam-Oriented Practice Tests
+  - Propagated across `src/data/mockData.js`, `src/views/CoursesPage.jsx` (with dedicated Hindi filter pill), `src/views/LandingPage.jsx`, `server/db/seed.js`, and live SQLite `courses` table.
+
 - [x] **Course #1: English Shorthand (Pitman Shorthand)**
   - Updated title: `English Shorthand (Pitman Shorthand)`.
   - Added full comprehensive course description tailored for SSC Stenographer, High Court Stenographer, PA, PS, and government exams.
