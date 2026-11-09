@@ -660,6 +660,7 @@ export default function App() {
             <div className="public-page-padded-wrapper">
               <AboutAcademyView
                 onOpenCheckout={() => handleOpenCheckoutWithPlan()}
+                onOpenAdmission={() => setAdmissionModalOpen(true)}
                 setCurrentTab={setCurrentTab}
               />
             </div>
@@ -848,6 +849,7 @@ export default function App() {
           {currentTab === 'about' && (
             <AboutAcademyView
               onOpenCheckout={() => handleOpenCheckoutWithPlan()}
+              onOpenAdmission={() => setAdmissionModalOpen(true)}
               setCurrentTab={setCurrentTab}
             />
           )}

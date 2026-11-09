@@ -21,11 +21,13 @@ import {
   ArrowRight,
   Calendar,
   RotateCcw,
-  ShieldCheck
+  ShieldCheck,
+  MessageCircle,
+  Check
 } from 'lucide-react';
 import { TARGET_EXAMINATIONS, TEACHING_METHODOLOGY } from '../data/mockData';
 
-export default function AboutAcademyView({ onOpenCheckout, setCurrentTab }) {
+export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setCurrentTab }) {
   const keyHighlights = [
     {
       icon: Award,
@@ -478,119 +480,343 @@ export default function AboutAcademyView({ onOpenCheckout, setCurrentTab }) {
         </section>
 
         {/* 5. JOIN US & OFFICIAL CONTACT BANNER */}
-        <div className="about-contact-banner">
-          <div className="contact-banner-grid">
-            <div className="contact-info-col">
-              <h3 className="contact-box-title">Join Us : Gaya Shorthand Classes</h3>
-              
-              <div className="contact-detail-row">
-                <MapPin size={18} className="text-royal-blue shrink-0" />
-                <div>
-                  <strong>Academy Address:</strong>
-                  <p>Gaya College More, Opposite Cyber Thana, Gayaji, Bihar</p>
-                </div>
+        <section style={{ 
+          background: '#ffffff', 
+          border: '1px solid #e7e5e4', 
+          borderRadius: '20px', 
+          padding: '2.5rem 2rem', 
+          boxShadow: '0 8px 30px rgba(0,0,0,0.04)',
+          marginTop: '3.5rem'
+        }}>
+          
+          {/* Section Header */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1.25rem', marginBottom: '2.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid #f5f5f4' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+              <div style={{ 
+                width: '52px', 
+                height: '52px', 
+                borderRadius: '12px', 
+                background: '#faf9f6', 
+                border: '1px solid #e7e5e4',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}>
+                <img 
+                  src="/assets/logo-big-s.png" 
+                  alt="Steno Plus Big S Logo" 
+                  style={{ height: '42px', width: 'auto', objectFit: 'contain' }}
+                />
               </div>
-
-              <div className="contact-detail-row">
-                <Phone size={18} className="text-royal-blue shrink-0" />
-                <div>
-                  <strong>Contact Numbers:</strong>
-                  <p>
-                    <a href="tel:+917870377214" style={{ color: 'inherit', fontWeight: 600 }}>
-                      +91 7870377214
-                    </a>
-                    {' / '}
-                    <a href="tel:+919204123453" style={{ color: 'inherit', fontWeight: 600 }}>
-                      +91 9204123453
-                    </a>
-                  </p>
+              <div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: 800, color: '#047857', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                  <Award size={14} />
+                  <span>Offline & Online Admissions Open 2026</span>
                 </div>
-              </div>
-
-              <div className="contact-detail-row">
-                <Sparkles size={18} className="text-amber-600 shrink-0" />
-                <div>
-                  <strong>Free Demo Classes:</strong>
-                  <p>We offer 3 demo classes so that students can experience our teaching methodology before enrolling.</p>
-                </div>
-              </div>
-
-              <div className="contact-detail-row">
-                <Mail size={18} className="text-royal-blue shrink-0" />
-                <div>
-                  <strong>Official E-mail:</strong>
-                  <p>
-                    <a href="mailto:stenoplus.in@gmail.com" style={{ color: '#d97706', fontWeight: 600, textDecoration: 'none' }}>
-                      stenoplus.in@gmail.com
-                    </a>
-                  </p>
-                </div>
-              </div>
-
-              <div className="contact-detail-row">
-                <Globe size={18} className="text-royal-blue shrink-0" />
-                <div>
-                  <strong>Official Website:</strong>
-                  <p>
-                    <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" style={{ color: '#d97706', fontWeight: 600, textDecoration: 'none' }}>
-                      https://stenoplus.in
-                    </a>
-                  </p>
-                </div>
-              </div>
-
-              <div className="contact-detail-row">
-                <Clock size={18} className="text-royal-blue shrink-0" />
-                <div>
-                  <strong>Daily Batch Timings:</strong>
-                  <p>Morning 6:00 AM – 11:00 AM | Evening 3:00 PM – 8:00 PM (Monday to Saturday)</p>
-                </div>
+                <h2 style={{ fontSize: '1.65rem', fontWeight: 850, color: '#1c1917', margin: '2px 0 0', letterSpacing: '-0.02em' }}>
+                  Visit Us: Gaya Shorthand Classes
+                </h2>
               </div>
             </div>
 
-            <div className="contact-action-col">
-              <div className="visit-booking-card">
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#047857', fontWeight: 700, fontSize: '0.8rem', marginBottom: '0.5rem' }}>
-                  <Award size={16} />
-                  <span>OFFLINE & ONLINE ADMISSIONS OPEN</span>
-                </div>
-                <h4 className="visit-title">Connect with Admission Desk</h4>
-                <p className="visit-sub">
-                  Visit our center in Gaya to attend a free trial dictation session, inspect our 50+ PC lab, or activate your online access.
-                </p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginTop: '1rem' }}>
-                  <a 
-                    href="tel:+919204123453"
-                    className="btn-book-visit"
-                  >
-                    <Phone size={16} />
-                    <span>Call Helpline: +91 9204123453</span>
-                  </a>
-                  <a 
-                    href="mailto:stenoplus.in@gmail.com"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '0.5rem',
-                      padding: '0.75rem 1rem',
-                      background: '#faf9f6',
-                      border: '1px solid #e7e5e4',
-                      borderRadius: '8px',
-                      color: '#1c1917',
-                      fontSize: '0.84rem',
-                      fontWeight: 600,
-                      textDecoration: 'none'
-                    }}
-                  >
-                    <Mail size={16} />
-                    <span>Email: stenoplus.in@gmail.com</span>
-                  </a>
-                </div>
-              </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ 
+                background: '#fef3c7', 
+                color: '#92400e', 
+                border: '1px solid #fde68a',
+                borderRadius: '999px', 
+                padding: '6px 14px', 
+                fontSize: '0.82rem', 
+                fontWeight: 700 
+              }}>
+                Director: Shadab Sir (12 Yrs Exp)
+              </span>
             </div>
           </div>
-        </div>
+
+          {/* 2-Column Responsive Layout */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', alignItems: 'start' }}>
+            
+            {/* Left Column: 6 Structured Info Tiles + Google Map */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
+                
+                {/* Tile 1: Address */}
+                <div style={{ background: '#faf9f6', border: '1px solid #e7e5e4', borderRadius: '12px', padding: '1.15rem 1.25rem', display: 'flex', gap: '12px' }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: '#fee2e2', color: '#dc2626', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <MapPin size={18} />
+                  </div>
+                  <div>
+                    <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#78716c', letterSpacing: '0.4px', marginBottom: '2px' }}>
+                      Academy Address
+                    </span>
+                    <p style={{ fontSize: '0.88rem', fontWeight: 600, color: '#1c1917', margin: 0, lineHeight: 1.4 }}>
+                      Gaya College More, Opposite Cyber Thana, Gayaji, Bihar - 823001
+                    </p>
+                  </div>
+                </div>
+
+                {/* Tile 2: Phone Helplines */}
+                <div style={{ background: '#faf9f6', border: '1px solid #e7e5e4', borderRadius: '12px', padding: '1.15rem 1.25rem', display: 'flex', gap: '12px' }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: '#fef3c7', color: '#d97706', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Phone size={18} />
+                  </div>
+                  <div>
+                    <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#78716c', letterSpacing: '0.4px', marginBottom: '2px' }}>
+                      Direct Helplines
+                    </span>
+                    <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#1c1917', lineHeight: 1.4 }}>
+                      <a href="tel:+919204123453" style={{ color: '#b45309', textDecoration: 'none' }}>+91 9204123453</a>
+                      <span style={{ color: '#a8a29e', margin: '0 4px' }}>•</span>
+                      <a href="tel:+917870377214" style={{ color: '#292524', textDecoration: 'none' }}>+91 7870377214</a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tile 3: 3 Free Demo Classes */}
+                <div style={{ background: '#faf9f6', border: '1px solid #e7e5e4', borderRadius: '12px', padding: '1.15rem 1.25rem', display: 'flex', gap: '12px' }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Sparkles size={18} />
+                  </div>
+                  <div>
+                    <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#78716c', letterSpacing: '0.4px', marginBottom: '2px' }}>
+                      Free Demo Classes
+                    </span>
+                    <p style={{ fontSize: '0.85rem', color: '#44403c', margin: 0, lineHeight: 1.4 }}>
+                      <strong>3 Free Demo Classes</strong> for beginners to experience our audio dictations & typing lab.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Tile 4: Batch Timings */}
+                <div style={{ background: '#faf9f6', border: '1px solid #e7e5e4', borderRadius: '12px', padding: '1.15rem 1.25rem', display: 'flex', gap: '12px' }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: '#eff6ff', color: '#2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Clock size={18} />
+                  </div>
+                  <div>
+                    <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#78716c', letterSpacing: '0.4px', marginBottom: '2px' }}>
+                      Daily Batch Timings
+                    </span>
+                    <p style={{ fontSize: '0.85rem', color: '#44403c', margin: 0, lineHeight: 1.4 }}>
+                      Morning 7:00 AM – 11:30 AM<br />Evening 3:30 PM – 7:30 PM (Mon–Sat)
+                    </p>
+                  </div>
+                </div>
+
+                {/* Tile 5: Official Email */}
+                <div style={{ background: '#faf9f6', border: '1px solid #e7e5e4', borderRadius: '12px', padding: '1.15rem 1.25rem', display: 'flex', gap: '12px' }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: '#f5f3ff', color: '#7c3aed', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Mail size={18} />
+                  </div>
+                  <div>
+                    <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#78716c', letterSpacing: '0.4px', marginBottom: '2px' }}>
+                      Official E-Mail
+                    </span>
+                    <a href="mailto:stenoplus.in@gmail.com" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#7c3aed', textDecoration: 'none' }}>
+                      stenoplus.in@gmail.com
+                    </a>
+                  </div>
+                </div>
+
+                {/* Tile 6: Official Website */}
+                <div style={{ background: '#faf9f6', border: '1px solid #e7e5e4', borderRadius: '12px', padding: '1.15rem 1.25rem', display: 'flex', gap: '12px' }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: '#f0fdf4', color: '#16a34a', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Globe size={18} />
+                  </div>
+                  <div>
+                    <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#78716c', letterSpacing: '0.4px', marginBottom: '2px' }}>
+                      Official Portal
+                    </span>
+                    <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#16a34a', textDecoration: 'none' }}>
+                      https://stenoplus.in
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Embedded Google Map */}
+              <div style={{ 
+                borderRadius: '14px', 
+                overflow: 'hidden', 
+                border: '1px solid #e7e5e4', 
+                height: '200px',
+                position: 'relative',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.03)'
+              }}>
+                <iframe
+                  title="Gaya Shorthand Classes Center Map"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14470.573215849887!2d84.9912061!3d24.7938367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f32a510526e855%3A0x6bfa332617757917!2sGaya%20College%2C%20Gaya!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+
+            </div>
+
+            {/* Right Column: Admission Card & Instant Actions */}
+            <div style={{ 
+              background: '#faf9f6', 
+              border: '1.5px solid #fed7aa', 
+              borderRadius: '16px', 
+              padding: '1.75rem',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.04)'
+            }}>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.75rem' }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#16a34a', display: 'inline-block' }} />
+                <span style={{ fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', color: '#b45309', letterSpacing: '0.4px' }}>
+                  Offline & Online Admission Desk
+                </span>
+              </div>
+
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 850, color: '#1c1917', margin: '0 0 0.5rem', lineHeight: 1.25 }}>
+                Connect with Admission Desk
+              </h3>
+              
+              <p style={{ fontSize: '0.88rem', color: '#57534e', margin: '0 0 1.5rem', lineHeight: 1.5 }}>
+                Visit our center in Gaya to attend a free trial dictation session, inspect our 50+ PC lab, or activate your online access.
+              </p>
+
+              {/* Action Buttons */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '1.5rem' }}>
+                
+                {/* 1. Online Admission Form Button */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onOpenAdmission) {
+                      onOpenAdmission();
+                    } else if (setCurrentTab) {
+                      setCurrentTab('landing');
+                    }
+                  }}
+                  style={{
+                    width: '100%',
+                    background: '#047857',
+                    color: '#ffffff',
+                    border: 'none',
+                    borderRadius: '10px',
+                    padding: '0.85rem 1.25rem',
+                    fontSize: '0.95rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    boxShadow: '0 3px 12px rgba(4, 120, 87, 0.25)',
+                    transition: 'transform 0.15s ease'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                >
+                  <Sparkles size={16} />
+                  <span>Book 3 Free Demo Classes</span>
+                </button>
+
+                {/* 2. WhatsApp Direct Link */}
+                <a
+                  href="https://wa.me/919204123453?text=Hello%20Gaya%20Shorthand%20Classes,%20I%20want%20to%20inquire%20about%20admissions%20and%203%20demo%20classes."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    width: '100%',
+                    background: '#25D366',
+                    color: '#ffffff',
+                    border: 'none',
+                    borderRadius: '10px',
+                    padding: '0.8rem 1.25rem',
+                    fontSize: '0.92rem',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    boxSizing: 'border-box'
+                  }}
+                >
+                  <MessageCircle size={18} />
+                  <span>Chat on WhatsApp (+91 9204123453)</span>
+                </a>
+
+                {/* 3. Direct Phone Call */}
+                <a
+                  href="tel:+919204123453"
+                  style={{
+                    width: '100%',
+                    background: '#ffffff',
+                    color: '#b45309',
+                    border: '1.5px solid #fde68a',
+                    borderRadius: '10px',
+                    padding: '0.75rem 1.25rem',
+                    fontSize: '0.9rem',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    boxSizing: 'border-box'
+                  }}
+                >
+                  <Phone size={16} />
+                  <span>Call Helpline: +91 9204123453</span>
+                </a>
+
+                {/* 4. Direct Email */}
+                <a
+                  href="mailto:stenoplus.in@gmail.com"
+                  style={{
+                    width: '100%',
+                    background: '#ffffff',
+                    color: '#44403c',
+                    border: '1px solid #e7e5e4',
+                    borderRadius: '10px',
+                    padding: '0.7rem 1.25rem',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    boxSizing: 'border-box'
+                  }}
+                >
+                  <Mail size={15} />
+                  <span>Email: stenoplus.in@gmail.com</span>
+                </a>
+
+              </div>
+
+              {/* Highlights checklist */}
+              <div style={{ paddingTop: '1.25rem', borderTop: '1px solid #fed7aa', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                {[
+                  "Personalized mentorship by Shadab Sir (12 Yrs Exp)",
+                  "50–140 WPM Graded Speeds (Pitman & Hindi)",
+                  "50+ Modern Computer Lab (Kruti Dev & Mangal)",
+                  "Govt. Recognized ADCA / DCA Computer Diplomas"
+                ].map((item, idx) => (
+                  <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', color: '#44403c' }}>
+                    <Check size={14} color="#16a34a" style={{ flexShrink: 0 }} />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
 
       </div>
     </div>
