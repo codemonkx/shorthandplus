@@ -568,13 +568,14 @@ export const INITIAL_ACADEMY_COURSES = [
     speedTarget: '30 → 50+ WPM Typing',
     duration: '6 to 12 Months',
     fee: 'Nominal Registration',
-    description: 'Government-accredited computer applications diplomas accepted in all Central & State government document verifications and ministerial clerk posts.',
+    description: 'The institute provides highly practical courses in Shorthand, Typing, and Advanced Diploma in Computer Applications (ADCA), DCA, TALLY etc., designed to help students build speed, accuracy, and efficiency for career growth in Government and private sectors. Alongside shorthand and typing, the ADCA program covers essential computer skills such as MS Office, Internet Applications, Tally, and more.',
     syllabus: [
-      'DCA (6 Months) & ADCA (1 Year) Curriculum',
-      'Tally Prime with GST Certification',
-      'English QWERTY & Hindi (Kruti Dev / Mangal) Typing Studio',
-      'Certificate Verification System with Official QR Code',
-      'Valid for High Courts, BSSC, SSC, Banking & Railways'
+      'ADCA (1 Year) & DCA (6 Months) Complete Computer Syllabus',
+      'MS Office Suite (Word, Excel, PowerPoint) & Internet Applications',
+      'Tally Prime with GST Invoicing & Accounting',
+      'English QWERTY & Hindi (Kruti Dev / Mangal) Typing Speed Studio',
+      'Career-Oriented Training for Steno, Data Entry & Clerical Roles',
+      'Certificate Verification System with Official QR Code'
     ],
     mode: 'Gaya Offline Lab & Document Verification Support',
     popular: false

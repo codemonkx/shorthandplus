@@ -12,6 +12,23 @@
 
 ## ✅ Completed & Verified Workflows
 
+- [x] **Official Institute Identity & Key Highlights (SHORTHAND PLUS)**
+  - Integrated official brand statement: `SHORTHAND PLUS is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning.`
+  - Added full offerings scope: `Shorthand, Typing, and Advanced Diploma in Computer Applications (ADCA), DCA, TALLY etc., designed to help students build speed, accuracy, and efficiency for career growth in Government and private sectors.`
+  - Integrated all 5 Key Highlights across `LandingPage.jsx` and `AboutAcademyView.jsx`:
+    1. Audio-Visual Learning (digital presentations, on-screen guidance, interactive visuals)
+    2. AI-Based Dictation Practice (simulating real dictation scenarios with instant feedback)
+    3. Expert Trainers (step-by-step techniques for developing speed tailored to learner's pace)
+    4. Comprehensive Curriculum (ADCA covering MS Office, Internet Applications, Tally, etc.)
+    5. Career-Oriented Training (stenographer exams, data entry jobs, clerical roles)
+  - Updated speed capability to **Basic to Advance 50 WPM to 140 WPM in Shorthand** with **AI-Based Dictation & Real-Time Evaluation**.
+  - Updated official contact details platform-wide:
+    - Helpline: `+91 9204123453`
+    - Email: `stenoplus.in@gmail.com`
+    - Website: `https://stenoplus.in`
+    - Offline Center: `Gaya Shorthand Classes, Near Railway Station / Tower Chowk, Gaya, Bihar - 823001`
+  - Propagated to `Footer.jsx`, `LandingPage.jsx`, `AboutAcademyView.jsx`, `CoursesPage.jsx`, `LegalPolicyModal.jsx`, `emailService.js`, `mockData.js`, and database `courses`.
+
 - [x] **Course #1: English Shorthand (Pitman Shorthand)**
   - Updated title: `English Shorthand (Pitman Shorthand)`.
   - Added full comprehensive course description tailored for SSC Stenographer, High Court Stenographer, PA, PS, and government exams.

@@ -29,7 +29,11 @@ import {
   Calendar,
   Layers,
   FileText,
-  Zap
+  Zap,
+  Tv,
+  Cpu,
+  Briefcase,
+  Globe
 } from 'lucide-react';
 import { PRICING_PLANS } from '../data/mockData';
 import AcademyIllustration from '../components/AcademyIllustration';
@@ -200,6 +204,34 @@ const REG_LANGUAGE_OPTIONS = [
   { value: "English", label: "English (Steno + Typing)" },
   { value: "Hindi Krutidev", label: "Hindi Krutidev (Steno + Typing)" },
   { value: "Hindi Inscript", label: "Hindi Inscript / Mangal (Steno + Typing)" }
+];
+
+const KEY_HIGHLIGHTS = [
+  {
+    icon: Tv,
+    title: "Audio-Visual Learning",
+    desc: "Classes are supported with digital presentations, on-screen guidance, and interactive visuals to make learning easy and engaging."
+  },
+  {
+    icon: Cpu,
+    title: "AI-Based Dictation Practice",
+    desc: "To improve shorthand and typing accuracy, the institute uses artificial intelligence tools that simulate real dictation scenarios and provide instant feedback."
+  },
+  {
+    icon: Users,
+    title: "Expert Trainers",
+    desc: "Experienced faculty guide students with step-by-step techniques for developing speed in typing and shorthand, tailored to each learner’s pace."
+  },
+  {
+    icon: BookOpen,
+    title: "Comprehensive Curriculum",
+    desc: "Alongside shorthand and typing, the ADCA program covers essential computer skills such as MS Office, Internet Applications, Tally, and more."
+  },
+  {
+    icon: Briefcase,
+    title: "Career-Oriented Training",
+    desc: "The institute focuses on preparing students for stenographer exams, data entry jobs, clerical roles, and other computer-based career opportunities."
+  }
 ];
 
 export default function LandingPage({ 
@@ -503,7 +535,7 @@ export default function LandingPage({
       title: "Advance Diploma in Computer Applications",
       duration: "12 Months (1 Year)",
       recognition: "State & Central Govt. Approved",
-      syllabus: "Advanced MS Office, Database Management, Graphic Design Basics, Financial Accounting, Computer Hardware & Networking.",
+      syllabus: "Alongside shorthand and typing, the ADCA program covers essential computer skills such as MS Office, Internet Applications, Tally, Graphic Design basics, and Financial Accounting.",
       badge: "Comprehensive"
     },
     {
@@ -517,9 +549,9 @@ export default function LandingPage({
     {
       code: "Steno Speed",
       title: "Certified Shorthand Speed Certificate",
-      duration: "80 / 100 / 120 WPM",
+      duration: "50 to 140 WPM",
       recognition: "Gaya Shorthand Classes Verified",
-      syllabus: "Official speed qualification certificate verified through recorded live audio examination, valid for document verification.",
+      syllabus: "Official speed qualification certificate (50 to 140 WPM) verified through recorded live audio examination, valid for document verification.",
       badge: "Skill Certified"
     }
   ];
@@ -527,7 +559,7 @@ export default function LandingPage({
   const institutionalPillars = [
     {
       title: "1,700+ Official Studio Audio Dictations",
-      desc: "Studio-mastered audio recorded at exact, unvarying speeds (80, 100, 120 WPM) with neutral pronunciation and proper cadence matching government skill test halls."
+      desc: "Studio-mastered audio recorded at exact, unvarying speeds (50 to 140 WPM) with neutral pronunciation and proper cadence matching government skill test halls."
     },
     {
       title: "Authentic 5-Minute Shorthand Reading Room",
@@ -553,8 +585,8 @@ export default function LandingPage({
 
   const faqs = [
     {
-      q: "What is Gaya Shorthand Classes (ShorthandPlus)?",
-      a: "Gaya Shorthand Classes is Bihar's premier stenography institute and online examination portal (https://shorthandplus.in/). Led by Director Gagan Sir for over 15 years, the academy prepares students for SSC Stenographer Grade C & D, Patna High Court, Jharkhand High Court, and central government secretariat reporter exams."
+      q: "What is Gaya Shorthand Classes (SHORTHAND PLUS)?",
+      a: "SHORTHAND PLUS (Gaya Shorthand Classes) is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning (https://stenoplus.in). We provide basic to advance 50 WPM to 140 WPM speed in shorthand with AI-based dictation and real-time evaluation. Mentored by experienced faculty, the academy prepares students for SSC Stenographer Grade C & D, Patna High Court, Jharkhand High Court, and central government secretariat reporter exams."
     },
     {
       q: "Can I try demo steno dictations and typing tests for free?",
@@ -598,15 +630,15 @@ export default function LandingPage({
             <div className="hero-left-column">
               <div className="hero-status-pill">
                 <span className="pulse-dot-green" />
-                <span>BIHAR'S PREMIER STENO & TYPING ACADEMY</span>
+                <span>SHORTHAND PLUS • PROFESSIONAL TRAINING CENTER (OFFLINE / ONLINE)</span>
               </div>
 
               <h1 className="hero-main-title">
-                Crack Government <span className="text-royal-blue">Stenographer & Typing</span> Exams With Real Simulations
+                Crack Government <span className="text-royal-blue">Stenographer, Typing & Computer</span> Exams With Real Simulations
               </h1>
 
               <p className="hero-main-description">
-                India's leading examination software for <strong>SSC Stenographer Grade C & D</strong>, <strong>Patna High Court</strong>, <strong>Jharkhand High Court</strong>, and State Civil Courts. Featuring daily 80–120 WPM studio audio dictations, official 5-minute reading rooms, strict backspace lock simulations, and Kruti Dev 010 & Mangal typing engines.
+                <strong>SHORTHAND PLUS</strong> is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning. We provide basic to advance 50 WPM to 140 WPM speed in shorthand with AI-based dictation and real-time evaluation.
               </p>
 
               {/* Instant CTAs */}
@@ -637,8 +669,8 @@ export default function LandingPage({
               {/* Trust Metric Counters */}
               <div className="hero-trust-bar">
                 <div className="trust-item">
-                  <div className="trust-number">1,700+</div>
-                  <div className="trust-label">Audio Dictations</div>
+                  <div className="trust-number">50-140</div>
+                  <div className="trust-label">WPM Steno Speeds</div>
                 </div>
                 <div className="trust-divider" />
                 <div className="trust-item">
@@ -647,8 +679,8 @@ export default function LandingPage({
                 </div>
                 <div className="trust-divider" />
                 <div className="trust-item">
-                  <div className="trust-number">80-120</div>
-                  <div className="trust-label">Certified WPM Speeds</div>
+                  <div className="trust-number">1,700+</div>
+                  <div className="trust-label">Audio Dictations</div>
                 </div>
                 <div className="trust-divider" />
                 <div className="trust-item">
@@ -672,7 +704,7 @@ export default function LandingPage({
                         <h3 className="portal-card-title">Student Portal Access</h3>
                         <span className="portal-live-badge">OFFICIAL</span>
                       </div>
-                      <p className="portal-card-subtitle">Gaya Shorthand Classes • ShorthandPlus</p>
+                      <p className="portal-card-subtitle">SHORTHAND PLUS • Gaya Shorthand Classes</p>
                     </div>
                   </div>
                 </div>
@@ -1101,6 +1133,145 @@ export default function LandingPage({
         </div>
       </section>
 
+      {/* 2.5 KEY HIGHLIGHTS & SPEED RANGE BANNER */}
+      <section className="highlights-section" style={{ padding: '3.5rem 1.5rem', background: '#faf9f6' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          
+          {/* Banner: Basic to Advance 50 to 140 WPM */}
+          <div style={{
+            background: 'linear-gradient(135deg, #1c1917 0%, #292524 100%)',
+            color: '#faf9f6',
+            borderRadius: '14px',
+            padding: '1.4rem 2rem',
+            marginBottom: '3rem',
+            boxShadow: '0 4px 20px rgba(28, 25, 23, 0.08)',
+            border: '1px solid #44403c',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '1.25rem'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <div style={{
+                width: 48,
+                height: 48,
+                borderRadius: 12,
+                background: '#d97706',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#ffffff',
+                fontWeight: 900,
+                fontSize: '1.3rem'
+              }}>
+                ⚡
+              </div>
+              <div>
+                <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#fbbf24', fontWeight: 700 }}>
+                  High-Speed Professional Training
+                </div>
+                <div style={{ fontSize: '1.15rem', fontWeight: 800, letterSpacing: '0.2px' }}>
+                  WE PROVIDE BASIC TO ADVANCE 50WPM TO 140WPM SPEED IN SHORTHAND
+                </div>
+              </div>
+            </div>
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              background: 'rgba(255, 255, 255, 0.1)',
+              padding: '0.55rem 1.1rem',
+              borderRadius: '999px',
+              fontSize: '0.88rem',
+              fontWeight: 700,
+              border: '1px solid rgba(255, 255, 255, 0.2)'
+            }}>
+              <Sparkles size={16} color="#fbbf24" />
+              <span>AI BASED DICTATION & REAL TIME EVALUATION</span>
+            </div>
+          </div>
+
+          {/* Section Header */}
+          <div className="section-header-centered" style={{ marginBottom: '2.5rem' }}>
+            <span className="badge-subheading">MODERN LEARNING APPROACH</span>
+            <h2 className="section-title-large">
+              Key Highlights of SHORTHAND PLUS
+            </h2>
+            <p className="section-description-text" style={{ maxWidth: 760, margin: '0.5rem auto 0' }}>
+              The institute provides highly practical courses in Shorthand, Typing, and Advanced Diploma in Computer Applications (ADCA), DCA, TALLY etc., designed to help students build speed, accuracy, and efficiency for career growth in Government and private sectors.
+            </p>
+          </div>
+
+          {/* 5 Highlights Grid */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1.5rem',
+            marginBottom: '2rem'
+          }}>
+            {KEY_HIGHLIGHTS.map((item, idx) => {
+              const IconComp = item.icon;
+              return (
+                <div 
+                  key={idx}
+                  style={{
+                    background: '#ffffff',
+                    border: '1px solid #e7e5e4',
+                    borderRadius: '12px',
+                    padding: '1.6rem',
+                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.02)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.85rem'
+                  }}
+                >
+                  <div style={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: 10,
+                    background: '#faf9f6',
+                    border: '1px solid #e7e5e4',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#d97706'
+                  }}>
+                    <IconComp size={22} strokeWidth={2.2} />
+                  </div>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#1c1917', margin: 0 }}>
+                    {item.title}
+                  </h3>
+                  <p style={{ fontSize: '0.86rem', color: '#57534e', lineHeight: 1.6, margin: 0 }}>
+                    {item.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Philosophy Banner */}
+          <div style={{
+            background: '#ffffff',
+            border: '1px solid #e7e5e4',
+            borderLeft: '4px solid #d97706',
+            borderRadius: '10px',
+            padding: '1.25rem 1.75rem',
+            fontSize: '0.9rem',
+            color: '#44403c',
+            lineHeight: 1.6,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem'
+          }}>
+            <div style={{ fontWeight: 600 }}>
+              💡 <em>"This modern, technology-driven approach ensures that students not only master traditional shorthand and typing skills but also stay ahead with digital competency for today's professional demands."</em>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* 3. FEATURED EXAM BATCHES & LIVE DICTATION PROGRAMS */}
       <section className="courses-section">
         <div className="courses-container">
@@ -1357,12 +1528,12 @@ export default function LandingPage({
         <div className="offline-center-container">
           <div className="offline-card-grid">
             <div className="offline-left-info">
-              <span className="badge-subheading">OFFLINE ACADEMY</span>
+              <span className="badge-subheading">JOIN US • OFFLINE & ONLINE</span>
               <h2 className="offline-heading">
-                Visit Gaya Shorthand Classes In Person
+                Join Us : Gaya Shorthand Classes (SHORTHAND PLUS)
               </h2>
               <p className="offline-bio">
-                Established over 15 years ago by Director Gagan Sir, Gaya Shorthand Classes is recognized across Bihar as the epicenter of stenography and computer typing excellence.
+                <strong>SHORTHAND PLUS</strong> is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning. We provide basic to advance 50 WPM to 140 WPM speed in shorthand with AI-based dictation and real-time evaluation.
               </p>
 
               <div className="center-detail-rows">
@@ -1375,29 +1546,78 @@ export default function LandingPage({
                 </div>
 
                 <div className="center-detail-item">
+                  <Phone size={18} className="text-royal-blue shrink-0" />
+                  <div>
+                    <strong>Helpline Number:</strong>
+                    <p>
+                      <a href="tel:+919204123453" style={{ color: 'inherit', fontWeight: 600 }}>
+                        +91 9204123453
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="center-detail-item">
+                  <Mail size={18} className="text-royal-blue shrink-0" />
+                  <div>
+                    <strong>Official E-mail:</strong>
+                    <p>
+                      <a href="mailto:stenoplus.in@gmail.com" style={{ color: '#d97706', fontWeight: 600, textDecoration: 'none' }}>
+                        stenoplus.in@gmail.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="center-detail-item">
+                  <Globe size={18} className="text-royal-blue shrink-0" />
+                  <div>
+                    <strong>Official Website:</strong>
+                    <p>
+                      <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" style={{ color: '#d97706', fontWeight: 600, textDecoration: 'none' }}>
+                        https://stenoplus.in
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="center-detail-item">
                   <Calendar size={18} className="text-royal-blue shrink-0" />
                   <div>
                     <strong>Daily Batch Timings:</strong>
                     <p>Morning 6:00 AM – 11:00 AM | Evening 3:00 PM – 8:00 PM (Monday to Saturday)</p>
                   </div>
                 </div>
-
-                <div className="center-detail-item">
-                  <Phone size={18} className="text-royal-blue shrink-0" />
-                  <div>
-                    <strong>Director Hotline & Helpline:</strong>
-                    <p>+91 9204123453 (Director Office Helpline)</p>
-                  </div>
-                </div>
               </div>
 
-              <a 
-                href="tel:+919204123453"
-                className="btn-contact-director"
-              >
-                <Phone size={16} />
-                <span>Call Center Desk (+91 9204123453)</span>
-              </a>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1.25rem' }}>
+                <a 
+                  href="tel:+919204123453"
+                  className="btn-contact-director"
+                >
+                  <Phone size={16} />
+                  <span>Call Helpline (+91 9204123453)</span>
+                </a>
+                <a 
+                  href="mailto:stenoplus.in@gmail.com"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.7rem 1.25rem',
+                    background: '#faf9f6',
+                    border: '1px solid #e7e5e4',
+                    borderRadius: '8px',
+                    color: '#1c1917',
+                    fontSize: '0.86rem',
+                    fontWeight: 600,
+                    textDecoration: 'none'
+                  }}
+                >
+                  <Mail size={16} />
+                  <span>stenoplus.in@gmail.com</span>
+                </a>
+              </div>
             </div>
 
             <div className="offline-right-showcase">
@@ -1578,7 +1798,7 @@ export default function LandingPage({
               </div>
 
               <h2 className="bottom-cta-title">
-                Ready to Achieve 80–120 WPM & Clear Your Skill Test?
+                Ready to Achieve 50–140 WPM & Clear Your Skill Test?
               </h2>
 
               <p className="bottom-cta-desc">

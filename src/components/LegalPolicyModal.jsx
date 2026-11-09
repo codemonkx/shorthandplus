@@ -145,7 +145,7 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
 
               <h3 className="text-sm font-bold text-stone-900">3. How to Request a Billing Review</h3>
               <p>
-                If you encounter any billing discrepancy, please write to <strong>director@shorthandplus.in</strong> with your registered Roll Number and Razorpay Transaction ID within 48 hours of payment.
+                If you encounter any billing discrepancy, please write to <strong>stenoplus.in@gmail.com</strong> with your registered Roll Number and Razorpay Transaction ID within 48 hours of payment.
               </p>
             </div>
           )}
@@ -158,35 +158,37 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
                 <div className="p-4 rounded-lg border space-y-2" style={{ background: '#FFFFFF', borderColor: '#E7E5E4' }}>
                   <div className="flex items-center gap-2 font-bold text-stone-900">
                     <MapPin size={16} className="text-amber-600" />
-                    <span>Physical Center</span>
+                    <span>Physical Center & Online Portal</span>
                   </div>
                   <p className="text-stone-600">
-                    Gaya Shorthand Classes<br />
+                    SHORTHAND PLUS (Gaya Shorthand Classes)<br />
                     Near Railway Station / Tower Chowk<br />
-                    Gaya, Bihar — 823001, India
+                    Gaya, Bihar — 823001, India<br />
+                    Portal: <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" className="text-amber-700 underline font-semibold">https://stenoplus.in</a>
                   </p>
                 </div>
 
                 <div className="p-4 rounded-lg border space-y-2" style={{ background: '#FFFFFF', borderColor: '#E7E5E4' }}>
                   <div className="flex items-center gap-2 font-bold text-stone-900">
                     <Phone size={16} className="text-amber-600" />
-                    <span>Direct Helpline</span>
+                    <span>Direct Helpline & Email</span>
                   </div>
                   <p className="text-stone-600">
-                    Helpline: +91 9204123453<br />
-                    Director Desk: Dr. Gagan Kumar<br />
-                    Timing: 6:00 AM – 8:00 PM Daily
+                    Helpline No.: +91 9204123453<br />
+                    Email: <a href="mailto:stenoplus.in@gmail.com" className="text-amber-700 underline">stenoplus.in@gmail.com</a><br />
+                    Timing: 6:00 AM – 8:00 PM Daily (Monday to Saturday)
                   </p>
                 </div>
               </div>
 
               <h3 className="text-sm font-bold text-stone-900">Grievance Officer (IT Rules Compliance)</h3>
               <p>
-                In accordance with the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules 2021, the designated Grievance Officer for Shorthand Plus is:
+                In accordance with the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules 2021, the designated Grievance Officer for SHORTHAND PLUS is:
               </p>
               <div className="p-3 rounded-lg border" style={{ background: '#F5F5F4', borderColor: '#E7E5E4' }}>
                 <p className="font-semibold text-stone-900">Grievance Officer: Faculty Director Desk</p>
-                <p>Email: <a href="mailto:director@shorthandplus.in" className="text-amber-700 underline">director@shorthandplus.in</a></p>
+                <p>Email: <a href="mailto:stenoplus.in@gmail.com" className="text-amber-700 underline">stenoplus.in@gmail.com</a></p>
+                <p>Website: <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" className="text-amber-700 underline">https://stenoplus.in</a></p>
                 <p>Response Time: Within 24–48 working hours.</p>
               </div>
             </div>

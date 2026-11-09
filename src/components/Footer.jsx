@@ -18,23 +18,23 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
                 <GraduationCap size={22} color="#ffffff" strokeWidth={2.4} />
               </div>
               <div className="footer-brand-text">
-                <span className="brand-h1">Shorthand Plus</span>
+                <span className="brand-h1">SHORTHAND PLUS</span>
                 <span className="brand-sub">Gaya Shorthand Classes • Est. 2008</span>
               </div>
             </div>
 
             <p className="footer-summary-text">
-              Bihar's premier stenography and typing coaching institution, preparing aspirants for SSC Stenographer Grade C & D, High Courts, and Central Government Secretariat examinations since 2008.
+              SHORTHAND PLUS is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning. We provide basic to advance 50 WPM to 140 WPM speed in shorthand with AI-based dictation and real-time evaluation.
             </p>
 
             <div className="footer-trust-chips-row">
               <span className="footer-trust-chip">
                 <ShieldCheck size={14} className="text-emerald" />
-                <span>SSC & High Court Exam Simulations</span>
+                <span>AI-Based Real-Time Evaluation</span>
               </span>
               <span className="footer-trust-chip">
                 <Award size={14} className="text-amber" />
-                <span>Govt. Recognized Diplomas</span>
+                <span>50–140 WPM Certified Speeds</span>
               </span>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
               </li>
               <li>
                 <button onClick={() => { setCurrentTab('classes'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  Verified Shorthand Speed Certificate (80-120 WPM)
+                  Verified Shorthand Speed Certificate (50–140 WPM)
                 </button>
               </li>
             </ul>
@@ -113,11 +113,13 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
               </li>
               <li>
                 <Phone size={16} className="contact-icon text-royal-blue shrink-0" />
-                <span>Official Helpline: +91 9204123453</span>
+                <span>Helpline: +91 9204123453</span>
               </li>
               <li>
                 <Mail size={16} className="contact-icon text-royal-blue shrink-0" />
-                <span>director@shorthandplus.in</span>
+                <a href="mailto:stenoplus.in@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  stenoplus.in@gmail.com
+                </a>
               </li>
               <li>
                 <Clock size={16} className="contact-icon text-royal-blue shrink-0" />
@@ -130,7 +132,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
               className="footer-director-call-btn"
             >
               <Phone size={15} className="footer-call-pulse-icon" />
-              <span>Call Director Helpline (+91 9204123453)</span>
+              <span>Call Helpline (+91 9204123453)</span>
             </a>
           </div>
 
@@ -138,6 +140,8 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
 
         {/* Compliance & Legal Policies Strip (Razorpay & IT Rules Compliant) */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', justifyContent: 'center', alignItems: 'center', padding: '1rem 0', borderTop: '1px solid rgba(255,255,255,0.08)', fontSize: '0.74rem', color: '#a8a29e' }}>
+          <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" style={{ color: '#d97706', textDecoration: 'none', fontWeight: 600 }}>https://stenoplus.in</a>
+          <span>•</span>
           <button onClick={() => onOpenLegal && onOpenLegal('terms')} style={{ background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer', padding: 0 }}>Terms & Conditions</button>
           <span>•</span>
           <button onClick={() => onOpenLegal && onOpenLegal('privacy')} style={{ background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer', padding: 0 }}>Privacy Policy</button>
@@ -150,7 +154,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
         {/* Bottom Copyright & Verification Strip */}
         <div className="footer-bottom-bar">
           <p className="copyright-text">
-            © {new Date().getFullYear()} Gaya Shorthand Classes (ShorthandPlus). All rights reserved.
+            © {new Date().getFullYear()} SHORTHAND PLUS (Gaya Shorthand Classes • stenoplus.in). All rights reserved.
           </p>
           <div className="footer-badges-strip">
             <span>Official Government Skill Test Software</span>

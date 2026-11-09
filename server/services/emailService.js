@@ -53,7 +53,7 @@ export async function sendPasswordResetEmail({ toEmail, code, candidateName = 'C
 
   try {
     const transporter = getTransporter();
-    const fromAddress = process.env.SMTP_FROM || `"Gaya Shorthand Classes" <${process.env.SMTP_USER}>`;
+    const fromAddress = process.env.SMTP_FROM || `"SHORTHAND PLUS (Gaya Shorthand Classes)" <${process.env.SMTP_USER || 'stenoplus.in@gmail.com'}>`;
 
     const htmlContent = `
       <!DOCTYPE html>
@@ -81,8 +81,8 @@ export async function sendPasswordResetEmail({ toEmail, code, candidateName = 'C
       <body>
         <div class="container">
           <div class="header">
-            <h1>Gaya Shorthand Classes</h1>
-            <p>Government Certified Shorthand & Computer Training Academy</p>
+            <h1>SHORTHAND PLUS</h1>
+            <p>Gaya Shorthand Classes • Professional Training Center (Offline / Online)</p>
           </div>
           <div class="body-content">
             <div class="greeting">Hello, ${candidateName}</div>
@@ -102,8 +102,8 @@ export async function sendPasswordResetEmail({ toEmail, code, candidateName = 'C
             </p>
           </div>
           <div class="footer">
-            Gaya Shorthand Classes & Examination Council<br />
-            Near Railway Station, Gaya, Bihar 823001 | Support: support@gayashorthand.com
+            SHORTHAND PLUS & Gaya Shorthand Classes<br />
+            Near Railway Station, Gaya, Bihar 823001 | Support: stenoplus.in@gmail.com | Website: https://stenoplus.in
           </div>
         </div>
       </body>
@@ -113,8 +113,8 @@ export async function sendPasswordResetEmail({ toEmail, code, candidateName = 'C
     const info = await transporter.sendMail({
       from: fromAddress,
       to: toEmail,
-      subject: `Gaya Shorthand Classes - Password Reset Code: ${code}`,
-      text: `Hello ${candidateName},\n\nYour 6-digit password reset verification code is: ${code}\n\nThis code will expire in 15 minutes.\n\nIf you did not request this, please ignore this email.\n\nGaya Shorthand Classes`,
+      subject: `SHORTHAND PLUS - Password Reset Verification Code: ${code}`,
+      text: `Hello ${candidateName},\n\nYour 6-digit password reset verification code is: ${code}\n\nThis code will expire in 15 minutes.\n\nIf you did not request this, please ignore this email.\n\nSHORTHAND PLUS (Gaya Shorthand Classes)\nHelpline: +91 9204123453\nWebsite: https://stenoplus.in\nEmail: stenoplus.in@gmail.com`,
       html: htmlContent
     });
 
