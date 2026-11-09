@@ -302,8 +302,22 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
         {activeTab === 'online-live' && (
           <div className="classes-online-live-showcase">
             {/* Live Broadcast Hero Card */}
-            <div className="online-live-hero-card">
-              <div className="hero-card-left">
+            <div className="online-live-hero-card" style={{
+              background: '#ffffff',
+              border: '1px solid #e7e5e4',
+              borderRadius: '16px',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
+              overflow: 'hidden'
+            }}>
+              <div className="hero-card-left" style={{
+                padding: '2.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                gap: '1.25rem'
+              }}>
                 <div className="live-status-row">
                   <span className={`live-broadcast-pill ${activeClass?.isLive ? '' : 'pill-upcoming'}`}>
                     {activeClass?.isLive && <span className="live-pulsing-dot" />}
@@ -406,7 +420,14 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               </div>
 
               {/* Right Preview Card / Whiteboard Teaser */}
-              <div className="hero-card-right">
+              <div className="hero-card-right" style={{
+                padding: '2rem',
+                background: '#faf9f6',
+                borderLeft: '1px solid #e7e5e4',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
                 <div className="mini-stream-preview-box">
                   <div className="mini-stream-header font-mono">
                     <span className="mini-rec-dot" />
@@ -500,69 +521,211 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
             )}
 
             {/* Online Classes Features Trio */}
-            <div className="online-features-cards-grid mt-4">
-              <div className="online-feat-card">
-                <div className="feat-icon-squircle bg-stone-100 text-stone-800">
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '1.25rem',
+              marginTop: '2.5rem'
+            }}>
+              <div style={{
+                background: '#ffffff',
+                border: '1px solid #e7e5e4',
+                borderRadius: '16px',
+                padding: '1.75rem',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.03)'
+              }}>
+                <div style={{
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '12px',
+                  background: '#f5f4f0',
+                  color: '#1c1917',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '1rem'
+                }}>
                   <Video size={22} />
                 </div>
-                <h3>Dual-Mode Shorthand Whiteboard</h3>
-                <p>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#1c1917', margin: '0 0 0.5rem' }}>
+                  Dual-Mode Shorthand Whiteboard
+                </h3>
+                <p style={{ fontSize: '0.88rem', color: '#57534e', lineHeight: 1.6, margin: 0 }}>
                   Watch teacher strokes live or switch to your own interactive HTML5 stylus canvas to trace outlines with fine pencil or heavy calligraphy pens.
                 </p>
               </div>
 
-              <div className="online-feat-card">
-                <div className="feat-icon-squircle bg-rose-50 text-rose-600">
+              <div style={{
+                background: '#ffffff',
+                border: '1px solid #e7e5e4',
+                borderRadius: '16px',
+                padding: '1.75rem',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.03)'
+              }}>
+                <div style={{
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '12px',
+                  background: '#fee2e2',
+                  color: '#dc2626',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '1rem'
+                }}>
                   <Volume2 size={22} />
                 </div>
-                <h3>Speed-Controlled Dictation Engine</h3>
-                <p>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#1c1917', margin: '0 0 0.5rem' }}>
+                  Speed-Controlled Dictation Engine
+                </h3>
+                <p style={{ fontSize: '0.88rem', color: '#57534e', lineHeight: 1.6, margin: 0 }}>
                   Built-in audio player with 0.8x, 1.0x, 1.1x, 1.2x, and 1.3x multipliers. Practice at custom speeds without pitch distortion.
                 </p>
               </div>
 
-              <div className="online-feat-card">
-                <div className="feat-icon-squircle bg-emerald-50 text-emerald-600">
+              <div style={{
+                background: '#ffffff',
+                border: '1px solid #e7e5e4',
+                borderRadius: '16px',
+                padding: '1.75rem',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.03)'
+              }}>
+                <div style={{
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '12px',
+                  background: '#dcfce7',
+                  color: '#15803d',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '1rem'
+                }}>
                   <Keyboard size={22} />
                 </div>
-                <h3>1-Click Typing Test Handover</h3>
-                <p>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#1c1917', margin: '0 0 0.5rem' }}>
+                  1-Click Typing Test Handover
+                </h3>
+                <p style={{ fontSize: '0.88rem', color: '#57534e', lineHeight: 1.6, margin: 0 }}>
                   Immediately transition from the live Zoom dictation into the exam typing engine to transcribe your strokes with instant accuracy metrics.
                 </p>
               </div>
             </div>
 
             {/* All 4 Daily Zoom Batches Schedule */}
-            <div className="online-schedule-summary-box mt-4">
-              <div className="schedule-box-header">
-                <h3>All 4 Daily Online Zoom Dictation Batches</h3>
-                <p>All online sessions are recorded and available for replay 24/7 in the Candidate Portal.</p>
+            <div style={{
+              background: '#ffffff',
+              border: '1px solid #e7e5e4',
+              borderRadius: '16px',
+              padding: '1.75rem 2rem',
+              marginTop: '2.5rem',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.03)'
+            }}>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <span style={{ fontSize: '0.74rem', fontWeight: 800, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.8px' }}>
+                  Daily Broadcast Timetable
+                </span>
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 850, color: '#1c1917', margin: '0.2rem 0 0.4rem' }}>
+                  All 4 Daily Online Zoom Dictation Batches
+                </h3>
+                <p style={{ fontSize: '0.88rem', color: '#57534e', margin: 0 }}>
+                  All online sessions are recorded and available for replay 24/7 in the Candidate Portal.
+                </p>
               </div>
 
-              <div className="online-batches-horizontal-grid">
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                gap: '1rem'
+              }}>
                 {(onlineClasses && onlineClasses.length > 0 ? onlineClasses : [
                   { id: 'class-theory-2', time: '6:00 AM – 8:00 AM', badgeClass: 'badge-replay', tag: 'Recording Ready', title: 'Basic Pitman Theory & New Strokes', speed: 'Beginners (0 - 60 WPM)', zoomMeetingId: '815 6742 9904' },
                   { id: 'class-live-1', isLive: true, time: '8:30 AM – 10:30 AM', badgeClass: 'badge-live', tag: '● Active Live', title: 'SSC Grade C & D 80 WPM Speed Lab', speed: '80 WPM Standard', zoomMeetingId: '842 9104 2281' },
                   { id: 'class-judicial-3', time: '3:00 PM – 5:00 PM', badgeClass: 'badge-upcoming', tag: 'Starts 3:00 PM', title: 'High Court Judicial 100 WPM Bench', speed: '100 WPM Judicial', zoomMeetingId: '879 3341 5520' },
                   { id: 'class-reporter-4', time: '5:30 PM – 7:30 PM', badgeClass: 'badge-upcoming', tag: 'Starts 5:30 PM', title: 'Assembly Reporter 120+ WPM Elite', speed: '120-140 WPM', zoomMeetingId: '891 4059 1133' }
                 ]).map((b) => (
-                  <div key={b.id} className={`online-batch-mini-card ${b.isLive ? 'is-active-now' : ''}`}>
-                    <div className="mini-card-top">
-                      <span className={`batch-shift-pill ${b.isLive ? 'bg-rose-600 text-white' : ''}`}>{b.time}</span>
-                      <span className={`badge ${b.badgeClass}`}>{b.tag}</span>
+                  <div 
+                    key={b.id} 
+                    style={{
+                      background: b.isLive ? '#fef2f2' : '#faf9f6',
+                      border: b.isLive ? '1.5px solid #f87171' : '1px solid #e7e5e4',
+                      borderRadius: '14px',
+                      padding: '1.25rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      gap: '0.85rem',
+                      boxShadow: b.isLive ? '0 4px 16px rgba(225, 29, 72, 0.1)' : '0 1px 3px rgba(0,0,0,0.02)'
+                    }}
+                  >
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '0.65rem' }}>
+                        <span style={{
+                          background: b.isLive ? '#dc2626' : '#e7e5e4',
+                          color: b.isLive ? '#ffffff' : '#1c1917',
+                          fontSize: '0.72rem',
+                          fontWeight: 800,
+                          padding: '3px 9px',
+                          borderRadius: '999px',
+                          fontFamily: 'monospace'
+                        }}>
+                          {b.time}
+                        </span>
+                        <span style={{
+                          fontSize: '0.72rem',
+                          fontWeight: 700,
+                          color: b.isLive ? '#dc2626' : '#78716c',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '4px'
+                        }}>
+                          {b.isLive && <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#dc2626', animation: 'beaconPulse 1.2s infinite' }} />}
+                          {b.tag}
+                        </span>
+                      </div>
+
+                      <h4 style={{ fontSize: '1rem', fontWeight: 800, color: '#1c1917', margin: '0 0 0.5rem', lineHeight: 1.35 }}>
+                        {b.title}
+                      </h4>
+
+                      <div style={{
+                        fontSize: '0.76rem',
+                        fontFamily: 'monospace',
+                        color: b.isLive ? '#991b1b' : '#57534e',
+                        background: b.isLive ? '#fee2e2' : '#ffffff',
+                        border: '1px solid ' + (b.isLive ? '#fca5a5' : '#e7e5e4'),
+                        padding: '4px 8px',
+                        borderRadius: '6px',
+                        display: 'inline-block'
+                      }}>
+                        {b.speed} • Zoom ID: {b.zoomMeetingId}
+                      </div>
                     </div>
-                    <h4>{b.title}</h4>
-                    <p className={`font-mono text-xs ${b.isLive ? 'text-rose-800 font-semibold' : 'text-muted'}`}>
-                      {b.speed} • Zoom ID: {b.zoomMeetingId}
-                    </p>
+
                     <button 
-                      className={`btn-join-batch-link ${b.isLive ? 'font-bold text-rose-700' : ''}`}
                       onClick={() => {
                         if (onSelectClass) {
                           onSelectClass(b.id);
                         } else {
                           setCurrentTab('online-classes');
                         }
+                      }}
+                      style={{
+                        width: '100%',
+                        padding: '0.6rem 1rem',
+                        borderRadius: '8px',
+                        fontSize: '0.84rem',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '6px',
+                        border: b.isLive ? 'none' : '1px solid #d6d3d1',
+                        background: b.isLive ? '#047857' : '#ffffff',
+                        color: b.isLive ? '#ffffff' : '#1c1917',
+                        boxShadow: b.isLive ? '0 2px 8px rgba(4, 120, 87, 0.25)' : 'none',
+                        transition: 'all 0.15s ease'
                       }}
                     >
                       <span>{b.isLive ? 'Enter Live Classroom →' : 'View Session Details →'}</span>
@@ -974,25 +1137,85 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
       </div>
 
       {/* 3. BOTTOM OFFLINE CENTER INFO */}
-      <section className="classes-center-strip">
-        <div className="classes-content-container">
-          <div className="classes-center-box">
-            <div className="center-box-left">
-              <div className="center-icon-wrap">
-                <Building size={24} className="text-royal-blue" />
-              </div>
-              <div>
-                <h4>Join Offline Classroom at Gaya Shorthand Classes</h4>
-                <p>Gaya College More, Opposite Cyber Thana, Gayaji, Bihar • 3 Free Demo Classes Available</p>
-              </div>
+      <section style={{ maxWidth: 1200, margin: '2.5rem auto 3.5rem', padding: '0 1.25rem' }}>
+        <div style={{
+          background: '#ffffff',
+          border: '1.5px solid #fed7aa',
+          borderRadius: '16px',
+          padding: '1.75rem 2rem',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '1.25rem'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', minWidth: '280px', flex: '1 1 400px' }}>
+            <div style={{
+              width: '48px',
+              height: '48px',
+              borderRadius: '12px',
+              background: '#fef3c7',
+              color: '#d97706',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0
+            }}>
+              <Building size={24} />
             </div>
+            <div>
+              <h4 style={{ fontSize: '1.15rem', fontWeight: 850, color: '#1c1917', margin: '0 0 0.25rem' }}>
+                Join Offline Classroom at Gaya Shorthand Classes
+              </h4>
+              <p style={{ fontSize: '0.86rem', color: '#57534e', margin: 0, lineHeight: 1.45 }}>
+                Gaya College More, Opposite Cyber Thana, Gayaji, Bihar • <strong>3 Free Demo Classes Available</strong>
+              </p>
+            </div>
+          </div>
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
             <a 
-              href="tel:+917870377214"
-              className="btn-center-call"
+              href="tel:+919204123453"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: '#fef3c7',
+                color: '#92400e',
+                border: '1.5px solid #fde68a',
+                padding: '0.65rem 1.25rem',
+                borderRadius: '10px',
+                fontSize: '0.88rem',
+                fontWeight: 700,
+                textDecoration: 'none'
+              }}
             >
-              <Phone size={16} />
-              <span>Call Helpline: 7870377214 / 9204123453</span>
+              <Phone size={16} color="#d97706" />
+              <span>Call Helpline: 9204123453 / 7870377214</span>
             </a>
+
+            <button
+              type="button"
+              onClick={() => onOpenCheckout ? onOpenCheckout() : null}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: '#047857',
+                color: '#ffffff',
+                border: 'none',
+                padding: '0.65rem 1.25rem',
+                borderRadius: '10px',
+                fontSize: '0.88rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+                boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)'
+              }}
+            >
+              <Sparkles size={16} color="#fde68a" />
+              <span>Book 3 Free Demo Classes</span>
+            </button>
           </div>
         </div>
       </section>
