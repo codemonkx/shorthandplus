@@ -12,10 +12,14 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
             <div 
               className="footer-brand-title" 
               onClick={() => { setCurrentTab('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}
             >
-              <div className="brand-cap-squircle footer-cap-squircle">
-                <GraduationCap size={22} color="#ffffff" strokeWidth={2.4} />
+              <div className="brand-logo-s-wrap footer-logo-wrap" style={{ width: '40px', height: '40px' }}>
+                <img 
+                  src="/assets/logo-big-s.png" 
+                  alt="Steno Plus Big S Logo" 
+                  style={{ height: '38px', width: 'auto', objectFit: 'contain' }}
+                />
               </div>
               <div className="footer-brand-text">
                 <span className="brand-h1">SHORTHAND PLUS</span>

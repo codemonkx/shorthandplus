@@ -56,11 +56,15 @@ export default function Sidebar({
         <div 
           className="sidebar-brand-box" 
           onClick={() => handleNav('landing')}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}
           title="Return to Public Website"
         >
-          <div className="brand-cap-squircle">
-            <GraduationCap size={20} color="#ffffff" strokeWidth={2.4} />
+          <div className="brand-logo-s-wrap" style={{ width: '36px', height: '36px' }}>
+            <img 
+              src="/assets/logo-big-s.png" 
+              alt="Steno Plus Big S Logo" 
+              style={{ height: '34px', width: 'auto', objectFit: 'contain' }}
+            />
           </div>
           <div className="brand-text">
             <span className="brand-title">Shorthand Plus</span>

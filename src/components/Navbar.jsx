@@ -136,10 +136,14 @@ export default function Navbar({
     <header className={`shorthand-navbar-root ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="shorthand-nav-container">
         
-        {/* Brand: Blue squircle with Graduation Cap icon + 'Shorthand Plus' */}
-        <div className="shorthand-brand-group" onClick={() => handleNavClick('landing')}>
-          <div className="brand-cap-squircle">
-            <GraduationCap size={20} color="#ffffff" strokeWidth={2.4} />
+        {/* Brand: Big S Logo + 'Shorthand Plus' */}
+        <div className="shorthand-brand-group" onClick={() => handleNavClick('landing')} title="Shorthand Plus (Gaya Shorthand Classes)">
+          <div className="brand-logo-s-wrap">
+            <img 
+              src="/assets/logo-big-s.png" 
+              alt="Steno Plus Big S Logo" 
+              className="brand-logo-s-img"
+            />
           </div>
           <span className="brand-name-text">Shorthand Plus</span>
         </div>

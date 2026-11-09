@@ -373,13 +373,20 @@ export default function LandingPage({
                 boxShadow: '0 8px 30px rgba(0,0,0,0.06)' 
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid #f5f5f4', paddingBottom: '1rem' }}>
-                  <div>
-                    <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#b45309' }}>
-                      Premier Stenography Academy
-                    </span>
-                    <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#1c1917', margin: '4px 0 0' }}>
-                      GAYA SHORTHAND CLASSES
-                    </h3>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <img 
+                      src="/assets/logo-big-s.png" 
+                      alt="Steno Plus Big S Logo" 
+                      style={{ height: '44px', width: 'auto', objectFit: 'contain' }} 
+                    />
+                    <div>
+                      <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#b45309' }}>
+                        Premier Stenography Academy
+                      </span>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#1c1917', margin: '2px 0 0' }}>
+                        GAYA SHORTHAND CLASSES
+                      </h3>
+                    </div>
                   </div>
                   <div style={{ 
                     background: '#fef3c7', 
