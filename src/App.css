@@ -18261,10 +18261,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .shorthand-nav-container {
   pointer-events: auto !important;
-  max-width: 1260px !important;
+  max-width: 1340px !important;
   margin: 0 auto !important;
-  height: 66px !important;
-  padding: 0 1.25rem 0 1.5rem !important;
+  height: 64px !important;
+  padding: 0 0.85rem 0 1.15rem !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -18388,7 +18388,7 @@ h1, h2, h3, h4, h5, h6 {
 .shorthand-nav-actions {
   display: flex !important;
   align-items: center !important;
-  gap: 0.85rem !important;
+  gap: 0.45rem !important;
 }
 
 .search-icon-btn {

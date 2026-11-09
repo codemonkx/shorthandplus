@@ -63,13 +63,13 @@ export default function Navbar({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Nav Items: Home, Courses, Classes, Steno Tests, Typing Practice, About
+  // Nav Items: Home, Courses, Classes, Tests, Typing, About
   const navItems = [
     { id: 'landing', label: 'Home' },
     { id: 'courses', label: 'Courses' },
     { id: 'classes', label: 'Classes' },
-    { id: 'tests', label: 'Steno Tests' },
-    { id: 'typing-studio', label: 'Typing Practice' },
+    { id: 'tests', label: 'Tests' },
+    { id: 'typing-studio', label: 'Typing' },
     { id: 'about', label: 'About' },
   ];
 
@@ -177,7 +177,7 @@ export default function Navbar({
 
         {/* Right Section: Admission, Pay Fee, Student Login, Admin / User Dropdown */}
         <div className="shorthand-nav-actions">
-          {/* Unauthenticated State: Show Admission, Pay Fee, Student Login */}
+          {/* Unauthenticated State: Show Admission, Pay Fee, Student Login, Admin */}
           {!user && (
             <>
               <button 
@@ -185,21 +185,6 @@ export default function Navbar({
                 className="btn-pill-admission"
                 onClick={() => onOpenAdmission ? onOpenAdmission() : null}
                 title="Online Admission Form (Session 2026-27)"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                  padding: '0.45rem 0.85rem',
-                  background: '#047857',
-                  color: '#ffffff',
-                  border: 'none',
-                  borderRadius: '999px',
-                  fontSize: '0.8rem',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)',
-                  transition: 'transform 0.15s ease'
-                }}
               >
                 <FileText size={13} color="#fde68a" />
                 <span>Admission</span>
@@ -210,19 +195,6 @@ export default function Navbar({
                 className="btn-pill-payfee"
                 onClick={() => onOpenCheckout ? onOpenCheckout() : null}
                 title="Online Fee Payment (UPI / QR / Cards)"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                  padding: '0.45rem 0.75rem',
-                  background: '#ffffff',
-                  color: '#1c1917',
-                  border: '1px solid #e7e5e4',
-                  borderRadius: '999px',
-                  fontSize: '0.8rem',
-                  fontWeight: 600,
-                  cursor: 'pointer'
-                }}
               >
                 <CreditCard size={13} className="text-emerald-600" />
                 <span>Pay Fee</span>
@@ -234,8 +206,24 @@ export default function Navbar({
                 onClick={() => onOpenAuth ? onOpenAuth('student') : handleNavClick('dashboard')}
                 title="Student Login Panel"
               >
-                <LogIn size={15} />
+                <LogIn size={13} />
                 <span>Student Login</span>
+              </button>
+
+              <button 
+                type="button"
+                className={`btn-navbar-admin-right ${currentTab === 'admin' ? 'active' : ''}`}
+                onClick={() => {
+                  if (onOpenAuth) {
+                    onOpenAuth('admin');
+                  } else {
+                    handleNavClick('admin');
+                  }
+                }}
+                title="Director & Faculty Admin Console"
+              >
+                <ShieldCheck size={13} className="admin-icon-shield" />
+                <span>Admin</span>
               </button>
             </>
           )}
@@ -363,25 +351,6 @@ export default function Navbar({
                 </div>
               )}
             </div>
-          )}
-
-          {/* Dedicated Full-Right Admin Button (displayed for visitors; logged-in users have Admin Hub or Dashboard above) */}
-          {!user && (
-            <button 
-              type="button"
-              className={`btn-navbar-admin-right ${currentTab === 'admin' ? 'active' : ''}`}
-              onClick={() => {
-                if (onOpenAuth) {
-                  onOpenAuth('admin');
-                } else {
-                  handleNavClick('admin');
-                }
-              }}
-              title="Director & Faculty Admin Console"
-            >
-              <ShieldCheck size={15} className="admin-icon-shield" />
-              <span>Admin</span>
-            </button>
           )}
 
           {/* Mobile Menu Hamburger */}

@@ -221,3 +221,4 @@ export default function FloatingContactDock({ onOpenAdmission }) {
     </aside>
   );
 }
+
