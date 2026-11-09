@@ -86,6 +86,30 @@ const ACADEMY_COURSES = [
     popular: true
   },
   {
+    id: 'course-hindi-typing',
+    title: 'Hindi Typing & Hindi Computer Typing',
+    category: 'Typing Course (Hindi)',
+    badge: 'Kruti Dev & Mangal Special',
+    tagColor: 'badge-amber',
+    speedTarget: '30 → 50+ WPM',
+    duration: '1 to 3 Months',
+    fee: '₹1,500 (Complete)',
+    description: 'Learn Hindi typing with practical keyboard training and regular typing exercises. This course is designed for students preparing for government typing examinations and office-related computer work.',
+    syllabus: [
+      'Hindi Keyboard Introduction',
+      'Kruti Dev 010 Typing Mastery',
+      'Mangal Font Typing (Inscript Layout)',
+      'Remington (GAIL / CBI) Keyboard Layout',
+      'Word and Sentence Practice',
+      'Paragraph Typing Exercises',
+      'Speed and Accuracy Development',
+      'Online Hindi Typing Software Practice',
+      'Government Exam-Oriented Practice Tests'
+    ],
+    mode: 'Classroom (Gaya Center) + Online Typing Software Access',
+    popular: true
+  },
+  {
     id: 'course-court',
     title: 'High Court Judicial Speed & Legal Series',
     category: 'Judicial Bench',
@@ -159,8 +183,9 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
     const id = (course.id || '').toLowerCase();
     const title = (course.title || '').toLowerCase();
     if (filterCategory === 'pitman') return cat.includes('foundation') || id.includes('pitman') || title.includes('pitman');
-    if (filterCategory === 'hindi') return cat.includes('hindi') || id.includes('hindi') || title.includes('hindi') || title.includes('हिंदी');
-    if (filterCategory === 'typing') return cat.includes('typing') || id.includes('typing') || title.includes('typing');
+    if (filterCategory === 'hindi-steno') return (cat.includes('hindi') && cat.includes('shorthand')) || id === 'course-hindi-steno' || title.includes('हिंदी आशुलिपि');
+    if (filterCategory === 'typing-eng') return id === 'course-english-typing' || (cat.includes('typing') && cat.includes('english'));
+    if (filterCategory === 'typing-hindi') return id === 'course-hindi-typing' || (cat.includes('typing') && cat.includes('hindi'));
     if (filterCategory === 'court') return cat.includes('judicial') || id.includes('court') || title.includes('court');
     if (filterCategory === 'ssc') return cat.includes('central') || id.includes('ssc') || title.includes('ssc');
     if (filterCategory === 'diplomas') return cat.includes('diploma') || id.includes('diploma') || title.includes('diploma') || title.includes('dca');
@@ -199,16 +224,22 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               <span>✍️ English Pitman (0-120 WPM)</span>
             </button>
             <button 
-              className={`course-cat-pill ${filterCategory === 'hindi' ? 'active' : ''}`}
-              onClick={() => setFilterCategory('hindi')}
+              className={`course-cat-pill ${filterCategory === 'hindi-steno' ? 'active' : ''}`}
+              onClick={() => setFilterCategory('hindi-steno')}
             >
               <span>🇮🇳 Hindi Shorthand (हिंदी आशुलिपि)</span>
             </button>
             <button 
-              className={`course-cat-pill ${filterCategory === 'typing' ? 'active' : ''}`}
-              onClick={() => setFilterCategory('typing')}
+              className={`course-cat-pill ${filterCategory === 'typing-eng' ? 'active' : ''}`}
+              onClick={() => setFilterCategory('typing-eng')}
             >
               <span>⌨️ English Typing (30-60+ WPM)</span>
+            </button>
+            <button 
+              className={`course-cat-pill ${filterCategory === 'typing-hindi' ? 'active' : ''}`}
+              onClick={() => setFilterCategory('typing-hindi')}
+            >
+              <span>🇮🇳 Hindi Typing (Kruti / Mangal)</span>
             </button>
             <button 
               className={`course-cat-pill ${filterCategory === 'court' ? 'active' : ''}`}

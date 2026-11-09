@@ -167,6 +167,31 @@ export async function seedDatabase() {
           popular: 1
         },
         {
+          id: 'course-hindi-typing',
+          title: 'Hindi Typing & Hindi Computer Typing',
+          category: 'Typing Course (Hindi)',
+          badge: 'Kruti Dev & Mangal Special',
+          tagColor: 'badge-amber',
+          speedTarget: '30 → 50+ WPM',
+          duration: '1 to 3 Months',
+          fee: '₹1,500 (Complete)',
+          price: 1500,
+          description: 'Learn Hindi typing with practical keyboard training and regular typing exercises. This course is designed for students preparing for government typing examinations and office-related computer work.',
+          syllabus: JSON.stringify([
+            'Hindi Keyboard Introduction',
+            'Kruti Dev 010 Typing Mastery',
+            'Mangal Font Typing (Inscript Layout)',
+            'Remington (GAIL / CBI) Keyboard Layout',
+            'Word and Sentence Practice',
+            'Paragraph Typing Exercises',
+            'Speed and Accuracy Development',
+            'Online Hindi Typing Software Practice',
+            'Government Exam-Oriented Practice Tests'
+          ]),
+          mode: 'Classroom (Gaya Center) + Online Typing Software Access',
+          popular: 1
+        },
+        {
           id: 'course-court',
           title: 'High Court Judicial Speed & Legal Series',
           category: 'Judicial Bench',

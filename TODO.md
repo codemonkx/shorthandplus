@@ -29,6 +29,21 @@
     - Offline Center: `Gaya Shorthand Classes, Near Railway Station / Tower Chowk, Gaya, Bihar - 823001`
   - Propagated to `Footer.jsx`, `LandingPage.jsx`, `AboutAcademyView.jsx`, `CoursesPage.jsx`, `LegalPolicyModal.jsx`, `emailService.js`, `mockData.js`, and database `courses`.
 
+- [x] **Course #4: Hindi Typing & Hindi Computer Typing**
+  - Course Name: `Hindi Typing & Hindi Computer Typing`.
+  - Details: `Learn Hindi typing with practical keyboard training and regular typing exercises. This course is designed for students preparing for government typing examinations and office-related computer work.`
+  - Added all 9 Curriculum Features:
+    1. Hindi Keyboard Introduction
+    2. Kruti Dev Typing
+    3. Mangal Font Typing
+    4. Remington Keyboard Layout
+    5. Word and Sentence Practice
+    6. Paragraph Typing
+    7. Speed and Accuracy Development
+    8. Online Hindi Typing Software
+    9. Government Exam-Oriented Practice
+  - Propagated across `src/data/mockData.js`, `src/views/CoursesPage.jsx` (with dedicated Hindi Typing filter pill), `src/views/LandingPage.jsx`, `server/db/seed.js`, and live SQLite `courses` table.
+
 - [x] **Course #3: English Typing & Computer Typing Skills**
   - Course Name: `English Typing & Computer Typing Skills`.
   - Details: `Develop professional English typing skills with proper finger placement, keyboard techniques and regular practical exercises. This course focuses on typing speed, accuracy and computer-based typing examination preparation.`

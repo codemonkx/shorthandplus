@@ -535,6 +535,22 @@ export default function LandingPage({
         "Computer-Based 10 & 15-Minute Typing Tests"
       ],
       popular: false
+    },
+    {
+      id: "hindi-typing-batch",
+      badge: "Govt. Exam Typing Special",
+      title: "Hindi Typing & Hindi Computer Typing",
+      speed: "30 → 50+ WPM",
+      lang: "Kruti Dev & Mangal (हिंदी)",
+      desc: "Learn Hindi typing with practical keyboard training and regular typing exercises. Specially designed for government typing examinations and office-related computer work.",
+      features: [
+        "Hindi Keyboard Introduction & Remington Layout",
+        "Kruti Dev 010 & Mangal Font Typing Mastery",
+        "Word, Sentence & Paragraph Practice",
+        "Speed and Accuracy Development (30 to 50+ WPM)",
+        "Online Hindi Typing Software & Govt Exam Tests"
+      ],
+      popular: false
     }
   ];
 
