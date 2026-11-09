@@ -56,6 +56,60 @@ const GoogleIcon = () => (
   </svg>
 );
 
+const YouTubeIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+    <path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
+    <path fill="#FFFFFF" d="m9.545 15.568 6.273-3.568-6.273-3.568z"/>
+  </svg>
+);
+
+const YOUTUBE_VIDEOS = [
+  {
+    id: "steno-live-1",
+    title: "SSC Stenographer 80 & 100 WPM Live Dictation Class",
+    instructor: "Shadab Sir (12 Years Experience)",
+    duration: "12:40",
+    views: "14.2K views",
+    badge: "Live Class Dictation",
+    tagColor: "#d97706",
+    youtubeUrl: "https://www.youtube.com/results?search_query=Gaya+Shorthand+Classes+dictation",
+    description: "Real-time parliamentary speech dictation calibrated at 80 and 100 WPM with official 5-minute reading clock and strict full/half error evaluation."
+  },
+  {
+    id: "steno-pitman-2",
+    title: "Pitman Shorthand Consonants, Vowels & Circle Formations",
+    instructor: "Gaya Shorthand Classes",
+    duration: "15:15",
+    views: "22.8K views",
+    badge: "Theory & Outlines",
+    tagColor: "#2563eb",
+    youtubeUrl: "https://www.youtube.com/results?search_query=Pitman+Shorthand+Classes+theory",
+    description: "Interactive board demonstration on light and heavy strokes, consonant joinings, vowel placements, and high-frequency contractions."
+  },
+  {
+    id: "hindi-steno-3",
+    title: "Hindi Shorthand (हिंदी आशुलिपि) Speed Building & Transcription",
+    instructor: "Senior Hindi Steno Faculty",
+    duration: "14:20",
+    views: "18.5K views",
+    badge: "Hindi Steno Special",
+    tagColor: "#059669",
+    youtubeUrl: "https://www.youtube.com/results?search_query=Hindi+Shorthand+Classes+speed",
+    description: "Practical Hindi shorthand outline formation, sentence drills, and legal judgment transcription for High Court and Court Reporter exams."
+  },
+  {
+    id: "typing-technique-4",
+    title: "Kruti Dev 010 & Mangal Inscript Computer Typing Technique",
+    instructor: "Typing Lab Head Instructor",
+    duration: "10:50",
+    views: "31.0K views",
+    badge: "Computer Typing Lab",
+    tagColor: "#7c3aed",
+    youtubeUrl: "https://www.youtube.com/results?search_query=Kruti+Dev+typing+Mangal+font",
+    description: "Touch typing finger placement on the home row keys, Remington keyboard layout techniques, and mechanical speed building to 50+ WPM."
+  }
+];
+
 const GOOGLE_REVIEWS = [
   {
     id: 1,
@@ -257,13 +311,15 @@ export default function LandingPage({
   onOpenAuth, 
   onLoginSuccess,
   onOpenCheckout, 
-  onSelectPlan, 
+  onSelectPlan,
+  onOpenAdmission,
   setCurrentTab 
 }) {
   const [activeFaq, setActiveFaq] = useState(null);
   const [pricingCategory, setPricingCategory] = useState('all'); // 'all' | 'passes' | 'courses'
   const [reviewsViewMode, setReviewsViewMode] = useState('stream'); // 'stream' | 'grid'
   const [isReviewsPaused, setIsReviewsPaused] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState(YOUTUBE_VIDEOS[0]);
 
   const fireConfetti = () => {
     try {
@@ -684,7 +740,7 @@ export default function LandingPage({
               </p>
 
               {/* Instant CTAs */}
-              <div className="hero-cta-cluster">
+              <div className="hero-cta-cluster" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
                 <button 
                   className="btn-hero-primary"
                   onClick={() => {
@@ -704,7 +760,33 @@ export default function LandingPage({
                   }}
                 >
                   <Keyboard size={18} />
-                  <span>Start Free Typing Test</span>
+                  <span>Typing Practice Login</span>
+                </button>
+
+                <button 
+                  type="button"
+                  onClick={() => {
+                    fireConfetti();
+                    if (onOpenAdmission) onOpenAdmission();
+                  }}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    background: '#047857',
+                    color: '#ffffff',
+                    border: 'none',
+                    borderRadius: '10px',
+                    padding: '0.85rem 1.35rem',
+                    fontSize: '0.92rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 14px rgba(4, 120, 87, 0.25)',
+                    transition: 'transform 0.15s ease'
+                  }}
+                >
+                  <FileText size={17} color="#fde68a" />
+                  <span>Online Admission Form</span>
                 </button>
               </div>
 
@@ -1793,6 +1875,307 @@ export default function LandingPage({
               <AcademyIllustration />
             </div>
           </div>
+
+          {/* Google Maps Live Location Card */}
+          <div style={{
+            marginTop: '2.5rem',
+            background: '#ffffff',
+            borderRadius: '16px',
+            border: '1px solid #e7e5e4',
+            padding: '1.5rem',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)'
+          }}>
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '1rem',
+              marginBottom: '1.25rem'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                <div style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: 12,
+                  background: '#dcfce7',
+                  color: '#15803d',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.2rem'
+                }}>
+                  <MapPin size={22} />
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.74rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#15803d' }}>
+                    Google Maps Live Location & Navigation
+                  </div>
+                  <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#1c1917' }}>
+                    Gaya College More, Opposite Cyber Thana, Gayaji, Bihar – 823001
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: '#78716c' }}>
+                    Landmark: Directly opposite Cyber Thana • 2 mins from Gaya College Gate • 10 mins from Gaya Jn.
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem' }}>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Gaya+College+More+Opposite+Cyber+Thana+Gaya+Bihar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    background: '#047857',
+                    color: '#ffffff',
+                    fontWeight: 700,
+                    fontSize: '0.85rem',
+                    padding: '0.65rem 1.15rem',
+                    borderRadius: '8px',
+                    textDecoration: 'none',
+                    boxShadow: '0 2px 8px rgba(4, 120, 87, 0.2)'
+                  }}
+                >
+                  <MapPin size={15} />
+                  <span>Get Directions on Google Maps</span>
+                </a>
+
+                <a
+                  href="tel:+919204123453"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    background: '#faf9f6',
+                    border: '1px solid #d6d3d1',
+                    color: '#1c1917',
+                    fontWeight: 700,
+                    fontSize: '0.85rem',
+                    padding: '0.65rem 1.15rem',
+                    borderRadius: '8px',
+                    textDecoration: 'none'
+                  }}
+                >
+                  <Phone size={15} />
+                  <span>Helpline: +91 9204123453</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Embedded Google Map */}
+            <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid #e7e5e4', height: '340px' }}>
+              <iframe
+                src="https://maps.google.com/maps?q=Gaya+College+More,+Opposite+Cyber+Thana,+Gaya,+Bihar&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                title="Gaya Shorthand Classes on Google Maps"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7.5 YOUTUBE VIDEO INTEGRATION & CLASSROOM DEMONSTRATIONS */}
+      <section className="youtube-videos-section" style={{ padding: '4.5rem 1.25rem', background: '#faf9f6', borderTop: '1px solid #e7e5e4' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          
+          {/* Section Header */}
+          <div className="section-header-centered" style={{ marginBottom: '2.5rem' }}>
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              background: '#fee2e2',
+              color: '#dc2626',
+              padding: '4px 12px',
+              borderRadius: '999px',
+              fontSize: '0.74rem',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              letterSpacing: '0.8px',
+              marginBottom: '8px'
+            }}>
+              <YouTubeIcon size={16} />
+              <span>GAYA SHORTHAND CLASSES • YOUTUBE VIDEO SHOWCASE</span>
+            </div>
+            <h2 className="section-title-large">
+              Watch Classroom Dictations & Video Tutorials
+            </h2>
+            <p className="section-description-text" style={{ maxWidth: 780, margin: '0.5rem auto 0' }}>
+              Experience Shadab Sir's live dictation cadence, Pitman shorthand outline demonstrations, and Kruti Dev & Mangal touch typing tutorials on our official YouTube channel.
+            </p>
+          </div>
+
+          {/* Active Featured Video Player Container */}
+          <div style={{
+            background: '#1c1917',
+            borderRadius: '16px',
+            overflow: 'hidden',
+            marginBottom: '2rem',
+            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            border: '1px solid #292524'
+          }}>
+            {/* Left: Video Embed Frame */}
+            <div style={{ position: 'relative', minHeight: '340px', background: '#0c0a09' }}>
+              <iframe
+                src={`https://www.youtube.com/embed/${selectedVideo.embedId || 'dQw4w9WgXcQ'}?rel=0`}
+                title={selectedVideo.title}
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '340px' }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+
+            {/* Right: Video Metadata & Call to Action */}
+            <div style={{ padding: '2rem', color: '#faf9f6', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.75rem' }}>
+                  <span style={{
+                    background: selectedVideo.tagColor || '#d97706',
+                    color: '#ffffff',
+                    fontSize: '0.72rem',
+                    fontWeight: 800,
+                    textTransform: 'uppercase',
+                    padding: '2px 8px',
+                    borderRadius: '6px'
+                  }}>
+                    {selectedVideo.badge}
+                  </span>
+                  <span style={{ fontSize: '0.8rem', color: '#a8a29e' }}>
+                    • Duration: {selectedVideo.duration}
+                  </span>
+                </div>
+
+                <h3 style={{ fontSize: '1.4rem', fontWeight: 800, margin: '0 0 0.75rem', lineHeight: 1.3, color: '#ffffff' }}>
+                  {selectedVideo.title}
+                </h3>
+
+                <p style={{ fontSize: '0.88rem', color: '#d6d3d1', lineHeight: 1.5, margin: '0 0 1.25rem' }}>
+                  {selectedVideo.description}
+                </p>
+
+                <div style={{ fontSize: '0.82rem', color: '#fbbf24', fontWeight: 600 }}>
+                  Instructor: {selectedVideo.instructor}
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid #44403c' }}>
+                <a
+                  href={selectedVideo.youtubeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    background: '#dc2626',
+                    color: '#ffffff',
+                    padding: '0.65rem 1.25rem',
+                    borderRadius: '8px',
+                    fontWeight: 700,
+                    fontSize: '0.88rem',
+                    textDecoration: 'none'
+                  }}
+                >
+                  <YouTubeIcon size={16} />
+                  <span>Watch on YouTube</span>
+                </a>
+
+                <button
+                  onClick={() => {
+                    fireConfetti();
+                    if (onOpenAdmission) onOpenAdmission();
+                  }}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    color: '#faf9f6',
+                    padding: '0.65rem 1.25rem',
+                    borderRadius: '8px',
+                    fontWeight: 700,
+                    fontSize: '0.88rem',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <FileText size={15} color="#fbbf24" />
+                  <span>Join Live Class (Admission)</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* 4-Card Video Grid */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: '1.25rem'
+          }}>
+            {YOUTUBE_VIDEOS.map((vid) => {
+              const isSelected = selectedVideo.id === vid.id;
+              return (
+                <div
+                  key={vid.id}
+                  onClick={() => setSelectedVideo(vid)}
+                  style={{
+                    background: '#ffffff',
+                    border: isSelected ? '2px solid #dc2626' : '1px solid #e7e5e4',
+                    borderRadius: '12px',
+                    padding: '1.1rem',
+                    cursor: 'pointer',
+                    boxShadow: isSelected ? '0 6px 20px rgba(220, 38, 38, 0.15)' : '0 2px 8px rgba(0,0,0,0.03)',
+                    transition: 'all 0.2s ease',
+                    position: 'relative'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                    <span style={{
+                      fontSize: '0.7rem',
+                      fontWeight: 800,
+                      textTransform: 'uppercase',
+                      color: vid.tagColor,
+                      background: '#faf9f6',
+                      padding: '2px 6px',
+                      borderRadius: '4px'
+                    }}>
+                      {vid.badge}
+                    </span>
+                    <span style={{ fontSize: '0.72rem', color: '#78716c', fontWeight: 600 }}>
+                      ⏱ {vid.duration}
+                    </span>
+                  </div>
+
+                  <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: '#1c1917', margin: '0 0 0.5rem', lineHeight: 1.35 }}>
+                    {vid.title}
+                  </h4>
+
+                  <p style={{ fontSize: '0.8rem', color: '#57534e', margin: '0 0 0.75rem', lineHeight: 1.4, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                    {vid.description}
+                  </p>
+
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.75rem', color: '#78716c', borderTop: '1px solid #f5f5f4', paddingTop: '0.5rem' }}>
+                    <span>{vid.instructor.split(' ')[0]} Sir</span>
+                    <span style={{ color: '#dc2626', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '3px' }}>
+                      <Play size={12} fill="#dc2626" /> Click to Play
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
         </div>
       </section>
 
@@ -1810,6 +2193,28 @@ export default function LandingPage({
               <span className="summary-pill-score">4.9 / 5.0</span>
               <span className="summary-pill-dot">•</span>
               <span className="summary-pill-text">140+ Google Reviews</span>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Gaya+College+More+Opposite+Cyber+Thana+Gaya+Bihar"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  background: '#ffffff',
+                  color: '#1c1917',
+                  border: '1px solid #d6d3d1',
+                  borderRadius: '999px',
+                  padding: '2px 8px',
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                  marginLeft: '6px'
+                }}
+              >
+                <span>Review Us on Google</span>
+                <ExternalLink size={10} />
+              </a>
             </div>
 
             <h2 className="section-title-large">

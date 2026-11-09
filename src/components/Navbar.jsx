@@ -12,7 +12,10 @@ import {
   Headphones,
   LogIn,
   Video,
-  Trophy
+  Trophy,
+  Sparkles,
+  Keyboard,
+  FileText
 } from 'lucide-react';
 
 export default function Navbar({ 
@@ -21,7 +24,8 @@ export default function Navbar({
   user, 
   onOpenCheckout, 
   onLogout,
-  onOpenAuth
+  onOpenAuth,
+  onOpenAdmission
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
@@ -59,12 +63,13 @@ export default function Navbar({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Nav Items: Home, Courses, Classes, Tests, About
+  // Nav Items: Home, Courses, Classes, Steno Tests, Typing Practice, About
   const navItems = [
     { id: 'landing', label: 'Home' },
     { id: 'courses', label: 'Courses' },
     { id: 'classes', label: 'Classes' },
-    { id: 'tests', label: 'Tests' },
+    { id: 'tests', label: 'Steno Tests' },
+    { id: 'typing-studio', label: 'Typing Practice' },
     { id: 'about', label: 'About' },
   ];
 
@@ -72,7 +77,8 @@ export default function Navbar({
     if (id === 'landing') return currentTab === 'landing';
     if (id === 'courses') return currentTab === 'courses' || currentTab === 'pricing';
     if (id === 'classes') return currentTab === 'classes';
-    if (id === 'tests') return currentTab === 'tests' || currentTab === 'steno-vault' || currentTab === 'typing-studio';
+    if (id === 'tests') return currentTab === 'tests' || currentTab === 'steno-vault';
+    if (id === 'typing-studio') return currentTab === 'typing-studio';
     if (id === 'about') return currentTab === 'about';
     return currentTab === id;
   };
@@ -169,19 +175,69 @@ export default function Navbar({
           })}
         </nav>
 
-        {/* Right Section: Admin, Login, Sign Up / User Dropdown */}
+        {/* Right Section: Admission, Pay Fee, Student Login, Admin / User Dropdown */}
         <div className="shorthand-nav-actions">
-          {/* Unauthenticated State: Show Sign In Button */}
+          {/* Unauthenticated State: Show Admission, Pay Fee, Student Login */}
           {!user && (
-            <button 
-              type="button"
-              className="btn-pill-portal"
-              onClick={() => onOpenAuth ? onOpenAuth('student') : handleNavClick('dashboard')}
-              title="Sign In to Student or Admin Portal"
-            >
-              <LogIn size={15} />
-              <span>Sign In</span>
-            </button>
+            <>
+              <button 
+                type="button"
+                className="btn-pill-admission"
+                onClick={() => onOpenAdmission ? onOpenAdmission() : null}
+                title="Online Admission Form (Session 2026-27)"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  padding: '0.45rem 0.85rem',
+                  background: '#047857',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: '999px',
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)',
+                  transition: 'transform 0.15s ease'
+                }}
+              >
+                <FileText size={13} color="#fde68a" />
+                <span>Admission</span>
+              </button>
+
+              <button 
+                type="button"
+                className="btn-pill-payfee"
+                onClick={() => onOpenCheckout ? onOpenCheckout() : null}
+                title="Online Fee Payment (UPI / QR / Cards)"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  padding: '0.45rem 0.75rem',
+                  background: '#ffffff',
+                  color: '#1c1917',
+                  border: '1px solid #e7e5e4',
+                  borderRadius: '999px',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  cursor: 'pointer'
+                }}
+              >
+                <CreditCard size={13} className="text-emerald-600" />
+                <span>Pay Fee</span>
+              </button>
+
+              <button 
+                type="button"
+                className="btn-pill-portal"
+                onClick={() => onOpenAuth ? onOpenAuth('student') : handleNavClick('dashboard')}
+                title="Student Login Panel"
+              >
+                <LogIn size={15} />
+                <span>Student Login</span>
+              </button>
+            </>
           )}
 
           {/* User Logged In State with Dropdown Menu */}
@@ -362,6 +418,74 @@ export default function Navbar({
                 <ShieldCheck size={16} className="text-royal-blue inline mr-2" />
                 <span>Admin Console</span>
               </button>
+            )}
+
+            {!user && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px', paddingTop: '12px', borderTop: '1px solid #e7e5e4' }}>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onOpenAdmission) onOpenAdmission();
+                  }}
+                  className="btn-pill-admission w-full"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    padding: '10px',
+                    background: '#047857',
+                    color: '#ffffff',
+                    border: 'none',
+                    borderRadius: '8px',
+                    fontWeight: 700
+                  }}
+                >
+                  <FileText size={15} color="#fde68a" />
+                  <span>Online Admission Form</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onOpenCheckout) onOpenCheckout();
+                  }}
+                  className="btn-pill-fee w-full"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    padding: '10px',
+                    background: '#ffffff',
+                    color: '#1c1917',
+                    border: '1px solid #e7e5e4',
+                    borderRadius: '8px',
+                    fontWeight: 600
+                  }}
+                >
+                  <CreditCard size={15} className="text-emerald-600" />
+                  <span>Pay Fees Online</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onOpenAuth) onOpenAuth('student');
+                  }}
+                  className="btn-pill-portal w-full"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    padding: '10px'
+                  }}
+                >
+                  <LogIn size={15} />
+                  <span>Student Login</span>
+                </button>
+              </div>
             )}
 
             {user ? (

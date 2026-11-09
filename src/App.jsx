@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AuthModal from './components/AuthModal';
 import CheckoutModal from './components/CheckoutModal';
+import AdmissionModal from './components/AdmissionModal';
+import FloatingContactDock from './components/FloatingContactDock';
 import ProfileSettingsModal from './components/ProfileSettingsModal';
 import LegalPolicyModal from './components/LegalPolicyModal';
 import DictationRoom from './components/DictationRoom';
@@ -83,6 +85,7 @@ export default function App() {
   const [selectedPlanId, setSelectedPlanId] = useState('plan-1mo');
   const [legalModalOpen, setLegalModalOpen] = useState(false);
   const [legalModalTab, setLegalModalTab] = useState('terms');
+  const [admissionModalOpen, setAdmissionModalOpen] = useState(false);
 
   const handleOpenLegal = (tab = 'terms') => {
     setLegalModalTab(tab);
@@ -605,6 +608,7 @@ export default function App() {
           onOpenCheckout={() => handleOpenCheckoutWithPlan()}
           onLogout={handleLogout}
           onOpenAuth={handleOpenAuth}
+          onOpenAdmission={() => setAdmissionModalOpen(true)}
         />
         <main className="public-main-content">
           {currentTab === 'landing' && (
@@ -614,6 +618,7 @@ export default function App() {
               onLoginSuccess={handleLoginSuccess}
               onOpenCheckout={() => handleOpenCheckoutWithPlan()}
               onSelectPlan={handleOpenCheckoutWithPlan}
+              onOpenAdmission={() => setAdmissionModalOpen(true)}
               setCurrentTab={setCurrentTab}
             />
           )}
@@ -623,6 +628,7 @@ export default function App() {
               courses={academyCourses}
               onSelectPlan={handleOpenCheckoutWithPlan}
               onOpenCheckout={(plan) => handleOpenCheckoutWithPlan(plan)}
+              onOpenAdmission={() => setAdmissionModalOpen(true)}
               setCurrentTab={setCurrentTab}
             />
           )}
@@ -671,6 +677,11 @@ export default function App() {
           onClose={() => setAuthModalOpen(false)}
           onLoginSuccess={handleLoginSuccess}
         />
+        <AdmissionModal
+          isOpen={admissionModalOpen}
+          onClose={() => setAdmissionModalOpen(false)}
+          onOpenCheckout={handleOpenCheckoutWithPlan}
+        />
         <CheckoutModal
           isOpen={checkoutModalOpen}
           onClose={() => setCheckoutModalOpen(false)}
@@ -695,6 +706,9 @@ export default function App() {
           isOpen={legalModalOpen}
           initialTab={legalModalTab}
           onClose={() => setLegalModalOpen(false)}
+        />
+        <FloatingContactDock 
+          onOpenAdmission={() => setAdmissionModalOpen(true)} 
         />
       </div>
     );
@@ -846,6 +860,11 @@ export default function App() {
         onClose={() => setAuthModalOpen(false)}
         onLoginSuccess={handleLoginSuccess}
       />
+      <AdmissionModal
+        isOpen={admissionModalOpen}
+        onClose={() => setAdmissionModalOpen(false)}
+        onOpenCheckout={handleOpenCheckoutWithPlan}
+      />
       <CheckoutModal
         isOpen={checkoutModalOpen}
         onClose={() => setCheckoutModalOpen(false)}
@@ -870,6 +889,9 @@ export default function App() {
         isOpen={legalModalOpen}
         initialTab={legalModalTab}
         onClose={() => setLegalModalOpen(false)}
+      />
+      <FloatingContactDock 
+        onOpenAdmission={() => setAdmissionModalOpen(true)} 
       />
     </div>
   );

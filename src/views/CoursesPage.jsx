@@ -7,7 +7,8 @@ import {
   ArrowRight, 
   Sparkles,
   Phone,
-  MessageCircle
+  MessageCircle,
+  FileText
 } from 'lucide-react';
 import { PRICING_PLANS, TARGET_EXAMINATIONS, TEACHING_METHODOLOGY } from '../data/mockData';
 
@@ -197,7 +198,7 @@ const ACADEMY_COURSES = [
   }
 ];
 
-export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, onOpenCheckout, setCurrentTab }) {
+export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, onOpenCheckout, onOpenAdmission, setCurrentTab }) {
   const [filterCategory, setFilterCategory] = useState('all');
 
   const displayCourses = courses && courses.length > 0 ? courses : ACADEMY_COURSES;
@@ -313,9 +314,32 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                 Course List — Website / Admission Form
               </h2>
             </div>
-            <span style={{ fontSize: '0.78rem', color: '#78716c', background: '#faf9f6', padding: '0.35rem 0.75rem', borderRadius: '6px', border: '1px solid #e7e5e4' }}>
-              Select any course below to view syllabus & enroll
-            </span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
+              <span style={{ fontSize: '0.78rem', color: '#78716c', background: '#faf9f6', padding: '0.35rem 0.75rem', borderRadius: '6px', border: '1px solid #e7e5e4' }}>
+                Select any course below to view syllabus & enroll
+              </span>
+              <button
+                type="button"
+                onClick={() => onOpenAdmission ? onOpenAdmission() : null}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  background: '#047857',
+                  color: '#ffffff',
+                  border: 'none',
+                  padding: '0.45rem 0.95rem',
+                  borderRadius: '8px',
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)'
+                }}
+              >
+                <FileText size={14} color="#fde68a" />
+                <span>Fill Online Admission Form</span>
+              </button>
+            </div>
           </div>
 
           <div style={{
