@@ -61,6 +61,31 @@ const ACADEMY_COURSES = [
     popular: true
   },
   {
+    id: 'course-english-typing',
+    title: 'English Typing & Computer Typing Skills',
+    category: 'Typing Course (English)',
+    badge: 'Speed & Accuracy Mastery',
+    tagColor: 'badge-purple',
+    speedTarget: '30, 35, 40, 50 & 60+ WPM',
+    duration: '1 to 3 Months',
+    fee: '₹1,500 (Complete)',
+    description: 'Develop professional English typing skills with proper finger placement, keyboard techniques and regular practical exercises. This course focuses on typing speed, accuracy and computer-based typing examination preparation.',
+    syllabus: [
+      'Keyboard Introduction',
+      'Home Row and Finger Placement',
+      'Touch Typing Techniques',
+      'Word and Sentence Practice',
+      'Paragraph Typing',
+      'Speed Building Exercises',
+      'Accuracy Improvement',
+      'Online Typing Software Practice',
+      'Computer-Based Typing Tests',
+      'Speed Target: 30, 35, 40, 50 and 60+ WPM'
+    ],
+    mode: 'Classroom (Gaya Center) + Online Typing Software Access',
+    popular: true
+  },
+  {
     id: 'course-court',
     title: 'High Court Judicial Speed & Legal Series',
     category: 'Judicial Bench',
@@ -135,6 +160,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
     const title = (course.title || '').toLowerCase();
     if (filterCategory === 'pitman') return cat.includes('foundation') || id.includes('pitman') || title.includes('pitman');
     if (filterCategory === 'hindi') return cat.includes('hindi') || id.includes('hindi') || title.includes('hindi') || title.includes('हिंदी');
+    if (filterCategory === 'typing') return cat.includes('typing') || id.includes('typing') || title.includes('typing');
     if (filterCategory === 'court') return cat.includes('judicial') || id.includes('court') || title.includes('court');
     if (filterCategory === 'ssc') return cat.includes('central') || id.includes('ssc') || title.includes('ssc');
     if (filterCategory === 'diplomas') return cat.includes('diploma') || id.includes('diploma') || title.includes('diploma') || title.includes('dca');
@@ -177,6 +203,12 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               onClick={() => setFilterCategory('hindi')}
             >
               <span>🇮🇳 Hindi Shorthand (हिंदी आशुलिपि)</span>
+            </button>
+            <button 
+              className={`course-cat-pill ${filterCategory === 'typing' ? 'active' : ''}`}
+              onClick={() => setFilterCategory('typing')}
+            >
+              <span>⌨️ English Typing (30-60+ WPM)</span>
             </button>
             <button 
               className={`course-cat-pill ${filterCategory === 'court' ? 'active' : ''}`}

@@ -545,6 +545,31 @@ export const INITIAL_ACADEMY_COURSES = [
     popular: true
   },
   {
+    id: 'course-english-typing',
+    title: 'English Typing & Computer Typing Skills',
+    category: 'Typing Course (English)',
+    badge: 'Speed & Accuracy Mastery',
+    tagColor: 'badge-purple',
+    speedTarget: '30, 35, 40, 50 & 60+ WPM',
+    duration: '1 to 3 Months',
+    fee: '₹1,500 (Complete)',
+    description: 'Develop professional English typing skills with proper finger placement, keyboard techniques and regular practical exercises. This course focuses on typing speed, accuracy and computer-based typing examination preparation.',
+    syllabus: [
+      'Keyboard Introduction',
+      'Home Row and Finger Placement',
+      'Touch Typing Techniques',
+      'Word and Sentence Practice',
+      'Paragraph Typing',
+      'Speed Building Exercises',
+      'Accuracy Improvement',
+      'Online Typing Software Practice',
+      'Computer-Based Typing Tests',
+      'Speed Target: 30, 35, 40, 50 and 60+ WPM'
+    ],
+    mode: 'Classroom (Gaya Center) + Online Typing Software Access',
+    popular: true
+  },
+  {
     id: 'course-court',
     title: 'High Court Judicial Speed & Legal Series',
     category: 'Judicial Bench',

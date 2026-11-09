@@ -522,16 +522,17 @@ export default function LandingPage({
     },
     {
       id: "typing-studio",
-      badge: "Speed & Accuracy",
-      title: "Judicial Typing Mastery (Hindi & English)",
-      speed: "35 - 50+ WPM",
-      lang: "Kruti Dev / Mangal / English",
-      desc: "Master high-speed keyboard typing with real-time backspace penalty monitoring, stroke error diagnosis, and government examination formats.",
+      badge: "Professional Typing Skills",
+      title: "English Typing & Computer Typing Skills",
+      speed: "30, 35, 40, 50 & 60+ WPM",
+      lang: "Touch Typing (English)",
+      desc: "Develop professional English typing skills with proper finger placement, keyboard techniques and regular practical exercises. This course focuses on typing speed, accuracy and computer-based typing examination preparation.",
       features: [
-        "Authentic Kruti Dev 010 Font Integration",
-        "Unicode Mangal Inscript Certified Passages",
-        "Standard English QWERTY Typing Studio",
-        "Official 10 & 15-Minute Exam Clock & Scoring"
+        "Home Row & Touch Typing Finger Placement",
+        "Word, Sentence & Paragraph Typing Exercises",
+        "Speed Building Exercises (30 to 60+ WPM)",
+        "Online Typing Software Practice & Accuracy Improvement",
+        "Computer-Based 10 & 15-Minute Typing Tests"
       ],
       popular: false
     }

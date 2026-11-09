@@ -29,6 +29,22 @@
     - Offline Center: `Gaya Shorthand Classes, Near Railway Station / Tower Chowk, Gaya, Bihar - 823001`
   - Propagated to `Footer.jsx`, `LandingPage.jsx`, `AboutAcademyView.jsx`, `CoursesPage.jsx`, `LegalPolicyModal.jsx`, `emailService.js`, `mockData.js`, and database `courses`.
 
+- [x] **Course #3: English Typing & Computer Typing Skills**
+  - Course Name: `English Typing & Computer Typing Skills`.
+  - Details: `Develop professional English typing skills with proper finger placement, keyboard techniques and regular practical exercises. This course focuses on typing speed, accuracy and computer-based typing examination preparation.`
+  - Added all 10 Curriculum Features:
+    1. Keyboard Introduction
+    2. Home Row and Finger Placement
+    3. Touch Typing Techniques
+    4. Word and Sentence Practice
+    5. Paragraph Typing
+    6. Speed Building Exercises
+    7. Accuracy Improvement
+    8. Online Typing Software Practice
+    9. Computer-Based Typing Tests
+    10. Speed Target: 30, 35, 40, 50 and 60+ WPM
+  - Propagated across `src/data/mockData.js`, `src/views/CoursesPage.jsx` (with dedicated English Typing filter pill), `src/views/LandingPage.jsx`, `server/db/seed.js`, and live SQLite `courses` table.
+
 - [x] **Course #2: Hindi Shorthand (हिंदी आशुलिपि)**
   - Course Name: `Hindi Shorthand (हिंदी आशुलिपि)`.
   - Details: `Learn Hindi Shorthand from Basic to Advanced Level through practical classes, regular dictation and transcription practice. This course is designed for students preparing for Hindi Stenographer, Court Stenographer and various government recruitment examinations.`
