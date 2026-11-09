@@ -63,13 +63,11 @@ export default function Navbar({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Nav Items: Home, Courses, Classes, Steno Tests, Typing Practice, About
+  // Nav Items: Home, Courses, Classes, About
   const navItems = [
     { id: 'landing', label: 'Home' },
     { id: 'courses', label: 'Courses' },
     { id: 'classes', label: 'Classes' },
-    { id: 'tests', label: 'Steno Tests' },
-    { id: 'typing-studio', label: 'Typing Practice' },
     { id: 'about', label: 'About' },
   ];
 
@@ -77,8 +75,6 @@ export default function Navbar({
     if (id === 'landing') return currentTab === 'landing';
     if (id === 'courses') return currentTab === 'courses' || currentTab === 'pricing';
     if (id === 'classes') return currentTab === 'classes' || currentTab === 'online-classes';
-    if (id === 'tests') return currentTab === 'tests' || currentTab === 'steno-vault';
-    if (id === 'typing-studio') return currentTab === 'typing-studio';
     if (id === 'about') return currentTab === 'about';
     return currentTab === id;
   };

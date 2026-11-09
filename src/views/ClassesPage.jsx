@@ -959,9 +959,9 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   <div className="notice-banner-right">
                     <button 
                       className="btn-view-notice-tests"
-                      onClick={() => setCurrentTab('tests')}
+                      onClick={() => setCurrentTab('courses')}
                     >
-                      <span>Practice Exam Tests →</span>
+                      <span>Explore Exam Courses →</span>
                     </button>
                   </div>
                 </div>

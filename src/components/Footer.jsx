@@ -48,32 +48,32 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
             <h4 className="footer-heading">Target Exam Benches</h4>
             <ul className="footer-links-list">
               <li>
-                <button onClick={() => { setCurrentTab('tests'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                <button onClick={() => { setCurrentTab('courses'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
                   SSC Stenographer Grade C & D
                 </button>
               </li>
               <li>
-                <button onClick={() => { setCurrentTab('tests'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                <button onClick={() => { setCurrentTab('courses'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
                   Supreme Court Stenographer & SPA
                 </button>
               </li>
               <li>
-                <button onClick={() => { setCurrentTab('tests'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                <button onClick={() => { setCurrentTab('courses'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
                   Delhi High Court PA / SPA Series
                 </button>
               </li>
               <li>
-                <button onClick={() => { setCurrentTab('tests'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                <button onClick={() => { setCurrentTab('courses'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
                   Patna & Jharkhand High Court Dictations
                 </button>
               </li>
               <li>
-                <button onClick={() => { setCurrentTab('tests'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                <button onClick={() => { setCurrentTab('courses'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
                   BSF & CRPF ASI Stenographer Tests
                 </button>
               </li>
               <li>
-                <button onClick={() => { setCurrentTab('typing-studio'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                <button onClick={() => { setCurrentTab('courses'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
                   Hindi (Kruti Dev / Mangal) & English Typing
                 </button>
               </li>

@@ -358,7 +358,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                   <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#78716c' }}>{exam.badge}</span>
                   <button
                     onClick={() => {
-                      if (setCurrentTab) setCurrentTab('tests');
+                      if (setCurrentTab) setCurrentTab('courses');
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
                     style={{
