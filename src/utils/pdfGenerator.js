@@ -163,10 +163,10 @@ export function generateCandidateDossierPdf(candidateData, examResult) {
   doc.text('Authorized Faculty Examiner:', 125, verdictY + 8);
   doc.setFont('helvetica', 'italic');
   doc.setFontSize(10);
-  doc.text('Dr. Gagan Kumar', 125, verdictY + 15);
+  doc.text('Shadab Khan (Shadab Sir)', 125, verdictY + 15);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
-  doc.text('Director & Chief Stenography Examiner', 125, verdictY + 20);
+  doc.text('Director & Lead Stenography Faculty (12 Yrs Exp)', 125, verdictY + 20);
   doc.text('Shorthand Plus Academy (Gaya Center)', 125, verdictY + 24);
 
   // Security Verification Footer
@@ -291,11 +291,11 @@ export function generateCompletionCertificatePdf(candidateData, courseOrTest) {
   doc.setTextColor(28, 25, 23);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(9);
-  doc.text('Dr. Gagan Kumar', 62.5, 183, { align: 'center' });
+  doc.text('Shadab Khan (Shadab Sir)', 62.5, 183, { align: 'center' });
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
   doc.setTextColor(120, 113, 108);
-  doc.text('Director & Lead Faculty', 62.5, 187, { align: 'center' });
+  doc.text('Director & Lead Faculty (12 Yrs Exp)', 62.5, 187, { align: 'center' });
 
   // Center Seal
   doc.setDrawColor(4, 120, 87);

@@ -223,74 +223,62 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
     <div className="courses-page-root">
       
       {/* 1. HERO HEADER */}
-      <div className="courses-hero-banner">
+      <div className="courses-hero-banner" style={{ paddingTop: '1rem' }}>
         <div className="courses-hero-container">
           <div className="courses-hero-badge">
-            <Sparkles size={14} className="text-amber-300" />
-            <span>OFFICIAL CURRICULUM & TEST PASSES • ESTD. 2008</span>
+            <Sparkles size={14} className="text-amber-500" />
+            <span>OFFICIAL CURRICULUM & TEST PASSES • ESTD. 2012</span>
           </div>
           <h1 className="courses-hero-title">
             Stenography Courses & Examination Programs
           </h1>
           <p className="courses-hero-desc">
-            From absolute zero in Pitman Shorthand to cracking High Court & SSC Stenographer skill tests at 50–140 WPM. We provide Basic to Advance speed in shorthand with AI-based dictation and real-time evaluation.
+            From absolute zero in Pitman Shorthand to cracking High Court & SSC Stenographer skill tests at 50–140 WPM. Guided by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong> with real-time dictations and exam simulations.
           </p>
 
           {/* Filter Pills */}
-          <div className="courses-category-pills">
+          <div className="courses-category-pills" style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center' }}>
             <button 
               className={`course-cat-pill ${filterCategory === 'all' ? 'active' : ''}`}
               onClick={() => setFilterCategory('all')}
             >
-              <span>⭐ All Courses</span>
+              <span>All Programs</span>
             </button>
             <button 
               className={`course-cat-pill ${filterCategory === 'pitman' ? 'active' : ''}`}
               onClick={() => setFilterCategory('pitman')}
             >
-              <span>✍️ 1. English Shorthand</span>
+              <span>English Shorthand</span>
             </button>
             <button 
               className={`course-cat-pill ${filterCategory === 'hindi-steno' ? 'active' : ''}`}
               onClick={() => setFilterCategory('hindi-steno')}
             >
-              <span>🇮🇳 2. Hindi Shorthand</span>
+              <span>Hindi Shorthand</span>
             </button>
             <button 
-              className={`course-cat-pill ${filterCategory === 'typing-eng' ? 'active' : ''}`}
-              onClick={() => setFilterCategory('typing-eng')}
-            >
-              <span>⌨️ 3. English Typing</span>
-            </button>
-            <button 
-              className={`course-cat-pill ${filterCategory === 'typing-hindi' ? 'active' : ''}`}
-              onClick={() => setFilterCategory('typing-hindi')}
-            >
-              <span>🇮🇳 4. Hindi Typing</span>
-            </button>
-            <button 
-              className={`course-cat-pill ${filterCategory === 'typing-both' ? 'active' : ''}`}
+              className={`course-cat-pill ${filterCategory === 'typing-both' || filterCategory === 'typing-eng' || filterCategory === 'typing-hindi' ? 'active' : ''}`}
               onClick={() => setFilterCategory('typing-both')}
             >
-              <span>🌐 5. English & Hindi Typing</span>
+              <span>Typing Practice</span>
             </button>
             <button 
               className={`course-cat-pill ${filterCategory === 'court' ? 'active' : ''}`}
               onClick={() => setFilterCategory('court')}
             >
-              <span>⚖️ High Court Series</span>
+              <span>High Court Series</span>
             </button>
             <button 
               className={`course-cat-pill ${filterCategory === 'ssc' ? 'active' : ''}`}
               onClick={() => setFilterCategory('ssc')}
             >
-              <span>🏛️ SSC Grade C & D</span>
+              <span>SSC Grade C & D</span>
             </button>
             <button 
               className={`course-cat-pill ${filterCategory === 'diplomas' ? 'active' : ''}`}
               onClick={() => setFilterCategory('diplomas')}
             >
-              <span>📜 Govt. Diplomas (DCA/ADCA)</span>
+              <span>Computer Diplomas (ADCA / DCA)</span>
             </button>
           </div>
         </div>
@@ -445,7 +433,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))',
             gap: '0.85rem'
           }}>
             {TARGET_EXAMINATIONS.map((exam) => (

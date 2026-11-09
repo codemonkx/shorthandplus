@@ -31,7 +31,7 @@ const DAILY_BATCHES = [
     shift: 'Morning Early Bird',
     title: 'Basic Pitman Shorthand Theory & New Strokes',
     speed: 'Beginners (0 - 60 WPM)',
-    instructor: 'Gagan Sir',
+    instructor: 'Shadab Sir',
     mode: 'Offline Classroom + Live Audio Stream',
     seats: '5 Seats Left',
     badge: 'Theory Foundation',
@@ -44,7 +44,7 @@ const DAILY_BATCHES = [
     shift: 'Morning Core Batch',
     title: 'SSC Stenographer Grade C & D Speed Builder',
     speed: '80 WPM Intermediate',
-    instructor: 'Gagan Sir & Senior Faculty',
+    instructor: 'Shadab Sir (Director)',
     mode: 'Offline Lab + Typing Studio',
     seats: 'Filling Fast',
     badge: 'SSC Exam Target',
@@ -57,7 +57,7 @@ const DAILY_BATCHES = [
     shift: 'Afternoon Judicial Bench',
     title: 'High Court Judicial Legal Series & Criminal Appeals',
     speed: '100 WPM Judicial',
-    instructor: 'Gagan Sir',
+    instructor: 'Shadab Sir',
     mode: 'Offline Classroom & Audio Vault',
     seats: 'Open Admissions',
     badge: 'Patna & High Courts',
@@ -238,17 +238,17 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
     <div className="classes-page-root">
       
       {/* 1. HERO HEADER */}
-      <div className="classes-hero-banner">
+      <div className="classes-hero-banner" style={{ paddingTop: '1rem' }}>
         <div className="classes-hero-container">
           <div className="classes-hero-badge">
-            <Sparkles size={14} className="text-amber-300" />
-            <span>ACADEMY BATCH TIMINGS & SCHEDULE • ESTD. 2008</span>
+            <Sparkles size={14} className="text-amber-500" />
+            <span>ACADEMY BATCH TIMINGS & SCHEDULE • ESTD. 2012</span>
           </div>
           <h1 className="classes-hero-title">
             Classroom Batches, Timetable & Live Dictations
           </h1>
           <p className="classes-hero-desc">
-            Attend daily in-person classes at our Gaya academy or access live broadcast Zoom dictations from anywhere. Six daily batches spanning 6:00 AM to 8:00 PM.
+            Attend daily in-person classes at our Gaya academy or access live broadcast Zoom dictations from anywhere. Daily batches guided by <strong>Shadab Sir (12 Years Experience)</strong> spanning 6:00 AM to 8:00 PM.
           </p>
 
           {/* Tab Navigation Switcher */}
@@ -258,38 +258,38 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               onClick={() => setActiveTab('online-live')}
             >
               <span className="live-dot-mini" />
-              <span>🔴 Live Zoom Studio (Online)</span>
+              <span>Live Zoom Studio</span>
             </button>
             <button 
               className={`class-nav-tab ${activeTab === 'batches' ? 'active' : ''}`}
               onClick={() => setActiveTab('batches')}
             >
-              <span>🏛️ Daily Academy Batches</span>
+              <span>Daily Academy Batches</span>
             </button>
             <button 
               className={`class-nav-tab ${activeTab === 'timetable' ? 'active' : ''}`}
               onClick={() => setActiveTab('timetable')}
             >
-              <span>📅 Weekly Timetable</span>
+              <span>Weekly Timetable</span>
             </button>
             <button 
               className={`class-nav-tab ${activeTab === 'diplomas' ? 'active' : ''}`}
               onClick={() => setActiveTab('diplomas')}
             >
-              <span>📜 Govt. Diplomas (DCA/ADCA)</span>
+              <span>Govt. Diplomas (ADCA/DCA)</span>
             </button>
             <button 
               className={`class-nav-tab ${activeTab === 'notices' ? 'active' : ''}`}
               onClick={() => setActiveTab('notices')}
             >
-              <span>🔔 Recruitment Notices</span>
+              <span>Recruitment Notices</span>
             </button>
             <button 
               className={`class-nav-tab ${activeTab === 'outlines' ? 'active tab-live-active' : ''}`}
               onClick={() => setActiveTab('outlines')}
             >
               <Zap size={13} className="text-amber-500 inline mr-1" />
-              <span>⚡ Shorthand Outlines & Strokes</span>
+              <span>Shorthand Outlines</span>
             </button>
           </div>
         </div>
@@ -320,7 +320,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   {activeClass?.title || 'SSC Stenographer Grade C & D — 80 WPM Live Speed Dictation & Transcription Lab'}
                 </h2>
                 <p className="live-hero-card-desc">
-                  Conducted by <strong>{activeClass?.instructor || 'Gagan Sir'}</strong> ({activeClass?.instructorRole || '18+ Yrs Exp'}). {activeClass?.description || 'Real-time 5-minute parliamentary dictation, synchronized digital shorthand whiteboard with interactive student drawing, live audio player with 0.8x-1.3x pacing, and immediate transcription grading.'}
+                  Conducted by <strong>{activeClass?.instructor || 'Shadab Sir'}</strong> ({activeClass?.instructorRole || '12 Years Experience'}). {activeClass?.description || 'Real-time 5-minute parliamentary dictation, synchronized digital shorthand whiteboard with interactive student drawing, live audio player with 0.8x-1.3x pacing, and immediate transcription grading.'}
                 </p>
 
                 {/* Zoom Credentials Box */}
@@ -387,10 +387,10 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   </div>
                   <div className="mini-stream-body">
                     <div className="mini-teacher-badge">
-                      <span className="mini-avatar">GS</span>
+                      <span className="mini-avatar">SS</span>
                       <div>
-                        <span className="mini-name">Gagan Sir (Host)</span>
-                        <span className="mini-role">Live Audio Dictating</span>
+                        <span className="mini-name">Shadab Sir (Host)</span>
+                        <span className="mini-role">Faculty Director (12 Yrs Exp)</span>
                       </div>
                     </div>
 
@@ -612,7 +612,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     <td><strong>Basic Theory (Pitman)</strong></td>
                     <td><span className="badge badge-blue font-mono">0 - 60 WPM</span></td>
                     <td>Hall A (Ground Floor)</td>
-                    <td>Gagan Sir</td>
+                    <td>Shadab Sir</td>
                     <td>Vowels, Stroke Angles & Daily Homework Check</td>
                   </tr>
                   <tr>
@@ -620,7 +620,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     <td><strong>SSC Steno Grade C & D</strong></td>
                     <td><span className="badge badge-amber font-mono">80 WPM</span></td>
                     <td>Computer Lab 1 (50 PCs)</td>
-                    <td>Gagan Sir & Lab Head</td>
+                    <td>Shadab Sir & Lab Head</td>
                     <td>Reading Room + Kruti Dev Hindi & English Typing</td>
                   </tr>
                   <tr>
@@ -636,7 +636,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     <td><strong>High Court Judicial Bench</strong></td>
                     <td><span className="badge badge-emerald font-mono">100 WPM</span></td>
                     <td>Acoustic Dictation Hall</td>
-                    <td>Gagan Sir</td>
+                    <td>Shadab Sir</td>
                     <td>Criminal Appeals, Bail Orders, Legal Outlines</td>
                   </tr>
                   <tr>

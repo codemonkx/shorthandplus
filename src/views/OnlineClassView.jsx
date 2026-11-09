@@ -36,8 +36,8 @@ const ONLINE_CLASSES_DATA = [
     title: 'SSC Stenographer Grade C & D — 80 WPM Live Speed Dictation & Transcription Lab',
     shift: 'Morning Core Batch',
     time: '8:30 AM – 10:30 AM',
-    instructor: 'Gagan Sir',
-    instructorRole: 'Head Faculty • 18+ Yrs Exp',
+    instructor: 'Shadab Sir',
+    instructorRole: 'Head Faculty • 12 Years Experience',
     speed: '80 WPM Standard',
     attendees: 142,
     isLive: true,
@@ -64,8 +64,8 @@ const ONLINE_CLASSES_DATA = [
     title: 'Basic Pitman Shorthand Theory: Vowel Positions, Circles & Hook Formations',
     shift: 'Morning Early Bird',
     time: '6:00 AM – 8:00 AM',
-    instructor: 'Gagan Sir',
-    instructorRole: 'Founder & Senior Master',
+    instructor: 'Shadab Sir',
+    instructorRole: 'Faculty Director • 12 Yrs Exp',
     speed: 'Beginners (0 - 60 WPM)',
     attendees: 98,
     isLive: false,
@@ -91,8 +91,8 @@ const ONLINE_CLASSES_DATA = [
     title: 'High Court Judicial Speed Bench: Criminal Appeals & Judgment Phrases',
     shift: 'Afternoon Judicial Series',
     time: '3:00 PM – 5:00 PM',
-    instructor: 'Gagan Sir & High Court Reporter',
-    instructorRole: 'Judicial Series Lead',
+    instructor: 'Shadab Sir & High Court Reporter',
+    instructorRole: 'Judicial Series Lead • 12 Yrs Exp',
     speed: '100 WPM Judicial',
     attendees: 115,
     isLive: false,
@@ -333,7 +333,7 @@ export default function OnlineClassView({
           <div>
             <h1 className="online-hero-title">Live Online Classes & Zoom Dictation Hub</h1>
             <p className="online-hero-sub">
-              Join real-time daily Zoom speed dictations with Gagan Sir. Connect with 1 click directly in your browser or through the Zoom Desktop/Mobile App.
+              Join real-time daily Zoom speed dictations with Shadab Sir (12 Years Experience). Connect with 1 click directly in your browser or through the Zoom Desktop/Mobile App.
             </p>
           </div>
 

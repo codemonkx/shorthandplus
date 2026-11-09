@@ -397,8 +397,8 @@ export default function AdminPortalView({
       title: `Special Impromptu Live Dictation Sprint (${timeNow})`,
       shift: 'Special Live Sprint',
       time: `${timeNow} – Live Now`,
-      instructor: 'Gagan Sir',
-      instructorRole: 'Head Faculty • On-Air',
+      instructor: 'Shadab Sir',
+      instructorRole: 'Head Faculty • 12 Years Experience',
       speed: '80 - 100 WPM Dynamic',
       attendees: 1,
       isLive: true,
@@ -3537,7 +3537,7 @@ export default function AdminPortalView({
                       value={newClassInstructor}
                       onChange={(val) => setNewClassInstructor(val)}
                       options={[
-                        { value: 'Gagan Sir', label: 'Gagan Sir (Head Faculty • 18+ Yrs Exp)' },
+                        { value: 'Shadab Sir', label: 'Shadab Sir (Director & Head Faculty • 12 Yrs Exp)' },
                         { value: 'Senior Court Master', label: 'Senior Court Master (Ex-Parliament Reporter)' },
                         { value: 'Judicial Bench Master', label: 'Judicial Bench Master (Patna High Court)' },
                         { value: 'Anjali Mam', label: 'Anjali Mam (Theory & Hindi Steno Master)' }
