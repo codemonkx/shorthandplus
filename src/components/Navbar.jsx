@@ -63,13 +63,12 @@ export default function Navbar({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Nav Items: Home, Courses, Classes, Tests, Typing, About
+  // Nav Items: Home, Courses, Classes, Tests, About
   const navItems = [
     { id: 'landing', label: 'Home' },
     { id: 'courses', label: 'Courses' },
     { id: 'classes', label: 'Classes' },
     { id: 'tests', label: 'Tests' },
-    { id: 'typing-studio', label: 'Typing' },
     { id: 'about', label: 'About' },
   ];
 
@@ -77,8 +76,7 @@ export default function Navbar({
     if (id === 'landing') return currentTab === 'landing';
     if (id === 'courses') return currentTab === 'courses' || currentTab === 'pricing';
     if (id === 'classes') return currentTab === 'classes';
-    if (id === 'tests') return currentTab === 'tests' || currentTab === 'steno-vault';
-    if (id === 'typing-studio') return currentTab === 'typing-studio';
+    if (id === 'tests') return currentTab === 'tests' || currentTab === 'steno-vault' || currentTab === 'typing-studio';
     if (id === 'about') return currentTab === 'about';
     return currentTab === id;
   };
@@ -175,9 +173,9 @@ export default function Navbar({
           })}
         </nav>
 
-        {/* Right Section: Admission, Pay Fee, Student Login, Admin / User Dropdown */}
+        {/* Right Section: Admission, Student Login / User Dropdown */}
         <div className="shorthand-nav-actions">
-          {/* Unauthenticated State: Show Admission, Pay Fee, Student Login, Admin */}
+          {/* Unauthenticated State: Clean, focused conversion actions */}
           {!user && (
             <>
               <button 
@@ -192,38 +190,12 @@ export default function Navbar({
 
               <button 
                 type="button"
-                className="btn-pill-payfee"
-                onClick={() => onOpenCheckout ? onOpenCheckout() : null}
-                title="Online Fee Payment (UPI / QR / Cards)"
-              >
-                <CreditCard size={13} className="text-emerald-600" />
-                <span>Pay Fee</span>
-              </button>
-
-              <button 
-                type="button"
                 className="btn-pill-portal"
                 onClick={() => onOpenAuth ? onOpenAuth('student') : handleNavClick('dashboard')}
                 title="Student Login Panel"
               >
                 <LogIn size={13} />
                 <span>Student Login</span>
-              </button>
-
-              <button 
-                type="button"
-                className={`btn-navbar-admin-right ${currentTab === 'admin' ? 'active' : ''}`}
-                onClick={() => {
-                  if (onOpenAuth) {
-                    onOpenAuth('admin');
-                  } else {
-                    handleNavClick('admin');
-                  }
-                }}
-                title="Director & Faculty Admin Console"
-              >
-                <ShieldCheck size={13} className="admin-icon-shield" />
-                <span>Admin</span>
               </button>
             </>
           )}
