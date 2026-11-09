@@ -1571,6 +1571,11 @@ export default function LandingPage({
                   )}
 
                   <div className="pricing-card-header">
+                    {plan.seriesTitle && (
+                      <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#0284c7', marginBottom: '0.35rem' }}>
+                        {plan.seriesTitle}
+                      </div>
+                    )}
                     <div className="plan-badge-row">
                       <span className={`plan-badge-type badge-${plan.badge?.toLowerCase().replace(/\s+/g, '-')}`}>
                         {plan.badge}
@@ -1585,7 +1590,12 @@ export default function LandingPage({
 
                     <h3 className="plan-title-text">{plan.name}</h3>
                     
-                    <div className="price-amount-row font-mono">
+                    <div className="price-amount-row font-mono" style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.35rem' }}>
+                      {plan.originalPrice && (
+                        <span style={{ textDecoration: 'line-through', color: '#dc2626', fontSize: '1.15rem', fontWeight: 700, marginRight: '0.2rem' }}>
+                          ₹{plan.originalPrice}
+                        </span>
+                      )}
                       <span className="currency">₹</span>
                       <span className="price-value">{plan.price}</span>
                       <span className="duration-text">/ {plan.duration}</span>
@@ -1617,8 +1627,24 @@ export default function LandingPage({
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-plan-whatsapp w-full"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.45rem',
+                        background: '#15803d',
+                        color: '#ffffff',
+                        fontWeight: 700,
+                        fontSize: '0.9rem',
+                        padding: '0.75rem 1rem',
+                        borderRadius: '999px',
+                        textDecoration: 'none',
+                        boxShadow: '0 2px 8px rgba(21, 128, 61, 0.25)',
+                        transition: 'all 0.2s ease',
+                        marginTop: '0.4rem'
+                      }}
                     >
-                      <MessageCircle size={14} className="shrink-0" />
+                      <MessageCircle size={15} className="shrink-0" />
                       <span>WhatsApp Now</span>
                     </a>
                     <span className="plan-guarantee-note">Instant automated activation • Zero processing fees</span>

@@ -6,7 +6,8 @@ import {
   Clock, 
   ArrowRight, 
   Sparkles,
-  Phone
+  Phone,
+  MessageCircle
 } from 'lucide-react';
 import { PRICING_PLANS, TARGET_EXAMINATIONS, TEACHING_METHODOLOGY } from '../data/mockData';
 
@@ -515,34 +516,58 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                   </ul>
                 </div>
 
-                <div className="course-card-footer">
-                  <div className="course-fee-block">
-                    <span className="fee-label">Course Fee:</span>
-                    <span className="fee-amount font-mono">{course.fee}</span>
+                <div className="course-card-footer" style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+                    <div className="course-fee-block">
+                      <span className="fee-label">Course Fee:</span>
+                      <span className="fee-amount font-mono">{course.fee}</span>
+                    </div>
+                    <button 
+                      className="btn-enroll-course"
+                      onClick={() => {
+                        const coursePlanMap = {
+                          'course-pitman': { id: 'course-pitman', name: 'Basic Pitman Shorthand Course', price: 4500, duration: '3 to 4 Months (Complete Book)', description: 'Complete Pitman book theory, daily homework correction & audio vault access.' },
+                          'course-court': { id: 'course-court', name: 'High Court Judicial Speed Series', price: 700, duration: 'Monthly Subscription', description: 'Specialized High Court courtroom reporter transcription batch.' },
+                          'course-ssc': { id: 'course-ssc', name: 'SSC Stenographer Crash Batch', price: 350, duration: 'Monthly Subscription', description: 'Parliamentary speeches, live speed tests, and automated error calculation.' },
+                          'course-diplomas': { id: 'course-diplomas', name: 'Computer Diplomas (DCA / ADCA)', price: 1200, duration: 'Govt. Diploma Registration', description: 'Official government-accredited computer applications diploma.' }
+                        };
+                        const numFee = parseInt(String(course.fee || '').replace(/\D/g, '')) || 499;
+                        const planToOpen = coursePlanMap[course.id] || {
+                          id: course.id,
+                          name: course.title,
+                          price: numFee,
+                          duration: course.duration || 'Academy Batch Access',
+                          description: course.description || 'Complete batch curriculum with live and archive dictation access.'
+                        };
+                        if (onOpenCheckout) onOpenCheckout(planToOpen);
+                      }}
+                    >
+                      <span>Enroll Now</span>
+                      <ArrowRight size={16} />
+                    </button>
                   </div>
-                  <button 
-                    className="btn-enroll-course"
-                    onClick={() => {
-                      const coursePlanMap = {
-                        'course-pitman': { id: 'course-pitman', name: 'Basic Pitman Shorthand Course', price: 4500, duration: '3 to 4 Months (Complete Book)', description: 'Complete Pitman book theory, daily homework correction & audio vault access.' },
-                        'course-court': { id: 'course-court', name: 'High Court Judicial Speed Series', price: 700, duration: 'Monthly Subscription', description: 'Specialized High Court courtroom reporter transcription batch.' },
-                        'course-ssc': { id: 'course-ssc', name: 'SSC Stenographer Crash Batch', price: 350, duration: 'Monthly Subscription', description: 'Parliamentary speeches, live speed tests, and automated error calculation.' },
-                        'course-diplomas': { id: 'course-diplomas', name: 'Computer Diplomas (DCA / ADCA)', price: 1200, duration: 'Govt. Diploma Registration', description: 'Official government-accredited computer applications diploma.' }
-                      };
-                      const numFee = parseInt(String(course.fee || '').replace(/\D/g, '')) || 499;
-                      const planToOpen = coursePlanMap[course.id] || {
-                        id: course.id,
-                        name: course.title,
-                        price: numFee,
-                        duration: course.duration || 'Academy Batch Access',
-                        description: course.description || 'Complete batch curriculum with live and archive dictation access.'
-                      };
-                      if (onOpenCheckout) onOpenCheckout(planToOpen);
+                  <a
+                    href={`https://wa.me/919204123453?text=${encodeURIComponent(`Hello Shorthand Plus, I want to inquire and enroll in ${course.title} (${course.fee}). Please provide batch timings and admission details.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '0.45rem',
+                      background: '#15803d',
+                      color: '#ffffff',
+                      fontWeight: 700,
+                      fontSize: '0.84rem',
+                      padding: '0.55rem 0.9rem',
+                      borderRadius: '999px',
+                      textDecoration: 'none',
+                      boxShadow: '0 2px 5px rgba(21, 128, 61, 0.2)'
                     }}
                   >
-                    <span>Enroll Now</span>
-                    <ArrowRight size={16} />
-                  </button>
+                    <MessageCircle size={15} />
+                    <span>WhatsApp Now</span>
+                  </a>
                 </div>
               </div>
             ))}
@@ -650,10 +675,20 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       <span className={`badge ${plan.popular ? 'badge-amber' : 'badge-blue'}`}>{plan.badge}</span>
                     </div>
                   )}
+                  {plan.seriesTitle && (
+                    <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#0284c7', marginBottom: '0.25rem' }}>
+                      {plan.seriesTitle}
+                    </div>
+                  )}
                   <h3 className="plan-name">{plan.name}</h3>
                   <p className="plan-desc">{plan.description}</p>
                   
-                  <div className="plan-price-block">
+                  <div className="plan-price-block" style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.35rem' }}>
+                    {plan.originalPrice && (
+                      <span style={{ textDecoration: 'line-through', color: '#dc2626', fontSize: '1.15rem', fontWeight: 700, marginRight: '0.2rem' }}>
+                        ₹{plan.originalPrice}
+                      </span>
+                    )}
                     <span className="currency">₹</span>
                     <span className="amount font-mono">{plan.price}</span>
                     <span className="duration text-muted">/ {plan.duration}</span>
@@ -670,7 +705,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     ))}
                   </ul>
 
-                  <div className="plan-footer-cta">
+                  <div className="plan-footer-cta" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                     <button 
                       className={`btn ${isPro ? 'btn-primary' : 'btn-secondary'} w-full`}
                       onClick={() => {
@@ -681,6 +716,30 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       <Crown size={16} className={isPro ? 'text-amber' : ''} />
                       <span>Activate with UPI (₹{plan.price})</span>
                     </button>
+                    <a
+                      href={`https://wa.me/919204123453?text=${encodeURIComponent(`Hello Shorthand Plus, I want to enroll in ${plan.name} (₹${plan.price} / ${plan.duration}). Please guide me with enrollment.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-plan-whatsapp w-full"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.45rem',
+                        background: '#15803d',
+                        color: '#ffffff',
+                        fontWeight: 700,
+                        fontSize: '0.88rem',
+                        padding: '0.65rem 1rem',
+                        borderRadius: '999px',
+                        textDecoration: 'none',
+                        boxShadow: '0 2px 6px rgba(21, 128, 61, 0.2)',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <MessageCircle size={15} className="shrink-0" />
+                      <span>WhatsApp Now</span>
+                    </a>
                   </div>
                 </div>
               );
