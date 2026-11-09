@@ -332,3 +332,4 @@ export default function LeaderboardView({ onStartTest, setCurrentTab, user }) {
     </div>
   );
 }
+

@@ -91,23 +91,27 @@ export async function seedDatabase() {
       const coursesData = [
         {
           id: 'course-pitman',
-          title: 'Basic Pitman Shorthand Masterclass',
-          category: 'Foundation',
-          badge: 'Beginner to 80 WPM',
+          title: 'English Shorthand (Pitman Shorthand)',
+          category: 'Shorthand Course (English)',
+          badge: 'SSC & High Court Special',
           tagColor: 'badge-blue',
-          speedTarget: '0 → 80 WPM',
-          duration: '3 to 4 Months',
+          speedTarget: '60, 80, 100 & 120 WPM',
+          duration: '3 to 6 Months',
           fee: '₹6,000 (Complete)',
           price: 6000,
-          description: 'Comprehensive foundation course starting from stroke geometry, vowel positions, circles, loops, hooks, to grammalogues and speed phrasing.',
+          description: 'Learn English Shorthand from Basic to Advanced Level with systematic guidance and practical training. This course is specially designed for students preparing for SSC Stenographer, High Court Stenographer, Personal Assistant (PA), Private Secretary (PS) and other government stenographer examinations.',
           syllabus: JSON.stringify([
-            'Complete Pitman Shorthand Theory (All 24 Chapters)',
-            'Handwritten Outline Checks & Daily Correction by Gagan Sir',
-            'Grammalogues, Contractions & Phraseography Drill',
-            'Progressive Speed Dictations: 40 → 60 → 80 WPM',
-            'Includes Official Book & Printed Practice Workbook'
+            'Basic to Advanced Shorthand Training',
+            'Pitman Shorthand Theory (Consonants & Vowels)',
+            'Grammalogues and Phraseography',
+            'Short Forms and Special Rules',
+            'Word Formation and Sentence Practice',
+            'Daily Dictation Practice',
+            'Speed Development: 60, 80, 100 and 120 WPM',
+            'Transcription Practice & Accuracy Improvement Techniques',
+            'Exam-Oriented Mock Tests (SSC, High Court, PA/PS)'
           ]),
-          mode: 'Offline Classroom (Gaya) + Audio Lab Access',
+          mode: 'Classroom (Gaya Center) + Online Audio Portal Access',
           popular: 1
         },
         {

@@ -444,18 +444,18 @@ export default function LandingPage({
     },
     {
       id: "pitman-course",
-      badge: "Complete Foundation",
-      title: "Basic Pitman Shorthand Master Course",
-      speed: "0 to 80+ WPM",
-      lang: "Complete Book",
-      desc: "Complete Pitman course from beginner strokes to 80 WPM in 3 to 4 months with live classes, recorded lectures, and daily handwritten homework correction.",
+      badge: "SSC & High Court Special",
+      title: "English Shorthand (Pitman Shorthand)",
+      speed: "60, 80, 100 & 120 WPM",
+      lang: "Basic to Advanced",
+      desc: "Learn English Shorthand from Basic to Advanced Level with systematic guidance and practical training, specially designed for SSC Stenographer, High Court Stenographer, PA, PS and other government exams.",
       features: [
-        "Complete Pitman Shorthand Book Covered",
-        "3 to 4 Months Structured Syllabus",
-        "Daily Homework Correction by Gagan Sir",
-        "Grammalogues, Phrasing & Contractions Mastery"
+        "Basic to Advanced Shorthand & Pitman Theory",
+        "Consonants, Vowels, Grammalogues & Phraseography",
+        "Speed Development: 60, 80, 100 and 120 WPM",
+        "Daily Dictation Practice & Mock Test Evaluations"
       ],
-      popular: false
+      popular: true
     },
     {
       id: "assembly-reporter",
