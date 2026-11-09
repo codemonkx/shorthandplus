@@ -24,7 +24,6 @@ import LandingPage from './views/LandingPage';
 import CoursesPage from './views/CoursesPage';
 import ClassesPage from './views/ClassesPage';
 import OnlineClassView from './views/OnlineClassView';
-import LeaderboardView from './views/LeaderboardView';
 
 import { INITIAL_USER, STENO_TESTS, TYPING_TESTS, ONLINE_CLASSES_DATA, INITIAL_TRANSACTIONS, INITIAL_ACADEMY_COURSES } from './data/mockData';
 import api from './services/api';
@@ -42,21 +41,20 @@ const pathToTab = (pathname) => {
   const clean = (pathname || '').replace(/^\/+|\/+$/g, '').toLowerCase();
   if (!clean || clean === 'landing') return 'landing';
   if (clean === 'tests') return 'courses'; // redirect public tests to courses
+  if (clean === 'leaderboard') return 'dashboard'; // redirect removed leaderboard to dashboard
   if (clean === 'bulletin') return 'dashboard'; // redirect legacy routes to dashboard
   if (clean === 'online-class' || clean === 'online-classes') return 'online-classes';
   const validTabs = [
     'courses', 
     'classes', 
     'online-classes',
-    'tests', 
     'about', 
     'admin', 
     'dashboard', 
     'steno-vault', 
     'typing-studio', 
     'results', 
-    'pricing',
-    'leaderboard'
+    'pricing'
   ];
   return validTabs.includes(clean) ? clean : 'landing';
 };
@@ -824,14 +822,6 @@ export default function App() {
             <ResultsHistoryPage
               user={user}
               onViewResult={handleViewResult}
-            />
-          )}
-
-          {currentTab === 'leaderboard' && (
-            <LeaderboardView
-              user={user}
-              onStartTest={handleStartStenoTest}
-              setCurrentTab={setCurrentTab}
             />
           )}
 

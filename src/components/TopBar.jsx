@@ -51,7 +51,6 @@ export default function TopBar({
       case 'steno-vault': return 'Stenography Dictation Vault';
       case 'typing-studio': return 'Typing Speed Studio';
       case 'results': return 'Examination Scorecards & Diff History';
-      case 'leaderboard': return 'National Mock Test Leaderboard & Rankings';
       case 'pricing': return 'Subscription Passes & Pricing';
       default: return 'Candidate Command Center';
     }

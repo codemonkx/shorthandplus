@@ -12,7 +12,6 @@ import {
   Headphones,
   LogIn,
   Video,
-  Trophy,
   Sparkles,
   Keyboard,
   FileText
@@ -285,14 +284,6 @@ export default function Navbar({
                     >
                       <Headphones size={15} className="text-royal-blue" />
                       <span>Audio Dictation Vault</span>
-                    </button>
-
-                    <button 
-                      className="nav-dropdown-link-btn"
-                      onClick={() => handleNavClick('leaderboard')}
-                    >
-                      <Trophy size={15} className="text-amber-600" />
-                      <span>All-India Merit Leaderboard</span>
                     </button>
 
                     <button 
