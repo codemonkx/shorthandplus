@@ -162,8 +162,8 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
                   </div>
                   <p className="text-stone-600">
                     SHORTHAND PLUS (Gaya Shorthand Classes)<br />
-                    Gaya College More, Opp. Cyber Thana<br />
-                    Gaya, Bihar, India<br />
+                    Gaya College More, Opposite Cyber Thana<br />
+                    Gayaji, Bihar, India<br />
                     Portal: <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" className="text-amber-700 underline font-semibold">https://stenoplus.in</a>
                   </p>
                 </div>
@@ -174,7 +174,8 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
                     <span>Direct Helpline & Email</span>
                   </div>
                   <p className="text-stone-600">
-                    Helpline No.: +91 9204123453<br />
+                    Helpline Nos.: +91 7870377214 / +91 9204123453<br />
+                    Demo Classes: 3 Free Demo Sessions Available<br />
                     Email: <a href="mailto:stenoplus.in@gmail.com" className="text-amber-700 underline">stenoplus.in@gmail.com</a><br />
                     Timing: 6:00 AM – 8:00 PM Daily (Monday to Saturday)
                   </p>

@@ -103,7 +103,7 @@ export async function sendPasswordResetEmail({ toEmail, code, candidateName = 'C
           </div>
           <div class="footer">
             SHORTHAND PLUS & Gaya Shorthand Classes<br />
-            Gaya College More, Opp. Cyber Thana, Gaya, Bihar | Support: stenoplus.in@gmail.com | Website: https://stenoplus.in
+            Gaya College More, Opposite Cyber Thana, Gayaji, Bihar | Helplines: +91 7870377214 / +91 9204123453 | Website: https://stenoplus.in
           </div>
         </div>
       </body>
@@ -114,7 +114,7 @@ export async function sendPasswordResetEmail({ toEmail, code, candidateName = 'C
       from: fromAddress,
       to: toEmail,
       subject: `SHORTHAND PLUS - Password Reset Verification Code: ${code}`,
-      text: `Hello ${candidateName},\n\nYour 6-digit password reset verification code is: ${code}\n\nThis code will expire in 15 minutes.\n\nIf you did not request this, please ignore this email.\n\nSHORTHAND PLUS (Gaya Shorthand Classes)\nHelpline: +91 9204123453\nWebsite: https://stenoplus.in\nEmail: stenoplus.in@gmail.com`,
+      text: `Hello ${candidateName},\n\nYour 6-digit password reset verification code is: ${code}\n\nThis code will expire in 15 minutes.\n\nIf you did not request this, please ignore this email.\n\nSHORTHAND PLUS (Gaya Shorthand Classes)\nHelplines: +91 7870377214 / +91 9204123453\nAddress: Gaya College More, Opposite Cyber Thana, Gayaji, Bihar\nWebsite: https://stenoplus.in\nEmail: stenoplus.in@gmail.com`,
       html: htmlContent
     });
 

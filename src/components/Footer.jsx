@@ -114,11 +114,11 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
             <ul className="footer-contact-details">
               <li>
                 <MapPin size={16} className="contact-icon text-royal-blue shrink-0" />
-                <span>Gaya College More, Opp. Cyber Thana, Gaya, Bihar</span>
+                <span>Gaya College More, Opposite Cyber Thana, Gayaji, Bihar</span>
               </li>
               <li>
                 <Phone size={16} className="contact-icon text-royal-blue shrink-0" />
-                <span>Helpline: +91 9204123453</span>
+                <span>Contact: +91 7870377214 / +91 9204123453</span>
               </li>
               <li>
                 <Mail size={16} className="contact-icon text-royal-blue shrink-0" />

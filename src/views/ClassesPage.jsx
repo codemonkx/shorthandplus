@@ -934,15 +934,15 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               </div>
               <div>
                 <h4>Join Offline Classroom at Gaya Shorthand Classes</h4>
-                <p>Gaya College More, Opp. Cyber Thana, Gaya, Bihar • Batches run daily Monday to Saturday</p>
+                <p>Gaya College More, Opposite Cyber Thana, Gayaji, Bihar • 3 Free Demo Classes Available</p>
               </div>
             </div>
             <a 
-              href="tel:+919204123453"
+              href="tel:+917870377214"
               className="btn-center-call"
             >
               <Phone size={16} />
-              <span>Call Director Desk: +91 9204123453</span>
+              <span>Call Helpline: 7870377214 / 9204123453</span>
             </a>
           </div>
         </div>

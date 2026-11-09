@@ -487,19 +487,31 @@ export default function AboutAcademyView({ onOpenCheckout, setCurrentTab }) {
                 <MapPin size={18} className="text-royal-blue shrink-0" />
                 <div>
                   <strong>Academy Address:</strong>
-                  <p>Gaya College More, Opp. Cyber Thana, Gaya, Bihar</p>
+                  <p>Gaya College More, Opposite Cyber Thana, Gayaji, Bihar</p>
                 </div>
               </div>
 
               <div className="contact-detail-row">
                 <Phone size={18} className="text-royal-blue shrink-0" />
                 <div>
-                  <strong>Helpline Number:</strong>
+                  <strong>Contact Numbers:</strong>
                   <p>
+                    <a href="tel:+917870377214" style={{ color: 'inherit', fontWeight: 600 }}>
+                      +91 7870377214
+                    </a>
+                    {' / '}
                     <a href="tel:+919204123453" style={{ color: 'inherit', fontWeight: 600 }}>
                       +91 9204123453
                     </a>
                   </p>
+                </div>
+              </div>
+
+              <div className="contact-detail-row">
+                <Sparkles size={18} className="text-amber-600 shrink-0" />
+                <div>
+                  <strong>Free Demo Classes:</strong>
+                  <p>We offer 3 demo classes so that students can experience our teaching methodology before enrolling.</p>
                 </div>
               </div>
 

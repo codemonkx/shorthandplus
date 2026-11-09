@@ -12,6 +12,21 @@
 
 ## ✅ Completed & Verified Workflows
 
+- [x] **Official Frequently Asked Questions (10 FAQs) & Multi-Line Contact Channels**
+  - Integrated all 10 official Q&A entries across the platform:
+    1. *What is the duration of the shorthand course?* (Dependent on pace, basic to advanced speed & accuracy)
+    2. *Can beginners join shorthand classes?* (No prior knowledge needed, starts from zero)
+    3. *Is English shorthand taught from the basic level?* (Yes, strokes, consonants, vowels, word formation, phrases)
+    4. *Do you provide Hindi shorthand classes?* (Yes, fundamentals through to high speed & accuracy)
+    5. *Is typing practice included in the shorthand course?* (Yes, both English and Hindi typing included)
+    6. *Are demo classes available?* (**Yes! We offer 3 demo classes** to experience methodology & classroom)
+    7. *Which government examinations are covered?* (SSC Grade C/D, Patna HC, Jharkhand HC, Delhi HC, Supreme Court SPA, BSF/CRPF & State exams)
+    8. *Do you provide online typing practice?* (Yes, browser software for English & Hindi competitive exam patterns)
+    9. *How can I enroll in Gaya Shorthand Classes?* (Visit institute or call **7870377214 / 9204123453**; 3 demo classes available)
+    10. *Where is Gaya Shorthand Classes located?* (**Gaya College More, Opposite Cyber Thana, Gayaji, Bihar**)
+  - Synchronized dual contact numbers (**7870377214 / 9204123453**) and exact location (**Gayaji, Bihar**) across `LandingPage.jsx`, `Footer.jsx`, `AboutAcademyView.jsx`, `ClassesPage.jsx`, `LegalPolicyModal.jsx`, and `emailService.js`.
+  - Exported `OFFICIAL_FAQS` from `src/data/mockData.js`.
+
 - [x] **Teaching Methodology (शिक्षण पद्धति) — 8 Structured Steps**
   - Title: **Teaching Methodology (शिक्षण पद्धति)**
   - Guided by experienced faculty: **Shadab Sir (12 Years Experience)**

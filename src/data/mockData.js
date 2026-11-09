@@ -293,6 +293,59 @@ export const TEACHING_METHODOLOGY = [
   }
 ];
 
+export const OFFICIAL_FAQS = [
+  {
+    id: 1,
+    q: "What is the duration of the shorthand course?",
+    a: "The duration of the shorthand course depends on the student's learning speed and practice level. We provide systematic training from basic to advanced levels, focusing on speed, accuracy, and exam preparation."
+  },
+  {
+    id: 2,
+    q: "Can beginners join shorthand classes?",
+    a: "Yes! Beginners are welcome. No prior knowledge of shorthand is required. We start from the basics and gradually develop students' skills through regular practice and guidance."
+  },
+  {
+    id: 3,
+    q: "Is English shorthand taught from the basic level?",
+    a: "Yes. English shorthand is taught from the absolute beginner level, covering basic strokes, consonants, vowels, word formation, phrases, and advanced dictation practice."
+  },
+  {
+    id: 4,
+    q: "Do you provide Hindi shorthand classes?",
+    a: "Yes. We provide Hindi shorthand training, starting from the fundamentals and progressing towards higher speed and accuracy through regular dictation and practical exercises."
+  },
+  {
+    id: 5,
+    q: "Is typing practice included in the shorthand course?",
+    a: "Yes. Typing practice is an important part of our training. We provide both English and Hindi typing practice to help students prepare for competitive examinations."
+  },
+  {
+    id: 6,
+    q: "Are demo classes available?",
+    a: "Yes! We offer 3 demo classes so that students can experience our teaching methodology, classroom environment, and practice facilities before enrolling."
+  },
+  {
+    id: 7,
+    q: "Which government examinations are covered?",
+    a: "We provide preparation for various stenographer and personal assistant examinations, including:\n• SSC Stenographer Grade C and D\n• Patna High Court Stenographer\n• Jharkhand High Court Stenographer\n• Delhi High Court PA/SPA\n• Supreme Court SPA/Stenographer\n• BSF and CRPF Stenographer\n• Other Central and State Government Stenographer Examinations"
+  },
+  {
+    id: 8,
+    q: "Do you provide online typing practice?",
+    a: "Yes. We provide online typing practice software for both English and Hindi, allowing students to improve their typing speed and accuracy. Students can practice according to competitive examination patterns."
+  },
+  {
+    id: 9,
+    q: "How can I enroll in Gaya Shorthand Classes?",
+    a: "You can enroll by visiting our institute or contacting us directly by phone. You can also attend 3 demo classes before taking admission.\n\nContact Numbers: 7870377214 / 9204123453"
+  },
+  {
+    id: 10,
+    q: "Where is Gaya Shorthand Classes located?",
+    a: "Gaya Shorthand Classes is conveniently located at:\n\nGaya College More, Opposite Cyber Thana, Gayaji, Bihar.\n\nYou are welcome to visit our institute for course details, counselling, and demo classes."
+  }
+];
+
 export const STENO_TESTS = [
   {
     id: 534,

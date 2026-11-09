@@ -36,7 +36,7 @@ import {
   Briefcase,
   Globe
 } from 'lucide-react';
-import { PRICING_PLANS, TARGET_EXAMINATIONS, TEACHING_METHODOLOGY } from '../data/mockData';
+import { PRICING_PLANS, TARGET_EXAMINATIONS, TEACHING_METHODOLOGY, OFFICIAL_FAQS } from '../data/mockData';
 import AcademyIllustration from '../components/AcademyIllustration';
 import CustomSelect from '../components/CustomSelect';
 import { api, setToken } from '../services/api';
@@ -650,40 +650,7 @@ export default function LandingPage({
     }
   ];
 
-  const faqs = [
-    {
-      q: "कौन-कौन सी परीक्षाओं की तैयारी कराई जाती है? (Which exams are prepared for?)",
-      a: "Our courses provide skill-based training for various government stenographer and typing examinations:\n• SSC Stenographer Grade C & D\n• Supreme Court Stenographer\n• Supreme Court SPA\n• Delhi High Court PA / SPA\n• Patna High Court Stenographer\n• Jharkhand High Court Stenographer\n• BSF Stenographer\n• CRPF Stenographer\n• Other State Government Stenographer Exams"
-    },
-    {
-      q: "What is the Teaching Methodology (शिक्षण पद्धति) at Gaya Shorthand Classes?",
-      a: "Our proven 8-step methodology includes: (1) Step-by-Step Learning Process, (2) Practical Demonstration, (3) Daily Practice Sessions, (4) Audio Dictation, (5) Regular Revision, (6) Individual Doubt Clearing, (7) Performance Tracking, and (8) Exam Pattern-Based Practice under experienced faculty Shadab Sir (12 Years Experience)."
-    },
-    {
-      q: "What is Gaya Shorthand Classes (SHORTHAND PLUS)?",
-      a: "SHORTHAND PLUS (Gaya Shorthand Classes) is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning (https://stenoplus.in). We provide basic to advance 50 WPM to 140 WPM speed in shorthand with AI-based dictation and real-time evaluation. Mentored by experienced faculty, the academy prepares students for SSC Stenographer Grade C & D, Patna High Court, Jharkhand High Court, and central government secretariat reporter exams."
-    },
-    {
-      q: "Can I try demo steno dictations and typing tests for free?",
-      a: "Yes! Prospective students can take free Demo Steno Tests and Demo Typing Tests directly on the portal without paying any registration fee. Simply click 'Demo Steno Tests' or 'Demo Typing Tests' to begin immediately."
-    },
-    {
-      q: "How does the official 5-minute shorthand reading room work?",
-      a: "Just like in official SSC and High Court skill test centers, when the audio dictation finishes, transcription typing is locked. Candidates receive exactly 5 minutes of timed reading time with an automated audio chime to review handwritten outlines and resolve punctuation before digital typing starts."
-    },
-    {
-      q: "Is Hindi typing supported in both Kruti Dev 010 and Mangal Inscript?",
-      a: "Yes! ShorthandPlus natively supports both font layouts. We bundle the authentic Kruti-Dev-010 font engine and standard Unicode Mangal Inscript, ensuring zero character corruption during your Hindi court and state government exams."
-    },
-    {
-      q: "How do I activate my subscription using UPI or QR Code?",
-      a: "Simply click 'Pay & Activate' on your chosen plan. You can pay instantly using any UPI App (Google Pay, PhonePe, Paytm, BHIM) or Credit/Debit Card, and your subscription activates immediately with automated access."
-    },
-    {
-      q: "Are the computer diplomas accepted in government document verifications?",
-      a: "Yes. Gaya Shorthand Classes provides government-registered DCA, ADCA, Tally Prime, and verified Shorthand Speed Proficiency Certificates (80, 100, 120 WPM) that are valid for Central & State government job document verifications."
-    }
-  ];
+  const faqs = OFFICIAL_FAQS;
 
   return (
     <div className="clean-homepage-wrapper">
@@ -1705,19 +1672,31 @@ export default function LandingPage({
                   <MapPin size={18} className="text-royal-blue shrink-0" />
                   <div>
                     <strong>Academy Address:</strong>
-                    <p>Gaya College More, Opp. Cyber Thana, Gaya, Bihar</p>
+                    <p>Gaya College More, Opposite Cyber Thana, Gayaji, Bihar</p>
                   </div>
                 </div>
 
                 <div className="center-detail-item">
                   <Phone size={18} className="text-royal-blue shrink-0" />
                   <div>
-                    <strong>Helpline Number:</strong>
+                    <strong>Contact Numbers:</strong>
                     <p>
+                      <a href="tel:+917870377214" style={{ color: 'inherit', fontWeight: 600 }}>
+                        +91 7870377214
+                      </a>
+                      {' / '}
                       <a href="tel:+919204123453" style={{ color: 'inherit', fontWeight: 600 }}>
                         +91 9204123453
                       </a>
                     </p>
+                  </div>
+                </div>
+
+                <div className="center-detail-item">
+                  <Sparkles size={18} className="text-amber-600 shrink-0" />
+                  <div>
+                    <strong>Free Demo Sessions:</strong>
+                    <p>We offer 3 demo classes so that students can experience our teaching methodology before enrolling.</p>
                   </div>
                 </div>
 
