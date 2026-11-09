@@ -266,20 +266,17 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
             Attend daily in-person classes at our Gaya academy or access live broadcast Zoom dictations from anywhere. Daily batches guided by <strong>Shadab Sir (12 Years Experience)</strong> spanning 6:00 AM to 8:00 PM.
           </p>
 
-          {/* Tab Navigation Switcher */}
+          {/* Tab Navigation Switcher - Separate Independent Pills */}
           <div className="classes-nav-tabs" style={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             flexWrap: 'wrap',
-            gap: '0.5rem',
-            marginTop: '1.75rem',
-            padding: '0.4rem',
-            background: '#faf9f6',
-            borderRadius: '9999px',
-            border: '1px solid #e7e5e4',
-            width: 'fit-content',
-            margin: '1.75rem auto 0'
+            gap: '0.65rem',
+            marginTop: '1.5rem',
+            background: 'transparent',
+            border: 'none',
+            padding: 0
           }}>
             {[
               { id: 'online-live', label: 'Live Zoom Studio', hasDot: true },
@@ -300,17 +297,34 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.45rem',
-                    padding: '0.5rem 1.15rem',
+                    padding: '0.55rem 1.15rem',
                     borderRadius: '9999px',
-                    fontSize: '0.86rem',
+                    fontSize: '0.88rem',
                     fontWeight: active ? 800 : 600,
-                    border: 'none',
-                    background: active ? '#1c1917' : 'transparent',
+                    border: '1.5px solid',
+                    borderColor: active ? '#1c1917' : '#e7e5e4',
+                    background: active ? '#1c1917' : '#ffffff',
                     color: active ? '#ffffff' : '#57534e',
                     cursor: 'pointer',
-                    transition: 'all 0.18s ease',
-                    boxShadow: active ? '0 2px 8px rgba(28, 25, 23, 0.2)' : 'none',
+                    transition: 'all 0.15s ease',
+                    boxShadow: active 
+                      ? '0 2px 8px rgba(28, 25, 23, 0.2)' 
+                      : '0 1px 3px rgba(28, 25, 23, 0.04)',
                     whiteSpace: 'nowrap'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!active) {
+                      e.currentTarget.style.borderColor = '#d6d3d1';
+                      e.currentTarget.style.background = '#f5f4f0';
+                      e.currentTarget.style.color = '#1c1917';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!active) {
+                      e.currentTarget.style.borderColor = '#e7e5e4';
+                      e.currentTarget.style.background = '#ffffff';
+                      e.currentTarget.style.color = '#57534e';
+                    }
                   }}
                 >
                   {tab.hasDot && (
