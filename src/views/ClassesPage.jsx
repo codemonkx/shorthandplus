@@ -19,7 +19,8 @@ import {
   Keyboard,
   Search,
   BookOpen,
-  Zap
+  Zap,
+  Calendar
 } from 'lucide-react';
 import { ANNOUNCEMENTS } from '../data/mockData';
 import ShorthandCanvas from '../components/ShorthandCanvas';
@@ -266,45 +267,66 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
           </p>
 
           {/* Tab Navigation Switcher */}
-          <div className="classes-nav-tabs">
-            <button 
-              className={`class-nav-tab ${activeTab === 'online-live' ? 'active tab-live-active' : ''}`}
-              onClick={() => setActiveTab('online-live')}
-            >
-              <span className="live-dot-mini" />
-              <span>Live Zoom Studio</span>
-            </button>
-            <button 
-              className={`class-nav-tab ${activeTab === 'batches' ? 'active' : ''}`}
-              onClick={() => setActiveTab('batches')}
-            >
-              <span>Daily Academy Batches</span>
-            </button>
-            <button 
-              className={`class-nav-tab ${activeTab === 'timetable' ? 'active' : ''}`}
-              onClick={() => setActiveTab('timetable')}
-            >
-              <span>Weekly Timetable</span>
-            </button>
-            <button 
-              className={`class-nav-tab ${activeTab === 'diplomas' ? 'active' : ''}`}
-              onClick={() => setActiveTab('diplomas')}
-            >
-              <span>Govt. Diplomas (ADCA/DCA)</span>
-            </button>
-            <button 
-              className={`class-nav-tab ${activeTab === 'notices' ? 'active' : ''}`}
-              onClick={() => setActiveTab('notices')}
-            >
-              <span>Recruitment Notices</span>
-            </button>
-            <button 
-              className={`class-nav-tab ${activeTab === 'outlines' ? 'active tab-live-active' : ''}`}
-              onClick={() => setActiveTab('outlines')}
-            >
-              <Zap size={13} className="text-amber-500 inline mr-1" />
-              <span>Shorthand Outlines</span>
-            </button>
+          <div className="classes-nav-tabs" style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '0.5rem',
+            marginTop: '1.75rem',
+            padding: '0.4rem',
+            background: '#faf9f6',
+            borderRadius: '9999px',
+            border: '1px solid #e7e5e4',
+            width: 'fit-content',
+            margin: '1.75rem auto 0'
+          }}>
+            {[
+              { id: 'online-live', label: 'Live Zoom Studio', hasDot: true },
+              { id: 'batches', label: 'Daily Academy Batches' },
+              { id: 'timetable', label: 'Weekly Timetable' },
+              { id: 'diplomas', label: 'Govt. Diplomas (ADCA/DCA)' },
+              { id: 'notices', label: 'Recruitment Notices' },
+              { id: 'outlines', label: 'Shorthand Outlines', icon: Zap }
+            ].map((tab) => {
+              const active = activeTab === tab.id;
+              const IconComponent = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTab(tab.id)}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    padding: '0.5rem 1.15rem',
+                    borderRadius: '9999px',
+                    fontSize: '0.86rem',
+                    fontWeight: active ? 800 : 600,
+                    border: 'none',
+                    background: active ? '#1c1917' : 'transparent',
+                    color: active ? '#ffffff' : '#57534e',
+                    cursor: 'pointer',
+                    transition: 'all 0.18s ease',
+                    boxShadow: active ? '0 2px 8px rgba(28, 25, 23, 0.2)' : 'none',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  {tab.hasDot && (
+                    <span style={{
+                      width: '7px',
+                      height: '7px',
+                      borderRadius: '50%',
+                      background: active ? '#34d399' : '#10b981',
+                      boxShadow: '0 0 0 2px rgba(16, 185, 129, 0.3)'
+                    }} />
+                  )}
+                  {IconComponent && <IconComponent size={14} color={active ? '#f59e0b' : '#d97706'} />}
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -751,58 +773,191 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
           </div>
         )}
 
-        {/* TAB 1: DAILY BATCHES */}
+        {/* TAB 1: DAILY ACADEMY BATCHES */}
         {activeTab === 'batches' && (
-          <div className="classes-batches-view">
-            <div className="section-header-compact text-center">
-              <span className="badge-subheading">CLASSROOM & ONLINE SCHEDULE</span>
-              <h2 className="section-title-large">Daily Classroom Batches at Gaya Center</h2>
-              <p className="section-description-text">
-                All batches include daily handwritten outline checks, audio dictation recordings, and 1 hour of computer typing practice.
+          <div className="classes-batches-view" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+              <span style={{
+                display: 'inline-block',
+                fontSize: '0.74rem',
+                fontWeight: 800,
+                color: '#d97706',
+                textTransform: 'uppercase',
+                letterSpacing: '0.8px',
+                background: '#fffbeb',
+                border: '1px solid #fef3c7',
+                padding: '0.3rem 0.85rem',
+                borderRadius: '9999px',
+                marginBottom: '0.65rem'
+              }}>
+                CLASSROOM & ONLINE SCHEDULE • ESTD. 2012
+              </span>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)', fontWeight: 850, color: '#1c1917', margin: '0 0 0.6rem', letterSpacing: '-0.02em' }}>
+                Daily Classroom Batches at Gaya Center
+              </h2>
+              <p style={{ fontSize: '0.96rem', color: '#57534e', maxWidth: '720px', margin: '0 auto', lineHeight: 1.6 }}>
+                Structured offline training batches from 6:00 AM to 8:00 PM with daily handwritten outline reviews, acoustic dictations, and 1 hour dedicated computer typing lab.
               </p>
             </div>
 
-            <div className="classes-batch-cards-grid mt-4">
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+              gap: '1.5rem',
+              marginTop: '1.5rem'
+            }}>
               {DAILY_BATCHES.map((batch) => (
-                <div key={batch.id} className="batch-schedule-card">
-                  <div className="batch-schedule-header">
-                    <span className={`badge ${batch.badgeColor}`}>{batch.badge}</span>
-                    <span className="batch-seats-pill">{batch.seats}</span>
-                  </div>
-
-                  <div className="batch-time-strip">
-                    <Clock size={16} className="text-royal-blue" />
-                    <span className="batch-time-text font-mono">{batch.time}</span>
-                    <span className="batch-shift-tag">{batch.shift}</span>
-                  </div>
-
-                  <h3 className="batch-title-text">{batch.title}</h3>
-                  <p className="batch-desc-text">{batch.desc}</p>
-
-                  <div className="batch-details-box">
-                    <div className="detail-line">
-                      <Volume2 size={15} className="text-royal-blue shrink-0" />
-                      <span><strong>Target Speed:</strong> <span className="font-mono text-royal-blue font-bold">{batch.speed}</span></span>
+                <div
+                  key={batch.id}
+                  style={{
+                    background: '#ffffff',
+                    border: '1.5px solid #e7e5e4',
+                    borderRadius: '16px',
+                    padding: '1.75rem',
+                    boxShadow: '0 4px 20px rgba(28, 25, 23, 0.03)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                    e.currentTarget.style.borderColor = '#d6d3d1';
+                    e.currentTarget.style.boxShadow = '0 10px 28px rgba(28, 25, 23, 0.08)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.borderColor = '#e7e5e4';
+                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(28, 25, 23, 0.03)';
+                  }}
+                >
+                  <div>
+                    {/* Top Chips Row */}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+                      <span style={{
+                        fontSize: '0.74rem',
+                        fontWeight: 800,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.4px',
+                        padding: '0.25rem 0.65rem',
+                        borderRadius: '6px',
+                        background: batch.badgeColor === 'badge-amber' ? '#fef3c7' : batch.badgeColor === 'badge-emerald' ? '#ecfdf5' : batch.badgeColor === 'badge-purple' ? '#f5f3ff' : '#eff6ff',
+                        color: batch.badgeColor === 'badge-amber' ? '#92400e' : batch.badgeColor === 'badge-emerald' ? '#065f46' : batch.badgeColor === 'badge-purple' ? '#5b21b6' : '#1e40af',
+                        border: '1px solid',
+                        borderColor: batch.badgeColor === 'badge-amber' ? '#fde68a' : batch.badgeColor === 'badge-emerald' ? '#a7f3d0' : batch.badgeColor === 'badge-purple' ? '#ddd6fe' : '#bfdbfe'
+                      }}>
+                        {batch.badge}
+                      </span>
+                      <span style={{
+                        fontSize: '0.74rem',
+                        fontWeight: 800,
+                        padding: '0.25rem 0.65rem',
+                        borderRadius: '9999px',
+                        background: '#faf9f6',
+                        color: '#78716c',
+                        border: '1px solid #e7e5e4'
+                      }}>
+                        {batch.seats}
+                      </span>
                     </div>
-                    <div className="detail-line">
-                      <GraduationCap size={15} className="text-royal-blue shrink-0" />
-                      <span><strong>Lead Instructor:</strong> {batch.instructor}</span>
+
+                    {/* Time & Shift Strip */}
+                    <div style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      background: '#faf9f6',
+                      border: '1px solid #e7e5e4',
+                      borderRadius: '10px',
+                      padding: '0.45rem 0.85rem',
+                      marginBottom: '1rem',
+                      width: 'fit-content'
+                    }}>
+                      <Clock size={15} color="#d97706" />
+                      <strong style={{ fontSize: '0.92rem', color: '#1c1917', fontFamily: 'var(--font-mono, monospace)', fontWeight: 800 }}>
+                        {batch.time}
+                      </strong>
+                      <span style={{ color: '#d6d3d1' }}>•</span>
+                      <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#57534e' }}>
+                        {batch.shift}
+                      </span>
                     </div>
-                    <div className="detail-line">
-                      <Building size={15} className="text-royal-blue shrink-0" />
-                      <span><strong>Format:</strong> {batch.mode}</span>
+
+                    {/* Title & Desc */}
+                    <h3 style={{ fontSize: '1.2rem', fontWeight: 850, color: '#1c1917', margin: '0 0 0.5rem', lineHeight: 1.35 }}>
+                      {batch.title}
+                    </h3>
+                    <p style={{ fontSize: '0.88rem', color: '#57534e', lineHeight: 1.6, margin: '0 0 1.25rem' }}>
+                      {batch.desc}
+                    </p>
+
+                    {/* Details Box */}
+                    <div style={{
+                      background: '#faf9f6',
+                      border: '1px solid #e7e5e4',
+                      borderRadius: '12px',
+                      padding: '0.9rem 1rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.65rem',
+                      marginBottom: '1.5rem'
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <Volume2 size={15} color="#d97706" />
+                          <span style={{ fontSize: '0.8rem', color: '#78716c', fontWeight: 600 }}>Target Speed:</span>
+                        </div>
+                        <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#1c1917', background: '#ffffff', border: '1px solid #e7e5e4', padding: '2px 8px', borderRadius: '6px', fontFamily: 'var(--font-mono, monospace)' }}>
+                          {batch.speed}
+                        </span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <GraduationCap size={15} color="#047857" />
+                          <span style={{ fontSize: '0.8rem', color: '#78716c', fontWeight: 600 }}>Lead Faculty:</span>
+                        </div>
+                        <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#1c1917' }}>
+                          {batch.instructor}
+                        </span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <Building size={15} color="#2563eb" />
+                          <span style={{ fontSize: '0.8rem', color: '#78716c', fontWeight: 600 }}>Training Mode:</span>
+                        </div>
+                        <span style={{ fontSize: '0.82rem', color: '#44403c', fontWeight: 600 }}>
+                          {batch.mode}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="batch-card-action">
-                    <a 
-                      href="tel:+919204123453"
-                      className="btn-batch-join"
-                    >
-                      <Phone size={15} />
-                      <span>Inquire / Book Seat</span>
-                    </a>
-                  </div>
+                  {/* Card Action */}
+                  <a
+                    href="tel:+919204123453"
+                    style={{
+                      width: '100%',
+                      background: '#1c1917',
+                      color: '#ffffff',
+                      border: 'none',
+                      borderRadius: '8px',
+                      padding: '0.75rem 1rem',
+                      fontSize: '0.9rem',
+                      fontWeight: 700,
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px',
+                      boxShadow: '0 2px 8px rgba(28, 25, 23, 0.15)',
+                      transition: 'all 0.15s ease'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = '#292524'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = '#1c1917'}
+                  >
+                    <Phone size={15} color="#f59e0b" />
+                    <span>Inquire / Reserve Batch Seat</span>
+                  </a>
                 </div>
               ))}
             </div>
@@ -811,137 +966,449 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
 
         {/* TAB 2: WEEKLY TIMETABLE */}
         {activeTab === 'timetable' && (
-          <div className="classes-timetable-view">
-            <div className="section-header-compact text-center">
-              <span className="badge-subheading">ROUTINE & LAB SCHEDULE</span>
-              <h2 className="section-title-large">Weekly Examination & Dictation Routine</h2>
-              <p className="section-description-text">
-                Monday to Saturday active training program at Gaya Shorthand Classes.
+          <div className="classes-timetable-view" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+              <span style={{
+                display: 'inline-block',
+                fontSize: '0.74rem',
+                fontWeight: 800,
+                color: '#047857',
+                textTransform: 'uppercase',
+                letterSpacing: '0.8px',
+                background: '#ecfdf5',
+                border: '1px solid #a7f3d0',
+                padding: '0.3rem 0.85rem',
+                borderRadius: '9999px',
+                marginBottom: '0.65rem'
+              }}>
+                ROUTINE & LAB SCHEDULE • MONDAY TO SATURDAY
+              </span>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)', fontWeight: 850, color: '#1c1917', margin: '0 0 0.6rem', letterSpacing: '-0.02em' }}>
+                Weekly Examination & Dictation Routine
+              </h2>
+              <p style={{ fontSize: '0.96rem', color: '#57534e', maxWidth: '720px', margin: '0 auto', lineHeight: 1.6 }}>
+                Monday to Saturday active training program at Gaya Shorthand Classes (Opposite Cyber Thana, Gaya).
               </p>
             </div>
 
-            <div className="timetable-table-wrapper mt-4">
-              <table className="academy-timetable-table">
-                <thead>
-                  <tr>
-                    <th>Time Slot</th>
-                    <th>Batch Category</th>
-                    <th>Speed (WPM)</th>
-                    <th>Classroom / Lab</th>
-                    <th>Faculty Lead</th>
-                    <th>Daily Focus</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="font-mono font-bold text-royal-blue">6:00 AM – 8:00 AM</td>
-                    <td><strong>Basic Theory (Pitman)</strong></td>
-                    <td><span className="badge badge-blue font-mono">0 - 60 WPM</span></td>
-                    <td>Hall A (Ground Floor)</td>
-                    <td>Shadab Sir</td>
-                    <td>Vowels, Stroke Angles & Daily Homework Check</td>
-                  </tr>
-                  <tr>
-                    <td className="font-mono font-bold text-royal-blue">8:30 AM – 10:30 AM</td>
-                    <td><strong>SSC Steno Grade C & D</strong></td>
-                    <td><span className="badge badge-amber font-mono">80 WPM</span></td>
-                    <td>Computer Lab 1 (50 PCs)</td>
-                    <td>Shadab Sir & Lab Head</td>
-                    <td>Reading Room + Kruti Dev Hindi & English Typing</td>
-                  </tr>
-                  <tr>
-                    <td className="font-mono font-bold text-royal-blue">11:00 AM – 1:00 PM</td>
-                    <td><strong>Computer Diplomas (DCA/ADCA)</strong></td>
-                    <td><span className="badge badge-purple font-mono">Typing Studio</span></td>
-                    <td>Computer Lab 2</td>
-                    <td>Computer Faculty</td>
-                    <td>MS Office, Tally Prime, Internet Operations</td>
-                  </tr>
-                  <tr>
-                    <td className="font-mono font-bold text-royal-blue">3:00 PM – 5:00 PM</td>
-                    <td><strong>High Court Judicial Bench</strong></td>
-                    <td><span className="badge badge-emerald font-mono">100 WPM</span></td>
-                    <td>Acoustic Dictation Hall</td>
-                    <td>Shadab Sir</td>
-                    <td>Criminal Appeals, Bail Orders, Legal Outlines</td>
-                  </tr>
-                  <tr>
-                    <td className="font-mono font-bold text-royal-blue">5:30 PM – 7:30 PM</td>
-                    <td><strong>Parliament / Assembly Master</strong></td>
-                    <td><span className="badge badge-purple font-mono">120 WPM</span></td>
-                    <td>Audio Broadcast Room</td>
-                    <td>Senior Master</td>
-                    <td>Fast Speed Pacing, Contractions & Transcriptions</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div style={{
+              background: '#ffffff',
+              border: '1.5px solid #e7e5e4',
+              borderRadius: '16px',
+              overflow: 'hidden',
+              boxShadow: '0 4px 20px rgba(28, 25, 23, 0.03)'
+            }}>
+              <div style={{ overflowX: 'auto' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '780px' }}>
+                  <thead>
+                    <tr style={{ background: '#faf9f6', borderBottom: '2px solid #e7e5e4' }}>
+                      <th style={{ padding: '1rem 1.25rem', fontSize: '0.76rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#78716c' }}>Time Slot</th>
+                      <th style={{ padding: '1rem 1.25rem', fontSize: '0.76rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#78716c' }}>Batch Category</th>
+                      <th style={{ padding: '1rem 1.25rem', fontSize: '0.76rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#78716c' }}>Speed Benchmark</th>
+                      <th style={{ padding: '1rem 1.25rem', fontSize: '0.76rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#78716c' }}>Classroom / Lab</th>
+                      <th style={{ padding: '1rem 1.25rem', fontSize: '0.76rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#78716c' }}>Faculty Lead</th>
+                      <th style={{ padding: '1rem 1.25rem', fontSize: '0.76rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#78716c' }}>Daily Focus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      {
+                        time: '6:00 AM – 8:00 AM',
+                        batch: 'Basic Theory (Pitman)',
+                        speed: '0 – 60 WPM',
+                        speedBg: '#eff6ff',
+                        speedColor: '#1d4ed8',
+                        speedBorder: '#bfdbfe',
+                        hall: 'Hall A (Ground Floor)',
+                        faculty: 'Shadab Sir (Director)',
+                        focus: 'Vowels, Stroke Angles & Daily Homework Check'
+                      },
+                      {
+                        time: '8:30 AM – 10:30 AM',
+                        batch: 'SSC Steno Grade C & D',
+                        speed: '80 WPM',
+                        speedBg: '#ecfdf5',
+                        speedColor: '#047857',
+                        speedBorder: '#a7f3d0',
+                        hall: 'Computer Lab 1 (50 PCs)',
+                        faculty: 'Shadab Sir & Lab Head',
+                        focus: 'Reading Room + Kruti Dev / Mangal Typing'
+                      },
+                      {
+                        time: '11:00 AM – 1:00 PM',
+                        batch: 'Computer Diplomas (DCA/ADCA)',
+                        speed: 'Typing Studio',
+                        speedBg: '#f5f3ff',
+                        speedColor: '#6d28d9',
+                        speedBorder: '#ddd6fe',
+                        hall: 'Computer Lab 2',
+                        faculty: 'Computer Faculty',
+                        focus: 'MS Office Suite, Tally Prime, Internet Operations'
+                      },
+                      {
+                        time: '3:00 PM – 5:00 PM',
+                        batch: 'High Court Judicial Bench',
+                        speed: '100 WPM',
+                        speedBg: '#fffbeb',
+                        speedColor: '#b45309',
+                        speedBorder: '#fde68a',
+                        hall: 'Acoustic Dictation Hall',
+                        faculty: 'Shadab Sir',
+                        focus: 'Criminal Appeals, Bail Orders, Court Judgments'
+                      },
+                      {
+                        time: '5:30 PM – 7:30 PM',
+                        batch: 'Parliament / Assembly Master',
+                        speed: '120 WPM',
+                        speedBg: '#fdf2f8',
+                        speedColor: '#be185d',
+                        speedBorder: '#fbcfe8',
+                        hall: 'Audio Broadcast Room',
+                        faculty: 'Senior Master',
+                        focus: 'Fast Speed Pacing, Contractions & Transcriptions'
+                      }
+                    ].map((row, idx) => (
+                      <tr
+                        key={idx}
+                        style={{ borderBottom: idx === 4 ? 'none' : '1px solid #f5f5f4', transition: 'background 0.15s ease' }}
+                        onMouseEnter={(e) => e.currentTarget.style.background = '#faf9f6'}
+                        onMouseLeave={(e) => e.currentTarget.style.background = '#ffffff'}
+                      >
+                        <td style={{ padding: '1.1rem 1.25rem', fontFamily: 'var(--font-mono, monospace)', fontWeight: 800, color: '#1c1917', fontSize: '0.9rem' }}>
+                          {row.time}
+                        </td>
+                        <td style={{ padding: '1.1rem 1.25rem', fontWeight: 800, color: '#1c1917', fontSize: '0.9rem' }}>
+                          {row.batch}
+                        </td>
+                        <td style={{ padding: '1.1rem 1.25rem' }}>
+                          <span style={{
+                            display: 'inline-block',
+                            padding: '0.25rem 0.65rem',
+                            borderRadius: '9999px',
+                            fontSize: '0.78rem',
+                            fontWeight: 800,
+                            fontFamily: 'var(--font-mono, monospace)',
+                            background: row.speedBg,
+                            color: row.speedColor,
+                            border: `1px solid ${row.speedBorder}`
+                          }}>
+                            {row.speed}
+                          </span>
+                        </td>
+                        <td style={{ padding: '1.1rem 1.25rem', color: '#44403c', fontSize: '0.88rem', fontWeight: 600 }}>
+                          {row.hall}
+                        </td>
+                        <td style={{ padding: '1.1rem 1.25rem', color: '#1c1917', fontSize: '0.88rem', fontWeight: 700 }}>
+                          {row.faculty}
+                        </td>
+                        <td style={{ padding: '1.1rem 1.25rem', color: '#57534e', fontSize: '0.86rem', lineHeight: 1.45 }}>
+                          {row.focus}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div style={{
+                background: '#faf9f6',
+                borderTop: '1px solid #e7e5e4',
+                padding: '0.85rem 1.25rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontSize: '0.82rem',
+                color: '#78716c'
+              }}>
+                <Sparkles size={15} color="#d97706" />
+                <span><strong>Sunday Special:</strong> Full-length 100-mark mock examinations held every Sunday 9:00 AM – 1:00 PM with software-evaluated accuracy scorecards.</span>
+              </div>
             </div>
           </div>
         )}
 
         {/* TAB 3: ACCREDITED COMPUTER DIPLOMAS */}
         {activeTab === 'diplomas' && (
-          <div className="classes-diplomas-view">
-            <div className="section-header-compact text-center">
-              <span className="badge-subheading">GOVERNMENT RECOGNIZED CERTIFICATIONS</span>
-              <h2 className="section-title-large">Accredited Computer Diplomas & Certificates</h2>
-              <p className="section-description-text">
+          <div className="classes-diplomas-view" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+              <span style={{
+                display: 'inline-block',
+                fontSize: '0.74rem',
+                fontWeight: 800,
+                color: '#2563eb',
+                textTransform: 'uppercase',
+                letterSpacing: '0.8px',
+                background: '#eff6ff',
+                border: '1px solid #bfdbfe',
+                padding: '0.3rem 0.85rem',
+                borderRadius: '9999px',
+                marginBottom: '0.65rem'
+              }}>
+                GOVERNMENT RECOGNIZED CERTIFICATIONS
+              </span>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)', fontWeight: 850, color: '#1c1917', margin: '0 0 0.6rem', letterSpacing: '-0.02em' }}>
+                Accredited Computer Diplomas & Certificates
+              </h2>
+              <p style={{ fontSize: '0.96rem', color: '#57534e', maxWidth: '720px', margin: '0 auto', lineHeight: 1.6 }}>
                 Recognized for all Central & State Government recruitments, High Courts, Civil Courts, and BSSC verification.
               </p>
             </div>
 
-            <div className="diplomas-cards-grid mt-4">
-              <div className="diploma-program-card">
-                <div className="diploma-icon-bubble">
-                  <Award size={26} className="text-amber" />
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '1.5rem',
+              marginTop: '1.5rem'
+            }}>
+              {/* DCA Card */}
+              <div
+                style={{
+                  background: '#ffffff',
+                  border: '1.5px solid #e7e5e4',
+                  borderRadius: '16px',
+                  padding: '1.75rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  boxShadow: '0 4px 20px rgba(28, 25, 23, 0.03)',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-3px)';
+                  e.currentTarget.style.borderColor = '#d6d3d1';
+                  e.currentTarget.style.boxShadow = '0 10px 28px rgba(28, 25, 23, 0.08)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.borderColor = '#e7e5e4';
+                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(28, 25, 23, 0.03)';
+                }}
+              >
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+                    <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: '#fef3c7', color: '#d97706', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Award size={24} />
+                    </div>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 800, padding: '0.25rem 0.65rem', borderRadius: '9999px', background: '#faf9f6', color: '#57534e', border: '1px solid #e7e5e4' }}>
+                      6 Months Course
+                    </span>
+                  </div>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 850, color: '#1c1917', margin: '0 0 0.5rem', lineHeight: 1.35 }}>
+                    DCA (Diploma in Computer Applications)
+                  </h3>
+                  <p style={{ fontSize: '0.88rem', color: '#57534e', lineHeight: 1.6, margin: '0 0 1.25rem' }}>
+                    Covers computer fundamentals, Windows OS, MS Office suite (Word, Excel, PowerPoint), and speed touch typing.
+                  </p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginBottom: '1.5rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#334155' }}>
+                      <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0 }} />
+                      <span>Government recognized certificate</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#334155' }}>
+                      <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0 }} />
+                      <span>Online QR code & Roll verification</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#334155' }}>
+                      <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0 }} />
+                      <span>Valid for Clerk & Data Entry Operator posts</span>
+                    </div>
+                  </div>
                 </div>
-                <h3>DCA (Diploma in Computer Applications)</h3>
-                <span className="duration-pill">6 Months Course</span>
-                <p>Covers computer fundamentals, Windows OS, MS Office suite (Word, Excel, PowerPoint), and speed typing.</p>
-                <ul className="diploma-points">
-                  <li><CheckCircle2 size={15} className="text-emerald" /> Government recognized certificate</li>
-                  <li><CheckCircle2 size={15} className="text-emerald" /> Online QR code verification</li>
-                  <li><CheckCircle2 size={15} className="text-emerald" /> Valid for Clerk and Data Entry Operator posts</li>
-                </ul>
-                <a href="tel:+919204123453" className="btn-diploma-inquire">
-                  <Phone size={14} />
-                  <span>Inquire for Admission</span>
+                <a
+                  href="tel:+919204123453"
+                  style={{
+                    width: '100%',
+                    background: '#1c1917',
+                    color: '#ffffff',
+                    border: 'none',
+                    borderRadius: '8px',
+                    padding: '0.75rem 1rem',
+                    fontSize: '0.9rem',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    boxShadow: '0 2px 8px rgba(28, 25, 23, 0.15)'
+                  }}
+                >
+                  <Phone size={15} color="#f59e0b" />
+                  <span>Inquire for DCA Program</span>
                 </a>
               </div>
 
-              <div className="diploma-program-card featured">
-                <div className="diploma-icon-bubble">
-                  <ShieldCheck size={26} className="text-royal-blue" />
+              {/* ADCA Card (Featured) */}
+              <div
+                style={{
+                  background: '#ffffff',
+                  border: '1.5px solid #fed7aa',
+                  borderRadius: '16px',
+                  padding: '1.75rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  boxShadow: '0 6px 24px rgba(217, 119, 6, 0.08)',
+                  position: 'relative',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-3px)';
+                  e.currentTarget.style.boxShadow = '0 12px 32px rgba(217, 119, 6, 0.12)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 6px 24px rgba(217, 119, 6, 0.08)';
+                }}
+              >
+                <div style={{
+                  position: 'absolute',
+                  top: '-12px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  background: '#d97706',
+                  color: '#ffffff',
+                  fontSize: '0.7rem',
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.6px',
+                  padding: '0.2rem 0.85rem',
+                  borderRadius: '9999px',
+                  boxShadow: '0 2px 8px rgba(217, 119, 6, 0.3)'
+                }}>
+                  ★ Most Preferred for Govt Jobs
                 </div>
-                <h3>ADCA (Advance Diploma in Computer Applications)</h3>
-                <span className="duration-pill">1 Year (12 Months)</span>
-                <p>Advanced comprehensive diploma covering DCA syllabus plus Tally ERP, database management, and office automation.</p>
-                <ul className="diploma-points">
-                  <li><CheckCircle2 size={15} className="text-emerald" /> Mandatory qualification for multiple government posts</li>
-                  <li><CheckCircle2 size={15} className="text-emerald" /> Hands-on practical lab training</li>
-                  <li><CheckCircle2 size={15} className="text-emerald" /> Official grade sheet & verifiable diploma</li>
-                </ul>
-                <a href="tel:+919204123453" className="btn-diploma-inquire">
-                  <Phone size={14} />
-                  <span>Inquire for Admission</span>
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', marginTop: '0.35rem' }}>
+                    <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: '#eff6ff', color: '#2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <ShieldCheck size={24} />
+                    </div>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 800, padding: '0.25rem 0.65rem', borderRadius: '9999px', background: '#fef3c7', color: '#92400e', border: '1px solid #fde68a' }}>
+                      1 Year (12 Months)
+                    </span>
+                  </div>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 850, color: '#1c1917', margin: '0 0 0.5rem', lineHeight: 1.35 }}>
+                    ADCA (Advance Diploma in Computer Applications)
+                  </h3>
+                  <p style={{ fontSize: '0.88rem', color: '#57534e', lineHeight: 1.6, margin: '0 0 1.25rem' }}>
+                    Advanced comprehensive diploma covering DCA syllabus plus Tally ERP, database management, and office automation.
+                  </p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginBottom: '1.5rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#334155' }}>
+                      <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0 }} />
+                      <span>Mandatory qualification for multiple govt posts</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#334155' }}>
+                      <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0 }} />
+                      <span>Hands-on practical lab training (50+ PCs)</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#334155' }}>
+                      <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0 }} />
+                      <span>Official grade sheet & verifiable diploma</span>
+                    </div>
+                  </div>
+                </div>
+                <a
+                  href="tel:+919204123453"
+                  style={{
+                    width: '100%',
+                    background: '#047857',
+                    color: '#ffffff',
+                    border: 'none',
+                    borderRadius: '8px',
+                    padding: '0.75rem 1rem',
+                    fontSize: '0.9rem',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    boxShadow: '0 3px 12px rgba(4, 120, 87, 0.25)',
+                    transition: 'all 0.15s ease'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.background = '#059669'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = '#047857'}
+                >
+                  <Phone size={15} color="#fde68a" />
+                  <span>Inquire for ADCA Program</span>
                 </a>
               </div>
 
-              <div className="diploma-program-card">
-                <div className="diploma-icon-bubble">
-                  <GraduationCap size={26} className="text-emerald" />
+              {/* Tally Prime Card */}
+              <div
+                style={{
+                  background: '#ffffff',
+                  border: '1.5px solid #e7e5e4',
+                  borderRadius: '16px',
+                  padding: '1.75rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  boxShadow: '0 4px 20px rgba(28, 25, 23, 0.03)',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-3px)';
+                  e.currentTarget.style.borderColor = '#d6d3d1';
+                  e.currentTarget.style.boxShadow = '0 10px 28px rgba(28, 25, 23, 0.08)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.borderColor = '#e7e5e4';
+                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(28, 25, 23, 0.03)';
+                }}
+              >
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+                    <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <GraduationCap size={24} />
+                    </div>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 800, padding: '0.25rem 0.65rem', borderRadius: '9999px', background: '#faf9f6', color: '#57534e', border: '1px solid #e7e5e4' }}>
+                      3 Months Specialization
+                    </span>
+                  </div>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 850, color: '#1c1917', margin: '0 0 0.5rem', lineHeight: 1.35 }}>
+                    Tally Prime with GST Certification
+                  </h3>
+                  <p style={{ fontSize: '0.88rem', color: '#57534e', lineHeight: 1.6, margin: '0 0 1.25rem' }}>
+                    Professional financial accounting, inventory management, GST compliance, and billing voucher generation.
+                  </p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginBottom: '1.5rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#334155' }}>
+                      <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0 }} />
+                      <span>Modern Tally Prime software version</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#334155' }}>
+                      <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0 }} />
+                      <span>Real business balance sheet practice</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#334155' }}>
+                      <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0 }} />
+                      <span>Secretariat & accounting clerk ready</span>
+                    </div>
+                  </div>
                 </div>
-                <h3>Tally Prime with GST Certification</h3>
-                <span className="duration-pill">3 Months Specialization</span>
-                <p>Professional financial accounting, inventory management, GST compliance, and billing voucher generation.</p>
-                <ul className="diploma-points">
-                  <li><CheckCircle2 size={15} className="text-emerald" /> Modern Tally Prime version</li>
-                  <li><CheckCircle2 size={15} className="text-emerald" /> Real business balance sheet practice</li>
-                  <li><CheckCircle2 size={15} className="text-emerald" /> Secretariat & accounting clerk ready</li>
-                </ul>
-                <a href="tel:+919204123453" className="btn-diploma-inquire">
-                  <Phone size={14} />
-                  <span>Inquire for Admission</span>
+                <a
+                  href="tel:+919204123453"
+                  style={{
+                    width: '100%',
+                    background: '#1c1917',
+                    color: '#ffffff',
+                    border: 'none',
+                    borderRadius: '8px',
+                    padding: '0.75rem 1rem',
+                    fontSize: '0.9rem',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    boxShadow: '0 2px 8px rgba(28, 25, 23, 0.15)'
+                  }}
+                >
+                  <Phone size={15} color="#f59e0b" />
+                  <span>Inquire for Tally Course</span>
                 </a>
               </div>
             </div>
@@ -950,32 +1417,111 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
 
         {/* TAB 4: RECRUITMENT NOTICES */}
         {activeTab === 'notices' && (
-          <div className="classes-notices-view">
-            <div className="section-header-compact text-center">
-              <span className="badge-subheading">OFFICIAL BULLETIN</span>
-              <h2 className="section-title-large">Upcoming Recruitment Notices & Vacancies</h2>
-              <p className="section-description-text">
-                Verified recruitment notifications for High Court and SSC stenographer vacancies.
+          <div className="classes-notices-view" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+              <span style={{
+                display: 'inline-block',
+                fontSize: '0.74rem',
+                fontWeight: 800,
+                color: '#b45309',
+                textTransform: 'uppercase',
+                letterSpacing: '0.8px',
+                background: '#fffbeb',
+                border: '1px solid #fef3c7',
+                padding: '0.3rem 0.85rem',
+                borderRadius: '9999px',
+                marginBottom: '0.65rem'
+              }}>
+                OFFICIAL RECRUITMENT BULLETIN • 2026
+              </span>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)', fontWeight: 850, color: '#1c1917', margin: '0 0 0.6rem', letterSpacing: '-0.02em' }}>
+                Upcoming Recruitment Notices & Vacancies
+              </h2>
+              <p style={{ fontSize: '0.96rem', color: '#57534e', maxWidth: '720px', margin: '0 auto', lineHeight: 1.6 }}>
+                Verified recruitment notifications and exam pattern guidelines for High Court, SSC, and state stenographer vacancies.
               </p>
             </div>
 
-            <div className="notices-cards-stack mt-4">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginTop: '1.5rem' }}>
               {ANNOUNCEMENTS.map((item) => (
-                <div key={item.id} className="notice-banner-card">
-                  <div className="notice-banner-left">
-                    <div className="notice-badge-date">
-                      <span className="badge badge-blue">{item.tag}</span>
-                      <span className="font-mono text-xs text-muted">{item.date}</span>
+                <div
+                  key={item.id}
+                  style={{
+                    background: '#ffffff',
+                    border: '1.5px solid #e7e5e4',
+                    borderRadius: '16px',
+                    padding: '1.75rem 2rem',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    flexWrap: 'wrap',
+                    gap: '1.5rem',
+                    boxShadow: '0 3px 14px rgba(28, 25, 23, 0.03)',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.borderColor = '#d6d3d1';
+                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(28, 25, 23, 0.06)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.borderColor = '#e7e5e4';
+                    e.currentTarget.style.boxShadow = '0 3px 14px rgba(28, 25, 23, 0.03)';
+                  }}
+                >
+                  <div style={{ flex: '1 1 500px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.65rem', flexWrap: 'wrap' }}>
+                      <span style={{
+                        fontSize: '0.74rem',
+                        fontWeight: 800,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.4px',
+                        padding: '0.25rem 0.65rem',
+                        borderRadius: '6px',
+                        background: item.tag === 'High Court' ? '#fef3c7' : item.tag === 'SSC Steno' ? '#eff6ff' : '#ecfdf5',
+                        color: item.tag === 'High Court' ? '#92400e' : item.tag === 'SSC Steno' ? '#1e40af' : '#065f46',
+                        border: '1px solid',
+                        borderColor: item.tag === 'High Court' ? '#fde68a' : item.tag === 'SSC Steno' ? '#bfdbfe' : '#a7f3d0'
+                      }}>
+                        {item.tag}
+                      </span>
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '0.78rem', color: '#78716c', fontFamily: 'var(--font-mono, monospace)', fontWeight: 600 }}>
+                        <Calendar size={13} />
+                        <span>{item.date}</span>
+                      </span>
                     </div>
-                    <h3 className="notice-banner-title">{item.title}</h3>
-                    <p className="notice-banner-desc">{item.description}</p>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 850, color: '#1c1917', margin: '0 0 0.45rem', lineHeight: 1.35 }}>
+                      {item.title}
+                    </h3>
+                    <p style={{ fontSize: '0.92rem', color: '#57534e', lineHeight: 1.6, margin: 0, maxWidth: '820px' }}>
+                      {item.description}
+                    </p>
                   </div>
-                  <div className="notice-banner-right">
-                    <button 
-                      className="btn-view-notice-tests"
+                  <div style={{ flexShrink: 0 }}>
+                    <button
+                      type="button"
                       onClick={() => setCurrentTab('courses')}
+                      style={{
+                        padding: '0.75rem 1.4rem',
+                        borderRadius: '9999px',
+                        background: '#1c1917',
+                        color: '#ffffff',
+                        border: 'none',
+                        fontSize: '0.88rem',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        boxShadow: '0 2px 8px rgba(28, 25, 23, 0.2)',
+                        transition: 'all 0.15s ease'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.background = '#292524'}
+                      onMouseLeave={(e) => e.currentTarget.style.background = '#1c1917'}
                     >
-                      <span>Explore Exam Courses →</span>
+                      <span>Explore Preparation Courses</span>
+                      <ArrowRight size={15} />
                     </button>
                   </div>
                 </div>
@@ -986,19 +1532,35 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
 
         {/* TAB 5: SHORTHAND OUTLINES & PHRASEOGRAPHY DICTIONARY */}
         {activeTab === 'outlines' && (
-          <div className="classes-notices-view">
-            <div className="section-header-compact text-center">
-              <span className="badge-subheading" style={{ background: '#FEF3C7', color: '#92400E' }}>PHRASEOGRAPHY VAULT</span>
-              <h2 className="section-title-large">Shorthand Outlines & Legal Strokes Dictionary</h2>
-              <p className="section-description-text">
+          <div className="classes-outlines-view" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
+              <span style={{
+                display: 'inline-block',
+                fontSize: '0.74rem',
+                fontWeight: 800,
+                color: '#92400e',
+                textTransform: 'uppercase',
+                letterSpacing: '0.8px',
+                background: '#fef3c7',
+                border: '1px solid #fde68a',
+                padding: '0.3rem 0.85rem',
+                borderRadius: '9999px',
+                marginBottom: '0.65rem'
+              }}>
+                PHRASEOGRAPHY VAULT • PITMAN & HINDI
+              </span>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)', fontWeight: 850, color: '#1c1917', margin: '0 0 0.6rem', letterSpacing: '-0.02em' }}>
+                Shorthand Outlines & Legal Strokes Dictionary
+              </h2>
+              <p style={{ fontSize: '0.96rem', color: '#57534e', maxWidth: '720px', margin: '0 auto', lineHeight: 1.6 }}>
                 Master standardized Pitman & Hindi contractions, legal intersections, and high-frequency parliamentary speed phrases.
               </p>
             </div>
 
             {/* Search Bar & Category Filters */}
-            <div style={{ maxWidth: '750px', margin: '1.5rem auto 1rem auto', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <div style={{ maxWidth: '750px', margin: '0 auto 1.75rem', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
               <div style={{ position: 'relative', width: '100%' }}>
-                <Search size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#78716c' }} />
+                <Search size={18} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#78716c' }} />
                 <input
                   type="text"
                   value={outlineSearch}
@@ -1006,20 +1568,24 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   placeholder="Search terminology, e.g. High Court, Parliament, Police, SLP, Affidavit..."
                   style={{
                     width: '100%',
-                    padding: '0.75rem 1rem 0.75rem 2.5rem',
-                    borderRadius: '8px',
-                    border: '1px solid #e7e5e4',
+                    padding: '0.85rem 2.5rem 0.85rem 2.6rem',
+                    borderRadius: '12px',
+                    border: '1.5px solid #e7e5e4',
                     background: '#ffffff',
-                    fontSize: '0.85rem',
+                    fontSize: '0.92rem',
                     color: '#1c1917',
                     outline: 'none',
-                    boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.02)',
+                    transition: 'border-color 0.15s ease'
                   }}
+                  onFocus={(e) => e.target.style.borderColor = '#1c1917'}
+                  onBlur={(e) => e.target.style.borderColor = '#e7e5e4'}
                 />
                 {outlineSearch && (
                   <button
+                    type="button"
                     onClick={() => setOutlineSearch('')}
-                    style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer' }}
+                    style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer', fontSize: '1rem', fontWeight: 700 }}
                   >
                     ✕
                   </button>
@@ -1027,31 +1593,36 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               </div>
 
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}>
-                {['All', 'Legal & Judicial', 'Parliamentary', 'Administrative & Govt'].map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => setOutlineCategory(cat)}
-                    style={{
-                      padding: '0.35rem 0.85rem',
-                      borderRadius: '6px',
-                      fontSize: '0.75rem',
-                      fontWeight: 600,
-                      cursor: 'pointer',
-                      border: '1px solid',
-                      borderColor: outlineCategory === cat ? '#d97706' : '#e7e5e4',
-                      background: outlineCategory === cat ? '#fef3c7' : '#ffffff',
-                      color: outlineCategory === cat ? '#92400e' : '#57534e',
-                      transition: 'all 0.15s ease'
-                    }}
-                  >
-                    {cat}
-                  </button>
-                ))}
+                {['All', 'Legal & Judicial', 'Parliamentary', 'Administrative & Govt'].map((cat) => {
+                  const active = outlineCategory === cat;
+                  return (
+                    <button
+                      key={cat}
+                      type="button"
+                      onClick={() => setOutlineCategory(cat)}
+                      style={{
+                        padding: '0.4rem 0.95rem',
+                        borderRadius: '9999px',
+                        fontSize: '0.8rem',
+                        fontWeight: active ? 800 : 600,
+                        cursor: 'pointer',
+                        border: '1px solid',
+                        borderColor: active ? '#1c1917' : '#e7e5e4',
+                        background: active ? '#1c1917' : '#ffffff',
+                        color: active ? '#ffffff' : '#57534e',
+                        transition: 'all 0.15s ease',
+                        boxShadow: active ? '0 2px 8px rgba(28, 25, 23, 0.15)' : 'none'
+                      }}
+                    >
+                      {cat}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
             {/* Outlines Cards Grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem', marginTop: '1.25rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '1.25rem' }}>
               {SHORTHAND_OUTLINES_DATA
                 .filter(item => {
                   const matchCat = outlineCategory === 'All' || item.category === outlineCategory;
@@ -1067,52 +1638,65 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     key={item.id}
                     style={{
                       background: '#ffffff',
-                      border: '1px solid #e7e5e4',
-                      borderRadius: '10px',
-                      padding: '1.25rem',
+                      border: '1.5px solid #e7e5e4',
+                      borderRadius: '14px',
+                      padding: '1.5rem',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'space-between',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.02)'
+                      boxShadow: '0 2px 10px rgba(0,0,0,0.02)',
+                      transition: 'all 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.borderColor = '#d6d3d1';
+                      e.currentTarget.style.boxShadow = '0 6px 18px rgba(28, 25, 23, 0.05)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.borderColor = '#e7e5e4';
+                      e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.02)';
                     }}
                   >
                     <div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-                        <span style={{ fontSize: '0.68rem', fontWeight: 700, padding: '0.2rem 0.5rem', borderRadius: '4px', background: '#f5f5f4', color: '#57534e', textTransform: 'uppercase' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.65rem' }}>
+                        <span style={{ fontSize: '0.72rem', fontWeight: 800, padding: '0.2rem 0.55rem', borderRadius: '4px', background: '#faf9f6', color: '#57534e', textTransform: 'uppercase', border: '1px solid #e7e5e4' }}>
                           {item.category}
                         </span>
-                        <span style={{ fontSize: '0.72rem', fontWeight: 600, color: '#d97706' }}>
-                          ⚡ {item.speedTier}
+                        <span style={{ fontSize: '0.74rem', fontWeight: 800, color: '#d97706', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                          <Zap size={13} />
+                          <span>{item.speedTier}</span>
                         </span>
                       </div>
 
-                      <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#1c1917', margin: '0 0 0.25rem 0' }}>
+                      <h4 style={{ fontSize: '1.15rem', fontWeight: 850, color: '#1c1917', margin: '0 0 0.2rem', lineHeight: 1.3 }}>
                         {item.term}
-                      </h3>
-                      <div style={{ fontSize: '0.8rem', color: '#78716c', marginBottom: '0.85rem' }}>
+                      </h4>
+                      <div style={{ fontSize: '0.86rem', color: '#78716c', fontWeight: 600, marginBottom: '0.9rem' }}>
                         {item.hindiEquivalent}
                       </div>
 
                       {/* Stroke Box */}
                       <div style={{
                         background: '#faf9f6',
-                        border: '1px dashed #d6d3d1',
-                        borderRadius: '6px',
-                        padding: '0.6rem 0.8rem',
-                        marginBottom: '0.75rem',
+                        border: '1px solid #fed7aa',
+                        borderRadius: '10px',
+                        padding: '0.75rem 1rem',
+                        marginBottom: '0.9rem',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between'
                       }}>
                         <div>
-                          <div style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: '#78716c', fontWeight: 700 }}>
-                            Outline Formula (Pitman)
+                          <div style={{ fontSize: '0.68rem', textTransform: 'uppercase', color: '#b45309', fontWeight: 800, letterSpacing: '0.4px', marginBottom: '2px' }}>
+                            OUTLINE FORMULA (PITMAN)
                           </div>
-                          <div style={{ fontFamily: 'monospace', fontWeight: 700, fontSize: '0.95rem', color: '#1c1917', letterSpacing: '0.5px' }}>
+                          <div style={{ fontFamily: 'var(--font-mono, monospace)', fontWeight: 800, fontSize: '1rem', color: '#1c1917', letterSpacing: '0.5px' }}>
                             {item.shorthandStroke}
                           </div>
                         </div>
                         <button
+                          type="button"
                           onClick={() => {
                             navigator.clipboard.writeText(item.shorthandStroke);
                             setCopiedOutlineId(item.id);
@@ -1122,23 +1706,38 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                             background: copiedOutlineId === item.id ? '#ecfdf5' : '#ffffff',
                             border: '1px solid',
                             borderColor: copiedOutlineId === item.id ? '#10b981' : '#e7e5e4',
-                            borderRadius: '4px',
-                            padding: '0.3rem 0.5rem',
-                            fontSize: '0.7rem',
+                            borderRadius: '6px',
+                            padding: '0.35rem 0.65rem',
+                            fontSize: '0.74rem',
+                            fontWeight: 700,
                             color: copiedOutlineId === item.id ? '#047857' : '#57534e',
-                            cursor: 'pointer'
+                            cursor: 'pointer',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '4px',
+                            transition: 'all 0.15s ease'
                           }}
                           title="Copy Stroke Formula"
                         >
-                          {copiedOutlineId === item.id ? '✓ Copied' : 'Copy'}
+                          {copiedOutlineId === item.id ? (
+                            <>
+                              <Check size={12} color="#047857" />
+                              <span>Copied</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy size={12} />
+                              <span>Copy</span>
+                            </>
+                          )}
                         </button>
                       </div>
 
                       {/* Rule & Pacing Tip */}
-                      <div style={{ fontSize: '0.76rem', color: '#44403c', marginBottom: '0.4rem', lineHeight: 1.4 }}>
+                      <div style={{ fontSize: '0.8rem', color: '#44403c', marginBottom: '0.55rem', lineHeight: 1.45 }}>
                         <strong>Rule:</strong> {item.ruleType} — {item.ruleDesc}
                       </div>
-                      <div style={{ fontSize: '0.74rem', color: '#92400e', background: '#fffbeb', padding: '0.4rem 0.6rem', borderRadius: '4px', lineHeight: 1.35 }}>
+                      <div style={{ fontSize: '0.78rem', color: '#92400e', background: '#fffbeb', border: '1px solid #fef3c7', padding: '0.45rem 0.65rem', borderRadius: '6px', lineHeight: 1.4 }}>
                         💡 <strong>Speed Tip:</strong> {item.speedTip}
                       </div>
                     </div>
