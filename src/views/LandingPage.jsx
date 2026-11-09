@@ -111,98 +111,88 @@ export default function LandingPage({
   const coursesList = [
     {
       id: "eng-steno",
-      badge: "Most Popular Shorthand",
+      badge: "Flagship Shorthand",
       badgeColor: "#d97706",
-      title: "1. English Shorthand",
-      subtitle: "Basic Pitman Course to Advanced",
+      title: "English Shorthand (Pitman)",
+      subtitle: "Basic Pitman theory to 120 WPM exam dictations",
       price: "₹4,500",
       originalPrice: "₹6,000",
-      duration: "3 to 4 Months Only",
+      duration: "3 to 4 Months",
       speed: "50 to 120 WPM",
       highlights: [
-        "Complete Pitman Book Coverage",
-        "Live + Recorded Lecture Access",
-        "Daily Homework Correction by Shadab Sir",
-        "Audio Dictations from 50 to 120 WPM",
-        "SSC Steno Grade C & D & Court Special"
-      ],
-      whatsappMsg: "Hello Gaya Shorthand Classes, I want to inquire about the English Shorthand Course (₹4,500) and book 3 free demo classes."
+        "Complete Pitman theory, grammalogues & phraseography",
+        "Daily handwritten outline verification by Shadab Sir",
+        "Audio dictations from 50 to 120 WPM with reading room",
+        "Targeted for SSC Steno Grade C & D, High Court & PA/PS"
+      ]
     },
     {
       id: "hindi-steno",
       badge: "High Court & SSC Special",
       badgeColor: "#059669",
-      title: "2. Hindi Shorthand",
-      subtitle: "हिंदी आशुलिपि (Basic to 120+ WPM)",
+      title: "Hindi Shorthand (हिंदी आशुलिपि)",
+      subtitle: "Complete Hindi theory & speed dictation batch",
       price: "₹4,500",
       originalPrice: "₹6,000",
-      duration: "3 to 4 Months Only",
+      duration: "3 to 4 Months",
       speed: "50 to 120+ WPM",
       highlights: [
-        "Vowels & Consonants (स्वर एवं व्यंजन)",
-        "Word Formation & Sentence Principles",
-        "Daily Hindi Audio Dictation & Outlines",
-        "Kruti Dev 010 & Mangal Inscript Typing",
-        "Patna HC, Civil Courts & SSC Special"
-      ],
-      whatsappMsg: "Hello Gaya Shorthand Classes, I want to inquire about the Hindi Shorthand Course (₹4,500) and book 3 free demo classes."
+        "Complete Hindi steno rules (स्वर, व्यंजन एवं आंकड़े)",
+        "Daily Hindi audio dictations with outline checking",
+        "Kruti Dev 010 & Mangal Inscript dual transcription",
+        "Specialized for Patna High Court, Civil Courts & SSC"
+      ]
     },
     {
       id: "typing-combo",
       badge: "Dual-Font Typing Lab",
       badgeColor: "#2563eb",
-      title: "3. English & Hindi Typing",
-      subtitle: "QWERTY, Kruti Dev 010 & Mangal",
+      title: "English & Hindi Typing Lab",
+      subtitle: "QWERTY, Kruti Dev 010 & Mangal Inscript",
       price: "₹350",
       originalPrice: "₹500",
       duration: "1 Month (Pass)",
       speed: "30 to 60+ WPM",
       highlights: [
-        "Touch Typing Finger Positioning Mastery",
-        "English QWERTY + Hindi Kruti Dev 010",
-        "Mangal Inscript Remington Layout Drills",
-        "Strict Backspace Lock Simulation",
-        "Online Software with Instant Error Scoring"
-      ],
-      whatsappMsg: "Hello Gaya Shorthand Classes, I want to inquire about English & Hindi Typing Practice (₹350/mo) and computer lab facilities."
+        "Scientific touch-typing finger positioning mastery",
+        "English QWERTY + Hindi Kruti Dev 010 & Mangal",
+        "Strict backspace lock exam simulation software",
+        "Automated gross & net WPM scoring with error calculation"
+      ]
     },
     {
       id: "court-special",
       badge: "Judicial Bench Special",
       badgeColor: "#7c3aed",
-      title: "4. Patna & Jharkhand High Court Special",
-      subtitle: "Live Judicial Dictation & Judgments",
+      title: "High Court Judicial Speed Series",
+      subtitle: "Live courtroom judgments & legal transcription",
       price: "₹700",
       originalPrice: "₹1,000",
       duration: "1 Month Access",
       speed: "80 & 100 WPM Legal",
       highlights: [
-        "Authentic High Court Judgments & Orders",
-        "Legal Vocabulary & Strict Outline Glossaries",
-        "5-Minute Reading Clock & Audio Warning",
-        "Strict Backspace Lock Exam Simulation HUD",
-        "Daily Verification by High Court Faculty"
-      ],
-      whatsappMsg: "Hello Gaya Shorthand Classes, I want to join Patna & Jharkhand High Court Live Dictation (₹700/mo)."
+        "Authentic High Court criminal & civil judgment audio",
+        "Legal vocabulary, Latin maxims & judicial phrases",
+        "5-Minute reading clock with strict audio warnings",
+        "Official High Court mechanical keyboard simulation"
+      ]
     },
     {
       id: "computer-diplomas",
       badge: "Govt. Recognized Certification",
       badgeColor: "#0284c7",
-      title: "5. Computer Diplomas (ADCA / DCA)",
+      title: "Computer Diplomas (ADCA / DCA)",
       subtitle: "6 to 12 Months Recognized Diplomas",
       price: "₹1,200",
       originalPrice: "₹1,500",
       duration: "6 / 12 Months",
       speed: "IT Skills + Typing",
       highlights: [
-        "DCA (6 Months) & ADCA (12 Months)",
-        "MS Office Suite (Word, Excel, PowerPoint)",
-        "Tally Prime with GST & Invoicing",
-        "Internet Applications & Bilingual Typing",
-        "Government Recognized & Job-Verification Ready"
-      ],
-      whatsappMsg: "Hello Gaya Shorthand Classes, I want to inquire about ADCA / DCA Computer Diploma courses."
+        "Official DCA (6 Months) & ADCA (12 Months) programs",
+        "MS Office Suite (Word, Excel, PowerPoint) & Internet",
+        "Tally Prime with GST invoicing & practical accounting",
+        "Government recognized diploma with QR code verification"
+      ]
     }
   ];
 
@@ -447,29 +437,30 @@ export default function LandingPage({
 
                 {/* Action Buttons in Card */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-                  <a
-                    href="https://wa.me/919204123453?text=Hello%20Shadab%20Sir,%20I%20want%20to%20attend%203%20demo%20classes%20at%20Gaya%20Shorthand%20Classes."
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (onOpenAdmission) onOpenAdmission();
+                    }}
                     style={{
-                      background: '#15803d',
+                      background: '#047857',
                       color: '#ffffff',
                       border: 'none',
                       borderRadius: '8px',
                       padding: '0.75rem',
                       fontSize: '0.88rem',
                       fontWeight: 700,
-                      textDecoration: 'none',
+                      cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: '6px',
-                      boxShadow: '0 2px 6px rgba(21, 128, 61, 0.2)'
+                      boxShadow: '0 2px 6px rgba(4, 120, 87, 0.2)'
                     }}
                   >
-                    <MessageCircle size={15} />
-                    <span>WhatsApp Us</span>
-                  </a>
+                    <Sparkles size={15} color="#fde68a" />
+                    <span>Book 3 Demos</span>
+                  </button>
 
                   <button
                     type="button"
@@ -533,20 +524,20 @@ export default function LandingPage({
             </p>
           </div>
 
-          {/* Top Row: 3 Core Shorthand & Typing Foundation Batches */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
-            {coursesList.slice(0, 3).map((c) => (
+          {/* Unified Clean Courses Grid (5 Core Programs) */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
+            {coursesList.map((c) => (
               <div 
                 key={c.id}
                 style={{
                   background: '#ffffff',
-                  border: '1px solid #e7e5e4',
+                  border: c.id === 'eng-steno' ? '1.5px solid #f59e0b' : '1px solid #e7e5e4',
                   borderRadius: '16px',
                   padding: '1.75rem',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
+                  boxShadow: c.id === 'eng-steno' ? '0 6px 24px rgba(245, 158, 11, 0.1)' : '0 4px 16px rgba(0,0,0,0.03)',
                   transition: 'transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
@@ -556,13 +547,13 @@ export default function LandingPage({
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderColor = '#e7e5e4';
-                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.03)';
+                  e.currentTarget.style.borderColor = c.id === 'eng-steno' ? '#f59e0b' : '#e7e5e4';
+                  e.currentTarget.style.boxShadow = c.id === 'eng-steno' ? '0 6px 24px rgba(245, 158, 11, 0.1)' : '0 4px 16px rgba(0,0,0,0.03)';
                 }}
               >
                 <div>
-                  {/* Badge */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem' }}>
+                  {/* Badge & Duration */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem', flexWrap: 'wrap', gap: '0.5rem' }}>
                     <span style={{ 
                       fontSize: '0.72rem', 
                       fontWeight: 800, 
@@ -579,7 +570,7 @@ export default function LandingPage({
                     </span>
                   </div>
 
-                  {/* Course Title */}
+                  {/* Course Title & Subtitle */}
                   <h3 style={{ fontSize: '1.22rem', fontWeight: 800, color: '#1c1917', margin: '0 0 6px' }}>
                     {c.title}
                   </h3>
@@ -598,7 +589,7 @@ export default function LandingPage({
                       </span>
                     )}
                     <span style={{ fontSize: '0.78rem', color: '#78716c', fontWeight: 600, marginLeft: 'auto' }}>
-                      {c.speed.includes('WPM') ? `Speed: ${c.speed}` : c.speed}
+                      ⚡ {c.speed.includes('WPM') ? c.speed : `Speed: ${c.speed}`}
                     </span>
                   </div>
 
@@ -606,7 +597,7 @@ export default function LandingPage({
                   <ul style={{ listStyle: 'none', margin: '0 0 1.5rem', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {c.highlights.map((h, i) => (
                       <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.84rem', color: '#44403c', lineHeight: 1.4 }}>
-                        <Check size={15} color="#047857" style={{ flexShrink: 0, marginTop: '2px' }} />
+                        <Check size={15} color="#047857" style={{ flexShrink: 0, marginTop: '2px', strokeWidth: 2.5 }} />
                         <span>{h}</span>
                       </li>
                     ))}
@@ -636,119 +627,8 @@ export default function LandingPage({
                       transition: 'all 0.15s ease'
                     }}
                   >
-                    <Sparkles size={14} color="#fde68a" />
-                    <span>Enroll / Book 3 Demos</span>
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom Row: 2 Specialized Examination & Certification Programs */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
-            {coursesList.slice(3, 5).map((c) => (
-              <div 
-                key={c.id}
-                style={{
-                  background: '#ffffff',
-                  border: '1px solid #e7e5e4',
-                  borderRadius: '16px',
-                  padding: '1.75rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
-                  transition: 'transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-3px)';
-                  e.currentTarget.style.borderColor = '#d6d3d1';
-                  e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.06)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderColor = '#e7e5e4';
-                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.03)';
-                }}
-              >
-                <div>
-                  {/* Badge */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem' }}>
-                    <span style={{ 
-                      fontSize: '0.72rem', 
-                      fontWeight: 800, 
-                      color: c.badgeColor, 
-                      background: '#f5f5f4', 
-                      padding: '4px 10px', 
-                      borderRadius: '999px',
-                      border: '1px solid #e7e5e4'
-                    }}>
-                      {c.badge}
-                    </span>
-                    <span style={{ fontSize: '0.78rem', color: '#78716c', fontWeight: 600 }}>
-                      {c.duration}
-                    </span>
-                  </div>
-
-                  {/* Course Title */}
-                  <h3 style={{ fontSize: '1.22rem', fontWeight: 800, color: '#1c1917', margin: '0 0 6px' }}>
-                    {c.title}
-                  </h3>
-                  <p style={{ fontSize: '0.86rem', color: '#57534e', margin: '0 0 1.25rem', lineHeight: 1.5 }}>
-                    {c.subtitle}
-                  </p>
-
-                  {/* Pricing Box */}
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '1.25rem', paddingBottom: '1rem', borderBottom: '1px solid #e7e5e4' }}>
-                    <span style={{ fontSize: '1.85rem', fontWeight: 850, color: '#1c1917', fontFamily: 'monospace' }}>
-                      {c.price}
-                    </span>
-                    {c.originalPrice && (
-                      <span style={{ fontSize: '1rem', color: '#dc2626', textDecoration: 'line-through', fontWeight: 600 }}>
-                        {c.originalPrice}
-                      </span>
-                    )}
-                    <span style={{ fontSize: '0.78rem', color: '#78716c', fontWeight: 600, marginLeft: 'auto' }}>
-                      {c.speed.includes('WPM') ? `Speed: ${c.speed}` : c.speed}
-                    </span>
-                  </div>
-
-                  {/* Highlights List */}
-                  <ul style={{ listStyle: 'none', margin: '0 0 1.5rem', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    {c.highlights.map((h, i) => (
-                      <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.84rem', color: '#44403c', lineHeight: 1.4 }}>
-                        <Check size={15} color="#047857" style={{ flexShrink: 0, marginTop: '2px' }} />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Card Action Button */}
-                <div>
-                  <button
-                    type="button"
-                    onClick={() => handleEnrollClick(c.title)}
-                    style={{
-                      width: '100%',
-                      background: '#047857',
-                      color: '#ffffff',
-                      border: 'none',
-                      borderRadius: '8px',
-                      padding: '0.75rem',
-                      fontSize: '0.88rem',
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '6px',
-                      boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)',
-                      transition: 'all 0.15s ease'
-                    }}
-                  >
-                    <Sparkles size={14} color="#fde68a" />
-                    <span>Enroll / Book 3 Demos</span>
+                    <span>Enroll in Batch</span>
+                    <ArrowRight size={14} />
                   </button>
                 </div>
               </div>
@@ -1408,13 +1288,11 @@ export default function LandingPage({
               {/* Inquire More Link */}
               <div style={{ marginTop: '1.25rem', textAlign: 'right' }}>
                 <a
-                  href="https://wa.me/919204123453?text=Hello%20Shadab%20Sir,%20I%20have%20a%20question%20regarding%20the%20shorthand%20classes."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ fontSize: '0.85rem', fontWeight: 700, color: '#25D366', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                  href="tel:9204123453"
+                  style={{ fontSize: '0.85rem', fontWeight: 700, color: '#d97706', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
                 >
-                  <span>Have more questions? Ask on WhatsApp</span>
-                  <ArrowRight size={14} />
+                  <Phone size={14} color="#d97706" />
+                  <span>Have questions? Call Helpline: +91 9204123453</span>
                 </a>
               </div>
 
@@ -1471,28 +1349,29 @@ export default function LandingPage({
                 <span>Call Helpline: +91 9204123453</span>
               </a>
 
-              <a
-                href="https://wa.me/919204123453?text=Hello%20Gaya%20Shorthand%20Classes,%20I%20want%20to%20attend%203%20free%20demo%20classes."
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={() => {
+                  if (onOpenAdmission) onOpenAdmission();
+                }}
                 style={{
-                  background: '#15803d',
+                  background: '#047857',
                   color: '#ffffff',
                   border: 'none',
                   borderRadius: '8px',
                   padding: '0.75rem 1.4rem',
                   fontSize: '0.92rem',
                   fontWeight: 700,
-                  textDecoration: 'none',
+                  cursor: 'pointer',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  boxShadow: '0 2px 8px rgba(21, 128, 61, 0.25)'
+                  boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)'
                 }}
               >
-                <MessageCircle size={16} />
-                <span>Chat on WhatsApp</span>
-              </a>
+                <Sparkles size={16} color="#fde68a" />
+                <span>Book 3 Free Demo Classes</span>
+              </button>
             </div>
           </div>
 

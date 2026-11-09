@@ -7,21 +7,38 @@ import {
   ArrowRight, 
   Sparkles,
   Phone,
-  FileText
+  FileText,
+  Keyboard,
+  BookOpen,
+  Award,
+  Zap,
+  Check,
+  ChevronDown,
+  ChevronUp,
+  ShieldCheck,
+  MapPin
 } from 'lucide-react';
 import { PRICING_PLANS, TARGET_EXAMINATIONS, TEACHING_METHODOLOGY } from '../data/mockData';
 
 const ACADEMY_COURSES = [
   {
     id: 'course-pitman',
-    title: 'English Shorthand (Pitman Shorthand)',
-    category: 'Shorthand Course (English)',
-    badge: 'SSC & High Court Special',
-    tagColor: 'badge-blue',
-    speedTarget: '60, 80, 100 & 120 WPM',
+    title: 'English Shorthand (Pitman)',
+    category: 'English Shorthand',
+    badge: 'SSC & Court Special',
+    tagColor: 'amber',
+    speedTarget: '60 to 120 WPM',
     duration: '3 to 4 Months',
-    fee: '₹4,500 (Complete)',
-    description: 'Learn English Shorthand from Basic to Advanced Level with systematic guidance and practical training. This course is specially designed for students preparing for SSC Stenographer, High Court Stenographer, Personal Assistant (PA), Private Secretary (PS) and other government stenographer examinations.',
+    fee: '₹4,500',
+    originalFee: '₹6,000',
+    feeType: 'Complete Course',
+    description: 'Master Pitman shorthand from basic consonant theory to 120 WPM high-speed dictations for SSC and High Court exams.',
+    highlights: [
+      'Complete Pitman book theory, grammalogues & phraseography',
+      'Daily handwritten outline verification by Shadab Sir',
+      'Speed dictations scaled from 60 to 120 WPM with reading room',
+      'Computer transcription lab & automated error calculation'
+    ],
     syllabus: [
       'Basic to Advanced Shorthand Training',
       'Pitman Shorthand Theory (Consonants & Vowels)',
@@ -33,19 +50,28 @@ const ACADEMY_COURSES = [
       'Transcription Practice & Accuracy Improvement Techniques',
       'Exam-Oriented Mock Tests (SSC, High Court, PA/PS)'
     ],
-    mode: 'Classroom (Gaya Center) + Online Audio Portal Access',
-    popular: true
+    mode: 'Gaya Lab + Online Portal',
+    popular: true,
+    icon: 'BookOpen'
   },
   {
     id: 'course-hindi-steno',
     title: 'Hindi Shorthand (हिंदी आशुलिपि)',
-    category: 'Shorthand Course (Hindi)',
-    badge: 'Hindi Steno & Court Special',
-    tagColor: 'badge-amber',
-    speedTarget: '50, 80, 100 & 120+ WPM',
+    category: 'Hindi Shorthand',
+    badge: 'State & High Court Special',
+    tagColor: 'amber',
+    speedTarget: '50 to 120+ WPM',
     duration: '3 to 6 Months',
-    fee: '₹6,000 (Complete)',
-    description: 'Learn Hindi Shorthand from Basic to Advanced Level through practical classes, regular dictation and transcription practice. This course is designed for students preparing for Hindi Stenographer, Court Stenographer and various government recruitment examinations.',
+    fee: '₹4,500',
+    originalFee: '₹6,000',
+    feeType: 'Complete Course',
+    description: 'Complete Hindi shorthand training with regular speed dictations, outline rules, and transcription.',
+    highlights: [
+      'Complete Hindi shorthand theory (स्वर एवं व्यंजन नियम)',
+      'Daily Hindi audio dictations from 50 to 120+ WPM',
+      'Dual-font transcription support: Kruti Dev 010 & Mangal',
+      'Targeted preparation for Patna HC, Civil Courts & SSC'
+    ],
     syllabus: [
       'Basic Hindi Shorthand Theory',
       'Hindi Shorthand Signs and Symbols',
@@ -58,44 +84,61 @@ const ACADEMY_COURSES = [
       'Accuracy Improvement Techniques',
       'Exam-Oriented Practice Tests'
     ],
-    mode: 'Classroom (Gaya Center) + Online Audio Portal Access',
-    popular: true
+    mode: 'Gaya Lab + Online Portal',
+    popular: true,
+    icon: 'FileText'
   },
   {
     id: 'course-english-typing',
-    title: 'English Typing & Computer Typing Skills',
-    category: 'Typing Course (English)',
-    badge: 'Speed & Accuracy Mastery',
-    tagColor: 'badge-purple',
-    speedTarget: '30, 35, 40, 50 & 60+ WPM',
+    title: 'English Touch Typing Mastery',
+    category: 'Typing Lab',
+    badge: 'Speed & Accuracy',
+    tagColor: 'blue',
+    speedTarget: '30 to 60+ WPM',
     duration: '1 to 3 Months',
-    fee: '₹1,500 (Complete)',
-    description: 'Develop professional English typing skills with proper finger placement, keyboard techniques and regular practical exercises. This course focuses on typing speed, accuracy and computer-based typing examination preparation.',
+    fee: '₹1,500',
+    originalFee: '₹2,000',
+    feeType: 'Complete Training',
+    description: 'Scientific touch-typing with proper finger positioning, backspace lock simulation, and exam HUD.',
+    highlights: [
+      'Home row finger placement & touch-typing fundamentals',
+      'Speed building drills from 30 WPM to 60+ WPM',
+      'Exam software simulation with strict backspace lock',
+      'Real-time gross speed, net speed, and error percentage'
+    ],
     syllabus: [
-      'Keyboard Introduction',
+      'Keyboard Introduction & Ergonomics',
       'Home Row and Finger Placement',
-      'Touch Typing Techniques',
+      'Touch Typing Techniques without Looking',
       'Word and Sentence Practice',
-      'Paragraph Typing',
-      'Speed Building Exercises',
-      'Accuracy Improvement',
+      'Paragraph Typing & Speed Drills',
+      'Accuracy Improvement Drills',
       'Online Typing Software Practice',
       'Computer-Based Typing Tests',
       'Speed Target: 30, 35, 40, 50 and 60+ WPM'
     ],
-    mode: 'Classroom (Gaya Center) + Online Typing Software Access',
-    popular: true
+    mode: 'Classroom Lab + Typing Software',
+    popular: false,
+    icon: 'Keyboard'
   },
   {
     id: 'course-hindi-typing',
-    title: 'Hindi Typing & Hindi Computer Typing',
-    category: 'Typing Course (Hindi)',
-    badge: 'Kruti Dev & Mangal Special',
-    tagColor: 'badge-amber',
-    speedTarget: '30 → 50+ WPM',
+    title: 'Hindi Typing (Kruti Dev & Mangal)',
+    category: 'Typing Lab',
+    badge: 'Kruti Dev 010 & Mangal',
+    tagColor: 'amber',
+    speedTarget: '30 to 50+ WPM',
     duration: '1 to 3 Months',
-    fee: '₹1,500 (Complete)',
-    description: 'Learn Hindi typing with practical keyboard training and regular typing exercises. This course is designed for students preparing for government typing examinations and office-related computer work.',
+    fee: '₹1,500',
+    originalFee: '₹2,000',
+    feeType: 'Complete Training',
+    description: 'Master Kruti Dev 010 and Mangal Inscript typing layouts required for Bihar and Central govt exams.',
+    highlights: [
+      'Kruti Dev 010 keyboard layout & special alt-codes',
+      'Mangal Inscript & Remington (GAIL / CBI) training',
+      'Paragraph drills on official govt test patterns',
+      'Error scoring matching BSSC and High Court criteria'
+    ],
     syllabus: [
       'Hindi Keyboard Introduction',
       'Kruti Dev 010 Typing Mastery',
@@ -107,19 +150,28 @@ const ACADEMY_COURSES = [
       'Online Hindi Typing Software Practice',
       'Government Exam-Oriented Practice Tests'
     ],
-    mode: 'Classroom (Gaya Center) + Online Typing Software Access',
-    popular: true
+    mode: 'Classroom Lab + Typing Software',
+    popular: false,
+    icon: 'Keyboard'
   },
   {
     id: 'course-bilingual-typing',
-    title: 'English & Hindi Typing',
-    category: 'Typing Course (Bilingual)',
-    badge: 'Dual-Language Mastery',
-    tagColor: 'badge-blue',
-    speedTarget: '30 → 60+ WPM (Both Languages)',
+    title: 'Dual Typing Lab (English & Hindi)',
+    category: 'Typing Lab',
+    badge: 'Dual Language',
+    tagColor: 'blue',
+    speedTarget: '30 to 60+ WPM',
     duration: '2 to 3 Months',
-    fee: '₹2,500 (Complete)',
-    description: 'Master both English (QWERTY) and Hindi (Kruti Dev 010 & Mangal Inscript) typing in a single comprehensive course. Specially designed for students preparing for High Court, Civil Court, BSSC, and Central/State government clerk examinations requiring bilingual typing proficiency.',
+    fee: '₹2,500',
+    originalFee: '₹3,500',
+    feeType: 'Complete Dual Lab',
+    description: 'Combined dual-language course covering English QWERTY and Hindi Kruti Dev 010 & Mangal in one package.',
+    highlights: [
+      'Complete English QWERTY touch-typing curriculum',
+      'Complete Hindi Kruti Dev 010 + Mangal Inscript training',
+      'Specialized for High Court, Civil Court & BSSC Clerk exams',
+      'Online software with full mistake formula evaluation'
+    ],
     syllabus: [
       'English QWERTY Touch Typing Mastery',
       'Hindi Keyboard Training (Kruti Dev 010 Layout)',
@@ -131,19 +183,28 @@ const ACADEMY_COURSES = [
       'Online Bilingual Typing Software Practice',
       'Court & Government Examination Simulated Tests'
     ],
-    mode: 'Classroom (Gaya Center) + Online Typing Software Access',
-    popular: true
+    mode: 'Classroom Lab + Typing Software',
+    popular: true,
+    icon: 'Keyboard'
   },
   {
     id: 'course-court',
-    title: 'High Court Judicial Speed & Legal Series',
-    category: 'Judicial Bench',
+    title: 'High Court Judicial Speed Bench',
+    category: 'Judicial Series',
     badge: 'Patna & Jharkhand HC',
-    tagColor: 'badge-emerald',
-    speedTarget: '80 → 110 WPM',
-    duration: '2 to 3 Months',
-    fee: '₹700 / Month',
-    description: 'Specialized courtroom transcription batch designed specifically for Patna High Court, Jharkhand Civil Courts, and State Judiciary Stenographer exams.',
+    tagColor: 'purple',
+    speedTarget: '80 to 110 WPM',
+    duration: '1 to 3 Months',
+    fee: '₹700',
+    originalFee: '₹1,000',
+    feeType: 'Monthly Pass',
+    description: 'Courtroom dictation series with actual criminal appeals, bail orders, and judicial terminology.',
+    highlights: [
+      'Authentic High Court criminal & civil judgment audio',
+      'Legal vocabulary, Latin maxims & judicial phrases',
+      'Strict 5-minute reading room countdown clock',
+      'Mechanical keyboard typing simulation & backspace lock'
+    ],
     syllabus: [
       'Authentic High Court Criminal & Civil Judgment Audio',
       'Legal Phrasing, Latin Maxims & Judicial Nomenclature',
@@ -151,19 +212,28 @@ const ACADEMY_COURSES = [
       'Strict Backspace Lock & Mechanical Keyboard Simulation',
       'Previous 10 Years Solved High Court Dictations'
     ],
-    mode: 'Dual Mode: Offline Gaya Center or Online Portal',
-    popular: false
+    mode: 'Gaya Lab + Online Portal',
+    popular: false,
+    icon: 'ShieldCheck'
   },
   {
     id: 'course-ssc',
-    title: 'SSC Stenographer Grade C & D Crash Batch',
+    title: 'SSC Stenographer Grade C & D Batch',
     category: 'Central Govt',
-    badge: 'SSC Grade C & D',
-    tagColor: 'badge-amber',
+    badge: 'Grade C & D Focus',
+    tagColor: 'amber',
     speedTarget: '80 & 100 WPM',
     duration: '3 Months Intensive',
-    fee: '₹350 / Month (Pass)',
-    description: 'Targeted preparation for Staff Selection Commission Grade C and D skill tests with real exam audio speed fluctuations and automated error calculation.',
+    fee: '₹350',
+    originalFee: '₹500',
+    feeType: 'Monthly Pass',
+    description: 'Intensive speed preparation targeting SSC Grade C (100 WPM) and Grade D (80 WPM) skill tests.',
+    highlights: [
+      'Parliamentary speeches & union budget passage dictations',
+      'Official SSC mistake formula: full & half mistake scoring',
+      'Daily 8:00 AM & 5:00 PM benchmark speed tests',
+      'All-India live merit rank & percentile leaderboard'
+    ],
     syllabus: [
       'Parliamentary Speeches & Government Budget Passages',
       'SSC Strict Mistake Formula (Full & Half Mistake Evaluation)',
@@ -171,19 +241,28 @@ const ACADEMY_COURSES = [
       'All-India Batch Rank & Percentile Scorecards',
       'Kruti Dev 010 & Mangal Inscript Hindi Transcription'
     ],
-    mode: 'Daily Live Dictation + Unlimited Audio Archive',
-    popular: false
+    mode: 'Daily Live Dictation + Audio Archive',
+    popular: false,
+    icon: 'Award'
   },
   {
     id: 'course-diplomas',
-    title: 'Computer Diplomas & Certified Typing (DCA / ADCA)',
+    title: 'Computer Diplomas (ADCA / DCA)',
     category: 'Govt Diplomas',
     badge: 'Govt. Recognized',
-    tagColor: 'badge-purple',
-    speedTarget: '30 → 50+ WPM Typing',
+    tagColor: 'purple',
+    speedTarget: 'IT & Typing Skills',
     duration: '6 to 12 Months',
-    fee: 'Nominal Registration',
-    description: 'The institute provides highly practical courses in Shorthand, Typing, and Advanced Diploma in Computer Applications (ADCA), DCA, TALLY etc., designed to help students build speed, accuracy, and efficiency for career growth in Government and private sectors. Alongside shorthand and typing, the ADCA program covers essential computer skills such as MS Office, Internet Applications, Tally, and more.',
+    fee: '₹1,200',
+    originalFee: '₹1,800',
+    feeType: 'Nominal Registration',
+    description: 'Government recognized 6-month DCA and 1-year ADCA diploma programs with verifiable QR codes.',
+    highlights: [
+      'Official DCA (6 Mos) and ADCA (12 Mos) certification',
+      'MS Office Suite (Word, Excel, PowerPoint) & Internet',
+      'Tally Prime with GST invoicing & accounting',
+      'QR code online certificate verification system'
+    ],
     syllabus: [
       'ADCA (1 Year) & DCA (6 Months) Complete Computer Syllabus',
       'MS Office Suite (Word, Excel, PowerPoint) & Internet Applications',
@@ -192,16 +271,62 @@ const ACADEMY_COURSES = [
       'Career-Oriented Training for Steno, Data Entry & Clerical Roles',
       'Certificate Verification System with Official QR Code'
     ],
-    mode: 'Gaya Offline Lab & Document Verification Support',
-    popular: false
+    mode: 'Gaya Lab + Govt Certification',
+    popular: false,
+    icon: 'GraduationCap'
   }
 ];
+
+const renderCourseIcon = (iconName) => {
+  switch (iconName) {
+    case 'BookOpen':
+      return <BookOpen size={18} color="#d97706" />;
+    case 'FileText':
+      return <FileText size={18} color="#059669" />;
+    case 'Keyboard':
+      return <Keyboard size={18} color="#2563eb" />;
+    case 'ShieldCheck':
+      return <ShieldCheck size={18} color="#7c3aed" />;
+    case 'Award':
+      return <Award size={18} color="#d97706" />;
+    case 'GraduationCap':
+      return <GraduationCap size={18} color="#7c3aed" />;
+    default:
+      return <BookOpen size={18} color="#d97706" />;
+  }
+};
 
 export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, onOpenCheckout, onOpenAdmission, setCurrentTab }) {
   const [filterCategory, setFilterCategory] = useState('all');
   const [passFilter, setPassFilter] = useState('all');
+  const [expandedSyllabus, setExpandedSyllabus] = useState({});
+
+  const toggleSyllabus = (courseId) => {
+    setExpandedSyllabus(prev => ({
+      ...prev,
+      [courseId]: !prev[courseId]
+    }));
+  };
 
   const displayCourses = courses && courses.length > 0 ? courses : ACADEMY_COURSES;
+
+  const handleEnroll = (course) => {
+    const coursePlanMap = {
+      'course-pitman': { id: 'course-pitman', name: 'Basic Pitman Shorthand Course', price: 4500, duration: '3 to 4 Months (Complete Book)', description: 'Complete Pitman book theory, daily homework correction & audio vault access.' },
+      'course-court': { id: 'course-court', name: 'High Court Judicial Speed Series', price: 700, duration: 'Monthly Subscription', description: 'Specialized High Court courtroom reporter transcription batch.' },
+      'course-ssc': { id: 'course-ssc', name: 'SSC Stenographer Crash Batch', price: 350, duration: 'Monthly Subscription', description: 'Parliamentary speeches, live speed tests, and automated error calculation.' },
+      'course-diplomas': { id: 'course-diplomas', name: 'Computer Diplomas (DCA / ADCA)', price: 1200, duration: 'Govt. Diploma Registration', description: 'Official government-accredited computer applications diploma.' }
+    };
+    const numFee = parseInt(String(course.fee || '').replace(/\D/g, '')) || 499;
+    const planToOpen = coursePlanMap[course.id] || {
+      id: course.id,
+      name: course.title,
+      price: numFee,
+      duration: course.duration || 'Academy Batch Access',
+      description: course.description || 'Complete batch curriculum with live and archive dictation access.'
+    };
+    if (onOpenCheckout) onOpenCheckout(planToOpen);
+  };
 
   const handleSelectFilter = (categoryKey) => {
     setFilterCategory(categoryKey);
@@ -216,11 +341,9 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
     const cat = (course.category || '').toLowerCase();
     const id = (course.id || '').toLowerCase();
     const title = (course.title || '').toLowerCase();
-    if (filterCategory === 'pitman') return cat.includes('foundation') || id.includes('pitman') || title.includes('pitman');
-    if (filterCategory === 'hindi-steno') return (cat.includes('hindi') && cat.includes('shorthand')) || id === 'course-hindi-steno' || title.includes('हिंदी आशुलिपि');
-    if (filterCategory === 'typing-eng') return id === 'course-english-typing' || (cat.includes('typing') && cat.includes('english'));
-    if (filterCategory === 'typing-hindi') return id === 'course-hindi-typing' || (cat.includes('typing') && cat.includes('hindi'));
-    if (filterCategory === 'typing-both') return id === 'course-bilingual-typing' || cat.includes('bilingual');
+    if (filterCategory === 'pitman') return id === 'course-pitman' || title.includes('english shorthand');
+    if (filterCategory === 'hindi-steno') return id === 'course-hindi-steno' || title.includes('hindi shorthand') || title.includes('हिंदी आशुलिपि');
+    if (filterCategory === 'typing') return cat.includes('typing') || id.includes('typing') || title.includes('typing');
     if (filterCategory === 'court') return cat.includes('judicial') || id.includes('court') || title.includes('court');
     if (filterCategory === 'ssc') return cat.includes('central') || id.includes('ssc') || title.includes('ssc');
     if (filterCategory === 'diplomas') return cat.includes('diploma') || id.includes('diploma') || title.includes('diploma') || title.includes('dca');
@@ -257,150 +380,323 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
         </div>
       </div>
 
-      {/* CANONICAL COURSE LIST - WEBSITE / ADMISSION FORM */}
-      <section style={{ maxWidth: 1200, margin: '0 auto 2.5rem', padding: '0 1.25rem' }}>
-        <div style={{
-          background: '#ffffff',
-          border: '1px solid #e7e5e4',
-          borderRadius: '16px',
-          padding: '1.5rem 1.75rem',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.03)'
-        }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '0.85rem', marginBottom: '1.25rem' }}>
-            <div>
-              <span style={{ fontSize: '0.74rem', fontWeight: 800, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.8px' }}>
-                Official Academic Curriculum
-              </span>
-              <h2 style={{ fontSize: '1.25rem', fontWeight: 850, color: '#1c1917', margin: '0.15rem 0 0' }}>
-                Course List & Official Programs
-              </h2>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
-              <button
-                type="button"
-                onClick={() => handleSelectFilter('all')}
-                style={{
-                  padding: '0.45rem 0.85rem',
-                  borderRadius: '6px',
-                  border: filterCategory === 'all' ? '1.5px solid #1c1917' : '1px solid #e7e5e4',
-                  background: filterCategory === 'all' ? '#1c1917' : '#faf9f6',
-                  color: filterCategory === 'all' ? '#ffffff' : '#57534e',
-                  fontSize: '0.8rem',
-                  fontWeight: 700,
-                  cursor: 'pointer'
-                }}
-              >
-                All Courses
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSelectFilter('court')}
-                style={{
-                  padding: '0.45rem 0.85rem',
-                  borderRadius: '6px',
-                  border: filterCategory === 'court' ? '1.5px solid #7c3aed' : '1px solid #e7e5e4',
-                  background: filterCategory === 'court' ? '#7c3aed' : '#faf9f6',
-                  color: filterCategory === 'court' ? '#ffffff' : '#57534e',
-                  fontSize: '0.8rem',
-                  fontWeight: 700,
-                  cursor: 'pointer'
-                }}
-              >
-                High Court Special
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSelectFilter('ssc')}
-                style={{
-                  padding: '0.45rem 0.85rem',
-                  borderRadius: '6px',
-                  border: filterCategory === 'ssc' ? '1.5px solid #d97706' : '1px solid #e7e5e4',
-                  background: filterCategory === 'ssc' ? '#d97706' : '#faf9f6',
-                  color: filterCategory === 'ssc' ? '#ffffff' : '#57534e',
-                  fontSize: '0.8rem',
-                  fontWeight: 700,
-                  cursor: 'pointer'
-                }}
-              >
-                SSC Grade C & D
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSelectFilter('diplomas')}
-                style={{
-                  padding: '0.45rem 0.85rem',
-                  borderRadius: '6px',
-                  border: filterCategory === 'diplomas' ? '1.5px solid #0284c7' : '1px solid #e7e5e4',
-                  background: filterCategory === 'diplomas' ? '#0284c7' : '#faf9f6',
-                  color: filterCategory === 'diplomas' ? '#ffffff' : '#57534e',
-                  fontSize: '0.8rem',
-                  fontWeight: 700,
-                  cursor: 'pointer'
-                }}
-              >
-                Diplomas (ADCA/DCA)
-              </button>
-            </div>
-          </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
-            gap: '0.75rem'
-          }}>
-            {[
-              { sno: 1, name: 'English Shorthand', filter: 'pitman', desc: 'Pitman Basic to Advance' },
-              { sno: 2, name: 'Hindi Shorthand', filter: 'hindi-steno', desc: 'हिंदी आशुलिपि & Court Special' },
-              { sno: 3, name: 'English Typing', filter: 'typing-eng', desc: 'Touch Typing (30-60+ WPM)' },
-              { sno: 4, name: 'Hindi Typing', filter: 'typing-hindi', desc: 'Kruti Dev 010 & Mangal' },
-              { sno: 5, name: 'English & Hindi Typing', filter: 'typing-both', desc: 'Combined Dual-Language' }
-            ].map((c) => (
-              <div 
-                key={c.sno}
-                onClick={() => handleSelectFilter(c.filter)}
+
+      {/* 2. ACADEMY COURSES & PROGRAMS */}
+      <section id="academy-courses" style={{ maxWidth: 1240, margin: '0 auto 3rem', padding: '0 1.25rem' }}>
+        
+        {/* Category Filter Pills (Independent buttons - NO big oval wrap) */}
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0.5rem',
+          marginBottom: '2rem'
+        }}>
+          {[
+            { id: 'all', label: 'All Programs', count: displayCourses.length },
+            { id: 'pitman', label: 'English Shorthand' },
+            { id: 'hindi-steno', label: 'Hindi Shorthand' },
+            { id: 'typing', label: 'Typing Lab' },
+            { id: 'court', label: 'High Court Judicial' },
+            { id: 'ssc', label: 'SSC Grade C & D' },
+            { id: 'diplomas', label: 'Diplomas (ADCA/DCA)' }
+          ].map((tab) => {
+            const isActive = filterCategory === tab.id;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => handleSelectFilter(tab.id)}
                 style={{
-                  background: filterCategory === c.filter ? '#fef3c7' : '#faf9f6',
-                  border: filterCategory === c.filter ? '1.5px solid #d97706' : '1px solid #e7e5e4',
-                  borderRadius: '10px',
-                  padding: '0.85rem 1rem',
-                  cursor: 'pointer',
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.75rem',
-                  transition: 'all 0.15s ease'
+                  gap: '0.4rem',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '9999px',
+                  border: isActive ? '1.5px solid #1c1917' : '1px solid #e7e5e4',
+                  background: isActive ? '#1c1917' : '#ffffff',
+                  color: isActive ? '#ffffff' : '#44403c',
+                  fontSize: '0.84rem',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  boxShadow: isActive ? '0 2px 8px rgba(28, 25, 23, 0.18)' : '0 1px 3px rgba(0, 0, 0, 0.04)',
+                  transition: 'all 0.18s ease'
                 }}
               >
+                <span>{tab.label}</span>
+                {tab.count && (
+                  <span style={{
+                    fontSize: '0.72rem',
+                    fontWeight: 800,
+                    padding: '0.1rem 0.45rem',
+                    borderRadius: '9999px',
+                    background: isActive ? 'rgba(255,255,255,0.2)' : '#f5f5f4',
+                    color: isActive ? '#ffffff' : '#78716c'
+                  }}>
+                    {tab.count}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Course Cards Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+          gap: '1.5rem',
+          alignItems: 'stretch'
+        }}>
+          {filteredCourses.map((course) => {
+            const isSyllabusOpen = !!expandedSyllabus[course.id];
+            return (
+              <div
+                key={course.id}
+                style={{
+                  background: '#ffffff',
+                  border: course.popular ? '1.5px solid #f59e0b' : '1px solid #e7e5e4',
+                  borderRadius: '16px',
+                  padding: '1.5rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  position: 'relative',
+                  boxShadow: course.popular 
+                    ? '0 6px 24px rgba(245, 158, 11, 0.12)' 
+                    : '0 4px 16px rgba(0, 0, 0, 0.03)',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                }}
+              >
+                {/* Popular Flagship Ribbon */}
+                {course.popular && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '1rem',
+                    right: '1rem',
+                    background: '#fef3c7',
+                    border: '1px solid #fde68a',
+                    color: '#b45309',
+                    fontSize: '0.7rem',
+                    fontWeight: 800,
+                    letterSpacing: '0.04em',
+                    padding: '0.2rem 0.6rem',
+                    borderRadius: '9999px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.3rem'
+                  }}>
+                    <Sparkles size={11} className="text-amber-600" />
+                    <span>POPULAR BATCH</span>
+                  </div>
+                )}
+
+                <div>
+                  {/* Category & Speed Pill Row */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.9rem', flexWrap: 'wrap' }}>
+                    <div style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: '8px',
+                      background: course.tagColor === 'blue' ? '#eff6ff' : course.tagColor === 'purple' ? '#f5f3ff' : '#fef3c7',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0
+                    }}>
+                      {renderCourseIcon(course.icon)}
+                    </div>
+                    <span style={{
+                      fontSize: '0.74rem',
+                      fontWeight: 800,
+                      color: course.tagColor === 'blue' ? '#1d4ed8' : course.tagColor === 'purple' ? '#7c3aed' : '#b45309',
+                      letterSpacing: '0.02em',
+                      textTransform: 'uppercase'
+                    }}>
+                      {course.category}
+                    </span>
+                    <span style={{
+                      fontFamily: 'monospace',
+                      fontSize: '0.74rem',
+                      fontWeight: 700,
+                      padding: '0.18rem 0.55rem',
+                      borderRadius: '6px',
+                      background: '#f5f5f4',
+                      color: '#44403c',
+                      marginLeft: 'auto'
+                    }}>
+                      ⚡ {course.speedTarget}
+                    </span>
+                  </div>
+
+                  {/* Title & Description */}
+                  <h3 style={{
+                    fontSize: '1.25rem',
+                    fontWeight: 850,
+                    color: '#1c1917',
+                    lineHeight: 1.35,
+                    margin: '0 0 0.45rem',
+                    letterSpacing: '-0.015em'
+                  }}>
+                    {course.title}
+                  </h3>
+                  <p style={{
+                    fontSize: '0.86rem',
+                    color: '#57534e',
+                    lineHeight: 1.5,
+                    margin: '0 0 1rem'
+                  }}>
+                    {course.description}
+                  </p>
+
+                  {/* Quick Specs Pill Strip */}
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr',
+                    gap: '0.5rem',
+                    padding: '0.65rem 0.85rem',
+                    background: '#faf9f6',
+                    border: '1px solid #e7e5e4',
+                    borderRadius: '10px',
+                    marginBottom: '1rem',
+                    fontSize: '0.78rem',
+                    color: '#44403c'
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                      <Clock size={13} className="text-amber-600 shrink-0" />
+                      <span><strong>Duration:</strong> {course.duration}</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                      <GraduationCap size={13} className="text-amber-600 shrink-0" />
+                      <span><strong>Format:</strong> {course.mode}</span>
+                    </div>
+                  </div>
+
+                  {/* High Impact Highlights */}
+                  <div style={{ marginBottom: '0.75rem' }}>
+                    <div style={{
+                      fontSize: '0.72rem',
+                      fontWeight: 800,
+                      color: '#78716c',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
+                      marginBottom: '0.5rem'
+                    }}>
+                      Key Highlights:
+                    </div>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                      {(course.highlights || course.syllabus.slice(0, 4)).map((item, idx) => (
+                        <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.82rem', color: '#44403c', lineHeight: 1.4 }}>
+                          <Check size={14} style={{ color: '#047857', flexShrink: 0, marginTop: '2px', strokeWidth: 2.5 }} />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Expandable Full Syllabus Toggle */}
+                  <div style={{ marginBottom: '1.25rem' }}>
+                    <button
+                      type="button"
+                      onClick={() => toggleSyllabus(course.id)}
+                      style={{
+                        background: 'transparent',
+                        border: 'none',
+                        color: '#0284c7',
+                        fontSize: '0.78rem',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        padding: '0.2rem 0',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.3rem'
+                      }}
+                    >
+                      <span>{isSyllabusOpen ? 'Hide Full Syllabus' : `View Full Syllabus (${course.syllabus.length} Topics)`}</span>
+                      {isSyllabusOpen ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
+                    </button>
+
+                    {isSyllabusOpen && (
+                      <div style={{
+                        marginTop: '0.5rem',
+                        padding: '0.75rem',
+                        background: '#f8fafc',
+                        border: '1px solid #e2e8f0',
+                        borderRadius: '8px'
+                      }}>
+                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                          {course.syllabus.map((s, idx) => (
+                            <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem', fontSize: '0.78rem', color: '#334155', lineHeight: 1.35 }}>
+                              <span style={{ color: '#0284c7', fontWeight: 800 }}>•</span>
+                              <span>{s}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Card Action & Fee Footer */}
                 <div style={{
-                  width: 30,
-                  height: 30,
-                  borderRadius: '50%',
-                  background: filterCategory === c.filter ? '#d97706' : '#1c1917',
-                  color: '#ffffff',
+                  paddingTop: '1rem',
+                  borderTop: '1px solid #e7e5e4',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '0.82rem',
-                  fontWeight: 700,
-                  flexShrink: 0
+                  justifyContent: 'space-between',
+                  gap: '0.75rem',
+                  marginTop: 'auto'
                 }}>
-                  {c.sno}
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#1c1917' }}>
-                    {c.name}
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.35rem' }}>
+                      <span style={{ fontSize: '1.35rem', fontWeight: 850, color: '#1c1917', fontFamily: 'monospace' }}>
+                        {course.fee}
+                      </span>
+                      {course.originalFee && (
+                        <span style={{ fontSize: '0.85rem', color: '#dc2626', textDecoration: 'line-through', fontWeight: 600 }}>
+                          {course.originalFee}
+                        </span>
+                      )}
+                    </div>
+                    <div style={{ fontSize: '0.72rem', color: '#78716c', fontWeight: 600 }}>
+                      {course.feeType || 'Official Curriculum'}
+                    </div>
                   </div>
-                  <div style={{ fontSize: '0.73rem', color: '#78716c' }}>
-                    {c.desc}
-                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => handleEnroll(course)}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.4rem',
+                      padding: '0.65rem 1.15rem',
+                      borderRadius: '8px',
+                      background: '#047857',
+                      color: '#ffffff',
+                      fontWeight: 700,
+                      fontSize: '0.86rem',
+                      border: 'none',
+                      cursor: 'pointer',
+                      boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)',
+                      transition: 'all 0.15s ease',
+                      flexShrink: 0
+                    }}
+                  >
+                    <span>Enroll Now</span>
+                    <ArrowRight size={14} />
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
 
       {/* TARGET EXAMINATIONS BANNER */}
-      <section style={{ maxWidth: 1200, margin: '0 auto 2.5rem', padding: '0 1.25rem' }}>
+      <section style={{ maxWidth: 1240, margin: '0 auto 3rem', padding: '0 1.25rem' }}>
         <div style={{
           background: 'linear-gradient(135deg, #faf9f6 0%, #ffffff 100%)',
           border: '1px solid #e7e5e4',
@@ -482,237 +778,6 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                 }}>
                   {exam.speed}
                 </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 2. ACADEMY COURSES GRID */}
-      <section id="academy-courses" style={{ maxWidth: 1200, margin: '0 auto 3rem', padding: '0 1.25rem' }}>
-        <div style={{ width: '100%' }}>
-          <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
-            <span style={{
-              fontSize: '0.72rem',
-              fontWeight: 700,
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              color: '#d97706',
-              background: '#fef3c7',
-              padding: '0.25rem 0.65rem',
-              borderRadius: '999px',
-              display: 'inline-block',
-              marginBottom: '0.45rem'
-            }}>
-              CLASSROOM & ONLINE CURRICULUM
-            </span>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 850, color: '#1c1917', margin: '0 0 0.35rem' }}>
-              Structured Academy Batches
-            </h2>
-            <p style={{ fontSize: '0.88rem', color: '#57534e', margin: '0 auto', maxWidth: 640 }}>
-              Direct mentorship under experienced faculty <strong>Shadab Sir (12 Years Experience)</strong> with daily outline corrections and exam simulations.
-            </p>
-          </div>
-
-          {/* Active Filter Pill Bar */}
-          {filterCategory !== 'all' && (
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              background: '#fffbeb',
-              border: '1px solid #fde68a',
-              borderRadius: '10px',
-              padding: '0.65rem 1rem',
-              marginBottom: '1.25rem'
-            }}>
-              <div style={{ fontSize: '0.85rem', color: '#92400e', fontWeight: 600 }}>
-                Filtered View: Showing {filteredCourses.length} of {displayCourses.length} programs
-              </div>
-              <button
-                type="button"
-                onClick={() => setFilterCategory('all')}
-                style={{
-                  background: '#1c1917',
-                  color: '#ffffff',
-                  border: 'none',
-                  borderRadius: '6px',
-                  padding: '0.35rem 0.75rem',
-                  fontSize: '0.78rem',
-                  fontWeight: 700,
-                  cursor: 'pointer'
-                }}
-              >
-                Show All Programs
-              </button>
-            </div>
-          )}
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '1.5rem'
-          }}>
-            {filteredCourses.map((course) => (
-              <div 
-                key={course.id} 
-                style={{
-                  background: '#ffffff',
-                  border: course.popular ? '1.5px solid #d97706' : '1px solid #e7e5e4',
-                  borderRadius: '16px',
-                  padding: '1.75rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  position: 'relative',
-                  boxShadow: course.popular ? '0 8px 30px rgba(217, 119, 6, 0.08)' : '0 4px 20px rgba(0, 0, 0, 0.03)',
-                  overflow: 'hidden'
-                }}
-              >
-                {course.popular && (
-                  <div style={{
-                    position: 'absolute',
-                    top: '1rem',
-                    right: '1.25rem',
-                    background: '#fef3c7',
-                    border: '1px solid #fde68a',
-                    color: '#b45309',
-                    fontSize: '0.72rem',
-                    fontWeight: 800,
-                    letterSpacing: '0.04em',
-                    padding: '0.25rem 0.65rem',
-                    borderRadius: '999px'
-                  }}>
-                    ⭐ FLAGSHIP BATCH
-                  </div>
-                )}
-
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.85rem' }}>
-                    <span style={{
-                      fontSize: '0.72rem',
-                      fontWeight: 700,
-                      padding: '0.2rem 0.55rem',
-                      borderRadius: '6px',
-                      background: '#eff6ff',
-                      color: '#1d4ed8'
-                    }}>
-                      {course.badge}
-                    </span>
-                    <span style={{
-                      fontFamily: 'monospace',
-                      fontSize: '0.75rem',
-                      fontWeight: 700,
-                      padding: '0.2rem 0.55rem',
-                      borderRadius: '6px',
-                      background: '#f5f5f4',
-                      color: '#44403c'
-                    }}>
-                      {course.speedTarget}
-                    </span>
-                  </div>
-
-                  <h3 style={{ fontSize: '1.22rem', fontWeight: 800, color: '#1c1917', lineHeight: 1.35, margin: '0 0 0.65rem' }}>
-                    {course.title}
-                  </h3>
-                  <p style={{ fontSize: '0.88rem', color: '#57534e', lineHeight: 1.55, margin: '0 0 1.25rem' }}>
-                    {course.description}
-                  </p>
-
-                  <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.45rem',
-                    padding: '0.85rem 1rem',
-                    background: '#faf9f6',
-                    border: '1px solid #e7e5e4',
-                    borderRadius: '10px',
-                    marginBottom: '1.25rem',
-                    fontSize: '0.82rem',
-                    color: '#44403c'
-                  }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <Clock size={14} className="text-amber-600 shrink-0" />
-                      <span><strong>Duration:</strong> {course.duration}</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <GraduationCap size={14} className="text-amber-600 shrink-0" />
-                      <span><strong>Mode:</strong> {course.mode}</span>
-                    </div>
-                  </div>
-
-                  <div style={{ marginBottom: '1.5rem' }}>
-                    <h4 style={{ fontSize: '0.8rem', fontWeight: 800, color: '#1c1917', textTransform: 'uppercase', letterSpacing: '0.04em', margin: '0 0 0.65rem' }}>
-                      What You Will Master:
-                    </h4>
-                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-                      {course.syllabus.map((item, idx) => (
-                        <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.84rem', color: '#57534e', lineHeight: 1.4 }}>
-                          <CheckCircle2 size={15} style={{ color: '#047857', flexShrink: 0, marginTop: '2px' }} />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div style={{
-                  paddingTop: '1.15rem',
-                  borderTop: '1px solid #e7e5e4',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.65rem',
-                  marginTop: 'auto'
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                    <div>
-                      <div style={{ fontSize: '0.7rem', color: '#78716c', fontWeight: 600, textTransform: 'uppercase' }}>
-                        Course Fee
-                      </div>
-                      <div style={{ fontSize: '1.2rem', fontWeight: 850, color: '#1c1917', fontFamily: 'monospace' }}>
-                        {course.fee}
-                      </div>
-                    </div>
-                    <button 
-                      type="button"
-                      onClick={() => {
-                        const coursePlanMap = {
-                          'course-pitman': { id: 'course-pitman', name: 'Basic Pitman Shorthand Course', price: 4500, duration: '3 to 4 Months (Complete Book)', description: 'Complete Pitman book theory, daily homework correction & audio vault access.' },
-                          'course-court': { id: 'course-court', name: 'High Court Judicial Speed Series', price: 700, duration: 'Monthly Subscription', description: 'Specialized High Court courtroom reporter transcription batch.' },
-                          'course-ssc': { id: 'course-ssc', name: 'SSC Stenographer Crash Batch', price: 350, duration: 'Monthly Subscription', description: 'Parliamentary speeches, live speed tests, and automated error calculation.' },
-                          'course-diplomas': { id: 'course-diplomas', name: 'Computer Diplomas (DCA / ADCA)', price: 1200, duration: 'Govt. Diploma Registration', description: 'Official government-accredited computer applications diploma.' }
-                        };
-                        const numFee = parseInt(String(course.fee || '').replace(/\D/g, '')) || 499;
-                        const planToOpen = coursePlanMap[course.id] || {
-                          id: course.id,
-                          name: course.title,
-                          price: numFee,
-                          duration: course.duration || 'Academy Batch Access',
-                          description: course.description || 'Complete batch curriculum with live and archive dictation access.'
-                        };
-                        if (onOpenCheckout) onOpenCheckout(planToOpen);
-                      }}
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '0.45rem',
-                        padding: '0.65rem 1.25rem',
-                        borderRadius: '8px',
-                        background: '#047857',
-                        color: '#ffffff',
-                        fontWeight: 700,
-                        fontSize: '0.88rem',
-                        border: 'none',
-                        cursor: 'pointer',
-                        boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)',
-                        transition: 'all 0.15s ease'
-                      }}
-                    >
-                      <span>Enroll Now</span>
-                      <ArrowRight size={15} />
-                    </button>
-                  </div>
-                </div>
               </div>
             ))}
           </div>
