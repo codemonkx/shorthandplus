@@ -200,10 +200,12 @@ function GoogleReviewCard({ review }) {
   );
 }
 
-const REG_LANGUAGE_OPTIONS = [
-  { value: "English", label: "English (Steno + Typing)" },
-  { value: "Hindi Krutidev", label: "Hindi Krutidev (Steno + Typing)" },
-  { value: "Hindi Inscript", label: "Hindi Inscript / Mangal (Steno + Typing)" }
+const ADMISSION_COURSES = [
+  { value: "English Shorthand", label: "1. English Shorthand" },
+  { value: "Hindi Shorthand", label: "2. Hindi Shorthand" },
+  { value: "English Typing", label: "3. English Typing" },
+  { value: "Hindi Typing", label: "4. Hindi Typing" },
+  { value: "English & Hindi Typing", label: "5. English & Hindi Typing" }
 ];
 
 const KEY_HIGHLIGHTS = [
@@ -264,7 +266,7 @@ export default function LandingPage({
   const [regName, setRegName] = useState('');
   const [regEmail, setRegEmail] = useState('');
   const [regPassword, setRegPassword] = useState('');
-  const [regLang, setRegLang] = useState('English');
+  const [regLang, setRegLang] = useState('English Shorthand');
   const [isSubmittingAuth, setIsSubmittingAuth] = useState(false);
   const [authError, setAuthError] = useState(null);
 
@@ -551,6 +553,22 @@ export default function LandingPage({
         "Online Hindi Typing Software & Govt Exam Tests"
       ],
       popular: false
+    },
+    {
+      id: "bilingual-typing-batch",
+      badge: "Bilingual Typing Special",
+      title: "English & Hindi Typing",
+      speed: "30 → 60+ WPM",
+      lang: "English + Hindi (Both Languages)",
+      desc: "Comprehensive dual-language typing training covering both English QWERTY and Hindi (Kruti Dev 010 & Mangal Inscript). Specially designed for government typing examinations, civil courts, high courts, and clerk roles requiring bilingual typing.",
+      features: [
+        "English QWERTY Touch Typing Mastery",
+        "Hindi Kruti Dev 010 & Mangal Inscript Layouts",
+        "Remington Standard Keyboard Guidelines",
+        "Dual-Language Speed Building (30 to 60+ WPM)",
+        "Bilingual Court & Government Exam Practice Tests"
+      ],
+      popular: true
     }
   ];
 
@@ -900,11 +918,11 @@ export default function LandingPage({
                     </div>
 
                     <div className="form-group-field">
-                      <label className="field-label">Select Medium & Language</label>
+                      <label className="field-label">Target Course for Admission</label>
                       <CustomSelect 
                         value={regLang}
                         onChange={setRegLang}
-                        options={REG_LANGUAGE_OPTIONS}
+                        options={ADMISSION_COURSES}
                       />
                     </div>
 

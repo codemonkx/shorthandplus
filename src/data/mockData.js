@@ -594,6 +594,30 @@ export const INITIAL_ACADEMY_COURSES = [
     popular: true
   },
   {
+    id: 'course-bilingual-typing',
+    title: 'English & Hindi Typing',
+    category: 'Typing Course (Bilingual)',
+    badge: 'Dual-Language Mastery',
+    tagColor: 'badge-blue',
+    speedTarget: '30 → 60+ WPM (Both Languages)',
+    duration: '2 to 3 Months',
+    fee: '₹2,500 (Complete)',
+    description: 'Master both English (QWERTY) and Hindi (Kruti Dev 010 & Mangal Inscript) typing in a single comprehensive course. Specially designed for students preparing for High Court, Civil Court, BSSC, and Central/State government clerk examinations requiring bilingual typing proficiency.',
+    syllabus: [
+      'English QWERTY Touch Typing Mastery',
+      'Hindi Keyboard Training (Kruti Dev 010 Layout)',
+      'Hindi Mangal Inscript Unicode Font Mastery',
+      'Remington (GAIL / CBI) Standard Keyboard Layout',
+      'Bilingual Word, Sentence & Paragraph Practice',
+      'Dual-Language Speed Building Exercises (30 to 60+ WPM)',
+      'Real-Time Accuracy Improvement & Error Reduction',
+      'Online Bilingual Typing Software Practice',
+      'Court & Government Examination Simulated Tests'
+    ],
+    mode: 'Classroom (Gaya Center) + Online Typing Software Access',
+    popular: true
+  },
+  {
     id: 'course-court',
     title: 'High Court Judicial Speed & Legal Series',
     category: 'Judicial Bench',

@@ -29,6 +29,19 @@
     - Offline Center: `Gaya Shorthand Classes, Near Railway Station / Tower Chowk, Gaya, Bihar - 823001`
   - Propagated to `Footer.jsx`, `LandingPage.jsx`, `AboutAcademyView.jsx`, `CoursesPage.jsx`, `LegalPolicyModal.jsx`, `emailService.js`, `mockData.js`, and database `courses`.
 
+- [x] **Canonical Course List — Website & Admission Form (S.No. 1 to 5)**
+  - Synchronized official 5-course list across website catalog, filters, database, and admission registration forms:
+    - **1. English Shorthand** (Pitman Shorthand Basic to Advance)
+    - **2. Hindi Shorthand** (हिंदी आशुलिपि & Court Special)
+    - **3. English Typing** (& Computer Typing Skills, 30-60+ WPM)
+    - **4. Hindi Typing** (Kruti Dev 010 & Mangal Inscript)
+    - **5. English & Hindi Typing** (Combined Dual-Language Mastery)
+  - Updated **Admission Registration Forms**:
+    - `AuthModal.jsx` registration modal now provides target admission course selection matching S.No. 1 to 5.
+    - `LandingPage.jsx` hero candidate admission box now directly offers S.No. 1 to 5 course selection.
+  - Added dedicated **Course List — Website / Admission Form** interactive panel in `CoursesPage.jsx`.
+  - Added Course #5 (`course-bilingual-typing`) across `mockData.js`, `CoursesPage.jsx`, `LandingPage.jsx`, `seed.js`, and live SQLite `courses` table.
+
 - [x] **Course #4: Hindi Typing & Hindi Computer Typing**
   - Course Name: `Hindi Typing & Hindi Computer Typing`.
   - Details: `Learn Hindi typing with practical keyboard training and regular typing exercises. This course is designed for students preparing for government typing examinations and office-related computer work.`

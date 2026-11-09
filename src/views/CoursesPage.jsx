@@ -110,6 +110,30 @@ const ACADEMY_COURSES = [
     popular: true
   },
   {
+    id: 'course-bilingual-typing',
+    title: 'English & Hindi Typing',
+    category: 'Typing Course (Bilingual)',
+    badge: 'Dual-Language Mastery',
+    tagColor: 'badge-blue',
+    speedTarget: '30 → 60+ WPM (Both Languages)',
+    duration: '2 to 3 Months',
+    fee: '₹2,500 (Complete)',
+    description: 'Master both English (QWERTY) and Hindi (Kruti Dev 010 & Mangal Inscript) typing in a single comprehensive course. Specially designed for students preparing for High Court, Civil Court, BSSC, and Central/State government clerk examinations requiring bilingual typing proficiency.',
+    syllabus: [
+      'English QWERTY Touch Typing Mastery',
+      'Hindi Keyboard Training (Kruti Dev 010 Layout)',
+      'Hindi Mangal Inscript Unicode Font Mastery',
+      'Remington (GAIL / CBI) Standard Keyboard Layout',
+      'Bilingual Word, Sentence & Paragraph Practice',
+      'Dual-Language Speed Building Exercises (30 to 60+ WPM)',
+      'Real-Time Accuracy Improvement & Error Reduction',
+      'Online Bilingual Typing Software Practice',
+      'Court & Government Examination Simulated Tests'
+    ],
+    mode: 'Classroom (Gaya Center) + Online Typing Software Access',
+    popular: true
+  },
+  {
     id: 'course-court',
     title: 'High Court Judicial Speed & Legal Series',
     category: 'Judicial Bench',
@@ -186,6 +210,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
     if (filterCategory === 'hindi-steno') return (cat.includes('hindi') && cat.includes('shorthand')) || id === 'course-hindi-steno' || title.includes('हिंदी आशुलिपि');
     if (filterCategory === 'typing-eng') return id === 'course-english-typing' || (cat.includes('typing') && cat.includes('english'));
     if (filterCategory === 'typing-hindi') return id === 'course-hindi-typing' || (cat.includes('typing') && cat.includes('hindi'));
+    if (filterCategory === 'typing-both') return id === 'course-bilingual-typing' || cat.includes('bilingual');
     if (filterCategory === 'court') return cat.includes('judicial') || id.includes('court') || title.includes('court');
     if (filterCategory === 'ssc') return cat.includes('central') || id.includes('ssc') || title.includes('ssc');
     if (filterCategory === 'diplomas') return cat.includes('diploma') || id.includes('diploma') || title.includes('diploma') || title.includes('dca');
@@ -221,25 +246,31 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               className={`course-cat-pill ${filterCategory === 'pitman' ? 'active' : ''}`}
               onClick={() => setFilterCategory('pitman')}
             >
-              <span>✍️ English Pitman (0-120 WPM)</span>
+              <span>✍️ 1. English Shorthand</span>
             </button>
             <button 
               className={`course-cat-pill ${filterCategory === 'hindi-steno' ? 'active' : ''}`}
               onClick={() => setFilterCategory('hindi-steno')}
             >
-              <span>🇮🇳 Hindi Shorthand (हिंदी आशुलिपि)</span>
+              <span>🇮🇳 2. Hindi Shorthand</span>
             </button>
             <button 
               className={`course-cat-pill ${filterCategory === 'typing-eng' ? 'active' : ''}`}
               onClick={() => setFilterCategory('typing-eng')}
             >
-              <span>⌨️ English Typing (30-60+ WPM)</span>
+              <span>⌨️ 3. English Typing</span>
             </button>
             <button 
               className={`course-cat-pill ${filterCategory === 'typing-hindi' ? 'active' : ''}`}
               onClick={() => setFilterCategory('typing-hindi')}
             >
-              <span>🇮🇳 Hindi Typing (Kruti / Mangal)</span>
+              <span>🇮🇳 4. Hindi Typing</span>
+            </button>
+            <button 
+              className={`course-cat-pill ${filterCategory === 'typing-both' ? 'active' : ''}`}
+              onClick={() => setFilterCategory('typing-both')}
+            >
+              <span>🌐 5. English & Hindi Typing</span>
             </button>
             <button 
               className={`course-cat-pill ${filterCategory === 'court' ? 'active' : ''}`}
@@ -262,6 +293,85 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
           </div>
         </div>
       </div>
+
+      {/* CANONICAL COURSE LIST - WEBSITE / ADMISSION FORM */}
+      <section style={{ maxWidth: 1200, margin: '-1.5rem auto 2.5rem', padding: '0 1.25rem' }}>
+        <div style={{
+          background: '#ffffff',
+          border: '1px solid #e7e5e4',
+          borderRadius: '12px',
+          padding: '1.25rem 1.75rem',
+          boxShadow: '0 2px 12px rgba(0,0,0,0.03)'
+        }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', marginBottom: '1rem' }}>
+            <div>
+              <span style={{ fontSize: '0.74rem', fontWeight: 700, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.8px' }}>
+                Official Academic Curriculum
+              </span>
+              <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#1c1917', margin: '0.15rem 0 0' }}>
+                Course List — Website / Admission Form
+              </h2>
+            </div>
+            <span style={{ fontSize: '0.78rem', color: '#78716c', background: '#faf9f6', padding: '0.35rem 0.75rem', borderRadius: '6px', border: '1px solid #e7e5e4' }}>
+              Select any course below to view syllabus & enroll
+            </span>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
+            gap: '0.75rem'
+          }}>
+            {[
+              { sno: 1, name: 'English Shorthand', filter: 'pitman', desc: 'Pitman Basic to Advance' },
+              { sno: 2, name: 'Hindi Shorthand', filter: 'hindi-steno', desc: 'हिंदी आशुलिपि & Court Special' },
+              { sno: 3, name: 'English Typing', filter: 'typing-eng', desc: 'Touch Typing (30-60+ WPM)' },
+              { sno: 4, name: 'Hindi Typing', filter: 'typing-hindi', desc: 'Kruti Dev 010 & Mangal' },
+              { sno: 5, name: 'English & Hindi Typing', filter: 'typing-both', desc: 'Combined Dual-Language' }
+            ].map((c) => (
+              <div 
+                key={c.sno}
+                onClick={() => setFilterCategory(c.filter)}
+                style={{
+                  background: filterCategory === c.filter ? '#fef3c7' : '#faf9f6',
+                  border: filterCategory === c.filter ? '1.5px solid #d97706' : '1px solid #e7e5e4',
+                  borderRadius: '10px',
+                  padding: '0.85rem 1rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  transition: 'all 0.15s ease'
+                }}
+              >
+                <div style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: '50%',
+                  background: filterCategory === c.filter ? '#d97706' : '#1c1917',
+                  color: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
+                  flexShrink: 0
+                }}>
+                  {c.sno}
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#1c1917' }}>
+                    {c.name}
+                  </div>
+                  <div style={{ fontSize: '0.73rem', color: '#78716c' }}>
+                    {c.desc}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* 2. ACADEMY COURSES GRID */}
       <section className="courses-cards-section">

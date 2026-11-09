@@ -8,6 +8,14 @@ import confetti from 'canvas-confetti';
 import CustomSelect from './CustomSelect';
 import { api, setToken } from '../services/api';
 
+export const ADMISSION_COURSES = [
+  { value: 'English Shorthand', label: '1. English Shorthand' },
+  { value: 'Hindi Shorthand', label: '2. Hindi Shorthand' },
+  { value: 'English Typing', label: '3. English Typing' },
+  { value: 'Hindi Typing', label: '4. Hindi Typing' },
+  { value: 'English & Hindi Typing', label: '5. English & Hindi Typing' }
+];
+
 export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab = 'student' }) {
   // authMode: 'student' | 'admin' | 'register' | 'forgot'
   const [authMode, setAuthMode] = useState(initialTab);
@@ -15,7 +23,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [state, setState] = useState('Bihar');
-  const [language, setLanguage] = useState('English');
+  const [language, setLanguage] = useState('English Shorthand');
   const [adminPasscode, setAdminPasscode] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [statusMsg, setStatusMsg] = useState(null);
@@ -591,16 +599,12 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
               </div>
 
               <div className="auth-field-group">
-                <label className="auth-field-label">Exam Medium</label>
+                <label className="auth-field-label">Target Course for Admission</label>
                 <CustomSelect 
                   value={language} 
                   onChange={(val) => setLanguage(val)}
                   prefixIcon={<Globe size={16} />}
-                  options={[
-                    { value: 'English', label: 'English (Pitman)' },
-                    { value: 'Hindi Kruti Dev', label: 'Hindi (Kruti Dev)' },
-                    { value: 'Hindi Mangal', label: 'Hindi (Mangal)' }
-                  ]}
+                  options={ADMISSION_COURSES}
                 />
               </div>
             </div>
