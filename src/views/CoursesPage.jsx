@@ -18,8 +18,8 @@ const ACADEMY_COURSES = [
     badge: 'SSC & High Court Special',
     tagColor: 'badge-blue',
     speedTarget: '60, 80, 100 & 120 WPM',
-    duration: '3 to 6 Months',
-    fee: '₹6,000 (Complete)',
+    duration: '3 to 4 Months',
+    fee: '₹4,500 (Complete)',
     description: 'Learn English Shorthand from Basic to Advanced Level with systematic guidance and practical training. This course is specially designed for students preparing for SSC Stenographer, High Court Stenographer, Personal Assistant (PA), Private Secretary (PS) and other government stenographer examinations.',
     syllabus: [
       'Basic to Advanced Shorthand Training',
@@ -161,7 +161,7 @@ const ACADEMY_COURSES = [
     tagColor: 'badge-amber',
     speedTarget: '80 & 100 WPM',
     duration: '3 Months Intensive',
-    fee: '₹249 / Month (Pass)',
+    fee: '₹350 / Month (Pass)',
     description: 'Targeted preparation for Staff Selection Commission Grade C and D skill tests with real exam audio speed fluctuations and automated error calculation.',
     syllabus: [
       'Parliamentary Speeches & Government Budget Passages',
@@ -435,9 +435,9 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     className="btn-enroll-course"
                     onClick={() => {
                       const coursePlanMap = {
-                        'course-pitman': { id: 'course-pitman', name: 'Basic Pitman Shorthand Masterclass', price: 6000, duration: 'Complete Foundation Course', description: 'Full Pitman theory, workbook checks & audio vault access.' },
+                        'course-pitman': { id: 'course-pitman', name: 'Basic Pitman Shorthand Course', price: 4500, duration: '3 to 4 Months (Complete Book)', description: 'Complete Pitman book theory, daily homework correction & audio vault access.' },
                         'course-court': { id: 'course-court', name: 'High Court Judicial Speed Series', price: 700, duration: 'Monthly Subscription', description: 'Specialized High Court courtroom reporter transcription batch.' },
-                        'course-ssc': { id: 'course-ssc', name: 'SSC Stenographer Crash Batch', price: 249, duration: 'Monthly Subscription', description: 'Parliamentary speeches, live speed tests, and automated error calculation.' },
+                        'course-ssc': { id: 'course-ssc', name: 'SSC Stenographer Crash Batch', price: 350, duration: 'Monthly Subscription', description: 'Parliamentary speeches, live speed tests, and automated error calculation.' },
                         'course-diplomas': { id: 'course-diplomas', name: 'Computer Diplomas (DCA / ADCA)', price: 1200, duration: 'Govt. Diploma Registration', description: 'Official government-accredited computer applications diploma.' }
                       };
                       const numFee = parseInt(String(course.fee || '').replace(/\D/g, '')) || 499;

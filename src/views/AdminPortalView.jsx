@@ -76,12 +76,12 @@ const INITIAL_ADMIN_STUDENTS = [
 ];
 
 const INITIAL_TRANSACTIONS = [
-  { id: "TXN-98421", student: "Shadab Khan", rollNo: "SP-2026-084", plan: "12-Month Annual Career Master", amount: 1200, mode: "UPI (Paytm)", date: "Today, 14:20", status: "Auto-Verified" },
-  { id: "TXN-98420", student: "Vishnupriya S.", rollNo: "SP-2026-005", plan: "12-Month Annual Career Master", amount: 1200, mode: "UPI (GPay)", date: "Today, 11:05", status: "Auto-Verified" },
-  { id: "TXN-98419", student: "Rakesh Ranjan", rollNo: "SP-2026-092", plan: "Monthly Test Series", amount: 249, mode: "Debit Card", date: "Yesterday, 19:40", status: "Auto-Verified" },
-  { id: "TXN-98418", student: "Pooja Verma", rollNo: "SP-2026-033", plan: "Monthly Test Series", amount: 249, mode: "UPI (PhonePe)", date: "Yesterday, 16:15", status: "Auto-Verified" },
-  { id: "TXN-98417", student: "Sagar Kumar Singh", rollNo: "SP-2026-009", plan: "6-Month Pro Scholar", amount: 899, mode: "Net Banking", date: "09 Oct 2026", status: "Auto-Verified" },
-  { id: "TXN-98416", student: "Vikramaditya Roy", rollNo: "SP-2026-041", plan: "1-Day Skill Sprint", amount: 20, mode: "UPI (BHIM)", date: "08 Oct 2026", status: "Auto-Verified" }
+  { id: "TXN-98421", student: "Shadab Khan", rollNo: "SP-2026-084", plan: "12-Month Annual Career Master", amount: 2000, mode: "UPI (Paytm)", date: "Today, 14:20", status: "Auto-Verified" },
+  { id: "TXN-98420", student: "Vishnupriya S.", rollNo: "SP-2026-005", plan: "12-Month Annual Career Master", amount: 2000, mode: "UPI (GPay)", date: "Today, 11:05", status: "Auto-Verified" },
+  { id: "TXN-98419", student: "Rakesh Ranjan", rollNo: "SP-2026-092", plan: "Monthly Test Series", amount: 350, mode: "Debit Card", date: "Yesterday, 19:40", status: "Auto-Verified" },
+  { id: "TXN-98418", student: "Pooja Verma", rollNo: "SP-2026-033", plan: "Monthly Test Series", amount: 350, mode: "UPI (PhonePe)", date: "Yesterday, 16:15", status: "Auto-Verified" },
+  { id: "TXN-98417", student: "Sagar Kumar Singh", rollNo: "SP-2026-009", plan: "6-Month Pro Scholar", amount: 1100, mode: "Net Banking", date: "09 Oct 2026", status: "Auto-Verified" },
+  { id: "TXN-98416", student: "Vikramaditya Roy", rollNo: "SP-2026-041", plan: "1-Day Skill Sprint", amount: 30, mode: "UPI (BHIM)", date: "08 Oct 2026", status: "Auto-Verified" }
 ];
 
 export default function AdminPortalView({ 

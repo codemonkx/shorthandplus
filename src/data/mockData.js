@@ -26,13 +26,13 @@ export const PRICING_PLANS = [
   {
     id: "plan-1day",
     name: "1-Day Skill Sprint",
-    price: 20,
+    price: 30,
     duration: "1 Day Unlimited",
     badge: "Trial",
-    description: "Full 24-hour unlimited access to all Shorthand and Typing skill tests.",
+    description: "1 day Unlimited (Shorthand + Typing Skill Tests) with Live + Recording.",
     features: [
-      "Unlimited Steno Dictation Tests",
-      "Unlimited Typing Speed Tests",
+      "1 Day Unlimited Shorthand + Typing Tests",
+      "Live + Recording Access",
       "Live Algorithmic Evaluation",
       "Instant Batch Rank & Scorecard",
       "24-Hour Pass Access"
@@ -42,33 +42,33 @@ export const PRICING_PLANS = [
   {
     id: "plan-1mo",
     name: "Monthly Test Series",
-    price: 249,
+    price: 350,
     duration: "1 Month Unlimited",
     badge: "Popular",
-    description: "Best for active aspirants preparing for upcoming SSC or Court exams.",
+    description: "1 Month Unlimited (Shorthand + Typing Skill Tests) with Live + Recording.",
     features: [
-      "All SSC & State Steno Tests (60-120 WPM)",
+      "1 Month Unlimited Shorthand + Typing Tests",
       "Daily Live Dictations + Recordings",
       "English + Hindi Kruti Dev / Mangal Support",
       "Detailed Word-by-Word Error Breakdown",
       "Leaderboard & Performance Analytics",
-      "Priority Instructor Mentorship & Doubts"
+      "Priority WhatsApp & Faculty Mentorship"
     ],
     popular: true
   },
   {
     id: "plan-6mo",
     name: "6-Month Pro Scholar",
-    price: 899,
+    price: 1100,
     duration: "6 Months Unlimited",
     badge: "Best Value",
-    description: "Comprehensive exam preparation with full archive access and practice drills.",
+    description: "6 Month Unlimited (Shorthand + Typing Skill Tests) with Live + Recording.",
     features: [
+      "6 Months Unlimited Shorthand + Typing Tests",
       "Everything in Monthly Plan",
       "Unlimited High Court & SSC Mock Tests",
-      "6-Month Access to Audio Vault",
+      "6-Month Full Archive Access to Audio Vault",
       "Full Backspace Lock Exam Simulations",
-      "Custom Speed Audio Player (0.8x - 1.2x)",
       "Verified Certificate of Completion"
     ],
     popular: false
@@ -76,16 +76,16 @@ export const PRICING_PLANS = [
   {
     id: "plan-12mo",
     name: "Annual Career Master",
-    price: 1200,
+    price: 2000,
     duration: "12 Months Unlimited",
-    badge: "Ultimate",
-    description: "365 days of complete mastery across all court and government secretariat exams.",
+    badge: "Ultimate Value",
+    description: "12 Month Unlimited (Shorthand + Typing Skill Tests) with Live + Recording.",
     features: [
-      "365 Days Unlimited Access to All Tests",
+      "12 Months 365 Days Complete Unlimited Access",
       "Patna & Jharkhand High Court Dictations",
       "Basic & Advanced Pitman Course Material",
       "All Hindi (Kruti Dev + Mangal) + English Tests",
-      "VIP Mentorship & Daily Corrections",
+      "Live + Recording with Daily Homework Corrections",
       "Official Shorthand Proficiency Certificate"
     ],
     popular: false
@@ -94,32 +94,48 @@ export const PRICING_PLANS = [
     id: "plan-patna-hc",
     name: "Patna High Court Special",
     price: 700,
-    duration: "1 Month High Court Batch",
-    badge: "Court Exam",
-    description: "Targeted court reporter dictation series for Patna High Court recruitment.",
+    duration: "1 Month",
+    badge: "High Court",
+    description: "Patna High Court Live Dictation with legal judgment audio and daily evaluation.",
     features: [
-      "Legal Dictations & Court Judgments",
+      "Patna High Court Live Dictation (1 Month)",
+      "Authentic Criminal & Civil Judgment Audio",
       "Strict High Court Exam Simulation HUD",
       "80 & 100 WPM Judicial Passages",
-      "Daily Corrections & Error Categorization",
-      "Legal Vocabulary & Shorthand Outlines"
+      "Daily Homework Corrections & Error Analysis"
+    ],
+    popular: false
+  },
+  {
+    id: "plan-jharkhand-hc",
+    name: "Jharkhand High Court Special",
+    price: 700,
+    duration: "1 Month",
+    badge: "High Court",
+    description: "Jharkhand High Court Live Dictation with Kruti Dev & Mangal font support.",
+    features: [
+      "Jharkhand High Court Live Dictation (1 Month)",
+      "Civil & District Court Legal Passages",
+      "Dual Hindi Engine: Kruti Dev 010 & Mangal",
+      "Strict Backspace Lock & Mechanical Scoring",
+      "Weekly Solved High Court Dictations"
     ],
     popular: false
   },
   {
     id: "plan-pitman",
-    name: "Basic Pitman Shorthand Masterclass",
-    price: 6000,
-    duration: "3 to 4 Months Complete",
+    name: "Basic Pitman Shorthand Course",
+    price: 4500,
+    duration: "3 to 4 Months Only",
     badge: "Complete Course",
-    description: "From absolute zero to 80+ WPM with full book coverage and daily correction.",
+    description: "Complete Basic Pitman Course with complete book, Live + Recording, and daily homework correction.",
     features: [
-      "Complete Pitman Shorthand Book (Theory + Practice)",
-      "Daily Live Classes + Lifetime Recordings",
-      "Daily Homework Correction by Senior Masters",
-      "Stroke Outlines, Grammalogues & Contractions",
-      "Guaranteed Speed Building to 80-100 WPM",
-      "Government Exam Job Readiness Guarantee"
+      "3 to 4 Months Complete Pitman Book Course",
+      "Live Classes + Recorded Replay Library",
+      "Homework Daily Correction by Senior Masters",
+      "Stroke Outlines, Grammalogues & Phraseography",
+      "Speed Development: 50, 60, 80 & 100 WPM",
+      "Government Exam-Oriented Job Readiness"
     ],
     popular: false
   }
@@ -486,12 +502,12 @@ export const ONLINE_CLASSES_DATA = [
 ];
 
 export const INITIAL_TRANSACTIONS = [
-  { id: "TXN-98421", student: "Shadab Khan", rollNo: "SP-2026-084", plan: "Monthly Test Series (Auto-Renews)", amount: 249, mode: "UPI (Paytm)", date: "Today, 14:20", billingCycle: "Monthly Subscription", status: "Auto-Verified" },
-  { id: "TXN-98420", student: "Vishnupriya S.", rollNo: "SP-2026-005", plan: "12-Month Annual Career Master", amount: 1200, mode: "UPI (GPay)", date: "Today, 11:05", billingCycle: "Annual", status: "Auto-Verified" },
-  { id: "TXN-98419", student: "Rakesh Ranjan", rollNo: "SP-2026-092", plan: "Monthly Test Series", amount: 249, mode: "Debit Card", date: "Yesterday, 19:40", billingCycle: "Monthly Subscription", status: "Auto-Verified" },
+  { id: "TXN-98421", student: "Shadab Khan", rollNo: "SP-2026-084", plan: "Monthly Test Series (Auto-Renews)", amount: 350, mode: "UPI (Paytm)", date: "Today, 14:20", billingCycle: "Monthly Subscription", status: "Auto-Verified" },
+  { id: "TXN-98420", student: "Vishnupriya S.", rollNo: "SP-2026-005", plan: "12-Month Annual Career Master", amount: 2000, mode: "UPI (GPay)", date: "Today, 11:05", billingCycle: "Annual", status: "Auto-Verified" },
+  { id: "TXN-98419", student: "Rakesh Ranjan", rollNo: "SP-2026-092", plan: "Monthly Test Series", amount: 350, mode: "Debit Card", date: "Yesterday, 19:40", billingCycle: "Monthly Subscription", status: "Auto-Verified" },
   { id: "TXN-98418", student: "Pooja Verma", rollNo: "SP-2026-033", plan: "High Court Judicial Speed Series", amount: 700, mode: "UPI (PhonePe)", date: "Yesterday, 16:15", billingCycle: "Monthly Course", status: "Auto-Verified" },
-  { id: "TXN-98417", student: "Sagar Kumar Singh", rollNo: "SP-2026-009", plan: "6-Month Pro Scholar", amount: 899, mode: "Net Banking", date: "09 Oct 2026", billingCycle: "6-Month", status: "Auto-Verified" },
-  { id: "TXN-98416", student: "Vikramaditya Roy", rollNo: "SP-2026-041", plan: "1-Day Skill Sprint", amount: 20, mode: "UPI (BHIM)", date: "08 Oct 2026", billingCycle: "1-Day Pass", status: "Auto-Verified" }
+  { id: "TXN-98417", student: "Sagar Kumar Singh", rollNo: "SP-2026-009", plan: "6-Month Pro Scholar", amount: 1100, mode: "Net Banking", date: "09 Oct 2026", billingCycle: "6-Month", status: "Auto-Verified" },
+  { id: "TXN-98416", student: "Vikramaditya Roy", rollNo: "SP-2026-041", plan: "1-Day Skill Sprint", amount: 30, mode: "UPI (BHIM)", date: "08 Oct 2026", billingCycle: "1-Day Pass", status: "Auto-Verified" }
 ];
 
 export const INITIAL_ACADEMY_COURSES = [
@@ -502,8 +518,8 @@ export const INITIAL_ACADEMY_COURSES = [
     badge: 'SSC & High Court Special',
     tagColor: 'badge-blue',
     speedTarget: '60, 80, 100 & 120 WPM',
-    duration: '3 to 6 Months',
-    fee: '₹6,000 (Complete)',
+    duration: '3 to 4 Months',
+    fee: '₹4,500 (Complete)',
     description: 'Learn English Shorthand from Basic to Advanced Level with systematic guidance and practical training. This course is specially designed for students preparing for SSC Stenographer, High Court Stenographer, Personal Assistant (PA), Private Secretary (PS) and other government stenographer examinations.',
     syllabus: [
       'Basic to Advanced Shorthand Training',
@@ -645,7 +661,7 @@ export const INITIAL_ACADEMY_COURSES = [
     tagColor: 'badge-amber',
     speedTarget: '80 & 100 WPM',
     duration: '3 Months Intensive',
-    fee: '₹249 / Month (Pass)',
+    fee: '₹350 / Month (Pass)',
     description: 'Targeted preparation for Staff Selection Commission Grade C and D skill tests with real exam audio speed fluctuations and automated error calculation.',
     syllabus: [
       'Parliamentary Speeches & Government Budget Passages',

@@ -12,6 +12,20 @@
 
 ## ✅ Completed & Verified Workflows
 
+- [x] **Official Course & Subscription Pass Pricing (Rate Sheet Update)**
+  - Synchronized exact handwritten rates from the official rate card across `PRICING_PLANS`, `INITIAL_ACADEMY_COURSES`, `LandingPage.jsx`, `CoursesPage.jsx`, `AdminPortalView.jsx`, `seed.js`, and SQLite table `courses`:
+    1. **1-Day Skill Sprint Pass** (`plan-1day`): Updated from ₹20 -> **₹30** (1 Day Unlimited Shorthand + Typing Tests with Live + Recording).
+    2. **1-Month Test Series Pass** (`plan-1mo`): Updated from ₹249 -> **₹350** (1 Month Unlimited Shorthand + Typing Tests with Live + Recording).
+    3. **6-Month Pro Scholar Pass** (`plan-6mo`): Updated from ₹899 -> **₹1,100** (6 Month Unlimited Shorthand + Typing Tests with Live + Recording).
+    4. **12-Month Annual Career Master Pass** (`plan-12mo`): Updated from ₹1,200 -> **₹2,000** (12 Month Unlimited Shorthand + Typing Tests with Live + Recording).
+    5. **Patna High Court Special Batch** (`plan-patna-hc`): **₹700 / Month** (Authentic Criminal & Civil Judgment Audio, strict court simulation).
+    6. **Jharkhand High Court Special Batch** (`plan-jharkhand-hc`): **₹700 / Month** (Dual Hindi Engine Kruti Dev 010 & Mangal, strict backspace lock).
+    7. **Basic Pitman Shorthand Course** (`course-pitman` & `plan-pitman`): Updated from ₹6,000 Complete Book -> **₹4,500**; duration updated to **3 to 4 Months Only** with Live + Recording, Homework Daily Correction.
+    8. **SSC Stenographer Grade C & D Batch** (`course-ssc`): Synchronized monthly pass fee to **₹350 / Month**.
+  - Integrated "WhatsApp Now" action buttons linking directly to Helpline `+91 9204123453` with pre-filled enrollment messages on all subscription and course cards.
+  - Updated category switcher counters (`All Options (7)`, `Test Series Passes (4)`, `Special Batches & Masterclasses (3)`).
+  - Synchronized authoritative database table `courses` in `server/data/shorthand.db` for zero payment discrepancy during order verification.
+
 - [x] **Official Institute Identity & Key Highlights (SHORTHAND PLUS)**
   - Integrated official brand statement: `SHORTHAND PLUS is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning.`
   - Added full offerings scope: `Shorthand, Typing, and Advanced Diploma in Computer Applications (ADCA), DCA, TALLY etc., designed to help students build speed, accuracy, and efficiency for career growth in Government and private sectors.`

@@ -16,6 +16,7 @@ import {
   User,
   ChevronDown, 
   MessageSquare, 
+  MessageCircle,
   Lock, 
   Phone, 
   Mail, 
@@ -1464,7 +1465,7 @@ export default function LandingPage({
                 className={`pricing-cat-btn ${pricingCategory === 'all' ? 'active' : ''}`}
                 onClick={() => setPricingCategory('all')}
               >
-                <span>All Options (6)</span>
+                <span>All Options (7)</span>
               </button>
               <button
                 type="button"
@@ -1478,7 +1479,7 @@ export default function LandingPage({
                 className={`pricing-cat-btn ${pricingCategory === 'courses' ? 'active' : ''}`}
                 onClick={() => setPricingCategory('courses')}
               >
-                <span>🎓 Special Batches & Masterclasses (2)</span>
+                <span>🎓 Special Batches & Masterclasses (3)</span>
               </button>
             </div>
           </div>
@@ -1490,7 +1491,7 @@ export default function LandingPage({
                 return ['plan-1day', 'plan-1mo', 'plan-6mo', 'plan-12mo'].includes(plan.id);
               }
               if (pricingCategory === 'courses') {
-                return ['plan-patna-hc', 'plan-pitman'].includes(plan.id);
+                return ['plan-patna-hc', 'plan-jharkhand-hc', 'plan-pitman'].includes(plan.id);
               }
               return true;
             }).map((plan) => {
@@ -1549,6 +1550,15 @@ export default function LandingPage({
                       <span>Instant Activate (₹{plan.price})</span>
                       <ArrowRight size={15} />
                     </button>
+                    <a
+                      href={`https://wa.me/919204123453?text=${encodeURIComponent(`Hello Shorthand Plus, I want to enroll in ${plan.name} (₹${plan.price} / ${plan.duration}). Please guide me with enrollment.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-plan-whatsapp w-full"
+                    >
+                      <MessageCircle size={14} className="shrink-0" />
+                      <span>WhatsApp Now</span>
+                    </a>
                     <span className="plan-guarantee-note">Instant automated activation • Zero processing fees</span>
                   </div>
                 </div>

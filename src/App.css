@@ -17496,6 +17496,13 @@ h1, h2, h3, h4, h5, h6 {
   color: #059669 !important;
   font-weight: 600 !important;
   font-size: 0.825rem !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+}
+.btn-plan-whatsapp:hover {
+  background: #ecfdf5 !important;
+  border-color: #86efac !important;
+  color: #047857 !important;
 }
 
 /* OFFLINE CENTER SECTION */
