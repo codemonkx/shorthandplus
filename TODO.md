@@ -12,6 +12,27 @@
 
 ## ✅ Completed & Verified Workflows
 
+- [x] **Teaching Methodology (शिक्षण पद्धति) — 8 Structured Steps**
+  - Title: **Teaching Methodology (शिक्षण पद्धति)**
+  - Guided by experienced faculty: **Shadab Sir (12 Years Experience)**
+  - Integrated all 8 core methodology pillars:
+    1. **Step-by-Step Learning Process** (चरणबद्ध सीखने की प्रक्रिया)
+    2. **Practical Demonstration** (व्यावहारिक प्रदर्शन)
+    3. **Daily Practice Sessions** (दैनिक अभ्यास सत्र)
+    4. **Audio Dictation** (ऑडियो डिक्टेशन)
+    5. **Regular Revision** (नियमित पुनरावृत्ति)
+    6. **Individual Doubt Clearing** (व्यक्तिगत शंका समाधान)
+    7. **Performance Tracking** (प्रदर्शन ट्रैकिंग)
+    8. **Exam Pattern-Based Practice** (परीक्षा पैटर्न आधारित अभ्यास)
+  - Synchronized across:
+    - Centralized `TEACHING_METHODOLOGY` in `src/data/mockData.js`.
+    - Section 4 (`.pillars-section`) in `src/views/LandingPage.jsx`.
+    - Dedicated FAQ entry in `src/views/LandingPage.jsx`.
+    - Dedicated Section 4.8 in `src/views/AboutAcademyView.jsx`.
+    - Dedicated methodology overview card in `src/views/CoursesPage.jsx`.
+    - Replaced obsolete faculty placeholder references with `Shadab Sir (12 Years Experience)`.
+    - Responsive card layout with step numbers and Warm Stone styling in `src/App.css`.
+
 - [x] **Target Examinations & Government Recruitment Coverage (कौन-कौन सी परीक्षाओं की तैयारी कराई जाती है?)**
   - Title: **कौन-कौन सी परीक्षाओं की तैयारी कराई जाती है?**
   - Details: `Our courses provide skill-based training for various government stenographer and typing examinations.`

@@ -8,7 +8,7 @@ import {
   Sparkles,
   Phone
 } from 'lucide-react';
-import { PRICING_PLANS, TARGET_EXAMINATIONS } from '../data/mockData';
+import { PRICING_PLANS, TARGET_EXAMINATIONS, TEACHING_METHODOLOGY } from '../data/mockData';
 
 const ACADEMY_COURSES = [
   {
@@ -550,6 +550,85 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
         </div>
       </section>
 
+      {/* 2.5 TEACHING METHODOLOGY (शिक्षण पद्धति) */}
+      <section style={{ maxWidth: 1200, margin: '1rem auto 3rem', padding: '0 1.25rem' }}>
+        <div style={{
+          background: '#ffffff',
+          border: '1px solid #e7e5e4',
+          borderRadius: '16px',
+          padding: '2rem',
+          boxShadow: '0 4px 16px rgba(0, 0, 0, 0.02)'
+        }}>
+          <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
+            <span style={{
+              fontSize: '0.72rem',
+              fontWeight: 700,
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              color: '#d97706',
+              background: '#fef3c7',
+              padding: '0.25rem 0.65rem',
+              borderRadius: '999px',
+              display: 'inline-block',
+              marginBottom: '0.35rem'
+            }}>
+              STRUCTURED PEDAGOGY • GAYA SHORTHAND CLASSES
+            </span>
+            <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#1c1917', margin: 0 }}>
+              Teaching Methodology (शिक्षण पद्धति)
+            </h2>
+            <p style={{ fontSize: '0.85rem', color: '#57534e', margin: '0.35rem auto 0', maxWidth: 660 }}>
+              Our 8-stage training methodology guided by <strong>Shadab Sir (12 Years Experience)</strong> ensures continuous speed and accuracy improvement.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '1rem'
+          }}>
+            {TEACHING_METHODOLOGY.map((m) => (
+              <div
+                key={m.step}
+                style={{
+                  background: '#faf9f6',
+                  border: '1px solid #e7e5e4',
+                  borderRadius: '12px',
+                  padding: '1.15rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.4rem'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span style={{
+                    fontSize: '0.76rem',
+                    fontWeight: 800,
+                    fontFamily: 'monospace',
+                    color: '#d97706',
+                    background: '#fffbeb',
+                    padding: '0.15rem 0.45rem',
+                    borderRadius: '6px',
+                    border: '1px solid #fde68a'
+                  }}>
+                    {m.step}
+                  </span>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#d97706' }}>
+                    {m.hindi}
+                  </span>
+                </div>
+                <div style={{ fontSize: '0.92rem', fontWeight: 700, color: '#1c1917' }}>
+                  {m.title}
+                </div>
+                <div style={{ fontSize: '0.8rem', color: '#57534e', lineHeight: 1.5 }}>
+                  {m.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 3. SUBSCRIPTION & TEST SERIES PASSES */}
       <section className="courses-pricing-passes-section" id="test-passes">
         <div className="courses-cards-container">
@@ -616,7 +695,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
           <div className="counseling-card">
             <div className="counseling-text">
               <h3>Unsure which course or speed batch is right for you?</h3>
-              <p>Speak directly with our senior instructors or Director Gagan Sir for a personalized skill assessment.</p>
+              <p>Speak directly with our senior instructors or Head Faculty Shadab Sir (12 Years Experience) for a personalized skill assessment.</p>
             </div>
             <a 
               href="tel:+919204123453"

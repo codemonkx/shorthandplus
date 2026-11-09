@@ -36,7 +36,7 @@ import {
   Briefcase,
   Globe
 } from 'lucide-react';
-import { PRICING_PLANS, TARGET_EXAMINATIONS } from '../data/mockData';
+import { PRICING_PLANS, TARGET_EXAMINATIONS, TEACHING_METHODOLOGY } from '../data/mockData';
 import AcademyIllustration from '../components/AcademyIllustration';
 import CustomSelect from '../components/CustomSelect';
 import { api, setToken } from '../services/api';
@@ -654,6 +654,10 @@ export default function LandingPage({
     {
       q: "कौन-कौन सी परीक्षाओं की तैयारी कराई जाती है? (Which exams are prepared for?)",
       a: "Our courses provide skill-based training for various government stenographer and typing examinations:\n• SSC Stenographer Grade C & D\n• Supreme Court Stenographer\n• Supreme Court SPA\n• Delhi High Court PA / SPA\n• Patna High Court Stenographer\n• Jharkhand High Court Stenographer\n• BSF Stenographer\n• CRPF Stenographer\n• Other State Government Stenographer Exams"
+    },
+    {
+      q: "What is the Teaching Methodology (शिक्षण पद्धति) at Gaya Shorthand Classes?",
+      a: "Our proven 8-step methodology includes: (1) Step-by-Step Learning Process, (2) Practical Demonstration, (3) Daily Practice Sessions, (4) Audio Dictation, (5) Regular Revision, (6) Individual Doubt Clearing, (7) Performance Tracking, and (8) Exam Pattern-Based Practice under experienced faculty Shadab Sir (12 Years Experience)."
     },
     {
       q: "What is Gaya Shorthand Classes (SHORTHAND PLUS)?",
@@ -1439,27 +1443,55 @@ export default function LandingPage({
         </div>
       </section>
 
-      {/* 4. WHY CHOOSE GAYA SHORTHAND CLASSES (PLATFORM PILLARS) */}
+      {/* 4. TEACHING METHODOLOGY (शिक्षण पद्धति) */}
       <section className="pillars-section">
         <div className="pillars-container">
-          <div className="section-header-centered">
-            <span className="badge-subheading">THE GAYA SHORTHAND ADVANTAGE</span>
+          <div className="section-header-centered" style={{ marginBottom: '2.5rem' }}>
+            <span className="badge-subheading">PROVEN PEDAGOGY • GAYA SHORTHAND CLASSES</span>
             <h2 className="section-title-large">
-              Engineered Strictly For Government Examination Rules
+              Teaching Methodology (शिक्षण पद्धति)
             </h2>
-            <p className="section-description-text">
-              Generic typing tutors fail because they ignore actual examination rules. ShorthandPlus simulates every exact requirement of official skill test centers.
+            <p className="section-description-text" style={{ maxWidth: 780, margin: '0.5rem auto 0' }}>
+              Under experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>, our systematic 8-stage methodology ensures structured skill development from fundamental theory to final examination qualification.
             </p>
           </div>
 
-          <div className="pillars-grid-cards">
-            {institutionalPillars.map((pillar, idx) => (
-              <div key={idx} className="pillar-card-box">
-                <div className="pillar-index-circle">{idx + 1}</div>
-                <h4 className="pillar-box-title">{pillar.title}</h4>
-                <p className="pillar-box-desc">{pillar.desc}</p>
-              </div>
-            ))}
+          <div className="pillars-grid-cards" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))', gap: '1.25rem' }}>
+            {TEACHING_METHODOLOGY.map((item) => {
+              const IconComp = item.icon === 'Layers' ? Layers
+                : item.icon === 'Tv' ? Tv
+                : item.icon === 'Calendar' ? Calendar
+                : item.icon === 'Headphones' ? Headphones
+                : item.icon === 'RotateCcw' ? RotateCcw
+                : item.icon === 'Users' ? Users
+                : item.icon === 'Cpu' ? Cpu
+                : ShieldCheck;
+              return (
+                <div key={item.step} className="pillar-card-box">
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                    <div className="pillar-index-circle font-mono">{item.step}</div>
+                    <div style={{
+                      width: 38,
+                      height: 38,
+                      borderRadius: 10,
+                      background: '#fffbeb',
+                      border: '1px solid #fde68a',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#d97706'
+                    }}>
+                      <IconComp size={18} strokeWidth={2.2} />
+                    </div>
+                  </div>
+                  <h4 className="pillar-box-title" style={{ marginBottom: '0.2rem' }}>{item.title}</h4>
+                  <div style={{ fontSize: '0.78rem', fontWeight: 600, color: '#d97706', marginBottom: '0.65rem' }}>
+                    {item.hindi}
+                  </div>
+                  <p className="pillar-box-desc">{item.desc}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

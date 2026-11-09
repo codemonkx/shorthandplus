@@ -234,6 +234,65 @@ export const TARGET_EXAMINATIONS = [
   }
 ];
 
+export const TEACHING_METHODOLOGY = [
+  {
+    step: "01",
+    title: "Step-by-Step Learning Process",
+    hindi: "चरणबद्ध सीखने की प्रक्रिया",
+    desc: "Systematic step-by-step guidance starting from initial Pitman shorthand theory, consonants, vowels, grammalogues, and phraseography up to 140 WPM.",
+    icon: "Layers"
+  },
+  {
+    step: "02",
+    title: "Practical Demonstration",
+    hindi: "व्यावहारिक प्रदर्शन",
+    desc: "Interactive on-screen board demonstrations of stroke curvature, light/heavy line pressure, phrase connections, and proper keyboard touch typing finger positioning.",
+    icon: "Tv"
+  },
+  {
+    step: "03",
+    title: "Daily Practice Sessions",
+    hindi: "दैनिक अभ्यास सत्र",
+    desc: "Structured daily shorthand outlines and typing drills designed to build muscle memory, finger agility, and high-speed mechanical reflexes.",
+    icon: "Calendar"
+  },
+  {
+    step: "04",
+    title: "Audio Dictation",
+    hindi: "ऑडियो डिक्टेशन",
+    desc: "Graded studio-quality audio dictations across parliamentary speeches, legal judgments, and editorial passages from 50 to 140 WPM.",
+    icon: "Headphones"
+  },
+  {
+    step: "05",
+    title: "Regular Revision",
+    hindi: "नियमित पुनरावृत्ति",
+    desc: "Continuous scheduled revision cycles for high-frequency contractions, special outlines, legal terminologies, and previous examination dictation audio.",
+    icon: "RotateCcw"
+  },
+  {
+    step: "06",
+    title: "Individual Doubt Clearing",
+    hindi: "व्यक्तिगत शंका समाधान",
+    desc: "Personalized notebook checks and one-on-one doubt resolution sessions with experienced faculty Shadab Sir to fix individual student flaws.",
+    icon: "Users"
+  },
+  {
+    step: "07",
+    title: "Performance Tracking",
+    hindi: "प्रदर्शन ट्रैकिंग",
+    desc: "AI-based algorithmic evaluation tracking individual speed (WPM), accuracy %, full vs. half mistake breakdown, and batch percentile rank.",
+    icon: "Cpu"
+  },
+  {
+    step: "08",
+    title: "Exam Pattern-Based Practice",
+    hindi: "परीक्षा पैटर्न आधारित अभ्यास",
+    desc: "Simulated exam environments with official 5-minute shorthand reading room, audio bells, backspace locking, and exact SSC/High Court marking formulas.",
+    icon: "ShieldCheck"
+  }
+];
+
 export const STENO_TESTS = [
   {
     id: 534,

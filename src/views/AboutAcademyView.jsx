@@ -18,9 +18,12 @@ import {
   Keyboard,
   Headphones,
   FileText,
-  ArrowRight
+  ArrowRight,
+  Calendar,
+  RotateCcw,
+  ShieldCheck
 } from 'lucide-react';
-import { TARGET_EXAMINATIONS } from '../data/mockData';
+import { TARGET_EXAMINATIONS, TEACHING_METHODOLOGY } from '../data/mockData';
 
 export default function AboutAcademyView({ onOpenCheckout, setCurrentTab }) {
   const keyHighlights = [
@@ -374,6 +377,103 @@ export default function AboutAcademyView({ onOpenCheckout, setCurrentTab }) {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* 4.8 TEACHING METHODOLOGY (शिक्षण पद्धति) SECTION */}
+        <section style={{ margin: '3rem 0 2.5rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <span style={{
+              display: 'inline-block',
+              fontSize: '0.74rem',
+              fontWeight: 700,
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              color: '#d97706',
+              background: '#fef3c7',
+              padding: '0.35rem 0.85rem',
+              borderRadius: '999px',
+              marginBottom: '0.5rem'
+            }}>
+              STRUCTURED PEDAGOGY • GAYA SHORTHAND CLASSES
+            </span>
+            <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#1c1917', margin: '0 0 0.5rem' }}>
+              Teaching Methodology (शिक्षण पद्धति)
+            </h2>
+            <p style={{ fontSize: '0.92rem', color: '#57534e', maxWidth: 680, margin: '0 auto' }}>
+              Led by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>, our systematic 8-stage methodology ensures complete mastery from fundamental theory to final government exam qualification.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1.25rem'
+          }}>
+            {TEACHING_METHODOLOGY.map((item) => {
+              const IconComp = item.icon === 'Layers' ? Layers
+                : item.icon === 'Tv' ? Tv
+                : item.icon === 'Calendar' ? Calendar
+                : item.icon === 'Headphones' ? Headphones
+                : item.icon === 'RotateCcw' ? RotateCcw
+                : item.icon === 'Users' ? Users
+                : item.icon === 'Cpu' ? Cpu
+                : ShieldCheck;
+              return (
+                <div 
+                  key={item.step}
+                  style={{
+                    background: '#ffffff',
+                    border: '1px solid #e7e5e4',
+                    borderRadius: '12px',
+                    padding: '1.5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    boxShadow: '0 2px 6px rgba(0, 0, 0, 0.02)'
+                  }}
+                >
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem' }}>
+                      <span style={{
+                        fontSize: '0.85rem',
+                        fontWeight: 800,
+                        fontFamily: 'monospace',
+                        color: '#d97706',
+                        background: '#fffbeb',
+                        padding: '0.2rem 0.6rem',
+                        borderRadius: '6px',
+                        border: '1px solid #fde68a'
+                      }}>
+                        STEP {item.step}
+                      </span>
+                      <div style={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: 8,
+                        background: '#faf9f6',
+                        border: '1px solid #e7e5e4',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#d97706'
+                      }}>
+                        <IconComp size={18} strokeWidth={2.2} />
+                      </div>
+                    </div>
+                    <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#1c1917', margin: '0 0 0.25rem' }}>
+                      {item.title}
+                    </h3>
+                    <div style={{ fontSize: '0.78rem', fontWeight: 600, color: '#d97706', marginBottom: '0.65rem' }}>
+                      {item.hindi}
+                    </div>
+                    <p style={{ fontSize: '0.84rem', color: '#57534e', lineHeight: 1.55, margin: 0 }}>
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
 
