@@ -7,7 +7,6 @@ import {
   ArrowRight, 
   Sparkles,
   Phone,
-  MessageCircle,
   FileText
 } from 'lucide-react';
 import { PRICING_PLANS, TARGET_EXAMINATIONS, TEACHING_METHODOLOGY } from '../data/mockData';
@@ -718,12 +717,12 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '0.45rem',
-                        padding: '0.6rem 1.15rem',
+                        padding: '0.65rem 1.25rem',
                         borderRadius: '8px',
                         background: '#047857',
                         color: '#ffffff',
                         fontWeight: 700,
-                        fontSize: '0.86rem',
+                        fontSize: '0.88rem',
                         border: 'none',
                         cursor: 'pointer',
                         boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)',
@@ -734,28 +733,6 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       <ArrowRight size={15} />
                     </button>
                   </div>
-                  <a
-                    href={`https://wa.me/919204123453?text=${encodeURIComponent(`Hello Shorthand Plus, I want to inquire and enroll in ${course.title} (${course.fee}). Please provide batch timings and admission details.`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '0.45rem',
-                      background: '#15803d',
-                      color: '#ffffff',
-                      fontWeight: 700,
-                      fontSize: '0.84rem',
-                      padding: '0.55rem 0.9rem',
-                      borderRadius: '8px',
-                      textDecoration: 'none',
-                      boxShadow: '0 2px 5px rgba(21, 128, 61, 0.2)'
-                    }}
-                  >
-                    <MessageCircle size={15} />
-                    <span>WhatsApp Now</span>
-                  </a>
                 </div>
               </div>
             ))}
@@ -1012,11 +989,11 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                         justifyContent: 'center',
                         gap: '0.45rem',
                         width: '100%',
-                        padding: '0.65rem 1rem',
+                        padding: '0.75rem 1rem',
                         borderRadius: '8px',
                         background: isPro ? '#1c1917' : '#047857',
                         color: '#ffffff',
-                        fontSize: '0.86rem',
+                        fontSize: '0.88rem',
                         fontWeight: 700,
                         border: 'none',
                         cursor: 'pointer',
@@ -1027,29 +1004,6 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       <Crown size={15} color={isPro ? '#f59e0b' : '#fde68a'} />
                       <span>Activate with UPI (₹{plan.price})</span>
                     </button>
-                    <a
-                      href={`https://wa.me/919204123453?text=${encodeURIComponent(`Hello Shorthand Plus, I want to enroll in ${plan.name} (₹${plan.price} / ${plan.duration}). Please guide me with enrollment.`)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '0.45rem',
-                        background: '#15803d',
-                        color: '#ffffff',
-                        fontWeight: 700,
-                        fontSize: '0.84rem',
-                        padding: '0.55rem 1rem',
-                        borderRadius: '8px',
-                        textDecoration: 'none',
-                        boxShadow: '0 2px 5px rgba(21, 128, 61, 0.2)',
-                        transition: 'all 0.15s ease'
-                      }}
-                    >
-                      <MessageCircle size={15} />
-                      <span>WhatsApp Now</span>
-                    </a>
                   </div>
                 </div>
               );
@@ -1110,27 +1064,6 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
             >
               <Phone size={15} color="#f59e0b" />
               <span>Call Helpline: +91 9204123453</span>
-            </a>
-            <a 
-              href="https://wa.me/919204123453?text=Hello%20Shadab%20Sir%2C%20I%20need%20academic%20counseling%20for%20shorthand%20and%20typing%20courses."
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                padding: '0.75rem 1.4rem',
-                borderRadius: '8px',
-                background: '#15803d',
-                color: '#ffffff',
-                fontWeight: 700,
-                fontSize: '0.88rem',
-                textDecoration: 'none',
-                boxShadow: '0 2px 8px rgba(21, 128, 61, 0.25)'
-              }}
-            >
-              <MessageCircle size={15} />
-              <span>WhatsApp Counseling</span>
             </a>
           </div>
         </div>

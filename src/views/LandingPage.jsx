@@ -660,31 +660,6 @@ export default function LandingPage({
                     <Sparkles size={14} />
                     <span>Enroll / Book 3 Demos</span>
                   </button>
-
-                  <a
-                    href={`https://wa.me/919204123453?text=${encodeURIComponent(c.whatsappMsg)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      width: '100%',
-                      background: '#ffffff',
-                      color: '#25D366',
-                      border: '1.5px solid #25D366',
-                      borderRadius: '8px',
-                      padding: '0.65rem',
-                      fontSize: '0.85rem',
-                      fontWeight: 700,
-                      textDecoration: 'none',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '6px',
-                      boxSizing: 'border-box'
-                    }}
-                  >
-                    <MessageCircle size={15} />
-                    <span>WhatsApp Inquiry</span>
-                  </a>
                 </div>
 
               </div>
