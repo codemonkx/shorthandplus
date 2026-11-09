@@ -12,6 +12,12 @@
 
 ## ✅ Completed & Verified Workflows
 
+- [x] **Course #1: English Shorthand (Pitman Shorthand)**
+  - Updated title: `English Shorthand (Pitman Shorthand)`.
+  - Added full comprehensive course description tailored for SSC Stenographer, High Court Stenographer, PA, PS, and government exams.
+  - Added all 11 curriculum features: Basic to Advanced Shorthand Training, Pitman Shorthand Theory, Consonants and Vowels, Grammalogues and Phraseography, Short Forms and Special Rules, Word Formation and Sentence Practice, Daily Dictation Practice, Speed Development (60, 80, 100, 120 WPM), Transcription Practice, Exam-Oriented Mock Tests, and Accuracy Improvement Techniques.
+  - Propagated across `src/data/mockData.js`, `src/views/CoursesPage.jsx`, `src/views/LandingPage.jsx`, and SQLite `courses` table.
+
 - [x] **National All-India Mock Test Leaderboard & Rankings**
   - Built dedicated `LeaderboardView.jsx` with Top 3 Champions Podium (Gold #1, Silver #2, Bronze #3), speed & accuracy metrics, and category filtering (All-India, Steno Dictations, Typing Studio).
   - Implemented `GET /api/tests/leaderboard` in backend joining user profiles with real test scores.
