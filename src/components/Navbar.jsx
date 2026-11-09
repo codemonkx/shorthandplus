@@ -174,7 +174,7 @@ export default function Navbar({
           })}
         </nav>
 
-        {/* Right Section: Admission, Pay Fee, Student Login / User Dropdown, Admin */}
+        {/* Right Section: Admission, Student Login / User Dropdown */}
         <div className="shorthand-nav-actions">
           {/* 1. Admission Button (Emerald Pill) */}
           <button 
@@ -187,18 +187,7 @@ export default function Navbar({
             <span>Admission</span>
           </button>
 
-          {/* 2. Pay Fee Button (White Pill) */}
-          <button 
-            type="button"
-            className="btn-pill-payfee"
-            onClick={() => onOpenCheckout ? onOpenCheckout() : null}
-            title="Online Fee Payment & Test Passes"
-          >
-            <CreditCard size={13} />
-            <span>Pay Fee</span>
-          </button>
-
-          {/* 3. Student Login Panel or Logged In User State */}
+          {/* 2. Student Login Panel or Logged In User State */}
           {!user ? (
             <button 
               type="button"
@@ -325,19 +314,6 @@ export default function Navbar({
             </div>
           )}
 
-          {/* 4. Admin Button (Golden Pill from Reference) */}
-          {(!user || user?.role !== 'admin') && (
-            <button 
-              type="button"
-              className="btn-pill-admin"
-              onClick={() => onOpenAuth ? onOpenAuth('admin') : handleNavClick('admin')}
-              title="Director & Faculty Admin Console"
-            >
-              <ShieldCheck size={13} color="#d97706" />
-              <span>Admin</span>
-            </button>
-          )}
-
           {/* Mobile Menu Hamburger */}
           <button 
             className="mobile-menu-burger"
@@ -364,7 +340,7 @@ export default function Navbar({
               </button>
             ))}
 
-            {(!user || user?.role === 'admin') && (
+            {user?.role === 'admin' && (
               <button
                 onClick={() => handleNavClick('admin')}
                 className={`mobile-nav-link-row ${currentTab === 'admin' ? 'active' : ''}`}
@@ -397,29 +373,6 @@ export default function Navbar({
                 >
                   <FileText size={15} color="#fde68a" />
                   <span>Online Admission Form</span>
-                </button>
-
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    if (onOpenCheckout) onOpenCheckout();
-                  }}
-                  className="btn-pill-fee w-full"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '6px',
-                    padding: '10px',
-                    background: '#ffffff',
-                    color: '#1c1917',
-                    border: '1px solid #e7e5e4',
-                    borderRadius: '8px',
-                    fontWeight: 600
-                  }}
-                >
-                  <CreditCard size={15} className="text-emerald-600" />
-                  <span>Pay Fees Online</span>
                 </button>
 
                 <button
