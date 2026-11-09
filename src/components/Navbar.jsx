@@ -174,32 +174,35 @@ export default function Navbar({
           })}
         </nav>
 
-        {/* Right Section: Admission, Student Login / User Dropdown */}
-        <div className="shorthand-nav-actions">
-          {/* 1. Admission Button (Emerald Pill) */}
-          <button 
-            type="button"
-            className="btn-pill-admission"
-            onClick={() => onOpenAdmission ? onOpenAdmission() : null}
-            title="Online Admission Form (Session 2026-27)"
-          >
-            <GraduationCap size={13} color="#fde68a" />
-            <span>Admission</span>
-          </button>
-
-          {/* 2. Student Login Panel or Logged In User State */}
+        {/* Right Section: Student Login / User Dropdown */}
+        <div className="shorthand-nav-actions" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+          {/* Student Login Panel or Logged In User State */}
           {!user ? (
             <button 
               type="button"
               className="btn-pill-portal"
               onClick={() => onOpenAuth ? onOpenAuth('student') : handleNavClick('dashboard')}
               title="Student Login Panel"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                padding: '0.45rem 1rem',
+                borderRadius: '9999px',
+                background: '#1c1917',
+                color: '#ffffff',
+                fontSize: '0.86rem',
+                fontWeight: 700,
+                border: 'none',
+                cursor: 'pointer',
+                boxShadow: '0 2px 8px rgba(28, 25, 23, 0.2)'
+              }}
             >
-              <LogIn size={13} />
+              <LogIn size={14} />
               <span>Student Login</span>
             </button>
           ) : (
-            <div className="logged-user-actions" ref={userMenuRef}>
+            <div className="logged-user-actions" ref={userMenuRef} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <button 
                 className="btn-pill-portal"
                 onClick={() => handleNavClick(user?.role === 'admin' ? 'admin' : 'dashboard')}
@@ -352,29 +355,6 @@ export default function Navbar({
 
             {!user && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px', paddingTop: '12px', borderTop: '1px solid #e7e5e4' }}>
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    if (onOpenAdmission) onOpenAdmission();
-                  }}
-                  className="btn-pill-admission w-full"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '6px',
-                    padding: '10px',
-                    background: '#047857',
-                    color: '#ffffff',
-                    border: 'none',
-                    borderRadius: '8px',
-                    fontWeight: 700
-                  }}
-                >
-                  <FileText size={15} color="#fde68a" />
-                  <span>Online Admission Form</span>
-                </button>
-
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);

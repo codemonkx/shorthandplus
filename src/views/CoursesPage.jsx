@@ -272,7 +272,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                 Official Academic Curriculum
               </span>
               <h2 style={{ fontSize: '1.25rem', fontWeight: 850, color: '#1c1917', margin: '0.15rem 0 0' }}>
-                Course List — Website / Admission Form
+                Course List & Official Programs
               </h2>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
@@ -339,27 +339,6 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                 }}
               >
                 Diplomas (ADCA/DCA)
-              </button>
-              <button
-                type="button"
-                onClick={() => onOpenAdmission ? onOpenAdmission() : null}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.45rem',
-                  background: '#047857',
-                  color: '#ffffff',
-                  border: 'none',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '8px',
-                  fontSize: '0.84rem',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)'
-                }}
-              >
-                <FileText size={14} color="#fde68a" />
-                <span>Fill Online Admission Form</span>
               </button>
             </div>
           </div>

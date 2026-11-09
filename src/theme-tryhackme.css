@@ -175,7 +175,7 @@ hr {
   max-width: 1340px !important;
   margin: 0 auto !important;
   height: 64px !important;
-  padding: 0 0.85rem 0 1.15rem !important;
+  padding: 0 1.25rem !important;
   display: flex !important;
   flex-wrap: nowrap !important;
   align-items: center !important;
@@ -260,7 +260,7 @@ hr {
   position: relative !important;
   display: flex !important;
   align-items: center !important;
-  gap: 0.15rem !important;
+  gap: 0.35rem !important;
 }
 
 .nav-sliding-pill {
@@ -280,9 +280,9 @@ hr {
   z-index: 2 !important;
   display: inline-flex !important;
   align-items: center !important;
-  padding: 0.38rem 0.85rem !important;
+  padding: 0.42rem 1.05rem !important;
   border-radius: 9999px !important;
-  font-size: 0.88rem !important;
+  font-size: 0.92rem !important;
   font-weight: 500 !important;
   color: #78716c !important;
   background: transparent !important;
@@ -304,7 +304,7 @@ hr {
 .shorthand-nav-actions {
   display: flex !important;
   align-items: center !important;
-  gap: 0.45rem !important;
+  gap: 0.75rem !important;
   flex-shrink: 0 !important;
 }
 
@@ -1083,11 +1083,17 @@ input::placeholder, textarea::placeholder {
 .courses-hero-badge,
 .classes-hero-badge,
 .welcome-status-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  width: auto !important;
+  padding: 0.35rem 0.95rem !important;
+  border-radius: 9999px !important;
   background: #ffffff !important;
   border: 1px solid #e7e5e4 !important;
   color: #1c1917 !important;
   box-shadow: 0 1px 3px rgba(28, 25, 23, 0.03) !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
 }
 
 .pulse-dot-green,

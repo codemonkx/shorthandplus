@@ -238,16 +238,30 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
     <div className="classes-page-root">
       
       {/* 1. HERO HEADER */}
-      <div className="classes-hero-banner" style={{ paddingTop: '1rem' }}>
-        <div className="classes-hero-container">
-          <div className="classes-hero-badge">
-            <Sparkles size={14} className="text-amber-500" />
-            <span>ACADEMY BATCH TIMINGS & SCHEDULE • ESTD. 2012</span>
+      <div className="classes-hero-banner" style={{ padding: '1rem 1.25rem 2rem', textAlign: 'center' }}>
+        <div className="classes-hero-container" style={{ maxWidth: '860px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.85rem' }}>
+            <div className="classes-hero-badge" style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.45rem',
+              padding: '0.35rem 0.95rem',
+              borderRadius: '9999px',
+              background: '#ffffff',
+              border: '1px solid #e7e5e4',
+              color: '#1c1917',
+              fontSize: '0.78rem',
+              fontWeight: 700,
+              boxShadow: '0 1px 3px rgba(28, 25, 23, 0.03)'
+            }}>
+              <Sparkles size={14} className="text-amber-500" />
+              <span>ACADEMY BATCH TIMINGS & SCHEDULE • ESTD. 2012</span>
+            </div>
           </div>
-          <h1 className="classes-hero-title">
+          <h1 className="classes-hero-title" style={{ fontSize: 'clamp(2rem, 3.2vw, 2.6rem)', fontWeight: 850, margin: '0 0 0.75rem', letterSpacing: '-0.025em', color: '#1c1917' }}>
             Classroom Batches, Timetable & Live Dictations
           </h1>
-          <p className="classes-hero-desc">
+          <p className="classes-hero-desc" style={{ fontSize: '1rem', color: '#57534e', lineHeight: 1.6, margin: '0 auto 1.5rem', maxWidth: '780px' }}>
             Attend daily in-person classes at our Gaya academy or access live broadcast Zoom dictations from anywhere. Daily batches guided by <strong>Shadab Sir (12 Years Experience)</strong> spanning 6:00 AM to 8:00 PM.
           </p>
 

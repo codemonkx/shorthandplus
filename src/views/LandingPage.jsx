@@ -191,10 +191,10 @@ export default function LandingPage({
       badgeColor: "#0284c7",
       title: "5. Computer Diplomas (ADCA / DCA)",
       subtitle: "6 to 12 Months Recognized Diplomas",
-      price: "Affordable",
-      originalPrice: null,
+      price: "₹1,200",
+      originalPrice: "₹1,500",
       duration: "6 / 12 Months",
-      speed: "Complete IT Skills",
+      speed: "IT Skills + Typing",
       highlights: [
         "DCA (6 Months) & ADCA (12 Months)",
         "MS Office Suite (Word, Excel, PowerPoint)",
@@ -446,80 +446,55 @@ export default function LandingPage({
                 </div>
 
                 {/* Action Buttons in Card */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                  <a
+                    href="https://wa.me/919204123453?text=Hello%20Shadab%20Sir,%20I%20want%20to%20attend%203%20demo%20classes%20at%20Gaya%20Shorthand%20Classes."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      background: '#15803d',
+                      color: '#ffffff',
+                      border: 'none',
+                      borderRadius: '8px',
+                      padding: '0.75rem',
+                      fontSize: '0.88rem',
+                      fontWeight: 700,
+                      textDecoration: 'none',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '6px',
+                      boxShadow: '0 2px 6px rgba(21, 128, 61, 0.2)'
+                    }}
+                  >
+                    <MessageCircle size={15} />
+                    <span>WhatsApp Us</span>
+                  </a>
+
                   <button
                     type="button"
                     onClick={() => {
-                      if (onOpenAdmission) onOpenAdmission();
+                      if (onOpenAuth) onOpenAuth('student');
                     }}
                     style={{
-                      width: '100%',
                       background: '#1c1917',
                       color: '#ffffff',
                       border: 'none',
                       borderRadius: '8px',
-                      padding: '0.8rem',
-                      fontSize: '0.92rem',
+                      padding: '0.75rem',
+                      fontSize: '0.88rem',
                       fontWeight: 700,
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      gap: '8px'
+                      gap: '6px',
+                      boxShadow: '0 2px 6px rgba(28, 25, 23, 0.2)'
                     }}
                   >
-                    <FileText size={16} color="#fbbf24" />
-                    <span>Fill Online Admission Form 2026</span>
+                    <LogIn size={15} />
+                    <span>Student Login</span>
                   </button>
-
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-                    <a
-                      href="https://wa.me/919204123453?text=Hello%20Shadab%20Sir,%20I%20want%20to%20attend%203%20demo%20classes%20at%20Gaya%20Shorthand%20Classes."
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        background: '#25D366',
-                        color: '#ffffff',
-                        border: 'none',
-                        borderRadius: '8px',
-                        padding: '0.7rem',
-                        fontSize: '0.85rem',
-                        fontWeight: 700,
-                        textDecoration: 'none',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '6px'
-                      }}
-                    >
-                      <MessageCircle size={15} />
-                      <span>WhatsApp Us</span>
-                    </a>
-
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (onOpenAuth) onOpenAuth('student');
-                      }}
-                      style={{
-                        background: '#ffffff',
-                        color: '#1c1917',
-                        border: '1px solid #d6d3d1',
-                        borderRadius: '8px',
-                        padding: '0.7rem',
-                        fontSize: '0.85rem',
-                        fontWeight: 700,
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '6px'
-                      }}
-                    >
-                      <LogIn size={15} />
-                      <span>Student Login</span>
-                    </button>
-                  </div>
                 </div>
 
               </div>
@@ -558,40 +533,42 @@ export default function LandingPage({
             </p>
           </div>
 
-          {/* 5 Course Cards Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
-            {coursesList.map((c) => (
+          {/* Top Row: 3 Core Shorthand & Typing Foundation Batches */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
+            {coursesList.slice(0, 3).map((c) => (
               <div 
                 key={c.id}
                 style={{
-                  background: '#faf9f6',
+                  background: '#ffffff',
                   border: '1px solid #e7e5e4',
-                  borderRadius: '14px',
-                  padding: '1.5rem',
+                  borderRadius: '16px',
+                  padding: '1.75rem',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
-                  transition: 'transform 0.2s ease, border-color 0.2s ease'
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
+                  transition: 'transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-3px)';
                   e.currentTarget.style.borderColor = '#d6d3d1';
+                  e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.06)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.borderColor = '#e7e5e4';
+                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.03)';
                 }}
               >
                 <div>
                   {/* Badge */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem' }}>
                     <span style={{ 
                       fontSize: '0.72rem', 
                       fontWeight: 800, 
                       color: c.badgeColor, 
-                      background: '#ffffff', 
-                      padding: '3px 9px', 
+                      background: '#f5f5f4', 
+                      padding: '4px 10px', 
                       borderRadius: '999px',
                       border: '1px solid #e7e5e4'
                     }}>
@@ -603,41 +580,41 @@ export default function LandingPage({
                   </div>
 
                   {/* Course Title */}
-                  <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: '#1c1917', margin: '0 0 4px' }}>
+                  <h3 style={{ fontSize: '1.22rem', fontWeight: 800, color: '#1c1917', margin: '0 0 6px' }}>
                     {c.title}
                   </h3>
-                  <p style={{ fontSize: '0.85rem', color: '#57534e', margin: '0 0 1rem' }}>
+                  <p style={{ fontSize: '0.86rem', color: '#57534e', margin: '0 0 1.25rem', lineHeight: 1.5 }}>
                     {c.subtitle}
                   </p>
 
                   {/* Pricing Box */}
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '1.25rem', paddingBottom: '1rem', borderBottom: '1px solid #e7e5e4' }}>
-                    <span style={{ fontSize: '1.8rem', fontWeight: 850, color: '#1c1917' }}>
+                    <span style={{ fontSize: '1.85rem', fontWeight: 850, color: '#1c1917', fontFamily: 'monospace' }}>
                       {c.price}
                     </span>
                     {c.originalPrice && (
-                      <span style={{ fontSize: '0.95rem', color: '#a8a29e', textDecoration: 'line-through' }}>
+                      <span style={{ fontSize: '1rem', color: '#dc2626', textDecoration: 'line-through', fontWeight: 600 }}>
                         {c.originalPrice}
                       </span>
                     )}
                     <span style={{ fontSize: '0.78rem', color: '#78716c', fontWeight: 600, marginLeft: 'auto' }}>
-                      Speed: {c.speed}
+                      {c.speed.includes('WPM') ? `Speed: ${c.speed}` : c.speed}
                     </span>
                   </div>
 
                   {/* Highlights List */}
                   <ul style={{ listStyle: 'none', margin: '0 0 1.5rem', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {c.highlights.map((h, i) => (
-                      <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.84rem', color: '#44403c', lineHeight: 1.35 }}>
-                        <Check size={14} color="#16a34a" style={{ flexShrink: 0, marginTop: '2px' }} />
+                      <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.84rem', color: '#44403c', lineHeight: 1.4 }}>
+                        <Check size={15} color="#047857" style={{ flexShrink: 0, marginTop: '2px' }} />
                         <span>{h}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Card Action Buttons */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {/* Card Action Button */}
+                <div>
                   <button
                     type="button"
                     onClick={() => handleEnrollClick(c.title)}
@@ -654,14 +631,126 @@ export default function LandingPage({
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      gap: '6px'
+                      gap: '6px',
+                      boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)',
+                      transition: 'all 0.15s ease'
                     }}
                   >
-                    <Sparkles size={14} />
+                    <Sparkles size={14} color="#fde68a" />
                     <span>Enroll / Book 3 Demos</span>
                   </button>
                 </div>
+              </div>
+            ))}
+          </div>
 
+          {/* Bottom Row: 2 Specialized Examination & Certification Programs */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
+            {coursesList.slice(3, 5).map((c) => (
+              <div 
+                key={c.id}
+                style={{
+                  background: '#ffffff',
+                  border: '1px solid #e7e5e4',
+                  borderRadius: '16px',
+                  padding: '1.75rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
+                  transition: 'transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-3px)';
+                  e.currentTarget.style.borderColor = '#d6d3d1';
+                  e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.06)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.borderColor = '#e7e5e4';
+                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.03)';
+                }}
+              >
+                <div>
+                  {/* Badge */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem' }}>
+                    <span style={{ 
+                      fontSize: '0.72rem', 
+                      fontWeight: 800, 
+                      color: c.badgeColor, 
+                      background: '#f5f5f4', 
+                      padding: '4px 10px', 
+                      borderRadius: '999px',
+                      border: '1px solid #e7e5e4'
+                    }}>
+                      {c.badge}
+                    </span>
+                    <span style={{ fontSize: '0.78rem', color: '#78716c', fontWeight: 600 }}>
+                      {c.duration}
+                    </span>
+                  </div>
+
+                  {/* Course Title */}
+                  <h3 style={{ fontSize: '1.22rem', fontWeight: 800, color: '#1c1917', margin: '0 0 6px' }}>
+                    {c.title}
+                  </h3>
+                  <p style={{ fontSize: '0.86rem', color: '#57534e', margin: '0 0 1.25rem', lineHeight: 1.5 }}>
+                    {c.subtitle}
+                  </p>
+
+                  {/* Pricing Box */}
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '1.25rem', paddingBottom: '1rem', borderBottom: '1px solid #e7e5e4' }}>
+                    <span style={{ fontSize: '1.85rem', fontWeight: 850, color: '#1c1917', fontFamily: 'monospace' }}>
+                      {c.price}
+                    </span>
+                    {c.originalPrice && (
+                      <span style={{ fontSize: '1rem', color: '#dc2626', textDecoration: 'line-through', fontWeight: 600 }}>
+                        {c.originalPrice}
+                      </span>
+                    )}
+                    <span style={{ fontSize: '0.78rem', color: '#78716c', fontWeight: 600, marginLeft: 'auto' }}>
+                      {c.speed.includes('WPM') ? `Speed: ${c.speed}` : c.speed}
+                    </span>
+                  </div>
+
+                  {/* Highlights List */}
+                  <ul style={{ listStyle: 'none', margin: '0 0 1.5rem', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    {c.highlights.map((h, i) => (
+                      <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.84rem', color: '#44403c', lineHeight: 1.4 }}>
+                        <Check size={15} color="#047857" style={{ flexShrink: 0, marginTop: '2px' }} />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Card Action Button */}
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => handleEnrollClick(c.title)}
+                    style={{
+                      width: '100%',
+                      background: '#047857',
+                      color: '#ffffff',
+                      border: 'none',
+                      borderRadius: '8px',
+                      padding: '0.75rem',
+                      fontSize: '0.88rem',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '6px',
+                      boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)',
+                      transition: 'all 0.15s ease'
+                    }}
+                  >
+                    <Sparkles size={14} color="#fde68a" />
+                    <span>Enroll / Book 3 Demos</span>
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -1335,84 +1424,74 @@ export default function LandingPage({
 
           {/* Bottom Academy CTA Banner */}
           <div style={{ 
-            background: 'linear-gradient(135deg, #1c1917 0%, #292524 100%)', 
+            background: '#ffffff', 
+            border: '1.5px solid #fed7aa',
             borderRadius: '16px', 
             padding: '2.5rem 2rem', 
-            color: '#faf9f6',
+            color: '#1c1917',
             textAlign: 'center',
-            boxShadow: '0 8px 30px rgba(0,0,0,0.12)'
+            boxShadow: '0 8px 30px rgba(217, 119, 6, 0.06)'
           }}>
-            <h3 style={{ fontSize: 'clamp(1.4rem, 2.2vw, 1.9rem)', fontWeight: 850, margin: '0 0 0.5rem', color: '#ffffff' }}>
+            <span style={{
+              display: 'inline-block',
+              fontSize: '0.74rem',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              color: '#d97706',
+              marginBottom: '0.4rem'
+            }}>
+              ESTD. 2012 • GAYA SHORTHAND CLASSES
+            </span>
+            <h3 style={{ fontSize: 'clamp(1.4rem, 2.2vw, 1.9rem)', fontWeight: 850, margin: '0 0 0.5rem', color: '#1c1917' }}>
               Learn Today, Lead Tomorrow!
             </h3>
-            <p style={{ fontSize: '1rem', color: '#d6d3d1', maxWidth: '600px', margin: '0 auto 1.5rem', lineHeight: 1.5 }}>
-              Begin your government stenographer journey with <strong>3 Free Demo Classes</strong> at Gaya Shorthand Classes. No prior shorthand experience needed.
+            <p style={{ fontSize: '1rem', color: '#57534e', maxWidth: '640px', margin: '0 auto 1.5rem', lineHeight: 1.6 }}>
+              Begin your government stenographer journey with <strong>3 Free Demo Classes</strong> at Gaya Shorthand Classes. Guided by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', justifyContent: 'center' }}>
-              <button
-                type="button"
-                onClick={() => {
-                  fireConfetti();
-                  if (onOpenAdmission) onOpenAdmission();
-                }}
+              <a
+                href="tel:9204123453"
                 style={{
-                  background: '#047857',
+                  background: '#1c1917',
                   color: '#ffffff',
                   border: 'none',
-                  borderRadius: '10px',
-                  padding: '0.8rem 1.6rem',
-                  fontSize: '0.95rem',
+                  borderRadius: '8px',
+                  padding: '0.75rem 1.4rem',
+                  fontSize: '0.92rem',
                   fontWeight: 700,
-                  cursor: 'pointer',
+                  textDecoration: 'none',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '8px'
+                  gap: '8px',
+                  boxShadow: '0 2px 8px rgba(28, 25, 23, 0.25)'
                 }}
               >
-                <Sparkles size={16} />
-                <span>Fill Online Admission Form</span>
-              </button>
+                <Phone size={16} color="#f59e0b" />
+                <span>Call Helpline: +91 9204123453</span>
+              </a>
 
               <a
                 href="https://wa.me/919204123453?text=Hello%20Gaya%20Shorthand%20Classes,%20I%20want%20to%20attend%203%20free%20demo%20classes."
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  background: '#25D366',
+                  background: '#15803d',
                   color: '#ffffff',
                   border: 'none',
-                  borderRadius: '10px',
-                  padding: '0.8rem 1.4rem',
-                  fontSize: '0.95rem',
+                  borderRadius: '8px',
+                  padding: '0.75rem 1.4rem',
+                  fontSize: '0.92rem',
                   fontWeight: 700,
                   textDecoration: 'none',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '8px'
+                  gap: '8px',
+                  boxShadow: '0 2px 8px rgba(21, 128, 61, 0.25)'
                 }}
               >
-                <MessageCircle size={17} />
+                <MessageCircle size={16} />
                 <span>Chat on WhatsApp</span>
-              </a>
-
-              <a
-                href="tel:9204123453"
-                style={{
-                  background: 'transparent',
-                  color: '#faf9f6',
-                  border: '1.5px solid #78716c',
-                  borderRadius: '10px',
-                  padding: '0.8rem 1.25rem',
-                  fontSize: '0.92rem',
-                  fontWeight: 600,
-                  textDecoration: 'none',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}
-              >
-                <Phone size={16} />
-                <span>Call: 9204123453</span>
               </a>
             </div>
           </div>
