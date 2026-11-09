@@ -933,8 +933,8 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 <Building size={24} className="text-royal-blue" />
               </div>
               <div>
-                <h4>Join Offline Classroom at Gaya Center</h4>
-                <p>Near Railway Station / Tower Chowk, Gaya, Bihar - 823001 • Batches run daily Monday to Saturday</p>
+                <h4>Join Offline Classroom at Gaya Shorthand Classes</h4>
+                <p>Gaya College More, Opp. Cyber Thana, Gaya, Bihar • Batches run daily Monday to Saturday</p>
               </div>
             </div>
             <a 

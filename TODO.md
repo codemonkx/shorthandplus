@@ -12,6 +12,23 @@
 
 ## ✅ Completed & Verified Workflows
 
+- [x] **Institute Highlights & Official Address (GAYA SHORTHAND CLASSES)**
+  - Institute: **GAYA SHORTHAND CLASSES (SHORTHAND PLUS)**
+  - Official Motto & Slogan: **"Learn Today, Lead Tomorrow!"**
+  - Experienced Head Faculty: **Shadab Sir (12 Years Experience)**
+  - Exact Official Address: **Gaya College More, Opp. Cyber Thana, Gaya, Bihar**
+  - Official Contact: **9204123453** (+91 9204123453) | Website: **https://stenoplus.in** | Email: **stenoplus.in@gmail.com**
+  - Integrated all 8 Institute Highlights across `LandingPage.jsx`, `AboutAcademyView.jsx`, `Footer.jsx`, and `ClassesPage.jsx`:
+    1. Experienced Faculty – Shadab Sir (12 Years Experience)
+    2. Basic to Advanced Training (50–140 WPM Speed in Shorthand)
+    3. Audio-Visual Classroom (Digital presentations & on-screen interactive guidance)
+    4. Online Typing & Accuracy Software (Kruti Dev, Mangal & English QWERTY engines)
+    5. Regular Dictation Practice (Daily progressive parliamentary, editorial & court judgments)
+    6. Exam-Oriented Mock Tests (Exact SSC & High Court simulation with backspace lock & 5-min clock)
+    7. Individual Performance Monitoring (AI-based real-time evaluation & word error scoring)
+    8. SSC, High Court and Other Government Exam Preparation (Targeted batches for Court, SSC & PS roles)
+  - Synchronized across `LandingPage.jsx`, `AboutAcademyView.jsx`, `Footer.jsx`, `ClassesPage.jsx`, `LegalPolicyModal.jsx`, and `emailService.js`.
+
 - [x] **Official Course & Subscription Pass Pricing (Rate Sheet Update)**
   - Synchronized exact handwritten rates from the official rate card across `PRICING_PLANS`, `INITIAL_ACADEMY_COURSES`, `LandingPage.jsx`, `CoursesPage.jsx`, `AdminPortalView.jsx`, `seed.js`, and SQLite table `courses`:
     1. **1-Day Skill Sprint Pass** (`plan-1day`): Updated from ₹20 -> **₹30** (1 Day Unlimited Shorthand + Typing Tests with Live + Recording).

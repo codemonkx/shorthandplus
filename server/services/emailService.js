@@ -103,7 +103,7 @@ export async function sendPasswordResetEmail({ toEmail, code, candidateName = 'C
           </div>
           <div class="footer">
             SHORTHAND PLUS & Gaya Shorthand Classes<br />
-            Near Railway Station, Gaya, Bihar 823001 | Support: stenoplus.in@gmail.com | Website: https://stenoplus.in
+            Gaya College More, Opp. Cyber Thana, Gaya, Bihar | Support: stenoplus.in@gmail.com | Website: https://stenoplus.in
           </div>
         </div>
       </body>

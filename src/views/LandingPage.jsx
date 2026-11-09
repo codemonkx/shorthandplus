@@ -211,29 +211,44 @@ const ADMISSION_COURSES = [
 
 const KEY_HIGHLIGHTS = [
   {
+    icon: Award,
+    title: "Experienced Faculty – Shadab Sir (12 Years Experience)",
+    desc: "Personalized mentorship and proven speed-building techniques by Shadab Sir with 12+ years of dedicated coaching for SSC and High Court steno aspirants."
+  },
+  {
+    icon: Layers,
+    title: "Basic to Advanced Training",
+    desc: "Systematic step-by-step curriculum starting from initial theory, consonants and vowels up to 50–140 WPM speed mastery."
+  },
+  {
     icon: Tv,
-    title: "Audio-Visual Learning",
+    title: "Audio-Visual Classroom",
     desc: "Classes are supported with digital presentations, on-screen guidance, and interactive visuals to make learning easy and engaging."
   },
   {
+    icon: Keyboard,
+    title: "Online Typing & Accuracy Software",
+    desc: "Modern typing studio supporting English (QWERTY), Hindi Kruti Dev 010, and Mangal Inscript with real-time accuracy scoring and error analysis."
+  },
+  {
+    icon: Headphones,
+    title: "Regular Dictation Practice",
+    desc: "Daily progressive audio dictations covering parliamentary debates, editorial passages, and high court criminal/civil judgments."
+  },
+  {
+    icon: FileText,
+    title: "Exam-Oriented Mock Tests",
+    desc: "Full exam simulation with 5-minute reading clock, audio warnings, backspace lock option, and strict full/half mistake formula scoring."
+  },
+  {
     icon: Cpu,
-    title: "AI-Based Dictation Practice",
-    desc: "To improve shorthand and typing accuracy, the institute uses artificial intelligence tools that simulate real dictation scenarios and provide instant feedback."
-  },
-  {
-    icon: Users,
-    title: "Expert Trainers",
-    desc: "Experienced faculty guide students with step-by-step techniques for developing speed in typing and shorthand, tailored to each learner’s pace."
-  },
-  {
-    icon: BookOpen,
-    title: "Comprehensive Curriculum",
-    desc: "Alongside shorthand and typing, the ADCA program covers essential computer skills such as MS Office, Internet Applications, Tally, and more."
+    title: "Individual Performance Monitoring",
+    desc: "AI-based evaluation tools that simulate real dictation scenarios, provide instant feedback, and track individual speed and accuracy progression."
   },
   {
     icon: Briefcase,
-    title: "Career-Oriented Training",
-    desc: "The institute focuses on preparing students for stenographer exams, data entry jobs, clerical roles, and other computer-based career opportunities."
+    title: "SSC, High Court and Other Government Exam Preparation",
+    desc: "Specialized targeted batches for SSC Steno Grade C & D, Patna High Court, Jharkhand High Court, Civil Courts, PA, PS, and clerical recruitment."
   }
 ];
 
@@ -682,7 +697,7 @@ export default function LandingPage({
             <div className="hero-left-column">
               <div className="hero-status-pill">
                 <span className="pulse-dot-green" />
-                <span>SHORTHAND PLUS • PROFESSIONAL TRAINING CENTER (OFFLINE / ONLINE)</span>
+                <span>GAYA SHORTHAND CLASSES • LEARN TODAY, LEAD TOMORROW!</span>
               </div>
 
               <h1 className="hero-main-title">
@@ -690,7 +705,7 @@ export default function LandingPage({
               </h1>
 
               <p className="hero-main-description">
-                <strong>SHORTHAND PLUS</strong> is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning. We provide basic to advance 50 WPM to 140 WPM speed in shorthand with AI-based dictation and real-time evaluation.
+                <strong>GAYA SHORTHAND CLASSES (SHORTHAND PLUS)</strong> — Learn Today, Lead Tomorrow! Under experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>, we provide basic to advanced training (50 WPM to 140 WPM speed in shorthand) with audio-visual classrooms, online typing software, regular dictation practice, and exam-oriented mock tests.
               </p>
 
               {/* Instant CTAs */}
@@ -1246,16 +1261,16 @@ export default function LandingPage({
 
           {/* Section Header */}
           <div className="section-header-centered" style={{ marginBottom: '2.5rem' }}>
-            <span className="badge-subheading">MODERN LEARNING APPROACH</span>
+            <span className="badge-subheading">GAYA SHORTHAND CLASSES • LEARN TODAY, LEAD TOMORROW!</span>
             <h2 className="section-title-large">
-              Key Highlights of SHORTHAND PLUS
+              Institute Highlights
             </h2>
-            <p className="section-description-text" style={{ maxWidth: 760, margin: '0.5rem auto 0' }}>
-              The institute provides highly practical courses in Shorthand, Typing, and Advanced Diploma in Computer Applications (ADCA), DCA, TALLY etc., designed to help students build speed, accuracy, and efficiency for career growth in Government and private sectors.
+            <p className="section-description-text" style={{ maxWidth: 780, margin: '0.5rem auto 0' }}>
+              Guided by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>, Gaya Shorthand Classes (SHORTHAND PLUS) combines rigorous traditional shorthand training with modern audio-visual classrooms, online typing software, and real-time AI error evaluation.
             </p>
           </div>
 
-          {/* 5 Highlights Grid */}
+          {/* 8 Highlights Grid */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -1589,20 +1604,28 @@ export default function LandingPage({
         <div className="offline-center-container">
           <div className="offline-card-grid">
             <div className="offline-left-info">
-              <span className="badge-subheading">JOIN US • OFFLINE & ONLINE</span>
+              <span className="badge-subheading">LEARN TODAY, LEAD TOMORROW!</span>
               <h2 className="offline-heading">
-                Join Us : Gaya Shorthand Classes (SHORTHAND PLUS)
+                Join Us : Gaya Shorthand Classes
               </h2>
               <p className="offline-bio">
-                <strong>SHORTHAND PLUS</strong> is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning. We provide basic to advance 50 WPM to 140 WPM speed in shorthand with AI-based dictation and real-time evaluation.
+                <strong>GAYA SHORTHAND CLASSES (SHORTHAND PLUS)</strong> is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning. Under experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>, we provide basic to advance 50 WPM to 140 WPM speed in shorthand with AI-based dictation and real-time evaluation.
               </p>
 
               <div className="center-detail-rows">
                 <div className="center-detail-item">
+                  <Award size={18} className="text-amber-600 shrink-0" />
+                  <div>
+                    <strong>Experienced Faculty:</strong>
+                    <p>Shadab Sir (12 Years Experience)</p>
+                  </div>
+                </div>
+
+                <div className="center-detail-item">
                   <MapPin size={18} className="text-royal-blue shrink-0" />
                   <div>
                     <strong>Academy Address:</strong>
-                    <p>Gaya Shorthand Classes, Near Railway Station / Tower Chowk, Gaya, Bihar - 823001</p>
+                    <p>Gaya College More, Opp. Cyber Thana, Gaya, Bihar</p>
                   </div>
                 </div>
 

@@ -19,12 +19,12 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
               </div>
               <div className="footer-brand-text">
                 <span className="brand-h1">SHORTHAND PLUS</span>
-                <span className="brand-sub">Gaya Shorthand Classes • Est. 2008</span>
+                <span className="brand-sub">Gaya Shorthand Classes • Learn Today, Lead Tomorrow!</span>
               </div>
             </div>
 
             <p className="footer-summary-text">
-              SHORTHAND PLUS is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning. We provide basic to advance 50 WPM to 140 WPM speed in shorthand with AI-based dictation and real-time evaluation.
+              Under experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>, Gaya Shorthand Classes (SHORTHAND PLUS) is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning (50–140 WPM).
             </p>
 
             <div className="footer-trust-chips-row">
@@ -109,7 +109,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
             <ul className="footer-contact-details">
               <li>
                 <MapPin size={16} className="contact-icon text-royal-blue shrink-0" />
-                <span>Gaya Shorthand Classes, Near Railway Station / Tower Chowk, Gaya, Bihar - 823001</span>
+                <span>Gaya College More, Opp. Cyber Thana, Gaya, Bihar</span>
               </li>
               <li>
                 <Phone size={16} className="contact-icon text-royal-blue shrink-0" />

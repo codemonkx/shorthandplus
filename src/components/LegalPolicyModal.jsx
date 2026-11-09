@@ -162,8 +162,8 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
                   </div>
                   <p className="text-stone-600">
                     SHORTHAND PLUS (Gaya Shorthand Classes)<br />
-                    Near Railway Station / Tower Chowk<br />
-                    Gaya, Bihar — 823001, India<br />
+                    Gaya College More, Opp. Cyber Thana<br />
+                    Gaya, Bihar, India<br />
                     Portal: <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" className="text-amber-700 underline font-semibold">https://stenoplus.in</a>
                   </p>
                 </div>

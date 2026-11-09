@@ -13,35 +13,54 @@ import {
   Briefcase,
   Sparkles,
   Globe,
-  Award
+  Award,
+  Layers,
+  Keyboard,
+  Headphones,
+  FileText
 } from 'lucide-react';
 
 export default function AboutAcademyView({ onOpenCheckout, setCurrentTab }) {
   const keyHighlights = [
     {
+      icon: Award,
+      title: "Experienced Faculty – Shadab Sir (12 Years Experience)",
+      description: "Personalized mentorship and proven speed-building techniques by Shadab Sir with 12+ years of dedicated coaching for SSC and High Court steno aspirants."
+    },
+    {
+      icon: Layers,
+      title: "Basic to Advanced Training",
+      description: "Systematic step-by-step curriculum starting from initial theory, consonants and vowels up to 50–140 WPM speed mastery."
+    },
+    {
       icon: Tv,
-      title: "Audio-Visual Learning",
+      title: "Audio-Visual Classroom",
       description: "Classes are supported with digital presentations, on-screen guidance, and interactive visuals to make learning easy and engaging."
     },
     {
+      icon: Keyboard,
+      title: "Online Typing & Accuracy Software",
+      description: "Modern typing studio supporting English (QWERTY), Hindi Kruti Dev 010, and Mangal Inscript with real-time accuracy scoring and error analysis."
+    },
+    {
+      icon: Headphones,
+      title: "Regular Dictation Practice",
+      description: "Daily progressive audio dictations covering parliamentary debates, editorial passages, and high court criminal/civil judgments."
+    },
+    {
+      icon: FileText,
+      title: "Exam-Oriented Mock Tests",
+      description: "Full exam simulation with 5-minute reading clock, audio warnings, backspace lock option, and strict full/half mistake formula scoring."
+    },
+    {
       icon: Cpu,
-      title: "AI-Based Dictation Practice",
-      description: "To improve shorthand and typing accuracy, the institute uses artificial intelligence tools that simulate real dictation scenarios and provide instant feedback."
-    },
-    {
-      icon: Users,
-      title: "Expert Trainers",
-      description: "Experienced faculty guide students with step-by-step techniques for developing speed in typing and shorthand, tailored to each learner’s pace."
-    },
-    {
-      icon: BookOpen,
-      title: "Comprehensive Curriculum",
-      description: "Alongside shorthand and typing, the ADCA program covers essential computer skills such as MS Office, Internet Applications, Tally, and more."
+      title: "Individual Performance Monitoring",
+      description: "AI-based evaluation tools that simulate real dictation scenarios, provide instant feedback, and track individual speed and accuracy progression."
     },
     {
       icon: Briefcase,
-      title: "Career-Oriented Training",
-      description: "The institute focuses on preparing students for stenographer exams, data entry jobs, clerical roles, and other computer-based career opportunities."
+      title: "SSC, High Court and Other Government Exam Preparation",
+      description: "Specialized targeted batches for SSC Steno Grade C & D, Patna High Court, Jharkhand High Court, Civil Courts, PA, PS, and clerical recruitment."
     }
   ];
 
@@ -51,10 +70,10 @@ export default function AboutAcademyView({ onOpenCheckout, setCurrentTab }) {
         
         {/* 1. HERO HEADER */}
         <div className="about-hero-header">
-          <span className="about-badge-gold">🏛️ PROFESSIONAL TRAINING CENTER (OFFLINE / ONLINE)</span>
-          <h1 className="about-hero-title">About SHORTHAND PLUS</h1>
+          <span className="about-badge-gold">🏛️ GAYA SHORTHAND CLASSES • LEARN TODAY, LEAD TOMORROW!</span>
+          <h1 className="about-hero-title">About Gaya Shorthand Classes (SHORTHAND PLUS)</h1>
           <p className="about-hero-subtitle">
-            <strong>SHORTHAND PLUS</strong> is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning.
+            <strong>GAYA SHORTHAND CLASSES</strong> — <em>Learn Today, Lead Tomorrow!</em> Led by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>, we are a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning.
           </p>
         </div>
 
@@ -149,8 +168,8 @@ export default function AboutAcademyView({ onOpenCheckout, setCurrentTab }) {
                 <GraduationCap size={28} className="text-white" />
               </div>
               <div>
-                <h3 className="director-name">Gaya Shorthand Classes</h3>
-                <p className="director-title">Faculty & Academic Directorate</p>
+                <h3 className="director-name">Shadab Sir (12 Years Experience)</h3>
+                <p className="director-title">Founder & Head Faculty • Gaya Shorthand Classes</p>
               </div>
             </div>
             <p className="director-quote">
@@ -196,13 +215,13 @@ export default function AboutAcademyView({ onOpenCheckout, setCurrentTab }) {
               borderRadius: '999px',
               marginBottom: '0.5rem'
             }}>
-              WHY STUDENTS CHOOSE US
+              GAYA SHORTHAND CLASSES • LEARN TODAY, LEAD TOMORROW!
             </span>
             <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#1c1917', margin: '0 0 0.5rem' }}>
-              Key Highlights of SHORTHAND PLUS
+              Institute Highlights
             </h2>
-            <p style={{ fontSize: '0.92rem', color: '#57534e', maxWidth: 640, margin: '0 auto' }}>
-              Blending proven traditional shorthand discipline with modern artificial intelligence and digital audio-visual classrooms.
+            <p style={{ fontSize: '0.92rem', color: '#57534e', maxWidth: 680, margin: '0 auto' }}>
+              Under experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>, we provide basic to advanced training with audio-visual classrooms, online typing software, and exam-oriented mock tests.
             </p>
           </div>
 
@@ -263,7 +282,7 @@ export default function AboutAcademyView({ onOpenCheckout, setCurrentTab }) {
                 <MapPin size={18} className="text-royal-blue shrink-0" />
                 <div>
                   <strong>Academy Address:</strong>
-                  <p>Gaya Shorthand Classes, Near Railway Station / Tower Chowk, Gaya, Bihar - 823001</p>
+                  <p>Gaya College More, Opp. Cyber Thana, Gaya, Bihar</p>
                 </div>
               </div>
 
