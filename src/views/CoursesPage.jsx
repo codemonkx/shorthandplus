@@ -200,8 +200,17 @@ const ACADEMY_COURSES = [
 
 export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, onOpenCheckout, onOpenAdmission, setCurrentTab }) {
   const [filterCategory, setFilterCategory] = useState('all');
+  const [passFilter, setPassFilter] = useState('all');
 
   const displayCourses = courses && courses.length > 0 ? courses : ACADEMY_COURSES;
+
+  const handleSelectFilter = (categoryKey) => {
+    setFilterCategory(categoryKey);
+    const target = document.getElementById('academy-courses');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   const filteredCourses = displayCourses.filter((course) => {
     if (filterCategory === 'all') return true;
@@ -216,6 +225,17 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
     if (filterCategory === 'court') return cat.includes('judicial') || id.includes('court') || title.includes('court');
     if (filterCategory === 'ssc') return cat.includes('central') || id.includes('ssc') || title.includes('ssc');
     if (filterCategory === 'diplomas') return cat.includes('diploma') || id.includes('diploma') || title.includes('diploma') || title.includes('dca');
+    return true;
+  });
+
+  const filteredPasses = PRICING_PLANS.filter((plan) => {
+    if (passFilter === 'all') return true;
+    if (passFilter === 'passes') {
+      return ['plan-1day', 'plan-1mo', 'plan-6mo', 'plan-12mo'].includes(plan.id);
+    }
+    if (passFilter === 'special') {
+      return ['plan-patna-hc', 'plan-jharkhand-hc', 'plan-pitman'].includes(plan.id);
+    }
     return true;
   });
 
@@ -259,7 +279,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
               <button
                 type="button"
-                onClick={() => setFilterCategory('all')}
+                onClick={() => handleSelectFilter('all')}
                 style={{
                   padding: '0.45rem 0.85rem',
                   borderRadius: '6px',
@@ -275,7 +295,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               </button>
               <button
                 type="button"
-                onClick={() => setFilterCategory('court')}
+                onClick={() => handleSelectFilter('court')}
                 style={{
                   padding: '0.45rem 0.85rem',
                   borderRadius: '6px',
@@ -291,7 +311,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               </button>
               <button
                 type="button"
-                onClick={() => setFilterCategory('ssc')}
+                onClick={() => handleSelectFilter('ssc')}
                 style={{
                   padding: '0.45rem 0.85rem',
                   borderRadius: '6px',
@@ -307,7 +327,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               </button>
               <button
                 type="button"
-                onClick={() => setFilterCategory('diplomas')}
+                onClick={() => handleSelectFilter('diplomas')}
                 style={{
                   padding: '0.45rem 0.85rem',
                   borderRadius: '6px',
@@ -359,7 +379,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
             ].map((c) => (
               <div 
                 key={c.sno}
-                onClick={() => setFilterCategory(c.filter)}
+                onClick={() => handleSelectFilter(c.filter)}
                 style={{
                   background: filterCategory === c.filter ? '#fef3c7' : '#faf9f6',
                   border: filterCategory === c.filter ? '1.5px solid #d97706' : '1px solid #e7e5e4',
@@ -448,7 +468,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '0.85rem'
           }}>
             {TARGET_EXAMINATIONS.map((exam) => (
@@ -491,66 +511,192 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
       </section>
 
       {/* 2. ACADEMY COURSES GRID */}
-      <section className="courses-cards-section">
-        <div className="courses-cards-container">
-          <div className="section-header-compact">
-            <span className="badge-subheading">CLASSROOM & ONLINE CURRICULUM</span>
-            <h2 className="section-title-large">Structured Academy Batches</h2>
-            <p className="section-description-text">
-              Direct mentorship under experienced faculty Shadab Sir (12 Years Experience) with daily outline corrections and exam simulations.
+      <section id="academy-courses" style={{ maxWidth: 1200, margin: '0 auto 3rem', padding: '0 1.25rem' }}>
+        <div style={{ width: '100%' }}>
+          <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
+            <span style={{
+              fontSize: '0.72rem',
+              fontWeight: 700,
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              color: '#d97706',
+              background: '#fef3c7',
+              padding: '0.25rem 0.65rem',
+              borderRadius: '999px',
+              display: 'inline-block',
+              marginBottom: '0.45rem'
+            }}>
+              CLASSROOM & ONLINE CURRICULUM
+            </span>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 850, color: '#1c1917', margin: '0 0 0.35rem' }}>
+              Structured Academy Batches
+            </h2>
+            <p style={{ fontSize: '0.88rem', color: '#57534e', margin: '0 auto', maxWidth: 640 }}>
+              Direct mentorship under experienced faculty <strong>Shadab Sir (12 Years Experience)</strong> with daily outline corrections and exam simulations.
             </p>
           </div>
 
-          <div className="academy-courses-grid">
+          {/* Active Filter Pill Bar */}
+          {filterCategory !== 'all' && (
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              background: '#fffbeb',
+              border: '1px solid #fde68a',
+              borderRadius: '10px',
+              padding: '0.65rem 1rem',
+              marginBottom: '1.25rem'
+            }}>
+              <div style={{ fontSize: '0.85rem', color: '#92400e', fontWeight: 600 }}>
+                Filtered View: Showing {filteredCourses.length} of {displayCourses.length} programs
+              </div>
+              <button
+                type="button"
+                onClick={() => setFilterCategory('all')}
+                style={{
+                  background: '#1c1917',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: '6px',
+                  padding: '0.35rem 0.75rem',
+                  fontSize: '0.78rem',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+              >
+                Show All Programs
+              </button>
+            </div>
+          )}
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '1.5rem'
+          }}>
             {filteredCourses.map((course) => (
               <div 
                 key={course.id} 
-                className={`course-program-card ${course.popular ? 'featured-program-card' : ''}`}
+                style={{
+                  background: '#ffffff',
+                  border: course.popular ? '1.5px solid #d97706' : '1px solid #e7e5e4',
+                  borderRadius: '16px',
+                  padding: '1.75rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  position: 'relative',
+                  boxShadow: course.popular ? '0 8px 30px rgba(217, 119, 6, 0.08)' : '0 4px 20px rgba(0, 0, 0, 0.03)',
+                  overflow: 'hidden'
+                }}
               >
                 {course.popular && (
-                  <div className="program-popular-ribbon">⭐ FLAGSHIP BATCH</div>
+                  <div style={{
+                    position: 'absolute',
+                    top: '1rem',
+                    right: '1.25rem',
+                    background: '#fef3c7',
+                    border: '1px solid #fde68a',
+                    color: '#b45309',
+                    fontSize: '0.72rem',
+                    fontWeight: 800,
+                    letterSpacing: '0.04em',
+                    padding: '0.25rem 0.65rem',
+                    borderRadius: '999px'
+                  }}>
+                    ⭐ FLAGSHIP BATCH
+                  </div>
                 )}
 
-                <div className="course-card-top">
-                  <div className="course-badge-row">
-                    <span className={`badge ${course.tagColor}`}>{course.badge}</span>
-                    <span className="course-speed-chip font-mono">{course.speedTarget}</span>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.85rem' }}>
+                    <span style={{
+                      fontSize: '0.72rem',
+                      fontWeight: 700,
+                      padding: '0.2rem 0.55rem',
+                      borderRadius: '6px',
+                      background: '#eff6ff',
+                      color: '#1d4ed8'
+                    }}>
+                      {course.badge}
+                    </span>
+                    <span style={{
+                      fontFamily: 'monospace',
+                      fontSize: '0.75rem',
+                      fontWeight: 700,
+                      padding: '0.2rem 0.55rem',
+                      borderRadius: '6px',
+                      background: '#f5f5f4',
+                      color: '#44403c'
+                    }}>
+                      {course.speedTarget}
+                    </span>
                   </div>
-                  <h3 className="course-card-title">{course.title}</h3>
-                  <p className="course-card-description">{course.description}</p>
+
+                  <h3 style={{ fontSize: '1.22rem', fontWeight: 800, color: '#1c1917', lineHeight: 1.35, margin: '0 0 0.65rem' }}>
+                    {course.title}
+                  </h3>
+                  <p style={{ fontSize: '0.88rem', color: '#57534e', lineHeight: 1.55, margin: '0 0 1.25rem' }}>
+                    {course.description}
+                  </p>
+
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.45rem',
+                    padding: '0.85rem 1rem',
+                    background: '#faf9f6',
+                    border: '1px solid #e7e5e4',
+                    borderRadius: '10px',
+                    marginBottom: '1.25rem',
+                    fontSize: '0.82rem',
+                    color: '#44403c'
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <Clock size={14} className="text-amber-600 shrink-0" />
+                      <span><strong>Duration:</strong> {course.duration}</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <GraduationCap size={14} className="text-amber-600 shrink-0" />
+                      <span><strong>Mode:</strong> {course.mode}</span>
+                    </div>
+                  </div>
+
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    <h4 style={{ fontSize: '0.8rem', fontWeight: 800, color: '#1c1917', textTransform: 'uppercase', letterSpacing: '0.04em', margin: '0 0 0.65rem' }}>
+                      What You Will Master:
+                    </h4>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                      {course.syllabus.map((item, idx) => (
+                        <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.84rem', color: '#57534e', lineHeight: 1.4 }}>
+                          <CheckCircle2 size={15} style={{ color: '#047857', flexShrink: 0, marginTop: '2px' }} />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
-                <div className="course-meta-strip">
-                  <div className="meta-strip-item">
-                    <Clock size={15} className="text-royal-blue" />
-                    <span><strong>Duration:</strong> {course.duration}</span>
-                  </div>
-                  <div className="meta-strip-item">
-                    <GraduationCap size={15} className="text-royal-blue" />
-                    <span><strong>Mode:</strong> {course.mode}</span>
-                  </div>
-                </div>
-
-                <div className="course-syllabus-block">
-                  <h4 className="syllabus-heading">What You Will Master:</h4>
-                  <ul className="syllabus-checklist">
-                    {course.syllabus.map((item, idx) => (
-                      <li key={idx}>
-                        <CheckCircle2 size={16} className="text-emerald shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="course-card-footer" style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                <div style={{
+                  paddingTop: '1.15rem',
+                  borderTop: '1px solid #e7e5e4',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.65rem',
+                  marginTop: 'auto'
+                }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                    <div className="course-fee-block">
-                      <span className="fee-label">Course Fee:</span>
-                      <span className="fee-amount font-mono">{course.fee}</span>
+                    <div>
+                      <div style={{ fontSize: '0.7rem', color: '#78716c', fontWeight: 600, textTransform: 'uppercase' }}>
+                        Course Fee
+                      </div>
+                      <div style={{ fontSize: '1.2rem', fontWeight: 850, color: '#1c1917', fontFamily: 'monospace' }}>
+                        {course.fee}
+                      </div>
                     </div>
                     <button 
-                      className="btn-enroll-course"
+                      type="button"
                       onClick={() => {
                         const coursePlanMap = {
                           'course-pitman': { id: 'course-pitman', name: 'Basic Pitman Shorthand Course', price: 4500, duration: '3 to 4 Months (Complete Book)', description: 'Complete Pitman book theory, daily homework correction & audio vault access.' },
@@ -568,9 +714,24 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                         };
                         if (onOpenCheckout) onOpenCheckout(planToOpen);
                       }}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.45rem',
+                        padding: '0.6rem 1.15rem',
+                        borderRadius: '8px',
+                        background: '#047857',
+                        color: '#ffffff',
+                        fontWeight: 700,
+                        fontSize: '0.86rem',
+                        border: 'none',
+                        cursor: 'pointer',
+                        boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)',
+                        transition: 'all 0.15s ease'
+                      }}
                     >
                       <span>Enroll Now</span>
-                      <ArrowRight size={16} />
+                      <ArrowRight size={15} />
                     </button>
                   </div>
                   <a
@@ -587,7 +748,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       fontWeight: 700,
                       fontSize: '0.84rem',
                       padding: '0.55rem 0.9rem',
-                      borderRadius: '999px',
+                      borderRadius: '8px',
                       textDecoration: 'none',
                       boxShadow: '0 2px 5px rgba(21, 128, 61, 0.2)'
                     }}
@@ -636,7 +797,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
             gap: '1rem'
           }}>
             {TEACHING_METHODOLOGY.map((m) => (
@@ -682,72 +843,194 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
       </section>
 
       {/* 3. SUBSCRIPTION & TEST SERIES PASSES */}
-      <section className="courses-pricing-passes-section" id="test-passes">
-        <div className="courses-cards-container">
-          <div className="section-header-compact text-center">
-            <span className="badge-subheading">INSTANT TEST PORTAL ACCESS</span>
-            <h2 className="section-title-large">Online Test Series & Audio Vault Passes</h2>
-            <p className="section-description-text">
+      <section id="test-passes" style={{ maxWidth: 1200, margin: '0 auto 3.5rem', padding: '0 1.25rem' }}>
+        <div style={{ width: '100%' }}>
+          <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
+            <span style={{
+              fontSize: '0.72rem',
+              fontWeight: 700,
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              color: '#d97706',
+              background: '#fef3c7',
+              padding: '0.25rem 0.65rem',
+              borderRadius: '999px',
+              display: 'inline-block',
+              marginBottom: '0.45rem'
+            }}>
+              INSTANT TEST PORTAL ACCESS
+            </span>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 850, color: '#1c1917', margin: '0 0 0.35rem' }}>
+              Online Test Series & Audio Vault Passes
+            </h2>
+            <p style={{ fontSize: '0.88rem', color: '#57534e', margin: '0 auto', maxWidth: 640 }}>
               Instant access with UPI & QR code. Practice anytime with real exam reading rooms and automated error calculation.
             </p>
+
+            {/* Passes Filter Bar */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#ffffff', border: '1px solid #e7e5e4', padding: '0.35rem', borderRadius: '10px', marginTop: '1.25rem' }}>
+              <button
+                type="button"
+                onClick={() => setPassFilter('all')}
+                style={{
+                  padding: '0.4rem 0.9rem',
+                  borderRadius: '7px',
+                  border: 'none',
+                  background: passFilter === 'all' ? '#1c1917' : 'transparent',
+                  color: passFilter === 'all' ? '#ffffff' : '#57534e',
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+              >
+                All Passes (7)
+              </button>
+              <button
+                type="button"
+                onClick={() => setPassFilter('passes')}
+                style={{
+                  padding: '0.4rem 0.9rem',
+                  borderRadius: '7px',
+                  border: 'none',
+                  background: passFilter === 'passes' ? '#1c1917' : 'transparent',
+                  color: passFilter === 'passes' ? '#ffffff' : '#57534e',
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+              >
+                Daily & Monthly Passes (4)
+              </button>
+              <button
+                type="button"
+                onClick={() => setPassFilter('special')}
+                style={{
+                  padding: '0.4rem 0.9rem',
+                  borderRadius: '7px',
+                  border: 'none',
+                  background: passFilter === 'special' ? '#1c1917' : 'transparent',
+                  color: passFilter === 'special' ? '#ffffff' : '#57534e',
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+              >
+                High Court & Foundation (3)
+              </button>
+            </div>
           </div>
 
-          <div className="pricing-cards-grid mt-4">
-            {PRICING_PLANS.map((plan) => {
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: '1.25rem'
+          }}>
+            {filteredPasses.map((plan) => {
               const isPro = plan.popular || plan.id === 'plan-12mo';
               return (
-                <div key={plan.id} className={`saas-card pricing-plan-card ${isPro ? 'pro-highlight' : ''}`}>
+                <div 
+                  key={plan.id} 
+                  style={{
+                    background: '#ffffff',
+                    border: isPro ? '2px solid #d97706' : '1px solid #e7e5e4',
+                    borderRadius: '16px',
+                    padding: '1.75rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    position: 'relative',
+                    boxShadow: isPro ? '0 8px 30px rgba(217, 119, 6, 0.08)' : '0 4px 16px rgba(0, 0, 0, 0.03)'
+                  }}
+                >
                   {plan.badge && (
-                    <div className="plan-badge-ribbon">
-                      <span className={`badge ${plan.popular ? 'badge-amber' : 'badge-blue'}`}>{plan.badge}</span>
+                    <div style={{
+                      position: 'absolute',
+                      top: '1rem',
+                      right: '1.25rem',
+                      background: plan.popular ? '#fef3c7' : '#eff6ff',
+                      border: plan.popular ? '1px solid #fde68a' : '1px solid #bfdbfe',
+                      color: plan.popular ? '#b45309' : '#1d4ed8',
+                      fontSize: '0.72rem',
+                      fontWeight: 800,
+                      padding: '0.2rem 0.55rem',
+                      borderRadius: '999px'
+                    }}>
+                      {plan.badge}
                     </div>
                   )}
-                  {plan.seriesTitle && (
-                    <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#0284c7', marginBottom: '0.25rem' }}>
-                      {plan.seriesTitle}
-                    </div>
-                  )}
-                  <h3 className="plan-name">{plan.name}</h3>
-                  <p className="plan-desc">{plan.description}</p>
-                  
-                  <div className="plan-price-block" style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.35rem' }}>
-                    {plan.originalPrice && (
-                      <span style={{ textDecoration: 'line-through', color: '#dc2626', fontSize: '1.15rem', fontWeight: 700, marginRight: '0.2rem' }}>
-                        ₹{plan.originalPrice}
-                      </span>
+
+                  <div>
+                    {plan.seriesTitle && (
+                      <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#0284c7', marginBottom: '0.25rem' }}>
+                        {plan.seriesTitle}
+                      </div>
                     )}
-                    <span className="currency">₹</span>
-                    <span className="amount font-mono">{plan.price}</span>
-                    <span className="duration text-muted">/ {plan.duration}</span>
+                    <h3 style={{ fontSize: '1.22rem', fontWeight: 850, color: '#1c1917', margin: '0 0 0.45rem' }}>
+                      {plan.name}
+                    </h3>
+                    <p style={{ fontSize: '0.84rem', color: '#57534e', lineHeight: 1.5, margin: '0 0 1.25rem' }}>
+                      {plan.description}
+                    </p>
+                    
+                    <div style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1.25rem' }}>
+                      {plan.originalPrice && (
+                        <span style={{ textDecoration: 'line-through', color: '#dc2626', fontSize: '1.1rem', fontWeight: 700, marginRight: '0.2rem' }}>
+                          ₹{plan.originalPrice}
+                        </span>
+                      )}
+                      <span style={{ fontSize: '1.1rem', fontWeight: 800, color: '#1c1917' }}>₹</span>
+                      <span style={{ fontSize: '2rem', fontWeight: 850, color: '#1c1917', fontFamily: 'monospace' }}>
+                        {plan.price}
+                      </span>
+                      <span style={{ fontSize: '0.82rem', color: '#78716c', fontWeight: 600 }}>
+                        / {plan.duration}
+                      </span>
+                    </div>
+
+                    <div style={{ height: '1px', background: '#e7e5e4', margin: '0 0 1.25rem' }} />
+
+                    <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
+                      {plan.features.map((feat, i) => (
+                        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.84rem', color: '#57534e', lineHeight: 1.45 }}>
+                          <CheckCircle2 size={15} style={{ color: '#047857', flexShrink: 0, marginTop: '2px' }} />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <div className="plan-divider" />
-
-                  <ul className="plan-features-list">
-                    {plan.features.map((feat, i) => (
-                      <li key={i}>
-                        <CheckCircle2 size={16} className="text-emerald check-feat" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="plan-footer-cta" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: 'auto' }}>
                     <button 
-                      className={`btn ${isPro ? 'btn-primary' : 'btn-secondary'} w-full`}
+                      type="button"
                       onClick={() => {
                         if (onSelectPlan) onSelectPlan(plan.id);
                         if (onOpenCheckout) onOpenCheckout(plan.id);
                       }}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.45rem',
+                        width: '100%',
+                        padding: '0.65rem 1rem',
+                        borderRadius: '8px',
+                        background: isPro ? '#1c1917' : '#047857',
+                        color: '#ffffff',
+                        fontSize: '0.86rem',
+                        fontWeight: 700,
+                        border: 'none',
+                        cursor: 'pointer',
+                        boxShadow: isPro ? '0 2px 8px rgba(28, 25, 23, 0.2)' : '0 2px 8px rgba(4, 120, 87, 0.25)',
+                        transition: 'all 0.15s ease'
+                      }}
                     >
-                      <Crown size={16} className={isPro ? 'text-amber' : ''} />
+                      <Crown size={15} color={isPro ? '#f59e0b' : '#fde68a'} />
                       <span>Activate with UPI (₹{plan.price})</span>
                     </button>
                     <a
                       href={`https://wa.me/919204123453?text=${encodeURIComponent(`Hello Shorthand Plus, I want to enroll in ${plan.name} (₹${plan.price} / ${plan.duration}). Please guide me with enrollment.`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-plan-whatsapp w-full"
                       style={{
                         display: 'flex',
                         alignItems: 'center',
@@ -756,15 +1039,15 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                         background: '#15803d',
                         color: '#ffffff',
                         fontWeight: 700,
-                        fontSize: '0.88rem',
-                        padding: '0.65rem 1rem',
-                        borderRadius: '999px',
+                        fontSize: '0.84rem',
+                        padding: '0.55rem 1rem',
+                        borderRadius: '8px',
                         textDecoration: 'none',
-                        boxShadow: '0 2px 6px rgba(21, 128, 61, 0.2)',
-                        transition: 'all 0.2s ease'
+                        boxShadow: '0 2px 5px rgba(21, 128, 61, 0.2)',
+                        transition: 'all 0.15s ease'
                       }}
                     >
-                      <MessageCircle size={15} className="shrink-0" />
+                      <MessageCircle size={15} />
                       <span>WhatsApp Now</span>
                     </a>
                   </div>
@@ -776,19 +1059,78 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
       </section>
 
       {/* 4. CONTACT & COUNSELING BANNER */}
-      <section className="courses-counseling-banner">
-        <div className="courses-cards-container">
-          <div className="counseling-card">
-            <div className="counseling-text">
-              <h3>Unsure which course or speed batch is right for you?</h3>
-              <p>Speak directly with our senior instructors or Head Faculty Shadab Sir (12 Years Experience) for a personalized skill assessment.</p>
-            </div>
+      <section style={{ maxWidth: 1200, margin: '0 auto 3.5rem', padding: '0 1.25rem' }}>
+        <div style={{
+          background: '#ffffff',
+          border: '1.5px solid #fed7aa',
+          borderRadius: '16px',
+          padding: '2rem 2.25rem',
+          boxShadow: '0 4px 20px rgba(217, 119, 6, 0.05)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '1.5rem'
+        }}>
+          <div style={{ maxWidth: 650 }}>
+            <span style={{
+              fontSize: '0.72rem',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              color: '#d97706',
+              display: 'inline-block',
+              marginBottom: '0.25rem'
+            }}>
+              DIRECT FACULTY GUIDANCE
+            </span>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 850, color: '#1c1917', margin: '0 0 0.35rem' }}>
+              Unsure which course or speed batch is right for you?
+            </h3>
+            <p style={{ fontSize: '0.9rem', color: '#57534e', margin: 0, lineHeight: 1.5 }}>
+              Speak directly with our senior instructors or Head Faculty <strong>Shadab Sir (12 Years Experience)</strong> for a personalized skill assessment.
+            </p>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
             <a 
               href="tel:+919204123453"
-              className="btn-counseling-call"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.75rem 1.4rem',
+                borderRadius: '8px',
+                background: '#1c1917',
+                color: '#ffffff',
+                fontWeight: 700,
+                fontSize: '0.88rem',
+                textDecoration: 'none',
+                boxShadow: '0 2px 8px rgba(28, 25, 23, 0.25)'
+              }}
             >
-              <Phone size={16} />
-              <span>Free Academic Counseling (+91 9204123453)</span>
+              <Phone size={15} color="#f59e0b" />
+              <span>Call Helpline: +91 9204123453</span>
+            </a>
+            <a 
+              href="https://wa.me/919204123453?text=Hello%20Shadab%20Sir%2C%20I%20need%20academic%20counseling%20for%20shorthand%20and%20typing%20courses."
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.75rem 1.4rem',
+                borderRadius: '8px',
+                background: '#15803d',
+                color: '#ffffff',
+                fontWeight: 700,
+                fontSize: '0.88rem',
+                textDecoration: 'none',
+                boxShadow: '0 2px 8px rgba(21, 128, 61, 0.25)'
+              }}
+            >
+              <MessageCircle size={15} />
+              <span>WhatsApp Counseling</span>
             </a>
           </div>
         </div>

@@ -3859,5 +3859,32 @@ button {
   font-size: 0.8rem !important;
 }
 
+/* ==========================================================================
+   COURSES PAGE CLEANUP OVERRIDES (Unified Container & Warm Stone Palette)
+   ========================================================================== */
+.courses-cards-section,
+.courses-pricing-passes-section,
+.courses-counseling-banner {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.courses-cards-container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+.courses-page-root .course-card-footer {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.65rem !important;
+  padding-top: 1.15rem !important;
+  border-top: 1px solid #e7e5e4 !important;
+  margin-top: auto !important;
+}
+
+
 
 
