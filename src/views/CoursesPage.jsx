@@ -8,7 +8,7 @@ import {
   Sparkles,
   Phone
 } from 'lucide-react';
-import { PRICING_PLANS } from '../data/mockData';
+import { PRICING_PLANS, TARGET_EXAMINATIONS } from '../data/mockData';
 
 const ACADEMY_COURSES = [
   {
@@ -373,6 +373,95 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
         </div>
       </section>
 
+      {/* TARGET EXAMINATIONS BANNER */}
+      <section style={{ maxWidth: 1200, margin: '0 auto 2.5rem', padding: '0 1.25rem' }}>
+        <div style={{
+          background: 'linear-gradient(135deg, #faf9f6 0%, #ffffff 100%)',
+          border: '1px solid #e7e5e4',
+          borderRadius: '16px',
+          padding: '1.75rem',
+          boxShadow: '0 4px 16px rgba(0, 0, 0, 0.02)'
+        }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', marginBottom: '1.25rem' }}>
+            <div>
+              <span style={{
+                fontSize: '0.72rem',
+                fontWeight: 700,
+                letterSpacing: '1px',
+                textTransform: 'uppercase',
+                color: '#d97706',
+                background: '#fef3c7',
+                padding: '0.25rem 0.65rem',
+                borderRadius: '999px',
+                display: 'inline-block',
+                marginBottom: '0.35rem'
+              }}>
+                GOVERNMENT EXAMS COVERED
+              </span>
+              <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#1c1917', margin: 0 }}>
+                कौन-कौन सी परीक्षाओं की तैयारी कराई जाती है?
+              </h2>
+              <p style={{ fontSize: '0.84rem', color: '#57534e', margin: '0.25rem 0 0' }}>
+                Our courses provide skill-based training for various government stenographer and typing examinations.
+              </p>
+            </div>
+            <div style={{
+              fontSize: '0.8rem',
+              fontWeight: 700,
+              color: '#d97706',
+              background: '#fffbeb',
+              padding: '0.45rem 0.85rem',
+              borderRadius: '8px',
+              border: '1px solid #fde68a'
+            }}>
+              9 National & State Exam Benches
+            </div>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: '0.85rem'
+          }}>
+            {TARGET_EXAMINATIONS.map((exam) => (
+              <div
+                key={exam.id}
+                style={{
+                  background: '#ffffff',
+                  border: '1px solid #e7e5e4',
+                  borderRadius: '10px',
+                  padding: '0.85rem 1rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '0.5rem'
+                }}
+              >
+                <div>
+                  <div style={{ fontSize: '0.86rem', fontWeight: 700, color: '#1c1917' }}>
+                    {exam.title}
+                  </div>
+                  <div style={{ fontSize: '0.72rem', color: '#78716c' }}>
+                    {exam.speed} • {exam.category}
+                  </div>
+                </div>
+                <span style={{
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  padding: '0.15rem 0.45rem',
+                  borderRadius: '6px',
+                  background: exam.badgeColor === 'emerald' ? '#ecfdf5' : exam.badgeColor === 'blue' ? '#eff6ff' : exam.badgeColor === 'amber' ? '#fef3c7' : '#f5f5f4',
+                  color: exam.badgeColor === 'emerald' ? '#047857' : exam.badgeColor === 'blue' ? '#1d4ed8' : exam.badgeColor === 'amber' ? '#b45309' : '#57534e',
+                  flexShrink: 0
+                }}>
+                  {exam.speed}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 2. ACADEMY COURSES GRID */}
       <section className="courses-cards-section">
         <div className="courses-cards-container">
@@ -380,7 +469,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
             <span className="badge-subheading">CLASSROOM & ONLINE CURRICULUM</span>
             <h2 className="section-title-large">Structured Academy Batches</h2>
             <p className="section-description-text">
-              Direct mentorship under Director Gagan Sir with daily outline corrections and exam simulations.
+              Direct mentorship under experienced faculty Shadab Sir (12 Years Experience) with daily outline corrections and exam simulations.
             </p>
           </div>
 

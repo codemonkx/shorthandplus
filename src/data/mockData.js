@@ -141,6 +141,99 @@ export const PRICING_PLANS = [
   }
 ];
 
+export const TARGET_EXAMINATIONS = [
+  {
+    id: "exam-ssc-steno",
+    title: "SSC Stenographer Grade C & D",
+    category: "National Level Exam",
+    badge: "Staff Selection Commission",
+    badgeColor: "amber",
+    speed: "80 & 100 WPM",
+    language: "English & Hindi",
+    description: "Skill test preparation with parliamentary debates, 5-minute reading clock, and full/half mistake formula scoring."
+  },
+  {
+    id: "exam-sc-steno",
+    title: "Supreme Court Stenographer",
+    category: "Apex Court Bench",
+    badge: "Supreme Court of India",
+    badgeColor: "emerald",
+    speed: "100 & 120 WPM",
+    language: "English Legal",
+    description: "High-speed legal judgment dictations, constitutional bench orders, legal vocabulary, and precision accuracy."
+  },
+  {
+    id: "exam-sc-spa",
+    title: "Supreme Court SPA",
+    category: "Judicial Officer Level",
+    badge: "Senior Personal Assistant",
+    badgeColor: "emerald",
+    speed: "110 & 120 WPM",
+    language: "English Legal",
+    description: "Advanced judicial dictations, courtroom transcription drills, and high-speed English shorthand outlines."
+  },
+  {
+    id: "exam-delhi-hc-pa-spa",
+    title: "Delhi High Court PA / SPA",
+    category: "High Court Bench",
+    badge: "Personal Assistant & SPA",
+    badgeColor: "blue",
+    speed: "100 & 110 WPM",
+    language: "English Legal",
+    description: "Specialized Delhi High Court judgment transcripts, commercial division orders, and timed computer transcription."
+  },
+  {
+    id: "exam-patna-hc-steno",
+    title: "Patna High Court Stenographer",
+    category: "High Court Bench",
+    badge: "Patna High Court Special",
+    badgeColor: "emerald",
+    speed: "80 & 100 WPM",
+    language: "English & Hindi",
+    description: "Authentic criminal & civil appeals, legal terminology, strict backspace lock simulation, and daily evaluation."
+  },
+  {
+    id: "exam-jharkhand-hc-steno",
+    title: "Jharkhand High Court Stenographer",
+    category: "High Court & Civil Courts",
+    badge: "Jharkhand HC & Civil Courts",
+    badgeColor: "emerald",
+    speed: "80 & 100 WPM",
+    language: "Hindi (Kruti Dev/Mangal) & English",
+    description: "Dual Hindi font engine (Kruti Dev 010 & Mangal Inscript) and English legal judgment transcription."
+  },
+  {
+    id: "exam-bsf-steno",
+    title: "BSF Stenographer",
+    category: "Paramilitary Forces",
+    badge: "Border Security Force",
+    badgeColor: "amber",
+    speed: "80 WPM",
+    language: "Hindi & English",
+    description: "Paramilitary steno skill test drills, official gazette passages, and strict transcription accuracy benchmarks."
+  },
+  {
+    id: "exam-crpf-steno",
+    title: "CRPF Stenographer",
+    category: "Paramilitary Forces",
+    badge: "Central Reserve Police Force",
+    badgeColor: "amber",
+    speed: "80 WPM",
+    language: "Hindi & English",
+    description: "ASI (Steno) recruitment preparation with timed audio dictations and computer typing examination tests."
+  },
+  {
+    id: "exam-other-state-steno",
+    title: "Other State Government Stenographer Exams",
+    category: "State Secretariats & Courts",
+    badge: "BSSC, UPSSSC, Vidhan Sabha & Courts",
+    badgeColor: "stone",
+    speed: "60 - 100 WPM",
+    language: "Hindi & English",
+    description: "Comprehensive skill test preparation for State Secretariats, Legislative Assemblies, High Courts, and Subordinate Civil Courts."
+  }
+];
+
 export const STENO_TESTS = [
   {
     id: 534,

@@ -12,6 +12,27 @@
 
 ## ✅ Completed & Verified Workflows
 
+- [x] **Target Examinations & Government Recruitment Coverage (कौन-कौन सी परीक्षाओं की तैयारी कराई जाती है?)**
+  - Title: **कौन-कौन सी परीक्षाओं की तैयारी कराई जाती है?**
+  - Details: `Our courses provide skill-based training for various government stenographer and typing examinations.`
+  - Integrated all 9 target examination benches across the platform:
+    1. **SSC Stenographer Grade C & D** (Staff Selection Commission, 80 & 100 WPM)
+    2. **Supreme Court Stenographer** (Apex Court Judicial Bench, 100 & 120 WPM)
+    3. **Supreme Court SPA** (Senior Personal Assistant, 110 & 120 WPM)
+    4. **Delhi High Court PA / SPA** (Personal Assistant & SPA Judicial Bench)
+    5. **Patna High Court Stenographer** (80 & 100 WPM Courtroom Transcription)
+    6. **Jharkhand High Court Stenographer** (Dual Hindi Kruti Dev/Mangal & English)
+    7. **BSF Stenographer** (Border Security Force / Paramilitary)
+    8. **CRPF Stenographer** (Central Reserve Police Force / ASI Steno)
+    9. **Other State Government Stenographer Exams** (BSSC, UPSSSC, Vidhan Sabha & Subordinate Civil Courts)
+  - Synchronized across:
+    - Centralized `TARGET_EXAMINATIONS` in `src/data/mockData.js`.
+    - Dedicated interactive section and primary FAQ in `src/views/LandingPage.jsx`.
+    - Dedicated exam coverage section in `src/views/AboutAcademyView.jsx`.
+    - Dedicated exam overview strip in `src/views/CoursesPage.jsx`.
+    - Target Exam Benches navigation list in `src/components/Footer.jsx`.
+    - Custom responsive CSS with Warm Stone styling in `src/App.css`.
+
 - [x] **Institute Highlights & Official Address (GAYA SHORTHAND CLASSES)**
   - Institute: **GAYA SHORTHAND CLASSES (SHORTHAND PLUS)**
   - Official Motto & Slogan: **"Learn Today, Lead Tomorrow!"**

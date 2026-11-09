@@ -36,7 +36,7 @@ import {
   Briefcase,
   Globe
 } from 'lucide-react';
-import { PRICING_PLANS } from '../data/mockData';
+import { PRICING_PLANS, TARGET_EXAMINATIONS } from '../data/mockData';
 import AcademyIllustration from '../components/AcademyIllustration';
 import CustomSelect from '../components/CustomSelect';
 import { api, setToken } from '../services/api';
@@ -651,6 +651,10 @@ export default function LandingPage({
   ];
 
   const faqs = [
+    {
+      q: "कौन-कौन सी परीक्षाओं की तैयारी कराई जाती है? (Which exams are prepared for?)",
+      a: "Our courses provide skill-based training for various government stenographer and typing examinations:\n• SSC Stenographer Grade C & D\n• Supreme Court Stenographer\n• Supreme Court SPA\n• Delhi High Court PA / SPA\n• Patna High Court Stenographer\n• Jharkhand High Court Stenographer\n• BSF Stenographer\n• CRPF Stenographer\n• Other State Government Stenographer Exams"
+    },
     {
       q: "What is Gaya Shorthand Classes (SHORTHAND PLUS)?",
       a: "SHORTHAND PLUS (Gaya Shorthand Classes) is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning (https://stenoplus.in). We provide basic to advance 50 WPM to 140 WPM speed in shorthand with AI-based dictation and real-time evaluation. Mentored by experienced faculty, the academy prepares students for SSC Stenographer Grade C & D, Patna High Court, Jharkhand High Court, and central government secretariat reporter exams."
@@ -1336,6 +1340,50 @@ export default function LandingPage({
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* 2.5 TARGET GOVERNMENT EXAMINATIONS SECTION */}
+      <section className="target-exams-section">
+        <div className="target-exams-container">
+          <div className="section-header-centered" style={{ marginBottom: '2.5rem' }}>
+            <span className="badge-subheading">GOVERNMENT RECRUITMENT COVERAGE</span>
+            <h2 className="section-title-large">
+              कौन-कौन सी परीक्षाओं की तैयारी कराई जाती है?
+            </h2>
+            <p className="section-description-text" style={{ maxWidth: 740, margin: '0.5rem auto 0' }}>
+              Our courses provide skill-based training for various government stenographer and typing examinations.
+            </p>
+          </div>
+
+          <div className="target-exams-grid">
+            {TARGET_EXAMINATIONS.map((exam) => (
+              <div key={exam.id} className="target-exam-card">
+                <div>
+                  <div className="target-exam-header">
+                    <span className={`exam-category-pill pill-${exam.badgeColor}`}>{exam.category}</span>
+                    <span className="exam-speed-badge font-mono">{exam.speed}</span>
+                  </div>
+                  <h3 className="target-exam-title">{exam.title}</h3>
+                  <p className="target-exam-desc">{exam.description}</p>
+                </div>
+                <div className="target-exam-footer">
+                  <span className="target-exam-dept">{exam.badge}</span>
+                  <button 
+                    type="button"
+                    className="target-exam-btn"
+                    onClick={() => {
+                      if (setCurrentTab) setCurrentTab('tests');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  >
+                    <span>Practice Tests</span>
+                    <ArrowRight size={13} />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -17,8 +17,10 @@ import {
   Layers,
   Keyboard,
   Headphones,
-  FileText
+  FileText,
+  ArrowRight
 } from 'lucide-react';
+import { TARGET_EXAMINATIONS } from '../data/mockData';
 
 export default function AboutAcademyView({ onOpenCheckout, setCurrentTab }) {
   const keyHighlights = [
@@ -269,6 +271,109 @@ export default function AboutAcademyView({ onOpenCheckout, setCurrentTab }) {
                 </div>
               );
             })}
+          </div>
+        </section>
+
+        {/* 4.5 TARGET GOVERNMENT EXAMINATIONS SECTION */}
+        <section style={{ margin: '3rem 0 2.5rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <span style={{
+              display: 'inline-block',
+              fontSize: '0.74rem',
+              fontWeight: 700,
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              color: '#d97706',
+              background: '#fef3c7',
+              padding: '0.35rem 0.85rem',
+              borderRadius: '999px',
+              marginBottom: '0.5rem'
+            }}>
+              GOVERNMENT EXAMINATIONS COVERED
+            </span>
+            <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#1c1917', margin: '0 0 0.5rem' }}>
+              कौन-कौन सी परीक्षाओं की तैयारी कराई जाती है?
+            </h2>
+            <p style={{ fontSize: '0.92rem', color: '#57534e', maxWidth: 660, margin: '0 auto' }}>
+              Our courses provide skill-based training for various government stenographer and typing examinations.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '1.25rem'
+          }}>
+            {TARGET_EXAMINATIONS.map((exam) => (
+              <div 
+                key={exam.id}
+                style={{
+                  background: '#ffffff',
+                  border: '1px solid #e7e5e4',
+                  borderRadius: '12px',
+                  padding: '1.4rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.02)'
+                }}
+              >
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                    <span style={{
+                      fontSize: '0.72rem',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      padding: '0.2rem 0.6rem',
+                      borderRadius: '999px',
+                      background: exam.badgeColor === 'emerald' ? '#ecfdf5' : exam.badgeColor === 'blue' ? '#eff6ff' : exam.badgeColor === 'amber' ? '#fef3c7' : '#f5f5f4',
+                      color: exam.badgeColor === 'emerald' ? '#047857' : exam.badgeColor === 'blue' ? '#1d4ed8' : exam.badgeColor === 'amber' ? '#b45309' : '#57534e'
+                    }}>
+                      {exam.category}
+                    </span>
+                    <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#d97706', fontFamily: 'monospace' }}>
+                      {exam.speed}
+                    </span>
+                  </div>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#1c1917', margin: '0 0 0.4rem' }}>
+                    {exam.title}
+                  </h3>
+                  <p style={{ fontSize: '0.84rem', color: '#57534e', lineHeight: 1.55, margin: 0 }}>
+                    {exam.description}
+                  </p>
+                </div>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginTop: '1rem',
+                  paddingTop: '0.75rem',
+                  borderTop: '1px solid #f5f5f4'
+                }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#78716c' }}>{exam.badge}</span>
+                  <button
+                    onClick={() => {
+                      if (setCurrentTab) setCurrentTab('tests');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: '#d97706',
+                      fontWeight: 600,
+                      fontSize: '0.8rem',
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.3rem'
+                    }}
+                  >
+                    <span>Practice Tests</span>
+                    <ArrowRight size={13} />
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 

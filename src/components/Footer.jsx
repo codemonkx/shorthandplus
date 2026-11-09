@@ -41,31 +41,36 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
 
           {/* Column 2: Examination & Practice Rooms */}
           <div className="footer-col">
-            <h4 className="footer-heading">Skill Test Rooms</h4>
+            <h4 className="footer-heading">Target Exam Benches</h4>
             <ul className="footer-links-list">
               <li>
                 <button onClick={() => { setCurrentTab('tests'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  SSC Steno Audio Dictations (80 & 100 WPM)
+                  SSC Stenographer Grade C & D
                 </button>
               </li>
               <li>
                 <button onClick={() => { setCurrentTab('tests'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  Patna High Court Morning Bench Audio
+                  Supreme Court Stenographer & SPA
                 </button>
               </li>
               <li>
                 <button onClick={() => { setCurrentTab('tests'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  Jharkhand High Court Legal Series
+                  Delhi High Court PA / SPA Series
                 </button>
               </li>
               <li>
                 <button onClick={() => { setCurrentTab('tests'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  English QWERTY Typing Studio
+                  Patna & Jharkhand High Court Dictations
                 </button>
               </li>
               <li>
                 <button onClick={() => { setCurrentTab('tests'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  Hindi Kruti Dev 010 & Mangal Inscript
+                  BSF & CRPF ASI Stenographer Tests
+                </button>
+              </li>
+              <li>
+                <button onClick={() => { setCurrentTab('typing-studio'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                  Hindi (Kruti Dev / Mangal) & English Typing
                 </button>
               </li>
             </ul>
