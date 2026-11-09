@@ -89,6 +89,7 @@ export default function LandingPage({
   setCurrentTab 
 }) {
   const [activeFaq, setActiveFaq] = useState(null);
+  const [isPlayingYouTube, setIsPlayingYouTube] = useState(false);
 
   const fireConfetti = () => {
     try {
@@ -1018,37 +1019,68 @@ export default function LandingPage({
                   Instructor: <strong>Shadab Sir (12 Years Experience)</strong>. Real-time parliamentary speech dictation calibrated at 80 and 100 WPM with official 5-minute reading clock and strict error evaluation.
                 </p>
 
-                {/* Video Preview Box */}
+                {/* YouTube Video Player (Embedded & Interactive) */}
                 <div style={{ 
-                  background: '#1c1917', 
+                  background: '#0c0a09', 
                   borderRadius: '12px', 
                   aspectRatio: '16/9', 
                   position: 'relative', 
                   display: 'flex', 
                   alignItems: 'center', 
-                  justifyContent: 'center',
-                  overflow: 'hidden',
-                  marginBottom: '1.25rem',
-                  boxShadow: '0 4px 14px rgba(0,0,0,0.15)'
+                  justifyContent: 'center', 
+                  overflow: 'hidden', 
+                  marginBottom: '1.25rem', 
+                  boxShadow: '0 4px 14px rgba(0,0,0,0.15)',
+                  border: '1px solid #292524'
                 }}>
-                  <div style={{ textAlign: 'center', color: '#ffffff', padding: '1rem', zIndex: 1 }}>
-                    <div style={{ 
-                      width: '56px', 
-                      height: '56px', 
-                      borderRadius: '50%', 
-                      background: '#dc2626', 
-                      color: '#ffffff', 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center',
-                      margin: '0 auto 10px',
-                      boxShadow: '0 4px 14px rgba(220, 38, 38, 0.4)'
-                    }}>
-                      <Play size={24} fill="#ffffff" style={{ marginLeft: '3px' }} />
+                  {isPlayingYouTube ? (
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src="https://www.youtube-nocookie.com/embed/jfKfPfyJRdk?autoplay=1&rel=0"
+                      title="Gaya Shorthand Classes - Speed Dictation & Whiteboard Demo"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      style={{ border: 'none', display: 'block', width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}
+                    />
+                  ) : (
+                    <div 
+                      onClick={() => setIsPlayingYouTube(true)}
+                      style={{ 
+                        textAlign: 'center', 
+                        color: '#ffffff', 
+                        padding: '1.5rem', 
+                        zIndex: 1, 
+                        cursor: 'pointer',
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        background: 'radial-gradient(circle, rgba(220,38,38,0.12) 0%, rgba(12,10,9,0.92) 100%)'
+                      }}
+                      title="Click to Play Classroom Demonstration Video"
+                    >
+                      <div style={{ 
+                        width: '58px', 
+                        height: '58px', 
+                        borderRadius: '50%', 
+                        background: '#dc2626', 
+                        color: '#ffffff', 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        justifyContent: 'center', 
+                        margin: '0 auto 10px', 
+                        boxShadow: '0 4px 14px rgba(220, 38, 38, 0.5)'
+                      }}>
+                        <Play size={26} fill="#ffffff" style={{ marginLeft: '3px' }} />
+                      </div>
+                      <span style={{ display: 'block', fontSize: '0.96rem', fontWeight: 800 }}>Watch Classroom Dictation Video</span>
+                      <span style={{ fontSize: '0.78rem', color: '#a8a29e', marginTop: '3px' }}>Click to play on-screen demo • Gaya Shorthand Classes</span>
                     </div>
-                    <span style={{ display: 'block', fontSize: '0.95rem', fontWeight: 700 }}>Watch Live Class on YouTube</span>
-                    <span style={{ fontSize: '0.75rem', color: '#a8a29e' }}>Gaya Shorthand Classes Official Channel</span>
-                  </div>
+                  )}
                 </div>
               </div>
 

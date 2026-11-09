@@ -177,7 +177,7 @@ export default function Sidebar({
 
           <div className="sidebar-institute-stamp">
             <span className="stamp-title">Gaya Shorthand Classes</span>
-            <span className="stamp-sub">Official Govt Exam Engine • Est. 2008</span>
+            <span className="stamp-sub">Official Govt Exam Engine • Est. 2012</span>
           </div>
         </div>
 

@@ -275,7 +275,7 @@ export default function AcademyIllustration() {
             <rect width="112" height="26" rx="6" fill="#ffffff" stroke="#e7e5e4" strokeWidth="1" filter="url(#cardShadow)" />
             <circle cx="16" cy="13" r="6" fill="#f0fdf4" />
             <path d="M13 13 L15 15 L19 11" stroke="#047857" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <text x="26" y="11" fill="#1c1917" fontSize="7" fontWeight="bold" fontFamily="sans-serif">ESTD. 2008</text>
+            <text x="26" y="11" fill="#1c1917" fontSize="7" fontWeight="bold" fontFamily="sans-serif">ESTD. 2012</text>
             <text x="26" y="19" fill="#78716c" fontSize="6.5" fontFamily="sans-serif">Govt Exam Accredited</text>
           </g>
         </svg>

@@ -223,89 +223,104 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
     <div className="courses-page-root">
       
       {/* 1. HERO HEADER */}
-      <div className="courses-hero-banner" style={{ paddingTop: '1rem' }}>
-        <div className="courses-hero-container">
-          <div className="courses-hero-badge">
+      <div className="courses-hero-banner" style={{ padding: '1rem 1.25rem 2rem', textAlign: 'center' }}>
+        <div className="courses-hero-container" style={{ maxWidth: '860px', margin: '0 auto' }}>
+          <div className="courses-hero-badge" style={{ marginBottom: '0.85rem' }}>
             <Sparkles size={14} className="text-amber-500" />
             <span>OFFICIAL CURRICULUM & TEST PASSES • ESTD. 2012</span>
           </div>
-          <h1 className="courses-hero-title">
+          <h1 className="courses-hero-title" style={{ fontSize: 'clamp(2rem, 3.2vw, 2.6rem)', fontWeight: 850, margin: '0 0 0.75rem', letterSpacing: '-0.025em', color: '#1c1917' }}>
             Stenography Courses & Examination Programs
           </h1>
-          <p className="courses-hero-desc">
+          <p className="courses-hero-desc" style={{ fontSize: '1rem', color: '#57534e', lineHeight: 1.6, margin: 0 }}>
             From absolute zero in Pitman Shorthand to cracking High Court & SSC Stenographer skill tests at 50–140 WPM. Guided by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong> with real-time dictations and exam simulations.
           </p>
-
-          {/* Filter Pills */}
-          <div className="courses-category-pills" style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center' }}>
-            <button 
-              className={`course-cat-pill ${filterCategory === 'all' ? 'active' : ''}`}
-              onClick={() => setFilterCategory('all')}
-            >
-              <span>All Programs</span>
-            </button>
-            <button 
-              className={`course-cat-pill ${filterCategory === 'pitman' ? 'active' : ''}`}
-              onClick={() => setFilterCategory('pitman')}
-            >
-              <span>English Shorthand</span>
-            </button>
-            <button 
-              className={`course-cat-pill ${filterCategory === 'hindi-steno' ? 'active' : ''}`}
-              onClick={() => setFilterCategory('hindi-steno')}
-            >
-              <span>Hindi Shorthand</span>
-            </button>
-            <button 
-              className={`course-cat-pill ${filterCategory === 'typing-both' || filterCategory === 'typing-eng' || filterCategory === 'typing-hindi' ? 'active' : ''}`}
-              onClick={() => setFilterCategory('typing-both')}
-            >
-              <span>Typing Practice</span>
-            </button>
-            <button 
-              className={`course-cat-pill ${filterCategory === 'court' ? 'active' : ''}`}
-              onClick={() => setFilterCategory('court')}
-            >
-              <span>High Court Series</span>
-            </button>
-            <button 
-              className={`course-cat-pill ${filterCategory === 'ssc' ? 'active' : ''}`}
-              onClick={() => setFilterCategory('ssc')}
-            >
-              <span>SSC Grade C & D</span>
-            </button>
-            <button 
-              className={`course-cat-pill ${filterCategory === 'diplomas' ? 'active' : ''}`}
-              onClick={() => setFilterCategory('diplomas')}
-            >
-              <span>Computer Diplomas (ADCA / DCA)</span>
-            </button>
-          </div>
         </div>
       </div>
 
       {/* CANONICAL COURSE LIST - WEBSITE / ADMISSION FORM */}
-      <section style={{ maxWidth: 1200, margin: '-1.5rem auto 2.5rem', padding: '0 1.25rem' }}>
+      <section style={{ maxWidth: 1200, margin: '0 auto 2.5rem', padding: '0 1.25rem' }}>
         <div style={{
           background: '#ffffff',
           border: '1px solid #e7e5e4',
-          borderRadius: '12px',
-          padding: '1.25rem 1.75rem',
-          boxShadow: '0 2px 12px rgba(0,0,0,0.03)'
+          borderRadius: '16px',
+          padding: '1.5rem 1.75rem',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.03)'
         }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', marginBottom: '1rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '0.85rem', marginBottom: '1.25rem' }}>
             <div>
-              <span style={{ fontSize: '0.74rem', fontWeight: 700, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.8px' }}>
+              <span style={{ fontSize: '0.74rem', fontWeight: 800, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.8px' }}>
                 Official Academic Curriculum
               </span>
-              <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#1c1917', margin: '0.15rem 0 0' }}>
+              <h2 style={{ fontSize: '1.25rem', fontWeight: 850, color: '#1c1917', margin: '0.15rem 0 0' }}>
                 Course List — Website / Admission Form
               </h2>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
-              <span style={{ fontSize: '0.78rem', color: '#78716c', background: '#faf9f6', padding: '0.35rem 0.75rem', borderRadius: '6px', border: '1px solid #e7e5e4' }}>
-                Select any course below to view syllabus & enroll
-              </span>
+              <button
+                type="button"
+                onClick={() => setFilterCategory('all')}
+                style={{
+                  padding: '0.45rem 0.85rem',
+                  borderRadius: '6px',
+                  border: filterCategory === 'all' ? '1.5px solid #1c1917' : '1px solid #e7e5e4',
+                  background: filterCategory === 'all' ? '#1c1917' : '#faf9f6',
+                  color: filterCategory === 'all' ? '#ffffff' : '#57534e',
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+              >
+                All Courses
+              </button>
+              <button
+                type="button"
+                onClick={() => setFilterCategory('court')}
+                style={{
+                  padding: '0.45rem 0.85rem',
+                  borderRadius: '6px',
+                  border: filterCategory === 'court' ? '1.5px solid #7c3aed' : '1px solid #e7e5e4',
+                  background: filterCategory === 'court' ? '#7c3aed' : '#faf9f6',
+                  color: filterCategory === 'court' ? '#ffffff' : '#57534e',
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+              >
+                High Court Special
+              </button>
+              <button
+                type="button"
+                onClick={() => setFilterCategory('ssc')}
+                style={{
+                  padding: '0.45rem 0.85rem',
+                  borderRadius: '6px',
+                  border: filterCategory === 'ssc' ? '1.5px solid #d97706' : '1px solid #e7e5e4',
+                  background: filterCategory === 'ssc' ? '#d97706' : '#faf9f6',
+                  color: filterCategory === 'ssc' ? '#ffffff' : '#57534e',
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+              >
+                SSC Grade C & D
+              </button>
+              <button
+                type="button"
+                onClick={() => setFilterCategory('diplomas')}
+                style={{
+                  padding: '0.45rem 0.85rem',
+                  borderRadius: '6px',
+                  border: filterCategory === 'diplomas' ? '1.5px solid #0284c7' : '1px solid #e7e5e4',
+                  background: filterCategory === 'diplomas' ? '#0284c7' : '#faf9f6',
+                  color: filterCategory === 'diplomas' ? '#ffffff' : '#57534e',
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+              >
+                Diplomas (ADCA/DCA)
+              </button>
               <button
                 type="button"
                 onClick={() => onOpenAdmission ? onOpenAdmission() : null}
@@ -316,9 +331,9 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                   background: '#047857',
                   color: '#ffffff',
                   border: 'none',
-                  padding: '0.45rem 0.95rem',
+                  padding: '0.5rem 1rem',
                   borderRadius: '8px',
-                  fontSize: '0.82rem',
+                  fontSize: '0.84rem',
                   fontWeight: 700,
                   cursor: 'pointer',
                   boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)'

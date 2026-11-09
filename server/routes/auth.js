@@ -108,7 +108,7 @@ router.post('/login', authRateLimiter, async (req, res) => {
         const ins = await db.run(`
           INSERT INTO users (name, email, password_hash, role, roll_no, mobile, state, language, status)
           VALUES (?, ?, ?, 'admin', 'FACULTY-01', '919204123453', 'Bihar', 'English', 'Active')
-        `, 'Dr. Gagan Kumar (Director)', 'admin@gaya.com', hash);
+        `, 'Shadab Sir (Director)', 'admin@gaya.com', hash);
         const adminId = ins.lastInsertRowid || ins.id;
         adminUser = await db.get('SELECT * FROM users WHERE id = ?', adminId);
       }

@@ -226,7 +226,7 @@ export function generateCompletionCertificatePdf(candidateData, courseOrTest) {
   doc.setFontSize(9.5);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(120, 113, 108);
-  doc.text('PREMIER STENOGRAPHY & COMPUTER TYPING EXAMINATION ACADEMY • ESTD. 2008', 148.5, 39, { align: 'center' });
+  doc.text('PREMIER STENOGRAPHY & COMPUTER TYPING EXAMINATION ACADEMY • ESTD. 2012', 148.5, 39, { align: 'center' });
   doc.text('Gaya Head Branch • Official Government Bench & High Court Skill Test Preparation Center', 148.5, 44, { align: 'center' });
 
   // 3. Certificate Title

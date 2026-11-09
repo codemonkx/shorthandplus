@@ -324,35 +324,50 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 </p>
 
                 {/* Zoom Credentials Box */}
-                <div className="live-hero-creds-strip">
-                  <div className="cred-bubble">
-                    <span className="lbl">Meeting ID:</span>
-                    <strong className="font-mono">{activeClass?.zoomMeetingId || '842 9104 2281'}</strong>
+                <div className="live-hero-creds-strip" style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', background: '#faf9f6', border: '1px solid #e7e5e4', padding: '10px 14px', borderRadius: '12px', margin: '1rem 0' }}>
+                  <div className="cred-bubble" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#ffffff', border: '1px solid #e7e5e4', padding: '6px 12px', borderRadius: '8px', fontSize: '0.85rem' }}>
+                    <span className="lbl" style={{ color: '#78716c', fontWeight: 600 }}>Meeting ID:</span>
+                    <strong className="font-mono" style={{ color: '#1c1917' }}>{activeClass?.zoomMeetingId || '842 9104 2281'}</strong>
                     <button 
                       type="button" 
                       className="btn-inline-copy"
                       onClick={handleCopyId}
                       title="Copy Meeting ID"
+                      style={{ border: 'none', background: '#f5f5f4', padding: '2px 6px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '3px' }}
                     >
                       {copiedId ? <Check size={12} className="text-emerald-500" /> : <Copy size={12} />}
                       <span>{copiedId ? 'Copied' : 'Copy'}</span>
                     </button>
                   </div>
-                  <div className="cred-bubble">
-                    <span className="lbl">Passcode:</span>
-                    <strong className="font-mono">{activeClass?.zoomPasscode || 'GAYA80WPM'}</strong>
+                  <div className="cred-bubble" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#ffffff', border: '1px solid #e7e5e4', padding: '6px 12px', borderRadius: '8px', fontSize: '0.85rem' }}>
+                    <span className="lbl" style={{ color: '#78716c', fontWeight: 600 }}>Passcode:</span>
+                    <strong className="font-mono" style={{ color: '#1c1917' }}>{activeClass?.zoomPasscode || 'GAYA80WPM'}</strong>
                   </div>
-                  <div className="cred-bubble">
-                    <span className="lbl">Schedule:</span>
-                    <span>{activeClass?.time || '8:30 AM – 10:30 AM (Daily)'}</span>
+                  <div className="cred-bubble" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#ffffff', border: '1px solid #e7e5e4', padding: '6px 12px', borderRadius: '8px', fontSize: '0.85rem' }}>
+                    <span className="lbl" style={{ color: '#78716c', fontWeight: 600 }}>Schedule:</span>
+                    <span style={{ color: '#1c1917', fontWeight: 600 }}>{activeClass?.time || '8:30 AM – 10:30 AM (Daily)'}</span>
                   </div>
                 </div>
 
                 {/* Primary Action Buttons */}
-                <div className="live-hero-actions-row">
+                <div className="live-hero-actions-row" style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginTop: '1.25rem' }}>
                   <button 
                     type="button"
                     className="btn-enter-live-studio"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      background: '#047857',
+                      color: '#ffffff',
+                      border: 'none',
+                      borderRadius: '10px',
+                      padding: '0.85rem 1.4rem',
+                      fontSize: '0.92rem',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      boxShadow: '0 4px 14px rgba(4, 120, 87, 0.25)'
+                    }}
                     onClick={() => {
                       if (onSelectClass && activeClass) {
                         onSelectClass(activeClass.id);
@@ -370,7 +385,19 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     href={activeClass?.zoomAppUrl || "zoommtg://zoom.us/join?confno=84291042281&pwd=GAYA80WPM"}
                     target="_blank"
                     rel="noreferrer"
-                    className="btn-launch-external-zoom"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      background: '#ffffff',
+                      color: '#1c1917',
+                      border: '1.5px solid #d6d3d1',
+                      borderRadius: '10px',
+                      padding: '0.85rem 1.3rem',
+                      fontSize: '0.9rem',
+                      fontWeight: 700,
+                      textDecoration: 'none'
+                    }}
                   >
                     <ExternalLink size={15} />
                     <span>Launch in Zoom Desktop App</span>
@@ -415,23 +442,45 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     </div>
                   </div>
 
-                  <div className="mini-stream-footer" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <div className="mini-stream-footer" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', padding: '1rem', background: '#1c1917' }}>
                     <button 
-                      className="btn-mini-launch"
                       type="button"
                       onClick={() => setShowLiveCanvas(!showLiveCanvas)}
-                      style={{ background: showLiveCanvas ? '#d97706' : '#292524', color: '#fafaf9', border: 'none' }}
-                      title="Toggle interactive drawing canvas"
+                      style={{ 
+                        flex: '1 1 auto',
+                        padding: '0.75rem 1rem', 
+                        borderRadius: '8px', 
+                        background: showLiveCanvas ? '#d97706' : '#292524', 
+                        color: '#fafaf9', 
+                        border: '1px solid #44403c',
+                        fontSize: '0.85rem',
+                        fontWeight: 700,
+                        cursor: 'pointer'
+                      }}
                     >
-                      <span>{showLiveCanvas ? 'Hide Whiteboard Canvas' : 'Draw Outlines On-Screen'}</span>
+                      {showLiveCanvas ? 'Hide Whiteboard Canvas' : 'Draw Outlines On-Screen'}
                     </button>
                     <button 
-                      className="btn-mini-launch"
                       type="button"
                       onClick={() => setCurrentTab('online-classes')}
+                      style={{ 
+                        flex: '1 1 auto',
+                        padding: '0.75rem 1rem', 
+                        borderRadius: '8px', 
+                        background: '#047857', 
+                        color: '#ffffff', 
+                        border: 'none',
+                        fontSize: '0.85rem',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '6px'
+                      }}
                     >
-                      <span>Join Interactive Session Now</span>
-                      <ArrowRight size={13} />
+                      <span>Join Session Now</span>
+                      <ArrowRight size={14} />
                     </button>
                   </div>
                 </div>

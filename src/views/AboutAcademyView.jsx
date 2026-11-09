@@ -600,7 +600,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                       Daily Batch Timings
                     </span>
                     <p style={{ fontSize: '0.85rem', color: '#44403c', margin: 0, lineHeight: 1.4 }}>
-                      Morning 7:00 AM – 11:30 AM<br />Evening 3:30 PM – 7:30 PM (Mon–Sat)
+                      Morning 6:00 AM – 11:00 AM<br />Evening 3:00 PM – 8:00 PM (Mon–Sat)
                     </p>
                   </div>
                 </div>

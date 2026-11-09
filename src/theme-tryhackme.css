@@ -351,6 +351,30 @@ hr {
   border-color: #d6d3d1 !important;
 }
 
+.btn-pill-admin {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  background: #fffbeb !important;
+  color: #b45309 !important;
+  border: 1.5px solid #fde047 !important;
+  border-radius: 9999px !important;
+  padding: 0.38rem 0.78rem !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  transition: all 0.15s ease !important;
+  box-shadow: 0 1px 3px rgba(217, 119, 6, 0.08) !important;
+}
+
+.btn-pill-admin:hover {
+  background: #fef08a !important;
+  border-color: #eab308 !important;
+  color: #92400e !important;
+  transform: translateY(-1px) !important;
+}
+
 .logged-user-actions {
   display: flex !important;
   align-items: center !important;
@@ -1279,7 +1303,16 @@ tbody td {
    13. COURSES & OFFICIAL CURRICULUM
    -------------------------------------------------------------------------- */
 .courses-hero-banner,
-.classes-hero-banner,
+.classes-hero-banner {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: #1c1917 !important;
+  padding: 1.5rem 1.25rem 2.5rem !important;
+  text-align: center !important;
+}
+
 .online-class-hero-header,
 .typing-executive-hero,
 .results-executive-hero {
@@ -1288,6 +1321,143 @@ tbody td {
   border-radius: 20px !important;
   box-shadow: 0 1px 4px rgba(28, 25, 23, 0.04) !important;
   color: #1c1917 !important;
+}
+
+.classes-nav-tabs {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-top: 1.5rem !important;
+}
+
+.class-nav-tab {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 9px 18px !important;
+  border-radius: 9999px !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  border: 1.5px solid #d6d3d1 !important;
+  background: #ffffff !important;
+  color: #44403c !important;
+  cursor: pointer !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+  transition: all 0.15s ease !important;
+}
+
+.class-nav-tab:hover {
+  background: #f5f4f0 !important;
+  color: #1c1917 !important;
+  border-color: #a8a29e !important;
+}
+
+.class-nav-tab.active {
+  background: #1c1917 !important;
+  border-color: #1c1917 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(28, 25, 23, 0.25) !important;
+}
+
+.live-hero-creds-strip {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+  background: #faf9f6 !important;
+  border: 1px solid #e7e5e4 !important;
+  padding: 10px 14px !important;
+  border-radius: 12px !important;
+  margin: 1.15rem 0 !important;
+}
+
+.cred-bubble {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 0.85rem !important;
+  background: #ffffff !important;
+  border: 1px solid #e7e5e4 !important;
+  padding: 6px 12px !important;
+  border-radius: 8px !important;
+}
+
+.cred-bubble .lbl {
+  color: #78716c !important;
+  font-weight: 600 !important;
+}
+
+.classes-content-container {
+  max-width: 1200px !important;
+  margin: 0 auto 3rem !important;
+  padding: 0 1.25rem !important;
+}
+
+.classes-online-live-showcase {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2rem !important;
+}
+
+.online-live-hero-card {
+  display: grid !important;
+  grid-template-columns: 1.35fr 1fr !important;
+  background: #ffffff !important;
+  border: 1px solid #e7e5e4 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 1024px) {
+  .online-live-hero-card {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-card-right {
+    border-left: none !important;
+    border-top: 1px solid #e7e5e4 !important;
+  }
+}
+
+.hero-card-left {
+  padding: 2.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.15rem !important;
+}
+
+.hero-card-right {
+  padding: 1.75rem !important;
+  background: #faf9f6 !important;
+  border-left: 1px solid #e7e5e4 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.live-status-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.65rem !important;
+  flex-wrap: wrap !important;
+}
+
+.live-hero-card-title {
+  font-size: 1.5rem !important;
+  font-weight: 850 !important;
+  color: #1c1917 !important;
+  line-height: 1.3 !important;
+  margin: 0 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.live-hero-card-desc {
+  font-size: 0.92rem !important;
+  color: #57534e !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
 }
 
 /* Typing Studio & Scorecards Hero Typography */

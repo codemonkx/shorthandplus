@@ -139,8 +139,14 @@ export default function App() {
     try {
       const saved = localStorage.getItem('shorthand_online_classes');
       if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        let parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed.map((c) => ({
+            ...c,
+            instructor: (!c.instructor || c.instructor.includes('Gagan')) ? 'Shadab Sir' : c.instructor,
+            instructorRole: (!c.instructorRole || c.instructorRole.includes('18+')) ? 'Faculty Director • 12 Years Experience' : c.instructorRole
+          }));
+        }
       }
     } catch (e) {
       console.warn('Failed to parse online classes from localStorage', e);
