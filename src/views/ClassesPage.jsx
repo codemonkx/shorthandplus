@@ -353,10 +353,10 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
           <div className="classes-online-live-showcase">
             {/* Live Broadcast Hero Card */}
             <div className="online-live-hero-card" style={{
-              background: '#ffffff',
-              border: '1px solid #e7e5e4',
+              background: '#FAF7F2',
+              border: '1px solid rgba(17, 17, 17, 0.12)',
               borderRadius: '16px',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
+              boxShadow: '0 4px 20px rgba(17, 17, 17, 0.04)',
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
               overflow: 'hidden'
@@ -388,28 +388,28 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 </p>
 
                 {/* Zoom Credentials Box */}
-                <div className="live-hero-creds-strip" style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', background: '#faf9f6', border: '1px solid #e7e5e4', padding: '10px 14px', borderRadius: '12px', margin: '1rem 0' }}>
-                  <div className="cred-bubble" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#ffffff', border: '1px solid #e7e5e4', padding: '6px 12px', borderRadius: '8px', fontSize: '0.85rem' }}>
-                    <span className="lbl" style={{ color: '#78716c', fontWeight: 600 }}>Meeting ID:</span>
-                    <strong className="font-mono" style={{ color: '#1c1917' }}>{activeClass?.zoomMeetingId || '842 9104 2281'}</strong>
+                <div className="live-hero-creds-strip" style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', background: '#EBE5D8', border: '1px solid rgba(17, 17, 17, 0.12)', padding: '10px 14px', borderRadius: '12px', margin: '1rem 0' }}>
+                  <div className="cred-bubble" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#FAF7F2', border: '1px solid rgba(17, 17, 17, 0.12)', padding: '6px 12px', borderRadius: '8px', fontSize: '0.85rem' }}>
+                    <span className="lbl" style={{ color: '#555555', fontWeight: 600 }}>Meeting ID:</span>
+                    <strong className="font-mono" style={{ color: '#111111' }}>{activeClass?.zoomMeetingId || '842 9104 2281'}</strong>
                     <button 
                       type="button" 
                       className="btn-inline-copy"
                       onClick={handleCopyId}
                       title="Copy Meeting ID"
-                      style={{ border: 'none', background: '#f5f5f4', padding: '2px 6px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '3px' }}
+                      style={{ border: 'none', background: '#FAF7F2', padding: '2px 6px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '3px' }}
                     >
-                      {copiedId ? <Check size={12} className="text-emerald-500" /> : <Copy size={12} />}
+                      {copiedId ? <Check size={12} color="#D9541E" /> : <Copy size={12} />}
                       <span>{copiedId ? 'Copied' : 'Copy'}</span>
                     </button>
                   </div>
-                  <div className="cred-bubble" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#ffffff', border: '1px solid #e7e5e4', padding: '6px 12px', borderRadius: '8px', fontSize: '0.85rem' }}>
-                    <span className="lbl" style={{ color: '#78716c', fontWeight: 600 }}>Passcode:</span>
-                    <strong className="font-mono" style={{ color: '#1c1917' }}>{activeClass?.zoomPasscode || 'GAYA80WPM'}</strong>
+                  <div className="cred-bubble" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#FAF7F2', border: '1px solid rgba(17, 17, 17, 0.12)', padding: '6px 12px', borderRadius: '8px', fontSize: '0.85rem' }}>
+                    <span className="lbl" style={{ color: '#555555', fontWeight: 600 }}>Passcode:</span>
+                    <strong className="font-mono" style={{ color: '#111111' }}>{activeClass?.zoomPasscode || 'GAYA80WPM'}</strong>
                   </div>
-                  <div className="cred-bubble" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#ffffff', border: '1px solid #e7e5e4', padding: '6px 12px', borderRadius: '8px', fontSize: '0.85rem' }}>
-                    <span className="lbl" style={{ color: '#78716c', fontWeight: 600 }}>Schedule:</span>
-                    <span style={{ color: '#1c1917', fontWeight: 600 }}>{activeClass?.time || '8:30 AM – 10:30 AM (Daily)'}</span>
+                  <div className="cred-bubble" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#FAF7F2', border: '1px solid rgba(17, 17, 17, 0.12)', padding: '6px 12px', borderRadius: '8px', fontSize: '0.85rem' }}>
+                    <span className="lbl" style={{ color: '#555555', fontWeight: 600 }}>Schedule:</span>
+                    <span style={{ color: '#111111', fontWeight: 600 }}>{activeClass?.time || '8:30 AM – 10:30 AM (Daily)'}</span>
                   </div>
                 </div>
 
@@ -578,7 +578,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               marginTop: '2.5rem'
             }}>
               <div style={{
-                background: '#ffffff',
+                background: '#FAF7F2',
                 border: '1px solid rgba(17, 17, 17, 0.12)',
                 borderRadius: '16px',
                 padding: '1.75rem',
@@ -606,7 +606,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               </div>
 
               <div style={{
-                background: '#ffffff',
+                background: '#FAF7F2',
                 border: '1px solid rgba(17, 17, 17, 0.12)',
                 borderRadius: '16px',
                 padding: '1.75rem',
@@ -634,7 +634,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               </div>
 
               <div style={{
-                background: '#ffffff',
+                background: '#FAF7F2',
                 border: '1px solid rgba(17, 17, 17, 0.12)',
                 borderRadius: '16px',
                 padding: '1.75rem',
@@ -664,7 +664,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
 
             {/* All 4 Daily Zoom Batches Schedule */}
             <div style={{
-              background: '#ffffff',
+              background: '#FAF7F2',
               border: '1px solid rgba(17, 17, 17, 0.12)',
               borderRadius: '16px',
               padding: '1.75rem 2rem',
@@ -824,7 +824,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 <div
                   key={batch.id}
                   style={{
-                    background: '#ffffff',
+                    background: '#FAF7F2',
                     border: '1.5px solid rgba(17, 17, 17, 0.12)',
                     borderRadius: '16px',
                     padding: '1.75rem',
@@ -920,7 +920,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                           <Volume2 size={15} color="#D9541E" />
                           <span style={{ fontSize: '0.8rem', color: '#555555', fontWeight: 600 }}>Target Speed:</span>
                         </div>
-                        <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#111111', background: '#ffffff', border: '1px solid rgba(17, 17, 17, 0.14)', padding: '2px 8px', borderRadius: '6px', fontFamily: 'var(--font-mono, monospace)' }}>
+                        <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#111111', background: '#EBE5D8', border: '1px solid rgba(17, 17, 17, 0.14)', padding: '2px 8px', borderRadius: '6px', fontFamily: 'var(--font-mono, monospace)' }}>
                           {batch.speed}
                         </span>
                       </div>
@@ -1005,7 +1005,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
             </div>
 
             <div style={{
-              background: '#ffffff',
+              background: '#FAF7F2',
               border: '1.5px solid rgba(17, 17, 17, 0.12)',
               borderRadius: '16px',
               overflow: 'hidden',
@@ -1165,7 +1165,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               {/* DCA Card */}
               <div
                 style={{
-                  background: '#ffffff',
+                  background: '#FAF7F2',
                   border: '1.5px solid rgba(17, 17, 17, 0.12)',
                   borderRadius: '16px',
                   padding: '1.75rem',
@@ -1245,7 +1245,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               {/* ADCA Card (Featured) */}
               <div
                 style={{
-                  background: '#ffffff',
+                  background: '#FAF7F2',
                   border: '1.5px solid #D9541E',
                   borderRadius: '16px',
                   padding: '1.75rem',
@@ -1342,7 +1342,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               {/* Tally Prime Card */}
               <div
                 style={{
-                  background: '#ffffff',
+                  background: '#FAF7F2',
                   border: '1.5px solid rgba(17, 17, 17, 0.12)',
                   borderRadius: '16px',
                   padding: '1.75rem',
@@ -1454,7 +1454,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 <div
                   key={item.id}
                   style={{
-                    background: '#ffffff',
+                    background: '#FAF7F2',
                     border: '1.5px solid rgba(17, 17, 17, 0.12)',
                     borderRadius: '16px',
                     padding: '1.75rem 2rem',
@@ -1577,7 +1577,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     padding: '0.85rem 2.5rem 0.85rem 2.6rem',
                     borderRadius: '12px',
                     border: '1.5px solid rgba(17, 17, 17, 0.14)',
-                    background: '#ffffff',
+                    background: '#FAF7F2',
                     fontSize: '0.92rem',
                     color: '#111111',
                     outline: 'none',
@@ -1643,7 +1643,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   <div
                     key={item.id}
                     style={{
-                      background: '#ffffff',
+                      background: '#FAF7F2',
                       border: '1.5px solid rgba(17, 17, 17, 0.12)',
                       borderRadius: '14px',
                       padding: '1.5rem',
@@ -1758,7 +1758,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
       {/* 3. BOTTOM OFFLINE CENTER INFO */}
       <section style={{ maxWidth: 1200, margin: '2.5rem auto 3.5rem', padding: '0 1.25rem' }}>
         <div style={{
-          background: '#ffffff',
+          background: '#FAF7F2',
           border: '1.5px solid rgba(17, 17, 17, 0.12)',
           borderRadius: '16px',
           padding: '1.75rem 2rem',

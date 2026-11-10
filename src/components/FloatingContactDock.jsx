@@ -79,7 +79,7 @@ export default function FloatingContactDock() {
                 alignItems: 'center',
                 gap: '8px',
                 padding: '8px 10px',
-                background: '#ffffff',
+                background: '#EBE5D8',
                 border: '1px solid rgba(17, 17, 17, 0.12)',
                 borderRadius: '8px',
                 color: '#111111',

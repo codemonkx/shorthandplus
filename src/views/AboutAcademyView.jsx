@@ -244,7 +244,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                 <div 
                   key={idx}
                   style={{
-                    background: '#ffffff',
+                    background: '#FAF7F2',
                     border: '1px solid rgba(17, 17, 17, 0.12)',
                     borderRadius: '12px',
                     padding: '1.5rem',
@@ -315,7 +315,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
               <div 
                 key={exam.id}
                 style={{
-                  background: '#ffffff',
+                  background: '#FAF7F2',
                   border: '1.5px solid rgba(17, 17, 17, 0.12)',
                   borderRadius: '14px',
                   padding: '1.5rem',
@@ -429,7 +429,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                 <div 
                   key={item.step}
                   style={{
-                    background: '#ffffff',
+                    background: '#FAF7F2',
                     border: '1.5px solid rgba(17, 17, 17, 0.12)',
                     borderRadius: '14px',
                     padding: '1.5rem',
@@ -485,7 +485,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
 
         {/* 5. JOIN US & OFFICIAL CONTACT BANNER */}
         <section style={{ 
-          background: '#ffffff', 
+          background: '#FAF7F2', 
           border: '1.5px solid rgba(17, 17, 17, 0.12)', 
           borderRadius: '20px', 
           padding: '2.5rem 2rem', 
@@ -666,7 +666,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
 
             {/* Right Column: Admission Card & Instant Actions */}
             <div style={{ 
-              background: '#ffffff', 
+              background: '#FAF7F2', 
               border: '1.5px solid rgba(17, 17, 17, 0.12)', 
               borderRadius: '16px', 
               padding: '1.75rem',

@@ -358,11 +358,11 @@ export default function LandingPage({
             {/* Right Column: Clean Academy Welcome Card */}
             <div>
               <div style={{ 
-                background: '#ffffff', 
-                border: '1px solid #e7e5e4', 
+                background: '#FAF7F2', 
+                border: '1.5px solid rgba(17, 17, 17, 0.12)', 
                 borderRadius: '16px', 
                 padding: '2rem', 
-                boxShadow: '0 8px 30px rgba(0,0,0,0.06)' 
+                boxShadow: '0 8px 30px rgba(17, 17, 17, 0.04)' 
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid #f5f5f4', paddingBottom: '1rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -536,7 +536,7 @@ export default function LandingPage({
               <div 
                 key={c.id}
                 style={{
-                  background: '#ffffff',
+                  background: '#FAF7F2',
                   border: c.id === 'eng-steno' ? '1.5px solid #D9541E' : '1px solid rgba(17, 17, 17, 0.12)',
                   borderRadius: '16px',
                   padding: '1.75rem',
@@ -670,7 +670,7 @@ export default function LandingPage({
                 <div 
                   key={idx}
                   style={{ 
-                    background: '#ffffff', 
+                    background: '#FAF7F2', 
                     border: '1px solid rgba(17, 17, 17, 0.12)', 
                     borderRadius: '8px', 
                     padding: '8px 12px',
@@ -786,11 +786,11 @@ export default function LandingPage({
               <div 
                 key={i}
                 style={{
-                  background: '#ffffff',
-                  border: '1px solid #e7e5e4',
+                  background: '#FAF7F2',
+                  border: '1px solid rgba(17, 17, 17, 0.12)',
                   borderRadius: '12px',
                   padding: '1.25rem 1.4rem',
-                  boxShadow: '0 1px 4px rgba(0,0,0,0.03)'
+                  boxShadow: '0 1px 4px rgba(17, 17, 17, 0.03)'
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
@@ -818,7 +818,7 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 4: WHY GAYA SHORTHAND CLASSES? (THE 4 PILLARS)
           ========================================================================= */}
-      <section style={{ padding: '4.5rem 1.25rem', background: '#ffffff', borderBottom: '1px solid rgba(17, 17, 17, 0.12)' }}>
+      <section style={{ padding: '4.5rem 1.25rem', background: '#F3EEE3', borderBottom: '1px solid rgba(17, 17, 17, 0.12)' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
           <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3rem' }}>
@@ -888,7 +888,7 @@ export default function LandingPage({
                   width: '46px', 
                   height: '46px', 
                   borderRadius: '10px', 
-                  background: '#ffffff', 
+                  background: '#FAF7F2', 
                   border: '1px solid rgba(17, 17, 17, 0.12)',
                   display: 'flex',
                   alignItems: 'center',
@@ -897,14 +897,14 @@ export default function LandingPage({
                   <pillar.icon size={22} color={pillar.iconColor} />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.12rem', fontWeight: 800, color: '#1c1917', margin: '0 0 2px' }}>
+                  <h3 style={{ fontSize: '1.12rem', fontWeight: 800, color: '#111111', margin: '0 0 2px' }}>
                     {pillar.title}
                   </h3>
                   <span style={{ fontSize: '0.78rem', fontWeight: 700, color: pillar.iconColor, textTransform: 'uppercase', letterSpacing: '0.3px' }}>
                     {pillar.subtitle}
                   </span>
                 </div>
-                <p style={{ fontSize: '0.88rem', color: '#57534e', margin: 0, lineHeight: 1.5 }}>
+                <p style={{ fontSize: '0.88rem', color: '#555555', margin: 0, lineHeight: 1.5 }}>
                   {pillar.desc}
                 </p>
               </div>
@@ -918,7 +918,7 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 5: CLASSROOM VIDEO DEMO & GOOGLE REVIEWS (SOCIAL PROOF)
           ========================================================================= */}
-      <section style={{ padding: '4.5rem 1.25rem', background: '#faf9f6', borderBottom: '1px solid #e7e5e4' }}>
+      <section style={{ padding: '4.5rem 1.25rem', background: '#F3EEE3', borderBottom: '1px solid rgba(17, 17, 17, 0.12)' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
           <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3rem' }}>
@@ -926,17 +926,17 @@ export default function LandingPage({
               display: 'inline-block', 
               fontSize: '0.78rem', 
               fontWeight: 800, 
-              color: '#dc2626', 
+              color: '#D9541E', 
               textTransform: 'uppercase', 
               letterSpacing: '0.6px', 
               marginBottom: '0.5rem' 
             }}>
               Demonstrations & Verified Feedback
             </span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 2.8vw, 2.4rem)', fontWeight: 800, color: '#1c1917', margin: '0 0 0.75rem', letterSpacing: '-0.02em' }}>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 2.8vw, 2.4rem)', fontWeight: 800, color: '#111111', margin: '0 0 0.75rem', letterSpacing: '-0.02em' }}>
               See Our Classes & What Students Say
             </h2>
-            <p style={{ fontSize: '1rem', color: '#57534e', margin: 0, lineHeight: 1.5 }}>
+            <p style={{ fontSize: '1rem', color: '#555555', margin: 0, lineHeight: 1.5 }}>
               Over 140+ students have rated Gaya Shorthand Classes 4.9/5 on Google for quality coaching and results.
             </p>
           </div>
@@ -945,14 +945,14 @@ export default function LandingPage({
             
             {/* Left: YouTube Video Card */}
             <div style={{ 
-              background: '#ffffff', 
-              border: '1px solid #e7e5e4', 
+              background: '#FAF7F2', 
+              border: '1px solid rgba(17, 17, 17, 0.12)', 
               borderRadius: '16px', 
               padding: '1.75rem',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.04)'
+              boxShadow: '0 4px 16px rgba(17, 17, 17, 0.04)'
             }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1rem' }}>
@@ -1065,22 +1065,22 @@ export default function LandingPage({
               
               {/* Google Reviews Aggregate Badge */}
               <div style={{ 
-                background: '#ffffff', 
-                border: '1px solid #e7e5e4', 
+                background: '#FAF7F2', 
+                border: '1px solid rgba(17, 17, 17, 0.12)', 
                 borderRadius: '14px', 
                 padding: '1.25rem 1.5rem',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.03)'
+                boxShadow: '0 2px 8px rgba(17, 17, 17, 0.03)'
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   <GoogleIcon />
                   <div>
-                    <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#1c1917', margin: 0 }}>
+                    <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#111111', margin: 0 }}>
                       4.9 out of 5 Rating
                     </h4>
-                    <span style={{ fontSize: '0.8rem', color: '#78716c' }}>Based on 140+ Google Student Reviews</span>
+                    <span style={{ fontSize: '0.8rem', color: '#555555' }}>Based on 140+ Google Student Reviews</span>
                   </div>
                 </div>
                 <div style={{ display: 'flex', gap: '2px' }}>
@@ -1111,7 +1111,7 @@ export default function LandingPage({
                 <div 
                   key={i}
                   style={{
-                    background: '#ffffff',
+                    background: '#FAF7F2',
                     border: '1px solid rgba(17, 17, 17, 0.12)',
                     borderRadius: '12px',
                     padding: '1.15rem 1.25rem',
@@ -1143,7 +1143,7 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 6: GAYA CENTER LOCATION, CONTACTS & TOP FAQS
           ========================================================================= */}
-      <section style={{ padding: '4.5rem 1.25rem 3rem', background: '#ffffff' }}>
+      <section style={{ padding: '4.5rem 1.25rem 3rem', background: '#F3EEE3' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', marginBottom: '3.5rem' }}>
@@ -1308,7 +1308,7 @@ export default function LandingPage({
 
           {/* Bottom Academy CTA Banner */}
           <div style={{ 
-            background: '#ffffff', 
+            background: '#FAF7F2', 
             border: '1.5px solid rgba(17, 17, 17, 0.12)',
             borderRadius: '16px', 
             padding: '2.5rem 2rem', 

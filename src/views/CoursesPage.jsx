@@ -468,7 +468,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               <div
                 key={course.id}
                 style={{
-                  background: '#FFFFFF',
+                  background: '#FAF7F2',
                   border: course.popular ? '1.5px solid #D9541E' : '1px solid rgba(17, 17, 17, 0.12)',
                   borderRadius: '16px',
                   padding: '1.5rem',
@@ -800,7 +800,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
       {/* 2.5 TEACHING METHODOLOGY (शिक्षण पद्धति) */}
       <section style={{ maxWidth: 1200, margin: '1rem auto 3rem', padding: '0 1.25rem' }}>
         <div style={{
-          background: '#ffffff',
+          background: '#FAF7F2',
           border: '1px solid rgba(17, 17, 17, 0.12)',
           borderRadius: '16px',
           padding: '2rem',
@@ -902,7 +902,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
             </p>
 
             {/* Passes Filter Bar */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#ffffff', border: '1px solid rgba(17, 17, 17, 0.12)', padding: '0.35rem', borderRadius: '10px', marginTop: '1.25rem' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#FAF7F2', border: '1px solid rgba(17, 17, 17, 0.12)', padding: '0.35rem', borderRadius: '10px', marginTop: '1.25rem' }}>
               <button
                 type="button"
                 onClick={() => setPassFilter('all')}
@@ -965,7 +965,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                 <div 
                   key={plan.id} 
                   style={{
-                    background: '#ffffff',
+                    background: '#FAF7F2',
                     border: isPro ? '1.5px solid #D9541E' : '1px solid rgba(17, 17, 17, 0.12)',
                     borderRadius: '16px',
                     padding: '1.75rem',
@@ -1072,7 +1072,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
       {/* 4. CONTACT & COUNSELING BANNER */}
       <section style={{ maxWidth: 1200, margin: '0 auto 3.5rem', padding: '0 1.25rem' }}>
         <div style={{
-          background: '#ffffff',
+          background: '#FAF7F2',
           border: '1.5px solid rgba(217, 84, 30, 0.35)',
           borderRadius: '16px',
           padding: '2rem 2.25rem',

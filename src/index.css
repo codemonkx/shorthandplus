@@ -158,8 +158,8 @@ input, textarea, select { font-family: inherit; color: inherit; }
 
 /* Corporate Cards */
 .saas-card {
-  background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
+  background: #FAF7F2 !important;
+  border: 1px solid rgba(17, 17, 17, 0.12) !important;
   border-radius: var(--radius-lg);
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
   transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
@@ -187,27 +187,27 @@ input, textarea, select { font-family: inherit; color: inherit; }
 }
 
 .btn-primary {
-  background: #1c1917 !important;
-  color: #ffffff !important;
-  border: 1px solid #1c1917 !important;
-  box-shadow: 0 1px 3px rgba(28, 25, 23, 0.2);
+  background: #111111 !important;
+  color: #F3EEE3 !important;
+  border: 1px solid #111111 !important;
+  box-shadow: 0 1px 3px rgba(17, 17, 17, 0.2);
 }
 .btn-primary:hover {
-  background: #292524 !important;
-  border-color: #292524 !important;
-  box-shadow: 0 4px 12px rgba(28, 25, 23, 0.25);
+  background: #262626 !important;
+  border-color: #262626 !important;
+  box-shadow: 0 4px 12px rgba(17, 17, 17, 0.25);
   transform: translateY(-1px);
 }
 
 .btn-secondary {
-  background: #ffffff !important;
-  color: #1c1917 !important;
-  border: 1px solid #e7e5e4 !important;
+  background: #FAF7F2 !important;
+  color: #111111 !important;
+  border: 1px solid rgba(17, 17, 17, 0.14) !important;
   box-shadow: var(--shadow-xs);
 }
 .btn-secondary:hover {
-  background: #faf9f6 !important;
-  border-color: #d6d3d1 !important;
+  background: #EBE5D8 !important;
+  border-color: rgba(17, 17, 17, 0.25) !important;
   color: #1c1917 !important;
 }
 

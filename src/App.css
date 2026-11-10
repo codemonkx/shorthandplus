@@ -10,7 +10,7 @@
   /* 60% DOMINANT CANVAS & SURFACES */
   --cream: #F3EEE3;
   --cream-surface: #FAF7F2;
-  --cream-card: #FFFFFF;
+  --cream-card: #FAF7F2;
   --cream-border: rgba(17, 17, 17, 0.12);
   --cream-subtle: #EBE5D8;
 
@@ -42,7 +42,7 @@
   --slate-200: rgba(17, 17, 17, 0.12);
   --slate-100: #FAF7F2;
   --slate-50: #F3EEE3;
-  --white: #ffffff;
+  --white: #FAF7F2;
   
   /* Primary Action Tokens mapped to Burnt Orange */
   --emerald-600: #D9541E;
