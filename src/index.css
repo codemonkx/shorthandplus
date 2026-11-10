@@ -1,10 +1,10 @@
 /* ==========================================================================
    ShorthandPlus Enterprise Design System
    Apple News+ Aesthetic:
-   - 60% Canvas: #F5F5F7 (Platinum Neutral Canvas)
+   - 60% Canvas: #F8F9FA (Platinum Neutral Canvas)
    - 30% Card Surfaces & Shell: #FFFFFF (Crisp White)
-   - 10% High-Impact Accent: #F83458 (Hot Fuchsia)
-   - Typography & Structure: #1D1D1F (Dark Slate)
+   - 10% High-Impact Accent: #D97706 (Hot Fuchsia)
+   - Typography & Structure: #0F172A (Dark Slate)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
@@ -24,56 +24,56 @@
   --font-kruti: 'Kruti Dev', sans-serif;
 
   /* Apple News+ 3-Color Palette */
-  --bg-app: #F5F5F7;
+  --bg-app: #F8F9FA;
   --bg-sidebar: #FFFFFF;
   --bg-surface: #FFFFFF;
-  --bg-subtle: #F5F5F7;
+  --bg-subtle: #F8F9FA;
   --bg-hover: rgba(0, 0, 0, 0.04);
 
-  --navy-950: #1D1D1F;
-  --navy-900: #1D1D1F;
-  --navy-800: #1D1D1F;
+  --navy-950: #0F172A;
+  --navy-900: #0F172A;
+  --navy-800: #0F172A;
   --navy-700: #2D2D30;
   --navy-600: #424245;
-  --navy-500: #6E6E73;
-  --navy-400: #86868B;
+  --navy-500: #64748B;
+  --navy-400: #94A3B8;
   --navy-300: rgba(0, 0, 0, 0.12);
   --navy-200: rgba(0, 0, 0, 0.08);
-  --navy-100: #F5F5F7;
-  --navy-50:  #F5F5F7;
+  --navy-100: #F8F9FA;
+  --navy-50:  #F8F9FA;
 
-  --blue-700: #1D1D1F;
-  --blue-600: #1D1D1F;
+  --blue-700: #0F172A;
+  --blue-600: #0F172A;
   --blue-500: #2D2D30;
-  --blue-400: #6E6E73;
-  --blue-100: #F5F5F7;
-  --blue-50: #F5F5F7;
+  --blue-400: #64748B;
+  --blue-100: #F8F9FA;
+  --blue-50: #F8F9FA;
 
-  --indigo-600: #1D1D1F;
-  --indigo-50:  #F5F5F7;
+  --indigo-600: #0F172A;
+  --indigo-50:  #F8F9FA;
 
-  --emerald-600: #F83458;
-  --emerald-500: #F83458;
-  --emerald-100: rgba(248, 52, 88, 0.12);
-  --emerald-50:  rgba(248, 52, 88, 0.08);
+  --emerald-600: #D97706;
+  --emerald-500: #D97706;
+  --emerald-100: rgba(217, 119, 6, 0.12);
+  --emerald-50:  rgba(217, 119, 6, 0.08);
 
-  --rose-600: #F83458;
-  --rose-500: #F83458;
-  --rose-100: rgba(248, 52, 88, 0.12);
-  --rose-50:  rgba(248, 52, 88, 0.08);
+  --rose-600: #D97706;
+  --rose-500: #D97706;
+  --rose-100: rgba(217, 119, 6, 0.12);
+  --rose-50:  rgba(217, 119, 6, 0.08);
 
-  --amber-600: #F83458;
-  --amber-500: #F83458;
-  --amber-100: rgba(248, 52, 88, 0.12);
-  --amber-50:  rgba(248, 52, 88, 0.08);
+  --amber-600: #D97706;
+  --amber-500: #D97706;
+  --amber-100: rgba(217, 119, 6, 0.12);
+  --amber-50:  rgba(217, 119, 6, 0.08);
 
   --border-light: rgba(0, 0, 0, 0.08);
   --border-medium: rgba(0, 0, 0, 0.14);
-  --border-focus: #1D1D1F;
+  --border-focus: #0F172A;
 
-  --text-main: #1D1D1F;
-  --text-muted: #6E6E73;
-  --text-faint: #86868B;
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --text-faint: #94A3B8;
 
   /* Modern Apple Hairline Shadows */
   --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
@@ -94,22 +94,22 @@
 
 /* Global Text Selection */
 ::selection {
-  background-color: #1D1D1F !important;
+  background-color: #0F172A !important;
   color: #FFFFFF !important;
 }
 
 ::-moz-selection {
-  background-color: #1D1D1F !important;
+  background-color: #0F172A !important;
   color: #FFFFFF !important;
 }
 
 *::selection {
-  background-color: #1D1D1F !important;
+  background-color: #0F172A !important;
   color: #FFFFFF !important;
 }
 
 *::-moz-selection {
-  background-color: #1D1D1F !important;
+  background-color: #0F172A !important;
   color: #FFFFFF !important;
 }
 
@@ -191,9 +191,9 @@ input, textarea, select { font-family: inherit; color: inherit; }
 }
 
 .btn-primary {
-  background: #1D1D1F !important;
+  background: #0F172A !important;
   color: #FFFFFF !important;
-  border: 1px solid #1D1D1F !important;
+  border: 1px solid #0F172A !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 .btn-primary:hover {
@@ -205,32 +205,32 @@ input, textarea, select { font-family: inherit; color: inherit; }
 
 .btn-secondary {
   background: #FFFFFF !important;
-  color: #1D1D1F !important;
+  color: #0F172A !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
   box-shadow: var(--shadow-xs);
 }
 .btn-secondary:hover {
-  background: #F5F5F7 !important;
+  background: #F8F9FA !important;
   border-color: rgba(0, 0, 0, 0.14) !important;
-  color: #1D1D1F !important;
+  color: #0F172A !important;
 }
 
 .btn-outline {
   background: transparent !important;
-  color: #1D1D1F !important;
+  color: #0F172A !important;
   border: 1px solid rgba(0, 0, 0, 0.12) !important;
 }
 .btn-outline:hover {
   background: #FFFFFF !important;
-  border-color: #1D1D1F !important;
+  border-color: #0F172A !important;
 }
 
 .btn-emerald {
-  background: #F83458 !important;
+  background: #D97706 !important;
   color: #FFFFFF !important;
 }
 .btn-emerald:hover {
-  background: #E0264A !important;
+  background: #B45309 !important;
   transform: translateY(-1px);
 }
 
@@ -248,11 +248,11 @@ input, textarea, select { font-family: inherit; color: inherit; }
   border-radius: var(--radius-full);
 }
 
-.badge-blue { background: #FFFFFF !important; color: #1D1D1F !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
-.badge-emerald { background: rgba(248, 52, 88, 0.08) !important; color: #F83458 !important; border: 1px solid rgba(248, 52, 88, 0.22) !important; }
-.badge-amber { background: #FFFFFF !important; color: #1D1D1F !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
-.badge-rose { background: rgba(248, 52, 88, 0.08) !important; color: #F83458 !important; border: 1px solid rgba(248, 52, 88, 0.22) !important; }
-.badge-navy { background: #FFFFFF !important; color: #1D1D1F !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
+.badge-blue { background: #FFFFFF !important; color: #0F172A !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
+.badge-emerald { background: rgba(217, 119, 6, 0.08) !important; color: #D97706 !important; border: 1px solid rgba(217, 119, 6, 0.22) !important; }
+.badge-amber { background: #FFFFFF !important; color: #0F172A !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
+.badge-rose { background: rgba(217, 119, 6, 0.08) !important; color: #D97706 !important; border: 1px solid rgba(217, 119, 6, 0.22) !important; }
+.badge-navy { background: #FFFFFF !important; color: #0F172A !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
 
 .font-mono { font-family: var(--font-mono) !important; }
 .font-kruti { font-family: 'Kruti Dev', sans-serif !important; font-size: 1.25rem !important; }
@@ -261,8 +261,8 @@ input, textarea, select { font-family: inherit; color: inherit; }
 /* Strict 3-Color System Utilities */
 .text-cream { color: #FFFFFF !important; }
 .bg-cream { background-color: #FFFFFF !important; }
-.bg-cream-canvas { background-color: #F5F5F7 !important; }
-.text-ink { color: #1D1D1F !important; }
-.bg-ink { background-color: #1D1D1F !important; }
-.text-orange { color: #F83458 !important; }
-.bg-orange { background-color: #F83458 !important; }
+.bg-cream-canvas { background-color: #F8F9FA !important; }
+.text-ink { color: #0F172A !important; }
+.bg-ink { background-color: #0F172A !important; }
+.text-orange { color: #D97706 !important; }
+.bg-orange { background-color: #D97706 !important; }

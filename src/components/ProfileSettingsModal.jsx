@@ -136,7 +136,7 @@ export default function ProfileSettingsModal({
         {/* Header */}
         <div className="auth-modal-header" style={{ paddingBottom: '0.85rem' }}>
           <div className="auth-header-brand-row">
-            <div className="auth-brand-badge" style={{ background: '#1D1D1F', color: '#f59e0b' }}>
+            <div className="auth-brand-badge" style={{ background: '#0F172A', color: '#f59e0b' }}>
               <ShieldCheck size={22} />
             </div>
             <div className="auth-header-texts">
@@ -172,7 +172,7 @@ export default function ProfileSettingsModal({
               width: 38,
               height: 38,
               borderRadius: '50%',
-              background: '#1D1D1F',
+              background: '#0F172A',
               color: '#fafaf9',
               display: 'flex',
               alignItems: 'center',
@@ -183,7 +183,7 @@ export default function ProfileSettingsModal({
               {user.name?.charAt(0) || 'C'}
             </div>
             <div>
-              <div style={{ fontWeight: 700, fontSize: '0.92rem', color: '#1D1D1F' }}>{user.name}</div>
+              <div style={{ fontWeight: 700, fontSize: '0.92rem', color: '#0F172A' }}>{user.name}</div>
               <div style={{ fontSize: '0.75rem', color: '#78716c' }} className="font-mono">
                 Roll No: <strong style={{ color: '#d97706' }}>{user.rollNo || 'SP-2026-084'}</strong>
               </div>
@@ -455,7 +455,7 @@ export default function ProfileSettingsModal({
                 </span>
               </div>
 
-              <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#1D1D1F', marginBottom: '0.35rem' }}>
+              <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#0F172A', marginBottom: '0.35rem' }}>
                 {user.subscription?.plan || '12-Month Pro Active Pass'}
               </div>
 
@@ -469,7 +469,7 @@ export default function ProfileSettingsModal({
                 <div style={{ width: 1, height: 28, background: 'rgba(0, 0, 0, 0.08)' }} />
                 <div>
                   <div style={{ fontSize: '0.72rem', color: '#78716c' }}>EXAM PREPARATION</div>
-                  <div style={{ fontSize: '0.9rem', fontWeight: 600, color: '#1D1D1F' }}>
+                  <div style={{ fontSize: '0.9rem', fontWeight: 600, color: '#0F172A' }}>
                     SSC C/D & High Court
                   </div>
                 </div>

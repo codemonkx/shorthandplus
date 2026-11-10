@@ -136,7 +136,7 @@ export default function Sidebar({
             >
               <ShieldCheck size={17} className="text-royal-blue" />
               <span style={{ flex: 1, textAlign: 'left' }}>Admin Console</span>
-              <span className="sidebar-live-pill" style={{ background: 'rgba(248, 52, 88, 0.08)', color: '#F83458', border: '1px solid rgba(248, 52, 88, 0.22)', fontSize: '0.68rem', padding: '0.15rem 0.45rem' }}>Staff</span>
+              <span className="sidebar-live-pill" style={{ background: 'rgba(217, 119, 6, 0.08)', color: '#D97706', border: '1px solid rgba(217, 119, 6, 0.22)', fontSize: '0.68rem', padding: '0.15rem 0.45rem' }}>Staff</span>
               {currentTab === 'admin' && <div className="active-indicator-bar" />}
             </button>
           )}

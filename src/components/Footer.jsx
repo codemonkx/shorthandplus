@@ -33,11 +33,11 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
 
             <div className="footer-trust-chips-row">
               <span className="footer-trust-chip">
-                <ShieldCheck size={14} color="#F83458" />
+                <ShieldCheck size={14} color="#D97706" />
                 <span>AI-Based Real-Time Evaluation</span>
               </span>
               <span className="footer-trust-chip">
-                <Award size={14} color="#F83458" />
+                <Award size={14} color="#D97706" />
                 <span>50–140 WPM Certified Speeds</span>
               </span>
             </div>
@@ -117,21 +117,21 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
             <h4 className="footer-heading">Academy Contact</h4>
             <ul className="footer-contact-details">
               <li>
-                <MapPin size={16} color="#F83458" className="shrink-0" />
+                <MapPin size={16} color="#D97706" className="shrink-0" />
                 <span>Gaya College More, Opposite Cyber Thana, Gayaji, Bihar</span>
               </li>
               <li>
-                <Phone size={16} color="#F83458" className="shrink-0" />
+                <Phone size={16} color="#D97706" className="shrink-0" />
                 <span>Contact: +91 7870377214 / +91 9204123453</span>
               </li>
               <li>
-                <Mail size={16} color="#F83458" className="shrink-0" />
+                <Mail size={16} color="#D97706" className="shrink-0" />
                 <a href="mailto:stenoplus.in@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
                   stenoplus.in@gmail.com
                 </a>
               </li>
               <li>
-                <Clock size={16} color="#F83458" className="shrink-0" />
+                <Clock size={16} color="#D97706" className="shrink-0" />
                 <span>Daily Batches: 6:00 AM – 11:00 AM & 3:00 PM – 8:00 PM</span>
               </li>
             </ul>
@@ -143,14 +143,14 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                background: '#F83458',
+                background: '#D97706',
                 color: '#FFFFFF',
                 padding: '0.65rem 1.15rem',
                 borderRadius: '8px',
                 fontWeight: 700,
                 textDecoration: 'none',
                 marginTop: '1rem',
-                boxShadow: '0 2px 8px rgba(248, 52, 88, 0.28)'
+                boxShadow: '0 2px 8px rgba(217, 119, 6, 0.28)'
               }}
             >
               <Phone size={15} />
@@ -162,7 +162,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
 
         {/* Compliance & Legal Policies Strip (Razorpay & IT Rules Compliant) */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', justifyContent: 'center', alignItems: 'center', padding: '1rem 0', borderTop: '1px solid rgba(243, 238, 227,0.08)', fontSize: '0.74rem', color: '#a8a29e' }}>
-          <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" style={{ color: '#F83458', textDecoration: 'none', fontWeight: 600 }}>https://stenoplus.in</a>
+          <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" style={{ color: '#D97706', textDecoration: 'none', fontWeight: 600 }}>https://stenoplus.in</a>
           <span>•</span>
           <button onClick={() => onOpenLegal && onOpenLegal('terms')} style={{ background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer', padding: 0 }}>Terms & Conditions</button>
           <span>•</span>

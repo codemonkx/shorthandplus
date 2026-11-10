@@ -287,7 +287,7 @@ export default function DashboardView({
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
               <CreditCard size={18} className="text-emerald-600" />
-              <h3 style={{ margin: 0, fontSize: '1.15rem', fontWeight: 700, color: '#1D1D1F' }}>
+              <h3 style={{ margin: 0, fontSize: '1.15rem', fontWeight: 700, color: '#0F172A' }}>
                 My Monthly Subscription & Billing Ledger
               </h3>
               <span className="badge badge-emerald" style={{ fontSize: '0.75rem', fontWeight: 700 }}>
@@ -302,7 +302,7 @@ export default function DashboardView({
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <div style={{ textAlign: 'right', marginRight: '0.5rem' }}>
               <span style={{ fontSize: '0.75rem', color: '#78716c', display: 'block' }}>Next Monthly Renewal</span>
-              <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1D1D1F', fontFamily: 'monospace' }}>
+              <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#0F172A', fontFamily: 'monospace' }}>
                 {user?.subscription?.nextBillingDate || '23 Nov 2026'}
               </span>
             </div>
@@ -310,7 +310,7 @@ export default function DashboardView({
               type="button" 
               onClick={() => onOpenCheckout ? onOpenCheckout('plan-1mo') : onNavigate('pricing')}
               className="btn btn-secondary btn-sm"
-              style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', borderColor: 'rgba(0, 0, 0, 0.08)', color: '#1D1D1F', background: '#FFFFFF' }}
+              style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', borderColor: 'rgba(0, 0, 0, 0.08)', color: '#0F172A', background: '#FFFFFF' }}
             >
               <CreditCard size={14} />
               <span>Manage / Upgrade</span>
@@ -335,10 +335,10 @@ export default function DashboardView({
             <tbody>
               {studentTransactions.map((txn) => (
                 <tr key={txn.id} style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                  <td style={{ padding: '0.75rem 1rem', fontFamily: 'monospace', fontWeight: 600, color: '#1D1D1F' }}>
+                  <td style={{ padding: '0.75rem 1rem', fontFamily: 'monospace', fontWeight: 600, color: '#0F172A' }}>
                     {txn.id}
                   </td>
-                  <td style={{ padding: '0.75rem 1rem', fontWeight: 600, color: '#1D1D1F' }}>
+                  <td style={{ padding: '0.75rem 1rem', fontWeight: 600, color: '#0F172A' }}>
                     {txn.plan}
                   </td>
                   <td style={{ padding: '0.75rem 1rem', color: '#78716c' }}>
@@ -347,7 +347,7 @@ export default function DashboardView({
                   <td style={{ padding: '0.75rem 1rem', color: '#78716c', fontFamily: 'monospace' }}>
                     {txn.date}
                   </td>
-                  <td style={{ padding: '0.75rem 1rem', fontFamily: 'monospace', fontWeight: 700, color: '#1D1D1F' }}>
+                  <td style={{ padding: '0.75rem 1rem', fontFamily: 'monospace', fontWeight: 700, color: '#0F172A' }}>
                     ₹{txn.amount}
                   </td>
                   <td style={{ padding: '0.75rem 1rem', color: '#57534e' }}>

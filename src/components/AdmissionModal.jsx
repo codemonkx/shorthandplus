@@ -183,10 +183,10 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
               <Sparkles size={12} />
               Session 2026 – 2027 Admission
             </div>
-            <h2 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#1D1D1F', margin: 0 }}>
+            <h2 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#0F172A', margin: 0 }}>
               Gaya Shorthand Classes
             </h2>
-            <p style={{ fontSize: '0.82rem', color: '#6E6E73', margin: '2px 0 0' }}>
+            <p style={{ fontSize: '0.82rem', color: '#64748B', margin: '2px 0 0' }}>
               Online Admission & Candidate Registration Form • Opp. Cyber Thana, Gaya
             </p>
           </div>
@@ -199,7 +199,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
               borderRadius: '8px',
               padding: '6px',
               cursor: 'pointer',
-              color: '#6E6E73'
+              color: '#64748B'
             }}
           >
             <X size={18} />
@@ -224,7 +224,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
               }}>
                 <CheckCircle2 size={36} />
               </div>
-              <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#1D1D1F', margin: '0 0 0.25rem' }}>
+              <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', margin: '0 0 0.25rem' }}>
                 Admission Application Submitted!
               </h3>
               <p style={{ fontSize: '0.88rem', color: '#57534e', margin: '0 0 1.25rem' }}>
@@ -243,13 +243,13 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '0.75rem', marginBottom: '0.75rem' }}>
                   <div>
-                    <span style={{ fontSize: '0.72rem', color: '#6E6E73', textTransform: 'uppercase', fontWeight: 700 }}>Application Ref No.</span>
+                    <span style={{ fontSize: '0.72rem', color: '#64748B', textTransform: 'uppercase', fontWeight: 700 }}>Application Ref No.</span>
                     <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#d97706', fontFamily: 'monospace' }}>
                       {submittedData.refNumber}
                     </div>
                   </div>
                   <div style={{ textAlign: 'right' }}>
-                    <span style={{ fontSize: '0.72rem', color: '#6E6E73', textTransform: 'uppercase', fontWeight: 700 }}>Submission Date</span>
+                    <span style={{ fontSize: '0.72rem', color: '#64748B', textTransform: 'uppercase', fontWeight: 700 }}>Submission Date</span>
                     <div style={{ fontSize: '0.82rem', color: '#44403c', fontWeight: 600 }}>
                       {submittedData.submittedAt}
                     </div>
@@ -258,27 +258,27 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.75rem' }}>
                   <div>
-                    <span style={{ color: '#6E6E73', fontSize: '0.76rem', display: 'block' }}>Candidate Name</span>
+                    <span style={{ color: '#64748B', fontSize: '0.76rem', display: 'block' }}>Candidate Name</span>
                     <strong>{submittedData.fullName}</strong>
                   </div>
                   <div>
-                    <span style={{ color: '#6E6E73', fontSize: '0.76rem', display: 'block' }}>Father's Name</span>
+                    <span style={{ color: '#64748B', fontSize: '0.76rem', display: 'block' }}>Father's Name</span>
                     <strong>{submittedData.fatherName || '—'}</strong>
                   </div>
                   <div>
-                    <span style={{ color: '#6E6E73', fontSize: '0.76rem', display: 'block' }}>Mobile & WhatsApp</span>
+                    <span style={{ color: '#64748B', fontSize: '0.76rem', display: 'block' }}>Mobile & WhatsApp</span>
                     <strong>{submittedData.phone} {submittedData.whatsapp && submittedData.whatsapp !== submittedData.phone ? `/ ${submittedData.whatsapp}` : ''}</strong>
                   </div>
                   <div>
-                    <span style={{ color: '#6E6E73', fontSize: '0.76rem', display: 'block' }}>Selected Course</span>
+                    <span style={{ color: '#64748B', fontSize: '0.76rem', display: 'block' }}>Selected Course</span>
                     <strong style={{ color: '#047857' }}>{submittedData.selectedCourse.name}</strong>
                   </div>
                   <div>
-                    <span style={{ color: '#6E6E73', fontSize: '0.76rem', display: 'block' }}>Course Fee</span>
+                    <span style={{ color: '#64748B', fontSize: '0.76rem', display: 'block' }}>Course Fee</span>
                     <strong>{submittedData.selectedCourse.fee}</strong>
                   </div>
                   <div>
-                    <span style={{ color: '#6E6E73', fontSize: '0.76rem', display: 'block' }}>Training Mode & Shift</span>
+                    <span style={{ color: '#64748B', fontSize: '0.76rem', display: 'block' }}>Training Mode & Shift</span>
                     <strong>{submittedData.mode} • {submittedData.batchShift}</strong>
                   </div>
                 </div>
@@ -341,7 +341,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                       gap: '0.45rem',
                       background: '#FFFFFF',
                       border: '1px solid rgba(0, 0, 0, 0.12)',
-                      color: '#1D1D1F',
+                      color: '#0F172A',
                       borderRadius: '10px',
                       padding: '0.75rem',
                       fontSize: '0.86rem',
@@ -362,7 +362,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                   style={{
                     background: 'none',
                     border: 'none',
-                    color: '#6E6E73',
+                    color: '#64748B',
                     fontSize: '0.82rem',
                     cursor: 'pointer',
                     marginTop: '0.5rem'
@@ -393,7 +393,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                 
                 {/* Full Name */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#0F172A', marginBottom: '0.35rem' }}>
                     Candidate Full Name (विद्यार्थी का नाम) *
                   </label>
                   <input
@@ -416,7 +416,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
 
                 {/* Father's Name */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#0F172A', marginBottom: '0.35rem' }}>
                     Father's / Guardian Name (पिता का नाम)
                   </label>
                   <input
@@ -438,7 +438,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
 
                 {/* Mobile Calling Number */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#0F172A', marginBottom: '0.35rem' }}>
                     Mobile Number (कॉलिंग नंबर) *
                   </label>
                   <input
@@ -462,7 +462,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                 {/* WhatsApp Number */}
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
-                    <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#1D1D1F' }}>
+                    <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#0F172A' }}>
                       WhatsApp Number
                     </label>
                     <label style={{ fontSize: '0.75rem', color: '#57534e', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -488,14 +488,14 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                       border: '1px solid rgba(0, 0, 0, 0.12)',
                       borderRadius: '8px',
                       fontSize: '0.9rem',
-                      background: formData.sameAsPhone ? '#F5F5F7' : '#FFFFFF'
+                      background: formData.sameAsPhone ? '#F8F9FA' : '#FFFFFF'
                     }}
                   />
                 </div>
 
                 {/* Email Address */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#0F172A', marginBottom: '0.35rem' }}>
                     Email Address
                   </label>
                   <input
@@ -517,7 +517,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
 
                 {/* Gender */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#0F172A', marginBottom: '0.35rem' }}>
                     Gender (लिंग)
                   </label>
                   <select
@@ -557,7 +557,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                   
                   {/* Course Dropdown */}
                   <div style={{ gridColumn: '1 / -1' }}>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '0.35rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#0F172A', marginBottom: '0.35rem' }}>
                       Select Course (कोर्स चुनें) *
                     </label>
                     <select
@@ -584,7 +584,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
 
                   {/* Mode */}
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '0.35rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#0F172A', marginBottom: '0.35rem' }}>
                       Training Mode
                     </label>
                     <select
@@ -607,7 +607,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
 
                   {/* Batch Shift */}
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '0.35rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#0F172A', marginBottom: '0.35rem' }}>
                       Preferred Batch Timing
                     </label>
                     <select
@@ -632,7 +632,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
 
                   {/* Target Exam */}
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '0.35rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#0F172A', marginBottom: '0.35rem' }}>
                       Target Government Exam
                     </label>
                     <select
@@ -660,7 +660,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
 
                   {/* Address */}
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '0.35rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#0F172A', marginBottom: '0.35rem' }}>
                       City / District (पता / ज़िला)
                     </label>
                     <input
@@ -693,7 +693,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '0.5rem',
-                  background: '#F83458',
+                  background: '#D97706',
                   color: '#FFFFFF',
                   border: 'none',
                   borderRadius: '10px',
@@ -701,7 +701,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                   fontSize: '0.95rem',
                   fontWeight: 700,
                   cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                  boxShadow: '0 4px 14px rgba(248, 52, 88, 0.28)',
+                  boxShadow: '0 4px 14px rgba(217, 119, 6, 0.28)',
                   transition: 'transform 0.15s ease'
                 }}
               >
@@ -710,7 +710,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                 <ArrowRight size={16} />
               </button>
 
-              <div style={{ textAlign: 'center', marginTop: '0.85rem', fontSize: '0.78rem', color: '#6E6E73' }}>
+              <div style={{ textAlign: 'center', marginTop: '0.85rem', fontSize: '0.78rem', color: '#64748B' }}>
                 3 Demo Classes Included • No prior shorthand experience required • Helpline: 9204123453
               </div>
             </form>

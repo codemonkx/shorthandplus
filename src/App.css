@@ -1,58 +1,58 @@
 /* ==========================================================================
    GAYA SHORTHAND CLASSES (SHORTHANDPLUS) - OFFICIAL DESIGN SYSTEM
    60-30-10 RULE COLOR SYSTEM:
-   - 60% Dominant Canvas: Platinum (#F5F5F7)
-   - 30% Structural & Ink Typography: Ink Black (#1D1D1F)
-   - 10% High-Impact Accent / Focal Point: Burnt Orange (#F83458)
+   - 60% Dominant Canvas: Platinum (#F8F9FA)
+   - 30% Structural & Ink Typography: Ink Black (#0F172A)
+   - 10% High-Impact Accent / Focal Point: Burnt Orange (#D97706)
    ========================================================================== */
 
 :root {
   /* 60% DOMINANT CANVAS & SURFACES */
-  --cream: #F5F5F7;
-  --canvas: #F5F5F7;
+  --cream: #F8F9FA;
+  --canvas: #F8F9FA;
   --cream-surface: #FFFFFF;
   --surface: #FFFFFF;
   --cream-card: #FFFFFF;
   --cream-border: rgba(0, 0, 0, 0.08);
-  --cream-subtle: #F5F5F7;
+  --cream-subtle: #F8F9FA;
 
   /* 30% STRUCTURE & INK TYPOGRAPHY */
-  --ink: #1D1D1F;
+  --ink: #0F172A;
   --ink-light: #262626;
   --ink-muted: #555555;
   --ink-subtle: #777777;
   --ink-border: rgba(0, 0, 0, 0.08);
 
   /* 10% HIGH-IMPACT BURNT ORANGE ACCENT */
-  --burnt-orange: #F83458;
-  --burnt-orange-hover: #E0264A;
-  --burnt-orange-light: rgba(248, 52, 88, 0.08);
-  --burnt-orange-border: rgba(248, 52, 88, 0.3);
+  --burnt-orange: #D97706;
+  --burnt-orange-hover: #B45309;
+  --burnt-orange-light: rgba(217, 119, 6, 0.08);
+  --burnt-orange-border: rgba(217, 119, 6, 0.3);
 
   /* SYSTEM DESIGN TOKEN MAPPINGS */
-  --primary: #1D1D1F;
+  --primary: #0F172A;
   --primary-hover: #262626;
   --primary-light: #FFFFFF;
   --primary-border: rgba(0, 0, 0, 0.08);
   
-  --navy-900: #1D1D1F;
-  --navy-800: #1D1D1F;
+  --navy-900: #0F172A;
+  --navy-800: #0F172A;
   --slate-700: #262626;
   --slate-600: #444444;
   --slate-500: #666666;
   --slate-400: #888888;
   --slate-200: rgba(0, 0, 0, 0.08);
-  --slate-100: #F5F5F7;
-  --slate-50: #F5F5F7;
+  --slate-100: #F8F9FA;
+  --slate-50: #F8F9FA;
   --white: #FFFFFF;
   
   /* Primary Action Tokens mapped to Burnt Orange */
-  --emerald-600: #F83458;
-  --emerald-50: rgba(248, 52, 88, 0.08);
-  --amber-600: #F83458;
-  --amber-50: rgba(248, 52, 88, 0.08);
-  --rose-600: #F83458;
-  --rose-50: rgba(248, 52, 88, 0.08);
+  --emerald-600: #D97706;
+  --emerald-50: rgba(217, 119, 6, 0.08);
+  --amber-600: #D97706;
+  --amber-50: rgba(217, 119, 6, 0.08);
+  --rose-600: #D97706;
+  --rose-50: rgba(217, 119, 6, 0.08);
   
   --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -423,7 +423,7 @@ input, select, textarea {
    2. HERO SECTION & STUDENT ADMISSION BOX
    -------------------------------------------------------------------------- */
 .edtech-hero-section {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F5F5F7 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
   padding: 3.5rem 1.25rem 4rem;
   border-bottom: 1px solid var(--slate-200);
 }
@@ -2785,10 +2785,10 @@ input, select, textarea {
    Clean & Trustworthy Corporate EdTech (Stripe / Coursera Style)
    ========================================================================== */
 :root {
-  --bg-app: #F5F5F7;
+  --bg-app: #F8F9FA;
   --bg-sidebar: #0f172a;
   --bg-surface: #FFFFFF;
-  --bg-subtle: #F5F5F7;
+  --bg-subtle: #F8F9FA;
   --blue-600: #18181b;
   --blue-700: #27272a;
   --border-light: #e2e8f0;
@@ -2917,7 +2917,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   min-height: 100vh;
   background-color: #FFFFFF;
-  background-color: var(--bg-app, #F5F5F7);
+  background-color: var(--bg-app, #F8F9FA);
   color: #0f172a;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
@@ -3367,7 +3367,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Header User Card */
 .popover-user-card-header {
-  background: var(--bg-app, #F5F5F7);
+  background: var(--bg-app, #F8F9FA);
   border-bottom: 1px solid var(--border-light, #E6DEC8);
   padding: 1.25rem 1.25rem 1rem 1.25rem;
   display: flex;
@@ -3386,7 +3386,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--ink, #1D1D1F);
+  background: var(--ink, #0F172A);
   color: #FFFFFF;
   font-size: 1.15rem;
   font-weight: 800;
@@ -3404,7 +3404,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background: var(--burnt-orange, #F83458);
+  background: var(--burnt-orange, #D97706);
   border: 1.5px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -3417,7 +3417,7 @@ h1, h2, h3, h4, h5, h6 {
 .popover-display-name {
   font-size: 0.975rem;
   font-weight: 700;
-  color: var(--ink, #1D1D1F);
+  color: var(--ink, #0F172A);
   line-height: 1.3;
 }
 
@@ -3438,7 +3438,7 @@ h1, h2, h3, h4, h5, h6 {
 .popover-roll-pill {
   font-size: 0.7rem;
   font-weight: 600;
-  color: var(--ink, #1D1D1F);
+  color: var(--ink, #0F172A);
   background: var(--bg-surface, #FFFFFF);
   border: 1px solid var(--border-light, #E6DEC8);
   padding: 0.2rem 0.55rem;
@@ -3450,7 +3450,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   font-size: 0.7rem;
   font-weight: 700;
-  color: var(--burnt-orange, #F83458);
+  color: var(--burnt-orange, #D97706);
   background: var(--bg-surface, #FFFFFF);
   border: 1px solid var(--border-light, #E6DEC8);
   padding: 0.2rem 0.55rem;
@@ -3478,7 +3478,7 @@ h1, h2, h3, h4, h5, h6 {
 .popover-stat-num {
   font-size: 0.825rem;
   font-weight: 700;
-  color: var(--ink, #1D1D1F);
+  color: var(--ink, #0F172A);
 }
 
 .popover-stat-label {
@@ -3526,7 +3526,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .popover-menu-link:hover {
-  background: var(--bg-app, #F5F5F7);
+  background: var(--bg-app, #F8F9FA);
 }
 
 .popover-icon-box {
@@ -3548,7 +3548,7 @@ h1, h2, h3, h4, h5, h6 {
 .popover-link-title {
   font-size: 0.825rem;
   font-weight: 600;
-  color: var(--ink, #1D1D1F);
+  color: var(--ink, #0F172A);
 }
 
 .popover-link-desc {
@@ -3559,9 +3559,9 @@ h1, h2, h3, h4, h5, h6 {
 .popover-active-badge {
   font-size: 0.65rem;
   font-weight: 700;
-  background: var(--bg-app, #F5F5F7);
-  color: var(--burnt-orange, #F83458);
-  border: 1px solid var(--burnt-orange, #F83458);
+  background: var(--bg-app, #F8F9FA);
+  color: var(--burnt-orange, #D97706);
+  border: 1px solid var(--burnt-orange, #D97706);
   padding: 0.15rem 0.45rem;
   border-radius: 9999px;
 }
@@ -3569,9 +3569,9 @@ h1, h2, h3, h4, h5, h6 {
 .popover-admin-badge {
   font-size: 0.65rem;
   font-weight: 700;
-  background: var(--ink, #1D1D1F);
+  background: var(--ink, #0F172A);
   color: #FFFFFF;
-  border: 1px solid var(--ink, #1D1D1F);
+  border: 1px solid var(--ink, #0F172A);
   padding: 0.15rem 0.45rem;
   border-radius: 9999px;
 }
@@ -3583,11 +3583,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .popover-signout-btn:hover {
-  background: var(--bg-app, #F5F5F7);
+  background: var(--bg-app, #F8F9FA);
 }
 
 .popover-signout-btn:hover .popover-link-title {
-  color: var(--burnt-orange, #F83458);
+  color: var(--burnt-orange, #D97706);
 }
 
 /* ==========================================================================
@@ -10176,15 +10176,15 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.03em !important;
   line-height: 1.2 !important;
   margin-bottom: 0.75rem !important;
-  color: #1D1D1F !important;
+  color: #0F172A !important;
   text-decoration: none !important;
   border-bottom: none !important;
 }
 
 .typing-hero-title-accent {
-  color: #1D1D1F !important;
+  color: #0F172A !important;
   background: none !important;
-  -webkit-text-fill-color: #1D1D1F !important;
+  -webkit-text-fill-color: #0F172A !important;
   text-decoration: none !important;
   border-bottom: none !important;
 }
@@ -11252,7 +11252,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .results-hero-title-accent {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F7 100%) !important;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
 }
@@ -18302,12 +18302,12 @@ h1, h2, h3, h4, h5, h6 {
 .brand-cap-squircle {
   width: 38px !important;
   height: 38px !important;
-  background: #F83458 !important;
+  background: #D97706 !important;
   border-radius: 10px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  box-shadow: 0 4px 10px -2px rgba(248, 52, 88, 0.35) !important;
+  box-shadow: 0 4px 10px -2px rgba(217, 119, 6, 0.35) !important;
   flex-shrink: 0 !important;
 }
 
@@ -18315,7 +18315,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif !important;
   font-size: 1.25rem !important;
   font-weight: 800 !important;
-  color: #1D1D1F !important;
+  color: #0F172A !important;
   letter-spacing: -0.015em !important;
   white-space: nowrap !important;
 }
@@ -18335,7 +18335,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0 !important;
   pointer-events: none !important;
   z-index: 1 !important;
-  background: #1D1D1F !important;
+  background: #0F172A !important;
   border: none !important;
   border-radius: 9999px !important;
   box-shadow: 0 2px 8px rgba(17, 17, 17, 0.2) !important;
@@ -18380,7 +18380,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-pill-item.inactive-link:hover {
-  color: #1D1D1F !important;
+  color: #0F172A !important;
 }
 
 /* 3. Right: Search Icon, Login, Sign Up */
@@ -19099,7 +19099,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .scorecard-kpi-box.hero-kpi-card.passing {
   border-color: #10b981 !important;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F5F5F7 100%) !important;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%) !important;
 }
 
 .scorecard-kpi-box.hero-kpi-card.failing {
@@ -19228,7 +19228,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: #1D1D1F;
+  color: #0F172A;
   background: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.08);
   padding: 0.35rem 0.95rem;
@@ -19910,14 +19910,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .admin-nav-tab:hover {
-  color: #1D1D1F;
+  color: #0F172A;
   background: #FFFFFF;
   border-color: #e7e5e4;
   box-shadow: 0 1px 3px rgba(28, 25, 23, 0.04);
 }
 
 .admin-nav-tab.active {
-  color: #1D1D1F;
+  color: #0F172A;
   background: #FFFFFF;
   border-color: #e7e5e4;
   font-weight: 700;
@@ -19935,7 +19935,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .admin-nav-tab.active .admin-tab-count-pill {
-  background: #1D1D1F;
+  background: #0F172A;
   color: #FFFFFF;
 }
 
@@ -20926,7 +20926,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .audio-loaded-card.sample-accent {
   border-color: #fbcfe8;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F5F5F7 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
 }
 
 .audio-file-meta-row {
@@ -22284,7 +22284,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .counseling-card {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F7 100%) !important;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%) !important;
   border: 1px solid #e4e4e7 !important;
   border-radius: 20px !important;
   padding: 2.25rem 2.5rem !important;
@@ -25003,7 +25003,7 @@ select option:checked {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--ink, #1D1D1F);
+  background: var(--ink, #0F172A);
   color: #FFFFFF;
   font-weight: 800;
   font-size: 0.85rem;
@@ -25016,7 +25016,7 @@ select option:checked {
   display: block;
   font-size: 0.85rem;
   font-weight: 700;
-  color: #1D1D1F;
+  color: #0F172A;
 }
 
 .mini-role {
@@ -25037,7 +25037,7 @@ select option:checked {
 .stroke-chars {
   font-size: 1.5rem;
   letter-spacing: 0.4rem;
-  color: #1D1D1F;
+  color: #0F172A;
   font-weight: 700;
   margin-bottom: 0.35rem;
 }
@@ -25079,9 +25079,9 @@ select option:checked {
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  background: #1D1D1F;
+  background: #0F172A;
   color: #FFFFFF;
-  border: 1px solid #1D1D1F;
+  border: 1px solid #0F172A;
   border-radius: 8px;
   padding: 0.65rem;
   font-size: 0.8rem;
@@ -25091,7 +25091,7 @@ select option:checked {
 }
 
 .btn-mini-launch:hover {
-  background: #1D1D1F;
+  background: #0F172A;
 }
 
 .online-features-cards-grid {
@@ -27344,7 +27344,7 @@ select option:checked {
 .target-exam-title {
   font-size: 1.1rem !important;
   font-weight: 700 !important;
-  color: #1D1D1F !important;
+  color: #0F172A !important;
   margin: 0 0 0.5rem 0 !important;
 }
 
