@@ -234,7 +234,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
   };
 
   return (
-    <div className="classes-page-root" style={{ background: '#F5F5F7', minHeight: '100vh', width: '100%' }}>
+    <div className="classes-page-root" style={{ background: '#FFFFFF', minHeight: '100vh', width: '100%' }}>
       
       {/* 1. HERO HEADER */}
       <div className="classes-hero-banner" style={{ padding: '1rem 1.25rem 2rem', textAlign: 'center' }}>
@@ -246,31 +246,31 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               gap: '0.45rem',
               padding: '0.35rem 0.95rem',
               borderRadius: '9999px',
-              background: '#EFF6FF',
-              border: '1px solid #BFDBFE',
-              color: '#2563EB',
-              fontSize: '0.78rem',
-              fontWeight: 800,
-              boxShadow: '0 1px 3px rgba(15, 23, 42, 0.03)'
+              background: '#F1F5F9',
+              border: '1px solid #E2E8F0',
+              color: '#475569',
+              fontSize: '0.75rem',
+              fontWeight: 600,
+              letterSpacing: '0.04em'
             }}>
-              <Sparkles size={14} color="#2563EB" />
-              <span>ACADEMY BATCH TIMINGS & SCHEDULE • ESTD. 2012</span>
+              <Sparkles size={13} color="#475569" />
+              <span>Academy Batch Timings & Schedule · Est. 2012</span>
             </div>
           </div>
-          <h1 className="classes-hero-title" style={{ fontSize: 'clamp(2rem, 3.2vw, 2.6rem)', fontWeight: 850, margin: '0 0 0.75rem', letterSpacing: '-0.025em', color: '#0F172A' }}>
+          <h1 className="classes-hero-title" style={{ fontSize: 'clamp(1.9rem, 3vw, 2.4rem)', fontWeight: 700, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#0F172A' }}>
             Classroom Batches, Timetable & Live Dictations
           </h1>
-          <p className="classes-hero-desc" style={{ fontSize: '1rem', color: '#555555', lineHeight: 1.6, margin: '0 auto 1.5rem', maxWidth: '780px' }}>
+          <p className="classes-hero-desc" style={{ fontSize: '1rem', color: '#64748B', lineHeight: 1.6, margin: '0 auto 1.5rem', maxWidth: '780px' }}>
             Attend daily in-person classes at our Gaya academy or access live broadcast Zoom dictations from anywhere. Daily batches guided by <strong>Shadab Sir (12 Years Experience)</strong> spanning 6:00 AM to 8:00 PM.
           </p>
 
-          {/* Tab Navigation Switcher - Separate Independent Pills */}
+          {/* Tab Navigation Switcher - Clean Enterprise Pills */}
           <div className="classes-nav-tabs" style={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             flexWrap: 'wrap',
-            gap: '0.65rem',
+            gap: '0.5rem',
             marginTop: '1.5rem',
             background: 'transparent',
             border: 'none',
@@ -295,46 +295,46 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.45rem',
-                    padding: '0.55rem 1.15rem',
-                    borderRadius: '9999px',
-                    fontSize: '0.88rem',
-                    fontWeight: active ? 800 : 600,
-                    border: '1.5px solid',
-                    borderColor: active ? '#111111' : 'rgba(0, 0, 0, 0.08)',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '8px',
+                    fontSize: '0.84rem',
+                    fontWeight: 600,
+                    border: '1px solid',
+                    borderColor: active ? '#0F172A' : '#E2E8F0',
                     background: active ? '#0F172A' : '#FFFFFF',
-                    color: active ? '#FFFFFF' : '#0F172A',
+                    color: active ? '#FFFFFF' : '#475569',
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
                     boxShadow: active 
-                      ? '0 2px 8px rgba(17, 17, 17, 0.2)' 
-                      : '0 1px 3px rgba(17, 17, 17, 0.04)',
+                      ? '0 1px 3px rgba(15, 23, 42, 0.12)' 
+                      : '0 1px 2px rgba(0, 0, 0, 0.03)',
                     whiteSpace: 'nowrap'
                   }}
                   onMouseEnter={(e) => {
                     if (!active) {
-                      e.currentTarget.style.borderColor = 'rgba(17, 17, 17, 0.28)';
-                      e.currentTarget.style.background = '#FFFFFF';
-                      e.currentTarget.style.color = '#111111';
+                      e.currentTarget.style.borderColor = '#CBD5E1';
+                      e.currentTarget.style.color = '#0F172A';
+                      e.currentTarget.style.background = '#F8FAFC';
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!active) {
-                      e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.08)';
+                      e.currentTarget.style.borderColor = '#E2E8F0';
+                      e.currentTarget.style.color = '#475569';
                       e.currentTarget.style.background = '#FFFFFF';
-                      e.currentTarget.style.color = '#555555';
                     }
                   }}
                 >
                   {tab.hasDot && (
                     <span style={{
-                      width: '7px',
-                      height: '7px',
+                      width: '6px',
+                      height: '6px',
                       borderRadius: '50%',
-                      background: '#E11D48',
-                      boxShadow: '0 0 0 2px rgba(225, 29, 72, 0.25)'
+                      background: '#DC2626',
+                      display: 'inline-block'
                     }} />
                   )}
-                  {IconComponent && <IconComponent size={14} color={active ? '#FFFFFF' : '#2563EB'} />}
+                  {IconComponent && <IconComponent size={13} color={active ? '#FFFFFF' : '#475569'} />}
                   <span>{tab.label}</span>
                 </button>
               );
@@ -420,16 +420,19 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '8px',
-                      background: 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)',
+                      background: '#0F172A',
                       color: '#FFFFFF',
-                      border: 'none',
-                      borderRadius: '12px',
-                      padding: '0.85rem 1.4rem',
-                      fontSize: '0.92rem',
-                      fontWeight: 700,
+                      border: '1px solid #0F172A',
+                      borderRadius: '8px',
+                      padding: '0.8rem 1.35rem',
+                      fontSize: '0.9rem',
+                      fontWeight: 600,
                       cursor: 'pointer',
-                      boxShadow: '0 4px 14px rgba(37, 99, 235, 0.28)'
+                      boxShadow: '0 1px 3px rgba(15, 23, 42, 0.12)',
+                      transition: 'background 0.15s ease'
                     }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = '#1E293B'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.background = '#0F172A'; }}
                     onClick={() => {
                       if (onSelectClass && activeClass) {
                         onSelectClass(activeClass.id);
@@ -438,9 +441,9 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                       }
                     }}
                   >
-                    <Video size={17} />
+                    <Video size={16} />
                     <span>Enter Live Zoom Studio (In-Browser)</span>
-                    <ArrowRight size={16} />
+                    <ArrowRight size={15} />
                   </button>
 
                   <a 

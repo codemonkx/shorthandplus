@@ -614,8 +614,8 @@ export default function App() {
     );
   }
 
-  // MODE A: Full Public Marketing Website (Home, Courses, Classes, Tests, About)
-  const publicTabs = ['landing', 'courses', 'classes', 'tests', 'about'];
+  // MODE A: Full Public Marketing Website (Home, Courses, Classes, About)
+  const publicTabs = ['landing', 'courses', 'classes', 'about'];
   if (publicTabs.includes(currentTab)) {
     return (
       <div className="public-website-shell">

@@ -272,11 +272,11 @@ hr {
 }
 
 .brand-name-text {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-size: 1.18rem !important;
-  font-weight: 800 !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
   color: #0F172A !important;
-  letter-spacing: -0.015em !important;
+  letter-spacing: -0.01em !important;
   white-space: nowrap !important;
 }
 
@@ -293,9 +293,10 @@ hr {
   left: 0 !important;
   pointer-events: none !important;
   z-index: 1 !important;
-  background: #0F172A !important;
+  background: #F1F5F9 !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: 9999px !important;
-  box-shadow: 0 2px 8px rgba(17, 17, 17, 0.2) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
   will-change: transform, width, height;
 }
 
@@ -306,19 +307,19 @@ hr {
   align-items: center !important;
   padding: 0.42rem 1.05rem !important;
   border-radius: 9999px !important;
-  font-size: 0.92rem !important;
+  font-size: 0.9rem !important;
   font-weight: 500 !important;
-  color: #555555 !important;
+  color: #64748B !important;
   background: transparent !important;
   border: none !important;
   cursor: pointer !important;
   white-space: nowrap !important;
-  transition: color 0.2s ease !important;
+  transition: color 0.15s ease !important;
 }
 
 .nav-pill-item.active-pill {
-  color: #FFFFFF !important;
-  font-weight: 700 !important;
+  color: #0F172A !important;
+  font-weight: 600 !important;
 }
 
 .nav-pill-item.inactive-link:hover {
@@ -344,28 +345,55 @@ hr {
   gap: 0.65rem !important;
 }
 
-.btn-pill-signup,
 .btn-pill-portal {
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.45rem !important;
-  background: #2563EB !important;
-  color: #FFFFFF !important;
-  border: 1px solid #2563EB !important;
-  border-radius: 9999px !important;
-  padding: 0.45rem 1.15rem !important;
-  font-size: 0.86rem !important;
-  font-weight: 700 !important;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28) !important;
+  background: #F8FAFC !important;
+  color: #0F172A !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 8px !important;
+  padding: 0.42rem 0.95rem !important;
+  font-size: 0.84rem !important;
+  font-weight: 600 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
   cursor: pointer !important;
   white-space: nowrap !important;
   transition: all 0.15s ease !important;
 }
 
-.btn-pill-signup:hover,
 .btn-pill-portal:hover {
-  background: #E02447 !important;
-  border-color: #E02447 !important;
+  background: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+}
+
+.btn-pill-signup {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  background: #0F172A !important;
+  color: #FFFFFF !important;
+  border: 1px solid #0F172A !important;
+  border-radius: 8px !important;
+  padding: 0.45rem 1.15rem !important;
+  font-size: 0.86rem !important;
+  font-weight: 600 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12) !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  transition: all 0.15s ease !important;
+}
+
+.btn-pill-portal:hover {
+  background: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
+  transform: translateY(-1px) !important;
+}
+
+.btn-pill-signup:hover {
+  background: #1E293B !important;
+  border-color: #1E293B !important;
   color: #FFFFFF !important;
   transform: translateY(-1px) !important;
 }
@@ -734,11 +762,12 @@ hr {
 .btn-checkout-submit-pay,
 .auth-submit-btn,
 .btn-scorecard-action.primary {
-  background: #2563EB !important;
+  background: #0F172A !important;
   color: #FFFFFF !important;
-  border: 1px solid #2563EB !important;
-  font-weight: 700 !important;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28) !important;
+  border: 1px solid #0F172A !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12) !important;
 }
 
 .btn-primary:hover,
@@ -758,11 +787,11 @@ hr {
 .btn-checkout-submit-pay:hover:not(:disabled),
 .auth-submit-btn:hover:not(:disabled),
 .btn-scorecard-action.primary:hover {
-  background: #1D4ED8 !important;
-  border-color: #1D4ED8 !important;
+  background: #1E293B !important;
+  border-color: #1E293B !important;
   color: #FFFFFF !important;
   transform: translateY(-1px) !important;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.16) !important;
 }
 
 .btn-secondary,

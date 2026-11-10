@@ -371,21 +371,20 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.45rem',
-            background: '#EFF6FF',
-            border: '1px solid #BFDBFE',
-            color: '#2563EB',
-            fontSize: '0.76rem',
-            fontWeight: 800,
-            letterSpacing: '0.8px',
-            textTransform: 'uppercase',
+            background: '#F1F5F9',
+            border: '1px solid #E2E8F0',
+            color: '#475569',
+            fontSize: '0.75rem',
+            fontWeight: 600,
+            letterSpacing: '0.04em',
             padding: '0.35rem 0.9rem',
             borderRadius: '9999px',
             marginBottom: '1rem'
           }}>
-            <Sparkles size={14} color="#2563EB" />
-            <span>OFFICIAL CURRICULUM & TEST PASSES • ESTD. 2012</span>
+            <Sparkles size={13} color="#475569" />
+            <span>Official Curriculum & Test Passes · Est. 2012</span>
           </div>
-          <h1 className="courses-hero-title" style={{ fontSize: 'clamp(2rem, 3.2vw, 2.75rem)', fontWeight: 850, margin: '0 0 0.85rem', letterSpacing: '-0.025em', color: '#0F172A' }}>
+          <h1 className="courses-hero-title" style={{ fontSize: 'clamp(1.9rem, 3vw, 2.4rem)', fontWeight: 700, margin: '0 0 0.85rem', letterSpacing: '-0.02em', color: '#0F172A' }}>
             Stenography Courses & Examination Programs
           </h1>
           <p className="courses-hero-desc" style={{ fontSize: '1.02rem', color: '#64748B', lineHeight: 1.6, margin: 0 }}>
@@ -441,10 +440,10 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                 {tab.count && (
                   <span style={{
                     fontSize: '0.72rem',
-                    fontWeight: 800,
+                    fontWeight: 600,
                     padding: '0.1rem 0.45rem',
                     borderRadius: '9999px',
-                    background: isActive ? '#2563EB' : '#F1F5F9',
+                    background: isActive ? '#334155' : '#F1F5F9',
                     color: isActive ? '#FFFFFF' : '#475569'
                   }}>
                     {tab.count}
@@ -459,7 +458,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-          gap: '1.75rem',
+          gap: '1.5rem',
           alignItems: 'stretch'
         }}>
           {filteredCourses.map((course) => {
@@ -469,17 +468,23 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                 key={course.id}
                 style={{
                   background: '#FFFFFF',
-                  border: course.popular ? '2px solid #2563EB' : '1px solid #E2E8F0',
-                  borderRadius: '20px',
+                  border: '1px solid #E2E8F0',
+                  borderRadius: '16px',
                   padding: '1.75rem',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   position: 'relative',
-                  boxShadow: course.popular 
-                    ? '0 12px 32px -4px rgba(37, 99, 235, 0.16), 0 2px 6px rgba(15, 23, 42, 0.04)' 
-                    : '0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px -4px rgba(15, 23, 42, 0.04)',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  boxShadow: '0 1px 3px rgba(15, 23, 42, 0.04)',
+                  transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#CBD5E1';
+                  e.currentTarget.style.boxShadow = '0 6px 18px -4px rgba(15, 23, 42, 0.08)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#E2E8F0';
+                  e.currentTarget.style.boxShadow = '0 1px 3px rgba(15, 23, 42, 0.04)';
                 }}
               >
                 {/* Popular Flagship Ribbon */}
@@ -488,53 +493,53 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     position: 'absolute',
                     top: '1.25rem',
                     right: '1.25rem',
-                    background: '#EFF6FF',
-                    border: '1px solid #BFDBFE',
-                    color: '#2563EB',
+                    background: '#F1F5F9',
+                    border: '1px solid #E2E8F0',
+                    color: '#0F172A',
                     fontSize: '0.72rem',
-                    fontWeight: 800,
-                    letterSpacing: '0.04em',
-                    padding: '0.25rem 0.75rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.02em',
+                    padding: '0.2rem 0.65rem',
                     borderRadius: '9999px',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.35rem'
                   }}>
-                    <Sparkles size={12} color="#2563EB" />
-                    <span>POPULAR BATCH</span>
+                    <span>Popular Batch</span>
                   </div>
                 )}
 
                 <div>
                   {/* Category & Speed Pill Row */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap', paddingRight: course.popular ? '8.5rem' : 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap', paddingRight: course.popular ? '7.5rem' : 0 }}>
                     <div style={{
                       width: 36,
                       height: 36,
-                      borderRadius: '10px',
-                      background: '#EFF6FF',
-                      border: '1px solid #BFDBFE',
+                      borderRadius: '8px',
+                      background: '#F8FAFC',
+                      border: '1px solid #E2E8F0',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
+                      color: '#0F172A',
                       flexShrink: 0
                     }}>
                       {renderCourseIcon(course.icon)}
                     </div>
                     <span style={{
                       fontSize: '0.76rem',
-                      fontWeight: 800,
-                      color: '#2563EB',
+                      fontWeight: 600,
+                      color: '#64748B',
                       letterSpacing: '0.02em',
                       textTransform: 'uppercase'
                     }}>
                       {course.category}
                     </span>
                     <span style={{
-                      fontFamily: 'SF Mono, monospace',
-                      fontSize: '0.76rem',
-                      fontWeight: 700,
-                      padding: '0.2rem 0.6rem',
+                      fontFamily: 'JetBrains Mono, monospace',
+                      fontSize: '0.74rem',
+                      fontWeight: 600,
+                      padding: '0.2rem 0.5rem',
                       borderRadius: '6px',
                       background: '#F8FAFC',
                       border: '1px solid #E2E8F0',
@@ -547,8 +552,8 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
 
                   {/* Title & Description */}
                   <h3 style={{
-                    fontSize: '1.3rem',
-                    fontWeight: 850,
+                    fontSize: '1.2rem',
+                    fontWeight: 700,
                     color: '#0F172A',
                     lineHeight: 1.35,
                     margin: '0 0 0.5rem',
@@ -570,20 +575,20 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     display: 'grid',
                     gridTemplateColumns: '1fr 1fr',
                     gap: '0.5rem',
-                    padding: '0.75rem 1rem',
+                    padding: '0.65rem 0.85rem',
                     background: '#F8FAFC',
                     border: '1px solid #E2E8F0',
-                    borderRadius: '12px',
+                    borderRadius: '10px',
                     marginBottom: '1.25rem',
-                    fontSize: '0.8rem',
+                    fontSize: '0.78rem',
                     color: '#0F172A'
                   }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                      <Clock size={14} color="#64748B" className="shrink-0" />
+                      <Clock size={13} color="#64748B" className="shrink-0" />
                       <span><strong>Duration:</strong> {course.duration}</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                      <GraduationCap size={14} color="#64748B" className="shrink-0" />
+                      <GraduationCap size={13} color="#64748B" className="shrink-0" />
                       <span><strong>Format:</strong> {course.mode}</span>
                     </div>
                   </div>
@@ -591,18 +596,18 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                   {/* High Impact Highlights */}
                   <div style={{ marginBottom: '0.85rem' }}>
                     <div style={{
-                      fontSize: '0.74rem',
-                      fontWeight: 800,
+                      fontSize: '0.72rem',
+                      fontWeight: 600,
                       color: '#64748B',
                       textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
-                      marginBottom: '0.6rem'
+                      letterSpacing: '0.04em',
+                      marginBottom: '0.5rem'
                     }}>
                       Key Highlights:
                     </div>
-                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
                       {(course.highlights || course.syllabus.slice(0, 4)).map((item, idx) => (
-                        <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.86rem', color: '#334155', lineHeight: 1.45 }}>
+                        <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.84rem', color: '#334155', lineHeight: 1.45 }}>
                           <Check size={14} style={{ color: '#059669', flexShrink: 0, marginTop: '2px', strokeWidth: 2.5 }} />
                           <span>{item}</span>
                         </li>
@@ -618,9 +623,9 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       style={{
                         background: 'transparent',
                         border: 'none',
-                        color: '#2563EB',
+                        color: '#0F172A',
                         fontSize: '0.8rem',
-                        fontWeight: 700,
+                        fontWeight: 600,
                         cursor: 'pointer',
                         padding: '0.2rem 0',
                         display: 'inline-flex',
@@ -643,7 +648,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
                           {course.syllabus.map((s, idx) => (
                             <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.8rem', color: '#475569', lineHeight: 1.4 }}>
-                              <span style={{ color: '#2563EB', fontWeight: 800 }}>•</span>
+                              <span style={{ color: '#0F172A', fontWeight: 600 }}>•</span>
                               <span>{s}</span>
                             </li>
                           ))}
@@ -665,16 +670,16 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                 }}>
                   <div>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem' }}>
-                      <span style={{ fontSize: '1.45rem', fontWeight: 850, color: '#0F172A', fontFamily: 'SF Mono, monospace' }}>
+                      <span style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0F172A', fontFamily: 'JetBrains Mono, monospace' }}>
                         {course.fee}
                       </span>
                       {course.originalFee && (
-                        <span style={{ fontSize: '0.9rem', color: '#94A3B8', textDecoration: 'line-through', fontWeight: 600 }}>
+                        <span style={{ fontSize: '0.88rem', color: '#94A3B8', textDecoration: 'line-through', fontWeight: 500 }}>
                           {course.originalFee}
                         </span>
                       )}
                     </div>
-                    <div style={{ fontSize: '0.74rem', color: '#64748B', fontWeight: 600 }}>
+                    <div style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: 500 }}>
                       {course.feeType || 'Official Curriculum'}
                     </div>
                   </div>
@@ -686,18 +691,20 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '0.45rem',
-                      padding: '0.75rem 1.25rem',
-                      borderRadius: '12px',
-                      background: 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)',
+                      padding: '0.7rem 1.15rem',
+                      borderRadius: '8px',
+                      background: '#0F172A',
                       color: '#FFFFFF',
-                      fontWeight: 700,
+                      fontWeight: 600,
                       fontSize: '0.88rem',
-                      border: 'none',
+                      border: '1px solid #0F172A',
                       cursor: 'pointer',
-                      boxShadow: '0 4px 12px rgba(37, 99, 235, 0.28)',
-                      transition: 'all 0.15s ease',
+                      boxShadow: '0 1px 3px rgba(15, 23, 42, 0.12)',
+                      transition: 'background 0.15s ease',
                       flexShrink: 0
                     }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = '#1E293B'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.background = '#0F172A'; }}
                   >
                     <span>Enroll Now</span>
                     <ArrowRight size={14} />
@@ -721,34 +728,34 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', marginBottom: '1.75rem' }}>
             <div>
               <span style={{
-                fontSize: '0.74rem',
-                fontWeight: 800,
-                letterSpacing: '1px',
+                fontSize: '0.72rem',
+                fontWeight: 600,
+                letterSpacing: '0.04em',
                 textTransform: 'uppercase',
-                color: '#2563EB',
-                background: '#EFF6FF',
-                border: '1px solid #BFDBFE',
-                padding: '0.3rem 0.75rem',
+                color: '#475569',
+                background: '#F1F5F9',
+                border: '1px solid #E2E8F0',
+                padding: '0.25rem 0.65rem',
                 borderRadius: '999px',
                 display: 'inline-block',
                 marginBottom: '0.5rem'
               }}>
-                GOVERNMENT EXAMS COVERED
+                Government Exams Covered
               </span>
-              <h2 style={{ fontSize: '1.4rem', fontWeight: 850, color: '#0F172A', margin: 0, letterSpacing: '-0.02em' }}>
+              <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#0F172A', margin: 0, letterSpacing: '-0.01em' }}>
                 कौन-कौन सी परीक्षाओं की तैयारी कराई जाती है?
               </h2>
-              <p style={{ fontSize: '0.92rem', color: '#64748B', margin: '0.35rem 0 0' }}>
+              <p style={{ fontSize: '0.9rem', color: '#64748B', margin: '0.35rem 0 0' }}>
                 Our courses provide skill-based training for various government stenographer and typing examinations.
               </p>
             </div>
             <div style={{
-              fontSize: '0.82rem',
-              fontWeight: 700,
+              fontSize: '0.8rem',
+              fontWeight: 600,
               color: '#0F172A',
               background: '#F8FAFC',
-              padding: '0.5rem 1rem',
-              borderRadius: '10px',
+              padding: '0.45rem 0.85rem',
+              borderRadius: '8px',
               border: '1px solid #E2E8F0'
             }}>
               9 National & State Exam Benches
@@ -764,9 +771,9 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               <div
                 key={exam.id}
                 style={{
-                  background: '#F8FAFC',
+                  background: '#FFFFFF',
                   border: '1px solid #E2E8F0',
-                  borderRadius: '12px',
+                  borderRadius: '10px',
                   padding: '1rem 1.25rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -775,21 +782,21 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                 }}
               >
                 <div>
-                  <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#0F172A' }}>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 600, color: '#0F172A' }}>
                     {exam.title}
                   </div>
-                  <div style={{ fontSize: '0.76rem', color: '#64748B' }}>
+                  <div style={{ fontSize: '0.75rem', color: '#64748B' }}>
                     {exam.speed} • {exam.category}
                   </div>
                 </div>
                 <span style={{
-                  fontSize: '0.74rem',
-                  fontWeight: 800,
-                  padding: '0.2rem 0.6rem',
-                  borderRadius: '6px',
-                  background: '#EFF6FF',
-                  border: '1px solid #BFDBFE',
-                  color: '#2563EB',
+                  fontSize: '0.72rem',
+                  fontWeight: 600,
+                  padding: '0.2rem 0.55rem',
+                  borderRadius: '4px',
+                  background: '#F8FAFC',
+                  border: '1px solid #E2E8F0',
+                  color: '#0F172A',
                   flexShrink: 0
                 }}>
                   {exam.speed}
@@ -971,16 +978,23 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                   key={plan.id} 
                   style={{
                     background: '#FFFFFF',
-                    border: isPro ? '2px solid #2563EB' : '1px solid #E2E8F0',
-                    borderRadius: '20px',
+                    border: '1px solid #E2E8F0',
+                    borderRadius: '16px',
                     padding: '2rem 1.75rem',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                     position: 'relative',
-                    boxShadow: isPro 
-                      ? '0 12px 32px -4px rgba(37, 99, 235, 0.16), 0 2px 6px rgba(15, 23, 42, 0.04)' 
-                      : '0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px -4px rgba(15, 23, 42, 0.04)'
+                    boxShadow: '0 1px 3px rgba(15, 23, 42, 0.04)',
+                    transition: 'border-color 0.15s ease, box-shadow 0.15s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#CBD5E1';
+                    e.currentTarget.style.boxShadow = '0 6px 18px -4px rgba(15, 23, 42, 0.08)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = '#E2E8F0';
+                    e.currentTarget.style.boxShadow = '0 1px 3px rgba(15, 23, 42, 0.04)';
                   }}
                 >
                   {plan.badge && (
@@ -988,12 +1002,12 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       position: 'absolute',
                       top: '1.25rem',
                       right: '1.25rem',
-                      background: isPro ? '#EFF6FF' : '#ECFDF5',
-                      border: isPro ? '1px solid #BFDBFE' : '1px solid #A7F3D0',
-                      color: isPro ? '#2563EB' : '#059669',
-                      fontSize: '0.74rem',
-                      fontWeight: 800,
-                      padding: '0.25rem 0.65rem',
+                      background: '#F1F5F9',
+                      border: '1px solid #E2E8F0',
+                      color: '#0F172A',
+                      fontSize: '0.72rem',
+                      fontWeight: 600,
+                      padding: '0.2rem 0.65rem',
                       borderRadius: '999px'
                     }}>
                       {plan.badge}
@@ -1002,11 +1016,11 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
 
                   <div>
                     {plan.seriesTitle && (
-                      <div style={{ fontSize: '0.74rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#2563EB', marginBottom: '0.35rem' }}>
+                      <div style={{ fontSize: '0.74rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em', color: '#64748B', marginBottom: '0.35rem' }}>
                         {plan.seriesTitle}
                       </div>
                     )}
-                    <h3 style={{ fontSize: '1.3rem', fontWeight: 850, color: '#0F172A', margin: '0 0 0.5rem', letterSpacing: '-0.01em' }}>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0F172A', margin: '0 0 0.5rem', letterSpacing: '-0.01em' }}>
                       {plan.name}
                     </h3>
                     <p style={{ fontSize: '0.86rem', color: '#64748B', lineHeight: 1.55, margin: '0 0 1.25rem' }}>
@@ -1015,15 +1029,15 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     
                     <div style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.25rem' }}>
                       {plan.originalPrice && (
-                        <span style={{ textDecoration: 'line-through', color: '#94A3B8', fontSize: '1.1rem', fontWeight: 700, marginRight: '0.2rem' }}>
+                        <span style={{ textDecoration: 'line-through', color: '#94A3B8', fontSize: '1rem', fontWeight: 600, marginRight: '0.2rem' }}>
                           ₹{plan.originalPrice}
                         </span>
                       )}
-                      <span style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0F172A' }}>₹</span>
-                      <span style={{ fontSize: '2.25rem', fontWeight: 850, color: '#0F172A', fontFamily: 'SF Mono, monospace' }}>
+                      <span style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0F172A' }}>₹</span>
+                      <span style={{ fontSize: '2rem', fontWeight: 700, color: '#0F172A', fontFamily: 'JetBrains Mono, monospace' }}>
                         {plan.price}
                       </span>
-                      <span style={{ fontSize: '0.84rem', color: '#64748B', fontWeight: 600 }}>
+                      <span style={{ fontSize: '0.82rem', color: '#64748B', fontWeight: 500 }}>
                         / {plan.duration}
                       </span>
                     </div>
@@ -1033,7 +1047,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.75rem', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                       {plan.features.map((feat, i) => (
                         <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontSize: '0.86rem', color: '#334155', lineHeight: 1.45 }}>
-                          <CheckCircle2 size={16} style={{ color: '#059669', flexShrink: 0, marginTop: '2px' }} />
+                          <CheckCircle2 size={15} style={{ color: '#059669', flexShrink: 0, marginTop: '2px' }} />
                           <span>{feat}</span>
                         </li>
                       ))}
@@ -1053,23 +1067,21 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                         justifyContent: 'center',
                         gap: '0.5rem',
                         width: '100%',
-                        padding: '0.85rem 1rem',
-                        borderRadius: '12px',
-                        background: isPro 
-                          ? 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)' 
-                          : '#0F172A',
+                        padding: '0.8rem 1rem',
+                        borderRadius: '8px',
+                        background: '#0F172A',
                         color: '#FFFFFF',
-                        fontSize: '0.92rem',
-                        fontWeight: 700,
-                        border: 'none',
+                        fontSize: '0.9rem',
+                        fontWeight: 600,
+                        border: '1px solid #0F172A',
                         cursor: 'pointer',
-                        boxShadow: isPro 
-                          ? '0 4px 14px rgba(37, 99, 235, 0.28)' 
-                          : '0 2px 6px rgba(15, 23, 42, 0.15)',
-                        transition: 'opacity 0.15s ease'
+                        boxShadow: '0 1px 3px rgba(15, 23, 42, 0.12)',
+                        transition: 'background 0.15s ease'
                       }}
+                      onMouseEnter={(e) => { e.currentTarget.style.background = '#1E293B'; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.background = '#0F172A'; }}
                     >
-                      <Crown size={16} color="#FFFFFF" />
+                      <Crown size={15} color="#FFFFFF" />
                       <span>Activate with UPI (₹{plan.price})</span>
                     </button>
                   </div>

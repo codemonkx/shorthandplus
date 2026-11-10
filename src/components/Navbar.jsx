@@ -215,15 +215,15 @@ export default function Navbar({
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.45rem',
-                  padding: '0.45rem 1.15rem',
-                  borderRadius: '9999px',
+                  padding: '0.42rem 1.05rem',
+                  borderRadius: '8px',
                   background: '#0F172A',
                   color: '#FFFFFF',
                   fontSize: '0.86rem',
-                  fontWeight: 700,
-                  border: 'none',
+                  fontWeight: 600,
+                  border: '1px solid #0F172A',
                   cursor: 'pointer',
-                  boxShadow: '0 2px 8px rgba(15, 23, 42, 0.2)'
+                  boxShadow: '0 1px 3px rgba(15, 23, 42, 0.12)'
                 }}
               >
                 <LogIn size={14} />

@@ -2157,8 +2157,8 @@ export default function AdminPortalView({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem', borderBottom: '1px solid rgba(0,0,0,0.06)', paddingBottom: '1.25rem' }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                  <Megaphone size={20} color="#2563EB" />
-                  <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', margin: 0, letterSpacing: '-0.02em' }}>
+                  <Megaphone size={20} color="#0F172A" />
+                  <h3 style={{ fontSize: '1.35rem', fontWeight: 700, color: '#0F172A', margin: 0, letterSpacing: '-0.02em' }}>
                     Recruitment Bulletin & Govt Diploma Issuance
                   </h3>
                 </div>
@@ -2172,7 +2172,7 @@ export default function AdminPortalView({
                   type="button"
                   className="btn btn-primary"
                   onClick={() => setNewAlertModalOpen(true)}
-                  style={{ background: '#2563EB', borderColor: '#2563EB', color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: '6px', borderRadius: '8px', padding: '0.55rem 1.15rem', fontWeight: 700, fontSize: '0.88rem', boxShadow: '0 2px 8px rgba(37, 99, 235, 0.28)', cursor: 'pointer' }}
+                  style={{ background: '#0F172A', borderColor: '#0F172A', color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: '6px', borderRadius: '8px', padding: '0.55rem 1.15rem', fontWeight: 600, fontSize: '0.88rem', cursor: 'pointer' }}
                 >
                   <Plus size={15} />
                   <span>Publish New Exam Alert</span>
@@ -2181,7 +2181,7 @@ export default function AdminPortalView({
                   type="button"
                   className="btn btn-secondary"
                   onClick={() => setNewDiplomaModalOpen(true)}
-                  style={{ background: '#0F172A', borderColor: '#0F172A', color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: '6px', borderRadius: '8px', padding: '0.55rem 1.15rem', fontWeight: 700, fontSize: '0.88rem', cursor: 'pointer' }}
+                  style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', color: '#0F172A', display: 'inline-flex', alignItems: 'center', gap: '6px', borderRadius: '8px', padding: '0.55rem 1.15rem', fontWeight: 600, fontSize: '0.88rem', cursor: 'pointer' }}
                 >
                   <Award size={15} />
                   <span>Issue Student Diploma</span>
@@ -5662,7 +5662,7 @@ export default function AdminPortalView({
                 <button type="button" className="btn btn-secondary" onClick={() => setNewAlertModalOpen(false)}>
                   Cancel
                 </button>
-                <button type="submit" className="btn btn-primary" style={{ background: '#2563EB', borderColor: '#2563EB', color: '#FFFFFF' }}>
+                <button type="submit" className="btn btn-primary" style={{ background: '#0F172A', borderColor: '#0F172A', color: '#FFFFFF' }}>
                   Publish Live Alert
                 </button>
               </div>
@@ -5956,7 +5956,7 @@ export default function AdminPortalView({
                   >
                     Cancel
                   </button>
-                  <button type="submit" className="btn btn-primary" style={{ background: '#2563EB', borderColor: '#2563EB', color: '#FFFFFF' }}>
+                  <button type="submit" className="btn btn-primary" style={{ background: '#0F172A', borderColor: '#0F172A', color: '#FFFFFF' }}>
                     <Save size={16} />
                     <span>Save Changes</span>
                   </button>

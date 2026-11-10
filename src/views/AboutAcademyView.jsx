@@ -77,10 +77,10 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
         
         {/* 1. HERO HEADER */}
         <div className="about-hero-header">
-          <span className="about-badge-gold">🏛️ GAYA SHORTHAND CLASSES • LEARN TODAY, LEAD TOMORROW!</span>
-          <h1 className="about-hero-title">About Gaya Shorthand Classes (SHORTHAND PLUS)</h1>
+          <span className="about-badge-gold">Gaya Shorthand Classes · Est. 2012</span>
+          <h1 className="about-hero-title">About Gaya Shorthand Classes</h1>
           <p className="about-hero-subtitle">
-            <strong>GAYA SHORTHAND CLASSES</strong> — <em>Learn Today, Lead Tomorrow!</em> Led by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>, we are a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning.
+            <strong>Gaya Shorthand Classes</strong> — <em>Learn Today, Lead Tomorrow.</em> Led by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>, we are a professional training center (Offline and Online) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning.
           </p>
         </div>
 
@@ -88,11 +88,11 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
         <div style={{
           background: '#FFFFFF',
           color: '#0F172A',
-          borderRadius: '16px',
+          borderRadius: '14px',
           padding: '1.25rem 1.75rem',
           margin: '0 0 2.5rem',
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-          border: '1px solid rgba(0, 0, 0, 0.08)',
+          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.04)',
+          border: '1px solid #E2E8F0',
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',
@@ -101,26 +101,26 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
             <div style={{
-              width: 44,
-              height: 44,
-              borderRadius: 10,
-              background: '#2563EB',
+              width: 40,
+              height: 40,
+              borderRadius: 8,
+              background: '#F8FAFC',
+              border: '1px solid #E2E8F0',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#FFFFFF',
-              fontWeight: 800,
-              fontSize: '1.1rem',
-              boxShadow: '0 2px 8px rgba(37, 99, 235, 0.28)'
+              color: '#0F172A',
+              fontWeight: 700,
+              fontSize: '1rem'
             }}>
               ⚡
             </div>
             <div>
-              <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.8px', color: '#64748B', fontWeight: 700 }}>
+              <div style={{ fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#64748B', fontWeight: 600 }}>
                 Verified Skill Development
               </div>
-              <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.01em' }}>
-                WE PROVIDE BASIC TO ADVANCE 50WPM TO 140WPM SPEED IN SHORTHAND
+              <div style={{ fontSize: '1rem', fontWeight: 700, color: '#0F172A', letterSpacing: '-0.01em' }}>
+                Basic to Advance 50 WPM to 140 WPM Speed Training in Shorthand
               </div>
             </div>
           </div>
@@ -128,16 +128,16 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.5rem',
-            background: 'rgba(37, 99, 235, 0.08)',
-            color: '#2563EB',
-            padding: '0.45rem 0.9rem',
+            background: '#F8FAFC',
+            color: '#475569',
+            padding: '0.4rem 0.85rem',
             borderRadius: '999px',
-            fontSize: '0.82rem',
-            fontWeight: 700,
-            border: '1px solid rgba(37, 99, 235, 0.25)'
+            fontSize: '0.78rem',
+            fontWeight: 600,
+            border: '1px solid #E2E8F0'
           }}>
-            <Sparkles size={15} color="#2563EB" />
-            <span>AI-BASED DICTATION & REAL TIME EVALUATION</span>
+            <Sparkles size={14} color="#0F172A" />
+            <span>AI-Based Dictation & Real-Time Evaluation</span>
           </div>
         </div>
 
