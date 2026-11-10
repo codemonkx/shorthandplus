@@ -488,7 +488,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                       border: '1px solid rgba(0, 0, 0, 0.12)',
                       borderRadius: '8px',
                       fontSize: '0.9rem',
-                      background: formData.sameAsPhone ? '#F8FAFC' : '#FFFFFF'
+                      background: formData.sameAsPhone ? '#F5F5F7' : '#FFFFFF'
                     }}
                   />
                 </div>
@@ -693,7 +693,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '0.5rem',
-                  background: '#2563EB',
+                  background: '#F83458',
                   color: '#FFFFFF',
                   border: 'none',
                   borderRadius: '10px',
@@ -701,7 +701,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                   fontSize: '0.95rem',
                   fontWeight: 700,
                   cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                  boxShadow: '0 4px 14px rgba(37, 99, 235, 0.28)',
+                  boxShadow: '0 4px 14px rgba(248, 52, 88, 0.28)',
                   transition: 'transform 0.15s ease'
                 }}
               >

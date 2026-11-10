@@ -3624,7 +3624,7 @@ export default function AdminPortalView({
                           fontSize: '0.76rem',
                           fontWeight: '700',
                           cursor: 'pointer',
-                          background: newClassIsLive ? '#2563EB' : '#F8FAFC',
+                          background: newClassIsLive ? '#F83458' : '#F5F5F7',
                           color: newClassIsLive ? '#FFFFFF' : '#64748B',
                           borderColor: newClassIsLive ? '#dc2626' : '#d6d3d1'
                         }}
@@ -3641,7 +3641,7 @@ export default function AdminPortalView({
                           fontSize: '0.76rem',
                           fontWeight: '700',
                           cursor: 'pointer',
-                          background: !newClassIsLive ? '#0F172A' : '#F8FAFC',
+                          background: !newClassIsLive ? '#0F172A' : '#F5F5F7',
                           color: !newClassIsLive ? '#FFFFFF' : '#64748B',
                           borderColor: !newClassIsLive ? '#0F172A' : '#d6d3d1'
                         }}

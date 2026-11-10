@@ -234,7 +234,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
   };
 
   return (
-    <div className="classes-page-root" style={{ background: '#F8FAFC', minHeight: '100vh', width: '100%' }}>
+    <div className="classes-page-root" style={{ background: '#F5F5F7', minHeight: '100vh', width: '100%' }}>
       
       {/* 1. HERO HEADER */}
       <div className="classes-hero-banner" style={{ padding: '1rem 1.25rem 2rem', textAlign: 'center' }}>
@@ -253,7 +253,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               fontWeight: 700,
               boxShadow: '0 1px 3px rgba(17, 17, 17, 0.03)'
             }}>
-              <Sparkles size={14} color="#2563EB" />
+              <Sparkles size={14} color="#F83458" />
               <span>ACADEMY BATCH TIMINGS & SCHEDULE • ESTD. 2012</span>
             </div>
           </div>
@@ -330,11 +330,11 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                       width: '7px',
                       height: '7px',
                       borderRadius: '50%',
-                      background: '#2563EB',
-                      boxShadow: '0 0 0 2px rgba(37, 99, 235, 0.25)'
+                      background: '#F83458',
+                      boxShadow: '0 0 0 2px rgba(248, 52, 88, 0.25)'
                     }} />
                   )}
-                  {IconComponent && <IconComponent size={14} color={active ? '#2563EB' : '#2563EB'} />}
+                  {IconComponent && <IconComponent size={14} color={active ? '#F83458' : '#F83458'} />}
                   <span>{tab.label}</span>
                 </button>
               );
@@ -397,7 +397,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                       title="Copy Meeting ID"
                       style={{ border: 'none', background: '#FFFFFF', padding: '2px 6px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '3px' }}
                     >
-                      {copiedId ? <Check size={12} color="#2563EB" /> : <Copy size={12} />}
+                      {copiedId ? <Check size={12} color="#F83458" /> : <Copy size={12} />}
                       <span>{copiedId ? 'Copied' : 'Copy'}</span>
                     </button>
                   </div>
@@ -420,7 +420,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '8px',
-                      background: '#2563EB',
+                      background: '#F83458',
                       color: '#FFFFFF',
                       border: 'none',
                       borderRadius: '10px',
@@ -428,7 +428,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                       fontSize: '0.92rem',
                       fontWeight: 700,
                       cursor: 'pointer',
-                      boxShadow: '0 4px 14px rgba(37, 99, 235, 0.28)'
+                      boxShadow: '0 4px 14px rgba(248, 52, 88, 0.28)'
                     }}
                     onClick={() => {
                       if (onSelectClass && activeClass) {
@@ -478,7 +478,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               }}>
                 <div className="mini-stream-preview-box">
                   <div className="mini-stream-header font-mono">
-                    <span className="mini-rec-dot" style={{ background: '#2563EB' }} />
+                    <span className="mini-rec-dot" style={{ background: '#F83458' }} />
                     <span>STUDIO WHITEBOARD FEED • 1080P HD</span>
                   </div>
                   <div className="mini-stream-body">
@@ -497,15 +497,15 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
 
                     <div className="mini-features-list">
                       <div className="mini-feat-item">
-                        <CheckCircle2 size={13} color="#2563EB" />
+                        <CheckCircle2 size={13} color="#F83458" />
                         <span>Direct Zoom Classroom Entrance & Meeting Passcodes</span>
                       </div>
                       <div className="mini-feat-item">
-                        <CheckCircle2 size={13} color="#2563EB" />
+                        <CheckCircle2 size={13} color="#F83458" />
                         <span>Real 80-104 WPM Speed-Pitch Dictation Player</span>
                       </div>
                       <div className="mini-feat-item">
-                        <CheckCircle2 size={13} color="#2563EB" />
+                        <CheckCircle2 size={13} color="#F83458" />
                         <span>Post-Class Keyboard Transcription & Instant Error Evaluation</span>
                       </div>
                     </div>
@@ -519,7 +519,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         flex: '1 1 auto',
                         padding: '0.75rem 1rem', 
                         borderRadius: '8px', 
-                        background: '#2563EB', 
+                        background: '#F83458', 
                         color: '#FFFFFF', 
                         border: 'none',
                         fontSize: '0.85rem',
@@ -557,8 +557,8 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   width: '46px',
                   height: '46px',
                   borderRadius: '12px',
-                  background: 'rgba(37, 99, 235, 0.08)',
-                  color: '#2563EB',
+                  background: 'rgba(248, 52, 88, 0.08)',
+                  color: '#F83458',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -585,8 +585,8 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   width: '46px',
                   height: '46px',
                   borderRadius: '12px',
-                  background: 'rgba(37, 99, 235, 0.08)',
-                  color: '#2563EB',
+                  background: 'rgba(248, 52, 88, 0.08)',
+                  color: '#F83458',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -613,8 +613,8 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   width: '46px',
                   height: '46px',
                   borderRadius: '12px',
-                  background: 'rgba(37, 99, 235, 0.08)',
-                  color: '#2563EB',
+                  background: 'rgba(248, 52, 88, 0.08)',
+                  color: '#F83458',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -641,7 +641,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               boxShadow: '0 4px 20px rgba(17, 17, 17, 0.03)'
             }}>
               <div style={{ marginBottom: '1.5rem' }}>
-                <span style={{ fontSize: '0.74rem', fontWeight: 800, color: '#2563EB', textTransform: 'uppercase', letterSpacing: '0.8px' }}>
+                <span style={{ fontSize: '0.74rem', fontWeight: 800, color: '#F83458', textTransform: 'uppercase', letterSpacing: '0.8px' }}>
                   Daily Broadcast Timetable
                 </span>
                 <h3 style={{ fontSize: '1.35rem', fontWeight: 850, color: '#0F172A', margin: '0.2rem 0 0.4rem' }}>
@@ -667,20 +667,20 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     key={b.id} 
                     style={{
                       background: '#FFFFFF',
-                      border: b.isLive ? '1.5px solid #2563EB' : '1px solid rgba(0, 0, 0, 0.08)',
+                      border: b.isLive ? '1.5px solid #F83458' : '1px solid rgba(0, 0, 0, 0.08)',
                       borderRadius: '14px',
                       padding: '1.25rem',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'space-between',
                       gap: '0.85rem',
-                      boxShadow: b.isLive ? '0 4px 16px rgba(37, 99, 235, 0.12)' : '0 1px 3px rgba(17, 17, 17, 0.02)'
+                      boxShadow: b.isLive ? '0 4px 16px rgba(248, 52, 88, 0.12)' : '0 1px 3px rgba(17, 17, 17, 0.02)'
                     }}
                   >
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '0.65rem' }}>
                         <span style={{
-                          background: b.isLive ? '#2563EB' : '#F8FAFC',
+                          background: b.isLive ? '#F83458' : '#F5F5F7',
                           color: b.isLive ? '#FFFFFF' : '#0F172A',
                           fontSize: '0.72rem',
                           fontWeight: 800,
@@ -693,12 +693,12 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         <span style={{
                           fontSize: '0.72rem',
                           fontWeight: 700,
-                          color: b.isLive ? '#2563EB' : '#777777',
+                          color: b.isLive ? '#F83458' : '#777777',
                           display: 'inline-flex',
                           alignItems: 'center',
                           gap: '4px'
                         }}>
-                          {b.isLive && <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2563EB', animation: 'beaconPulse 1.2s infinite' }} />}
+                          {b.isLive && <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#F83458', animation: 'beaconPulse 1.2s infinite' }} />}
                           {b.tag}
                         </span>
                       </div>
@@ -710,9 +710,9 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                       <div style={{
                         fontSize: '0.76rem',
                         fontFamily: 'monospace',
-                        color: b.isLive ? '#2563EB' : '#555555',
-                        background: b.isLive ? 'rgba(37, 99, 235, 0.08)' : '#F8FAFC',
-                        border: '1px solid ' + (b.isLive ? 'rgba(37, 99, 235, 0.25)' : 'rgba(0, 0, 0, 0.08)'),
+                        color: b.isLive ? '#F83458' : '#555555',
+                        background: b.isLive ? 'rgba(248, 52, 88, 0.08)' : '#F5F5F7',
+                        border: '1px solid ' + (b.isLive ? 'rgba(248, 52, 88, 0.25)' : 'rgba(0, 0, 0, 0.08)'),
                         padding: '4px 8px',
                         borderRadius: '6px',
                         display: 'inline-block'
@@ -741,9 +741,9 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         justifyContent: 'center',
                         gap: '6px',
                         border: b.isLive ? 'none' : '1px solid rgba(0, 0, 0, 0.08)',
-                        background: b.isLive ? '#2563EB' : '#F8FAFC',
+                        background: b.isLive ? '#F83458' : '#F5F5F7',
                         color: b.isLive ? '#FFFFFF' : '#0F172A',
-                        boxShadow: b.isLive ? '0 2px 8px rgba(37, 99, 235, 0.28)' : 'none',
+                        boxShadow: b.isLive ? '0 2px 8px rgba(248, 52, 88, 0.28)' : 'none',
                         transition: 'all 0.15s ease'
                       }}
                     >
@@ -764,11 +764,11 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 display: 'inline-block',
                 fontSize: '0.74rem',
                 fontWeight: 800,
-                color: '#2563EB',
+                color: '#F83458',
                 textTransform: 'uppercase',
                 letterSpacing: '0.8px',
-                background: 'rgba(37, 99, 235, 0.08)',
-                border: '1px solid rgba(37, 99, 235, 0.25)',
+                background: 'rgba(248, 52, 88, 0.08)',
+                border: '1px solid rgba(248, 52, 88, 0.25)',
                 padding: '0.3rem 0.85rem',
                 borderRadius: '9999px',
                 marginBottom: '0.65rem'
@@ -824,9 +824,9 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         letterSpacing: '0.4px',
                         padding: '0.25rem 0.65rem',
                         borderRadius: '6px',
-                        background: 'rgba(37, 99, 235, 0.08)',
-                        color: '#2563EB',
-                        border: '1px solid rgba(37, 99, 235, 0.25)'
+                        background: 'rgba(248, 52, 88, 0.08)',
+                        color: '#F83458',
+                        border: '1px solid rgba(248, 52, 88, 0.25)'
                       }}>
                         {batch.badge}
                       </span>
@@ -855,7 +855,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                       marginBottom: '1rem',
                       width: 'fit-content'
                     }}>
-                      <Clock size={15} color="#2563EB" />
+                      <Clock size={15} color="#F83458" />
                       <strong style={{ fontSize: '0.92rem', color: '#0F172A', fontFamily: 'var(--font-mono, monospace)', fontWeight: 800 }}>
                         {batch.time}
                       </strong>
@@ -886,7 +886,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', flexWrap: 'wrap' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <Volume2 size={15} color="#2563EB" />
+                          <Volume2 size={15} color="#F83458" />
                           <span style={{ fontSize: '0.8rem', color: '#555555', fontWeight: 600 }}>Target Speed:</span>
                         </div>
                         <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#0F172A', background: '#FFFFFF', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '2px 8px', borderRadius: '6px', fontFamily: 'var(--font-mono, monospace)' }}>
@@ -919,7 +919,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     href="tel:+919204123453"
                     style={{
                       width: '100%',
-                      background: '#2563EB',
+                      background: '#F83458',
                       color: '#FFFFFF',
                       border: 'none',
                       borderRadius: '8px',
@@ -931,11 +931,11 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: '8px',
-                      boxShadow: '0 2px 8px rgba(37, 99, 235, 0.28)',
+                      boxShadow: '0 2px 8px rgba(248, 52, 88, 0.28)',
                       transition: 'all 0.15s ease'
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = '#1D4ED8'}
-                    onMouseLeave={(e) => e.currentTarget.style.background = '#2563EB'}
+                    onMouseEnter={(e) => e.currentTarget.style.background = '#E02447'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = '#F83458'}
                   >
                     <Phone size={15} color="#FFFFFF" />
                     <span>Inquire / Reserve Batch Seat</span>
@@ -954,11 +954,11 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 display: 'inline-block',
                 fontSize: '0.74rem',
                 fontWeight: 800,
-                color: '#2563EB',
+                color: '#F83458',
                 textTransform: 'uppercase',
                 letterSpacing: '0.8px',
-                background: 'rgba(37, 99, 235, 0.08)',
-                border: '1px solid rgba(37, 99, 235, 0.25)',
+                background: 'rgba(248, 52, 88, 0.08)',
+                border: '1px solid rgba(248, 52, 88, 0.25)',
                 padding: '0.3rem 0.85rem',
                 borderRadius: '9999px',
                 marginBottom: '0.65rem'
@@ -983,7 +983,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               <div style={{ overflowX: 'auto' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '780px' }}>
                   <thead>
-                    <tr style={{ background: '#F8FAFC', borderBottom: '2px solid rgba(0, 0, 0, 0.08)' }}>
+                    <tr style={{ background: '#F5F5F7', borderBottom: '2px solid rgba(0, 0, 0, 0.08)' }}>
                       <th style={{ padding: '1rem 1.25rem', fontSize: '0.76rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#0F172A' }}>Time Slot</th>
                       <th style={{ padding: '1rem 1.25rem', fontSize: '0.76rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#0F172A' }}>Batch Category</th>
                       <th style={{ padding: '1rem 1.25rem', fontSize: '0.76rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#0F172A' }}>Speed Benchmark</th>
@@ -1060,9 +1060,9 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                             fontSize: '0.78rem',
                             fontWeight: 800,
                             fontFamily: 'var(--font-mono, monospace)',
-                            background: row.isHighlight ? 'rgba(37, 99, 235, 0.08)' : '#F8FAFC',
-                            color: row.isHighlight ? '#2563EB' : '#111111',
-                            border: `1px solid ${row.isHighlight ? 'rgba(37, 99, 235, 0.25)' : 'rgba(0, 0, 0, 0.08)'}`
+                            background: row.isHighlight ? 'rgba(248, 52, 88, 0.08)' : '#F5F5F7',
+                            color: row.isHighlight ? '#F83458' : '#111111',
+                            border: `1px solid ${row.isHighlight ? 'rgba(248, 52, 88, 0.25)' : 'rgba(0, 0, 0, 0.08)'}`
                           }}>
                             {row.speed}
                           </span>
@@ -1091,7 +1091,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 fontSize: '0.82rem',
                 color: '#555555'
               }}>
-                <Sparkles size={15} color="#2563EB" />
+                <Sparkles size={15} color="#F83458" />
                 <span><strong>Sunday Special:</strong> Full-length 100-mark mock examinations held every Sunday 9:00 AM – 1:00 PM with software-evaluated accuracy scorecards.</span>
               </div>
             </div>
@@ -1106,11 +1106,11 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 display: 'inline-block',
                 fontSize: '0.74rem',
                 fontWeight: 800,
-                color: '#2563EB',
+                color: '#F83458',
                 textTransform: 'uppercase',
                 letterSpacing: '0.8px',
-                background: 'rgba(37, 99, 235, 0.08)',
-                border: '1px solid rgba(37, 99, 235, 0.25)',
+                background: 'rgba(248, 52, 88, 0.08)',
+                border: '1px solid rgba(248, 52, 88, 0.25)',
                 padding: '0.3rem 0.85rem',
                 borderRadius: '9999px',
                 marginBottom: '0.65rem'
@@ -1157,7 +1157,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               >
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-                    <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(37, 99, 235, 0.08)', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(248, 52, 88, 0.08)', color: '#F83458', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Award size={24} />
                     </div>
                     <span style={{ fontSize: '0.75rem', fontWeight: 800, padding: '0.25rem 0.65rem', borderRadius: '9999px', background: '#FFFFFF', color: '#555555', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
@@ -1172,15 +1172,15 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   </p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginBottom: '1.5rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#0F172A' }}>
-                      <CheckCircle2 size={16} color="#2563EB" style={{ flexShrink: 0 }} />
+                      <CheckCircle2 size={16} color="#F83458" style={{ flexShrink: 0 }} />
                       <span>Government recognized certificate</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#0F172A' }}>
-                      <CheckCircle2 size={16} color="#2563EB" style={{ flexShrink: 0 }} />
+                      <CheckCircle2 size={16} color="#F83458" style={{ flexShrink: 0 }} />
                       <span>Online QR code & Roll verification</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#0F172A' }}>
-                      <CheckCircle2 size={16} color="#2563EB" style={{ flexShrink: 0 }} />
+                      <CheckCircle2 size={16} color="#F83458" style={{ flexShrink: 0 }} />
                       <span>Valid for Clerk & Data Entry Operator posts</span>
                     </div>
                   </div>
@@ -1215,7 +1215,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               <div
                 style={{
                   background: '#FFFFFF',
-                  border: '1.5px solid #2563EB',
+                  border: '1.5px solid #F83458',
                   borderRadius: '16px',
                   padding: '1.75rem',
                   display: 'flex',
@@ -1239,7 +1239,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   top: '-12px',
                   left: '50%',
                   transform: 'translateX(-50%)',
-                  background: '#2563EB',
+                  background: '#F83458',
                   color: '#FFFFFF',
                   fontSize: '0.7rem',
                   fontWeight: 800,
@@ -1247,16 +1247,16 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   letterSpacing: '0.6px',
                   padding: '0.2rem 0.85rem',
                   borderRadius: '9999px',
-                  boxShadow: '0 2px 8px rgba(37, 99, 235, 0.3)'
+                  boxShadow: '0 2px 8px rgba(248, 52, 88, 0.3)'
                 }}>
                   ★ Most Preferred for Govt Jobs
                 </div>
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', marginTop: '0.35rem' }}>
-                    <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(37, 99, 235, 0.08)', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(248, 52, 88, 0.08)', color: '#F83458', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <ShieldCheck size={24} />
                     </div>
-                    <span style={{ fontSize: '0.75rem', fontWeight: 800, padding: '0.25rem 0.65rem', borderRadius: '9999px', background: 'rgba(37, 99, 235, 0.08)', color: '#2563EB', border: '1px solid rgba(37, 99, 235, 0.25)' }}>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 800, padding: '0.25rem 0.65rem', borderRadius: '9999px', background: 'rgba(248, 52, 88, 0.08)', color: '#F83458', border: '1px solid rgba(248, 52, 88, 0.25)' }}>
                       1 Year (12 Months)
                     </span>
                   </div>
@@ -1268,15 +1268,15 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   </p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginBottom: '1.5rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#0F172A' }}>
-                      <CheckCircle2 size={16} color="#2563EB" style={{ flexShrink: 0 }} />
+                      <CheckCircle2 size={16} color="#F83458" style={{ flexShrink: 0 }} />
                       <span>Mandatory qualification for multiple govt posts</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#0F172A' }}>
-                      <CheckCircle2 size={16} color="#2563EB" style={{ flexShrink: 0 }} />
+                      <CheckCircle2 size={16} color="#F83458" style={{ flexShrink: 0 }} />
                       <span>Hands-on practical lab training (50+ PCs)</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#0F172A' }}>
-                      <CheckCircle2 size={16} color="#2563EB" style={{ flexShrink: 0 }} />
+                      <CheckCircle2 size={16} color="#F83458" style={{ flexShrink: 0 }} />
                       <span>Official grade sheet & verifiable diploma</span>
                     </div>
                   </div>
@@ -1285,7 +1285,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   href="tel:+919204123453"
                   style={{
                     width: '100%',
-                    background: '#2563EB',
+                    background: '#F83458',
                     color: '#FFFFFF',
                     border: 'none',
                     borderRadius: '8px',
@@ -1297,11 +1297,11 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '8px',
-                    boxShadow: '0 3px 12px rgba(37, 99, 235, 0.28)',
+                    boxShadow: '0 3px 12px rgba(248, 52, 88, 0.28)',
                     transition: 'all 0.15s ease'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = '#1D4ED8'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = '#2563EB'}
+                  onMouseEnter={(e) => e.currentTarget.style.background = '#E02447'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = '#F83458'}
                 >
                   <Phone size={15} color="#FFFFFF" />
                   <span>Inquire for ADCA Program</span>
@@ -1334,7 +1334,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               >
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-                    <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(37, 99, 235, 0.08)', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(248, 52, 88, 0.08)', color: '#F83458', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <GraduationCap size={24} />
                     </div>
                     <span style={{ fontSize: '0.75rem', fontWeight: 800, padding: '0.25rem 0.65rem', borderRadius: '9999px', background: '#FFFFFF', color: '#555555', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
@@ -1349,15 +1349,15 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   </p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginBottom: '1.5rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#0F172A' }}>
-                      <CheckCircle2 size={16} color="#2563EB" style={{ flexShrink: 0 }} />
+                      <CheckCircle2 size={16} color="#F83458" style={{ flexShrink: 0 }} />
                       <span>Modern Tally Prime software version</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#0F172A' }}>
-                      <CheckCircle2 size={16} color="#2563EB" style={{ flexShrink: 0 }} />
+                      <CheckCircle2 size={16} color="#F83458" style={{ flexShrink: 0 }} />
                       <span>Real business balance sheet practice</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#0F172A' }}>
-                      <CheckCircle2 size={16} color="#2563EB" style={{ flexShrink: 0 }} />
+                      <CheckCircle2 size={16} color="#F83458" style={{ flexShrink: 0 }} />
                       <span>Secretariat & accounting clerk ready</span>
                     </div>
                   </div>
@@ -1399,11 +1399,11 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 display: 'inline-block',
                 fontSize: '0.74rem',
                 fontWeight: 800,
-                color: '#2563EB',
+                color: '#F83458',
                 textTransform: 'uppercase',
                 letterSpacing: '0.8px',
-                background: 'rgba(37, 99, 235, 0.08)',
-                border: '1px solid rgba(37, 99, 235, 0.25)',
+                background: 'rgba(248, 52, 88, 0.08)',
+                border: '1px solid rgba(248, 52, 88, 0.25)',
                 padding: '0.3rem 0.85rem',
                 borderRadius: '9999px',
                 marginBottom: '0.65rem'
@@ -1455,9 +1455,9 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         letterSpacing: '0.4px',
                         padding: '0.25rem 0.65rem',
                         borderRadius: '6px',
-                        background: 'rgba(37, 99, 235, 0.08)',
-                        color: '#2563EB',
-                        border: '1px solid rgba(37, 99, 235, 0.25)'
+                        background: 'rgba(248, 52, 88, 0.08)',
+                        color: '#F83458',
+                        border: '1px solid rgba(248, 52, 88, 0.25)'
                       }}>
                         {item.tag}
                       </span>
@@ -1513,11 +1513,11 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 display: 'inline-block',
                 fontSize: '0.74rem',
                 fontWeight: 800,
-                color: '#2563EB',
+                color: '#F83458',
                 textTransform: 'uppercase',
                 letterSpacing: '0.8px',
-                background: 'rgba(37, 99, 235, 0.08)',
-                border: '1px solid rgba(37, 99, 235, 0.25)',
+                background: 'rgba(248, 52, 88, 0.08)',
+                border: '1px solid rgba(248, 52, 88, 0.25)',
                 padding: '0.3rem 0.85rem',
                 borderRadius: '9999px',
                 marginBottom: '0.65rem'
@@ -1638,8 +1638,8 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         <span style={{ fontSize: '0.72rem', fontWeight: 800, padding: '0.2rem 0.55rem', borderRadius: '4px', background: '#FFFFFF', color: '#555555', textTransform: 'uppercase', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
                           {item.category}
                         </span>
-                        <span style={{ fontSize: '0.74rem', fontWeight: 800, color: '#2563EB', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                          <Zap size={13} color="#2563EB" />
+                        <span style={{ fontSize: '0.74rem', fontWeight: 800, color: '#F83458', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                          <Zap size={13} color="#F83458" />
                           <span>{item.speedTier}</span>
                         </span>
                       </div>
@@ -1663,7 +1663,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         justifyContent: 'space-between'
                       }}>
                         <div>
-                          <div style={{ fontSize: '0.68rem', textTransform: 'uppercase', color: '#2563EB', fontWeight: 800, letterSpacing: '0.4px', marginBottom: '2px' }}>
+                          <div style={{ fontSize: '0.68rem', textTransform: 'uppercase', color: '#F83458', fontWeight: 800, letterSpacing: '0.4px', marginBottom: '2px' }}>
                             OUTLINE FORMULA (PITMAN)
                           </div>
                           <div style={{ fontFamily: 'var(--font-mono, monospace)', fontWeight: 800, fontSize: '1rem', color: '#0F172A', letterSpacing: '0.5px' }}>
@@ -1678,14 +1678,14 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                             setTimeout(() => setCopiedOutlineId(null), 1500);
                           }}
                           style={{
-                            background: copiedOutlineId === item.id ? 'rgba(37, 99, 235, 0.08)' : '#FFFFFF',
+                            background: copiedOutlineId === item.id ? 'rgba(248, 52, 88, 0.08)' : '#FFFFFF',
                             border: '1px solid',
-                            borderColor: copiedOutlineId === item.id ? '#2563EB' : 'rgba(0, 0, 0, 0.08)',
+                            borderColor: copiedOutlineId === item.id ? '#F83458' : 'rgba(0, 0, 0, 0.08)',
                             borderRadius: '6px',
                             padding: '0.35rem 0.65rem',
                             fontSize: '0.74rem',
                             fontWeight: 700,
-                            color: copiedOutlineId === item.id ? '#2563EB' : '#111111',
+                            color: copiedOutlineId === item.id ? '#F83458' : '#111111',
                             cursor: 'pointer',
                             display: 'inline-flex',
                             alignItems: 'center',
@@ -1696,7 +1696,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         >
                           {copiedOutlineId === item.id ? (
                             <>
-                              <Check size={12} color="#2563EB" />
+                              <Check size={12} color="#F83458" />
                               <span>Copied</span>
                             </>
                           ) : (
@@ -1743,8 +1743,8 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               width: '48px',
               height: '48px',
               borderRadius: '12px',
-              background: 'rgba(37, 99, 235, 0.08)',
-              color: '#2563EB',
+              background: 'rgba(248, 52, 88, 0.08)',
+              color: '#F83458',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -1779,7 +1779,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 textDecoration: 'none'
               }}
             >
-              <Phone size={16} color="#2563EB" />
+              <Phone size={16} color="#F83458" />
               <span>Call Helpline: 9204123453 / 7870377214</span>
             </a>
 
@@ -1790,7 +1790,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                background: '#2563EB',
+                background: '#F83458',
                 color: '#FFFFFF',
                 border: 'none',
                 padding: '0.65rem 1.25rem',
@@ -1798,7 +1798,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 fontSize: '0.88rem',
                 fontWeight: 700,
                 cursor: 'pointer',
-                boxShadow: '0 2px 8px rgba(37, 99, 235, 0.28)'
+                boxShadow: '0 2px 8px rgba(248, 52, 88, 0.28)'
               }}
             >
               <Sparkles size={16} color="#FFFFFF" />

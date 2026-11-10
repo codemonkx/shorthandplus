@@ -532,7 +532,7 @@ export default function ShorthandCanvas({
                 borderRadius: 4,
                 border: '1px solid',
                 borderColor: audioSpeed === item.spd ? '#0F172A' : 'rgba(0, 0, 0, 0.08)',
-                background: audioSpeed === item.spd ? '#0F172A' : '#F8FAFC',
+                background: audioSpeed === item.spd ? '#0F172A' : '#F5F5F7',
                 color: audioSpeed === item.spd ? '#fafaf9' : '#44403c',
                 fontWeight: audioSpeed === item.spd ? 700 : 500,
                 cursor: 'pointer'
@@ -682,7 +682,7 @@ export default function ShorthandCanvas({
                     height: 20,
                     borderRadius: '50%',
                     background: c.hex,
-                    border: color === c.hex ? '2px solid #2563EB' : '1px solid rgba(0, 0, 0, 0.12)',
+                    border: color === c.hex ? '2px solid #F83458' : '1px solid rgba(0, 0, 0, 0.12)',
                     outline: color === c.hex ? `2px solid ${c.hex}` : 'none',
                     cursor: 'pointer'
                   }}
@@ -805,7 +805,7 @@ export default function ShorthandCanvas({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              background: 'rgba(243, 238, 227, 0.92)',
+              background: 'rgba(245, 245, 247, 0.92)',
               backdropFilter: 'blur(4px)',
               padding: '0.4rem 0.75rem',
               borderRadius: 8,
@@ -827,7 +827,7 @@ export default function ShorthandCanvas({
                       borderRadius: 4,
                       border: '1px solid',
                       borderColor: activeRef.label === ref.label ? '#d97706' : 'rgba(0, 0, 0, 0.08)',
-                      background: activeRef.label === ref.label ? 'rgba(37, 99, 235, 0.08)' : '#F8FAFC',
+                      background: activeRef.label === ref.label ? 'rgba(248, 52, 88, 0.08)' : '#F5F5F7',
                       color: activeRef.label === ref.label ? '#92400e' : '#0F172A',
                       cursor: 'pointer',
                       fontWeight: 600,

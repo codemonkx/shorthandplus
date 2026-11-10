@@ -189,13 +189,13 @@ export default function Navbar({
                 gap: '0.45rem',
                 padding: '0.45rem 1.15rem',
                 borderRadius: '9999px',
-                background: '#2563EB',
+                background: '#F83458',
                 color: '#FFFFFF',
                 fontSize: '0.86rem',
                 fontWeight: 700,
                 border: 'none',
                 cursor: 'pointer',
-                boxShadow: '0 2px 8px rgba(37, 99, 235, 0.28)'
+                boxShadow: '0 2px 8px rgba(248, 52, 88, 0.28)'
               }}
             >
               <LogIn size={14} />

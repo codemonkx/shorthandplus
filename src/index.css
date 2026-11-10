@@ -1,9 +1,9 @@
 /* ==========================================================================
    ShorthandPlus Enterprise Design System
    Apple News+ Aesthetic:
-   - 60% Canvas: #F8FAFC (Platinum Neutral Canvas)
+   - 60% Canvas: #F5F5F7 (Platinum Neutral Canvas)
    - 30% Card Surfaces & Shell: #FFFFFF (Crisp White)
-   - 10% High-Impact Accent: #2563EB (Hot Fuchsia)
+   - 10% High-Impact Accent: #F83458 (Hot Fuchsia)
    - Typography & Structure: #0F172A (Dark Slate)
    ========================================================================== */
 
@@ -24,10 +24,10 @@
   --font-kruti: 'Kruti Dev', sans-serif;
 
   /* Apple News+ 3-Color Palette */
-  --bg-app: #F8FAFC;
+  --bg-app: #F5F5F7;
   --bg-sidebar: #FFFFFF;
   --bg-surface: #FFFFFF;
-  --bg-subtle: #F8FAFC;
+  --bg-subtle: #F5F5F7;
   --bg-hover: rgba(0, 0, 0, 0.04);
 
   --navy-950: #0F172A;
@@ -39,33 +39,33 @@
   --navy-400: #94A3B8;
   --navy-300: rgba(0, 0, 0, 0.12);
   --navy-200: rgba(0, 0, 0, 0.08);
-  --navy-100: #F8FAFC;
-  --navy-50:  #F8FAFC;
+  --navy-100: #F5F5F7;
+  --navy-50:  #F5F5F7;
 
   --blue-700: #0F172A;
   --blue-600: #0F172A;
   --blue-500: #2D2D30;
   --blue-400: #64748B;
-  --blue-100: #F8FAFC;
-  --blue-50: #F8FAFC;
+  --blue-100: #F5F5F7;
+  --blue-50: #F5F5F7;
 
   --indigo-600: #0F172A;
-  --indigo-50:  #F8FAFC;
+  --indigo-50:  #F5F5F7;
 
-  --emerald-600: #2563EB;
-  --emerald-500: #2563EB;
-  --emerald-100: rgba(37, 99, 235, 0.12);
-  --emerald-50:  rgba(37, 99, 235, 0.08);
+  --emerald-600: #F83458;
+  --emerald-500: #F83458;
+  --emerald-100: rgba(248, 52, 88, 0.12);
+  --emerald-50:  rgba(248, 52, 88, 0.08);
 
-  --rose-600: #2563EB;
-  --rose-500: #2563EB;
-  --rose-100: rgba(37, 99, 235, 0.12);
-  --rose-50:  rgba(37, 99, 235, 0.08);
+  --rose-600: #F83458;
+  --rose-500: #F83458;
+  --rose-100: rgba(248, 52, 88, 0.12);
+  --rose-50:  rgba(248, 52, 88, 0.08);
 
-  --amber-600: #2563EB;
-  --amber-500: #2563EB;
-  --amber-100: rgba(37, 99, 235, 0.12);
-  --amber-50:  rgba(37, 99, 235, 0.08);
+  --amber-600: #F83458;
+  --amber-500: #F83458;
+  --amber-100: rgba(248, 52, 88, 0.12);
+  --amber-50:  rgba(248, 52, 88, 0.08);
 
   --border-light: rgba(0, 0, 0, 0.08);
   --border-medium: rgba(0, 0, 0, 0.14);
@@ -210,7 +210,7 @@ input, textarea, select { font-family: inherit; color: inherit; }
   box-shadow: var(--shadow-xs);
 }
 .btn-secondary:hover {
-  background: #F8FAFC !important;
+  background: #F5F5F7 !important;
   border-color: rgba(0, 0, 0, 0.14) !important;
   color: #0F172A !important;
 }
@@ -226,11 +226,11 @@ input, textarea, select { font-family: inherit; color: inherit; }
 }
 
 .btn-emerald {
-  background: #2563EB !important;
+  background: #F83458 !important;
   color: #FFFFFF !important;
 }
 .btn-emerald:hover {
-  background: #1D4ED8 !important;
+  background: #E02447 !important;
   transform: translateY(-1px);
 }
 
@@ -249,9 +249,9 @@ input, textarea, select { font-family: inherit; color: inherit; }
 }
 
 .badge-blue { background: #FFFFFF !important; color: #0F172A !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
-.badge-emerald { background: rgba(37, 99, 235, 0.08) !important; color: #2563EB !important; border: 1px solid rgba(37, 99, 235, 0.22) !important; }
+.badge-emerald { background: rgba(248, 52, 88, 0.08) !important; color: #F83458 !important; border: 1px solid rgba(248, 52, 88, 0.22) !important; }
 .badge-amber { background: #FFFFFF !important; color: #0F172A !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
-.badge-rose { background: rgba(37, 99, 235, 0.08) !important; color: #2563EB !important; border: 1px solid rgba(37, 99, 235, 0.22) !important; }
+.badge-rose { background: rgba(248, 52, 88, 0.08) !important; color: #F83458 !important; border: 1px solid rgba(248, 52, 88, 0.22) !important; }
 .badge-navy { background: #FFFFFF !important; color: #0F172A !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
 
 .font-mono { font-family: var(--font-mono) !important; }
@@ -261,8 +261,8 @@ input, textarea, select { font-family: inherit; color: inherit; }
 /* Strict 3-Color System Utilities */
 .text-cream { color: #FFFFFF !important; }
 .bg-cream { background-color: #FFFFFF !important; }
-.bg-cream-canvas { background-color: #F8FAFC !important; }
+.bg-cream-canvas { background-color: #F5F5F7 !important; }
 .text-ink { color: #0F172A !important; }
 .bg-ink { background-color: #0F172A !important; }
-.text-orange { color: #2563EB !important; }
-.bg-orange { background-color: #2563EB !important; }
+.text-orange { color: #F83458 !important; }
+.bg-orange { background-color: #F83458 !important; }
