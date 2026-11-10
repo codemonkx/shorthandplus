@@ -28,7 +28,6 @@ import {
   Moon
 } from 'lucide-react';
 import { STENO_TESTS, TYPING_TESTS } from '../data/mockData';
-import ShorthandCanvas from '../components/ShorthandCanvas';
 
 const ONLINE_CLASSES_DATA = [
   {
@@ -620,16 +619,6 @@ export default function OnlineClassView({
           </div>
 
         </div>
-      </section>
-
-      {/* 5B. INTERACTIVE SHORTHAND WHITEBOARD & DIGITAL STYLUS STUDIO */}
-      <section className="interactive-shorthand-studio-section mt-2 mb-5">
-        <ShorthandCanvas 
-          audioUrl="/assets/sample-dictation.mp3"
-          title={`Studio Whiteboard Feed • ${selectedBatch.title}`}
-          topic={selectedBatch.todayTopic || "Parliamentary Motion on State Infrastructure & Expenditure Audit"}
-          initialNotes={selectedBatch.passageSnippet || ""}
-        />
       </section>
 
       {/* 6. ALL DAILY ZOOM BATCHES & TIMETABLE GRID */}

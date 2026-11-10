@@ -23,7 +23,6 @@ import {
   Calendar
 } from 'lucide-react';
 import { ANNOUNCEMENTS } from '../data/mockData';
-import ShorthandCanvas from '../components/ShorthandCanvas';
 
 const DAILY_BATCHES = [
   {
@@ -218,7 +217,6 @@ const SHORTHAND_OUTLINES_DATA = [
 export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClasses = [], onSelectClass }) {
   const [activeTab, setActiveTab] = useState('online-live'); // 'online-live' | 'batches' | 'timetable' | 'diplomas' | 'notices' | 'outlines'
   const [copiedId, setCopiedId] = useState(false);
-  const [showLiveCanvas, setShowLiveCanvas] = useState(false);
   const [outlineSearch, setOutlineSearch] = useState('');
   const [outlineCategory, setOutlineCategory] = useState('All');
   const [copiedOutlineId, setCopiedOutlineId] = useState(null);
@@ -500,7 +498,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     <div className="mini-features-list">
                       <div className="mini-feat-item">
                         <CheckCircle2 size={13} color="#D9541E" />
-                        <span>Interactive HTML5 Shorthand Canvas (Pencil & Pen)</span>
+                        <span>Direct Zoom Classroom Entrance & Meeting Passcodes</span>
                       </div>
                       <div className="mini-feat-item">
                         <CheckCircle2 size={13} color="#D9541E" />
@@ -508,29 +506,12 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                       </div>
                       <div className="mini-feat-item">
                         <CheckCircle2 size={13} color="#D9541E" />
-                        <span>Student Shorthand Scratchpad with Instant .txt Export</span>
+                        <span>Post-Class Keyboard Transcription & Instant Error Evaluation</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mini-stream-footer" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', padding: '1rem', background: '#111111' }}>
-                    <button 
-                      type="button"
-                      onClick={() => setShowLiveCanvas(!showLiveCanvas)}
-                      style={{ 
-                        flex: '1 1 auto',
-                        padding: '0.75rem 1rem', 
-                        borderRadius: '8px', 
-                        background: showLiveCanvas ? '#D9541E' : '#262626', 
-                        color: '#FAF7F2', 
-                        border: '1px solid rgba(255, 255, 255, 0.15)',
-                        fontSize: '0.85rem',
-                        fontWeight: 700,
-                        cursor: 'pointer'
-                      }}
-                    >
-                      {showLiveCanvas ? 'Hide Whiteboard Canvas' : 'Draw Outlines On-Screen'}
-                    </button>
+                  <div className="mini-stream-footer" style={{ display: 'flex', gap: '8px', padding: '1rem', background: '#111111' }}>
                     <button 
                       type="button"
                       onClick={() => setCurrentTab('online-classes')}
@@ -550,25 +531,13 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         gap: '6px'
                       }}
                     >
-                      <span>Join Session Now</span>
+                      <span>Join Live Online Classroom</span>
                       <ArrowRight size={14} />
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Embedded Live Stylus Shorthand Canvas */}
-            {showLiveCanvas && (
-              <div className="mt-4 mb-3 animate-fade-in">
-                <ShorthandCanvas 
-                  audioUrl="/assets/sample-dictation.mp3"
-                  title="Live Studio Whiteboard • Interactive HTML5 Stylus Canvas"
-                  topic="Parliamentary Motion on State Infrastructure & Expenditure Audit"
-                  initialNotes="Mr. Speaker Sir, the motion was introduced in the House concerning national infrastructure expenditure and audited revenue accounts for the fiscal year 2025-2026..."
-                />
-              </div>
-            )}
 
             {/* Online Classes Features Trio */}
             <div style={{
