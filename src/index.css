@@ -48,20 +48,20 @@
   --indigo-600: #1c1917;
   --indigo-50:  #faf9f6;
 
-  --emerald-600: #047857;
-  --emerald-500: #059669;
-  --emerald-100: #dcfce7;
-  --emerald-50:  #f0fdf4;
+  --emerald-600: #D9541E;
+  --emerald-500: #D9541E;
+  --emerald-100: rgba(217, 84, 30, 0.12);
+  --emerald-50:  rgba(217, 84, 30, 0.08);
 
-  --rose-600: #e11d48;
-  --rose-500: #f43f5e;
-  --rose-100: #fee2e2;
-  --rose-50:  #fef2f2;
+  --rose-600: #111111;
+  --rose-500: #262626;
+  --rose-100: #FAF7F2;
+  --rose-50:  #F3EEE3;
 
-  --amber-600: #d97706;
-  --amber-500: #f59e0b;
-  --amber-100: #fef3c7;
-  --amber-50:  #fffbeb;
+  --amber-600: #D9541E;
+  --amber-500: #D9541E;
+  --amber-100: rgba(217, 84, 30, 0.12);
+  --amber-50:  rgba(217, 84, 30, 0.08);
 
   --border-light: #e7e5e4;
   --border-medium: #d6d3d1;
@@ -222,11 +222,11 @@ input, textarea, select { font-family: inherit; color: inherit; }
 }
 
 .btn-emerald {
-  background: #059669 !important;
+  background: #D9541E !important;
   color: #ffffff !important;
 }
 .btn-emerald:hover {
-  background: #047857 !important;
+  background: #BF4515 !important;
   transform: translateY(-1px);
 }
 
@@ -244,11 +244,11 @@ input, textarea, select { font-family: inherit; color: inherit; }
   border-radius: var(--radius-full);
 }
 
-.badge-blue { background: #f4f4f5 !important; color: #18181b !important; border: 1px solid #e4e4e7 !important; }
-.badge-emerald { background: #ecfdf5 !important; color: #059669 !important; border: 1px solid #a7f3d0 !important; }
-.badge-amber { background: #fffbeb !important; color: #b45309 !important; border: 1px solid #fde68a !important; }
-.badge-rose { background: #fef2f2 !important; color: #b91c1c !important; border: 1px solid #fecaca !important; }
-.badge-navy { background: #f4f4f5 !important; color: #18181b !important; border: 1px solid #e4e4e7 !important; }
+.badge-blue { background: #FAF7F2 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.12) !important; }
+.badge-emerald { background: rgba(217, 84, 30, 0.08) !important; color: #D9541E !important; border: 1px solid rgba(217, 84, 30, 0.22) !important; }
+.badge-amber { background: #FAF7F2 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.14) !important; }
+.badge-rose { background: #FAF7F2 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.14) !important; }
+.badge-navy { background: #FAF7F2 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.12) !important; }
 
 .font-mono { font-family: var(--font-mono) !important; }
 .font-kruti { font-family: 'Kruti Dev', sans-serif !important; font-size: 1.25rem !important; }

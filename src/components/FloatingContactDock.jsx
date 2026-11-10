@@ -24,29 +24,29 @@ export default function FloatingContactDock() {
       {showCallMenu && (
         <div 
           style={{
-            background: '#ffffff',
+            background: '#FAF7F2',
             borderRadius: '14px',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0,0,0,0.06)',
+            boxShadow: '0 10px 30px rgba(17, 17, 17, 0.16), 0 2px 8px rgba(17, 17, 17, 0.06)',
             padding: '14px 16px',
-            border: '1px solid #e7e5e4',
+            border: '1.5px solid rgba(17, 17, 17, 0.14)',
             marginBottom: '4px',
             width: '270px',
             animation: 'fadeInUp 0.2s ease-out'
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <span style={{ fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#d97706' }}>
+            <span style={{ fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#D9541E' }}>
               Institute Helplines
             </span>
             <button 
               onClick={() => setShowCallMenu(false)}
               aria-label="Close Call Menu"
-              style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#78716c', padding: 2 }}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#555555', padding: 2 }}
             >
               <X size={15} />
             </button>
           </div>
-          <p style={{ fontSize: '0.82rem', color: '#44403c', margin: '0 0 10px', lineHeight: 1.35 }}>
+          <p style={{ fontSize: '0.82rem', color: '#555555', margin: '0 0 10px', lineHeight: 1.35 }}>
             Direct helpline for admissions & guidance:
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -57,18 +57,18 @@ export default function FloatingContactDock() {
                 alignItems: 'center',
                 gap: '8px',
                 padding: '8px 10px',
-                background: '#fef3c7',
-                border: '1px solid #fde68a',
+                background: 'rgba(217, 84, 30, 0.08)',
+                border: '1px solid rgba(217, 84, 30, 0.25)',
                 borderRadius: '8px',
-                color: '#92400e',
+                color: '#111111',
                 fontWeight: 700,
                 fontSize: '0.88rem',
                 textDecoration: 'none'
               }}
             >
-              <Phone size={15} color="#d97706" />
+              <Phone size={15} color="#D9541E" />
               <div>
-                <span style={{ display: 'block', fontSize: '0.7rem', color: '#b45309', fontWeight: 600 }}>Director (Shadab Sir)</span>
+                <span style={{ display: 'block', fontSize: '0.7rem', color: '#D9541E', fontWeight: 700 }}>Director (Shadab Sir)</span>
                 <span>+91 9204123453</span>
               </div>
             </a>
@@ -79,18 +79,18 @@ export default function FloatingContactDock() {
                 alignItems: 'center',
                 gap: '8px',
                 padding: '8px 10px',
-                background: '#faf9f6',
-                border: '1px solid #e7e5e4',
+                background: '#ffffff',
+                border: '1px solid rgba(17, 17, 17, 0.12)',
                 borderRadius: '8px',
-                color: '#1c1917',
+                color: '#111111',
                 fontWeight: 700,
                 fontSize: '0.88rem',
                 textDecoration: 'none'
               }}
             >
-              <Phone size={15} color="#78716c" />
+              <Phone size={15} color="#111111" />
               <div>
-                <span style={{ display: 'block', fontSize: '0.7rem', color: '#78716c', fontWeight: 600 }}>Admissions Helpline</span>
+                <span style={{ display: 'block', fontSize: '0.7rem', color: '#555555', fontWeight: 600 }}>Admissions Helpline</span>
                 <span>+91 7870377214</span>
               </div>
             </a>
@@ -110,23 +110,23 @@ export default function FloatingContactDock() {
             width: '46px',
             height: '46px',
             borderRadius: '50%',
-            background: '#ffffff',
-            color: '#d97706',
-            border: '1.5px solid #fde68a',
+            background: '#FAF7F2',
+            color: '#111111',
+            border: '1.5px solid rgba(17, 17, 17, 0.18)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 4px 14px rgba(217, 119, 6, 0.2)',
+            boxShadow: '0 4px 14px rgba(17, 17, 17, 0.08)',
             cursor: 'pointer',
             transition: 'all 0.2s ease'
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'scale(1.08)';
-            e.currentTarget.style.background = '#fef3c7';
+            e.currentTarget.style.background = '#EBE5D8';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.background = '#ffffff';
+            e.currentTarget.style.background = '#FAF7F2';
           }}
         >
           <Phone size={20} />
@@ -143,12 +143,12 @@ export default function FloatingContactDock() {
             width: '52px',
             height: '52px',
             borderRadius: '50%',
-            background: '#25D366',
+            background: '#D9541E',
             color: '#ffffff',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 4px 18px rgba(37, 211, 102, 0.4)',
+            boxShadow: '0 4px 18px rgba(217, 84, 30, 0.35)',
             textDecoration: 'none',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
@@ -156,25 +156,25 @@ export default function FloatingContactDock() {
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'scale(1.08)';
-            e.currentTarget.style.boxShadow = '0 6px 22px rgba(37, 211, 102, 0.55)';
+            e.currentTarget.style.boxShadow = '0 6px 22px rgba(217, 84, 30, 0.5)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.boxShadow = '0 4px 18px rgba(37, 211, 102, 0.4)';
+            e.currentTarget.style.boxShadow = '0 4px 18px rgba(217, 84, 30, 0.35)';
           }}
         >
           <MessageCircle size={28} />
-          {/* Active online green dot */}
+          {/* Active online dot */}
           <span 
             style={{
               position: 'absolute',
-              top: '1px',
-              right: '1px',
-              width: '12px',
-              height: '12px',
+              top: '2px',
+              right: '2px',
+              width: '11px',
+              height: '11px',
               borderRadius: '50%',
-              background: '#ffffff',
-              border: '2px solid #25D366'
+              background: '#F3EEE3',
+              border: '2px solid #D9541E'
             }}
           />
         </a>

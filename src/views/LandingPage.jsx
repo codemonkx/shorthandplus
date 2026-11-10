@@ -112,7 +112,7 @@ export default function LandingPage({
     {
       id: "eng-steno",
       badge: "Flagship Shorthand",
-      badgeColor: "#d97706",
+      badgeColor: "#D9541E",
       title: "English Shorthand (Pitman)",
       subtitle: "Basic Pitman theory to 120 WPM exam dictations",
       price: "₹4,500",
@@ -129,7 +129,7 @@ export default function LandingPage({
     {
       id: "hindi-steno",
       badge: "High Court & SSC Special",
-      badgeColor: "#059669",
+      badgeColor: "#D9541E",
       title: "Hindi Shorthand (हिंदी आशुलिपि)",
       subtitle: "Complete Hindi theory & speed dictation batch",
       price: "₹4,500",
@@ -146,7 +146,7 @@ export default function LandingPage({
     {
       id: "typing-combo",
       badge: "Dual-Font Typing Lab",
-      badgeColor: "#2563eb",
+      badgeColor: "#D9541E",
       title: "English & Hindi Typing Lab",
       subtitle: "QWERTY, Kruti Dev 010 & Mangal Inscript",
       price: "₹350",
@@ -163,7 +163,7 @@ export default function LandingPage({
     {
       id: "court-special",
       badge: "Judicial Bench Special",
-      badgeColor: "#7c3aed",
+      badgeColor: "#D9541E",
       title: "High Court Judicial Speed Series",
       subtitle: "Live courtroom judgments & legal transcription",
       price: "₹700",
@@ -204,12 +204,12 @@ export default function LandingPage({
   ];
 
   return (
-    <div className="clean-homepage-wrapper" style={{ minHeight: '100vh', background: '#faf9f6', color: '#1c1917', fontFamily: 'Inter, system-ui, -apple-system, sans-serif' }}>
+    <div className="clean-homepage-wrapper" style={{ minHeight: '100vh', background: '#F3EEE3', color: '#111111', fontFamily: 'Inter, system-ui, -apple-system, sans-serif' }}>
       
       {/* =========================================================================
           SECTION 1: HERO SECTION (THE 5-SECOND CLARITY PITCH)
           ========================================================================= */}
-      <section style={{ padding: '3.5rem 1.25rem 4rem', background: '#faf9f6', borderBottom: '1px solid #e7e5e4' }}>
+      <section style={{ padding: '3.5rem 1.25rem 4rem', background: '#F3EEE3', borderBottom: '1px solid rgba(17, 17, 17, 0.12)' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'center' }}>
@@ -221,17 +221,17 @@ export default function LandingPage({
                 display: 'inline-flex', 
                 alignItems: 'center', 
                 gap: '8px', 
-                background: '#ffffff', 
-                border: '1px solid #d6d3d1', 
+                background: '#FAF7F2', 
+                border: '1px solid rgba(17, 17, 17, 0.14)', 
                 borderRadius: '999px', 
                 padding: '6px 14px', 
                 fontSize: '0.8rem', 
                 fontWeight: 700, 
-                color: '#44403c',
-                boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+                color: '#111111',
+                boxShadow: '0 1px 3px rgba(17, 17, 17, 0.04)',
                 marginBottom: '1.25rem'
               }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#16a34a', display: 'inline-block' }} />
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#D9541E', display: 'inline-block' }} />
                 <span>GAYA SHORTHAND CLASSES • LEARN TODAY, LEAD TOMORROW!</span>
               </div>
 
@@ -241,17 +241,17 @@ export default function LandingPage({
                 fontWeight: 850, 
                 lineHeight: 1.16, 
                 letterSpacing: '-0.03em', 
-                color: '#1c1917',
+                color: '#111111',
                 margin: '0 0 1.25rem'
               }}>
-                Master Shorthand, Typing & Computer Skills For <span style={{ color: '#d97706' }}>Government Exams</span>
+                Master Shorthand, Typing & Computer Skills For <span style={{ color: '#D9541E' }}>Government Exams</span>
               </h1>
 
               {/* Subtitle */}
               <p style={{ 
                 fontSize: '1.05rem', 
                 lineHeight: 1.6, 
-                color: '#57534e', 
+                color: '#444444', 
                 margin: '0 0 1.75rem',
                 maxWidth: '580px'
               }}>
@@ -270,7 +270,7 @@ export default function LandingPage({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    background: '#047857',
+                    background: '#D9541E',
                     color: '#ffffff',
                     border: 'none',
                     borderRadius: '10px',
@@ -278,13 +278,13 @@ export default function LandingPage({
                     fontSize: '0.98rem',
                     fontWeight: 700,
                     cursor: 'pointer',
-                    boxShadow: '0 4px 14px rgba(4, 120, 87, 0.28)',
+                    boxShadow: '0 4px 14px rgba(217, 84, 30, 0.3)',
                     transition: 'transform 0.15s ease'
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
                   onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                 >
-                  <Sparkles size={18} />
+                  <Sparkles size={18} color="#ffffff" />
                   <span>Book 3 Free Demo Classes</span>
                 </button>
 
@@ -297,14 +297,15 @@ export default function LandingPage({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    background: '#1c1917',
-                    color: '#faf9f6',
-                    border: '1px solid #44403c',
+                    background: '#111111',
+                    color: '#F3EEE3',
+                    border: '1px solid #111111',
                     borderRadius: '10px',
                     padding: '0.85rem 1.4rem',
                     fontSize: '0.95rem',
                     fontWeight: 600,
                     cursor: 'pointer',
+                    boxShadow: '0 2px 8px rgba(17, 17, 17, 0.2)',
                     transition: 'transform 0.15s ease'
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
@@ -320,9 +321,9 @@ export default function LandingPage({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '6px',
-                    background: '#ffffff',
-                    color: '#b45309',
-                    border: '1.5px solid #fde68a',
+                    background: '#FAF7F2',
+                    color: '#111111',
+                    border: '1px solid rgba(17, 17, 17, 0.15)',
                     borderRadius: '10px',
                     padding: '0.85rem 1.2rem',
                     fontSize: '0.92rem',
@@ -331,24 +332,24 @@ export default function LandingPage({
                     transition: 'background 0.15s ease'
                   }}
                 >
-                  <Phone size={16} />
+                  <Phone size={16} color="#D9541E" />
                   <span>Call: 9204123453</span>
                 </a>
               </div>
 
               {/* 3 Quick Value Badges */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem', paddingTop: '1.25rem', borderTop: '1px solid #e7e5e4' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem', paddingTop: '1.25rem', borderTop: '1px solid rgba(17, 17, 17, 0.12)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <CheckCircle2 size={18} color="#16a34a" />
-                  <span style={{ fontSize: '0.88rem', fontWeight: 600, color: '#292524' }}>3 Free Demo Classes</span>
+                  <CheckCircle2 size={18} color="#D9541E" />
+                  <span style={{ fontSize: '0.88rem', fontWeight: 600, color: '#111111' }}>3 Free Demo Classes</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Award size={18} color="#d97706" />
-                  <span style={{ fontSize: '0.88rem', fontWeight: 600, color: '#292524' }}>Shadab Sir (12 Yrs Exp)</span>
+                  <Award size={18} color="#D9541E" />
+                  <span style={{ fontSize: '0.88rem', fontWeight: 600, color: '#111111' }}>Shadab Sir (12 Yrs Exp)</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <MapPin size={18} color="#dc2626" />
-                  <span style={{ fontSize: '0.88rem', fontWeight: 600, color: '#292524' }}>Gaya College More, Gaya</span>
+                  <MapPin size={18} color="#D9541E" />
+                  <span style={{ fontSize: '0.88rem', fontWeight: 600, color: '#111111' }}>Gaya College More, Gaya</span>
                 </div>
               </div>
 
@@ -371,17 +372,18 @@ export default function LandingPage({
                       style={{ height: '44px', width: 'auto', objectFit: 'contain' }} 
                     />
                     <div>
-                      <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#b45309' }}>
+                      <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#D9541E' }}>
                         Premier Stenography Academy
                       </span>
-                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#1c1917', margin: '2px 0 0' }}>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#111111', margin: '2px 0 0' }}>
                         GAYA SHORTHAND CLASSES
                       </h3>
                     </div>
                   </div>
                   <div style={{ 
-                    background: '#fef3c7', 
-                    color: '#92400e', 
+                    background: 'rgba(217, 84, 30, 0.08)', 
+                    color: '#D9541E', 
+                    border: '1px solid rgba(217, 84, 30, 0.25)',
                     borderRadius: '8px', 
                     padding: '6px 10px', 
                     fontSize: '0.75rem', 
@@ -394,28 +396,28 @@ export default function LandingPage({
 
                 <div style={{ marginBottom: '1.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                    <User size={16} color="#d97706" />
-                    <span style={{ fontSize: '0.92rem', color: '#292524' }}>
+                    <User size={16} color="#D9541E" />
+                    <span style={{ fontSize: '0.92rem', color: '#111111' }}>
                       Faculty Director: <strong>Shadab Sir (12 Years Experience)</strong>
                     </span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                    <MapPin size={16} color="#78716c" />
-                    <span style={{ fontSize: '0.9rem', color: '#57534e' }}>
+                    <MapPin size={16} color="#555555" />
+                    <span style={{ fontSize: '0.9rem', color: '#555555' }}>
                       Opposite Cyber Thana, Gaya College More, Gaya, Bihar
                     </span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Globe size={16} color="#059669" />
-                    <span style={{ fontSize: '0.9rem', color: '#57534e' }}>
+                    <Globe size={16} color="#111111" />
+                    <span style={{ fontSize: '0.9rem', color: '#555555' }}>
                       Official Portal: <strong>stenoplus.in</strong>
                     </span>
                   </div>
                 </div>
 
                 {/* Key Academy Highlights Checklist */}
-                <div style={{ background: '#faf9f6', borderRadius: '12px', padding: '1rem 1.15rem', marginBottom: '1.5rem', border: '1px solid #f5f5f4' }}>
-                  <span style={{ display: 'block', fontSize: '0.78rem', fontWeight: 800, color: '#44403c', textTransform: 'uppercase', marginBottom: '8px', letterSpacing: '0.5px' }}>
+                <div style={{ background: '#FAF7F2', borderRadius: '12px', padding: '1rem 1.15rem', marginBottom: '1.5rem', border: '1px solid rgba(17, 17, 17, 0.1)' }}>
+                  <span style={{ display: 'block', fontSize: '0.78rem', fontWeight: 800, color: '#111111', textTransform: 'uppercase', marginBottom: '8px', letterSpacing: '0.5px' }}>
                     What You Get At Gaya Shorthand:
                   </span>
                   <ul style={{ margin: 0, paddingLeft: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -427,8 +429,8 @@ export default function LandingPage({
                       "Strict Backspace Lock Simulation for High Court & SSC",
                       "Individual Notebook Correction & Doubt Clearing"
                     ].map((item, idx) => (
-                      <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.85rem', color: '#44403c', lineHeight: 1.4 }}>
-                        <Check size={14} color="#16a34a" style={{ flexShrink: 0, marginTop: '2px' }} />
+                      <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.85rem', color: '#444444', lineHeight: 1.4 }}>
+                        <Check size={14} color="#D9541E" style={{ flexShrink: 0, marginTop: '2px' }} />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -443,7 +445,7 @@ export default function LandingPage({
                       if (onOpenAdmission) onOpenAdmission();
                     }}
                     style={{
-                      background: '#047857',
+                      background: '#D9541E',
                       color: '#ffffff',
                       border: 'none',
                       borderRadius: '8px',
@@ -455,7 +457,7 @@ export default function LandingPage({
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: '6px',
-                      boxShadow: '0 2px 6px rgba(4, 120, 87, 0.2)'
+                      boxShadow: '0 2px 6px rgba(217, 84, 30, 0.28)'
                     }}
                   >
                     <Sparkles size={15} color="#fde68a" />
@@ -500,7 +502,7 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 2: THE 5 CORE COURSES & TRANSPARENT PRICING
           ========================================================================= */}
-      <section style={{ padding: '4.5rem 1.25rem', background: '#ffffff', borderBottom: '1px solid #e7e5e4' }}>
+      <section style={{ padding: '4.5rem 1.25rem', background: '#F3EEE3', borderBottom: '1px solid rgba(17, 17, 17, 0.12)' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
           {/* Section Header */}
@@ -509,17 +511,21 @@ export default function LandingPage({
               display: 'inline-block', 
               fontSize: '0.78rem', 
               fontWeight: 800, 
-              color: '#b45309', 
+              color: '#D9541E', 
+              background: 'rgba(217, 84, 30, 0.08)',
+              border: '1px solid rgba(217, 84, 30, 0.25)',
+              padding: '4px 12px',
+              borderRadius: '999px',
               textTransform: 'uppercase', 
               letterSpacing: '0.6px', 
-              marginBottom: '0.5rem' 
+              marginBottom: '0.65rem' 
             }}>
               Affordable & Goal-Oriented Programs
             </span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 2.8vw, 2.4rem)', fontWeight: 800, color: '#1c1917', margin: '0 0 0.75rem', letterSpacing: '-0.02em' }}>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 2.8vw, 2.4rem)', fontWeight: 800, color: '#111111', margin: '0 0 0.75rem', letterSpacing: '-0.02em' }}>
               Our Courses & Transparent Fees
             </h2>
-            <p style={{ fontSize: '1rem', color: '#57534e', margin: 0, lineHeight: 1.5 }}>
+            <p style={{ fontSize: '1rem', color: '#444444', margin: 0, lineHeight: 1.5 }}>
               Choose the course suited for your target exam. Complete basic to advanced preparation with daily live and recorded classes.
             </p>
           </div>
@@ -531,24 +537,24 @@ export default function LandingPage({
                 key={c.id}
                 style={{
                   background: '#ffffff',
-                  border: c.id === 'eng-steno' ? '1.5px solid #f59e0b' : '1px solid #e7e5e4',
+                  border: c.id === 'eng-steno' ? '1.5px solid #D9541E' : '1px solid rgba(17, 17, 17, 0.12)',
                   borderRadius: '16px',
                   padding: '1.75rem',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  boxShadow: c.id === 'eng-steno' ? '0 6px 24px rgba(245, 158, 11, 0.1)' : '0 4px 16px rgba(0,0,0,0.03)',
+                  boxShadow: c.id === 'eng-steno' ? '0 6px 24px rgba(217, 84, 30, 0.12)' : '0 4px 16px rgba(17, 17, 17, 0.04)',
                   transition: 'transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-3px)';
-                  e.currentTarget.style.borderColor = '#d6d3d1';
-                  e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.06)';
+                  e.currentTarget.style.borderColor = '#111111';
+                  e.currentTarget.style.boxShadow = '0 10px 25px rgba(17, 17, 17, 0.08)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderColor = c.id === 'eng-steno' ? '#f59e0b' : '#e7e5e4';
-                  e.currentTarget.style.boxShadow = c.id === 'eng-steno' ? '0 6px 24px rgba(245, 158, 11, 0.1)' : '0 4px 16px rgba(0,0,0,0.03)';
+                  e.currentTarget.style.borderColor = c.id === 'eng-steno' ? '#D9541E' : 'rgba(17, 17, 17, 0.12)';
+                  e.currentTarget.style.boxShadow = c.id === 'eng-steno' ? '0 6px 24px rgba(217, 84, 30, 0.12)' : '0 4px 16px rgba(17, 17, 17, 0.04)';
                 }}
               >
                 <div>
@@ -557,38 +563,38 @@ export default function LandingPage({
                     <span style={{ 
                       fontSize: '0.72rem', 
                       fontWeight: 800, 
-                      color: c.badgeColor, 
-                      background: '#f5f5f4', 
+                      color: '#D9541E', 
+                      background: 'rgba(217, 84, 30, 0.08)', 
                       padding: '4px 10px', 
                       borderRadius: '999px',
-                      border: '1px solid #e7e5e4'
+                      border: '1px solid rgba(217, 84, 30, 0.25)'
                     }}>
                       {c.badge}
                     </span>
-                    <span style={{ fontSize: '0.78rem', color: '#78716c', fontWeight: 600 }}>
+                    <span style={{ fontSize: '0.78rem', color: '#666666', fontWeight: 600 }}>
                       {c.duration}
                     </span>
                   </div>
 
                   {/* Course Title & Subtitle */}
-                  <h3 style={{ fontSize: '1.22rem', fontWeight: 800, color: '#1c1917', margin: '0 0 6px' }}>
+                  <h3 style={{ fontSize: '1.22rem', fontWeight: 800, color: '#111111', margin: '0 0 6px' }}>
                     {c.title}
                   </h3>
-                  <p style={{ fontSize: '0.86rem', color: '#57534e', margin: '0 0 1.25rem', lineHeight: 1.5 }}>
+                  <p style={{ fontSize: '0.86rem', color: '#444444', margin: '0 0 1.25rem', lineHeight: 1.5 }}>
                     {c.subtitle}
                   </p>
 
                   {/* Pricing Box */}
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '1.25rem', paddingBottom: '1rem', borderBottom: '1px solid #e7e5e4' }}>
-                    <span style={{ fontSize: '1.85rem', fontWeight: 850, color: '#1c1917', fontFamily: 'monospace' }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '1.25rem', paddingBottom: '1rem', borderBottom: '1px solid rgba(17, 17, 17, 0.1)' }}>
+                    <span style={{ fontSize: '1.85rem', fontWeight: 850, color: '#111111', fontFamily: 'monospace' }}>
                       {c.price}
                     </span>
                     {c.originalPrice && (
-                      <span style={{ fontSize: '1rem', color: '#dc2626', textDecoration: 'line-through', fontWeight: 600 }}>
+                      <span style={{ fontSize: '1rem', color: '#888888', textDecoration: 'line-through', fontWeight: 600 }}>
                         {c.originalPrice}
                       </span>
                     )}
-                    <span style={{ fontSize: '0.78rem', color: '#78716c', fontWeight: 600, marginLeft: 'auto' }}>
+                    <span style={{ fontSize: '0.78rem', color: '#111111', fontWeight: 700, marginLeft: 'auto' }}>
                       ⚡ {c.speed.includes('WPM') ? c.speed : `Speed: ${c.speed}`}
                     </span>
                   </div>
@@ -596,8 +602,8 @@ export default function LandingPage({
                   {/* Highlights List */}
                   <ul style={{ listStyle: 'none', margin: '0 0 1.5rem', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {c.highlights.map((h, i) => (
-                      <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.84rem', color: '#44403c', lineHeight: 1.4 }}>
-                        <Check size={15} color="#047857" style={{ flexShrink: 0, marginTop: '2px', strokeWidth: 2.5 }} />
+                      <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.84rem', color: '#333333', lineHeight: 1.4 }}>
+                        <Check size={15} color="#D9541E" style={{ flexShrink: 0, marginTop: '2px', strokeWidth: 2.5 }} />
                         <span>{h}</span>
                       </li>
                     ))}
@@ -611,7 +617,7 @@ export default function LandingPage({
                     onClick={() => handleEnrollClick(c.title)}
                     style={{
                       width: '100%',
-                      background: '#047857',
+                      background: '#D9541E',
                       color: '#ffffff',
                       border: 'none',
                       borderRadius: '8px',
@@ -623,7 +629,7 @@ export default function LandingPage({
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: '6px',
-                      boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)',
+                      boxShadow: '0 2px 8px rgba(217, 84, 30, 0.28)',
                       transition: 'all 0.15s ease'
                     }}
                   >
@@ -637,8 +643,8 @@ export default function LandingPage({
 
           {/* Skill Test Passes Bar (From user's price image: ₹30, ₹350, ₹1100, ₹2000) */}
           <div style={{ 
-            background: '#faf9f6', 
-            border: '1.5px solid #fed7aa', 
+            background: '#FAF7F2', 
+            border: '1px solid rgba(17, 17, 17, 0.14)', 
             borderRadius: '14px', 
             padding: '1.5rem 1.75rem',
             display: 'flex',
@@ -649,12 +655,12 @@ export default function LandingPage({
           }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                <Zap size={18} color="#d97706" />
-                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#1c1917', margin: 0 }}>
+                <Zap size={18} color="#D9541E" />
+                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#111111', margin: 0 }}>
                   Online Shorthand & Typing Skill Test Passes
                 </h4>
               </div>
-              <p style={{ fontSize: '0.88rem', color: '#57534e', margin: 0 }}>
+              <p style={{ fontSize: '0.88rem', color: '#555555', margin: 0 }}>
                 Instant access to mock test series, 5-minute reading room, backspace lock, and full/half error evaluation.
               </p>
             </div>
@@ -665,14 +671,14 @@ export default function LandingPage({
                   key={idx}
                   style={{ 
                     background: '#ffffff', 
-                    border: '1px solid #e7e5e4', 
+                    border: '1px solid rgba(17, 17, 17, 0.12)', 
                     borderRadius: '8px', 
                     padding: '8px 12px',
                     textAlign: 'center'
                   }}
                 >
-                  <span style={{ display: 'block', fontSize: '0.72rem', color: '#78716c', fontWeight: 600 }}>{p.name}</span>
-                  <span style={{ fontSize: '1.05rem', fontWeight: 850, color: '#b45309' }}>{p.price}</span>
+                  <span style={{ display: 'block', fontSize: '0.72rem', color: '#555555', fontWeight: 600 }}>{p.name}</span>
+                  <span style={{ fontSize: '1.05rem', fontWeight: 850, color: '#D9541E' }}>{p.price}</span>
                 </div>
               ))}
 
@@ -686,8 +692,8 @@ export default function LandingPage({
                   }
                 }}
                 style={{
-                  background: '#1c1917',
-                  color: '#faf9f6',
+                  background: '#111111',
+                  color: '#F3EEE3',
                   border: 'none',
                   borderRadius: '8px',
                   padding: '0.75rem 1.25rem',
@@ -699,7 +705,7 @@ export default function LandingPage({
                   gap: '6px'
                 }}
               >
-                <CreditCard size={15} color="#fbbf24" />
+                <CreditCard size={15} color="#D9541E" />
                 <span>Get Test Pass Online</span>
               </button>
             </div>
@@ -712,7 +718,7 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 3: TARGET GOVERNMENT EXAMINATIONS
           ========================================================================= */}
-      <section style={{ padding: '4.5rem 1.25rem', background: '#faf9f6', borderBottom: '1px solid #e7e5e4' }}>
+      <section style={{ padding: '4.5rem 1.25rem', background: '#FAF7F2', borderBottom: '1px solid rgba(17, 17, 17, 0.12)' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
           <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 3rem' }}>
@@ -720,7 +726,7 @@ export default function LandingPage({
               display: 'inline-block', 
               fontSize: '0.78rem', 
               fontWeight: 800, 
-              color: '#059669', 
+              color: '#D9541E', 
               textTransform: 'uppercase', 
               letterSpacing: '0.6px', 
               marginBottom: '0.5rem' 
@@ -788,17 +794,17 @@ export default function LandingPage({
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                  <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#d97706', background: '#fef3c7', padding: '2px 8px', borderRadius: '4px' }}>
+                  <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#D9541E', background: 'rgba(217, 84, 30, 0.08)', padding: '2px 8px', borderRadius: '4px' }}>
                     {exam.speed}
                   </span>
-                  <span style={{ fontSize: '0.75rem', color: '#78716c', fontWeight: 600 }}>
+                  <span style={{ fontSize: '0.75rem', color: '#555555', fontWeight: 600 }}>
                     {exam.lang}
                   </span>
                 </div>
-                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#1c1917', margin: '0 0 6px' }}>
+                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#111111', margin: '0 0 6px' }}>
                   {exam.title}
                 </h4>
-                <p style={{ fontSize: '0.84rem', color: '#57534e', margin: 0, lineHeight: 1.4 }}>
+                <p style={{ fontSize: '0.84rem', color: '#555555', margin: 0, lineHeight: 1.4 }}>
                   {exam.desc}
                 </p>
               </div>
@@ -812,7 +818,7 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 4: WHY GAYA SHORTHAND CLASSES? (THE 4 PILLARS)
           ========================================================================= */}
-      <section style={{ padding: '4.5rem 1.25rem', background: '#ffffff', borderBottom: '1px solid #e7e5e4' }}>
+      <section style={{ padding: '4.5rem 1.25rem', background: '#ffffff', borderBottom: '1px solid rgba(17, 17, 17, 0.12)' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
           <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3rem' }}>
@@ -820,17 +826,17 @@ export default function LandingPage({
               display: 'inline-block', 
               fontSize: '0.78rem', 
               fontWeight: 800, 
-              color: '#b45309', 
+              color: '#D9541E', 
               textTransform: 'uppercase', 
               letterSpacing: '0.6px', 
               marginBottom: '0.5rem' 
             }}>
               Proven Learning Methodology
             </span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 2.8vw, 2.4rem)', fontWeight: 800, color: '#1c1917', margin: '0 0 0.75rem', letterSpacing: '-0.02em' }}>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 2.8vw, 2.4rem)', fontWeight: 800, color: '#111111', margin: '0 0 0.75rem', letterSpacing: '-0.02em' }}>
               Why Gaya Shorthand Classes?
             </h2>
-            <p style={{ fontSize: '1rem', color: '#57534e', margin: 0, lineHeight: 1.5 }}>
+            <p style={{ fontSize: '1rem', color: '#555555', margin: 0, lineHeight: 1.5 }}>
               A disciplined, step-by-step coaching system developed over 12 years to turn complete beginners into exam-ready stenographers.
             </p>
           </div>
@@ -839,28 +845,28 @@ export default function LandingPage({
             {[
               {
                 icon: Award,
-                iconColor: "#d97706",
+                iconColor: "#D9541E",
                 title: "Experienced Faculty — Shadab Sir",
                 subtitle: "12 Years Dedicated Experience",
                 desc: "Direct guidance from Shadab Sir with individual notebook correction, outline curvature checks, and personal doubt clearing at every step."
               },
               {
                 icon: Headphones,
-                iconColor: "#2563eb",
+                iconColor: "#111111",
                 title: "Audio-Visual Classroom & Dictation",
                 subtitle: "Speeds from 50 to 140 WPM",
                 desc: "Classes equipped with visual displays and daily graded studio audio dictations across parliamentary speeches, legal judgments, and editorials."
               },
               {
                 icon: Keyboard,
-                iconColor: "#059669",
+                iconColor: "#111111",
                 title: "Online Typing & Real Exam Software",
                 subtitle: "Kruti Dev 010 & Mangal Inscript",
                 desc: "Practice with official exam conditions: backspace lock simulation, 5-minute reading clock, and instant word-by-word diff error evaluation."
               },
               {
                 icon: Sparkles,
-                iconColor: "#7c3aed",
+                iconColor: "#D9541E",
                 title: "3 Free Demo Classes for Beginners",
                 subtitle: "Zero Risk • No Prior Knowledge Needed",
                 desc: "Experience our teaching methodology, digital classroom, and modern computer typing lab before taking admission."
@@ -869,8 +875,8 @@ export default function LandingPage({
               <div 
                 key={i}
                 style={{
-                  background: '#faf9f6',
-                  border: '1px solid #e7e5e4',
+                  background: '#FAF7F2',
+                  border: '1px solid rgba(17, 17, 17, 0.12)',
                   borderRadius: '14px',
                   padding: '1.75rem 1.5rem',
                   display: 'flex',
@@ -883,7 +889,7 @@ export default function LandingPage({
                   height: '46px', 
                   borderRadius: '10px', 
                   background: '#ffffff', 
-                  border: '1px solid #e7e5e4',
+                  border: '1px solid rgba(17, 17, 17, 0.12)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center'
@@ -1079,7 +1085,7 @@ export default function LandingPage({
                 </div>
                 <div style={{ display: 'flex', gap: '2px' }}>
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={18} fill="#f59e0b" color="#f59e0b" />
+                    <Star key={i} size={18} fill="#D9541E" color="#D9541E" />
                   ))}
                 </div>
               </div>
@@ -1106,20 +1112,20 @@ export default function LandingPage({
                   key={i}
                   style={{
                     background: '#ffffff',
-                    border: '1px solid #e7e5e4',
+                    border: '1px solid rgba(17, 17, 17, 0.12)',
                     borderRadius: '12px',
                     padding: '1.15rem 1.25rem',
-                    boxShadow: '0 1px 4px rgba(0,0,0,0.02)'
+                    boxShadow: '0 1px 4px rgba(17, 17, 17, 0.02)'
                   }}
                 >
-                  <p style={{ fontSize: '0.86rem', color: '#44403c', margin: '0 0 8px', lineHeight: 1.45, fontStyle: 'italic' }}>
+                  <p style={{ fontSize: '0.86rem', color: '#444444', margin: '0 0 8px', lineHeight: 1.45, fontStyle: 'italic' }}>
                     {rev.text}
                   </p>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '0.84rem', fontWeight: 700, color: '#1c1917' }}>
+                    <span style={{ fontSize: '0.84rem', fontWeight: 700, color: '#111111' }}>
                       {rev.name}
                     </span>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#059669', background: '#ecfdf5', padding: '2px 8px', borderRadius: '4px' }}>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#D9541E', background: 'rgba(217, 84, 30, 0.08)', padding: '2px 8px', borderRadius: '4px' }}>
                       {rev.exam}
                     </span>
                   </div>
@@ -1148,25 +1154,25 @@ export default function LandingPage({
                 display: 'inline-block', 
                 fontSize: '0.78rem', 
                 fontWeight: 800, 
-                color: '#b45309', 
+                color: '#D9541E', 
                 textTransform: 'uppercase', 
                 letterSpacing: '0.6px', 
                 marginBottom: '0.5rem' 
               }}>
                 Visit Our Offline Institute
               </span>
-              <h2 style={{ fontSize: 'clamp(1.7rem, 2.5vw, 2.1rem)', fontWeight: 800, color: '#1c1917', margin: '0 0 1rem', letterSpacing: '-0.02em' }}>
+              <h2 style={{ fontSize: 'clamp(1.7rem, 2.5vw, 2.1rem)', fontWeight: 800, color: '#111111', margin: '0 0 1rem', letterSpacing: '-0.02em' }}>
                 Gaya Coaching Center & Helplines
               </h2>
               
-              <div style={{ background: '#faf9f6', border: '1px solid #e7e5e4', borderRadius: '14px', padding: '1.5rem', marginBottom: '1.25rem' }}>
+              <div style={{ background: '#FAF7F2', border: '1px solid rgba(17, 17, 17, 0.12)', borderRadius: '14px', padding: '1.5rem', marginBottom: '1.25rem' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '12px' }}>
-                  <MapPin size={20} color="#dc2626" style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <MapPin size={20} color="#D9541E" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: '#1c1917', margin: '0 0 2px' }}>
+                    <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: '#111111', margin: '0 0 2px' }}>
                       Address:
                     </h4>
-                    <p style={{ fontSize: '0.88rem', color: '#57534e', margin: 0, lineHeight: 1.45 }}>
+                    <p style={{ fontSize: '0.88rem', color: '#555555', margin: 0, lineHeight: 1.45 }}>
                       <strong>Gaya Shorthand Classes</strong><br />
                       Gaya College More, Opposite Cyber Thana, Gayaji, Bihar - 823001
                     </p>
@@ -1174,25 +1180,25 @@ export default function LandingPage({
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '12px' }}>
-                  <Phone size={18} color="#d97706" style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <Phone size={18} color="#D9541E" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: '#1c1917', margin: '0 0 2px' }}>
+                    <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: '#111111', margin: '0 0 2px' }}>
                       Direct Helplines:
                     </h4>
-                    <p style={{ fontSize: '0.88rem', color: '#57534e', margin: 0 }}>
-                      Director (Shadab Sir): <a href="tel:9204123453" style={{ color: '#b45309', fontWeight: 700 }}>+91 9204123453</a><br />
-                      Admissions Desk: <a href="tel:7870377214" style={{ color: '#57534e', fontWeight: 700 }}>+91 7870377214</a>
+                    <p style={{ fontSize: '0.88rem', color: '#555555', margin: 0 }}>
+                      Director (Shadab Sir): <a href="tel:9204123453" style={{ color: '#D9541E', fontWeight: 700 }}>+91 9204123453</a><br />
+                      Admissions Desk: <a href="tel:7870377214" style={{ color: '#555555', fontWeight: 700 }}>+91 7870377214</a>
                     </p>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                  <Clock size={18} color="#059669" style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <Clock size={18} color="#111111" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: '#1c1917', margin: '0 0 2px' }}>
+                    <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: '#111111', margin: '0 0 2px' }}>
                       Office & Class Timings:
                     </h4>
-                    <p style={{ fontSize: '0.88rem', color: '#57534e', margin: 0 }}>
+                    <p style={{ fontSize: '0.88rem', color: '#555555', margin: 0 }}>
                       Morning 7:00 AM – 11:30 AM • Evening 3:30 PM – 7:30 PM (Mon to Sat)
                     </p>
                   </div>
@@ -1203,8 +1209,8 @@ export default function LandingPage({
               <div style={{ 
                 borderRadius: '12px', 
                 overflow: 'hidden', 
-                border: '1px solid #e7e5e4', 
-                boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+                border: '1px solid rgba(17, 17, 17, 0.12)', 
+                boxShadow: '0 2px 8px rgba(17, 17, 17, 0.04)',
                 height: '200px',
                 position: 'relative'
               }}>
@@ -1228,14 +1234,14 @@ export default function LandingPage({
                 display: 'inline-block', 
                 fontSize: '0.78rem', 
                 fontWeight: 800, 
-                color: '#2563eb', 
+                color: '#D9541E', 
                 textTransform: 'uppercase', 
                 letterSpacing: '0.6px', 
                 marginBottom: '0.5rem' 
               }}>
                 Clear Answers For New Students
               </span>
-              <h2 style={{ fontSize: 'clamp(1.7rem, 2.5vw, 2.1rem)', fontWeight: 800, color: '#1c1917', margin: '0 0 1rem', letterSpacing: '-0.02em' }}>
+              <h2 style={{ fontSize: 'clamp(1.7rem, 2.5vw, 2.1rem)', fontWeight: 800, color: '#111111', margin: '0 0 1rem', letterSpacing: '-0.02em' }}>
                 Frequently Asked Questions
               </h2>
 
@@ -1246,8 +1252,8 @@ export default function LandingPage({
                     <div 
                       key={faq.id}
                       style={{
-                        background: '#faf9f6',
-                        border: '1px solid #e7e5e4',
+                        background: '#FAF7F2',
+                        border: '1px solid rgba(17, 17, 17, 0.12)',
                         borderRadius: '10px',
                         overflow: 'hidden',
                         transition: 'border-color 0.15s ease'
@@ -1269,14 +1275,14 @@ export default function LandingPage({
                           textAlign: 'left'
                         }}
                       >
-                        <span style={{ fontSize: '0.94rem', fontWeight: 700, color: '#1c1917' }}>
+                        <span style={{ fontSize: '0.94rem', fontWeight: 700, color: '#111111' }}>
                           {faq.q}
                         </span>
-                        {isOpen ? <ChevronUp size={18} color="#78716c" /> : <ChevronDown size={18} color="#78716c" />}
+                        {isOpen ? <ChevronUp size={18} color="#111111" /> : <ChevronDown size={18} color="#777777" />}
                       </button>
 
                       {isOpen && (
-                        <div style={{ padding: '0 1.25rem 1.15rem', fontSize: '0.88rem', color: '#57534e', lineHeight: 1.5, borderTop: '1px solid #f5f5f4' }}>
+                        <div style={{ padding: '0 1.25rem 1.15rem', fontSize: '0.88rem', color: '#555555', lineHeight: 1.5, borderTop: '1px solid rgba(17, 17, 17, 0.08)' }}>
                           {faq.a}
                         </div>
                       )}
@@ -1289,9 +1295,9 @@ export default function LandingPage({
               <div style={{ marginTop: '1.25rem', textAlign: 'right' }}>
                 <a
                   href="tel:9204123453"
-                  style={{ fontSize: '0.85rem', fontWeight: 700, color: '#d97706', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                  style={{ fontSize: '0.85rem', fontWeight: 700, color: '#D9541E', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
                 >
-                  <Phone size={14} color="#d97706" />
+                  <Phone size={14} color="#D9541E" />
                   <span>Have questions? Call Helpline: +91 9204123453</span>
                 </a>
               </div>
@@ -1303,12 +1309,12 @@ export default function LandingPage({
           {/* Bottom Academy CTA Banner */}
           <div style={{ 
             background: '#ffffff', 
-            border: '1.5px solid #fed7aa',
+            border: '1.5px solid rgba(17, 17, 17, 0.12)',
             borderRadius: '16px', 
             padding: '2.5rem 2rem', 
-            color: '#1c1917',
+            color: '#111111',
             textAlign: 'center',
-            boxShadow: '0 8px 30px rgba(217, 119, 6, 0.06)'
+            boxShadow: '0 8px 30px rgba(17, 17, 17, 0.04)'
           }}>
             <span style={{
               display: 'inline-block',
@@ -1316,22 +1322,22 @@ export default function LandingPage({
               fontWeight: 800,
               textTransform: 'uppercase',
               letterSpacing: '1px',
-              color: '#d97706',
+              color: '#D9541E',
               marginBottom: '0.4rem'
             }}>
               ESTD. 2012 • GAYA SHORTHAND CLASSES
             </span>
-            <h3 style={{ fontSize: 'clamp(1.4rem, 2.2vw, 1.9rem)', fontWeight: 850, margin: '0 0 0.5rem', color: '#1c1917' }}>
+            <h3 style={{ fontSize: 'clamp(1.4rem, 2.2vw, 1.9rem)', fontWeight: 850, margin: '0 0 0.5rem', color: '#111111' }}>
               Learn Today, Lead Tomorrow!
             </h3>
-            <p style={{ fontSize: '1rem', color: '#57534e', maxWidth: '640px', margin: '0 auto 1.5rem', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '1rem', color: '#555555', maxWidth: '640px', margin: '0 auto 1.5rem', lineHeight: 1.6 }}>
               Begin your government stenographer journey with <strong>3 Free Demo Classes</strong> at Gaya Shorthand Classes. Guided by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', justifyContent: 'center' }}>
               <a
                 href="tel:9204123453"
                 style={{
-                  background: '#1c1917',
+                  background: '#111111',
                   color: '#ffffff',
                   border: 'none',
                   borderRadius: '8px',
@@ -1342,10 +1348,10 @@ export default function LandingPage({
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  boxShadow: '0 2px 8px rgba(28, 25, 23, 0.25)'
+                  boxShadow: '0 2px 8px rgba(17, 17, 17, 0.25)'
                 }}
               >
-                <Phone size={16} color="#f59e0b" />
+                <Phone size={16} color="#ffffff" />
                 <span>Call Helpline: +91 9204123453</span>
               </a>
 
@@ -1355,7 +1361,7 @@ export default function LandingPage({
                   if (onOpenAdmission) onOpenAdmission();
                 }}
                 style={{
-                  background: '#047857',
+                  background: '#D9541E',
                   color: '#ffffff',
                   border: 'none',
                   borderRadius: '8px',
@@ -1366,10 +1372,10 @@ export default function LandingPage({
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)'
+                  boxShadow: '0 2px 8px rgba(217, 84, 30, 0.28)'
                 }}
               >
-                <Sparkles size={16} color="#fde68a" />
+                <Sparkles size={16} color="#ffffff" />
                 <span>Book 3 Free Demo Classes</span>
               </button>
             </div>
