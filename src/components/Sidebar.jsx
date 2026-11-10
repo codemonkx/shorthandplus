@@ -1,20 +1,14 @@
 import React from 'react';
 import { 
   LayoutDashboard, 
-  GraduationCap,
   Headphones, 
   Keyboard, 
   BarChart3, 
   CreditCard, 
   Crown, 
-  Phone,
   Play, 
   X,
-  Globe,
   ShieldCheck,
-  ChevronRight,
-  ArrowLeft,
-  LifeBuoy,
   Video,
   LogOut
 } from 'lucide-react';
@@ -150,15 +144,6 @@ export default function Sidebar({
 
         {/* Minimalist Institutional Footer Strip */}
         <div className="sidebar-footer-box">
-          <button 
-            className="sidebar-public-switch-link"
-            onClick={() => handleNav('landing')}
-            title="Return to Public Website"
-          >
-            <ArrowLeft size={13} />
-            <span>Return to Public Website</span>
-          </button>
-
           {user && onLogout && (
             <button 
               className="sidebar-logout-link"

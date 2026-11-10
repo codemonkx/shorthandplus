@@ -6,12 +6,10 @@ import {
   CreditCard, 
   LogOut, 
   ShieldCheck,
-  Globe,
   Bell,
   LayoutDashboard,
   Award,
   Sparkles,
-  ExternalLink,
   ChevronRight,
   UserCheck
 } from 'lucide-react';
@@ -175,7 +173,7 @@ export default function TopBar({
                     className="popover-menu-link" 
                     onClick={() => { setDropdownOpen(false); if (onOpenProfileSettings) onOpenProfileSettings(); }}
                   >
-                    <div className="popover-icon-box" style={{ background: '#f5f5f4', color: '#1c1917' }}>
+                    <div className="popover-icon-box" style={{ background: '#F3EEE3', color: '#111111' }}>
                       <UserCheck size={14} />
                     </div>
                     <div className="popover-link-text">
@@ -188,8 +186,8 @@ export default function TopBar({
                     className="popover-menu-link" 
                     onClick={() => { setDropdownOpen(false); setCurrentTab('dashboard'); }}
                   >
-                    <div className="popover-icon-box bg-stone-100">
-                      <LayoutDashboard size={14} className="text-stone-700" />
+                    <div className="popover-icon-box" style={{ background: '#F3EEE3', color: '#111111' }}>
+                      <LayoutDashboard size={14} />
                     </div>
                     <div className="popover-link-text">
                       <span className="popover-link-title">Candidate Dashboard</span>
@@ -201,8 +199,8 @@ export default function TopBar({
                     className="popover-menu-link" 
                     onClick={() => { setDropdownOpen(false); setCurrentTab('results'); }}
                   >
-                    <div className="popover-icon-box bg-purple-soft">
-                      <Award size={14} className="text-purple-600" />
+                    <div className="popover-icon-box" style={{ background: '#F3EEE3', color: '#111111' }}>
+                      <Award size={14} />
                     </div>
                     <div className="popover-link-text">
                       <span className="popover-link-title">My Scorecards & History</span>
@@ -214,8 +212,8 @@ export default function TopBar({
                     className="popover-menu-link" 
                     onClick={() => { setDropdownOpen(false); onOpenCheckout(); }}
                   >
-                    <div className="popover-icon-box bg-amber-soft">
-                      <CreditCard size={14} className="text-amber-600" />
+                    <div className="popover-icon-box" style={{ background: '#F3EEE3', color: '#D9541E' }}>
+                      <CreditCard size={14} />
                     </div>
                     <div className="popover-link-text">
                       <span className="popover-link-title">Subscription Passes</span>
@@ -224,38 +222,24 @@ export default function TopBar({
                     <span className="popover-active-badge">Active</span>
                   </button>
 
-                  <div className="popover-menu-divider" />
-
-                  <div className="popover-menu-section-label">PORTAL</div>
-
-                  <button 
-                    className="popover-menu-link" 
-                    onClick={() => { setDropdownOpen(false); setCurrentTab('landing'); }}
-                  >
-                    <div className="popover-icon-box bg-slate-soft">
-                      <Globe size={14} className="text-slate-600" />
-                    </div>
-                    <div className="popover-link-text">
-                      <span className="popover-link-title">Public Website</span>
-                      <span className="popover-link-desc">Return to home overview</span>
-                    </div>
-                    <ExternalLink size={12} className="text-slate-400" />
-                  </button>
-
                   {user?.role === 'admin' && (
-                    <button 
-                      className="popover-menu-link" 
-                      onClick={() => { setDropdownOpen(false); setCurrentTab('admin'); }}
-                    >
-                      <div className="popover-icon-box bg-indigo-soft">
-                        <ShieldCheck size={14} className="text-indigo-600" />
-                      </div>
-                      <div className="popover-link-text">
-                        <span className="popover-link-title">Admin Management</span>
-                        <span className="popover-link-desc">Batch & audio moderation</span>
-                      </div>
-                      <span className="popover-admin-badge">Staff</span>
-                    </button>
+                    <>
+                      <div className="popover-menu-divider" />
+                      <div className="popover-menu-section-label">STAFF CONSOLE</div>
+                      <button 
+                        className="popover-menu-link" 
+                        onClick={() => { setDropdownOpen(false); setCurrentTab('admin'); }}
+                      >
+                        <div className="popover-icon-box" style={{ background: '#F3EEE3', color: '#D9541E' }}>
+                          <ShieldCheck size={14} />
+                        </div>
+                        <div className="popover-link-text">
+                          <span className="popover-link-title">Admin Management</span>
+                          <span className="popover-link-desc">Batch & audio moderation</span>
+                        </div>
+                        <span className="popover-admin-badge">Staff</span>
+                      </button>
+                    </>
                   )}
 
                   <div className="popover-menu-divider" />
@@ -264,11 +248,11 @@ export default function TopBar({
                     className="popover-menu-link popover-signout-btn" 
                     onClick={() => { setDropdownOpen(false); if (onLogout) onLogout(); }}
                   >
-                    <div className="popover-icon-box bg-rose-soft">
-                      <LogOut size={14} className="text-rose-600" />
+                    <div className="popover-icon-box" style={{ background: '#F3EEE3', color: '#111111' }}>
+                      <LogOut size={14} />
                     </div>
                     <div className="popover-link-text">
-                      <span className="popover-link-title text-rose-600">Sign Out</span>
+                      <span className="popover-link-title">Sign Out</span>
                       <span className="popover-link-desc">End candidate session</span>
                     </div>
                   </button>
