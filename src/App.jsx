@@ -34,6 +34,8 @@ import './theme-tryhackme.css';
 
 const tabToPath = (tab) => {
   if (!tab || tab === 'landing') return '/';
+  if (tab === 'tests' || tab === 'steno-vault') return '/tests';
+  if (tab === 'typing-studio') return '/typing';
   if (tab === 'online-classes') return '/online-classes';
   return `/${tab}`;
 };
@@ -41,9 +43,10 @@ const tabToPath = (tab) => {
 const pathToTab = (pathname) => {
   const clean = (pathname || '').replace(/^\/+|\/+$/g, '').toLowerCase();
   if (!clean || clean === 'landing') return 'landing';
-  if (clean === 'tests') return 'courses'; // redirect public tests to courses
-  if (clean === 'leaderboard') return 'dashboard'; // redirect removed leaderboard to dashboard
-  if (clean === 'bulletin') return 'dashboard'; // redirect legacy routes to dashboard
+  if (clean === 'tests' || clean === 'dictation' || clean === 'steno-vault') return 'tests';
+  if (clean === 'typing' || clean === 'typing-studio') return 'typing-studio';
+  if (clean === 'leaderboard') return 'dashboard';
+  if (clean === 'bulletin') return 'dashboard';
   if (clean === 'online-class' || clean === 'online-classes') return 'online-classes';
   const validTabs = [
     'courses', 
@@ -52,6 +55,7 @@ const pathToTab = (pathname) => {
     'about', 
     'admin', 
     'dashboard', 
+    'tests',
     'steno-vault', 
     'typing-studio', 
     'results', 

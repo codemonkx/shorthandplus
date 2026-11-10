@@ -256,8 +256,7 @@ export default function LandingPage({
                 <button
                   type="button"
                   onClick={() => {
-                    fireConfetti();
-                    if (onOpenAdmission) onOpenAdmission();
+                    if (setCurrentTab) setCurrentTab('tests');
                   }}
                   style={{
                     display: 'inline-flex',
@@ -277,8 +276,8 @@ export default function LandingPage({
                   onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
                   onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                 >
-                  <Sparkles size={18} color="#FFFFFF" />
-                  <span>Book 3 Free Demo Classes</span>
+                  <Headphones size={18} color="#FFFFFF" />
+                  <span>Practice Audio Dictation</span>
                 </button>
 
                 <button
@@ -308,8 +307,12 @@ export default function LandingPage({
                   <span>Try Free Typing Test</span>
                 </button>
 
-                <a
-                  href="tel:9204123453"
+                <button
+                  type="button"
+                  onClick={() => {
+                    fireConfetti();
+                    if (onOpenAdmission) onOpenAdmission();
+                  }}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -318,16 +321,17 @@ export default function LandingPage({
                     color: '#0F172A',
                     border: '1px solid rgba(17, 17, 17, 0.15)',
                     borderRadius: '10px',
-                    padding: '0.85rem 1.2rem',
+                    padding: '0.85rem 1.3rem',
                     fontSize: '0.92rem',
                     fontWeight: 700,
-                    textDecoration: 'none',
-                    transition: 'background 0.15s ease'
+                    cursor: 'pointer',
+                    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.04)',
+                    transition: 'all 0.15s ease'
                   }}
                 >
-                  <Phone size={16} color="#F83458" />
-                  <span>Call: 9204123453</span>
-                </a>
+                  <Sparkles size={16} color="#F83458" />
+                  <span>Book 3 Free Demos</span>
+                </button>
               </div>
 
               {/* 3 Quick Value Badges */}
@@ -348,140 +352,113 @@ export default function LandingPage({
 
             </div>
 
-            {/* Right Column: Clean Academy Welcome Card */}
+            {/* Right Column: Live Interactive Exam Engine Showcase */}
             <div>
               <div style={{ 
                 background: '#FFFFFF', 
                 borderRadius: '20px', 
-                padding: '2rem', 
-                boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.06)' 
+                padding: '1.75rem', 
+                boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06)',
+                border: '1px solid rgba(0, 0, 0, 0.06)'
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '1rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <img 
-                      src="/assets/logo-big-s.png" 
-                      alt="Steno Plus Big S Logo" 
-                      style={{ height: '44px', width: 'auto', objectFit: 'contain' }} 
-                    />
-                    <div>
-                      <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#F83458' }}>
-                        Premier Stenography Academy
-                      </span>
-                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0F172A', margin: '2px 0 0' }}>
-                        GAYA SHORTHAND CLASSES
-                      </h3>
-                    </div>
-                  </div>
-                  <div style={{ 
-                    background: 'rgba(248, 52, 88, 0.08)', 
-                    color: '#F83458', 
-                    border: '1px solid rgba(248, 52, 88, 0.25)',
-                    borderRadius: '8px', 
-                    padding: '6px 10px', 
-                    fontSize: '0.75rem', 
-                    fontWeight: 700, 
-                    textAlign: 'center' 
-                  }}>
-                    Est. 2012
-                  </div>
-                </div>
-
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                    <User size={16} color="#F83458" />
-                    <span style={{ fontSize: '0.92rem', color: '#0F172A' }}>
-                      Faculty Director: <strong>Shadab Sir (12 Years Experience)</strong>
-                    </span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                    <MapPin size={16} color="#555555" />
-                    <span style={{ fontSize: '0.9rem', color: '#555555' }}>
-                      Opposite Cyber Thana, Gaya College More, Gaya, Bihar
-                    </span>
-                  </div>
+                {/* Header Badge */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', paddingBottom: '0.85rem', borderBottom: '1px solid rgba(0, 0, 0, 0.06)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Globe size={16} color="#111111" />
-                    <span style={{ fontSize: '0.9rem', color: '#555555' }}>
-                      Official Portal: <strong>stenoplus.in</strong>
+                    <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#10B981', display: 'inline-block' }} />
+                    <span style={{ fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#0F172A' }}>
+                      Two-Stage Exam Engine Live
                     </span>
+                  </div>
+                  <span style={{ fontSize: '0.72rem', fontWeight: 700, background: '#F83458', color: '#FFFFFF', padding: '3px 10px', borderRadius: '999px' }}>
+                    SSC / Court Pattern
+                  </span>
+                </div>
+
+                {/* Stage 1: Audio Track Preview */}
+                <div style={{ background: '#F8FAFC', borderRadius: '12px', padding: '1rem', marginBottom: '1rem', border: '1px solid #e2e8f0' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <Headphones size={16} color="#F83458" />
+                      <span style={{ fontSize: '0.84rem', fontWeight: 700, color: '#0F172A' }}>
+                        Patna High Court Bench 80 WPM
+                      </span>
+                    </div>
+                    <span style={{ fontSize: '0.74rem', fontWeight: 800, color: '#10B981', background: '#ECFDF5', padding: '2px 8px', borderRadius: '4px' }}>
+                      Stage 1 Audio ✓
+                    </span>
+                  </div>
+                  {/* Visual Waveform */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '3px', height: '24px' }}>
+                    {[35, 60, 90, 45, 80, 100, 65, 40, 75, 95, 60, 85, 50, 70, 90, 40, 65, 80, 55, 30].map((h, i) => (
+                      <span key={i} style={{ flex: 1, background: '#F83458', height: `${h}%`, borderRadius: '2px', opacity: 0.85 }} />
+                    ))}
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '6px', fontSize: '0.72rem', color: '#64748b', fontFamily: 'monospace' }}>
+                    <span>05:00 Calibrated Dictation</span>
+                    <span>Single-Play Strict Enforcement</span>
                   </div>
                 </div>
 
-                {/* Key Academy Highlights Checklist */}
-                <div style={{ background: 'rgba(245, 245, 247, 0.7)', borderRadius: '14px', padding: '1rem 1.15rem', marginBottom: '1.5rem', border: '1px solid rgba(0, 0, 0, 0.05)' }}>
-                  <span style={{ display: 'block', fontSize: '0.78rem', fontWeight: 800, color: '#0F172A', textTransform: 'uppercase', marginBottom: '8px', letterSpacing: '0.5px' }}>
-                    What You Get At Gaya Shorthand:
-                  </span>
-                  <ul style={{ margin: 0, paddingLeft: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    {[
-                      "Basic to Advanced Training (50 to 140 WPM Speeds)",
-                      "Audio-Visual Digital Classroom & Daily Dictation",
-                      "Online Typing Software (Kruti Dev 010 & Mangal Inscript)",
-                      "Exam-Oriented Mock Tests with 5-Minute Reading Clock",
-                      "Strict Backspace Lock Simulation for High Court & SSC",
-                      "Individual Notebook Correction & Doubt Clearing"
-                    ].map((item, idx) => (
-                      <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.85rem', color: '#444444', lineHeight: 1.4 }}>
-                        <Check size={14} color="#F83458" style={{ flexShrink: 0, marginTop: '2px' }} />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                {/* Stage 2: Timed Typing Transcription Preview */}
+                <div style={{ background: '#FFFFFF', borderRadius: '12px', padding: '1rem', marginBottom: '1rem', border: '1px solid #e2e8f0' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <Keyboard size={15} color="#0F172A" />
+                      <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#0F172A' }}>Stage 2: Transcription</span>
+                    </div>
+                    <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#d97706', fontFamily: 'monospace', background: '#FEF3C7', padding: '2px 8px', borderRadius: '4px' }}>
+                      ⏱ 09:42 remaining
+                    </span>
+                  </div>
+                  <p style={{ fontSize: '0.82rem', color: '#334155', fontFamily: 'monospace', lineHeight: 1.5, margin: 0, background: '#F8FAFC', padding: '8px 10px', borderRadius: '6px', border: '1px dashed #cbd5e1' }}>
+                    "The learned counsel appearing on behalf of the appellant has contended that the High Court..."<span style={{ borderRight: '2px solid #F83458' }}>&nbsp;</span>
+                  </p>
                 </div>
 
-                {/* Action Buttons in Card */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (onOpenAdmission) onOpenAdmission();
-                    }}
-                    style={{
-                      background: '#F83458',
-                      color: '#FFFFFF',
-                      border: 'none',
-                      borderRadius: '8px',
-                      padding: '0.75rem',
-                      fontSize: '0.88rem',
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '6px',
-                      boxShadow: '0 2px 6px rgba(248, 52, 88, 0.28)'
-                    }}
-                  >
-                    <Sparkles size={15} color="#fde68a" />
-                    <span>Book 3 Demos</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (onOpenAuth) onOpenAuth('student');
-                    }}
-                    style={{
-                      background: '#0F172A',
-                      color: '#FFFFFF',
-                      border: 'none',
-                      borderRadius: '8px',
-                      padding: '0.75rem',
-                      fontSize: '0.88rem',
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '6px',
-                      boxShadow: '0 2px 6px rgba(28, 25, 23, 0.2)'
-                    }}
-                  >
-                    <LogIn size={15} />
-                    <span>Student Login</span>
-                  </button>
+                {/* Instant Evaluation Scorecard */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem', marginBottom: '1.25rem' }}>
+                  <div style={{ background: '#F8FAFC', padding: '8px', borderRadius: '8px', textAlign: 'center', border: '1px solid #f1f5f9' }}>
+                    <span style={{ display: 'block', fontSize: '0.68rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase' }}>Net Speed</span>
+                    <strong style={{ fontSize: '1.1rem', color: '#0F172A', fontFamily: 'monospace' }}>84 WPM</strong>
+                  </div>
+                  <div style={{ background: '#F8FAFC', padding: '8px', borderRadius: '8px', textAlign: 'center', border: '1px solid #f1f5f9' }}>
+                    <span style={{ display: 'block', fontSize: '0.68rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase' }}>Accuracy</span>
+                    <strong style={{ fontSize: '1.1rem', color: '#10B981', fontFamily: 'monospace' }}>98.2%</strong>
+                  </div>
+                  <div style={{ background: '#F8FAFC', padding: '8px', borderRadius: '8px', textAlign: 'center', border: '1px solid #f1f5f9' }}>
+                    <span style={{ display: 'block', fontSize: '0.68rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase' }}>Result</span>
+                    <strong style={{ fontSize: '0.82rem', color: '#10B981', fontWeight: 800 }}>Qualified</strong>
+                  </div>
                 </div>
 
+                {/* Direct Action Button */}
+                <button
+                  type="button"
+                  onClick={() => setCurrentTab && setCurrentTab('tests')}
+                  style={{
+                    width: '100%',
+                    background: '#F83458',
+                    color: '#FFFFFF',
+                    border: 'none',
+                    borderRadius: '10px',
+                    padding: '0.85rem',
+                    fontSize: '0.92rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    boxShadow: '0 4px 12px rgba(248, 52, 88, 0.28)',
+                    transition: 'transform 0.15s ease'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                >
+                  <Headphones size={16} />
+                  <span>Launch Audio Dictation Vault</span>
+                  <ArrowRight size={15} />
+                </button>
               </div>
             </div>
 
@@ -490,6 +467,313 @@ export default function LandingPage({
         </div>
       </section>
 
+      {/* =========================================================================
+          SECTION 1B: WHAT YOU CAN DO ON SHORTHAND PLUS (THE 3 CORE GATEWAYS)
+          ========================================================================= */}
+      <section style={{ padding: '3rem 1.25rem', background: '#FFFFFF', borderBottom: '1px solid rgba(0, 0, 0, 0.06)' }}>
+        <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+          
+          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 2.25rem' }}>
+            <span style={{ 
+              display: 'inline-block', 
+              fontSize: '0.78rem', 
+              fontWeight: 800, 
+              color: '#F83458', 
+              background: 'rgba(248, 52, 88, 0.08)',
+              border: '1px solid rgba(248, 52, 88, 0.25)',
+              padding: '4px 12px',
+              borderRadius: '999px',
+              textTransform: 'uppercase', 
+              letterSpacing: '0.6px', 
+              marginBottom: '0.65rem' 
+            }}>
+              Choose Your Practice Track
+            </span>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 2.8vw, 2.4rem)', fontWeight: 800, color: '#0F172A', margin: '0 0 0.75rem', letterSpacing: '-0.02em' }}>
+              Everything You Need to Clear Your Exam
+            </h2>
+            <p style={{ fontSize: '1.02rem', color: '#475569', margin: 0, lineHeight: 1.5 }}>
+              Whether you want to practice high-speed audio dictations, master computer typing, or learn shorthand from scratch — select below:
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+            
+            {/* Card 1: Dictation Vault */}
+            <div style={{
+              background: '#F8FAFC',
+              border: '1.5px solid rgba(248, 52, 88, 0.3)',
+              borderRadius: '18px',
+              padding: '2rem 1.75rem',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              boxShadow: '0 4px 16px rgba(248, 52, 88, 0.06)',
+              position: 'relative'
+            }}>
+              <span style={{ position: 'absolute', top: '16px', right: '16px', fontSize: '0.72rem', fontWeight: 800, color: '#F83458', background: 'rgba(248, 52, 88, 0.1)', padding: '3px 10px', borderRadius: '999px' }}>
+                Most Popular
+              </span>
+
+              <div>
+                <div style={{ width: '50px', height: '50px', borderRadius: '12px', background: '#F83458', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem', color: '#FFFFFF', boxShadow: '0 4px 12px rgba(248, 52, 88, 0.3)' }}>
+                  <Headphones size={24} />
+                </div>
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', margin: '0 0 8px' }}>
+                  Audio Dictation Vault
+                </h3>
+                <p style={{ fontSize: '0.92rem', color: '#475569', lineHeight: 1.55, margin: '0 0 1.25rem' }}>
+                  Calibrated <strong>80, 100, 120, 140 WPM</strong> voice dictations. Follows strict examination rules: audio plays once without rewind, followed by a timed typing screen and automated SSC mistake scoring.
+                </p>
+
+                <ul style={{ listStyle: 'none', margin: '0 0 1.5rem', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {[
+                    "Patna High Court & SSC Standard Audio Tracks",
+                    "Single-Play Anti-Cheating Protocol",
+                    "Instant LCS Word-by-Word Diff Evaluation"
+                  ].map((feat, i) => (
+                    <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.86rem', color: '#334155', fontWeight: 600 }}>
+                      <CheckCircle2 size={16} color="#F83458" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setCurrentTab && setCurrentTab('tests')}
+                style={{
+                  width: '100%',
+                  background: '#F83458',
+                  color: '#FFFFFF',
+                  border: 'none',
+                  borderRadius: '10px',
+                  padding: '0.85rem',
+                  fontSize: '0.94rem',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  boxShadow: '0 2px 8px rgba(248, 52, 88, 0.28)'
+                }}
+              >
+                <span>Launch Dictation Vault</span>
+                <ArrowRight size={16} />
+              </button>
+            </div>
+
+            {/* Card 2: Typing Studio */}
+            <div style={{
+              background: '#F8FAFC',
+              border: '1px solid #e2e8f0',
+              borderRadius: '18px',
+              padding: '2rem 1.75rem',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
+            }}>
+              <div>
+                <div style={{ width: '50px', height: '50px', borderRadius: '12px', background: '#0F172A', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem', color: '#FFFFFF' }}>
+                  <Keyboard size={24} />
+                </div>
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', margin: '0 0 8px' }}>
+                  Bilingual Typing Studio
+                </h3>
+                <p style={{ fontSize: '0.92rem', color: '#475569', lineHeight: 1.55, margin: '0 0 1.25rem' }}>
+                  Dedicated practice studio for <strong>Hindi (Kruti Dev 010 & Mangal Inscript)</strong> and <strong>English</strong> typing. Features backspace lock simulation and instant net speed calculation.
+                </p>
+
+                <ul style={{ listStyle: 'none', margin: '0 0 1.5rem', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {[
+                    "Dual Hindi Engine: Kruti Dev 010 & Mangal",
+                    "Official Backspace Lock & 5-Min Reading Clock",
+                    "25+ Civil Court & SSC Test Paragraphs"
+                  ].map((feat, i) => (
+                    <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.86rem', color: '#334155', fontWeight: 600 }}>
+                      <CheckCircle2 size={16} color="#0F172A" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setCurrentTab && setCurrentTab('typing-studio')}
+                style={{
+                  width: '100%',
+                  background: '#0F172A',
+                  color: '#FFFFFF',
+                  border: 'none',
+                  borderRadius: '10px',
+                  padding: '0.85rem',
+                  fontSize: '0.94rem',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px'
+                }}
+              >
+                <span>Open Typing Studio</span>
+                <ArrowRight size={16} />
+              </button>
+            </div>
+
+            {/* Card 3: Academy Coaching & Classes */}
+            <div style={{
+              background: '#F8FAFC',
+              border: '1px solid #e2e8f0',
+              borderRadius: '18px',
+              padding: '2rem 1.75rem',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
+            }}>
+              <div>
+                <div style={{ width: '50px', height: '50px', borderRadius: '12px', background: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem', color: '#FFFFFF' }}>
+                  <GraduationCap size={24} />
+                </div>
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', margin: '0 0 8px' }}>
+                  Classroom & Live Batches
+                </h3>
+                <p style={{ fontSize: '0.92rem', color: '#475569', lineHeight: 1.55, margin: '0 0 1.25rem' }}>
+                  Complete Pitman Shorthand curriculum from basic strokes to high-speed judicial series. Guided directly by <strong>Shadab Sir (12 Yrs Exp)</strong> with daily notebook checking.
+                </p>
+
+                <ul style={{ listStyle: 'none', margin: '0 0 1.5rem', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {[
+                    "Offline Lab at Gaya College More & Live Zoom",
+                    "3 Free Demo Classes (Zero Upfront Risk)",
+                    "DCA & ADCA Govt. Recognized Diplomas"
+                  ].map((feat, i) => (
+                    <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.86rem', color: '#334155', fontWeight: 600 }}>
+                      <CheckCircle2 size={16} color="#475569" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setCurrentTab && setCurrentTab('courses')}
+                style={{
+                  width: '100%',
+                  background: '#FFFFFF',
+                  color: '#0F172A',
+                  border: '1.5px solid #cbd5e1',
+                  borderRadius: '10px',
+                  padding: '0.85rem',
+                  fontSize: '0.94rem',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px'
+                }}
+              >
+                <span>View Courses & Fees</span>
+                <ArrowRight size={16} />
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 1C: HOW THE TWO-STAGE DICTATION EXAM WORKS (3 SIMPLE STEPS)
+          ========================================================================= */}
+      <section style={{ padding: '3rem 1.25rem', background: '#F5F5F7', borderBottom: '1px solid rgba(0, 0, 0, 0.06)' }}>
+        <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+          
+          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 2.25rem' }}>
+            <span style={{ 
+              display: 'inline-block', 
+              fontSize: '0.78rem', 
+              fontWeight: 800, 
+              color: '#0F172A', 
+              background: '#FFFFFF',
+              border: '1px solid rgba(0, 0, 0, 0.1)',
+              padding: '4px 12px',
+              borderRadius: '999px',
+              textTransform: 'uppercase', 
+              letterSpacing: '0.6px', 
+              marginBottom: '0.65rem' 
+            }}>
+              Simple 3-Step Process
+            </span>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 2.8vw, 2.4rem)', fontWeight: 800, color: '#0F172A', margin: '0 0 0.75rem', letterSpacing: '-0.02em' }}>
+              How the Controlled Dictation Exam Works
+            </h2>
+            <p style={{ fontSize: '1rem', color: '#64748b', margin: 0, lineHeight: 1.5 }}>
+              Strictly mirrors official High Court and SSC Stenographer skill tests without any confusion.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+            
+            {/* Step 1 */}
+            <div style={{ background: '#FFFFFF', borderRadius: '16px', padding: '1.75rem', border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 2px 8px rgba(0,0,0,0.03)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1rem' }}>
+                <span style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#F83458', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.9rem' }}>
+                  1
+                </span>
+                <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#F83458', textTransform: 'uppercase' }}>Stage 1 • Audio</span>
+              </div>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0F172A', margin: '0 0 8px' }}>
+                Audio Plays Once
+              </h3>
+              <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: 1.5, margin: 0 }}>
+                Click Start. The voice dictation plays automatically at your chosen speed. No replay, rewind, or pause is allowed. You write the shorthand in your notebook.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div style={{ background: '#FFFFFF', borderRadius: '16px', padding: '1.75rem', border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 2px 8px rgba(0,0,0,0.03)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1rem' }}>
+                <span style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#0F172A', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.9rem' }}>
+                  2
+                </span>
+                <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#0F172A', textTransform: 'uppercase' }}>Stage 2 • Typing</span>
+              </div>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0F172A', margin: '0 0 8px' }}>
+                Type on Fixed Timer
+              </h3>
+              <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: 1.5, margin: 0 }}>
+                The moment audio playback finishes, the typing screen opens automatically. Your countdown timer starts. You transcribe what you wrote on paper.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div style={{ background: '#FFFFFF', borderRadius: '16px', padding: '1.75rem', border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 2px 8px rgba(0,0,0,0.03)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1rem' }}>
+                <span style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#10B981', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.9rem' }}>
+                  3
+                </span>
+                <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#10B981', textTransform: 'uppercase' }}>Stage 3 • Scorecard</span>
+              </div>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0F172A', margin: '0 0 8px' }}>
+                Instant Automated Diff
+              </h3>
+              <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: 1.5, margin: 0 }}>
+                Upon timer completion or manual submit, the server checks your words against the master transcript. See Gross WPM, Net WPM, accuracy %, mistakes, and word-by-word diff.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
 
       {/* =========================================================================
           SECTION 2: THE 5 CORE COURSES & TRANSPARENT PRICING

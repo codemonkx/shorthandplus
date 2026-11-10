@@ -62,10 +62,12 @@ export default function Navbar({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Nav Items: Home, Courses, Classes, About
+  // Nav Items: Home, Courses, Dictation Tests, Typing Lab, Classes, About
   const navItems = [
     { id: 'landing', label: 'Home' },
     { id: 'courses', label: 'Courses' },
+    { id: 'tests', label: 'Dictation Tests' },
+    { id: 'typing-studio', label: 'Typing Lab' },
     { id: 'classes', label: 'Classes' },
     { id: 'about', label: 'About' },
   ];
@@ -73,6 +75,8 @@ export default function Navbar({
   const isNavActive = (id) => {
     if (id === 'landing') return currentTab === 'landing';
     if (id === 'courses') return currentTab === 'courses' || currentTab === 'pricing';
+    if (id === 'tests') return currentTab === 'tests' || currentTab === 'steno-vault';
+    if (id === 'typing-studio') return currentTab === 'typing-studio';
     if (id === 'classes') return currentTab === 'classes' || currentTab === 'online-classes';
     if (id === 'about') return currentTab === 'about';
     return currentTab === id;
@@ -178,29 +182,54 @@ export default function Navbar({
         <div className="shorthand-nav-actions" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
           {/* Student Login Panel or Logged In User State */}
           {!user ? (
-            <button 
-              type="button"
-              className="btn-pill-portal"
-              onClick={() => onOpenAuth ? onOpenAuth('student') : handleNavClick('dashboard')}
-              title="Student Login Panel"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.45rem',
-                padding: '0.45rem 1.15rem',
-                borderRadius: '9999px',
-                background: '#F83458',
-                color: '#FFFFFF',
-                fontSize: '0.86rem',
-                fontWeight: 700,
-                border: 'none',
-                cursor: 'pointer',
-                boxShadow: '0 2px 8px rgba(248, 52, 88, 0.28)'
-              }}
-            >
-              <LogIn size={14} />
-              <span>Student Login</span>
-            </button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <button 
+                type="button"
+                onClick={() => onOpenAdmission ? onOpenAdmission() : handleNavClick('courses')}
+                title="Book 3 Free Demo Classes"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  padding: '0.45rem 1rem',
+                  borderRadius: '9999px',
+                  background: 'rgba(248, 52, 88, 0.08)',
+                  color: '#F83458',
+                  border: '1px solid rgba(248, 52, 88, 0.25)',
+                  fontSize: '0.84rem',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease'
+                }}
+              >
+                <Sparkles size={14} color="#F83458" />
+                <span>Free Demo</span>
+              </button>
+
+              <button 
+                type="button"
+                className="btn-pill-portal"
+                onClick={() => onOpenAuth ? onOpenAuth('student') : handleNavClick('dashboard')}
+                title="Student Login Panel"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  padding: '0.45rem 1.15rem',
+                  borderRadius: '9999px',
+                  background: '#0F172A',
+                  color: '#FFFFFF',
+                  fontSize: '0.86rem',
+                  fontWeight: 700,
+                  border: 'none',
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 8px rgba(15, 23, 42, 0.2)'
+                }}
+              >
+                <LogIn size={14} />
+                <span>Student Login</span>
+              </button>
+            </div>
           ) : (
             <div className="logged-user-actions" ref={userMenuRef} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <button 
