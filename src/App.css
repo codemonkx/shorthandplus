@@ -1,20 +1,20 @@
 /* ==========================================================================
    GAYA SHORTHAND CLASSES (SHORTHANDPLUS) - OFFICIAL DESIGN SYSTEM
    60-30-10 RULE COLOR SYSTEM:
-   - 60% Dominant Canvas: Platinum (#F8F9FA)
+   - 60% Dominant Canvas: Platinum (#F8FAFC)
    - 30% Structural & Ink Typography: Ink Black (#0F172A)
-   - 10% High-Impact Accent / Focal Point: Burnt Orange (#D97706)
+   - 10% High-Impact Accent / Focal Point: Burnt Orange (#2563EB)
    ========================================================================== */
 
 :root {
   /* 60% DOMINANT CANVAS & SURFACES */
-  --cream: #F8F9FA;
-  --canvas: #F8F9FA;
+  --cream: #F8FAFC;
+  --canvas: #F8FAFC;
   --cream-surface: #FFFFFF;
   --surface: #FFFFFF;
   --cream-card: #FFFFFF;
   --cream-border: rgba(0, 0, 0, 0.08);
-  --cream-subtle: #F8F9FA;
+  --cream-subtle: #F8FAFC;
 
   /* 30% STRUCTURE & INK TYPOGRAPHY */
   --ink: #0F172A;
@@ -24,10 +24,10 @@
   --ink-border: rgba(0, 0, 0, 0.08);
 
   /* 10% HIGH-IMPACT BURNT ORANGE ACCENT */
-  --burnt-orange: #D97706;
-  --burnt-orange-hover: #B45309;
-  --burnt-orange-light: rgba(217, 119, 6, 0.08);
-  --burnt-orange-border: rgba(217, 119, 6, 0.3);
+  --burnt-orange: #2563EB;
+  --burnt-orange-hover: #1D4ED8;
+  --burnt-orange-light: rgba(37, 99, 235, 0.08);
+  --burnt-orange-border: rgba(37, 99, 235, 0.3);
 
   /* SYSTEM DESIGN TOKEN MAPPINGS */
   --primary: #0F172A;
@@ -42,17 +42,17 @@
   --slate-500: #666666;
   --slate-400: #888888;
   --slate-200: rgba(0, 0, 0, 0.08);
-  --slate-100: #F8F9FA;
-  --slate-50: #F8F9FA;
+  --slate-100: #F8FAFC;
+  --slate-50: #F8FAFC;
   --white: #FFFFFF;
   
   /* Primary Action Tokens mapped to Burnt Orange */
-  --emerald-600: #D97706;
-  --emerald-50: rgba(217, 119, 6, 0.08);
-  --amber-600: #D97706;
-  --amber-50: rgba(217, 119, 6, 0.08);
-  --rose-600: #D97706;
-  --rose-50: rgba(217, 119, 6, 0.08);
+  --emerald-600: #2563EB;
+  --emerald-50: rgba(37, 99, 235, 0.08);
+  --amber-600: #2563EB;
+  --amber-50: rgba(37, 99, 235, 0.08);
+  --rose-600: #2563EB;
+  --rose-50: rgba(37, 99, 235, 0.08);
   
   --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -423,7 +423,7 @@ input, select, textarea {
    2. HERO SECTION & STUDENT ADMISSION BOX
    -------------------------------------------------------------------------- */
 .edtech-hero-section {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
   padding: 3.5rem 1.25rem 4rem;
   border-bottom: 1px solid var(--slate-200);
 }
@@ -2785,10 +2785,10 @@ input, select, textarea {
    Clean & Trustworthy Corporate EdTech (Stripe / Coursera Style)
    ========================================================================== */
 :root {
-  --bg-app: #F8F9FA;
+  --bg-app: #F8FAFC;
   --bg-sidebar: #0f172a;
   --bg-surface: #FFFFFF;
-  --bg-subtle: #F8F9FA;
+  --bg-subtle: #F8FAFC;
   --blue-600: #18181b;
   --blue-700: #27272a;
   --border-light: #e2e8f0;
@@ -2917,7 +2917,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   min-height: 100vh;
   background-color: #FFFFFF;
-  background-color: var(--bg-app, #F8F9FA);
+  background-color: var(--bg-app, #F8FAFC);
   color: #0f172a;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
@@ -3367,7 +3367,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Header User Card */
 .popover-user-card-header {
-  background: var(--bg-app, #F8F9FA);
+  background: var(--bg-app, #F8FAFC);
   border-bottom: 1px solid var(--border-light, #E6DEC8);
   padding: 1.25rem 1.25rem 1rem 1.25rem;
   display: flex;
@@ -3404,7 +3404,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background: var(--burnt-orange, #D97706);
+  background: var(--burnt-orange, #2563EB);
   border: 1.5px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -3450,7 +3450,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   font-size: 0.7rem;
   font-weight: 700;
-  color: var(--burnt-orange, #D97706);
+  color: var(--burnt-orange, #2563EB);
   background: var(--bg-surface, #FFFFFF);
   border: 1px solid var(--border-light, #E6DEC8);
   padding: 0.2rem 0.55rem;
@@ -3526,7 +3526,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .popover-menu-link:hover {
-  background: var(--bg-app, #F8F9FA);
+  background: var(--bg-app, #F8FAFC);
 }
 
 .popover-icon-box {
@@ -3559,9 +3559,9 @@ h1, h2, h3, h4, h5, h6 {
 .popover-active-badge {
   font-size: 0.65rem;
   font-weight: 700;
-  background: var(--bg-app, #F8F9FA);
-  color: var(--burnt-orange, #D97706);
-  border: 1px solid var(--burnt-orange, #D97706);
+  background: var(--bg-app, #F8FAFC);
+  color: var(--burnt-orange, #2563EB);
+  border: 1px solid var(--burnt-orange, #2563EB);
   padding: 0.15rem 0.45rem;
   border-radius: 9999px;
 }
@@ -3583,11 +3583,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .popover-signout-btn:hover {
-  background: var(--bg-app, #F8F9FA);
+  background: var(--bg-app, #F8FAFC);
 }
 
 .popover-signout-btn:hover .popover-link-title {
-  color: var(--burnt-orange, #D97706);
+  color: var(--burnt-orange, #2563EB);
 }
 
 /* ==========================================================================
@@ -5235,7 +5235,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .zoom-dock-btn.is-hand-raised {
-  background: rgba(217, 119, 6, 0.25);
+  background: rgba(37, 99, 235, 0.25);
   color: #fde68a;
   border: 1px solid #d97706;
 }
@@ -11252,7 +11252,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .results-hero-title-accent {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%) !important;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
 }
@@ -18302,12 +18302,12 @@ h1, h2, h3, h4, h5, h6 {
 .brand-cap-squircle {
   width: 38px !important;
   height: 38px !important;
-  background: #D97706 !important;
+  background: #2563EB !important;
   border-radius: 10px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  box-shadow: 0 4px 10px -2px rgba(217, 119, 6, 0.35) !important;
+  box-shadow: 0 4px 10px -2px rgba(37, 99, 235, 0.35) !important;
   flex-shrink: 0 !important;
 }
 
@@ -19099,7 +19099,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .scorecard-kpi-box.hero-kpi-card.passing {
   border-color: #10b981 !important;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%) !important;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%) !important;
 }
 
 .scorecard-kpi-box.hero-kpi-card.failing {
@@ -20926,7 +20926,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .audio-loaded-card.sample-accent {
   border-color: #fbcfe8;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
 }
 
 .audio-file-meta-row {
@@ -22284,7 +22284,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .counseling-card {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%) !important;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%) !important;
   border: 1px solid #e4e4e7 !important;
   border-radius: 20px !important;
   padding: 2.25rem 2.5rem !important;
@@ -25952,7 +25952,7 @@ select option:checked {
   border: 1px solid #fde68a;
   border-radius: 12px;
   padding: 1rem 1.25rem;
-  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.08);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
 }
 
 .notice-box-header {
@@ -25991,7 +25991,7 @@ select option:checked {
 
 .notice-box-body .field-input:focus {
   border-color: #d97706;
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .notice-actions-row {

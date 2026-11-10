@@ -1,17 +1,17 @@
 /* ==========================================================================
    60-30-10 RULE COLOR SYSTEM
-   - 60% Dominant Canvas: Apple Platinum (#F8F9FA)
+   - 60% Dominant Canvas: Apple Platinum (#F8FAFC)
    - 30% Structural & Ink Typography: Ink Black (#0F172A)
-   - 10% High-Impact Accent / Focal Point: Burnt Orange (#D97706)
+   - 10% High-Impact Accent / Focal Point: Burnt Orange (#2563EB)
    ========================================================================== */
 
 :root {
   /* 60% Dominant Canvas */
-  --cream: #F8F9FA !important;
+  --cream: #F8FAFC !important;
   --cream-surface: #FFFFFF !important;
   --cream-card: #FFFFFF !important;
   --cream-border: rgba(0, 0, 0, 0.08) !important;
-  --cream-subtle: #F8F9FA !important;
+  --cream-subtle: #F8FAFC !important;
 
   /* 30% Structural & Ink Typography */
   --ink: #0F172A !important;
@@ -21,14 +21,14 @@
   --ink-border: rgba(0, 0, 0, 0.08) !important;
 
   /* 10% Burnt Orange Accent */
-  --burnt-orange: #D97706 !important;
-  --burnt-orange-hover: #B45309 !important;
-  --burnt-orange-light: rgba(217, 119, 6, 0.08) !important;
-  --burnt-orange-border: rgba(217, 119, 6, 0.28) !important;
+  --burnt-orange: #2563EB !important;
+  --burnt-orange-hover: #1D4ED8 !important;
+  --burnt-orange-light: rgba(37, 99, 235, 0.08) !important;
+  --burnt-orange-border: rgba(37, 99, 235, 0.28) !important;
 
   --primary: #0F172A !important;
   --primary-hover: #262626 !important;
-  --primary-light: #F8F9FA !important;
+  --primary-light: #F8FAFC !important;
   --primary-border: rgba(0, 0, 0, 0.08) !important;
   
   --navy-950: #0F172A !important;
@@ -40,22 +40,22 @@
   --navy-400: #888888 !important;
   --navy-300: rgba(17, 17, 17, 0.16) !important;
   --navy-200: rgba(0, 0, 0, 0.08) !important;
-  --navy-100: #F8F9FA !important;
-  --navy-50:  #F8F9FA !important;
+  --navy-100: #F8FAFC !important;
+  --navy-50:  #F8FAFC !important;
 
   --slate-700: #0F172A !important;
   --slate-600: #424245 !important;
   --slate-500: #64748B !important;
   --slate-400: #888888 !important;
   --slate-200: rgba(0, 0, 0, 0.08) !important;
-  --slate-100: #F8F9FA !important;
-  --slate-50:  #F8F9FA !important;
+  --slate-100: #F8FAFC !important;
+  --slate-50:  #F8FAFC !important;
   --white: #FFFFFF !important;
 
-  --bg-app: #F8F9FA !important;
+  --bg-app: #F8FAFC !important;
   --bg-sidebar: #FFFFFF !important;
   --bg-surface: #FFFFFF !important;
-  --bg-subtle: #F8F9FA !important;
+  --bg-subtle: #F8FAFC !important;
   --bg-hover: rgba(0, 0, 0, 0.04) !important;
 
   --border-light: rgba(0, 0, 0, 0.08) !important;
@@ -70,15 +70,15 @@
   --blue-600: #0F172A !important;
   --blue-500: #262626 !important;
   --blue-400: #555555 !important;
-  --blue-100: #F8F9FA !important;
-  --blue-50:  #F8F9FA !important;
+  --blue-100: #F8FAFC !important;
+  --blue-50:  #F8FAFC !important;
 
-  --emerald-600: #D97706 !important;
-  --emerald-500: #D97706 !important;
-  --emerald-50: rgba(217, 119, 6, 0.08) !important;
-  --amber-600: #D97706 !important;
-  --amber-500: #D97706 !important;
-  --amber-50: rgba(217, 119, 6, 0.08) !important;
+  --emerald-600: #2563EB !important;
+  --emerald-500: #2563EB !important;
+  --emerald-50: rgba(37, 99, 235, 0.08) !important;
+  --amber-600: #2563EB !important;
+  --amber-500: #2563EB !important;
+  --amber-50: rgba(37, 99, 235, 0.08) !important;
 }
 
 /* Global Selection */
@@ -95,7 +95,7 @@
    1. CORE CANVAS & APP SHELLS (Cream Canvas)
    -------------------------------------------------------------------------- */
 html, body, #root {
-  background-color: #F8F9FA !important;
+  background-color: #F8FAFC !important;
   color: #0F172A !important;
   overflow-x: hidden !important;
   max-width: 100% !important;
@@ -120,7 +120,7 @@ html, body, #root {
 .online-class-page-root,
 .simple-dashboard-root,
 .admin-portal-wrapper {
-  background: #F8F9FA !important;
+  background: #F8FAFC !important;
   color: #0F172A !important;
 }
 
@@ -163,7 +163,7 @@ hr {
 }
 
 .strip-wa-link {
-  color: #D97706 !important;
+  color: #2563EB !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -241,7 +241,7 @@ hr {
   max-width: 100% !important;
   object-fit: contain !important;
   display: block !important;
-  filter: drop-shadow(0 2px 5px rgba(217, 119, 6, 0.25)) !important;
+  filter: drop-shadow(0 2px 5px rgba(37, 99, 235, 0.25)) !important;
 }
 
 .shorthand-brand-group:hover .brand-logo-s-wrap {
@@ -251,12 +251,12 @@ hr {
 .brand-cap-squircle {
   width: 36px !important;
   height: 36px !important;
-  background: #D97706 !important;
+  background: #2563EB !important;
   border-radius: 10px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3) !important;
   color: #FFFFFF !important;
   border: none !important;
   flex-shrink: 0 !important;
@@ -345,14 +345,14 @@ hr {
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.45rem !important;
-  background: #D97706 !important;
+  background: #2563EB !important;
   color: #FFFFFF !important;
-  border: 1px solid #D97706 !important;
+  border: 1px solid #2563EB !important;
   border-radius: 9999px !important;
   padding: 0.45rem 1.15rem !important;
   font-size: 0.86rem !important;
   font-weight: 700 !important;
-  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.28) !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28) !important;
   cursor: pointer !important;
   white-space: nowrap !important;
   transition: all 0.15s ease !important;
@@ -360,8 +360,8 @@ hr {
 
 .btn-pill-signup:hover,
 .btn-pill-portal:hover {
-  background: #B45309 !important;
-  border-color: #B45309 !important;
+  background: #1D4ED8 !important;
+  border-color: #1D4ED8 !important;
   color: #FFFFFF !important;
   transform: translateY(-1px) !important;
 }
@@ -402,7 +402,7 @@ hr {
 }
 
 .btn-navbar-admin-right .admin-icon-shield {
-  color: #D97706 !important;
+  color: #2563EB !important;
 }
 
 .btn-navbar-admin-right:hover,
@@ -603,9 +603,9 @@ hr {
 }
 
 .sub-status-chip {
-  background: rgba(217, 119, 6, 0.08) !important;
-  border: 1px solid rgba(217, 119, 6, 0.22) !important;
-  color: #D97706 !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
+  color: #2563EB !important;
 }
 
 .topbar-admin-btn {
@@ -730,11 +730,11 @@ hr {
 .btn-checkout-submit-pay,
 .auth-submit-btn,
 .btn-scorecard-action.primary {
-  background: #D97706 !important;
+  background: #2563EB !important;
   color: #FFFFFF !important;
-  border: 1px solid #D97706 !important;
+  border: 1px solid #2563EB !important;
   font-weight: 700 !important;
-  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.28) !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28) !important;
 }
 
 .btn-primary:hover,
@@ -754,11 +754,11 @@ hr {
 .btn-checkout-submit-pay:hover:not(:disabled),
 .auth-submit-btn:hover:not(:disabled),
 .btn-scorecard-action.primary:hover {
-  background: #B45309 !important;
-  border-color: #B45309 !important;
+  background: #1D4ED8 !important;
+  border-color: #1D4ED8 !important;
   color: #FFFFFF !important;
   transform: translateY(-1px) !important;
-  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35) !important;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
 }
 
 .btn-secondary,
@@ -809,9 +809,9 @@ input:focus, select:focus, textarea:focus,
 .field-input:focus, .field-select:focus,
 .calm-search-box input:focus,
 .console-search-box input:focus {
-  border-color: #D97706 !important;
+  border-color: #2563EB !important;
   background: #FFFFFF !important;
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
   outline: none !important;
 }
 
@@ -830,8 +830,8 @@ input::placeholder, textarea::placeholder {
 
 .admin-search-box:focus-within {
   background: #FFFFFF !important;
-  border-color: #D97706 !important;
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15) !important;
+  border-color: #2563EB !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
 }
 
 .admin-search-box input {
@@ -1024,15 +1024,15 @@ input::placeholder, textarea::placeholder {
 }
 
 .badge-emerald, .chip-green, .badge-online {
-  background: rgba(217, 119, 6, 0.08) !important;
-  color: #D97706 !important;
-  border: 1px solid rgba(217, 119, 6, 0.22) !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563EB !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
 }
 
 .badge-amber, .chip-amber, .portal-live-badge {
-  background: rgba(217, 119, 6, 0.08) !important;
-  color: #D97706 !important;
-  border: 1px solid rgba(217, 119, 6, 0.22) !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563EB !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
   font-weight: 700 !important;
 }
 
@@ -1061,8 +1061,8 @@ input::placeholder, textarea::placeholder {
 
 .pulse-dot-green,
 .status-live-dot {
-  background: #D97706 !important;
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.25) !important;
+  background: #2563EB !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -1487,8 +1487,8 @@ tbody td {
 }
 
 .hero-dot-pulse {
-  background: #D97706 !important;
-  box-shadow: 0 0 8px rgba(217, 119, 6, 0.35) !important;
+  background: #2563EB !important;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.35) !important;
   animation: none !important;
 }
 
@@ -1557,7 +1557,7 @@ tbody td {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  color: #D97706 !important;
+  color: #2563EB !important;
 }
 
 .warmup-pill-tag,
@@ -1870,9 +1870,9 @@ tbody td {
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.04em !important;
-  background: rgba(217, 119, 6, 0.08) !important;
-  color: #D97706 !important;
-  border: 1px solid rgba(217, 119, 6, 0.22) !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563EB !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
   padding: 0.15rem 0.5rem !important;
   border-radius: 9999px !important;
   display: inline-flex !important;
@@ -1898,7 +1898,7 @@ tbody td {
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.35rem !important;
-  color: #D97706 !important;
+  color: #2563EB !important;
   font-weight: 600 !important;
 }
 
@@ -1906,9 +1906,9 @@ tbody td {
   width: 6px !important;
   height: 6px !important;
   border-radius: 50% !important;
-  background: #D97706 !important;
+  background: #2563EB !important;
   display: inline-block !important;
-  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.25) !important;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25) !important;
 }
 
 .admin-header-actions {
@@ -2044,9 +2044,9 @@ tbody td {
 .kpi-icon-wrap.bg-purple-subtle,
 .kpi-icon-wrap.bg-rose-subtle,
 .kpi-icon-wrap.bg-amber-subtle {
-  background: rgba(217, 119, 6, 0.08) !important;
-  color: #D97706 !important;
-  border: 1px solid rgba(217, 119, 6, 0.2) !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563EB !important;
+  border: 1px solid rgba(37, 99, 235, 0.2) !important;
 }
 
 .kpi-info-col {
@@ -2280,9 +2280,9 @@ tbody td {
 }
 
 .status-chip-btn.chip-expiring-state.active {
-  background: #D97706 !important;
+  background: #2563EB !important;
   color: #FFFFFF !important;
-  border-color: #D97706 !important;
+  border-color: #2563EB !important;
 }
 
 .status-chip-btn.chip-expired-state.active {
@@ -2298,8 +2298,8 @@ tbody td {
   flex-shrink: 0 !important;
 }
 
-.dot-emerald { background: #D97706 !important; }
-.dot-amber { background: #D97706 !important; }
+.dot-emerald { background: #2563EB !important; }
+.dot-amber { background: #2563EB !important; }
 .dot-rose { background: #0F172A !important; }
 
 /* Table Cells, Capsules & Action Buttons */
@@ -2485,15 +2485,15 @@ tbody td {
 }
 
 .admin-pass-chip.pass-scholar {
-  background: rgba(217, 119, 6, 0.08) !important;
-  color: #D97706 !important;
-  border: 1px solid rgba(217, 119, 6, 0.22) !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563EB !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
 }
 
 .admin-pass-chip.pass-monthly {
-  background: rgba(217, 119, 6, 0.08) !important;
-  color: #D97706 !important;
-  border: 1px solid rgba(217, 119, 6, 0.22) !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563EB !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
 }
 
 .admin-pass-chip.pass-sprint {
@@ -2527,9 +2527,9 @@ tbody td {
 }
 
 .validity-days-badge.badge-good {
-  background: rgba(217, 119, 6, 0.08) !important;
-  color: #D97706 !important;
-  border: 1px solid rgba(217, 119, 6, 0.22) !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563EB !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
 }
 
 .validity-days-badge.badge-warning {
@@ -2564,7 +2564,7 @@ tbody td {
   transition: width 0.3s ease !important;
 }
 
-.admin-validity-progress.prog-green { background: #D97706 !important; }
+.admin-validity-progress.prog-green { background: #2563EB !important; }
 .admin-validity-progress.prog-amber { background: #0F172A !important; }
 .admin-validity-progress.prog-red { background: #555555 !important; }
 
@@ -2586,7 +2586,7 @@ tbody td {
 }
 
 .speed-main-val svg {
-  color: #D97706 !important;
+  color: #2563EB !important;
 }
 
 .speed-unit {
@@ -2597,7 +2597,7 @@ tbody td {
 
 .accuracy-subval {
   font-size: 0.74rem !important;
-  color: #D97706 !important;
+  color: #2563EB !important;
   font-weight: 600 !important;
   font-family: var(--font-mono, monospace) !important;
 }
@@ -2614,9 +2614,9 @@ tbody td {
 }
 
 .admin-status-indicator.is-active {
-  background: rgba(217, 119, 6, 0.08) !important;
-  color: #D97706 !important;
-  border: 1px solid rgba(217, 119, 6, 0.22) !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563EB !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
 }
 
 .admin-status-indicator.is-inactive {
@@ -2634,8 +2634,8 @@ tbody td {
 }
 
 .admin-status-indicator.is-active .pulse-dot {
-  background: #D97706 !important;
-  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.25) !important;
+  background: #2563EB !important;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25) !important;
 }
 
 .admin-status-indicator.is-inactive .pulse-dot {
@@ -2781,9 +2781,9 @@ td:has(.admin-actions-cluster),
 }
 
 .admin-btn-action.btn-activate {
-  background: rgba(217, 119, 6, 0.08) !important;
-  border: 1px solid rgba(217, 119, 6, 0.22) !important;
-  color: #D97706 !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
+  color: #2563EB !important;
   padding: 0 0.75rem !important;
   height: 32px !important;
   flex-shrink: 0 !important;
@@ -2791,8 +2791,8 @@ td:has(.admin-actions-cluster),
 }
 
 .admin-btn-action.btn-activate:hover {
-  background: #D97706 !important;
-  border-color: #D97706 !important;
+  background: #2563EB !important;
+  border-color: #2563EB !important;
   color: #FFFFFF !important;
 }
 
@@ -2979,10 +2979,10 @@ button {
 /* --------------------------------------------------------------------------
    WARM STONE & CASHMERE EDITORIAL MINIMAL - ADVANCED UI ENHANCEMENT
    High-craft, intentional design system:
-   • Dominant: Apple Platinum (#F8F9FA) & Crisp White (#FFFFFF)
+   • Dominant: Apple Platinum (#F8FAFC) & Crisp White (#FFFFFF)
    • Structure: Soft Sand Hairlines (#E7E5E4)
    • Contrast: Deep Obsidian Charcoal (#1C1917)
-   • Micro-accents: Burnt Orange (#D97706), Ink Black (#0F172A), Apple Platinum (#F8F9FA)
+   • Micro-accents: Burnt Orange (#2563EB), Ink Black (#0F172A), Apple Platinum (#F8FAFC)
    • Strict Rule: Zero Primary Blue
    -------------------------------------------------------------------------- */
 
@@ -3049,8 +3049,8 @@ button {
   width: 6px !important;
   height: 6px !important;
   border-radius: 50% !important;
-  background: #D97706 !important;
-  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.25) !important;
+  background: #2563EB !important;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25) !important;
 }
 
 .welcome-target-pill {
@@ -3227,9 +3227,9 @@ button {
 }
 
 .chip-emerald {
-  background: rgba(217, 119, 6, 0.08) !important;
-  color: #D97706 !important;
-  border: 1px solid rgba(217, 119, 6, 0.22) !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563EB !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
 }
 
 .chip-amber {
@@ -3342,9 +3342,9 @@ button {
 }
 
 .card-status-pill.badge-live {
-  background: rgba(217, 119, 6, 0.08) !important;
-  color: #D97706 !important;
-  border: 1px solid rgba(217, 119, 6, 0.22) !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563EB !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
   font-size: 0.74rem !important;
   font-weight: 750 !important;
   padding: 0.25rem 0.75rem !important;
@@ -3658,7 +3658,7 @@ button {
 }
 
 .mini-role {
-  color: #D97706 !important;
+  color: #2563EB !important;
   font-weight: 600 !important;
   font-size: 0.72rem !important;
   display: block !important;
@@ -3701,7 +3701,7 @@ button {
 }
 
 .mini-feat-item svg {
-  color: #D97706 !important;
+  color: #2563EB !important;
   flex-shrink: 0 !important;
 }
 

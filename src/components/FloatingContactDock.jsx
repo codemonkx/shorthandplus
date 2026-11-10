@@ -35,7 +35,7 @@ export default function FloatingContactDock() {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <span style={{ fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#D97706' }}>
+            <span style={{ fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#2563EB' }}>
               Institute Helplines
             </span>
             <button 
@@ -57,8 +57,8 @@ export default function FloatingContactDock() {
                 alignItems: 'center',
                 gap: '8px',
                 padding: '8px 10px',
-                background: 'rgba(217, 119, 6, 0.08)',
-                border: '1px solid rgba(217, 119, 6, 0.25)',
+                background: 'rgba(37, 99, 235, 0.08)',
+                border: '1px solid rgba(37, 99, 235, 0.25)',
                 borderRadius: '8px',
                 color: '#0F172A',
                 fontWeight: 700,
@@ -66,9 +66,9 @@ export default function FloatingContactDock() {
                 textDecoration: 'none'
               }}
             >
-              <Phone size={15} color="#D97706" />
+              <Phone size={15} color="#2563EB" />
               <div>
-                <span style={{ display: 'block', fontSize: '0.7rem', color: '#D97706', fontWeight: 700 }}>Director (Shadab Sir)</span>
+                <span style={{ display: 'block', fontSize: '0.7rem', color: '#2563EB', fontWeight: 700 }}>Director (Shadab Sir)</span>
                 <span>+91 9204123453</span>
               </div>
             </a>
@@ -122,7 +122,7 @@ export default function FloatingContactDock() {
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'scale(1.08)';
-            e.currentTarget.style.background = '#F8F9FA';
+            e.currentTarget.style.background = '#F8FAFC';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
@@ -143,12 +143,12 @@ export default function FloatingContactDock() {
             width: '52px',
             height: '52px',
             borderRadius: '50%',
-            background: '#D97706',
+            background: '#2563EB',
             color: '#FFFFFF',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 4px 18px rgba(217, 119, 6, 0.35)',
+            boxShadow: '0 4px 18px rgba(37, 99, 235, 0.35)',
             textDecoration: 'none',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
@@ -160,7 +160,7 @@ export default function FloatingContactDock() {
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.boxShadow = '0 4px 18px rgba(217, 119, 6, 0.35)';
+            e.currentTarget.style.boxShadow = '0 4px 18px rgba(37, 99, 235, 0.35)';
           }}
         >
           <MessageCircle size={28} />
@@ -174,7 +174,7 @@ export default function FloatingContactDock() {
               height: '11px',
               borderRadius: '50%',
               background: '#FFFFFF',
-              border: '2px solid #D97706'
+              border: '2px solid #2563EB'
             }}
           />
         </a>

@@ -532,7 +532,7 @@ export default function ShorthandCanvas({
                 borderRadius: 4,
                 border: '1px solid',
                 borderColor: audioSpeed === item.spd ? '#0F172A' : 'rgba(0, 0, 0, 0.08)',
-                background: audioSpeed === item.spd ? '#0F172A' : '#F8F9FA',
+                background: audioSpeed === item.spd ? '#0F172A' : '#F8FAFC',
                 color: audioSpeed === item.spd ? '#fafaf9' : '#44403c',
                 fontWeight: audioSpeed === item.spd ? 700 : 500,
                 cursor: 'pointer'
@@ -682,7 +682,7 @@ export default function ShorthandCanvas({
                     height: 20,
                     borderRadius: '50%',
                     background: c.hex,
-                    border: color === c.hex ? '2px solid #D97706' : '1px solid rgba(0, 0, 0, 0.12)',
+                    border: color === c.hex ? '2px solid #2563EB' : '1px solid rgba(0, 0, 0, 0.12)',
                     outline: color === c.hex ? `2px solid ${c.hex}` : 'none',
                     cursor: 'pointer'
                   }}
@@ -827,7 +827,7 @@ export default function ShorthandCanvas({
                       borderRadius: 4,
                       border: '1px solid',
                       borderColor: activeRef.label === ref.label ? '#d97706' : 'rgba(0, 0, 0, 0.08)',
-                      background: activeRef.label === ref.label ? 'rgba(217, 119, 6, 0.08)' : '#F8F9FA',
+                      background: activeRef.label === ref.label ? 'rgba(37, 99, 235, 0.08)' : '#F8FAFC',
                       color: activeRef.label === ref.label ? '#92400e' : '#0F172A',
                       cursor: 'pointer',
                       fontWeight: 600,

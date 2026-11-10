@@ -26,15 +26,15 @@ export default function AcademyIllustration() {
           <defs>
             {/* Gradients */}
             <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#F8F9FA" />
-              <stop offset="100%" stopColor="#F8F9FA" />
+              <stop offset="0%" stopColor="#F8FAFC" />
+              <stop offset="100%" stopColor="#F8FAFC" />
             </linearGradient>
             <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stopColor="#0F172A" />
               <stop offset="100%" stopColor="#0F172A" />
             </linearGradient>
             <linearGradient id="deskGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#F8F9FA" />
+              <stop offset="0%" stopColor="#F8FAFC" />
               <stop offset="100%" stopColor="rgba(0, 0, 0, 0.08)" />
             </linearGradient>
             <linearGradient id="highlightGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -42,7 +42,7 @@ export default function AcademyIllustration() {
               <stop offset="100%" stopColor="#d97706" />
             </linearGradient>
             <linearGradient id="paperGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#F8F9FA" />
+              <stop offset="0%" stopColor="#F8FAFC" />
               <stop offset="100%" stopColor="#fdfbf7" />
             </linearGradient>
 

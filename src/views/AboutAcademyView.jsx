@@ -104,14 +104,14 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
               width: 44,
               height: 44,
               borderRadius: 10,
-              background: '#D97706',
+              background: '#2563EB',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#FFFFFF',
               fontWeight: 800,
               fontSize: '1.1rem',
-              boxShadow: '0 2px 8px rgba(217, 119, 6, 0.28)'
+              boxShadow: '0 2px 8px rgba(37, 99, 235, 0.28)'
             }}>
               ⚡
             </div>
@@ -128,15 +128,15 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.5rem',
-            background: 'rgba(217, 119, 6, 0.08)',
-            color: '#D97706',
+            background: 'rgba(37, 99, 235, 0.08)',
+            color: '#2563EB',
             padding: '0.45rem 0.9rem',
             borderRadius: '999px',
             fontSize: '0.82rem',
             fontWeight: 700,
-            border: '1px solid rgba(217, 119, 6, 0.25)'
+            border: '1px solid rgba(37, 99, 235, 0.25)'
           }}>
-            <Sparkles size={15} color="#D97706" />
+            <Sparkles size={15} color="#2563EB" />
             <span>AI-BASED DICTATION & REAL TIME EVALUATION</span>
           </div>
         </div>
@@ -218,9 +218,9 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
               fontWeight: 700,
               letterSpacing: '1px',
               textTransform: 'uppercase',
-              color: '#D97706',
-              background: 'rgba(217, 119, 6, 0.08)',
-              border: '1px solid rgba(217, 119, 6, 0.25)',
+              color: '#2563EB',
+              background: 'rgba(37, 99, 235, 0.08)',
+              border: '1px solid rgba(37, 99, 235, 0.25)',
               padding: '0.35rem 0.85rem',
               borderRadius: '999px',
               marginBottom: '0.5rem'
@@ -261,12 +261,12 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                     width: 42,
                     height: 42,
                     borderRadius: 10,
-                    background: 'rgba(217, 119, 6, 0.08)',
-                    border: '1px solid rgba(217, 119, 6, 0.25)',
+                    background: 'rgba(37, 99, 235, 0.08)',
+                    border: '1px solid rgba(37, 99, 235, 0.25)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#D97706'
+                    color: '#2563EB'
                   }}>
                     <IconComp size={20} strokeWidth={2.2} />
                   </div>
@@ -291,9 +291,9 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
               fontWeight: 800,
               letterSpacing: '0.8px',
               textTransform: 'uppercase',
-              color: '#D97706',
-              background: 'rgba(217, 119, 6, 0.08)',
-              border: '1px solid rgba(217, 119, 6, 0.25)',
+              color: '#2563EB',
+              background: 'rgba(37, 99, 235, 0.08)',
+              border: '1px solid rgba(37, 99, 235, 0.25)',
               padding: '0.35rem 0.85rem',
               borderRadius: '999px',
               marginBottom: '0.5rem'
@@ -335,9 +335,9 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                       textTransform: 'uppercase',
                       padding: '0.25rem 0.65rem',
                       borderRadius: '999px',
-                      background: 'rgba(217, 119, 6, 0.08)',
-                      color: '#D97706',
-                      border: '1px solid rgba(217, 119, 6, 0.22)'
+                      background: 'rgba(37, 99, 235, 0.08)',
+                      color: '#2563EB',
+                      border: '1px solid rgba(37, 99, 235, 0.22)'
                     }}>
                       {exam.category}
                     </span>
@@ -369,7 +369,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                     style={{
                       background: 'transparent',
                       border: 'none',
-                      color: '#D97706',
+                      color: '#2563EB',
                       fontWeight: 700,
                       fontSize: '0.82rem',
                       cursor: 'pointer',
@@ -396,9 +396,9 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
               fontWeight: 800,
               letterSpacing: '0.8px',
               textTransform: 'uppercase',
-              color: '#D97706',
-              background: 'rgba(217, 119, 6, 0.08)',
-              border: '1px solid rgba(217, 119, 6, 0.25)',
+              color: '#2563EB',
+              background: 'rgba(37, 99, 235, 0.08)',
+              border: '1px solid rgba(37, 99, 235, 0.25)',
               padding: '0.35rem 0.85rem',
               borderRadius: '999px',
               marginBottom: '0.5rem'
@@ -447,11 +447,11 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                         fontSize: '0.82rem',
                         fontWeight: 800,
                         fontFamily: 'var(--font-mono, monospace)',
-                        color: '#D97706',
-                        background: 'rgba(217, 119, 6, 0.08)',
+                        color: '#2563EB',
+                        background: 'rgba(37, 99, 235, 0.08)',
                         padding: '0.2rem 0.65rem',
                         borderRadius: '6px',
-                        border: '1px solid rgba(217, 119, 6, 0.22)'
+                        border: '1px solid rgba(37, 99, 235, 0.22)'
                       }}>
                         STEP {item.step}
                       </span>
@@ -464,7 +464,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        color: '#D97706'
+                        color: '#2563EB'
                       }}>
                         <IconComp size={18} strokeWidth={2.2} />
                       </div>
@@ -472,7 +472,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                     <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0F172A', margin: '0 0 0.25rem', lineHeight: 1.35 }}>
                       {item.title}
                     </h3>
-                    <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#D97706', marginBottom: '0.65rem' }}>
+                    <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#2563EB', marginBottom: '0.65rem' }}>
                       {item.hindi}
                     </div>
                     <p style={{ fontSize: '0.86rem', color: '#555555', lineHeight: 1.6, margin: 0 }}>
@@ -487,7 +487,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
 
         {/* 5. JOIN US & OFFICIAL CONTACT BANNER */}
         <section style={{ 
-          background: '#F8F9FA', 
+          background: '#F8FAFC', 
           border: '1.5px solid rgba(0, 0, 0, 0.08)', 
           borderRadius: '20px', 
           padding: '2.5rem 2rem', 
@@ -516,8 +516,8 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                 />
               </div>
               <div>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: 800, color: '#D97706', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                  <Award size={14} color="#D97706" />
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: 800, color: '#2563EB', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                  <Award size={14} color="#2563EB" />
                   <span>Offline & Online Admissions Open 2026</span>
                 </div>
                 <h2 style={{ fontSize: '1.65rem', fontWeight: 850, color: '#0F172A', margin: '2px 0 0', letterSpacing: '-0.02em' }}>
@@ -551,7 +551,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                 
                 {/* Tile 1: Address */}
                 <div style={{ background: '#FFFFFF', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', padding: '1.15rem 1.25rem', display: 'flex', gap: '12px' }}>
-                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(217, 119, 6, 0.08)', color: '#D97706', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(37, 99, 235, 0.08)', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <MapPin size={18} />
                   </div>
                   <div>
@@ -566,7 +566,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
 
                 {/* Tile 2: Phone Helplines */}
                 <div style={{ background: '#FFFFFF', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', padding: '1.15rem 1.25rem', display: 'flex', gap: '12px' }}>
-                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(217, 119, 6, 0.08)', color: '#D97706', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(37, 99, 235, 0.08)', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <Phone size={18} />
                   </div>
                   <div>
@@ -574,7 +574,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                       Direct Helplines
                     </span>
                     <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0F172A', lineHeight: 1.4 }}>
-                      <a href="tel:+919204123453" style={{ color: '#D97706', textDecoration: 'none' }}>+91 9204123453</a>
+                      <a href="tel:+919204123453" style={{ color: '#2563EB', textDecoration: 'none' }}>+91 9204123453</a>
                       <span style={{ color: 'rgba(17, 17, 17, 0.25)', margin: '0 4px' }}>•</span>
                       <a href="tel:+917870377214" style={{ color: '#0F172A', textDecoration: 'none' }}>+91 7870377214</a>
                     </div>
@@ -583,7 +583,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
 
                 {/* Tile 3: 3 Free Demo Classes */}
                 <div style={{ background: '#FFFFFF', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', padding: '1.15rem 1.25rem', display: 'flex', gap: '12px' }}>
-                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(217, 119, 6, 0.08)', color: '#D97706', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(37, 99, 235, 0.08)', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <Sparkles size={18} />
                   </div>
                   <div>
@@ -598,7 +598,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
 
                 {/* Tile 4: Batch Timings */}
                 <div style={{ background: '#FFFFFF', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', padding: '1.15rem 1.25rem', display: 'flex', gap: '12px' }}>
-                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(217, 119, 6, 0.08)', color: '#D97706', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(37, 99, 235, 0.08)', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <Clock size={18} />
                   </div>
                   <div>
@@ -613,7 +613,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
 
                 {/* Tile 5: Official Email */}
                 <div style={{ background: '#FFFFFF', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', padding: '1.15rem 1.25rem', display: 'flex', gap: '12px' }}>
-                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(217, 119, 6, 0.08)', color: '#D97706', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(37, 99, 235, 0.08)', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <Mail size={18} />
                   </div>
                   <div>
@@ -628,14 +628,14 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
 
                 {/* Tile 6: Official Website */}
                 <div style={{ background: '#FFFFFF', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '12px', padding: '1.15rem 1.25rem', display: 'flex', gap: '12px' }}>
-                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(217, 119, 6, 0.08)', color: '#D97706', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(37, 99, 235, 0.08)', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <Globe size={18} />
                   </div>
                   <div>
                     <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#777777', letterSpacing: '0.4px', marginBottom: '2px' }}>
                       Official Portal
                     </span>
-                    <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#D97706', textDecoration: 'none' }}>
+                    <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#2563EB', textDecoration: 'none' }}>
                       https://stenoplus.in
                     </a>
                   </div>
@@ -676,8 +676,8 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
             }}>
               
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.75rem' }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#D97706', display: 'inline-block' }} />
-                <span style={{ fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', color: '#D97706', letterSpacing: '0.4px' }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#2563EB', display: 'inline-block' }} />
+                <span style={{ fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', color: '#2563EB', letterSpacing: '0.4px' }}>
                   Offline & Online Admission Desk
                 </span>
               </div>
@@ -705,7 +705,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                   }}
                   style={{
                     width: '100%',
-                    background: '#D97706',
+                    background: '#2563EB',
                     color: '#FFFFFF',
                     border: 'none',
                     borderRadius: '10px',
@@ -717,7 +717,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '8px',
-                    boxShadow: '0 3px 12px rgba(217, 119, 6, 0.28)',
+                    boxShadow: '0 3px 12px rgba(37, 99, 235, 0.28)',
                     transition: 'transform 0.15s ease'
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
@@ -750,7 +750,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                   onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'}
                   onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
                 >
-                  <Phone size={16} color="#D97706" />
+                  <Phone size={16} color="#2563EB" />
                   <span>Call Director: +91 9204123453</span>
                 </a>
 
@@ -798,7 +798,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                     boxSizing: 'border-box'
                   }}
                 >
-                  <Mail size={15} color="#D97706" />
+                  <Mail size={15} color="#2563EB" />
                   <span>Email: stenoplus.in@gmail.com</span>
                 </a>
 
@@ -813,7 +813,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                   "Govt. Recognized ADCA / DCA Computer Diplomas"
                 ].map((item, idx) => (
                   <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', color: '#444444' }}>
-                    <Check size={14} color="#D97706" style={{ flexShrink: 0 }} />
+                    <Check size={14} color="#2563EB" style={{ flexShrink: 0 }} />
                     <span>{item}</span>
                   </div>
                 ))}

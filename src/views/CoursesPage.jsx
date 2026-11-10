@@ -280,19 +280,19 @@ const ACADEMY_COURSES = [
 const renderCourseIcon = (iconName) => {
   switch (iconName) {
     case 'BookOpen':
-      return <BookOpen size={18} color="#D97706" />;
+      return <BookOpen size={18} color="#2563EB" />;
     case 'FileText':
-      return <FileText size={18} color="#D97706" />;
+      return <FileText size={18} color="#2563EB" />;
     case 'Keyboard':
-      return <Keyboard size={18} color="#D97706" />;
+      return <Keyboard size={18} color="#2563EB" />;
     case 'ShieldCheck':
-      return <ShieldCheck size={18} color="#D97706" />;
+      return <ShieldCheck size={18} color="#2563EB" />;
     case 'Award':
-      return <Award size={18} color="#D97706" />;
+      return <Award size={18} color="#2563EB" />;
     case 'GraduationCap':
-      return <GraduationCap size={18} color="#D97706" />;
+      return <GraduationCap size={18} color="#2563EB" />;
     default:
-      return <BookOpen size={18} color="#D97706" />;
+      return <BookOpen size={18} color="#2563EB" />;
   }
 };
 
@@ -362,7 +362,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
   });
 
   return (
-    <div className="courses-page-root" style={{ background: '#F8F9FA', minHeight: '100vh', color: '#0F172A' }}>
+    <div className="courses-page-root" style={{ background: '#F8FAFC', minHeight: '100vh', color: '#0F172A' }}>
       
       {/* 1. HERO HEADER */}
       <div className="courses-hero-banner" style={{ padding: '1.25rem 1.25rem 2rem', textAlign: 'center' }}>
@@ -371,9 +371,9 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.45rem',
-            background: 'rgba(217, 119, 6, 0.08)',
-            border: '1px solid rgba(217, 119, 6, 0.28)',
-            color: '#D97706',
+            background: 'rgba(37, 99, 235, 0.08)',
+            border: '1px solid rgba(37, 99, 235, 0.28)',
+            color: '#2563EB',
             fontSize: '0.74rem',
             fontWeight: 800,
             letterSpacing: '0.8px',
@@ -382,7 +382,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
             borderRadius: '9999px',
             marginBottom: '0.85rem'
           }}>
-            <Sparkles size={14} color="#D97706" />
+            <Sparkles size={14} color="#2563EB" />
             <span>OFFICIAL CURRICULUM & TEST PASSES • ESTD. 2012</span>
           </div>
           <h1 className="courses-hero-title" style={{ fontSize: 'clamp(2rem, 3.2vw, 2.6rem)', fontWeight: 850, margin: '0 0 0.75rem', letterSpacing: '-0.025em', color: '#0F172A' }}>
@@ -444,7 +444,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     fontWeight: 800,
                     padding: '0.1rem 0.45rem',
                     borderRadius: '9999px',
-                    background: isActive ? '#D97706' : '#F8F9FA',
+                    background: isActive ? '#2563EB' : '#F8FAFC',
                     color: isActive ? '#FFFFFF' : '#555555'
                   }}>
                     {tab.count}
@@ -469,7 +469,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                 key={course.id}
                 style={{
                   background: '#FFFFFF',
-                  border: course.popular ? '1.5px solid #D97706' : '1px solid rgba(0, 0, 0, 0.08)',
+                  border: course.popular ? '1.5px solid #2563EB' : '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '16px',
                   padding: '1.5rem',
                   display: 'flex',
@@ -477,7 +477,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                   justifyContent: 'space-between',
                   position: 'relative',
                   boxShadow: course.popular 
-                    ? '0 6px 24px rgba(217, 119, 6, 0.12)' 
+                    ? '0 6px 24px rgba(37, 99, 235, 0.12)' 
                     : '0 4px 16px rgba(17, 17, 17, 0.04)',
                   transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                 }}
@@ -488,9 +488,9 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     position: 'absolute',
                     top: '1rem',
                     right: '1rem',
-                    background: 'rgba(217, 119, 6, 0.08)',
-                    border: '1px solid rgba(217, 119, 6, 0.3)',
-                    color: '#D97706',
+                    background: 'rgba(37, 99, 235, 0.08)',
+                    border: '1px solid rgba(37, 99, 235, 0.3)',
+                    color: '#2563EB',
                     fontSize: '0.7rem',
                     fontWeight: 800,
                     letterSpacing: '0.04em',
@@ -500,7 +500,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     alignItems: 'center',
                     gap: '0.3rem'
                   }}>
-                    <Sparkles size={11} color="#D97706" />
+                    <Sparkles size={11} color="#2563EB" />
                     <span>POPULAR BATCH</span>
                   </div>
                 )}
@@ -512,7 +512,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       width: 32,
                       height: 32,
                       borderRadius: '8px',
-                      background: 'rgba(217, 119, 6, 0.08)',
+                      background: 'rgba(37, 99, 235, 0.08)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -523,7 +523,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     <span style={{
                       fontSize: '0.74rem',
                       fontWeight: 800,
-                      color: '#D97706',
+                      color: '#2563EB',
                       letterSpacing: '0.02em',
                       textTransform: 'uppercase'
                     }}>
@@ -578,11 +578,11 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     color: '#0F172A'
                   }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <Clock size={13} color="#D97706" className="shrink-0" />
+                      <Clock size={13} color="#2563EB" className="shrink-0" />
                       <span><strong>Duration:</strong> {course.duration}</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <GraduationCap size={13} color="#D97706" className="shrink-0" />
+                      <GraduationCap size={13} color="#2563EB" className="shrink-0" />
                       <span><strong>Format:</strong> {course.mode}</span>
                     </div>
                   </div>
@@ -602,7 +602,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
                       {(course.highlights || course.syllabus.slice(0, 4)).map((item, idx) => (
                         <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.82rem', color: '#333333', lineHeight: 1.4 }}>
-                          <Check size={14} style={{ color: '#D97706', flexShrink: 0, marginTop: '2px', strokeWidth: 2.5 }} />
+                          <Check size={14} style={{ color: '#2563EB', flexShrink: 0, marginTop: '2px', strokeWidth: 2.5 }} />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -617,7 +617,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       style={{
                         background: 'transparent',
                         border: 'none',
-                        color: '#D97706',
+                        color: '#2563EB',
                         fontSize: '0.78rem',
                         fontWeight: 700,
                         cursor: 'pointer',
@@ -642,7 +642,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                           {course.syllabus.map((s, idx) => (
                             <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem', fontSize: '0.78rem', color: '#333333', lineHeight: 1.35 }}>
-                              <span style={{ color: '#D97706', fontWeight: 800 }}>•</span>
+                              <span style={{ color: '#2563EB', fontWeight: 800 }}>•</span>
                               <span>{s}</span>
                             </li>
                           ))}
@@ -687,13 +687,13 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       gap: '0.4rem',
                       padding: '0.65rem 1.15rem',
                       borderRadius: '8px',
-                      background: '#D97706',
+                      background: '#2563EB',
                       color: '#FFFFFF',
                       fontWeight: 700,
                       fontSize: '0.86rem',
                       border: 'none',
                       cursor: 'pointer',
-                      boxShadow: '0 2px 8px rgba(217, 119, 6, 0.28)',
+                      boxShadow: '0 2px 8px rgba(37, 99, 235, 0.28)',
                       transition: 'all 0.15s ease',
                       flexShrink: 0
                     }}
@@ -724,8 +724,8 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                 fontWeight: 700,
                 letterSpacing: '1px',
                 textTransform: 'uppercase',
-                color: '#D97706',
-                background: 'rgba(217, 119, 6, 0.08)',
+                color: '#2563EB',
+                background: 'rgba(37, 99, 235, 0.08)',
                 padding: '0.25rem 0.65rem',
                 borderRadius: '999px',
                 display: 'inline-block',
@@ -785,8 +785,8 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                   fontWeight: 700,
                   padding: '0.15rem 0.45rem',
                   borderRadius: '6px',
-                  background: 'rgba(217, 119, 6, 0.08)',
-                  color: '#D97706',
+                  background: 'rgba(37, 99, 235, 0.08)',
+                  color: '#2563EB',
                   flexShrink: 0
                 }}>
                   {exam.speed}
@@ -812,8 +812,8 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               fontWeight: 700,
               letterSpacing: '1px',
               textTransform: 'uppercase',
-              color: '#D97706',
-              background: 'rgba(217, 119, 6, 0.08)',
+              color: '#2563EB',
+              background: 'rgba(37, 99, 235, 0.08)',
               padding: '0.25rem 0.65rem',
               borderRadius: '999px',
               display: 'inline-block',
@@ -852,15 +852,15 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     fontSize: '0.76rem',
                     fontWeight: 800,
                     fontFamily: 'monospace',
-                    color: '#D97706',
-                    background: 'rgba(217, 119, 6, 0.08)',
+                    color: '#2563EB',
+                    background: 'rgba(37, 99, 235, 0.08)',
                     padding: '0.15rem 0.45rem',
                     borderRadius: '6px',
-                    border: '1px solid rgba(217, 119, 6, 0.25)'
+                    border: '1px solid rgba(37, 99, 235, 0.25)'
                   }}>
                     {m.step}
                   </span>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#D97706' }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#2563EB' }}>
                     {m.hindi}
                   </span>
                 </div>
@@ -885,8 +885,8 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               fontWeight: 700,
               letterSpacing: '1px',
               textTransform: 'uppercase',
-              color: '#D97706',
-              background: 'rgba(217, 119, 6, 0.08)',
+              color: '#2563EB',
+              background: 'rgba(37, 99, 235, 0.08)',
               padding: '0.25rem 0.65rem',
               borderRadius: '999px',
               display: 'inline-block',
@@ -966,7 +966,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                   key={plan.id} 
                   style={{
                     background: '#FFFFFF',
-                    border: isPro ? '1.5px solid #D97706' : '1px solid rgba(0, 0, 0, 0.08)',
+                    border: isPro ? '1.5px solid #2563EB' : '1px solid rgba(0, 0, 0, 0.08)',
                     borderRadius: '16px',
                     padding: '1.75rem',
                     display: 'flex',
@@ -981,9 +981,9 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       position: 'absolute',
                       top: '1rem',
                       right: '1.25rem',
-                      background: 'rgba(217, 119, 6, 0.08)',
-                      border: '1px solid rgba(217, 119, 6, 0.3)',
-                      color: '#D97706',
+                      background: 'rgba(37, 99, 235, 0.08)',
+                      border: '1px solid rgba(37, 99, 235, 0.3)',
+                      color: '#2563EB',
                       fontSize: '0.72rem',
                       fontWeight: 800,
                       padding: '0.2rem 0.55rem',
@@ -995,7 +995,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
 
                   <div>
                     {plan.seriesTitle && (
-                      <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#D97706', marginBottom: '0.25rem' }}>
+                      <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#2563EB', marginBottom: '0.25rem' }}>
                         {plan.seriesTitle}
                       </div>
                     )}
@@ -1026,7 +1026,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
                       {plan.features.map((feat, i) => (
                         <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.84rem', color: '#444444', lineHeight: 1.45 }}>
-                          <CheckCircle2 size={15} style={{ color: '#D97706', flexShrink: 0, marginTop: '2px' }} />
+                          <CheckCircle2 size={15} style={{ color: '#2563EB', flexShrink: 0, marginTop: '2px' }} />
                           <span>{feat}</span>
                         </li>
                       ))}
@@ -1048,13 +1048,13 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                         width: '100%',
                         padding: '0.75rem 1rem',
                         borderRadius: '8px',
-                        background: '#D97706',
+                        background: '#2563EB',
                         color: '#FFFFFF',
                         fontSize: '0.88rem',
                         fontWeight: 700,
                         border: 'none',
                         cursor: 'pointer',
-                        boxShadow: '0 2px 8px rgba(217, 119, 6, 0.28)',
+                        boxShadow: '0 2px 8px rgba(37, 99, 235, 0.28)',
                         transition: 'all 0.15s ease'
                       }}
                     >
@@ -1073,7 +1073,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
       <section style={{ maxWidth: 1200, margin: '0 auto 3.5rem', padding: '0 1.25rem' }}>
         <div style={{
           background: '#FFFFFF',
-          border: '1.5px solid rgba(217, 119, 6, 0.35)',
+          border: '1.5px solid rgba(37, 99, 235, 0.35)',
           borderRadius: '16px',
           padding: '2rem 2.25rem',
           boxShadow: '0 4px 20px rgba(248, 52, 88, 0.06)',
@@ -1089,7 +1089,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               fontWeight: 800,
               textTransform: 'uppercase',
               letterSpacing: '1px',
-              color: '#D97706',
+              color: '#2563EB',
               display: 'inline-block',
               marginBottom: '0.25rem'
             }}>
@@ -1119,7 +1119,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                 boxShadow: '0 2px 8px rgba(17, 17, 17, 0.25)'
               }}
             >
-              <Phone size={15} color="#D97706" />
+              <Phone size={15} color="#2563EB" />
               <span>Call Helpline: +91 9204123453</span>
             </a>
           </div>
