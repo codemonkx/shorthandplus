@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { PORT } from './config.js';
 import db, { initDatabase } from './db/database.js';
@@ -91,6 +92,18 @@ app.use('/api/enrollments', enrollmentsRoutes);
 app.use('/api/tests', testsRoutes);
 app.use('/api/classes', classesRoutes);
 app.use('/api/admin', adminRoutes);
+
+// Serve frontend production build if available
+const distPath = path.join(__dirname, '../dist');
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+  app.use((req, res, next) => {
+    if (req.method === 'GET' && !req.path.startsWith('/api')) {
+      return res.sendFile(path.join(distPath, 'index.html'));
+    }
+    next();
+  });
+}
 
 // Global Error Handler
 app.use((err, req, res, next) => {

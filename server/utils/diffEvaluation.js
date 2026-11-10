@@ -173,3 +173,4 @@ export function evaluateTranscription(masterText = '', userText = '', timeTakenS
     alignedTokens: aligned
   };
 }
+
