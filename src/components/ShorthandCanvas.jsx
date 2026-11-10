@@ -345,7 +345,7 @@ export default function ShorthandCanvas({
 
   return (
     <div className="shorthand-canvas-container" style={{
-      background: '#F3EEE3',
+      background: '#FFFFFF',
       border: '1px solid #e7e5e4',
       borderRadius: 12,
       overflow: 'hidden',
@@ -402,7 +402,7 @@ export default function ShorthandCanvas({
         {/* View Layout Switcher (Canvas / Split / Scratchpad) */}
         <div style={{
           display: 'flex',
-          background: '#F3EEE3',
+          background: '#FFFFFF',
           padding: 3,
           borderRadius: 8,
           border: '1px solid #e7e5e4'
@@ -560,7 +560,7 @@ export default function ShorthandCanvas({
       {(activeTab === 'canvas' || activeTab === 'split') && (
         <div style={{
           padding: '0.6rem 1.25rem',
-          background: '#F3EEE3',
+          background: '#FFFFFF',
           borderBottom: '1px solid #e7e5e4',
           display: 'flex',
           alignItems: 'center',
@@ -776,7 +776,7 @@ export default function ShorthandCanvas({
         display: 'grid',
         gridTemplateColumns: activeTab === 'split' ? '1fr 1fr' : '1fr',
         minHeight: canvasHeight,
-        background: '#F3EEE3'
+        background: '#FFFFFF'
       }}>
         {/* WHITEBOARD CANVAS VIEW */}
         {(activeTab === 'canvas' || activeTab === 'split') && (
@@ -855,7 +855,7 @@ export default function ShorthandCanvas({
             display: 'flex',
             flexDirection: 'column',
             borderLeft: activeTab === 'split' ? '1px solid #e7e5e4' : 'none',
-            background: '#F3EEE3'
+            background: '#FFFFFF'
           }}>
             {/* Scratchpad Header */}
             <div style={{
@@ -885,7 +885,7 @@ export default function ShorthandCanvas({
                     fontSize: '0.72rem',
                     borderRadius: 4,
                     border: '1px solid #e7e5e4',
-                    background: '#F3EEE3',
+                    background: '#FFFFFF',
                     cursor: 'pointer',
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -934,7 +934,7 @@ export default function ShorthandCanvas({
                 fontSize: '0.92rem',
                 lineHeight: 1.6,
                 color: '#1c1917',
-                background: '#F3EEE3'
+                background: '#FFFFFF'
               }}
               placeholder="Rapidly transcribe your shorthand outlines here while listening to the audio dictation... (Supports instant .txt file export for review)"
               value={scratchpadText}

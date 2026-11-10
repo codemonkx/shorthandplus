@@ -636,7 +636,7 @@ export default function ResultsHistoryPage({ onViewResult, user }) {
                             className="btn-inspect-diff-action"
                             onClick={() => generateCandidateDossierPdf(user, row)}
                             title="Download Certified Candidate PDF Dossier"
-                            style={{ background: '#F3EEE3', borderColor: 'rgba(17, 17, 17, 0.14)', color: '#111111' }}
+                            style={{ background: '#FFFFFF', borderColor: 'rgba(0, 0, 0, 0.08)', color: '#1D1D1F' }}
                           >
                             <Download size={13} />
                             <span>Scorecard</span>

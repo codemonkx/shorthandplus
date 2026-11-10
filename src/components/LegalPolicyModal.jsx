@@ -10,10 +10,10 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in" style={{ zIndex: 9999 }}>
       <div 
         className="w-full max-w-3xl max-h-[90vh] flex flex-col rounded-xl overflow-hidden shadow-2xl"
-        style={{ background: '#F3EEE3', border: '1px solid #E7E5E4' }}
+        style={{ background: '#FFFFFF', border: '1px solid #E7E5E4' }}
       >
         {/* Modal Header */}
-        <div className="px-6 py-4 flex items-center justify-between border-b" style={{ background: '#F3EEE3', borderColor: '#E7E5E4' }}>
+        <div className="px-6 py-4 flex items-center justify-between border-b" style={{ background: '#FFFFFF', borderColor: '#E7E5E4' }}>
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg flex items-center justify-center text-cream" style={{ background: '#1C1917' }}>
               <ShieldCheck size={20} />
@@ -26,7 +26,7 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
           <button 
             onClick={onClose}
             className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
-            style={{ color: '#78716C', background: '#F3EEE3' }}
+            style={{ color: '#78716C', background: '#FFFFFF' }}
             aria-label="Close"
           >
             <X size={18} />
@@ -34,7 +34,7 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex border-b px-6 gap-2" style={{ background: '#F3EEE3', borderColor: '#E7E5E4' }}>
+        <div className="flex border-b px-6 gap-2" style={{ background: '#FFFFFF', borderColor: '#E7E5E4' }}>
           {[
             { id: 'terms', label: 'Terms & Conditions', icon: FileText },
             { id: 'privacy', label: 'Privacy Policy', icon: ShieldCheck },
@@ -155,7 +155,7 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
             <div className="space-y-4">
               <h3 className="text-sm font-bold text-stone-900">Academy Operational Headquarters</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 rounded-lg border space-y-2" style={{ background: '#F3EEE3', borderColor: '#E7E5E4' }}>
+                <div className="p-4 rounded-lg border space-y-2" style={{ background: '#FFFFFF', borderColor: '#E7E5E4' }}>
                   <div className="flex items-center gap-2 font-bold text-stone-900">
                     <MapPin size={16} className="text-amber-600" />
                     <span>Physical Center & Online Portal</span>
@@ -168,7 +168,7 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
                   </p>
                 </div>
 
-                <div className="p-4 rounded-lg border space-y-2" style={{ background: '#F3EEE3', borderColor: '#E7E5E4' }}>
+                <div className="p-4 rounded-lg border space-y-2" style={{ background: '#FFFFFF', borderColor: '#E7E5E4' }}>
                   <div className="flex items-center gap-2 font-bold text-stone-900">
                     <Phone size={16} className="text-amber-600" />
                     <span>Direct Helpline & Email</span>
@@ -186,7 +186,7 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
               <p>
                 In accordance with the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules 2021, the designated Grievance Officer for SHORTHAND PLUS is:
               </p>
-              <div className="p-3 rounded-lg border" style={{ background: '#F3EEE3', borderColor: '#E7E5E4' }}>
+              <div className="p-3 rounded-lg border" style={{ background: '#FFFFFF', borderColor: '#E7E5E4' }}>
                 <p className="font-semibold text-stone-900">Grievance Officer: Faculty Director Desk</p>
                 <p>Email: <a href="mailto:stenoplus.in@gmail.com" className="text-amber-700 underline">stenoplus.in@gmail.com</a></p>
                 <p>Website: <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" className="text-amber-700 underline">https://stenoplus.in</a></p>
@@ -198,7 +198,7 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
         </div>
 
         {/* Modal Footer */}
-        <div className="px-6 py-3 border-t flex justify-end" style={{ background: '#F3EEE3', borderColor: '#E7E5E4' }}>
+        <div className="px-6 py-3 border-t flex justify-end" style={{ background: '#FFFFFF', borderColor: '#E7E5E4' }}>
           <button
             onClick={onClose}
             className="px-5 py-2 rounded-lg text-xs font-semibold text-cream transition-opacity hover:opacity-90"

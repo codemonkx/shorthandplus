@@ -20,15 +20,15 @@
   --font-kruti: 'Kruti Dev', sans-serif;
 
   /* Corporate EdTech Color Palette (Warm Stone & Cashmere) */
-  --bg-app: #F3EEE3;
-  --bg-sidebar: #F3EEE3;
-  --bg-surface: #F3EEE3;
-  --bg-subtle: #F3EEE3;
+  --bg-app: #F5F5F7;
+  --bg-sidebar: #FFFFFF;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #F5F5F7;
   --bg-hover: #F3EEE3;
 
   --navy-950: #0c0a09;
-  --navy-900: #1c1917;
-  --navy-800: #292524;
+  --navy-900: #1D1D1F;
+  --navy-800: #1D1D1F;
   --navy-700: #44403c;
   --navy-600: #57534e;
   --navy-500: #78716c;
@@ -48,28 +48,28 @@
   --indigo-600: #1c1917;
   --indigo-50:  #F3EEE3;
 
-  --emerald-600: #D9541E;
-  --emerald-500: #D9541E;
-  --emerald-100: rgba(217, 84, 30, 0.12);
-  --emerald-50:  rgba(217, 84, 30, 0.08);
+  --emerald-600: #F83458;
+  --emerald-500: #F83458;
+  --emerald-100: rgba(248, 52, 88, 0.12);
+  --emerald-50:  rgba(248, 52, 88, 0.08);
 
   --rose-600: #111111;
   --rose-500: #262626;
   --rose-100: #F3EEE3;
   --rose-50:  #F3EEE3;
 
-  --amber-600: #D9541E;
-  --amber-500: #D9541E;
-  --amber-100: rgba(217, 84, 30, 0.12);
-  --amber-50:  rgba(217, 84, 30, 0.08);
+  --amber-600: #F83458;
+  --amber-500: #F83458;
+  --amber-100: rgba(248, 52, 88, 0.12);
+  --amber-50:  rgba(248, 52, 88, 0.08);
 
-  --border-light: #e7e5e4;
-  --border-medium: #d6d3d1;
+  --border-light: rgba(0, 0, 0, 0.08);
+  --border-medium: rgba(0, 0, 0, 0.14);
   --border-focus: #1c1917;
 
-  --text-main: #1c1917;
-  --text-muted: #78716c;
-  --text-faint: #a8a29e;
+  --text-main: #1D1D1F;
+  --text-muted: #6E6E73;
+  --text-faint: #86868B;
 
   /* Modern Corporate Shadows */
   --shadow-xs: 0 1px 2px 0 rgba(28, 25, 23, 0.04);
@@ -222,11 +222,11 @@ input, textarea, select { font-family: inherit; color: inherit; }
 }
 
 .btn-emerald {
-  background: #D9541E !important;
+  background: #F83458 !important;
   color: #F3EEE3 !important;
 }
 .btn-emerald:hover {
-  background: #BF4515 !important;
+  background: #E0264A !important;
   transform: translateY(-1px);
 }
 
@@ -245,7 +245,7 @@ input, textarea, select { font-family: inherit; color: inherit; }
 }
 
 .badge-blue { background: #F3EEE3 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.12) !important; }
-.badge-emerald { background: rgba(217, 84, 30, 0.08) !important; color: #D9541E !important; border: 1px solid rgba(217, 84, 30, 0.22) !important; }
+.badge-emerald { background: rgba(248, 52, 88, 0.08) !important; color: #F83458 !important; border: 1px solid rgba(248, 52, 88, 0.22) !important; }
 .badge-amber { background: #F3EEE3 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.14) !important; }
 .badge-rose { background: #F3EEE3 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.14) !important; }
 .badge-navy { background: #F3EEE3 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.12) !important; }
@@ -255,10 +255,10 @@ input, textarea, select { font-family: inherit; color: inherit; }
 .font-devanagari { font-family: var(--font-devanagari) !important; }
 
 /* Strict 3-Color System Utilities */
-.text-cream { color: #F3EEE3 !important; }
-.bg-cream { background-color: #F3EEE3 !important; }
-.bg-cream-canvas { background-color: #F3EEE3 !important; }
-.text-ink { color: #111111 !important; }
-.bg-ink { background-color: #111111 !important; }
-.text-orange { color: #D9541E !important; }
-.bg-orange { background-color: #D9541E !important; }
+.text-cream { color: #FFFFFF !important; }
+.bg-cream { background-color: #FFFFFF !important; }
+.bg-cream-canvas { background-color: #F5F5F7 !important; }
+.text-ink { color: #1D1D1F !important; }
+.bg-ink { background-color: #1D1D1F !important; }
+.text-orange { color: #F83458 !important; }
+.bg-orange { background-color: #F83458 !important; }

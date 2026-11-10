@@ -173,7 +173,7 @@ export default function TopBar({
                     className="popover-menu-link" 
                     onClick={() => { setDropdownOpen(false); if (onOpenProfileSettings) onOpenProfileSettings(); }}
                   >
-                    <div className="popover-icon-box" style={{ background: '#F3EEE3', color: '#111111' }}>
+                    <div className="popover-icon-box" style={{ background: '#FFFFFF', color: '#1D1D1F' }}>
                       <UserCheck size={14} />
                     </div>
                     <div className="popover-link-text">
@@ -186,7 +186,7 @@ export default function TopBar({
                     className="popover-menu-link" 
                     onClick={() => { setDropdownOpen(false); setCurrentTab('dashboard'); }}
                   >
-                    <div className="popover-icon-box" style={{ background: '#F3EEE3', color: '#111111' }}>
+                    <div className="popover-icon-box" style={{ background: '#FFFFFF', color: '#1D1D1F' }}>
                       <LayoutDashboard size={14} />
                     </div>
                     <div className="popover-link-text">
@@ -199,7 +199,7 @@ export default function TopBar({
                     className="popover-menu-link" 
                     onClick={() => { setDropdownOpen(false); setCurrentTab('results'); }}
                   >
-                    <div className="popover-icon-box" style={{ background: '#F3EEE3', color: '#111111' }}>
+                    <div className="popover-icon-box" style={{ background: '#FFFFFF', color: '#1D1D1F' }}>
                       <Award size={14} />
                     </div>
                     <div className="popover-link-text">
@@ -212,7 +212,7 @@ export default function TopBar({
                     className="popover-menu-link" 
                     onClick={() => { setDropdownOpen(false); onOpenCheckout(); }}
                   >
-                    <div className="popover-icon-box" style={{ background: '#F3EEE3', color: '#D9541E' }}>
+                    <div className="popover-icon-box" style={{ background: '#FFFFFF', color: '#F83458' }}>
                       <CreditCard size={14} />
                     </div>
                     <div className="popover-link-text">
@@ -230,7 +230,7 @@ export default function TopBar({
                         className="popover-menu-link" 
                         onClick={() => { setDropdownOpen(false); setCurrentTab('admin'); }}
                       >
-                        <div className="popover-icon-box" style={{ background: '#F3EEE3', color: '#D9541E' }}>
+                        <div className="popover-icon-box" style={{ background: '#FFFFFF', color: '#F83458' }}>
                           <ShieldCheck size={14} />
                         </div>
                         <div className="popover-link-text">
@@ -248,7 +248,7 @@ export default function TopBar({
                     className="popover-menu-link popover-signout-btn" 
                     onClick={() => { setDropdownOpen(false); if (onLogout) onLogout(); }}
                   >
-                    <div className="popover-icon-box" style={{ background: '#F3EEE3', color: '#111111' }}>
+                    <div className="popover-icon-box" style={{ background: '#FFFFFF', color: '#1D1D1F' }}>
                       <LogOut size={14} />
                     </div>
                     <div className="popover-link-text">

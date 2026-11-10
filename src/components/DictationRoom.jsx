@@ -501,7 +501,7 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
                     <button 
                       className="btn-proceed-transcription"
                       onClick={() => setInReadingPhase(true)}
-                      style={{ background: '#D97706', borderColor: '#B45309', color: '#F3EEE3' }}
+                      style={{ background: '#D97706', borderColor: '#B45309', color: '#FFFFFF' }}
                     >
                       <Clock size={18} />
                       <span>Start Official 5-Min Reading Period</span>

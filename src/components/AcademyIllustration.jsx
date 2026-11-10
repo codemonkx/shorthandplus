@@ -89,7 +89,7 @@ export default function AcademyIllustration() {
             <rect x="442" y="140" width="26" height="4" rx="2" fill="#a8a29e" />
 
             {/* Wall AC Unit */}
-            <rect x="220" y="24" width="100" height="24" rx="4" fill="#F3EEE3" stroke="#d6d3d1" strokeWidth="1.5" />
+            <rect x="220" y="24" width="100" height="24" rx="4" fill="#FFFFFF" stroke="#d6d3d1" strokeWidth="1.5" />
             <line x1="230" y1="36" x2="310" y2="36" stroke="#a8a29e" strokeWidth="1.5" />
             <circle cx="308" cy="30" r="2" fill="#047857" />
             {/* AC Airflow Curves */}
@@ -133,7 +133,7 @@ export default function AcademyIllustration() {
 
             {/* Telemetry Pills on Screen */}
             <rect x="188" y="98" width="50" height="14" rx="3" fill="#292524" />
-            <text x="194" y="108" fill="#F3EEE3" fontSize="7.5" fontWeight="bold" fontFamily="monospace">80 WPM</text>
+            <text x="194" y="108" fill="#FFFFFF" fontSize="7.5" fontWeight="bold" fontFamily="monospace">80 WPM</text>
 
             <rect x="244" y="98" width="52" height="14" rx="3" fill="#064e3b" />
             <text x="250" y="108" fill="#a7f3d0" fontSize="7.5" fontWeight="bold" fontFamily="monospace">98.4% ACC</text>
@@ -150,7 +150,7 @@ export default function AcademyIllustration() {
               
               {/* Active typing word with cursor */}
               <rect x="188" y="144" width="70" height="4" rx="1.5" fill="#047857" />
-              <rect x="261" y="142" width="2" height="8" rx="1" fill="#F3EEE3" />
+              <rect x="261" y="142" width="2" height="8" rx="1" fill="#FFFFFF" />
 
               {/* Untyped passage preview */}
               <rect x="266" y="144" width="86" height="4" rx="1.5" fill="#57534e" />
@@ -170,7 +170,7 @@ export default function AcademyIllustration() {
             {/* Keyboard Body */}
             <path
               d="M 185 234 L 355 234 L 362 264 L 178 264 Z"
-              fill="#F3EEE3"
+              fill="#FFFFFF"
               stroke="#d6d3d1"
               strokeWidth="1.5"
             />
@@ -182,7 +182,7 @@ export default function AcademyIllustration() {
             <rect x="230" y="256" width="80" height="4" rx="1.5" fill="#1c1917" />
 
             {/* Optical Mouse */}
-            <ellipse cx="395" cy="248" rx="11" ry="16" fill="#F3EEE3" stroke="#d6d3d1" strokeWidth="1.5" />
+            <ellipse cx="395" cy="248" rx="11" ry="16" fill="#FFFFFF" stroke="#d6d3d1" strokeWidth="1.5" />
             <line x1="395" y1="234" x2="395" y2="246" stroke="#a8a29e" strokeWidth="1" />
             <circle cx="395" cy="242" r="1.5" fill="#d97706" />
           </g>
@@ -272,7 +272,7 @@ export default function AcademyIllustration() {
 
           {/* 8. Verified Exam Seal in Bottom Left Corner */}
           <g transform="translate(42, 298)">
-            <rect width="112" height="26" rx="6" fill="#F3EEE3" stroke="#e7e5e4" strokeWidth="1" filter="url(#cardShadow)" />
+            <rect width="112" height="26" rx="6" fill="#FFFFFF" stroke="#e7e5e4" strokeWidth="1" filter="url(#cardShadow)" />
             <circle cx="16" cy="13" r="6" fill="#f0fdf4" />
             <path d="M13 13 L15 15 L19 11" stroke="#047857" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             <text x="26" y="11" fill="#1c1917" fontSize="7" fontWeight="bold" fontFamily="sans-serif">ESTD. 2012</text>
