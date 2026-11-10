@@ -202,7 +202,7 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 1: HERO SECTION (THE 5-SECOND CLARITY PITCH)
           ========================================================================= */}
-      <section style={{ padding: '3.5rem 1.25rem 4rem', background: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(248, 52, 88, 0.07), transparent 70%), #F5F5F7', borderBottom: '1px solid rgba(0, 0, 0, 0.06)' }}>
+      <section style={{ padding: '2.25rem 1.25rem 2rem', background: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(248, 52, 88, 0.07), transparent 70%), #F5F5F7', borderBottom: '1px solid rgba(0, 0, 0, 0.06)' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'center' }}>
@@ -494,11 +494,11 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 2: THE 5 CORE COURSES & TRANSPARENT PRICING
           ========================================================================= */}
-      <section style={{ padding: '4.5rem 1.25rem', background: '#F5F5F7', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
+      <section style={{ padding: '2.5rem 1.25rem 2.25rem', background: '#F5F5F7', borderBottom: '1px solid rgba(0, 0, 0, 0.06)' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
           {/* Section Header */}
-          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3rem' }}>
+          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 1.75rem' }}>
             <span style={{ 
               display: 'inline-block', 
               fontSize: '0.78rem', 
@@ -640,10 +640,10 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 3: TARGET GOVERNMENT EXAMINATIONS
           ========================================================================= */}
-      <section style={{ padding: '4.5rem 1.25rem', background: '#F5F5F7', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
+      <section style={{ padding: '2.5rem 1.25rem 2.25rem', background: '#F5F5F7', borderBottom: '1px solid rgba(0, 0, 0, 0.06)' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
-          <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 3rem' }}>
+          <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 1.75rem' }}>
             <span style={{ 
               display: 'inline-block', 
               fontSize: '0.78rem', 
@@ -740,10 +740,10 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 4: WHY GAYA SHORTHAND CLASSES? (THE 4 PILLARS)
           ========================================================================= */}
-      <section style={{ padding: '4.5rem 1.25rem', background: '#F5F5F7', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
+      <section style={{ padding: '2.5rem 1.25rem 2.25rem', background: '#F5F5F7', borderBottom: '1px solid rgba(0, 0, 0, 0.06)' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
-          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3rem' }}>
+          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 1.75rem' }}>
             <span style={{ 
               display: 'inline-block', 
               fontSize: '0.78rem', 
@@ -840,10 +840,10 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 5: CLASSROOM VIDEO DEMO & GOOGLE REVIEWS (SOCIAL PROOF)
           ========================================================================= */}
-      <section style={{ padding: '4.5rem 1.25rem', background: '#F5F5F7', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
+      <section style={{ padding: '2.5rem 1.25rem 2.25rem', background: '#F5F5F7', borderBottom: '1px solid rgba(0, 0, 0, 0.06)' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
-          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3rem' }}>
+          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 1.75rem' }}>
             <span style={{ 
               display: 'inline-block', 
               fontSize: '0.78rem', 
@@ -1066,10 +1066,10 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 6: GAYA CENTER LOCATION, CONTACTS & TOP FAQS
           ========================================================================= */}
-      <section style={{ padding: '4.5rem 1.25rem 3rem', background: '#F5F5F7' }}>
+      <section style={{ padding: '2.5rem 1.25rem 2rem', background: '#F5F5F7' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', marginBottom: '3.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
             
             {/* Left: Academy Address & Google Maps */}
             <div>
