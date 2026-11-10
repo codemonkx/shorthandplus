@@ -202,7 +202,7 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 1: HERO SECTION (THE 5-SECOND CLARITY PITCH)
           ========================================================================= */}
-      <section style={{ padding: '3.5rem 1.25rem 4rem', background: '#F5F5F7', borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
+      <section style={{ padding: '3.5rem 1.25rem 4rem', background: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(248, 52, 88, 0.07), transparent 70%), #F5F5F7', borderBottom: '1px solid rgba(0, 0, 0, 0.06)' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'center' }}>
@@ -237,7 +237,7 @@ export default function LandingPage({
                 color: '#0F172A',
                 margin: '0 0 1.25rem'
               }}>
-                Master Shorthand, Typing & Computer Skills For <span style={{ color: '#F83458' }}>Government Exams</span>
+                Master Shorthand, Typing & Computer Skills For <span style={{ background: 'linear-gradient(135deg, #F83458 0%, #FF5A79 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>Government Exams</span>
               </h1>
 
               {/* Subtitle */}
@@ -352,10 +352,9 @@ export default function LandingPage({
             <div>
               <div style={{ 
                 background: '#FFFFFF', 
-                border: '1.5px solid rgba(0, 0, 0, 0.08)', 
-                borderRadius: '16px', 
+                borderRadius: '20px', 
                 padding: '2rem', 
-                boxShadow: '0 8px 30px rgba(17, 17, 17, 0.04)' 
+                boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.06)' 
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '1rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -409,7 +408,7 @@ export default function LandingPage({
                 </div>
 
                 {/* Key Academy Highlights Checklist */}
-                <div style={{ background: '#FFFFFF', borderRadius: '12px', padding: '1rem 1.15rem', marginBottom: '1.5rem', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
+                <div style={{ background: 'rgba(245, 245, 247, 0.7)', borderRadius: '14px', padding: '1rem 1.15rem', marginBottom: '1.5rem', border: '1px solid rgba(0, 0, 0, 0.05)' }}>
                   <span style={{ display: 'block', fontSize: '0.78rem', fontWeight: 800, color: '#0F172A', textTransform: 'uppercase', marginBottom: '8px', letterSpacing: '0.5px' }}>
                     What You Get At Gaya Shorthand:
                   </span>
