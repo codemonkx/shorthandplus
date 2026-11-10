@@ -991,29 +991,7 @@ export default function AdminPortalView({
           </div>
 
           <div className="admin-header-actions">
-            {/* 1. Portal Navigation Switchers */}
-            <div className="admin-nav-group">
-              <button 
-                className="admin-toolbar-btn admin-btn-neutral"
-                onClick={() => setCurrentTab('dashboard')}
-                title="Switch to Student Candidate View"
-              >
-                <LayoutDashboard size={14} />
-                <span>Student Portal</span>
-              </button>
-              <button 
-                className="admin-toolbar-btn admin-btn-neutral"
-                onClick={() => setCurrentTab('landing')}
-                title="Return to Public Website"
-              >
-                <Globe size={14} />
-                <span>Public Website</span>
-              </button>
-            </div>
-
-            <div className="admin-toolbar-divider" />
-
-            {/* 2. Security & Session */}
+            {/* 1. Security & Session */}
             <div className="admin-session-group">
               <button 
                 className="admin-toolbar-btn admin-btn-neutral"
