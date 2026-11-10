@@ -272,12 +272,12 @@ export default function ResultsHistoryPage({ onViewResult, user }) {
                 </div>
                 <div className="standing-divider" />
                 <div className="standing-stat-item">
-                  <span className="standing-num font-mono text-white">94.15%</span>
+                  <span className="standing-num font-mono text-cream">94.15%</span>
                   <span className="standing-lbl">Peak Accuracy</span>
                 </div>
                 <div className="standing-divider" />
                 <div className="standing-stat-item">
-                  <span className="standing-num font-mono text-white">#4</span>
+                  <span className="standing-num font-mono text-cream">#4</span>
                   <span className="standing-lbl">Batch Rank</span>
                 </div>
               </div>

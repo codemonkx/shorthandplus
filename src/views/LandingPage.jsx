@@ -47,7 +47,7 @@ const GoogleIcon = () => (
 const YouTubeIcon = ({ size = 20 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
     <path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
-    <path fill="#FFFFFF" d="m9.545 15.568 6.273-3.568-6.273-3.568z"/>
+    <path fill="#FAF7F2" d="m9.545 15.568 6.273-3.568-6.273-3.568z"/>
   </svg>
 );
 
@@ -271,7 +271,7 @@ export default function LandingPage({
                     alignItems: 'center',
                     gap: '8px',
                     background: '#D9541E',
-                    color: '#ffffff',
+                    color: '#FAF7F2',
                     border: 'none',
                     borderRadius: '10px',
                     padding: '0.85rem 1.6rem',
@@ -284,7 +284,7 @@ export default function LandingPage({
                   onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
                   onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                 >
-                  <Sparkles size={18} color="#ffffff" />
+                  <Sparkles size={18} color="#FAF7F2" />
                   <span>Book 3 Free Demo Classes</span>
                 </button>
 
@@ -446,7 +446,7 @@ export default function LandingPage({
                     }}
                     style={{
                       background: '#D9541E',
-                      color: '#ffffff',
+                      color: '#FAF7F2',
                       border: 'none',
                       borderRadius: '8px',
                       padding: '0.75rem',
@@ -471,7 +471,7 @@ export default function LandingPage({
                     }}
                     style={{
                       background: '#1c1917',
-                      color: '#ffffff',
+                      color: '#FAF7F2',
                       border: 'none',
                       borderRadius: '8px',
                       padding: '0.75rem',
@@ -618,7 +618,7 @@ export default function LandingPage({
                     style={{
                       width: '100%',
                       background: '#D9541E',
-                      color: '#ffffff',
+                      color: '#FAF7F2',
                       border: 'none',
                       borderRadius: '8px',
                       padding: '0.75rem',
@@ -999,7 +999,7 @@ export default function LandingPage({
                       onClick={() => setIsPlayingYouTube(true)}
                       style={{ 
                         textAlign: 'center', 
-                        color: '#ffffff', 
+                        color: '#FAF7F2', 
                         padding: '1.5rem', 
                         zIndex: 1, 
                         cursor: 'pointer',
@@ -1018,14 +1018,14 @@ export default function LandingPage({
                         height: '58px', 
                         borderRadius: '50%', 
                         background: '#dc2626', 
-                        color: '#ffffff', 
+                        color: '#FAF7F2', 
                         display: 'flex', 
                         alignItems: 'center', 
                         justifyContent: 'center', 
                         margin: '0 auto 10px', 
                         boxShadow: '0 4px 14px rgba(220, 38, 38, 0.5)'
                       }}>
-                        <Play size={26} fill="#ffffff" style={{ marginLeft: '3px' }} />
+                        <Play size={26} fill="#FAF7F2" style={{ marginLeft: '3px' }} />
                       </div>
                       <span style={{ display: 'block', fontSize: '0.96rem', fontWeight: 800 }}>Watch Classroom Dictation Video</span>
                       <span style={{ fontSize: '0.78rem', color: '#a8a29e', marginTop: '3px' }}>Click to play on-screen demo • Gaya Shorthand Classes</span>
@@ -1041,7 +1041,7 @@ export default function LandingPage({
                 style={{
                   width: '100%',
                   background: '#dc2626',
-                  color: '#ffffff',
+                  color: '#FAF7F2',
                   border: 'none',
                   borderRadius: '8px',
                   padding: '0.8rem',
@@ -1338,7 +1338,7 @@ export default function LandingPage({
                 href="tel:9204123453"
                 style={{
                   background: '#111111',
-                  color: '#ffffff',
+                  color: '#FAF7F2',
                   border: 'none',
                   borderRadius: '8px',
                   padding: '0.75rem 1.4rem',
@@ -1351,7 +1351,7 @@ export default function LandingPage({
                   boxShadow: '0 2px 8px rgba(17, 17, 17, 0.25)'
                 }}
               >
-                <Phone size={16} color="#ffffff" />
+                <Phone size={16} color="#FAF7F2" />
                 <span>Call Helpline: +91 9204123453</span>
               </a>
 
@@ -1362,7 +1362,7 @@ export default function LandingPage({
                 }}
                 style={{
                   background: '#D9541E',
-                  color: '#ffffff',
+                  color: '#FAF7F2',
                   border: 'none',
                   borderRadius: '8px',
                   padding: '0.75rem 1.4rem',
@@ -1375,7 +1375,7 @@ export default function LandingPage({
                   boxShadow: '0 2px 8px rgba(217, 84, 30, 0.28)'
                 }}
               >
-                <Sparkles size={16} color="#ffffff" />
+                <Sparkles size={16} color="#FAF7F2" />
                 <span>Book 3 Free Demo Classes</span>
               </button>
             </div>

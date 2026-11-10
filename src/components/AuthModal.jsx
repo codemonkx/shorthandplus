@@ -182,7 +182,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
         {/* Brand Header */}
         <div className="auth-modal-header">
           <div className="auth-header-brand-row">
-            <div className="auth-brand-badge" style={{ background: '#ffffff', border: '1.5px solid #fed7aa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="auth-brand-badge" style={{ background: '#FAF7F2', border: '1.5px solid #fed7aa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               {authMode === 'admin' ? (
                 <ShieldCheck size={22} color="#d97706" />
               ) : authMode === 'forgot' ? (

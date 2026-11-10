@@ -688,7 +688,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       padding: '0.65rem 1.15rem',
                       borderRadius: '8px',
                       background: '#D9541E',
-                      color: '#ffffff',
+                      color: '#FAF7F2',
                       fontWeight: 700,
                       fontSize: '0.86rem',
                       border: 'none',
@@ -711,7 +711,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
       {/* TARGET EXAMINATIONS BANNER */}
       <section style={{ maxWidth: 1240, margin: '0 auto 3rem', padding: '0 1.25rem' }}>
         <div style={{
-          background: '#FFFFFF',
+          background: '#FAF7F2',
           border: '1px solid rgba(17, 17, 17, 0.12)',
           borderRadius: '16px',
           padding: '1.75rem',
@@ -1049,7 +1049,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                         padding: '0.75rem 1rem',
                         borderRadius: '8px',
                         background: '#D9541E',
-                        color: '#ffffff',
+                        color: '#FAF7F2',
                         fontSize: '0.88rem',
                         fontWeight: 700,
                         border: 'none',
@@ -1058,7 +1058,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                         transition: 'all 0.15s ease'
                       }}
                     >
-                      <Crown size={15} color="#ffffff" />
+                      <Crown size={15} color="#FAF7F2" />
                       <span>Activate with UPI (₹{plan.price})</span>
                     </button>
                   </div>

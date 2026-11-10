@@ -190,7 +190,7 @@ export default function Navbar({
                 padding: '0.45rem 1.15rem',
                 borderRadius: '9999px',
                 background: '#D9541E',
-                color: '#ffffff',
+                color: '#FAF7F2',
                 fontSize: '0.86rem',
                 fontWeight: 700,
                 border: 'none',

@@ -108,7 +108,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#ffffff',
+              color: '#FAF7F2',
               fontWeight: 800,
               fontSize: '1.1rem'
             }}>
@@ -127,12 +127,12 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.5rem',
-            background: 'rgba(255, 255, 255, 0.1)',
+            background: 'rgba(250, 247, 242, 0.1)',
             padding: '0.45rem 0.9rem',
             borderRadius: '999px',
             fontSize: '0.84rem',
             fontWeight: 600,
-            border: '1px solid rgba(255, 255, 255, 0.15)'
+            border: '1px solid rgba(250, 247, 242, 0.15)'
           }}>
             <Sparkles size={15} color="#D9541E" />
             <span>AI-BASED DICTATION & REAL TIME EVALUATION</span>
@@ -172,7 +172,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
           <div className="about-director-card">
             <div className="director-badge-header">
               <div className="director-avatar-box">
-                <GraduationCap size={28} className="text-white" />
+                <GraduationCap size={28} className="text-cream" />
               </div>
               <div>
                 <h3 className="director-name">Shadab Sir (12 Years Experience)</h3>
@@ -704,7 +704,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
                   style={{
                     width: '100%',
                     background: '#D9541E',
-                    color: '#ffffff',
+                    color: '#FAF7F2',
                     border: 'none',
                     borderRadius: '10px',
                     padding: '0.85rem 1.25rem',

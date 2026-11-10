@@ -421,7 +421,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                       alignItems: 'center',
                       gap: '8px',
                       background: '#D9541E',
-                      color: '#ffffff',
+                      color: '#FAF7F2',
                       border: 'none',
                       borderRadius: '10px',
                       padding: '0.85rem 1.4rem',
@@ -520,7 +520,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         padding: '0.75rem 1rem', 
                         borderRadius: '8px', 
                         background: '#D9541E', 
-                        color: '#ffffff', 
+                        color: '#FAF7F2', 
                         border: 'none',
                         fontSize: '0.85rem',
                         fontWeight: 700,
@@ -666,7 +666,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   <div 
                     key={b.id} 
                     style={{
-                      background: b.isLive ? '#FAF7F2' : '#FFFFFF',
+                      background: b.isLive ? '#FAF7F2' : '#FAF7F2',
                       border: b.isLive ? '1.5px solid #D9541E' : '1px solid rgba(17, 17, 17, 0.12)',
                       borderRadius: '14px',
                       padding: '1.25rem',
@@ -681,7 +681,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '0.65rem' }}>
                         <span style={{
                           background: b.isLive ? '#D9541E' : '#FAF7F2',
-                          color: b.isLive ? '#ffffff' : '#111111',
+                          color: b.isLive ? '#FAF7F2' : '#111111',
                           fontSize: '0.72rem',
                           fontWeight: 800,
                           padding: '3px 9px',
@@ -742,7 +742,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         gap: '6px',
                         border: b.isLive ? 'none' : '1px solid rgba(17, 17, 17, 0.14)',
                         background: b.isLive ? '#D9541E' : '#FAF7F2',
-                        color: b.isLive ? '#ffffff' : '#111111',
+                        color: b.isLive ? '#FAF7F2' : '#111111',
                         boxShadow: b.isLive ? '0 2px 8px rgba(217, 84, 30, 0.28)' : 'none',
                         transition: 'all 0.15s ease'
                       }}
@@ -920,7 +920,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     style={{
                       width: '100%',
                       background: '#D9541E',
-                      color: '#ffffff',
+                      color: '#FAF7F2',
                       border: 'none',
                       borderRadius: '8px',
                       padding: '0.75rem 1rem',
@@ -937,7 +937,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     onMouseEnter={(e) => e.currentTarget.style.background = '#BF4515'}
                     onMouseLeave={(e) => e.currentTarget.style.background = '#D9541E'}
                   >
-                    <Phone size={15} color="#ffffff" />
+                    <Phone size={15} color="#FAF7F2" />
                     <span>Inquire / Reserve Batch Seat</span>
                   </a>
                 </div>
@@ -1044,7 +1044,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         key={idx}
                         style={{ borderBottom: idx === 4 ? 'none' : '1px solid rgba(17, 17, 17, 0.08)', transition: 'background 0.15s ease' }}
                         onMouseEnter={(e) => e.currentTarget.style.background = '#FAF7F2'}
-                        onMouseLeave={(e) => e.currentTarget.style.background = '#ffffff'}
+                        onMouseLeave={(e) => e.currentTarget.style.background = '#FAF7F2'}
                       >
                         <td style={{ padding: '1.1rem 1.25rem', fontFamily: 'var(--font-mono, monospace)', fontWeight: 800, color: '#111111', fontSize: '0.9rem' }}>
                           {row.time}
@@ -1190,7 +1190,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   style={{
                     width: '100%',
                     background: '#111111',
-                    color: '#ffffff',
+                    color: '#FAF7F2',
                     border: 'none',
                     borderRadius: '8px',
                     padding: '0.75rem 1rem',
@@ -1206,7 +1206,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   onMouseEnter={(e) => e.currentTarget.style.background = '#262626'}
                   onMouseLeave={(e) => e.currentTarget.style.background = '#111111'}
                 >
-                  <Phone size={15} color="#ffffff" />
+                  <Phone size={15} color="#FAF7F2" />
                   <span>Inquire for DCA Program</span>
                 </a>
               </div>
@@ -1240,7 +1240,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   left: '50%',
                   transform: 'translateX(-50%)',
                   background: '#D9541E',
-                  color: '#ffffff',
+                  color: '#FAF7F2',
                   fontSize: '0.7rem',
                   fontWeight: 800,
                   textTransform: 'uppercase',
@@ -1286,7 +1286,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   style={{
                     width: '100%',
                     background: '#D9541E',
-                    color: '#ffffff',
+                    color: '#FAF7F2',
                     border: 'none',
                     borderRadius: '8px',
                     padding: '0.75rem 1rem',
@@ -1303,7 +1303,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   onMouseEnter={(e) => e.currentTarget.style.background = '#BF4515'}
                   onMouseLeave={(e) => e.currentTarget.style.background = '#D9541E'}
                 >
-                  <Phone size={15} color="#ffffff" />
+                  <Phone size={15} color="#FAF7F2" />
                   <span>Inquire for ADCA Program</span>
                 </a>
               </div>
@@ -1367,7 +1367,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   style={{
                     width: '100%',
                     background: '#111111',
-                    color: '#ffffff',
+                    color: '#FAF7F2',
                     border: 'none',
                     borderRadius: '8px',
                     padding: '0.75rem 1rem',
@@ -1383,7 +1383,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   onMouseEnter={(e) => e.currentTarget.style.background = '#262626'}
                   onMouseLeave={(e) => e.currentTarget.style.background = '#111111'}
                 >
-                  <Phone size={15} color="#ffffff" />
+                  <Phone size={15} color="#FAF7F2" />
                   <span>Inquire for Tally Course</span>
                 </a>
               </div>
@@ -1481,7 +1481,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         padding: '0.75rem 1.4rem',
                         borderRadius: '9999px',
                         background: '#111111',
-                        color: '#ffffff',
+                        color: '#FAF7F2',
                         border: 'none',
                         fontSize: '0.88rem',
                         fontWeight: 700,
@@ -1678,7 +1678,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                             setTimeout(() => setCopiedOutlineId(null), 1500);
                           }}
                           style={{
-                            background: copiedOutlineId === item.id ? 'rgba(217, 84, 30, 0.08)' : '#ffffff',
+                            background: copiedOutlineId === item.id ? 'rgba(217, 84, 30, 0.08)' : '#FAF7F2',
                             border: '1px solid',
                             borderColor: copiedOutlineId === item.id ? '#D9541E' : 'rgba(17, 17, 17, 0.14)',
                             borderRadius: '6px',
@@ -1791,7 +1791,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 alignItems: 'center',
                 gap: '8px',
                 background: '#D9541E',
-                color: '#ffffff',
+                color: '#FAF7F2',
                 border: 'none',
                 padding: '0.65rem 1.25rem',
                 borderRadius: '10px',
@@ -1801,7 +1801,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 boxShadow: '0 2px 8px rgba(217, 84, 30, 0.28)'
               }}
             >
-              <Sparkles size={16} color="#ffffff" />
+              <Sparkles size={16} color="#FAF7F2" />
               <span>Book 3 Free Demo Classes</span>
             </button>
           </div>

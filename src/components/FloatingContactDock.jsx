@@ -144,7 +144,7 @@ export default function FloatingContactDock() {
             height: '52px',
             borderRadius: '50%',
             background: '#D9541E',
-            color: '#ffffff',
+            color: '#FAF7F2',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',

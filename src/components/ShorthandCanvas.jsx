@@ -345,7 +345,7 @@ export default function ShorthandCanvas({
 
   return (
     <div className="shorthand-canvas-container" style={{
-      background: '#ffffff',
+      background: '#FAF7F2',
       border: '1px solid #e7e5e4',
       borderRadius: 12,
       overflow: 'hidden',
@@ -417,7 +417,7 @@ export default function ShorthandCanvas({
               borderRadius: 6,
               border: 'none',
               cursor: 'pointer',
-              background: activeTab === 'canvas' ? '#ffffff' : 'transparent',
+              background: activeTab === 'canvas' ? '#FAF7F2' : 'transparent',
               color: activeTab === 'canvas' ? '#1c1917' : '#78716c',
               boxShadow: activeTab === 'canvas' ? '0 1px 3px rgba(0,0,0,0.06)' : 'none'
             }}
@@ -434,7 +434,7 @@ export default function ShorthandCanvas({
               borderRadius: 6,
               border: 'none',
               cursor: 'pointer',
-              background: activeTab === 'split' ? '#ffffff' : 'transparent',
+              background: activeTab === 'split' ? '#FAF7F2' : 'transparent',
               color: activeTab === 'split' ? '#1c1917' : '#78716c',
               boxShadow: activeTab === 'split' ? '0 1px 3px rgba(0,0,0,0.06)' : 'none'
             }}
@@ -451,7 +451,7 @@ export default function ShorthandCanvas({
               borderRadius: 6,
               border: 'none',
               cursor: 'pointer',
-              background: activeTab === 'scratchpad' ? '#ffffff' : 'transparent',
+              background: activeTab === 'scratchpad' ? '#FAF7F2' : 'transparent',
               color: activeTab === 'scratchpad' ? '#1c1917' : '#78716c',
               boxShadow: activeTab === 'scratchpad' ? '0 1px 3px rgba(0,0,0,0.06)' : 'none'
             }}
@@ -532,7 +532,7 @@ export default function ShorthandCanvas({
                 borderRadius: 4,
                 border: '1px solid',
                 borderColor: audioSpeed === item.spd ? '#1c1917' : '#e7e5e4',
-                background: audioSpeed === item.spd ? '#1c1917' : '#ffffff',
+                background: audioSpeed === item.spd ? '#1c1917' : '#FAF7F2',
                 color: audioSpeed === item.spd ? '#fafaf9' : '#44403c',
                 fontWeight: audioSpeed === item.spd ? 700 : 500,
                 cursor: 'pointer'
@@ -560,7 +560,7 @@ export default function ShorthandCanvas({
       {(activeTab === 'canvas' || activeTab === 'split') && (
         <div style={{
           padding: '0.6rem 1.25rem',
-          background: '#ffffff',
+          background: '#FAF7F2',
           borderBottom: '1px solid #e7e5e4',
           display: 'flex',
           alignItems: 'center',
@@ -682,7 +682,7 @@ export default function ShorthandCanvas({
                     height: 20,
                     borderRadius: '50%',
                     background: c.hex,
-                    border: color === c.hex ? '2px solid #ffffff' : '1px solid #d6d3d1',
+                    border: color === c.hex ? '2px solid #FAF7F2' : '1px solid #d6d3d1',
                     outline: color === c.hex ? `2px solid ${c.hex}` : 'none',
                     cursor: 'pointer'
                   }}
@@ -805,7 +805,7 @@ export default function ShorthandCanvas({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              background: 'rgba(255, 255, 255, 0.92)',
+              background: 'rgba(250, 247, 242, 0.92)',
               backdropFilter: 'blur(4px)',
               padding: '0.4rem 0.75rem',
               borderRadius: 8,
@@ -827,7 +827,7 @@ export default function ShorthandCanvas({
                       borderRadius: 4,
                       border: '1px solid',
                       borderColor: activeRef.label === ref.label ? '#d97706' : '#e7e5e4',
-                      background: activeRef.label === ref.label ? '#fef3c7' : '#ffffff',
+                      background: activeRef.label === ref.label ? '#fef3c7' : '#FAF7F2',
                       color: activeRef.label === ref.label ? '#92400e' : '#1c1917',
                       cursor: 'pointer',
                       fontWeight: 600,
@@ -855,7 +855,7 @@ export default function ShorthandCanvas({
             display: 'flex',
             flexDirection: 'column',
             borderLeft: activeTab === 'split' ? '1px solid #e7e5e4' : 'none',
-            background: '#ffffff'
+            background: '#FAF7F2'
           }}>
             {/* Scratchpad Header */}
             <div style={{
@@ -885,7 +885,7 @@ export default function ShorthandCanvas({
                     fontSize: '0.72rem',
                     borderRadius: 4,
                     border: '1px solid #e7e5e4',
-                    background: '#ffffff',
+                    background: '#FAF7F2',
                     cursor: 'pointer',
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -934,7 +934,7 @@ export default function ShorthandCanvas({
                 fontSize: '0.92rem',
                 lineHeight: 1.6,
                 color: '#1c1917',
-                background: '#ffffff'
+                background: '#FAF7F2'
               }}
               placeholder="Rapidly transcribe your shorthand outlines here while listening to the audio dictation... (Supports instant .txt file export for review)"
               value={scratchpadText}

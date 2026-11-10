@@ -13,9 +13,9 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
         style={{ background: '#FAF9F6', border: '1px solid #E7E5E4' }}
       >
         {/* Modal Header */}
-        <div className="px-6 py-4 flex items-center justify-between border-b" style={{ background: '#FFFFFF', borderColor: '#E7E5E4' }}>
+        <div className="px-6 py-4 flex items-center justify-between border-b" style={{ background: '#FAF7F2', borderColor: '#E7E5E4' }}>
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg flex items-center justify-center text-white" style={{ background: '#1C1917' }}>
+            <div className="w-9 h-9 rounded-lg flex items-center justify-center text-cream" style={{ background: '#1C1917' }}>
               <ShieldCheck size={20} />
             </div>
             <div>
@@ -155,7 +155,7 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
             <div className="space-y-4">
               <h3 className="text-sm font-bold text-stone-900">Academy Operational Headquarters</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 rounded-lg border space-y-2" style={{ background: '#FFFFFF', borderColor: '#E7E5E4' }}>
+                <div className="p-4 rounded-lg border space-y-2" style={{ background: '#FAF7F2', borderColor: '#E7E5E4' }}>
                   <div className="flex items-center gap-2 font-bold text-stone-900">
                     <MapPin size={16} className="text-amber-600" />
                     <span>Physical Center & Online Portal</span>
@@ -168,7 +168,7 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
                   </p>
                 </div>
 
-                <div className="p-4 rounded-lg border space-y-2" style={{ background: '#FFFFFF', borderColor: '#E7E5E4' }}>
+                <div className="p-4 rounded-lg border space-y-2" style={{ background: '#FAF7F2', borderColor: '#E7E5E4' }}>
                   <div className="flex items-center gap-2 font-bold text-stone-900">
                     <Phone size={16} className="text-amber-600" />
                     <span>Direct Helpline & Email</span>
@@ -198,10 +198,10 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
         </div>
 
         {/* Modal Footer */}
-        <div className="px-6 py-3 border-t flex justify-end" style={{ background: '#FFFFFF', borderColor: '#E7E5E4' }}>
+        <div className="px-6 py-3 border-t flex justify-end" style={{ background: '#FAF7F2', borderColor: '#E7E5E4' }}>
           <button
             onClick={onClose}
-            className="px-5 py-2 rounded-lg text-xs font-semibold text-white transition-opacity hover:opacity-90"
+            className="px-5 py-2 rounded-lg text-xs font-semibold text-cream transition-opacity hover:opacity-90"
             style={{ background: '#1C1917' }}
           >
             I Understand & Close
