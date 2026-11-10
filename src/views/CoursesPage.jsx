@@ -507,7 +507,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
 
                 <div>
                   {/* Category & Speed Pill Row */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.9rem', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.9rem', flexWrap: 'wrap', paddingRight: course.popular ? '7.5rem' : 0 }}>
                     <div style={{
                       width: 32,
                       height: 32,

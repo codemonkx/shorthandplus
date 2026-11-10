@@ -604,7 +604,7 @@ export default function LandingPage({
                 </div>
 
                 {/* Card Action Button */}
-                <div>
+                <div style={{ marginTop: 'auto', paddingTop: '1rem' }}>
                   <button
                     type="button"
                     onClick={() => handleEnrollClick(c.title)}
