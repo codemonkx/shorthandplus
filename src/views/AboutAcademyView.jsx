@@ -86,13 +86,13 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
 
         {/* 2. CORE SPEED & EVALUATION ANNOUNCEMENT BAR */}
         <div style={{
-          background: 'linear-gradient(135deg, #1c1917 0%, #292524 100%)',
-          color: '#FFFFFF',
-          borderRadius: '12px',
+          background: '#FFFFFF',
+          color: '#1D1D1F',
+          borderRadius: '16px',
           padding: '1.25rem 1.75rem',
           margin: '0 0 2.5rem',
-          boxShadow: '0 4px 16px rgba(28, 25, 23, 0.08)',
-          border: '1px solid #44403c',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',
@@ -110,15 +110,16 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
               justifyContent: 'center',
               color: '#FFFFFF',
               fontWeight: 800,
-              fontSize: '1.1rem'
+              fontSize: '1.1rem',
+              boxShadow: '0 2px 8px rgba(248, 52, 88, 0.28)'
             }}>
               ⚡
             </div>
             <div>
-              <div style={{ fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#FFFFFF', fontWeight: 700 }}>
+              <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.8px', color: '#6E6E73', fontWeight: 700 }}>
                 Verified Skill Development
               </div>
-              <div style={{ fontSize: '1.05rem', fontWeight: 700, letterSpacing: '0.2px' }}>
+              <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#1D1D1F', letterSpacing: '-0.01em' }}>
                 WE PROVIDE BASIC TO ADVANCE 50WPM TO 140WPM SPEED IN SHORTHAND
               </div>
             </div>
@@ -127,12 +128,13 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.5rem',
-            background: 'rgba(243, 238, 227, 0.1)',
+            background: 'rgba(248, 52, 88, 0.08)',
+            color: '#F83458',
             padding: '0.45rem 0.9rem',
             borderRadius: '999px',
-            fontSize: '0.84rem',
-            fontWeight: 600,
-            border: '1px solid rgba(243, 238, 227, 0.15)'
+            fontSize: '0.82rem',
+            fontWeight: 700,
+            border: '1px solid rgba(248, 52, 88, 0.25)'
           }}>
             <Sparkles size={15} color="#F83458" />
             <span>AI-BASED DICTATION & REAL TIME EVALUATION</span>
@@ -645,7 +647,7 @@ export default function AboutAcademyView({ onOpenCheckout, onOpenAdmission, setC
               <div style={{ 
                 borderRadius: '14px', 
                 overflow: 'hidden', 
-                border: '1px solid #e7e5e4', 
+                border: '1px solid rgba(0, 0, 0, 0.08)', 
                 height: '200px',
                 position: 'relative',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.03)'

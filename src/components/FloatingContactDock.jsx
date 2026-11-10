@@ -122,11 +122,11 @@ export default function FloatingContactDock() {
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'scale(1.08)';
-            e.currentTarget.style.background = '#F3EEE3';
+            e.currentTarget.style.background = '#F5F5F7';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.background = '#F3EEE3';
+            e.currentTarget.style.background = '#FFFFFF';
           }}
         >
           <Phone size={20} />

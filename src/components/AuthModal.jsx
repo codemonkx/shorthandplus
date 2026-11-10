@@ -79,7 +79,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
         if (res.token) setToken(res.token);
         try {
           sessionStorage.setItem('shorthand_admin_authenticated', 'true');
-          confetti({ particleCount: 75, spread: 65, origin: { y: 0.55 }, colors: ['#1c1917', '#d97706', '#f59e0b'] });
+          confetti({ particleCount: 75, spread: 65, origin: { y: 0.55 }, colors: ['#1D1D1F', '#d97706', '#f59e0b'] });
         } catch {}
 
         setStatusMsg({ type: 'success', text: 'Faculty Director verified! Opening Admin Portal...' });
@@ -231,7 +231,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
               type="button"
               className="auth-switch-link"
               onClick={() => { setAuthMode('student'); setStatusMsg(null); setForgotStep(1); }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.82rem', fontWeight: 600, color: '#1c1917', background: '#FFFFFF', padding: '0.35rem 0.75rem', borderRadius: 6, border: '1px solid #e7e5e4' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.82rem', fontWeight: 600, color: '#1D1D1F', background: '#FFFFFF', padding: '0.35rem 0.75rem', borderRadius: 6, border: '1px solid rgba(0, 0, 0, 0.08)' }}
             >
               ← Back to Student Login
             </button>
@@ -291,13 +291,13 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
         )}
 
         {authMode === 'admin' && (
-          <div className="auth-demo-card" style={{ background: '#FFFFFF', borderColor: '#e7e5e4' }}>
+          <div className="auth-demo-card" style={{ background: '#FFFFFF', borderColor: 'rgba(0, 0, 0, 0.08)' }}>
             <div className="auth-demo-info">
-              <div className="auth-demo-avatar" style={{ background: '#FFFFFF', color: '#1c1917' }}>
+              <div className="auth-demo-avatar" style={{ background: '#FFFFFF', color: '#1D1D1F' }}>
                 <Key size={16} />
               </div>
               <div className="auth-demo-texts">
-                <span className="auth-demo-title" style={{ color: '#1c1917' }}>Director Demo Access</span>
+                <span className="auth-demo-title" style={{ color: '#1D1D1F' }}>Director Demo Access</span>
                 <span className="auth-demo-creds" style={{ color: '#78716c' }}>admin@gaya.com • Passcode: 8080</span>
               </div>
             </div>
@@ -305,7 +305,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
               type="button" 
               className="auth-demo-btn" 
               onClick={handleFillAdminDemo}
-              style={{ borderColor: '#d6d3d1', color: '#1c1917' }}
+              style={{ borderColor: '#d6d3d1', color: '#1D1D1F' }}
             >
               <span>Auto-Fill</span>
             </button>
@@ -409,7 +409,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
                   ) : (
                     <div style={{
                       background: '#FFFFFF',
-                      border: '1px solid #e7e5e4',
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
                       borderRadius: '8px',
                       padding: '0.75rem 0.85rem',
                       marginBottom: '0.85rem',

@@ -287,7 +287,7 @@ export default function DashboardView({
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
               <CreditCard size={18} className="text-emerald-600" />
-              <h3 style={{ margin: 0, fontSize: '1.15rem', fontWeight: 700, color: '#1c1917' }}>
+              <h3 style={{ margin: 0, fontSize: '1.15rem', fontWeight: 700, color: '#1D1D1F' }}>
                 My Monthly Subscription & Billing Ledger
               </h3>
               <span className="badge badge-emerald" style={{ fontSize: '0.75rem', fontWeight: 700 }}>
@@ -302,7 +302,7 @@ export default function DashboardView({
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <div style={{ textAlign: 'right', marginRight: '0.5rem' }}>
               <span style={{ fontSize: '0.75rem', color: '#78716c', display: 'block' }}>Next Monthly Renewal</span>
-              <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1c1917', fontFamily: 'monospace' }}>
+              <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1D1D1F', fontFamily: 'monospace' }}>
                 {user?.subscription?.nextBillingDate || '23 Nov 2026'}
               </span>
             </div>
@@ -322,7 +322,7 @@ export default function DashboardView({
         <div style={{ overflowX: 'auto', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '0.75rem', background: '#FFFFFF' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem', textAlign: 'left' }}>
             <thead>
-              <tr style={{ background: '#FFFFFF', borderBottom: '1px solid #e7e5e4', color: '#57534e', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <tr style={{ background: '#FFFFFF', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', color: '#57534e', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 <th style={{ padding: '0.75rem 1rem' }}>Transaction ID</th>
                 <th style={{ padding: '0.75rem 1rem' }}>Subscription / Course</th>
                 <th style={{ padding: '0.75rem 1rem' }}>Billing Frequency</th>
@@ -334,11 +334,11 @@ export default function DashboardView({
             </thead>
             <tbody>
               {studentTransactions.map((txn) => (
-                <tr key={txn.id} style={{ borderBottom: '1px solid #e7e5e4' }}>
-                  <td style={{ padding: '0.75rem 1rem', fontFamily: 'monospace', fontWeight: 600, color: '#1c1917' }}>
+                <tr key={txn.id} style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.08)' }}>
+                  <td style={{ padding: '0.75rem 1rem', fontFamily: 'monospace', fontWeight: 600, color: '#1D1D1F' }}>
                     {txn.id}
                   </td>
-                  <td style={{ padding: '0.75rem 1rem', fontWeight: 600, color: '#1c1917' }}>
+                  <td style={{ padding: '0.75rem 1rem', fontWeight: 600, color: '#1D1D1F' }}>
                     {txn.plan}
                   </td>
                   <td style={{ padding: '0.75rem 1rem', color: '#78716c' }}>
@@ -347,7 +347,7 @@ export default function DashboardView({
                   <td style={{ padding: '0.75rem 1rem', color: '#78716c', fontFamily: 'monospace' }}>
                     {txn.date}
                   </td>
-                  <td style={{ padding: '0.75rem 1rem', fontFamily: 'monospace', fontWeight: 700, color: '#1c1917' }}>
+                  <td style={{ padding: '0.75rem 1rem', fontFamily: 'monospace', fontWeight: 700, color: '#1D1D1F' }}>
                     ₹{txn.amount}
                   </td>
                   <td style={{ padding: '0.75rem 1rem', color: '#57534e' }}>

@@ -34,7 +34,7 @@ export default function ShorthandCanvas({
 
   // Drawing tools: 'pencil' (fine) | 'pen' (chisel/heavy) | 'highlighter' | 'eraser'
   const [tool, setTool] = useState('pencil');
-  const [color, setColor] = useState('#1c1917'); // Obsidian charcoal
+  const [color, setColor] = useState('#1D1D1F'); // Obsidian charcoal
   const [lineWidth, setLineWidth] = useState(2.5);
   const [showRuledLines, setShowRuledLines] = useState(true);
   const [canvasHeight, setCanvasHeight] = useState(380);
@@ -90,7 +90,7 @@ export default function ShorthandCanvas({
 
   // Redraw canvas background (ruled paper guidelines)
   const drawBackground = useCallback((ctx, width, height) => {
-    ctx.fillStyle = '#F3EEE3'; // Warm Stone Canvas
+    ctx.fillStyle = '#FFFFFF'; // Crisp White Canvas
     ctx.fillRect(0, 0, width, height);
 
     if (showRuledLines) {
@@ -98,7 +98,7 @@ export default function ShorthandCanvas({
       ctx.lineWidth = 1;
       
       for (let y = lineSpacing; y < height; y += lineSpacing) {
-        ctx.strokeStyle = '#e7e5e4'; // Warm stone ruled line
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.08)'; // Warm stone ruled line
         ctx.beginPath();
         ctx.moveTo(0, y);
         ctx.lineTo(width, y);
@@ -202,7 +202,7 @@ export default function ShorthandCanvas({
     ctx.lineJoin = 'round';
 
     if (tool === 'eraser') {
-      ctx.strokeStyle = '#F3EEE3';
+      ctx.strokeStyle = '#FFFFFF';
       ctx.lineWidth = 20;
     } else if (tool === 'pencil') {
       ctx.strokeStyle = color;
@@ -346,7 +346,7 @@ export default function ShorthandCanvas({
   return (
     <div className="shorthand-canvas-container" style={{
       background: '#FFFFFF',
-      border: '1px solid #e7e5e4',
+      border: '1px solid rgba(0, 0, 0, 0.08)',
       borderRadius: 12,
       overflow: 'hidden',
       boxShadow: '0 4px 16px -2px rgba(28, 25, 23, 0.05)',
@@ -356,7 +356,7 @@ export default function ShorthandCanvas({
       <div style={{
         padding: '0.85rem 1.25rem',
         background: '#fafaf9',
-        borderBottom: '1px solid #e7e5e4',
+        borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -368,7 +368,7 @@ export default function ShorthandCanvas({
             width: 34,
             height: 34,
             borderRadius: 8,
-            background: '#1c1917',
+            background: '#1D1D1F',
             color: '#f59e0b',
             display: 'flex',
             alignItems: 'center',
@@ -378,7 +378,7 @@ export default function ShorthandCanvas({
           </div>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <h3 style={{ margin: 0, fontSize: '0.98rem', fontWeight: 700, color: '#1c1917' }}>
+              <h3 style={{ margin: 0, fontSize: '0.98rem', fontWeight: 700, color: '#1D1D1F' }}>
                 {title}
               </h3>
               <span style={{
@@ -394,7 +394,7 @@ export default function ShorthandCanvas({
               </span>
             </div>
             <p style={{ margin: '0.1rem 0 0', fontSize: '0.78rem', color: '#78716c' }}>
-              Focus: <span style={{ color: '#1c1917', fontWeight: 600 }}>{topic}</span>
+              Focus: <span style={{ color: '#1D1D1F', fontWeight: 600 }}>{topic}</span>
             </p>
           </div>
         </div>
@@ -405,7 +405,7 @@ export default function ShorthandCanvas({
           background: '#FFFFFF',
           padding: 3,
           borderRadius: 8,
-          border: '1px solid #e7e5e4'
+          border: '1px solid rgba(0, 0, 0, 0.08)'
         }}>
           <button
             type="button"
@@ -417,8 +417,8 @@ export default function ShorthandCanvas({
               borderRadius: 6,
               border: 'none',
               cursor: 'pointer',
-              background: activeTab === 'canvas' ? '#F3EEE3' : 'transparent',
-              color: activeTab === 'canvas' ? '#1c1917' : '#78716c',
+              background: activeTab === 'canvas' ? '#1D1D1F' : 'transparent',
+              color: activeTab === 'canvas' ? '#FFFFFF' : '#6E6E73',
               boxShadow: activeTab === 'canvas' ? '0 1px 3px rgba(0,0,0,0.06)' : 'none'
             }}
           >
@@ -434,8 +434,8 @@ export default function ShorthandCanvas({
               borderRadius: 6,
               border: 'none',
               cursor: 'pointer',
-              background: activeTab === 'split' ? '#F3EEE3' : 'transparent',
-              color: activeTab === 'split' ? '#1c1917' : '#78716c',
+              background: activeTab === 'split' ? '#1D1D1F' : 'transparent',
+              color: activeTab === 'split' ? '#FFFFFF' : '#6E6E73',
               boxShadow: activeTab === 'split' ? '0 1px 3px rgba(0,0,0,0.06)' : 'none'
             }}
           >
@@ -451,8 +451,8 @@ export default function ShorthandCanvas({
               borderRadius: 6,
               border: 'none',
               cursor: 'pointer',
-              background: activeTab === 'scratchpad' ? '#F3EEE3' : 'transparent',
-              color: activeTab === 'scratchpad' ? '#1c1917' : '#78716c',
+              background: activeTab === 'scratchpad' ? '#1D1D1F' : 'transparent',
+              color: activeTab === 'scratchpad' ? '#FFFFFF' : '#6E6E73',
               boxShadow: activeTab === 'scratchpad' ? '0 1px 3px rgba(0,0,0,0.06)' : 'none'
             }}
           >
@@ -465,7 +465,7 @@ export default function ShorthandCanvas({
       <div style={{
         padding: '0.6rem 1.25rem',
         background: '#fafaf9',
-        borderBottom: '1px solid #e7e5e4',
+        borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -480,7 +480,7 @@ export default function ShorthandCanvas({
               width: 32,
               height: 32,
               borderRadius: '50%',
-              background: '#1c1917',
+              background: '#1D1D1F',
               color: '#fafaf9',
               border: 'none',
               cursor: 'pointer',
@@ -495,13 +495,13 @@ export default function ShorthandCanvas({
           </button>
 
           <div>
-            <div style={{ fontSize: '0.78rem', fontWeight: 600, color: '#1c1917', display: 'flex', alignItems: 'center', gap: 6 }}>
+            <div style={{ fontSize: '0.78rem', fontWeight: 600, color: '#1D1D1F', display: 'flex', alignItems: 'center', gap: 6 }}>
               <span>Live Dictation Audio Track</span>
               <span className="font-mono" style={{ fontSize: '0.72rem', color: '#78716c' }}>
                 {formatTime(audioCurrentTime)} / {formatTime(audioDuration)}
               </span>
             </div>
-            <div style={{ width: 140, height: 4, background: '#e7e5e4', borderRadius: 2, marginTop: 4, overflow: 'hidden' }}>
+            <div style={{ width: 140, height: 4, background: 'rgba(0, 0, 0, 0.08)', borderRadius: 2, marginTop: 4, overflow: 'hidden' }}>
               <div style={{
                 height: '100%',
                 width: `${audioDuration > 0 ? (audioCurrentTime / audioDuration) * 100 : 0}%`,
@@ -531,8 +531,8 @@ export default function ShorthandCanvas({
                 fontSize: '0.72rem',
                 borderRadius: 4,
                 border: '1px solid',
-                borderColor: audioSpeed === item.spd ? '#1c1917' : '#e7e5e4',
-                background: audioSpeed === item.spd ? '#1c1917' : '#F3EEE3',
+                borderColor: audioSpeed === item.spd ? '#1D1D1F' : 'rgba(0, 0, 0, 0.08)',
+                background: audioSpeed === item.spd ? '#1D1D1F' : '#F5F5F7',
                 color: audioSpeed === item.spd ? '#fafaf9' : '#44403c',
                 fontWeight: audioSpeed === item.spd ? 700 : 500,
                 cursor: 'pointer'
@@ -561,7 +561,7 @@ export default function ShorthandCanvas({
         <div style={{
           padding: '0.6rem 1.25rem',
           background: '#FFFFFF',
-          borderBottom: '1px solid #e7e5e4',
+          borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -578,9 +578,9 @@ export default function ShorthandCanvas({
                 fontSize: '0.78rem',
                 borderRadius: 6,
                 border: '1px solid',
-                borderColor: tool === 'pencil' ? '#1c1917' : '#e7e5e4',
-                background: tool === 'pencil' ? '#1c1917' : '#fafaf9',
-                color: tool === 'pencil' ? '#fafaf9' : '#1c1917',
+                borderColor: tool === 'pencil' ? '#1D1D1F' : 'rgba(0, 0, 0, 0.08)',
+                background: tool === 'pencil' ? '#1D1D1F' : '#fafaf9',
+                color: tool === 'pencil' ? '#fafaf9' : '#1D1D1F',
                 fontWeight: 600,
                 cursor: 'pointer',
                 display: 'inline-flex',
@@ -601,9 +601,9 @@ export default function ShorthandCanvas({
                 fontSize: '0.78rem',
                 borderRadius: 6,
                 border: '1px solid',
-                borderColor: tool === 'pen' ? '#1c1917' : '#e7e5e4',
-                background: tool === 'pen' ? '#1c1917' : '#fafaf9',
-                color: tool === 'pen' ? '#fafaf9' : '#1c1917',
+                borderColor: tool === 'pen' ? '#1D1D1F' : 'rgba(0, 0, 0, 0.08)',
+                background: tool === 'pen' ? '#1D1D1F' : '#fafaf9',
+                color: tool === 'pen' ? '#fafaf9' : '#1D1D1F',
                 fontWeight: 600,
                 cursor: 'pointer',
                 display: 'inline-flex',
@@ -624,9 +624,9 @@ export default function ShorthandCanvas({
                 fontSize: '0.78rem',
                 borderRadius: 6,
                 border: '1px solid',
-                borderColor: tool === 'eraser' ? '#1c1917' : '#e7e5e4',
-                background: tool === 'eraser' ? '#1c1917' : '#fafaf9',
-                color: tool === 'eraser' ? '#fafaf9' : '#1c1917',
+                borderColor: tool === 'eraser' ? '#1D1D1F' : 'rgba(0, 0, 0, 0.08)',
+                background: tool === 'eraser' ? '#1D1D1F' : '#fafaf9',
+                color: tool === 'eraser' ? '#fafaf9' : '#1D1D1F',
                 fontWeight: 600,
                 cursor: 'pointer',
                 display: 'inline-flex',
@@ -648,7 +648,7 @@ export default function ShorthandCanvas({
                 fontSize: '0.78rem',
                 borderRadius: 6,
                 border: '1px solid',
-                borderColor: showRuledLines ? '#d97706' : '#e7e5e4',
+                borderColor: showRuledLines ? '#d97706' : 'rgba(0, 0, 0, 0.08)',
                 background: showRuledLines ? '#fef3c7' : '#fafaf9',
                 color: showRuledLines ? '#92400e' : '#78716c',
                 fontWeight: 600,
@@ -668,7 +668,7 @@ export default function ShorthandCanvas({
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               {[
-                { hex: '#1c1917', label: 'Obsidian Graphite' },
+                { hex: '#1D1D1F', label: 'Obsidian Graphite' },
                 { hex: '#d97706', label: 'Honey Amber' },
                 { hex: '#047857', label: 'Emerald' },
                 { hex: '#b91c1c', label: 'Crimson' }
@@ -682,7 +682,7 @@ export default function ShorthandCanvas({
                     height: 20,
                     borderRadius: '50%',
                     background: c.hex,
-                    border: color === c.hex ? '2px solid #F3EEE3' : '1px solid #d6d3d1',
+                    border: color === c.hex ? '2px solid #F83458' : '1px solid rgba(0, 0, 0, 0.12)',
                     outline: color === c.hex ? `2px solid ${c.hex}` : 'none',
                     cursor: 'pointer'
                   }}
@@ -691,7 +691,7 @@ export default function ShorthandCanvas({
               ))}
             </div>
 
-            <div style={{ width: 1, height: 20, background: '#e7e5e4' }} />
+            <div style={{ width: 1, height: 20, background: 'rgba(0, 0, 0, 0.08)' }} />
 
             {/* Undo / Redo / Clear / Export */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
@@ -702,9 +702,9 @@ export default function ShorthandCanvas({
                 style={{
                   padding: '0.3rem 0.45rem',
                   borderRadius: 6,
-                  border: '1px solid #e7e5e4',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   background: '#fafaf9',
-                  color: historyStep <= 0 ? '#d6d3d1' : '#1c1917',
+                  color: historyStep <= 0 ? '#d6d3d1' : '#1D1D1F',
                   cursor: historyStep <= 0 ? 'not-allowed' : 'pointer'
                 }}
                 title="Undo Stroke (Ctrl+Z)"
@@ -719,9 +719,9 @@ export default function ShorthandCanvas({
                 style={{
                   padding: '0.3rem 0.45rem',
                   borderRadius: 6,
-                  border: '1px solid #e7e5e4',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   background: '#fafaf9',
-                  color: historyStep >= history.length - 1 ? '#d6d3d1' : '#1c1917',
+                  color: historyStep >= history.length - 1 ? '#d6d3d1' : '#1D1D1F',
                   cursor: historyStep >= history.length - 1 ? 'not-allowed' : 'pointer'
                 }}
                 title="Redo Stroke (Ctrl+Y)"
@@ -751,8 +751,8 @@ export default function ShorthandCanvas({
                 style={{
                   padding: '0.3rem 0.65rem',
                   borderRadius: 6,
-                  border: '1px solid #1c1917',
-                  background: '#1c1917',
+                  border: '1px solid #1D1D1F',
+                  background: '#1D1D1F',
                   color: '#fafaf9',
                   fontSize: '0.74rem',
                   fontWeight: 600,
@@ -809,7 +809,7 @@ export default function ShorthandCanvas({
               backdropFilter: 'blur(4px)',
               padding: '0.4rem 0.75rem',
               borderRadius: 8,
-              border: '1px solid #e7e5e4',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
               boxShadow: '0 2px 6px rgba(0,0,0,0.04)'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, overflowX: 'auto', paddingBottom: 2 }}>
@@ -826,9 +826,9 @@ export default function ShorthandCanvas({
                       fontSize: '0.72rem',
                       borderRadius: 4,
                       border: '1px solid',
-                      borderColor: activeRef.label === ref.label ? '#d97706' : '#e7e5e4',
-                      background: activeRef.label === ref.label ? '#fef3c7' : '#F3EEE3',
-                      color: activeRef.label === ref.label ? '#92400e' : '#1c1917',
+                      borderColor: activeRef.label === ref.label ? '#d97706' : 'rgba(0, 0, 0, 0.08)',
+                      background: activeRef.label === ref.label ? 'rgba(248, 52, 88, 0.08)' : '#F5F5F7',
+                      color: activeRef.label === ref.label ? '#92400e' : '#1D1D1F',
                       cursor: 'pointer',
                       fontWeight: 600,
                       display: 'inline-flex',
@@ -854,21 +854,21 @@ export default function ShorthandCanvas({
           <div style={{
             display: 'flex',
             flexDirection: 'column',
-            borderLeft: activeTab === 'split' ? '1px solid #e7e5e4' : 'none',
+            borderLeft: activeTab === 'split' ? '1px solid rgba(0, 0, 0, 0.08)' : 'none',
             background: '#FFFFFF'
           }}>
             {/* Scratchpad Header */}
             <div style={{
               padding: '0.55rem 1rem',
               background: '#fafaf9',
-              borderBottom: '1px solid #e7e5e4',
+              borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <FileText size={15} style={{ color: '#1c1917' }} />
-                <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#1c1917' }}>
+                <FileText size={15} style={{ color: '#1D1D1F' }} />
+                <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#1D1D1F' }}>
                   Student Transcription Scratchpad
                 </span>
               </div>
@@ -884,7 +884,7 @@ export default function ShorthandCanvas({
                     padding: '0.2rem 0.5rem',
                     fontSize: '0.72rem',
                     borderRadius: 4,
-                    border: '1px solid #e7e5e4',
+                    border: '1px solid rgba(0, 0, 0, 0.08)',
                     background: '#FFFFFF',
                     cursor: 'pointer',
                     display: 'inline-flex',
@@ -904,8 +904,8 @@ export default function ShorthandCanvas({
                     padding: '0.2rem 0.5rem',
                     fontSize: '0.72rem',
                     borderRadius: 4,
-                    border: '1px solid #1c1917',
-                    background: '#1c1917',
+                    border: '1px solid #1D1D1F',
+                    background: '#1D1D1F',
                     color: '#fafaf9',
                     cursor: 'pointer',
                     display: 'inline-flex',
@@ -933,7 +933,7 @@ export default function ShorthandCanvas({
                 fontFamily: 'inherit',
                 fontSize: '0.92rem',
                 lineHeight: 1.6,
-                color: '#1c1917',
+                color: '#1D1D1F',
                 background: '#FFFFFF'
               }}
               placeholder="Rapidly transcribe your shorthand outlines here while listening to the audio dictation... (Supports instant .txt file export for review)"
@@ -948,7 +948,7 @@ export default function ShorthandCanvas({
       <div style={{
         padding: '0.5rem 1.25rem',
         background: '#fafaf9',
-        borderTop: '1px solid #e7e5e4',
+        borderTop: '1px solid rgba(0, 0, 0, 0.08)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',

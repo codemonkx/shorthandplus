@@ -357,7 +357,7 @@ export default function LandingPage({
                 padding: '2rem', 
                 boxShadow: '0 8px 30px rgba(17, 17, 17, 0.04)' 
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid #F3EEE3', paddingBottom: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '1rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <img 
                       src="/assets/logo-big-s.png" 
@@ -463,7 +463,7 @@ export default function LandingPage({
                       if (onOpenAuth) onOpenAuth('student');
                     }}
                     style={{
-                      background: '#1c1917',
+                      background: '#1D1D1F',
                       color: '#FFFFFF',
                       border: 'none',
                       borderRadius: '8px',
@@ -541,8 +541,8 @@ export default function LandingPage({
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-3px)';
-                  e.currentTarget.style.borderColor = '#111111';
-                  e.currentTarget.style.boxShadow = '0 10px 25px rgba(17, 17, 17, 0.08)';
+                  e.currentTarget.style.borderColor = c.id === 'eng-steno' ? '#F83458' : 'rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.08)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
@@ -656,7 +656,7 @@ export default function LandingPage({
             }}>
               Comprehensive Exam Preparation
             </span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 2.8vw, 2.4rem)', fontWeight: 800, color: '#1c1917', margin: '0 0 0.5rem', letterSpacing: '-0.02em' }}>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 2.8vw, 2.4rem)', fontWeight: 800, color: '#1D1D1F', margin: '0 0 0.5rem', letterSpacing: '-0.02em' }}>
               Which Examinations Do We Prepare You For?
             </h2>
             <p style={{ fontSize: '1.05rem', fontWeight: 600, color: '#78716c', margin: '0 0 0.75rem' }}>
@@ -880,21 +880,21 @@ export default function LandingPage({
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1rem' }}>
                   <YouTubeIcon size={24} />
-                  <span style={{ fontSize: '0.85rem', fontWeight: 800, color: '#dc2626', textTransform: 'uppercase' }}>
+                  <span style={{ fontSize: '0.85rem', fontWeight: 800, color: '#F83458', textTransform: 'uppercase' }}>
                     Live Classroom Dictation Demo
                   </span>
                 </div>
 
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#1c1917', margin: '0 0 0.5rem' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#1D1D1F', margin: '0 0 0.5rem' }}>
                   SSC Stenographer 80 & 100 WPM Live Dictation
                 </h3>
-                <p style={{ fontSize: '0.88rem', color: '#57534e', margin: '0 0 1.25rem', lineHeight: 1.45 }}>
+                <p style={{ fontSize: '0.88rem', color: '#6E6E73', margin: '0 0 1.25rem', lineHeight: 1.45 }}>
                   Instructor: <strong>Shadab Sir (12 Years Experience)</strong>. Real-time parliamentary speech dictation calibrated at 80 and 100 WPM with official 5-minute reading clock and strict error evaluation.
                 </p>
 
                 {/* YouTube Video Player (Embedded & Interactive) */}
                 <div style={{ 
-                  background: '#0c0a09', 
+                  background: '#1D1D1F', 
                   borderRadius: '12px', 
                   aspectRatio: '16/9', 
                   position: 'relative', 
@@ -903,8 +903,8 @@ export default function LandingPage({
                   justifyContent: 'center', 
                   overflow: 'hidden', 
                   marginBottom: '1.25rem', 
-                  boxShadow: '0 4px 14px rgba(0,0,0,0.15)',
-                  border: '1px solid #292524'
+                  boxShadow: '0 4px 14px rgba(0, 0, 0, 0.1)',
+                  border: '1px solid rgba(0, 0, 0, 0.08)'
                 }}>
                   {isPlayingYouTube ? (
                     <iframe
@@ -932,7 +932,7 @@ export default function LandingPage({
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        background: 'radial-gradient(circle, rgba(220,38,38,0.12) 0%, rgba(12,10,9,0.92) 100%)'
+                        background: 'radial-gradient(circle, rgba(248, 52, 88, 0.22) 0%, rgba(29, 29, 31, 0.95) 100%)'
                       }}
                       title="Click to Play Classroom Demonstration Video"
                     >
@@ -940,18 +940,18 @@ export default function LandingPage({
                         width: '58px', 
                         height: '58px', 
                         borderRadius: '50%', 
-                        background: '#dc2626', 
+                        background: '#F83458', 
                         color: '#FFFFFF', 
                         display: 'flex', 
                         alignItems: 'center', 
                         justifyContent: 'center', 
                         margin: '0 auto 10px', 
-                        boxShadow: '0 4px 14px rgba(220, 38, 38, 0.5)'
+                        boxShadow: '0 4px 14px rgba(248, 52, 88, 0.4)'
                       }}>
                         <Play size={26} fill="#FFFFFF" style={{ marginLeft: '3px' }} />
                       </div>
                       <span style={{ display: 'block', fontSize: '0.96rem', fontWeight: 800 }}>Watch Classroom Dictation Video</span>
-                      <span style={{ fontSize: '0.78rem', color: '#a8a29e', marginTop: '3px' }}>Click to play on-screen demo • Gaya Shorthand Classes</span>
+                      <span style={{ fontSize: '0.78rem', color: 'rgba(255, 255, 255, 0.75)', marginTop: '3px' }}>Click to play on-screen demo • Gaya Shorthand Classes</span>
                     </div>
                   )}
                 </div>
@@ -963,7 +963,7 @@ export default function LandingPage({
                 rel="noopener noreferrer"
                 style={{
                   width: '100%',
-                  background: '#dc2626',
+                  background: '#F83458',
                   color: '#FFFFFF',
                   border: 'none',
                   borderRadius: '8px',
@@ -975,7 +975,8 @@ export default function LandingPage({
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '8px',
-                  boxSizing: 'border-box'
+                  boxSizing: 'border-box',
+                  boxShadow: '0 2px 8px rgba(248, 52, 88, 0.28)'
                 }}
               >
                 <YouTubeIcon size={18} />

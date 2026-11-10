@@ -301,8 +301,8 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     fontWeight: active ? 800 : 600,
                     border: '1.5px solid',
                     borderColor: active ? '#111111' : 'rgba(0, 0, 0, 0.08)',
-                    background: active ? '#111111' : '#F3EEE3',
-                    color: active ? '#F3EEE3' : '#555555',
+                    background: active ? '#1D1D1F' : '#FFFFFF',
+                    color: active ? '#FFFFFF' : '#1D1D1F',
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
                     boxShadow: active 
@@ -313,14 +313,14 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   onMouseEnter={(e) => {
                     if (!active) {
                       e.currentTarget.style.borderColor = 'rgba(17, 17, 17, 0.28)';
-                      e.currentTarget.style.background = '#F3EEE3';
+                      e.currentTarget.style.background = '#FFFFFF';
                       e.currentTarget.style.color = '#111111';
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!active) {
                       e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.08)';
-                      e.currentTarget.style.background = '#F3EEE3';
+                      e.currentTarget.style.background = '#FFFFFF';
                       e.currentTarget.style.color = '#555555';
                     }
                   }}
@@ -666,7 +666,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   <div 
                     key={b.id} 
                     style={{
-                      background: b.isLive ? '#F3EEE3' : '#F3EEE3',
+                      background: '#FFFFFF',
                       border: b.isLive ? '1.5px solid #F83458' : '1px solid rgba(0, 0, 0, 0.08)',
                       borderRadius: '14px',
                       padding: '1.25rem',
@@ -680,8 +680,8 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '0.65rem' }}>
                         <span style={{
-                          background: b.isLive ? '#F83458' : '#F3EEE3',
-                          color: b.isLive ? '#F3EEE3' : '#111111',
+                          background: b.isLive ? '#F83458' : '#F5F5F7',
+                          color: b.isLive ? '#FFFFFF' : '#1D1D1F',
                           fontSize: '0.72rem',
                           fontWeight: 800,
                           padding: '3px 9px',
@@ -711,7 +711,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         fontSize: '0.76rem',
                         fontFamily: 'monospace',
                         color: b.isLive ? '#F83458' : '#555555',
-                        background: b.isLive ? 'rgba(248, 52, 88, 0.08)' : '#F3EEE3',
+                        background: b.isLive ? 'rgba(248, 52, 88, 0.08)' : '#F5F5F7',
                         border: '1px solid ' + (b.isLive ? 'rgba(248, 52, 88, 0.25)' : 'rgba(0, 0, 0, 0.08)'),
                         padding: '4px 8px',
                         borderRadius: '6px',
@@ -741,8 +741,8 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         justifyContent: 'center',
                         gap: '6px',
                         border: b.isLive ? 'none' : '1px solid rgba(0, 0, 0, 0.08)',
-                        background: b.isLive ? '#F83458' : '#F3EEE3',
-                        color: b.isLive ? '#F3EEE3' : '#111111',
+                        background: b.isLive ? '#F83458' : '#F5F5F7',
+                        color: b.isLive ? '#FFFFFF' : '#1D1D1F',
                         boxShadow: b.isLive ? '0 2px 8px rgba(248, 52, 88, 0.28)' : 'none',
                         transition: 'all 0.15s ease'
                       }}
@@ -983,7 +983,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               <div style={{ overflowX: 'auto' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '780px' }}>
                   <thead>
-                    <tr style={{ background: '#FFFFFF', borderBottom: '2px solid rgba(0, 0, 0, 0.08)' }}>
+                    <tr style={{ background: '#F5F5F7', borderBottom: '2px solid rgba(0, 0, 0, 0.08)' }}>
                       <th style={{ padding: '1rem 1.25rem', fontSize: '0.76rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#1D1D1F' }}>Time Slot</th>
                       <th style={{ padding: '1rem 1.25rem', fontSize: '0.76rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#1D1D1F' }}>Batch Category</th>
                       <th style={{ padding: '1rem 1.25rem', fontSize: '0.76rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#1D1D1F' }}>Speed Benchmark</th>
@@ -1043,8 +1043,8 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                       <tr
                         key={idx}
                         style={{ borderBottom: idx === 4 ? 'none' : '1px solid rgba(17, 17, 17, 0.08)', transition: 'background 0.15s ease' }}
-                        onMouseEnter={(e) => e.currentTarget.style.background = '#F3EEE3'}
-                        onMouseLeave={(e) => e.currentTarget.style.background = '#F3EEE3'}
+                        onMouseEnter={(e) => e.currentTarget.style.background = '#FFFFFF'}
+                        onMouseLeave={(e) => e.currentTarget.style.background = '#FFFFFF'}
                       >
                         <td style={{ padding: '1.1rem 1.25rem', fontFamily: 'var(--font-mono, monospace)', fontWeight: 800, color: '#1D1D1F', fontSize: '0.9rem' }}>
                           {row.time}
@@ -1060,7 +1060,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                             fontSize: '0.78rem',
                             fontWeight: 800,
                             fontFamily: 'var(--font-mono, monospace)',
-                            background: row.isHighlight ? 'rgba(248, 52, 88, 0.08)' : '#F3EEE3',
+                            background: row.isHighlight ? 'rgba(248, 52, 88, 0.08)' : '#F5F5F7',
                             color: row.isHighlight ? '#F83458' : '#111111',
                             border: `1px solid ${row.isHighlight ? 'rgba(248, 52, 88, 0.25)' : 'rgba(0, 0, 0, 0.08)'}`
                           }}>
@@ -1583,8 +1583,8 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         cursor: 'pointer',
                         border: '1px solid',
                         borderColor: active ? '#111111' : 'rgba(0, 0, 0, 0.08)',
-                        background: active ? '#111111' : '#F3EEE3',
-                        color: active ? '#F3EEE3' : '#555555',
+                        background: active ? '#1D1D1F' : '#FFFFFF',
+                        color: active ? '#FFFFFF' : '#1D1D1F',
                         transition: 'all 0.15s ease',
                         boxShadow: active ? '0 2px 8px rgba(17, 17, 17, 0.15)' : 'none'
                       }}
@@ -1678,7 +1678,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                             setTimeout(() => setCopiedOutlineId(null), 1500);
                           }}
                           style={{
-                            background: copiedOutlineId === item.id ? 'rgba(248, 52, 88, 0.08)' : '#F3EEE3',
+                            background: copiedOutlineId === item.id ? 'rgba(248, 52, 88, 0.08)' : '#FFFFFF',
                             border: '1px solid',
                             borderColor: copiedOutlineId === item.id ? '#F83458' : 'rgba(0, 0, 0, 0.08)',
                             borderRadius: '6px',

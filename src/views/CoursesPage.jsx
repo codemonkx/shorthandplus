@@ -427,9 +427,9 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                   gap: '0.4rem',
                   padding: '0.5rem 1rem',
                   borderRadius: '9999px',
-                  border: isActive ? '1.5px solid #111111' : '1px solid rgba(0, 0, 0, 0.08)',
-                  background: isActive ? '#111111' : '#F3EEE3',
-                  color: isActive ? '#F3EEE3' : '#111111',
+                  border: isActive ? '1.5px solid #1D1D1F' : '1px solid rgba(0, 0, 0, 0.08)',
+                  background: isActive ? '#1D1D1F' : '#FFFFFF',
+                  color: isActive ? '#FFFFFF' : '#1D1D1F',
                   fontSize: '0.84rem',
                   fontWeight: 700,
                   cursor: 'pointer',
@@ -444,8 +444,8 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     fontWeight: 800,
                     padding: '0.1rem 0.45rem',
                     borderRadius: '9999px',
-                    background: isActive ? 'rgba(243, 238, 227, 0.2)' : '#F3EEE3',
-                    color: isActive ? '#F3EEE3' : '#555555'
+                    background: isActive ? '#F83458' : '#F5F5F7',
+                    color: isActive ? '#FFFFFF' : '#555555'
                   }}>
                     {tab.count}
                   </span>
@@ -910,8 +910,8 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                   padding: '0.4rem 0.9rem',
                   borderRadius: '7px',
                   border: 'none',
-                  background: passFilter === 'all' ? '#111111' : 'transparent',
-                  color: passFilter === 'all' ? '#F3EEE3' : '#555555',
+                  background: passFilter === 'all' ? '#1D1D1F' : 'transparent',
+                  color: passFilter === 'all' ? '#FFFFFF' : '#555555',
                   fontSize: '0.82rem',
                   fontWeight: 700,
                   cursor: 'pointer'
@@ -926,8 +926,8 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                   padding: '0.4rem 0.9rem',
                   borderRadius: '7px',
                   border: 'none',
-                  background: passFilter === 'passes' ? '#111111' : 'transparent',
-                  color: passFilter === 'passes' ? '#F3EEE3' : '#555555',
+                  background: passFilter === 'passes' ? '#1D1D1F' : 'transparent',
+                  color: passFilter === 'passes' ? '#FFFFFF' : '#555555',
                   fontSize: '0.82rem',
                   fontWeight: 700,
                   cursor: 'pointer'
@@ -942,8 +942,8 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                   padding: '0.4rem 0.9rem',
                   borderRadius: '7px',
                   border: 'none',
-                  background: passFilter === 'special' ? '#111111' : 'transparent',
-                  color: passFilter === 'special' ? '#F3EEE3' : '#555555',
+                  background: passFilter === 'special' ? '#1D1D1F' : 'transparent',
+                  color: passFilter === 'special' ? '#FFFFFF' : '#555555',
                   fontSize: '0.82rem',
                   fontWeight: 700,
                   cursor: 'pointer'

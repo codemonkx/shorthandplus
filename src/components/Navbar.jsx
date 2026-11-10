@@ -354,7 +354,7 @@ export default function Navbar({
             )}
 
             {!user && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px', paddingTop: '12px', borderTop: '1px solid #e7e5e4' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px', paddingTop: '12px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);

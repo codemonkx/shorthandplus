@@ -369,9 +369,9 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
                 style={{
                   padding: '0.45rem 0.85rem',
                   borderRadius: 8,
-                  border: '1px solid #1c1917',
-                  background: showDigitalCanvas ? '#1c1917' : '#F3EEE3',
-                  color: showDigitalCanvas ? '#fafaf9' : '#1c1917',
+                  border: '1px solid rgba(0, 0, 0, 0.12)',
+                  background: showDigitalCanvas ? '#1D1D1F' : '#FFFFFF',
+                  color: showDigitalCanvas ? '#FFFFFF' : '#1D1D1F',
                   fontSize: '0.8rem',
                   fontWeight: 600,
                   cursor: 'pointer',

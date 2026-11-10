@@ -124,7 +124,7 @@ export default function CheckoutModal({ isOpen, onClose, selectedPlanId, onActiv
               contact: userInfo?.mobile || user?.mobile || '919204123453'
             },
             theme: {
-              color: '#1c1917'
+              color: '#1D1D1F'
             },
             handler: async function (response) {
               try {

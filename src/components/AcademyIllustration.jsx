@@ -26,32 +26,32 @@ export default function AcademyIllustration() {
           <defs>
             {/* Gradients */}
             <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#F3EEE3" />
-              <stop offset="100%" stopColor="#F3EEE3" />
+              <stop offset="0%" stopColor="#F5F5F7" />
+              <stop offset="100%" stopColor="#F5F5F7" />
             </linearGradient>
             <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#1c1917" />
-              <stop offset="100%" stopColor="#292524" />
+              <stop offset="0%" stopColor="#1D1D1F" />
+              <stop offset="100%" stopColor="#1D1D1F" />
             </linearGradient>
             <linearGradient id="deskGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#F3EEE3" />
-              <stop offset="100%" stopColor="#e7e5e4" />
+              <stop offset="0%" stopColor="#F5F5F7" />
+              <stop offset="100%" stopColor="rgba(0, 0, 0, 0.08)" />
             </linearGradient>
             <linearGradient id="highlightGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#1c1917" />
+              <stop offset="0%" stopColor="#1D1D1F" />
               <stop offset="100%" stopColor="#d97706" />
             </linearGradient>
             <linearGradient id="paperGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#F3EEE3" />
+              <stop offset="0%" stopColor="#F5F5F7" />
               <stop offset="100%" stopColor="#fdfbf7" />
             </linearGradient>
 
             {/* Soft Drop Shadow */}
             <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
-              <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#1c1917" floodOpacity="0.08" />
+              <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#1D1D1F" floodOpacity="0.08" />
             </filter>
             <filter id="deskShadow" x="-5%" y="-5%" width="110%" height="110%">
-              <feDropShadow dx="0" dy="4" stdDeviation="5" floodColor="#1c1917" floodOpacity="0.06" />
+              <feDropShadow dx="0" dy="4" stdDeviation="5" floodColor="#1D1D1F" floodOpacity="0.06" />
             </filter>
           </defs>
 
@@ -59,7 +59,7 @@ export default function AcademyIllustration() {
           <rect width="540" height="340" rx="16" fill="url(#bgGrad)" />
 
           {/* Decorative Grid Lines */}
-          <g stroke="#e7e5e4" strokeWidth="1" strokeDasharray="3 3" opacity="0.6">
+          <g stroke="rgba(0, 0, 0, 0.08)" strokeWidth="1" strokeDasharray="3 3" opacity="0.6">
             <line x1="40" y1="0" x2="40" y2="340" />
             <line x1="120" y1="0" x2="120" y2="340" />
             <line x1="200" y1="0" x2="200" y2="340" />
@@ -113,17 +113,17 @@ export default function AcademyIllustration() {
           {/* 4. Centerpiece: High-Performance Exam Monitor */}
           <g filter="url(#cardShadow)">
             {/* Monitor Stand */}
-            <rect x="260" y="190" width="20" height="34" rx="2" fill="#78716c" />
+            <rect x="260" y="190" width="20" height="34" rx="2" fill="#6E6E73" />
             <ellipse cx="270" cy="225" rx="36" ry="6" fill="#57534e" />
 
             {/* Monitor Outer Frame */}
-            <rect x="175" y="70" width="190" height="125" rx="8" fill="#292524" stroke="#44403c" strokeWidth="2" />
+            <rect x="175" y="70" width="190" height="125" rx="8" fill="#1D1D1F" stroke="#2D2D30" strokeWidth="2" />
             
             {/* Monitor Display Screen */}
             <rect x="182" y="77" width="176" height="111" rx="4" fill="url(#screenGrad)" />
 
             {/* Screen Header Bar: Examination Status */}
-            <rect x="182" y="77" width="176" height="16" fill="#1c1917" />
+            <rect x="182" y="77" width="176" height="16" fill="#1D1D1F" />
             <circle cx="191" cy="85" r="2.5" fill="#ef4444" />
             <circle cx="198" cy="85" r="2.5" fill="#f59e0b" />
             <circle cx="205" cy="85" r="2.5" fill="#047857" />
@@ -132,7 +132,7 @@ export default function AcademyIllustration() {
             </text>
 
             {/* Telemetry Pills on Screen */}
-            <rect x="188" y="98" width="50" height="14" rx="3" fill="#292524" />
+            <rect x="188" y="98" width="50" height="14" rx="3" fill="#1D1D1F" />
             <text x="194" y="108" fill="#FFFFFF" fontSize="7.5" fontWeight="bold" fontFamily="monospace">80 WPM</text>
 
             <rect x="244" y="98" width="52" height="14" rx="3" fill="#064e3b" />
@@ -159,7 +159,7 @@ export default function AcademyIllustration() {
             </g>
 
             {/* Bottom Screen Evaluation Indicator */}
-            <rect x="188" y="172" width="164" height="10" rx="3" fill="#1c1917" stroke="#44403c" strokeWidth="1" />
+            <rect x="188" y="172" width="164" height="10" rx="3" fill="#1D1D1F" stroke="#2D2D30" strokeWidth="1" />
             <text x="194" y="180" fill="#047857" fontSize="6.5" fontWeight="bold" fontFamily="sans-serif">
               ✓ Strict Examination Mode Active • Backspace Monitored
             </text>
@@ -175,11 +175,11 @@ export default function AcademyIllustration() {
               strokeWidth="1.5"
             />
             {/* Keycap Rows */}
-            <rect x="190" y="238" width="158" height="3.5" rx="1" fill="#e7e5e4" />
-            <rect x="188" y="244" width="163" height="3.5" rx="1" fill="#e7e5e4" />
-            <rect x="186" y="250" width="167" height="3.5" rx="1" fill="#e7e5e4" />
+            <rect x="190" y="238" width="158" height="3.5" rx="1" fill="rgba(0, 0, 0, 0.08)" />
+            <rect x="188" y="244" width="163" height="3.5" rx="1" fill="rgba(0, 0, 0, 0.08)" />
+            <rect x="186" y="250" width="167" height="3.5" rx="1" fill="rgba(0, 0, 0, 0.08)" />
             {/* Spacebar */}
-            <rect x="230" y="256" width="80" height="4" rx="1.5" fill="#1c1917" />
+            <rect x="230" y="256" width="80" height="4" rx="1.5" fill="#1D1D1F" />
 
             {/* Optical Mouse */}
             <ellipse cx="395" cy="248" rx="11" ry="16" fill="#FFFFFF" stroke="#d6d3d1" strokeWidth="1.5" />
@@ -190,22 +190,22 @@ export default function AcademyIllustration() {
           {/* 6. Left Desk: Official Shorthand Steno Pad & Pencil */}
           <g filter="url(#cardShadow)">
             {/* Shorthand Notepad (Pitman Pad) */}
-            <rect x="80" y="210" width="76" height="58" rx="4" fill="url(#paperGrad)" stroke="#e7e5e4" strokeWidth="1.5" />
+            <rect x="80" y="210" width="76" height="58" rx="4" fill="url(#paperGrad)" stroke="rgba(0, 0, 0, 0.08)" strokeWidth="1.5" />
             
             {/* Top Spiral Wire Binding */}
-            <circle cx="88" cy="210" r="2.5" fill="#78716c" />
-            <circle cx="98" cy="210" r="2.5" fill="#78716c" />
-            <circle cx="108" cy="210" r="2.5" fill="#78716c" />
-            <circle cx="118" cy="210" r="2.5" fill="#78716c" />
-            <circle cx="128" cy="210" r="2.5" fill="#78716c" />
-            <circle cx="138" cy="210" r="2.5" fill="#78716c" />
-            <circle cx="148" cy="210" r="2.5" fill="#78716c" />
+            <circle cx="88" cy="210" r="2.5" fill="#6E6E73" />
+            <circle cx="98" cy="210" r="2.5" fill="#6E6E73" />
+            <circle cx="108" cy="210" r="2.5" fill="#6E6E73" />
+            <circle cx="118" cy="210" r="2.5" fill="#6E6E73" />
+            <circle cx="128" cy="210" r="2.5" fill="#6E6E73" />
+            <circle cx="138" cy="210" r="2.5" fill="#6E6E73" />
+            <circle cx="148" cy="210" r="2.5" fill="#6E6E73" />
 
             {/* Notebook Margin Line */}
             <line x1="86" y1="216" x2="86" y2="264" stroke="#fca5a5" strokeWidth="1" />
 
             {/* Authentic Pitman Shorthand Stroke Curves */}
-            <g stroke="#1c1917" strokeWidth="1.3" strokeLinecap="round" opacity="0.85">
+            <g stroke="#1D1D1F" strokeWidth="1.3" strokeLinecap="round" opacity="0.85">
               {/* Line 1 strokes */}
               <path d="M 94 223 C 98 220 102 225 106 222" />
               <path d="M 110 220 L 115 225" strokeWidth="2" />
@@ -233,7 +233,7 @@ export default function AcademyIllustration() {
             <g transform="rotate(-25 135 245)">
               <rect x="130" y="205" width="6" height="52" rx="1" fill="#f59e0b" />
               <polygon points="130,257 136,257 133,264" fill="#d97706" />
-              <polygon points="131.5,261 134.5,261 133,264" fill="#1c1917" />
+              <polygon points="131.5,261 134.5,261 133,264" fill="#1D1D1F" />
               <rect x="130" y="202" width="6" height="4" rx="1" fill="#d6d3d1" />
               <rect x="130" y="198" width="6" height="4" rx="1" fill="#f43f5e" />
             </g>
@@ -242,7 +242,7 @@ export default function AcademyIllustration() {
           {/* 7. Right Desk: Studio Broadcast Audio Station & Monitoring Headphones */}
           <g filter="url(#cardShadow)">
             {/* Audio Transmitter Console */}
-            <rect x="420" y="210" width="70" height="46" rx="6" fill="#292524" stroke="#44403c" strokeWidth="1.5" />
+            <rect x="420" y="210" width="70" height="46" rx="6" fill="#1D1D1F" stroke="#2D2D30" strokeWidth="1.5" />
             <text x="428" y="222" fill="#a8a29e" fontSize="6" fontWeight="bold" fontFamily="sans-serif">BROADCAST</text>
             
             {/* VU Meter Bars */}
@@ -253,7 +253,7 @@ export default function AcademyIllustration() {
             <rect x="456" y="229" width="5" height="10" rx="1" fill="#ef4444" />
 
             {/* Volume Dial */}
-            <circle cx="474" cy="233" r="8" fill="#44403c" stroke="#78716c" strokeWidth="1" />
+            <circle cx="474" cy="233" r="8" fill="#2D2D30" stroke="#6E6E73" strokeWidth="1" />
             <line x1="474" y1="233" x2="479" y2="229" stroke="#d97706" strokeWidth="2" strokeLinecap="round" />
 
             {/* Over-Ear Monitoring Headphones */}
@@ -265,18 +265,18 @@ export default function AcademyIllustration() {
               strokeLinecap="round"
             />
             {/* Left Earcup */}
-            <rect x="398" y="188" width="8" height="16" rx="4" fill="#1c1917" />
+            <rect x="398" y="188" width="8" height="16" rx="4" fill="#1D1D1F" />
             {/* Right Earcup */}
-            <rect x="434" y="188" width="8" height="16" rx="4" fill="#1c1917" />
+            <rect x="434" y="188" width="8" height="16" rx="4" fill="#1D1D1F" />
           </g>
 
           {/* 8. Verified Exam Seal in Bottom Left Corner */}
           <g transform="translate(42, 298)">
-            <rect width="112" height="26" rx="6" fill="#FFFFFF" stroke="#e7e5e4" strokeWidth="1" filter="url(#cardShadow)" />
+            <rect width="112" height="26" rx="6" fill="#FFFFFF" stroke="rgba(0, 0, 0, 0.08)" strokeWidth="1" filter="url(#cardShadow)" />
             <circle cx="16" cy="13" r="6" fill="#f0fdf4" />
             <path d="M13 13 L15 15 L19 11" stroke="#047857" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <text x="26" y="11" fill="#1c1917" fontSize="7" fontWeight="bold" fontFamily="sans-serif">ESTD. 2012</text>
-            <text x="26" y="19" fill="#78716c" fontSize="6.5" fontFamily="sans-serif">Govt Exam Accredited</text>
+            <text x="26" y="11" fill="#1D1D1F" fontSize="7" fontWeight="bold" fontFamily="sans-serif">ESTD. 2012</text>
+            <text x="26" y="19" fill="#6E6E73" fontSize="6.5" fontFamily="sans-serif">Govt Exam Accredited</text>
           </g>
         </svg>
       </div>

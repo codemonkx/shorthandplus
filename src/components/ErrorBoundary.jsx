@@ -38,7 +38,7 @@ export class ErrorBoundary extends React.Component {
         }}>
           <div style={{
             background: '#FFFFFF',
-            border: '1px solid #e7e5e4',
+            border: '1px solid rgba(0, 0, 0, 0.08)',
             borderRadius: '16px',
             padding: '2.5rem',
             maxWidth: '520px',
@@ -63,7 +63,7 @@ export class ErrorBoundary extends React.Component {
             <h2 style={{
               fontSize: '1.35rem',
               fontWeight: 800,
-              color: '#1c1917',
+              color: '#1D1D1F',
               marginBottom: '0.65rem'
             }}>
               Examination Session Protected
@@ -87,9 +87,9 @@ export class ErrorBoundary extends React.Component {
                   alignItems: 'center',
                   gap: '0.45rem',
                   padding: '0.65rem 1.25rem',
-                  background: '#1c1917',
+                  background: '#1D1D1F',
                   color: '#FFFFFF',
-                  border: '1px solid #1c1917',
+                  border: '1px solid #1D1D1F',
                   borderRadius: '8px',
                   fontWeight: 700,
                   fontSize: '0.85rem',
@@ -109,8 +109,8 @@ export class ErrorBoundary extends React.Component {
                   gap: '0.45rem',
                   padding: '0.65rem 1.25rem',
                   background: '#FFFFFF',
-                  color: '#1c1917',
-                  border: '1px solid #e7e5e4',
+                  color: '#1D1D1F',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
                   borderRadius: '8px',
                   fontWeight: 700,
                   fontSize: '0.85rem',
