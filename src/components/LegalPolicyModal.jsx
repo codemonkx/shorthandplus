@@ -51,7 +51,7 @@ export default function LegalPolicyModal({ isOpen, onClose, initialTab = 'terms'
                   isActive ? 'border-amber-600 text-stone-900' : 'border-transparent text-stone-500 hover:text-stone-800'
                 }`}
                 style={{
-                  borderBottomColor: isActive ? '#F83458' : 'transparent',
+                  borderBottomColor: isActive ? '#2563EB' : 'transparent',
                   color: isActive ? '#1C1917' : '#78716C'
                 }}
               >

@@ -2157,7 +2157,7 @@ export default function AdminPortalView({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem', borderBottom: '1px solid rgba(0,0,0,0.06)', paddingBottom: '1.25rem' }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                  <Megaphone size={20} color="#F83458" />
+                  <Megaphone size={20} color="#2563EB" />
                   <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', margin: 0, letterSpacing: '-0.02em' }}>
                     Recruitment Bulletin & Govt Diploma Issuance
                   </h3>
@@ -2172,7 +2172,7 @@ export default function AdminPortalView({
                   type="button"
                   className="btn btn-primary"
                   onClick={() => setNewAlertModalOpen(true)}
-                  style={{ background: '#F83458', borderColor: '#F83458', color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: '6px', borderRadius: '8px', padding: '0.55rem 1.15rem', fontWeight: 700, fontSize: '0.88rem', boxShadow: '0 2px 8px rgba(248, 52, 88, 0.28)', cursor: 'pointer' }}
+                  style={{ background: '#2563EB', borderColor: '#2563EB', color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: '6px', borderRadius: '8px', padding: '0.55rem 1.15rem', fontWeight: 700, fontSize: '0.88rem', boxShadow: '0 2px 8px rgba(37, 99, 235, 0.28)', cursor: 'pointer' }}
                 >
                   <Plus size={15} />
                   <span>Publish New Exam Alert</span>
@@ -2225,13 +2225,13 @@ export default function AdminPortalView({
               </div>
 
               <div style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.07)', borderRadius: '14px', padding: '1.25rem 1.4rem', boxShadow: '0 2px 8px rgba(0,0,0,0.03)', display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(248, 52, 88, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <ShieldCheck size={24} color="#F83458" />
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(5, 150, 105, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <ShieldCheck size={24} color="#059669" />
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '2px' }}>
                     <h4 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0F172A', margin: 0, fontFamily: 'monospace' }}>415</h4>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#F83458', background: 'rgba(248, 52, 88, 0.1)', padding: '2px 8px', borderRadius: '999px' }}>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#059669', background: 'rgba(5, 150, 105, 0.1)', padding: '2px 8px', borderRadius: '999px' }}>
                       SSC / Court Calibrated
                     </span>
                   </div>
@@ -2333,7 +2333,7 @@ export default function AdminPortalView({
                   >
                     <div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                        <span style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#F83458' }}>
+                        <span style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#2563EB' }}>
                           {alert.dept}
                         </span>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -2372,7 +2372,7 @@ export default function AdminPortalView({
                         </div>
                         <div>
                           <span style={{ display: 'block', fontSize: '0.68rem', color: '#64748B', textTransform: 'uppercase' }}>Speed Req</span>
-                          <strong style={{ fontSize: '0.82rem', color: '#F83458' }}>{alert.speedReq}</strong>
+                          <strong style={{ fontSize: '0.82rem', color: '#2563EB' }}>{alert.speedReq}</strong>
                         </div>
                         <div>
                           <span style={{ display: 'block', fontSize: '0.68rem', color: '#64748B', textTransform: 'uppercase' }}>Deadline</span>
@@ -2495,8 +2495,8 @@ export default function AdminPortalView({
                           <span style={{ 
                             fontSize: '0.76rem', 
                             fontWeight: 700, 
-                            color: dip.grade.includes('A+') ? '#10B981' : '#F83458',
-                            background: dip.grade.includes('A+') ? 'rgba(16, 185, 129, 0.08)' : 'rgba(248, 52, 88, 0.08)',
+                            color: dip.grade.includes('A+') ? '#059669' : '#2563EB',
+                            background: dip.grade.includes('A+') ? 'rgba(5, 150, 105, 0.08)' : 'rgba(37, 99, 235, 0.08)',
                             padding: '3px 8px',
                             borderRadius: '6px'
                           }}>
@@ -2596,13 +2596,13 @@ export default function AdminPortalView({
                   width: '48px',
                   height: '48px',
                   borderRadius: '12px',
-                  background: onlineClasses.some(c => c.isLive) ? 'linear-gradient(135deg, #F83458, #E11D48)' : 'linear-gradient(135deg, #0F172A, #334155)',
+                  background: onlineClasses.some(c => c.isLive) ? 'linear-gradient(135deg, #E11D48, #BE123C)' : 'linear-gradient(135deg, #0F172A, #334155)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   position: 'relative',
                   flexShrink: 0,
-                  boxShadow: onlineClasses.some(c => c.isLive) ? '0 4px 14px rgba(248, 52, 88, 0.25)' : '0 4px 14px rgba(15, 23, 42, 0.15)'
+                  boxShadow: onlineClasses.some(c => c.isLive) ? '0 4px 14px rgba(225, 29, 72, 0.25)' : '0 4px 14px rgba(15, 23, 42, 0.15)'
                 }}>
                   <Radio size={22} color="#FFFFFF" />
                   {onlineClasses.some(c => c.isLive) && (
@@ -2705,8 +2705,8 @@ export default function AdminPortalView({
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
                     background: '#FFFFFF',
-                    border: '1px solid rgba(248, 52, 88, 0.3)',
-                    color: '#F83458'
+                    border: '1px solid rgba(225, 29, 72, 0.3)',
+                    color: '#E11D48'
                   }}
                   onClick={handleQuickStartLive}
                   title="Instantly launch an impromptu live broadcast on Zoom"
@@ -2853,7 +2853,7 @@ export default function AdminPortalView({
               {/* Card 1: Live Broadcasts */}
               <div style={{
                 background: '#FFFFFF',
-                border: onlineClasses.some(c => c.isLive) ? '1px solid rgba(248, 52, 88, 0.3)' : '1px solid rgba(0,0,0,0.07)',
+                border: onlineClasses.some(c => c.isLive) ? '1px solid rgba(225, 29, 72, 0.3)' : '1px solid rgba(0,0,0,0.07)',
                 borderRadius: '14px',
                 padding: '1.15rem 1.25rem',
                 display: 'flex',
@@ -2868,9 +2868,9 @@ export default function AdminPortalView({
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  background: 'rgba(248, 52, 88, 0.08)',
-                  color: '#F83458',
-                  border: '1px solid rgba(248, 52, 88, 0.15)',
+                  background: 'rgba(225, 29, 72, 0.08)',
+                  color: '#E11D48',
+                  border: '1px solid rgba(225, 29, 72, 0.15)',
                   flexShrink: 0
                 }}>
                   <Radio size={18} />
@@ -3229,13 +3229,13 @@ export default function AdminPortalView({
                 {filteredOnlineClasses.map((item) => (
                   <div key={item.id} style={{
                     background: '#FFFFFF',
-                    border: item.isLive ? '1.5px solid rgba(248, 52, 88, 0.4)' : '1px solid rgba(0,0,0,0.08)',
+                    border: item.isLive ? '1.5px solid rgba(225, 29, 72, 0.4)' : '1px solid rgba(0,0,0,0.08)',
                     borderRadius: '16px',
                     padding: '1.35rem',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    boxShadow: item.isLive ? '0 4px 20px rgba(248, 52, 88, 0.08)' : '0 2px 6px rgba(0,0,0,0.02)',
+                    boxShadow: item.isLive ? '0 4px 20px rgba(225, 29, 72, 0.08)' : '0 2px 6px rgba(0,0,0,0.02)',
                     transition: 'all 0.15s ease'
                   }}>
                     {/* Top Status & Tools Bar */}
@@ -3249,15 +3249,15 @@ export default function AdminPortalView({
                               gap: '6px',
                               padding: '3px 10px',
                               borderRadius: '999px',
-                              background: 'rgba(248, 52, 88, 0.08)',
-                              border: '1px solid rgba(248, 52, 88, 0.25)',
-                              color: '#F83458',
+                              background: 'rgba(225, 29, 72, 0.08)',
+                              border: '1px solid rgba(225, 29, 72, 0.25)',
+                              color: '#E11D48',
                               fontSize: '0.7rem',
                               fontWeight: 800,
                               textTransform: 'uppercase',
                               letterSpacing: '0.04em'
                             }}>
-                              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#F83458' }} />
+                              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#E11D48' }} />
                               <span>LIVE NOW ON ZOOM</span>
                             </span>
                           ) : item.badgeClass === 'badge-replay' ? (
@@ -3364,7 +3364,7 @@ export default function AdminPortalView({
                         <span style={{ background: '#F1F5F9', color: '#334155', padding: '3px 8px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 700 }}>
                           {item.shift}
                         </span>
-                        <span style={{ background: 'rgba(248, 52, 88, 0.08)', color: '#F83458', padding: '3px 8px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 800 }}>
+                        <span style={{ background: 'rgba(37, 99, 235, 0.08)', color: '#2563EB', padding: '3px 8px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 800 }}>
                           {item.speed}
                         </span>
                         <span style={{ background: '#F8FAFC', border: '1px solid rgba(0,0,0,0.06)', color: '#64748B', padding: '3px 8px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 600 }}>
@@ -3524,8 +3524,8 @@ export default function AdminPortalView({
                           cursor: 'pointer',
                           transition: 'all 0.15s ease',
                           background: item.isLive ? '#FEF2F2' : '#FFFFFF',
-                          border: item.isLive ? '1px solid rgba(220, 38, 38, 0.3)' : '1px solid rgba(248, 52, 88, 0.3)',
-                          color: item.isLive ? '#DC2626' : '#F83458'
+                          border: item.isLive ? '1px solid rgba(220, 38, 38, 0.3)' : '1px solid rgba(37, 99, 235, 0.3)',
+                          color: item.isLive ? '#DC2626' : '#2563EB'
                         }}
                         onClick={() => {
                           if (onToggleLiveOnlineClass) onToggleLiveOnlineClass(item.id);
@@ -5033,7 +5033,7 @@ export default function AdminPortalView({
                           fontSize: '0.76rem',
                           fontWeight: '700',
                           cursor: 'pointer',
-                          background: newClassIsLive ? '#F83458' : '#F5F5F7',
+                          background: newClassIsLive ? '#DC2626' : '#F8FAFC',
                           color: newClassIsLive ? '#FFFFFF' : '#64748B',
                           borderColor: newClassIsLive ? '#dc2626' : '#d6d3d1'
                         }}
@@ -5558,7 +5558,7 @@ export default function AdminPortalView({
           <div className="admin-modal-card" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '540px' }}>
             <div className="admin-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Megaphone size={18} color="#F83458" />
+                <Megaphone size={18} color="#2563EB" />
                 <h3 className="modal-title">Publish New Recruitment Exam Alert</h3>
               </div>
               <button className="modal-close-btn" onClick={() => setNewAlertModalOpen(false)}>×</button>
@@ -5662,7 +5662,7 @@ export default function AdminPortalView({
                 <button type="button" className="btn btn-secondary" onClick={() => setNewAlertModalOpen(false)}>
                   Cancel
                 </button>
-                <button type="submit" className="btn btn-primary" style={{ background: '#F83458', borderColor: '#F83458', color: '#FFFFFF' }}>
+                <button type="submit" className="btn btn-primary" style={{ background: '#2563EB', borderColor: '#2563EB', color: '#FFFFFF' }}>
                   Publish Live Alert
                 </button>
               </div>
@@ -5956,7 +5956,7 @@ export default function AdminPortalView({
                   >
                     Cancel
                   </button>
-                  <button type="submit" className="btn btn-primary" style={{ background: '#F83458', borderColor: '#F83458', color: '#FFFFFF' }}>
+                  <button type="submit" className="btn btn-primary" style={{ background: '#2563EB', borderColor: '#2563EB', color: '#FFFFFF' }}>
                     <Save size={16} />
                     <span>Save Changes</span>
                   </button>

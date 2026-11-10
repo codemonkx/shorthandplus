@@ -369,7 +369,7 @@ export default function AudioDictationAssessment({
           </div>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#F83458' }}>
+              <span style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#2563EB' }}>
                 {test?.category || 'Official Dictation'}
               </span>
               <span style={{ color: '#CBD5E1' }}>•</span>
@@ -393,7 +393,7 @@ export default function AudioDictationAssessment({
             borderRadius: '999px',
             fontSize: '0.75rem',
             fontWeight: 800,
-            background: stage === 'listening' ? '#F83458' : stage === 'instructions' ? '#F1F5F9' : '#10B981',
+            background: stage === 'listening' ? '#2563EB' : stage === 'instructions' ? '#F1F5F9' : '#059669',
             color: stage === 'listening' || stage === 'results' || stage === 'typing' ? '#FFFFFF' : '#64748B'
           }}>
             <span>Stage 1: Listening</span>
@@ -460,13 +460,13 @@ export default function AudioDictationAssessment({
               width: '56px',
               height: '56px',
               borderRadius: '16px',
-              background: 'linear-gradient(135deg, #F83458, #E11D48)',
+              background: 'linear-gradient(135deg, #2563EB, #1D4ED8)',
               color: '#FFFFFF',
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
               marginBottom: '1rem',
-              boxShadow: '0 8px 20px rgba(248, 52, 88, 0.25)'
+              boxShadow: '0 8px 20px rgba(37, 99, 235, 0.25)'
             }}>
               <Headphones size={28} />
             </div>
@@ -491,7 +491,7 @@ export default function AudioDictationAssessment({
           }}>
             <div>
               <span style={{ display: 'block', fontSize: '0.7rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase' }}>Target Speed</span>
-              <strong style={{ fontSize: '1.15rem', color: '#F83458', fontWeight: 800 }}>{test?.speed || '80 WPM'}</strong>
+              <strong style={{ fontSize: '1.15rem', color: '#2563EB', fontWeight: 800 }}>{test?.speed || '80 WPM'}</strong>
             </div>
             <div>
               <span style={{ display: 'block', fontSize: '0.7rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase' }}>Total Words</span>
@@ -515,7 +515,7 @@ export default function AudioDictationAssessment({
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'rgba(248, 52, 88, 0.1)', color: '#F83458', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800, flexShrink: 0 }}>
+                <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#EFF6FF', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800, flexShrink: 0 }}>
                   1
                 </span>
                 <div>
@@ -527,7 +527,7 @@ export default function AudioDictationAssessment({
               </div>
 
               <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'rgba(248, 52, 88, 0.1)', color: '#F83458', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800, flexShrink: 0 }}>
+                <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#EFF6FF', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800, flexShrink: 0 }}>
                   2
                 </span>
                 <div>
@@ -539,7 +539,7 @@ export default function AudioDictationAssessment({
               </div>
 
               <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'rgba(248, 52, 88, 0.1)', color: '#F83458', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800, flexShrink: 0 }}>
+                <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#EFF6FF', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800, flexShrink: 0 }}>
                   3
                 </span>
                 <div>
@@ -551,7 +551,7 @@ export default function AudioDictationAssessment({
               </div>
 
               <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'rgba(248, 52, 88, 0.1)', color: '#F83458', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800, flexShrink: 0 }}>
+                <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#EFF6FF', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800, flexShrink: 0 }}>
                   4
                 </span>
                 <div>
@@ -677,7 +677,7 @@ export default function AudioDictationAssessment({
                     width: '6px',
                     height: `${waveHeight}%`,
                     borderRadius: '3px',
-                    background: isPast ? '#F83458' : '#E2E8F0',
+                    background: isPast ? '#2563EB' : '#E2E8F0',
                     transition: 'height 0.1s ease, background 0.2s ease'
                   }}
                 />
@@ -698,7 +698,7 @@ export default function AudioDictationAssessment({
               <div style={{
                 height: '100%',
                 width: `${Math.min(100, (audioCurrentTime / (audioDuration || 1)) * 100)}%`,
-                background: '#F83458',
+                background: '#2563EB',
                 borderRadius: '999px',
                 transition: 'width 0.2s linear'
               }} />
@@ -1013,7 +1013,7 @@ export default function AudioDictationAssessment({
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem', paddingBottom: '1.25rem', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
               <div>
-                <span style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#F83458' }}>
+                <span style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#2563EB' }}>
                   Official Evaluation Report
                 </span>
                 <h1 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0F172A', margin: '4px 0 0' }}>

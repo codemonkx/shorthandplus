@@ -212,7 +212,7 @@ export default function TopBar({
                     className="popover-menu-link" 
                     onClick={() => { setDropdownOpen(false); onOpenCheckout(); }}
                   >
-                    <div className="popover-icon-box" style={{ background: '#FFFFFF', color: '#F83458' }}>
+                    <div className="popover-icon-box" style={{ background: '#FFFFFF', color: '#2563EB' }}>
                       <CreditCard size={14} />
                     </div>
                     <div className="popover-link-text">
@@ -230,7 +230,7 @@ export default function TopBar({
                         className="popover-menu-link" 
                         onClick={() => { setDropdownOpen(false); setCurrentTab('admin'); }}
                       >
-                        <div className="popover-icon-box" style={{ background: '#FFFFFF', color: '#F83458' }}>
+                        <div className="popover-icon-box" style={{ background: '#FFFFFF', color: '#2563EB' }}>
                           <ShieldCheck size={14} />
                         </div>
                         <div className="popover-link-text">

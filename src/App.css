@@ -3,71 +3,92 @@
    60-30-10 RULE COLOR SYSTEM:
    - 60% Dominant Canvas: Platinum (#F5F5F7)
    - 30% Structural & Ink Typography: Ink Black (#0F172A)
-   - 10% High-Impact Accent / Focal Point: Burnt Orange (#F83458)
+   - Primary Accent: Royal Sapphire (#2563EB)
    ========================================================================== */
 
 :root {
-  /* 60% DOMINANT CANVAS & SURFACES */
-  --cream: #F5F5F7;
-  --canvas: #F5F5F7;
-  --cream-surface: #FFFFFF;
+  /* MNC TIER-1 LIGHT DESIGN SYSTEM TOKENS */
+  --canvas: #F8FAFC;
   --surface: #FFFFFF;
-  --cream-card: #FFFFFF;
-  --cream-border: rgba(0, 0, 0, 0.08);
-  --cream-subtle: #F5F5F7;
-
-  /* 30% STRUCTURE & INK TYPOGRAPHY */
+  --surface-muted: #F1F5F9;
+  --surface-elevated: #FFFFFF;
+  
+  /* Text & Ink Tokens */
   --ink: #0F172A;
-  --ink-light: #262626;
-  --ink-muted: #555555;
-  --ink-subtle: #777777;
-  --ink-border: rgba(0, 0, 0, 0.08);
+  --ink-secondary: #334155;
+  --ink-muted: #64748B;
+  --ink-subtle: #94A3B8;
 
-  /* 10% HIGH-IMPACT BURNT ORANGE ACCENT */
-  --burnt-orange: #F83458;
-  --burnt-orange-hover: #E02447;
-  --burnt-orange-light: rgba(248, 52, 88, 0.08);
-  --burnt-orange-border: rgba(248, 52, 88, 0.3);
+  /* Brand Accents - Rich Harmonious Palette (Not flat monochrome) */
+  --sapphire: #2563EB;
+  --sapphire-hover: #1D4ED8;
+  --sapphire-subtle: #EFF6FF;
+  --sapphire-border: #BFDBFE;
 
-  /* SYSTEM DESIGN TOKEN MAPPINGS */
-  --primary: #0F172A;
-  --primary-hover: #262626;
-  --primary-light: #FFFFFF;
-  --primary-border: rgba(0, 0, 0, 0.08);
-  
-  --navy-900: #0F172A;
-  --navy-800: #0F172A;
-  --slate-700: #262626;
-  --slate-600: #444444;
-  --slate-500: #666666;
-  --slate-400: #888888;
-  --slate-200: rgba(0, 0, 0, 0.08);
-  --slate-100: #F5F5F7;
-  --slate-50: #F5F5F7;
-  --white: #FFFFFF;
-  
-  /* Primary Action Tokens mapped to Burnt Orange */
-  --emerald-600: #F83458;
-  --emerald-50: rgba(248, 52, 88, 0.08);
-  --amber-600: #F83458;
-  --amber-50: rgba(248, 52, 88, 0.08);
-  --rose-600: #F83458;
-  --rose-50: rgba(248, 52, 88, 0.08);
-  
-  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
-  
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(17, 17, 17, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 15px -3px rgba(17, 17, 17, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
-  --shadow-xl: 0 20px 25px -5px rgba(17, 17, 17, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-  
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
+  --crimson: #E11D48;
+  --crimson-hover: #BE123C;
+  --crimson-subtle: #FFF1F2;
+  --crimson-border: #FECDD3;
+
+  --emerald: #059669;
+  --emerald-subtle: #ECFDF5;
+  --emerald-border: #A7F3D0;
+
+  --amber: #D97706;
+  --amber-subtle: #FFFBEB;
+  --amber-border: #FDE68A;
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border-card: #E2E8F0;
+  --border-focus: #2563EB;
+
+  /* Typography */
+  --font-display: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+
+  /* Multi-layered MNC Soft Diffused Elevation */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px -4px rgba(15, 23, 42, 0.05);
+  --shadow-card-hover: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 16px 32px -6px rgba(15, 23, 42, 0.08);
+  --shadow-elevated: 0 20px 40px -12px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.06);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   --radius-full: 9999px;
+
+  /* Legacy Compat Tokens mapped to clean MNC colors */
+  --primary: #0F172A;
+  --primary-hover: #1E293B;
+  --primary-light: #FFFFFF;
+  --primary-border: #E2E8F0;
+  
+  --burnt-orange: #E11D48;
+  --burnt-orange-hover: #BE123C;
+  --burnt-orange-light: #FFF1F2;
+  --burnt-orange-border: #FECDD3;
+
+  --navy-900: #0F172A;
+  --navy-800: #1E293B;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748B;
+  --slate-400: #94A3B8;
+  --slate-200: #E2E8F0;
+  --slate-100: #F1F5F9;
+  --slate-50: #F8FAFC;
+  --white: #FFFFFF;
+
+  --emerald-600: #059669;
+  --emerald-50: #ECFDF5;
+  --amber-600: #D97706;
+  --amber-50: #FFFBEB;
+  --rose-600: #E11D48;
+  --rose-50: #FFF1F2;
 }
 
 * {
@@ -3404,7 +3425,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background: var(--burnt-orange, #F83458);
+  background: #059669;
   border: 1.5px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -3450,9 +3471,9 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   font-size: 0.7rem;
   font-weight: 700;
-  color: var(--burnt-orange, #F83458);
+  color: var(--sapphire, #2563EB);
   background: var(--bg-surface, #FFFFFF);
-  border: 1px solid var(--border-light, #E6DEC8);
+  border: 1px solid rgba(37, 99, 235, 0.22);
   padding: 0.2rem 0.55rem;
   border-radius: 6px;
 }
@@ -3559,9 +3580,9 @@ h1, h2, h3, h4, h5, h6 {
 .popover-active-badge {
   font-size: 0.65rem;
   font-weight: 700;
-  background: var(--bg-app, #F5F5F7);
-  color: var(--burnt-orange, #F83458);
-  border: 1px solid var(--burnt-orange, #F83458);
+  background: rgba(5, 150, 105, 0.08);
+  color: #059669;
+  border: 1px solid rgba(5, 150, 105, 0.22);
   padding: 0.15rem 0.45rem;
   border-radius: 9999px;
 }
@@ -3587,7 +3608,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .popover-signout-btn:hover .popover-link-title {
-  color: var(--burnt-orange, #F83458);
+  color: var(--crimson, #E11D48);
 }
 
 /* ==========================================================================
@@ -5235,7 +5256,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .zoom-dock-btn.is-hand-raised {
-  background: rgba(248, 52, 88, 0.25);
+  background: rgba(217, 119, 6, 0.25);
   color: #fde68a;
   border: 1px solid #d97706;
 }
@@ -18302,12 +18323,12 @@ h1, h2, h3, h4, h5, h6 {
 .brand-cap-squircle {
   width: 38px !important;
   height: 38px !important;
-  background: #F83458 !important;
+  background: #2563EB !important;
   border-radius: 10px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  box-shadow: 0 4px 10px -2px rgba(248, 52, 88, 0.35) !important;
+  box-shadow: 0 4px 10px -2px rgba(37, 99, 235, 0.35) !important;
   flex-shrink: 0 !important;
 }
 
@@ -25952,7 +25973,7 @@ select option:checked {
   border: 1px solid #fde68a;
   border-radius: 12px;
   padding: 1rem 1.25rem;
-  box-shadow: 0 4px 12px rgba(248, 52, 88, 0.08);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.08);
 }
 
 .notice-box-header {
@@ -25991,7 +26012,7 @@ select option:checked {
 
 .notice-box-body .field-input:focus {
   border-color: #d97706;
-  box-shadow: 0 0 0 3px rgba(248, 52, 88, 0.15);
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
 }
 
 .notice-actions-row {
@@ -26190,7 +26211,7 @@ select option:checked {
 }
 
 .badge-sub-rose { color: #e11d48; }
-.badge-sub-blue { color: #F83458; }
+.badge-sub-blue { color: #2563EB; }
 .badge-sub-emerald { color: #059669; }
 .badge-sub-indigo { color: #4f46e5; }
 

@@ -1,10 +1,10 @@
 /* ==========================================================================
-   ShorthandPlus Enterprise Design System
-   Apple News+ Aesthetic:
-   - 60% Canvas: #F5F5F7 (Platinum Neutral Canvas)
-   - 30% Card Surfaces & Shell: #FFFFFF (Crisp White)
-   - 10% High-Impact Accent: #F83458 (Hot Fuchsia)
-   - Typography & Structure: #0F172A (Dark Slate)
+   ShorthandPlus Enterprise Design System (MNC Standard)
+   - Dominant Canvas: #F8FAFC (Porcelain Light Canvas)
+   - Card Surfaces & Shell: #FFFFFF (Crisp White)
+   - Primary Brand Accent: #2563EB (Royal Sapphire)
+   - Secondary Accents: #059669 (Emerald), #D97706 (Amber), #E11D48 (Crimson)
+   - Typography & Structure: #0F172A (Deep Slate Ink)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
@@ -52,20 +52,20 @@
   --indigo-600: #0F172A;
   --indigo-50:  #F5F5F7;
 
-  --emerald-600: #F83458;
-  --emerald-500: #F83458;
-  --emerald-100: rgba(248, 52, 88, 0.12);
-  --emerald-50:  rgba(248, 52, 88, 0.08);
+  --emerald-600: #059669;
+  --emerald-500: #10B981;
+  --emerald-100: rgba(5, 150, 105, 0.12);
+  --emerald-50:  rgba(5, 150, 105, 0.08);
 
-  --rose-600: #F83458;
-  --rose-500: #F83458;
-  --rose-100: rgba(248, 52, 88, 0.12);
-  --rose-50:  rgba(248, 52, 88, 0.08);
+  --rose-600: #E11D48;
+  --rose-500: #F43F5E;
+  --rose-100: rgba(225, 29, 72, 0.12);
+  --rose-50:  rgba(225, 29, 72, 0.08);
 
-  --amber-600: #F83458;
-  --amber-500: #F83458;
-  --amber-100: rgba(248, 52, 88, 0.12);
-  --amber-50:  rgba(248, 52, 88, 0.08);
+  --amber-600: #D97706;
+  --amber-500: #F59E0B;
+  --amber-100: rgba(217, 119, 6, 0.12);
+  --amber-50:  rgba(217, 119, 6, 0.08);
 
   --border-light: rgba(0, 0, 0, 0.08);
   --border-medium: rgba(0, 0, 0, 0.14);
@@ -226,11 +226,11 @@ input, textarea, select { font-family: inherit; color: inherit; }
 }
 
 .btn-emerald {
-  background: #F83458 !important;
+  background: #059669 !important;
   color: #FFFFFF !important;
 }
 .btn-emerald:hover {
-  background: #E02447 !important;
+  background: #047857 !important;
   transform: translateY(-1px);
 }
 
@@ -248,21 +248,21 @@ input, textarea, select { font-family: inherit; color: inherit; }
   border-radius: var(--radius-full);
 }
 
-.badge-blue { background: #FFFFFF !important; color: #0F172A !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
-.badge-emerald { background: rgba(248, 52, 88, 0.08) !important; color: #F83458 !important; border: 1px solid rgba(248, 52, 88, 0.22) !important; }
-.badge-amber { background: #FFFFFF !important; color: #0F172A !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
-.badge-rose { background: rgba(248, 52, 88, 0.08) !important; color: #F83458 !important; border: 1px solid rgba(248, 52, 88, 0.22) !important; }
-.badge-navy { background: #FFFFFF !important; color: #0F172A !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; }
+.badge-blue { background: rgba(37, 99, 235, 0.08) !important; color: #2563EB !important; border: 1px solid rgba(37, 99, 235, 0.22) !important; }
+.badge-emerald { background: rgba(5, 150, 105, 0.08) !important; color: #059669 !important; border: 1px solid rgba(5, 150, 105, 0.22) !important; }
+.badge-amber { background: rgba(217, 119, 6, 0.08) !important; color: #D97706 !important; border: 1px solid rgba(217, 119, 6, 0.22) !important; }
+.badge-rose { background: rgba(225, 29, 72, 0.08) !important; color: #E11D48 !important; border: 1px solid rgba(225, 29, 72, 0.22) !important; }
+.badge-navy { background: #0F172A !important; color: #FFFFFF !important; border: 1px solid #0F172A !important; }
 
 .font-mono { font-family: var(--font-mono) !important; }
 .font-kruti { font-family: 'Kruti Dev', sans-serif !important; font-size: 1.25rem !important; }
 .font-devanagari { font-family: var(--font-devanagari) !important; }
 
-/* Strict 3-Color System Utilities */
+/* Strict MNC System Utilities */
 .text-cream { color: #FFFFFF !important; }
 .bg-cream { background-color: #FFFFFF !important; }
-.bg-cream-canvas { background-color: #F5F5F7 !important; }
+.bg-cream-canvas { background-color: #F8FAFC !important; }
 .text-ink { color: #0F172A !important; }
 .bg-ink { background-color: #0F172A !important; }
-.text-orange { color: #F83458 !important; }
-.bg-orange { background-color: #F83458 !important; }
+.text-orange { color: #2563EB !important; }
+.bg-orange { background-color: #2563EB !important; }

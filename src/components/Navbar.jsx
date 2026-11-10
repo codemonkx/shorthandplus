@@ -193,16 +193,16 @@ export default function Navbar({
                   gap: '0.4rem',
                   padding: '0.45rem 1rem',
                   borderRadius: '9999px',
-                  background: 'rgba(248, 52, 88, 0.08)',
-                  color: '#F83458',
-                  border: '1px solid rgba(248, 52, 88, 0.25)',
+                  background: '#EFF6FF',
+                  color: '#2563EB',
+                  border: '1px solid #BFDBFE',
                   fontSize: '0.84rem',
                   fontWeight: 700,
                   cursor: 'pointer',
                   transition: 'all 0.15s ease'
                 }}
               >
-                <Sparkles size={14} color="#F83458" />
+                <Sparkles size={14} color="#2563EB" />
                 <span>Free Demo</span>
               </button>
 

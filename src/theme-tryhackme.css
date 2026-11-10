@@ -1,30 +1,30 @@
 /* ==========================================================================
-   60-30-10 RULE COLOR SYSTEM
-   - 60% Dominant Canvas: Apple Platinum (#F5F5F7)
-   - 30% Structural & Ink Typography: Ink Black (#0F172A)
-   - 10% High-Impact Accent / Focal Point: Burnt Orange (#F83458)
+   MNC TIER-1 DESIGN SYSTEM
+   - 60% Dominant Canvas: Light Porcelain (#F8FAFC)
+   - 30% Structural & Ink Typography: Ink Navy (#0F172A)
+   - 10% Primary Brand Accent: Royal Sapphire (#2563EB)
    ========================================================================== */
 
 :root {
   /* 60% Dominant Canvas */
-  --cream: #F5F5F7 !important;
+  --cream: #F8FAFC !important;
   --cream-surface: #FFFFFF !important;
   --cream-card: #FFFFFF !important;
   --cream-border: rgba(0, 0, 0, 0.08) !important;
-  --cream-subtle: #F5F5F7 !important;
+  --cream-subtle: #F8FAFC !important;
 
   /* 30% Structural & Ink Typography */
   --ink: #0F172A !important;
-  --ink-light: #262626 !important;
-  --ink-muted: #555555 !important;
-  --ink-subtle: #777777 !important;
+  --ink-light: #1E293B !important;
+  --ink-muted: #64748B !important;
+  --ink-subtle: #94A3B8 !important;
   --ink-border: rgba(0, 0, 0, 0.08) !important;
 
-  /* 10% Burnt Orange Accent */
-  --burnt-orange: #F83458 !important;
-  --burnt-orange-hover: #E02447 !important;
-  --burnt-orange-light: rgba(248, 52, 88, 0.08) !important;
-  --burnt-orange-border: rgba(248, 52, 88, 0.28) !important;
+  /* Primary Brand Accent: Royal Sapphire */
+  --burnt-orange: #2563EB !important;
+  --burnt-orange-hover: #1D4ED8 !important;
+  --burnt-orange-light: rgba(37, 99, 235, 0.08) !important;
+  --burnt-orange-border: rgba(37, 99, 235, 0.28) !important;
 
   --primary: #0F172A !important;
   --primary-hover: #262626 !important;
@@ -67,18 +67,18 @@
   --text-faint: #777777 !important;
 
   --blue-700: #0F172A !important;
-  --blue-600: #0F172A !important;
-  --blue-500: #262626 !important;
-  --blue-400: #555555 !important;
-  --blue-100: #F5F5F7 !important;
-  --blue-50:  #F5F5F7 !important;
+  --blue-600: #2563EB !important;
+  --blue-500: #3B82F6 !important;
+  --blue-400: #60A5FA !important;
+  --blue-100: rgba(37, 99, 235, 0.12) !important;
+  --blue-50:  rgba(37, 99, 235, 0.08) !important;
 
-  --emerald-600: #F83458 !important;
-  --emerald-500: #F83458 !important;
-  --emerald-50: rgba(248, 52, 88, 0.08) !important;
-  --amber-600: #F83458 !important;
-  --amber-500: #F83458 !important;
-  --amber-50: rgba(248, 52, 88, 0.08) !important;
+  --emerald-600: #059669 !important;
+  --emerald-500: #10B981 !important;
+  --emerald-50: rgba(5, 150, 105, 0.08) !important;
+  --amber-600: #D97706 !important;
+  --amber-500: #F59E0B !important;
+  --amber-50: rgba(217, 119, 6, 0.08) !important;
 }
 
 /* Global Selection */
@@ -163,7 +163,7 @@ hr {
 }
 
 .strip-wa-link {
-  color: #F83458 !important;
+  color: #059669 !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -245,7 +245,7 @@ hr {
   max-width: 100% !important;
   object-fit: contain !important;
   display: block !important;
-  filter: drop-shadow(0 2px 5px rgba(248, 52, 88, 0.25)) !important;
+  filter: drop-shadow(0 2px 5px rgba(37, 99, 235, 0.25)) !important;
 }
 
 .shorthand-brand-group:hover .brand-logo-s-wrap {
@@ -255,12 +255,12 @@ hr {
 .brand-cap-squircle {
   width: 36px !important;
   height: 36px !important;
-  background: #F83458 !important;
+  background: #2563EB !important;
   border-radius: 10px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  box-shadow: 0 2px 8px rgba(248, 52, 88, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3) !important;
   color: #FFFFFF !important;
   border: none !important;
   flex-shrink: 0 !important;
@@ -349,14 +349,14 @@ hr {
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.45rem !important;
-  background: #F83458 !important;
+  background: #2563EB !important;
   color: #FFFFFF !important;
-  border: 1px solid #F83458 !important;
+  border: 1px solid #2563EB !important;
   border-radius: 9999px !important;
   padding: 0.45rem 1.15rem !important;
   font-size: 0.86rem !important;
   font-weight: 700 !important;
-  box-shadow: 0 2px 8px rgba(248, 52, 88, 0.28) !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28) !important;
   cursor: pointer !important;
   white-space: nowrap !important;
   transition: all 0.15s ease !important;
@@ -406,7 +406,7 @@ hr {
 }
 
 .btn-navbar-admin-right .admin-icon-shield {
-  color: #F83458 !important;
+  color: #2563EB !important;
 }
 
 .btn-navbar-admin-right:hover,
@@ -607,9 +607,9 @@ hr {
 }
 
 .sub-status-chip {
-  background: rgba(248, 52, 88, 0.08) !important;
-  border: 1px solid rgba(248, 52, 88, 0.22) !important;
-  color: #F83458 !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
+  color: #2563EB !important;
 }
 
 .topbar-admin-btn {
@@ -734,11 +734,11 @@ hr {
 .btn-checkout-submit-pay,
 .auth-submit-btn,
 .btn-scorecard-action.primary {
-  background: #F83458 !important;
+  background: #2563EB !important;
   color: #FFFFFF !important;
-  border: 1px solid #F83458 !important;
+  border: 1px solid #2563EB !important;
   font-weight: 700 !important;
-  box-shadow: 0 2px 8px rgba(248, 52, 88, 0.28) !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28) !important;
 }
 
 .btn-primary:hover,
@@ -758,11 +758,11 @@ hr {
 .btn-checkout-submit-pay:hover:not(:disabled),
 .auth-submit-btn:hover:not(:disabled),
 .btn-scorecard-action.primary:hover {
-  background: #E02447 !important;
-  border-color: #E02447 !important;
+  background: #1D4ED8 !important;
+  border-color: #1D4ED8 !important;
   color: #FFFFFF !important;
   transform: translateY(-1px) !important;
-  box-shadow: 0 4px 14px rgba(248, 52, 88, 0.35) !important;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
 }
 
 .btn-secondary,
@@ -813,9 +813,9 @@ input:focus, select:focus, textarea:focus,
 .field-input:focus, .field-select:focus,
 .calm-search-box input:focus,
 .console-search-box input:focus {
-  border-color: #F83458 !important;
+  border-color: #2563EB !important;
   background: #FFFFFF !important;
-  box-shadow: 0 0 0 3px rgba(248, 52, 88, 0.15) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
   outline: none !important;
 }
 
@@ -834,8 +834,8 @@ input::placeholder, textarea::placeholder {
 
 .admin-search-box:focus-within {
   background: #FFFFFF !important;
-  border-color: #F83458 !important;
-  box-shadow: 0 0 0 3px rgba(248, 52, 88, 0.15) !important;
+  border-color: #2563EB !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
 }
 
 .admin-search-box input {
@@ -1028,22 +1028,22 @@ input::placeholder, textarea::placeholder {
 }
 
 .badge-emerald, .chip-green, .badge-online {
-  background: rgba(248, 52, 88, 0.08) !important;
-  color: #F83458 !important;
-  border: 1px solid rgba(248, 52, 88, 0.22) !important;
+  background: rgba(5, 150, 105, 0.08) !important;
+  color: #059669 !important;
+  border: 1px solid rgba(5, 150, 105, 0.22) !important;
 }
 
 .badge-amber, .chip-amber, .portal-live-badge {
-  background: rgba(248, 52, 88, 0.08) !important;
-  color: #F83458 !important;
-  border: 1px solid rgba(248, 52, 88, 0.22) !important;
+  background: rgba(217, 119, 6, 0.08) !important;
+  color: #D97706 !important;
+  border: 1px solid rgba(217, 119, 6, 0.22) !important;
   font-weight: 700 !important;
 }
 
 .badge-rose, .chip-rose {
-  background: rgba(17, 17, 17, 0.06) !important;
-  color: #0F172A !important;
-  border: 1px solid rgba(17, 17, 17, 0.15) !important;
+  background: rgba(225, 29, 72, 0.08) !important;
+  color: #E11D48 !important;
+  border: 1px solid rgba(225, 29, 72, 0.22) !important;
 }
 
 .hero-status-pill,
@@ -1063,10 +1063,14 @@ input::placeholder, textarea::placeholder {
   font-weight: 700 !important;
 }
 
-.pulse-dot-green,
+.pulse-dot-green {
+  background: #059669 !important;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.25) !important;
+}
+
 .status-live-dot {
-  background: #F83458 !important;
-  box-shadow: 0 0 0 3px rgba(248, 52, 88, 0.25) !important;
+  background: #E11D48 !important;
+  box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.25) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -1491,8 +1495,8 @@ tbody td {
 }
 
 .hero-dot-pulse {
-  background: #F83458 !important;
-  box-shadow: 0 0 8px rgba(248, 52, 88, 0.35) !important;
+  background: #059669 !important;
+  box-shadow: 0 0 8px rgba(5, 150, 105, 0.35) !important;
   animation: none !important;
 }
 
@@ -1561,7 +1565,7 @@ tbody td {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  color: #F83458 !important;
+  color: #2563EB !important;
 }
 
 .warmup-pill-tag,
@@ -1874,9 +1878,9 @@ tbody td {
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.04em !important;
-  background: rgba(248, 52, 88, 0.08) !important;
-  color: #F83458 !important;
-  border: 1px solid rgba(248, 52, 88, 0.22) !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563EB !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
   padding: 0.15rem 0.5rem !important;
   border-radius: 9999px !important;
   display: inline-flex !important;
@@ -1902,7 +1906,7 @@ tbody td {
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.35rem !important;
-  color: #F83458 !important;
+  color: #059669 !important;
   font-weight: 600 !important;
 }
 
@@ -1910,9 +1914,9 @@ tbody td {
   width: 6px !important;
   height: 6px !important;
   border-radius: 50% !important;
-  background: #F83458 !important;
+  background: #059669 !important;
   display: inline-block !important;
-  box-shadow: 0 0 0 2px rgba(248, 52, 88, 0.25) !important;
+  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.25) !important;
 }
 
 .admin-header-actions {
@@ -2043,14 +2047,30 @@ tbody td {
   flex-shrink: 0 !important;
 }
 
-.kpi-icon-wrap.bg-blue-subtle,
-.kpi-icon-wrap.bg-emerald-subtle,
-.kpi-icon-wrap.bg-purple-subtle,
-.kpi-icon-wrap.bg-rose-subtle,
+.kpi-icon-wrap.bg-blue-subtle {
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563EB !important;
+  border: 1px solid rgba(37, 99, 235, 0.2) !important;
+}
+.kpi-icon-wrap.bg-emerald-subtle {
+  background: rgba(5, 150, 105, 0.08) !important;
+  color: #059669 !important;
+  border: 1px solid rgba(5, 150, 105, 0.2) !important;
+}
+.kpi-icon-wrap.bg-purple-subtle {
+  background: rgba(124, 58, 237, 0.08) !important;
+  color: #7C3AED !important;
+  border: 1px solid rgba(124, 58, 237, 0.2) !important;
+}
+.kpi-icon-wrap.bg-rose-subtle {
+  background: rgba(225, 29, 72, 0.08) !important;
+  color: #E11D48 !important;
+  border: 1px solid rgba(225, 29, 72, 0.2) !important;
+}
 .kpi-icon-wrap.bg-amber-subtle {
-  background: rgba(248, 52, 88, 0.08) !important;
-  color: #F83458 !important;
-  border: 1px solid rgba(248, 52, 88, 0.2) !important;
+  background: rgba(217, 119, 6, 0.08) !important;
+  color: #D97706 !important;
+  border: 1px solid rgba(217, 119, 6, 0.2) !important;
 }
 
 .kpi-info-col {
@@ -2284,9 +2304,9 @@ tbody td {
 }
 
 .status-chip-btn.chip-expiring-state.active {
-  background: #F83458 !important;
+  background: #D97706 !important;
   color: #FFFFFF !important;
-  border-color: #F83458 !important;
+  border-color: #D97706 !important;
 }
 
 .status-chip-btn.chip-expired-state.active {
@@ -2302,9 +2322,9 @@ tbody td {
   flex-shrink: 0 !important;
 }
 
-.dot-emerald { background: #F83458 !important; }
-.dot-amber { background: #F83458 !important; }
-.dot-rose { background: #0F172A !important; }
+.dot-emerald { background: #059669 !important; }
+.dot-amber { background: #D97706 !important; }
+.dot-rose { background: #E11D48 !important; }
 
 /* Table Cells, Capsules & Action Buttons */
 .table-responsive {
@@ -2489,15 +2509,15 @@ tbody td {
 }
 
 .admin-pass-chip.pass-scholar {
-  background: rgba(248, 52, 88, 0.08) !important;
-  color: #F83458 !important;
-  border: 1px solid rgba(248, 52, 88, 0.22) !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563EB !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
 }
 
 .admin-pass-chip.pass-monthly {
-  background: rgba(248, 52, 88, 0.08) !important;
-  color: #F83458 !important;
-  border: 1px solid rgba(248, 52, 88, 0.22) !important;
+  background: rgba(124, 58, 237, 0.08) !important;
+  color: #7C3AED !important;
+  border: 1px solid rgba(124, 58, 237, 0.22) !important;
 }
 
 .admin-pass-chip.pass-sprint {
@@ -2531,9 +2551,9 @@ tbody td {
 }
 
 .validity-days-badge.badge-good {
-  background: rgba(248, 52, 88, 0.08) !important;
-  color: #F83458 !important;
-  border: 1px solid rgba(248, 52, 88, 0.22) !important;
+  background: rgba(5, 150, 105, 0.08) !important;
+  color: #059669 !important;
+  border: 1px solid rgba(5, 150, 105, 0.22) !important;
 }
 
 .validity-days-badge.badge-warning {
@@ -2568,9 +2588,9 @@ tbody td {
   transition: width 0.3s ease !important;
 }
 
-.admin-validity-progress.prog-green { background: #F83458 !important; }
-.admin-validity-progress.prog-amber { background: #0F172A !important; }
-.admin-validity-progress.prog-red { background: #555555 !important; }
+.admin-validity-progress.prog-green { background: #059669 !important; }
+.admin-validity-progress.prog-amber { background: #D97706 !important; }
+.admin-validity-progress.prog-red { background: #E11D48 !important; }
 
 .admin-speed-widget {
   display: flex !important;
@@ -2590,7 +2610,7 @@ tbody td {
 }
 
 .speed-main-val svg {
-  color: #F83458 !important;
+  color: #2563EB !important;
 }
 
 .speed-unit {
@@ -2601,7 +2621,7 @@ tbody td {
 
 .accuracy-subval {
   font-size: 0.74rem !important;
-  color: #F83458 !important;
+  color: #059669 !important;
   font-weight: 600 !important;
   font-family: var(--font-mono, monospace) !important;
 }
@@ -2618,9 +2638,9 @@ tbody td {
 }
 
 .admin-status-indicator.is-active {
-  background: rgba(248, 52, 88, 0.08) !important;
-  color: #F83458 !important;
-  border: 1px solid rgba(248, 52, 88, 0.22) !important;
+  background: rgba(5, 150, 105, 0.08) !important;
+  color: #059669 !important;
+  border: 1px solid rgba(5, 150, 105, 0.22) !important;
 }
 
 .admin-status-indicator.is-inactive {
@@ -2638,8 +2658,8 @@ tbody td {
 }
 
 .admin-status-indicator.is-active .pulse-dot {
-  background: #F83458 !important;
-  box-shadow: 0 0 0 2px rgba(248, 52, 88, 0.25) !important;
+  background: #059669 !important;
+  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.25) !important;
 }
 
 .admin-status-indicator.is-inactive .pulse-dot {
@@ -2785,9 +2805,9 @@ td:has(.admin-actions-cluster),
 }
 
 .admin-btn-action.btn-activate {
-  background: rgba(248, 52, 88, 0.08) !important;
-  border: 1px solid rgba(248, 52, 88, 0.22) !important;
-  color: #F83458 !important;
+  background: rgba(5, 150, 105, 0.08) !important;
+  border: 1px solid rgba(5, 150, 105, 0.22) !important;
+  color: #059669 !important;
   padding: 0 0.75rem !important;
   height: 32px !important;
   flex-shrink: 0 !important;
@@ -2795,8 +2815,8 @@ td:has(.admin-actions-cluster),
 }
 
 .admin-btn-action.btn-activate:hover {
-  background: #F83458 !important;
-  border-color: #F83458 !important;
+  background: #059669 !important;
+  border-color: #059669 !important;
   color: #FFFFFF !important;
 }
 
@@ -2986,7 +3006,7 @@ button {
    • Dominant: Apple Platinum (#F5F5F7) & Crisp White (#FFFFFF)
    • Structure: Soft Sand Hairlines (#E7E5E4)
    • Contrast: Deep Obsidian Charcoal (#1C1917)
-   • Micro-accents: Burnt Orange (#F83458), Ink Black (#0F172A), Apple Platinum (#F5F5F7)
+   • Micro-accents: Royal Sapphire (#2563EB), Ink Slate (#0F172A), Light Porcelain (#F8FAFC)
    • Strict Rule: Zero Primary Blue
    -------------------------------------------------------------------------- */
 
@@ -3053,8 +3073,8 @@ button {
   width: 6px !important;
   height: 6px !important;
   border-radius: 50% !important;
-  background: #F83458 !important;
-  box-shadow: 0 0 0 2px rgba(248, 52, 88, 0.25) !important;
+  background: #E11D48 !important;
+  box-shadow: 0 0 0 2px rgba(225, 29, 72, 0.25) !important;
 }
 
 .welcome-target-pill {
@@ -3222,7 +3242,12 @@ button {
   white-space: nowrap !important;
 }
 
-.chip-blue,
+.chip-blue {
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563EB !important;
+  border: 1px solid rgba(37, 99, 235, 0.22) !important;
+}
+
 .chip-indigo,
 .chip-purple {
   background: #FFFFFF !important;
@@ -3231,15 +3256,15 @@ button {
 }
 
 .chip-emerald {
-  background: rgba(248, 52, 88, 0.08) !important;
-  color: #F83458 !important;
-  border: 1px solid rgba(248, 52, 88, 0.22) !important;
+  background: rgba(5, 150, 105, 0.08) !important;
+  color: #059669 !important;
+  border: 1px solid rgba(5, 150, 105, 0.22) !important;
 }
 
 .chip-amber {
-  background: #FFFFFF !important;
-  color: #0F172A !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background: rgba(217, 119, 6, 0.08) !important;
+  color: #D97706 !important;
+  border: 1px solid rgba(217, 119, 6, 0.22) !important;
 }
 
 .metric-caption {
@@ -3346,9 +3371,9 @@ button {
 }
 
 .card-status-pill.badge-live {
-  background: rgba(248, 52, 88, 0.08) !important;
-  color: #F83458 !important;
-  border: 1px solid rgba(248, 52, 88, 0.22) !important;
+  background: rgba(225, 29, 72, 0.08) !important;
+  color: #E11D48 !important;
+  border: 1px solid rgba(225, 29, 72, 0.22) !important;
   font-size: 0.74rem !important;
   font-weight: 750 !important;
   padding: 0.25rem 0.75rem !important;
@@ -3662,7 +3687,7 @@ button {
 }
 
 .mini-role {
-  color: #F83458 !important;
+  color: #2563EB !important;
   font-weight: 600 !important;
   font-size: 0.72rem !important;
   display: block !important;
@@ -3705,7 +3730,7 @@ button {
 }
 
 .mini-feat-item svg {
-  color: #F83458 !important;
+  color: #059669 !important;
   flex-shrink: 0 !important;
 }
 
