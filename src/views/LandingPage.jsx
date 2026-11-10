@@ -196,13 +196,6 @@ export default function LandingPage({
     }
   ];
 
-  const skillTestPasses = [
-    { name: "1 Day Unlimited", price: "₹30", note: "Trial Skill Pass" },
-    { name: "1 Month Unlimited", price: "₹350", note: "Most Popular" },
-    { name: "6 Month Unlimited", price: "₹1,100", note: "Best Value (Save ₹1,000)" },
-    { name: "12 Month Annual", price: "₹2,000", note: "Complete 365 Days Access" }
-  ];
-
   return (
     <div className="clean-homepage-wrapper" style={{ minHeight: '100vh', background: '#F3EEE3', color: '#111111', fontFamily: 'Inter, system-ui, -apple-system, sans-serif' }}>
       
@@ -639,76 +632,6 @@ export default function LandingPage({
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Skill Test Passes Bar (From user's price image: ₹30, ₹350, ₹1100, ₹2000) */}
-          <div style={{ 
-            background: '#F3EEE3', 
-            border: '1px solid rgba(17, 17, 17, 0.14)', 
-            borderRadius: '14px', 
-            padding: '1.5rem 1.75rem',
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '1.25rem'
-          }}>
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                <Zap size={18} color="#D9541E" />
-                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#111111', margin: 0 }}>
-                  Online Shorthand & Typing Skill Test Passes
-                </h4>
-              </div>
-              <p style={{ fontSize: '0.88rem', color: '#555555', margin: 0 }}>
-                Instant access to mock test series, 5-minute reading room, backspace lock, and full/half error evaluation.
-              </p>
-            </div>
-
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center' }}>
-              {skillTestPasses.map((p, idx) => (
-                <div 
-                  key={idx}
-                  style={{ 
-                    background: '#F3EEE3', 
-                    border: '1px solid rgba(17, 17, 17, 0.12)', 
-                    borderRadius: '8px', 
-                    padding: '8px 12px',
-                    textAlign: 'center'
-                  }}
-                >
-                  <span style={{ display: 'block', fontSize: '0.72rem', color: '#555555', fontWeight: 600 }}>{p.name}</span>
-                  <span style={{ fontSize: '1.05rem', fontWeight: 850, color: '#D9541E' }}>{p.price}</span>
-                </div>
-              ))}
-
-              <button
-                type="button"
-                onClick={() => {
-                  if (onSelectPlan) {
-                    onSelectPlan(PRICING_PLANS[1]);
-                  } else if (onOpenCheckout) {
-                    onOpenCheckout();
-                  }
-                }}
-                style={{
-                  background: '#111111',
-                  color: '#F3EEE3',
-                  border: 'none',
-                  borderRadius: '8px',
-                  padding: '0.75rem 1.25rem',
-                  fontSize: '0.88rem',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px'
-                }}
-              >
-                <CreditCard size={15} color="#D9541E" />
-                <span>Get Test Pass Online</span>
-              </button>
-            </div>
           </div>
 
         </div>
