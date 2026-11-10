@@ -84,6 +84,121 @@ const INITIAL_TRANSACTIONS = [
   { id: "TXN-98416", student: "Vikramaditya Roy", rollNo: "SP-2026-041", plan: "1-Day Skill Sprint", amount: 30, mode: "UPI (BHIM)", date: "08 Oct 2026", status: "Auto-Verified" }
 ];
 
+
+const INITIAL_EXAM_ALERTS = [
+  {
+    id: 1,
+    title: "SSC Stenographer Grade C & D 2026 Official Notification",
+    dept: "Staff Selection Commission (SSC)",
+    posts: "1,248 Vacancies",
+    speedReq: "80 & 100 WPM",
+    deadline: "28 Nov 2026",
+    examDate: "Jan 2027",
+    status: "Live & Broadcasted",
+    urgent: true,
+    link: "https://ssc.gov.in"
+  },
+  {
+    id: 2,
+    title: "Patna High Court English Stenographer Tier-II Admit Card",
+    dept: "High Court of Judicature at Patna",
+    posts: "185 Posts",
+    speedReq: "80 WPM (English)",
+    deadline: "Admit Card Out",
+    examDate: "15 Dec 2026",
+    status: "Live & Broadcasted",
+    urgent: true,
+    link: "http://patnahighcourt.gov.in"
+  },
+  {
+    id: 3,
+    title: "Jharkhand High Court Personal Assistant & Stenographer",
+    dept: "High Court of Jharkhand, Ranchi",
+    posts: "92 Posts",
+    speedReq: "100 WPM (Eng & Hindi)",
+    deadline: "10 Dec 2026",
+    examDate: "Jan-Feb 2027",
+    status: "Active",
+    urgent: false,
+    link: "https://jharkhandhighcourt.nic.in"
+  },
+  {
+    id: 4,
+    title: "Bihar Civil Court Stenographer & Clerk Final Skill Test Dates",
+    dept: "District & Sessions Courts, Bihar",
+    posts: "1,562 Posts",
+    speedReq: "80 WPM (Bilingual)",
+    deadline: "Skill Call Letters Live",
+    examDate: "05 Jan 2027",
+    status: "Active",
+    urgent: false,
+    link: "https://districts.ecourts.gov.in/patna"
+  }
+];
+
+const INITIAL_ISSUED_DIPLOMAS = [
+  {
+    id: "GSC-DCA-2026-089",
+    studentName: "Pooja Verma",
+    rollNo: "SP-2026-033",
+    program: "Diploma in Computer Application (DCA - 6 Months)",
+    grade: "Grade A+ (94.2% Marks)",
+    issueDate: "04 Nov 2026",
+    dispatchStatus: "Verified & Dispatched",
+    authBy: "Shadab Sir (Director)"
+  },
+  {
+    id: "GSC-ADCA-2026-042",
+    studentName: "Shadab Khan",
+    rollNo: "SP-2026-084",
+    program: "Advance Diploma in Computer Application (ADCA - 1 Year)",
+    grade: "Grade A+ (98.0% Marks)",
+    issueDate: "28 Oct 2026",
+    dispatchStatus: "Verified & Dispatched",
+    authBy: "Shadab Sir (Director)"
+  },
+  {
+    id: "GSC-STN-2026-118",
+    studentName: "Vishnupriya S.",
+    rollNo: "SP-2026-005",
+    program: "Pitman High-Speed Shorthand (100 WPM Certified)",
+    grade: "100 WPM (97.4% Accuracy)",
+    issueDate: "15 Oct 2026",
+    dispatchStatus: "Verified & Dispatched",
+    authBy: "Shadab Sir (Director)"
+  },
+  {
+    id: "GSC-ADCA-2026-056",
+    studentName: "Sagar Kumar Singh",
+    rollNo: "SP-2026-009",
+    program: "Advance Diploma in Computer Application (ADCA - 1 Year)",
+    grade: "Grade A (91.5% Marks)",
+    issueDate: "10 Oct 2026",
+    dispatchStatus: "Ready for Center Pickup",
+    authBy: "Shadab Sir (Director)"
+  },
+  {
+    id: "GSC-STN-2026-125",
+    studentName: "Amit Sharma",
+    rollNo: "SP-2026-024",
+    program: "Parliamentary Reporter Shorthand (120 WPM Certified)",
+    grade: "120 WPM (94.5% Accuracy)",
+    issueDate: "01 Oct 2026",
+    dispatchStatus: "Verified & Dispatched",
+    authBy: "Shadab Sir (Director)"
+  },
+  {
+    id: "GSC-DCA-2026-095",
+    studentName: "Neha Kumari",
+    rollNo: "SP-2026-052",
+    program: "Diploma in Computer Application (DCA - 6 Months)",
+    grade: "Grade A (89.4% Marks)",
+    issueDate: "22 Sep 2026",
+    dispatchStatus: "Ready for Center Pickup",
+    authBy: "Shadab Sir (Director)"
+  }
+];
+
 export default function AdminPortalView({ 
   user, 
   setCurrentTab, 
@@ -149,7 +264,14 @@ export default function AdminPortalView({
     setPasscode('');
   };
 
-  const [activeTab, setActiveTab] = useState('overview'); // 'overview' | 'students' | 'tests' | 'finance' | 'announcements'
+  const [activeTab, setActiveTab] = useState(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('adminTab') || 'overview';
+    } catch {
+      return 'overview';
+    }
+  }); // 'overview' | 'students' | 'tests' | 'finance' | 'announcements'
   const [students, setStudents] = useState(INITIAL_ADMIN_STUDENTS);
 
   // Fetch real students and cohort stats from backend when admin unlocked
@@ -192,6 +314,165 @@ export default function AdminPortalView({
   // Course Catalog Management State
   const [localCourses, setLocalCourses] = useState(INITIAL_ACADEMY_COURSES || []);
   const coursesList = propCourses && propCourses.length > 0 ? propCourses : localCourses;
+
+  
+  // Announcements & Diplomas Management State
+  const [examAlerts, setExamAlerts] = useState(() => {
+    try {
+      const saved = localStorage.getItem('shorthand_exam_alerts');
+      return saved ? JSON.parse(saved) : INITIAL_EXAM_ALERTS;
+    } catch {
+      return INITIAL_EXAM_ALERTS;
+    }
+  });
+
+  const [diplomas, setDiplomas] = useState(() => {
+    try {
+      const saved = localStorage.getItem('shorthand_issued_diplomas');
+      return saved ? JSON.parse(saved) : INITIAL_ISSUED_DIPLOMAS;
+    } catch {
+      return INITIAL_ISSUED_DIPLOMAS;
+    }
+  });
+
+  const [bulletinSubTab, setBulletinSubTab] = useState(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('bulletinTab') || 'alerts';
+    } catch {
+      return 'alerts';
+    }
+  }); // 'alerts' | 'diplomas'
+  const [bulletinSearch, setBulletinSearch] = useState('');
+  const [newAlertModalOpen, setNewAlertModalOpen] = useState(false);
+  const [newDiplomaModalOpen, setNewDiplomaModalOpen] = useState(false);
+
+  const [alertForm, setAlertForm] = useState({
+    title: '',
+    dept: 'Staff Selection Commission (SSC)',
+    posts: '',
+    speedReq: '80 WPM',
+    deadline: '',
+    examDate: '',
+    urgent: false,
+    link: ''
+  });
+
+  const [diplomaForm, setDiplomaForm] = useState({
+    id: '',
+    studentName: '',
+    rollNo: '',
+    program: 'Diploma in Computer Application (DCA - 6 Months)',
+    grade: 'Grade A+ (95% Marks)',
+    issueDate: 'Today',
+    dispatchStatus: 'Verified & Dispatched'
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('shorthand_exam_alerts', JSON.stringify(examAlerts));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [examAlerts]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('shorthand_issued_diplomas', JSON.stringify(diplomas));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [diplomas]);
+
+  const handleCreateAlert = (e) => {
+    e.preventDefault();
+    if (!alertForm.title.trim()) return;
+    const newAlert = {
+      id: Date.now(),
+      title: alertForm.title.trim(),
+      dept: alertForm.dept.trim() || 'Official Govt Agency',
+      posts: alertForm.posts.trim() || 'Multiple Posts',
+      speedReq: alertForm.speedReq.trim() || '80 WPM',
+      deadline: alertForm.deadline.trim() || 'Refer Notice',
+      examDate: alertForm.examDate.trim() || 'Upcoming',
+      status: 'Live & Broadcasted',
+      urgent: !!alertForm.urgent,
+      link: alertForm.link.trim() || 'https://ssc.gov.in'
+    };
+    setExamAlerts([newAlert, ...examAlerts]);
+    setNewAlertModalOpen(false);
+    setAlertForm({
+      title: '',
+      dept: 'Staff Selection Commission (SSC)',
+      posts: '',
+      speedReq: '80 WPM',
+      deadline: '',
+      examDate: '',
+      urgent: false,
+      link: ''
+    });
+  };
+
+  const handleToggleAlertLive = (id) => {
+    setExamAlerts(examAlerts.map(a => a.id === id ? {
+      ...a,
+      status: a.status === 'Live & Broadcasted' ? 'Draft' : 'Live & Broadcasted'
+    } : a));
+  };
+
+  const handleDeleteAlert = (id) => {
+    if (window.confirm('Are you sure you want to remove this recruitment alert?')) {
+      setExamAlerts(examAlerts.filter(a => a.id !== id));
+    }
+  };
+
+  const handleCreateDiploma = (e) => {
+    e.preventDefault();
+    if (!diplomaForm.studentName.trim() || !diplomaForm.rollNo.trim()) return;
+    const newDip = {
+      id: diplomaForm.id.trim() || `GSC-DIP-${Date.now().toString().slice(-4)}`,
+      studentName: diplomaForm.studentName.trim(),
+      rollNo: diplomaForm.rollNo.trim(),
+      program: diplomaForm.program,
+      grade: diplomaForm.grade.trim() || 'Grade A',
+      issueDate: diplomaForm.issueDate || 'Today',
+      dispatchStatus: diplomaForm.dispatchStatus,
+      authBy: 'Shadab Sir (Director)'
+    };
+    setDiplomas([newDip, ...diplomas]);
+    setNewDiplomaModalOpen(false);
+    setDiplomaForm({
+      id: '',
+      studentName: '',
+      rollNo: '',
+      program: 'Diploma in Computer Application (DCA - 6 Months)',
+      grade: 'Grade A+ (95% Marks)',
+      issueDate: 'Today',
+      dispatchStatus: 'Verified & Dispatched'
+    });
+  };
+
+  const handleDeleteDiploma = (id) => {
+    if (window.confirm('Are you sure you want to delete this diploma certificate record?')) {
+      setDiplomas(diplomas.filter(d => d.id !== id));
+    }
+  };
+
+  const handleDownloadDiploma = (dip) => {
+    alert(`Official Certificate generated for ${dip.studentName} (${dip.rollNo}) - ${dip.program}. Certificate ID: ${dip.id}`);
+  };
+
+  const filteredAlerts = examAlerts.filter(a => {
+    if (!bulletinSearch.trim()) return true;
+    const q = bulletinSearch.toLowerCase();
+    return a.title.toLowerCase().includes(q) || a.dept.toLowerCase().includes(q) || a.posts.toLowerCase().includes(q);
+  });
+
+  const filteredDiplomas = diplomas.filter(d => {
+    if (!bulletinSearch.trim()) return true;
+    const q = bulletinSearch.toLowerCase();
+    return d.studentName.toLowerCase().includes(q) || d.rollNo.toLowerCase().includes(q) || d.id.toLowerCase().includes(q) || d.program.toLowerCase().includes(q);
+  });
 
   const [newCourseModalOpen, setNewCourseModalOpen] = useState(false);
   const [editingCourse, setEditingCourse] = useState(null);
@@ -1672,42 +1953,429 @@ export default function AdminPortalView({
           </div>
         )}
 
-        {/* TAB 4: Announcements & Diplomas */}
+                {/* TAB 4: Announcements & Diplomas */}
         {activeTab === 'announcements' && (
-          <div className="saas-card admin-content-card">
-            <div className="table-header-control-row">
+          <div className="saas-card admin-content-card" style={{ padding: '1.75rem 2rem' }}>
+            
+            {/* Header Control Row */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem', borderBottom: '1px solid rgba(0,0,0,0.06)', paddingBottom: '1.25rem' }}>
               <div>
-                <h3 className="section-title-sm">Recruitment Bulletin & Govt Diploma Issuance</h3>
-                <p className="section-sub-sm">Manage court exam updates and student DCA, ADCA, Tally diploma certificates.</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                  <Megaphone size={20} color="#F83458" />
+                  <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', margin: 0, letterSpacing: '-0.02em' }}>
+                    Recruitment Bulletin & Govt Diploma Issuance
+                  </h3>
+                </div>
+                <p style={{ fontSize: '0.88rem', color: '#64748B', margin: 0 }}>
+                  Publish real-time exam notifications, court vacancy alerts, and manage student DCA, ADCA & speed certificates.
+                </p>
               </div>
-              <button 
-                className="btn btn-primary btn-sm"
-                onClick={() => alert("Announcement published to candidate portal bulletin.")}
-              >
-                <Plus size={15} />
-                <span>Publish New Exam Alert</span>
-              </button>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
+                <button 
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={() => setNewAlertModalOpen(true)}
+                  style={{ background: '#F83458', borderColor: '#F83458', color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: '6px', borderRadius: '8px', padding: '0.55rem 1.15rem', fontWeight: 700, fontSize: '0.88rem', boxShadow: '0 2px 8px rgba(248, 52, 88, 0.28)', cursor: 'pointer' }}
+                >
+                  <Plus size={15} />
+                  <span>Publish New Exam Alert</span>
+                </button>
+                <button 
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setNewDiplomaModalOpen(true)}
+                  style={{ background: '#0F172A', borderColor: '#0F172A', color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: '6px', borderRadius: '8px', padding: '0.55rem 1.15rem', fontWeight: 700, fontSize: '0.88rem', cursor: 'pointer' }}
+                >
+                  <Award size={15} />
+                  <span>Issue Student Diploma</span>
+                </button>
+              </div>
             </div>
 
-            <div className="admin-diploma-grid">
-              <div className="saas-card diploma-stat-box">
-                <GraduationCap size={28} className="text-amber-700" />
-                <h4 className="stat-number font-mono">248</h4>
-                <p className="stat-desc">DCA Diplomas Issued (6 Months)</p>
+            {/* Top 3 Metric Cards */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem', marginBottom: '1.75rem' }}>
+              
+              <div style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.07)', borderRadius: '14px', padding: '1.25rem 1.4rem', boxShadow: '0 2px 8px rgba(0,0,0,0.03)', display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(16, 185, 129, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <GraduationCap size={24} color="#10B981" />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '2px' }}>
+                    <h4 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0F172A', margin: 0, fontFamily: 'monospace' }}>248</h4>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#10B981', background: 'rgba(16, 185, 129, 0.1)', padding: '2px 8px', borderRadius: '999px' }}>
+                      Govt Recognized
+                    </span>
+                  </div>
+                  <p style={{ fontSize: '0.84rem', fontWeight: 600, color: '#334155', margin: '0 0 2px' }}>DCA Diplomas Issued</p>
+                  <span style={{ fontSize: '0.75rem', color: '#64748B' }}>6-Month Fundamental Computer Syllabus</span>
+                </div>
               </div>
-              <div className="saas-card diploma-stat-box">
-                <Award size={28} className="text-emerald" />
-                <h4 className="stat-number font-mono">182</h4>
-                <p className="stat-desc">ADCA Diplomas Issued (1 Year)</p>
+
+              <div style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.07)', borderRadius: '14px', padding: '1.25rem 1.4rem', boxShadow: '0 2px 8px rgba(0,0,0,0.03)', display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(99, 102, 241, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <Award size={24} color="#6366F1" />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '2px' }}>
+                    <h4 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0F172A', margin: 0, fontFamily: 'monospace' }}>182</h4>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#6366F1', background: 'rgba(99, 102, 241, 0.1)', padding: '2px 8px', borderRadius: '999px' }}>
+                      ISO 9001 Valid
+                    </span>
+                  </div>
+                  <p style={{ fontSize: '0.84rem', fontWeight: 600, color: '#334155', margin: '0 0 2px' }}>ADCA Diplomas Issued</p>
+                  <span style={{ fontSize: '0.75rem', color: '#64748B' }}>1-Year Advance Applications & Tally Prime</span>
+                </div>
               </div>
-              <div className="saas-card diploma-stat-box">
-                <ShieldCheck size={28} className="text-amber" />
-                <h4 className="stat-number font-mono">415</h4>
-                <p className="stat-desc">Verified Shorthand Speed Certificates</p>
+
+              <div style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.07)', borderRadius: '14px', padding: '1.25rem 1.4rem', boxShadow: '0 2px 8px rgba(0,0,0,0.03)', display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(248, 52, 88, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <ShieldCheck size={24} color="#F83458" />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '2px' }}>
+                    <h4 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0F172A', margin: 0, fontFamily: 'monospace' }}>415</h4>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#F83458', background: 'rgba(248, 52, 88, 0.1)', padding: '2px 8px', borderRadius: '999px' }}>
+                      SSC / Court Calibrated
+                    </span>
+                  </div>
+                  <p style={{ fontSize: '0.84rem', fontWeight: 600, color: '#334155', margin: '0 0 2px' }}>Shorthand Speed Certificates</p>
+                  <span style={{ fontSize: '0.75rem', color: '#64748B' }}>50–140 WPM Graded Pitman Benchmarks</span>
+                </div>
               </div>
+
             </div>
+
+            {/* Sub-Navigation & Filter Bar */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.25rem', background: '#F8FAFC', padding: '0.75rem 1rem', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.06)' }}>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <button
+                  type="button"
+                  onClick={() => setBulletinSubTab('alerts')}
+                  style={{
+                    padding: '0.45rem 1rem',
+                    borderRadius: '8px',
+                    fontSize: '0.86rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    border: 'none',
+                    background: bulletinSubTab === 'alerts' ? '#0F172A' : 'transparent',
+                    color: bulletinSubTab === 'alerts' ? '#FFFFFF' : '#64748B',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    transition: 'all 0.15s ease'
+                  }}
+                >
+                  <Megaphone size={14} />
+                  <span>Active Recruitment Bulletins ({examAlerts.length})</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setBulletinSubTab('diplomas')}
+                  style={{
+                    padding: '0.45rem 1rem',
+                    borderRadius: '8px',
+                    fontSize: '0.86rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    border: 'none',
+                    background: bulletinSubTab === 'diplomas' ? '#0F172A' : 'transparent',
+                    color: bulletinSubTab === 'diplomas' ? '#FFFFFF' : '#64748B',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    transition: 'all 0.15s ease'
+                  }}
+                >
+                  <GraduationCap size={14} />
+                  <span>Issued Diplomas & Certificates ({diplomas.length})</span>
+                </button>
+              </div>
+
+              <div style={{ position: 'relative', width: '280px' }}>
+                <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#94A3B8' }} />
+                <input
+                  type="text"
+                  placeholder={bulletinSubTab === 'alerts' ? "Search alerts by exam, dept..." : "Search by student name, roll no..."}
+                  value={bulletinSearch}
+                  onChange={(e) => setBulletinSearch(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '0.45rem 0.75rem 0.45rem 2rem',
+                    fontSize: '0.84rem',
+                    borderRadius: '8px',
+                    border: '1px solid rgba(0,0,0,0.1)',
+                    background: '#FFFFFF',
+                    color: '#0F172A',
+                    boxSizing: 'border-box'
+                  }}
+                />
+              </div>
+
+            </div>
+
+            {/* TAB CONTENT A: Recruitment Alerts */}
+            {bulletinSubTab === 'alerts' && (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '1.25rem' }}>
+                {filteredAlerts.map((alert) => (
+                  <div 
+                    key={alert.id}
+                    style={{
+                      background: '#FFFFFF',
+                      border: '1px solid rgba(0,0,0,0.08)',
+                      borderRadius: '14px',
+                      padding: '1.35rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      boxShadow: '0 2px 6px rgba(0,0,0,0.02)',
+                      transition: 'transform 0.15s ease'
+                    }}
+                  >
+                    <div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                        <span style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#F83458' }}>
+                          {alert.dept}
+                        </span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          {alert.urgent && (
+                            <span style={{ fontSize: '0.68rem', fontWeight: 800, color: '#DC2626', background: 'rgba(220, 38, 38, 0.08)', padding: '2px 6px', borderRadius: '4px' }}>
+                              Urgent
+                            </span>
+                          )}
+                          <span style={{ 
+                            fontSize: '0.68rem', 
+                            fontWeight: 700, 
+                            color: alert.status === 'Live & Broadcasted' ? '#10B981' : '#64748B', 
+                            background: alert.status === 'Live & Broadcasted' ? 'rgba(16, 185, 129, 0.08)' : 'rgba(100, 116, 139, 0.08)', 
+                            padding: '2px 8px', 
+                            borderRadius: '999px',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '4px'
+                          }}>
+                            {alert.status === 'Live & Broadcasted' && (
+                              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981', display: 'inline-block' }} />
+                            )}
+                            {alert.status}
+                          </span>
+                        </div>
+                      </div>
+
+                      <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0F172A', margin: '0 0 10px', lineHeight: 1.35 }}>
+                        {alert.title}
+                      </h4>
+
+                      <div style={{ background: '#F8FAFC', borderRadius: '10px', padding: '10px 12px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', marginBottom: '1rem', border: '1px solid rgba(0,0,0,0.05)' }}>
+                        <div>
+                          <span style={{ display: 'block', fontSize: '0.68rem', color: '#64748B', textTransform: 'uppercase' }}>Vacancies</span>
+                          <strong style={{ fontSize: '0.82rem', color: '#0F172A' }}>{alert.posts}</strong>
+                        </div>
+                        <div>
+                          <span style={{ display: 'block', fontSize: '0.68rem', color: '#64748B', textTransform: 'uppercase' }}>Speed Req</span>
+                          <strong style={{ fontSize: '0.82rem', color: '#F83458' }}>{alert.speedReq}</strong>
+                        </div>
+                        <div>
+                          <span style={{ display: 'block', fontSize: '0.68rem', color: '#64748B', textTransform: 'uppercase' }}>Deadline</span>
+                          <strong style={{ fontSize: '0.82rem', color: '#0F172A' }}>{alert.deadline}</strong>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '10px', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+                      <a 
+                        href={alert.link} 
+                        target="_blank" 
+                        rel="noreferrer"
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.8rem', fontWeight: 700, color: '#0F172A', textDecoration: 'none' }}
+                      >
+                        <span>Official Notice</span>
+                        <ExternalLink size={12} />
+                      </a>
+
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <button
+                          type="button"
+                          onClick={() => handleToggleAlertLive(alert.id)}
+                          style={{
+                            padding: '4px 10px',
+                            borderRadius: '6px',
+                            fontSize: '0.74rem',
+                            fontWeight: 700,
+                            cursor: 'pointer',
+                            border: '1px solid rgba(0,0,0,0.1)',
+                            background: alert.status === 'Live & Broadcasted' ? '#FFFFFF' : '#0F172A',
+                            color: alert.status === 'Live & Broadcasted' ? '#0F172A' : '#FFFFFF'
+                          }}
+                        >
+                          {alert.status === 'Live & Broadcasted' ? 'Pause' : 'Broadcast'}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleDeleteAlert(alert.id)}
+                          style={{
+                            padding: '4px 8px',
+                            borderRadius: '6px',
+                            border: '1px solid rgba(220, 38, 38, 0.2)',
+                            background: '#FFFFFF',
+                            color: '#DC2626',
+                            cursor: 'pointer'
+                          }}
+                          title="Delete alert"
+                        >
+                          <Trash2 size={13} />
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* TAB CONTENT B: Issued Diplomas Table */}
+            {bulletinSubTab === 'diplomas' && (
+              <div className="table-responsive">
+                <table className="corporate-table">
+                  <thead>
+                    <tr>
+                      <th>
+                        <div className="th-content">
+                          <Key size={13} />
+                          <span>Cert ID / Roll No</span>
+                        </div>
+                      </th>
+                      <th>
+                        <div className="th-content">
+                          <Users size={13} />
+                          <span>Candidate Name</span>
+                        </div>
+                      </th>
+                      <th>
+                        <div className="th-content">
+                          <Award size={13} />
+                          <span>Program & Course</span>
+                        </div>
+                      </th>
+                      <th>
+                        <div className="th-content">
+                          <ShieldCheck size={13} />
+                          <span>Grade & Benchmark</span>
+                        </div>
+                      </th>
+                      <th>
+                        <div className="th-content">
+                          <Calendar size={13} />
+                          <span>Issue Date</span>
+                        </div>
+                      </th>
+                      <th>
+                        <div className="th-content">
+                          <CheckCircle2 size={13} />
+                          <span>Dispatch Status</span>
+                        </div>
+                      </th>
+                      <th style={{ textAlign: 'right' }}>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredDiplomas.map((dip) => (
+                      <tr key={dip.id}>
+                        <td>
+                          <span style={{ fontFamily: 'monospace', fontWeight: 700, color: '#0F172A' }}>{dip.id}</span>
+                          <span style={{ display: 'block', fontSize: '0.74rem', color: '#64748B' }}>{dip.rollNo}</span>
+                        </td>
+                        <td>
+                          <strong style={{ color: '#0F172A', fontSize: '0.9rem' }}>{dip.studentName}</strong>
+                          <span style={{ display: 'block', fontSize: '0.72rem', color: '#64748B' }}>Signed: {dip.authBy}</span>
+                        </td>
+                        <td>
+                          <span style={{ fontSize: '0.84rem', fontWeight: 600, color: '#334155' }}>{dip.program}</span>
+                        </td>
+                        <td>
+                          <span style={{ 
+                            fontSize: '0.76rem', 
+                            fontWeight: 700, 
+                            color: dip.grade.includes('A+') ? '#10B981' : '#F83458',
+                            background: dip.grade.includes('A+') ? 'rgba(16, 185, 129, 0.08)' : 'rgba(248, 52, 88, 0.08)',
+                            padding: '3px 8px',
+                            borderRadius: '6px'
+                          }}>
+                            {dip.grade}
+                          </span>
+                        </td>
+                        <td>
+                          <span style={{ fontSize: '0.82rem', color: '#64748B' }}>{dip.issueDate}</span>
+                        </td>
+                        <td>
+                          <span style={{ 
+                            fontSize: '0.76rem', 
+                            fontWeight: 700, 
+                            color: dip.dispatchStatus.includes('Verified') ? '#10B981' : '#F59E0B',
+                            background: dip.dispatchStatus.includes('Verified') ? 'rgba(16, 185, 129, 0.08)' : 'rgba(245, 158, 11, 0.08)',
+                            padding: '3px 8px',
+                            borderRadius: '999px',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '4px'
+                          }}>
+                            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: dip.dispatchStatus.includes('Verified') ? '#10B981' : '#F59E0B' }} />
+                            {dip.dispatchStatus}
+                          </span>
+                        </td>
+                        <td style={{ textAlign: 'right' }}>
+                          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                            <button
+                              type="button"
+                              onClick={() => handleDownloadDiploma(dip)}
+                              style={{
+                                padding: '5px 10px',
+                                borderRadius: '6px',
+                                border: '1px solid rgba(0,0,0,0.1)',
+                                background: '#FFFFFF',
+                                color: '#0F172A',
+                                fontSize: '0.76rem',
+                                fontWeight: 700,
+                                cursor: 'pointer',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '4px'
+                              }}
+                              title="Download verified diploma certificate"
+                            >
+                              <Download size={12} />
+                              <span>Certificate</span>
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleDeleteDiploma(dip.id)}
+                              style={{
+                                padding: '5px 8px',
+                                borderRadius: '6px',
+                                border: '1px solid rgba(220, 38, 38, 0.2)',
+                                background: '#FFFFFF',
+                                color: '#DC2626',
+                                cursor: 'pointer'
+                              }}
+                              title="Delete record"
+                            >
+                              <Trash2 size={12} />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
           </div>
         )}
+
 
         {/* TAB 5: Live Online Classes & Zoom Studio Management */}
         {activeTab === 'classes' && (
@@ -4114,6 +4782,228 @@ export default function AdminPortalView({
                     <span>{editingCourse ? 'Save & Update Course' : 'Publish Course Batch'}</span>
                   </button>
                 </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+
+      {/* MODAL: Publish New Exam Alert */}
+      {newAlertModalOpen && (
+        <div className="admin-modal-backdrop" onClick={() => setNewAlertModalOpen(false)}>
+          <div className="admin-modal-card" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '540px' }}>
+            <div className="admin-modal-header">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Megaphone size={18} color="#F83458" />
+                <h3 className="modal-title">Publish New Recruitment Exam Alert</h3>
+              </div>
+              <button className="modal-close-btn" onClick={() => setNewAlertModalOpen(false)}>×</button>
+            </div>
+            <form onSubmit={handleCreateAlert} style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>
+                  Exam Title *
+                </label>
+                <input 
+                  type="text" 
+                  required
+                  placeholder="e.g. Supreme Court of India Personal Assistant & Steno 2026"
+                  value={alertForm.title}
+                  onChange={(e) => setAlertForm({ ...alertForm, title: e.target.value })}
+                  style={{ width: '100%', padding: '0.6rem 0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '0.88rem', boxSizing: 'border-box' }}
+                />
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>
+                    Department / Body
+                  </label>
+                  <input 
+                    type="text" 
+                    placeholder="e.g. Supreme Court of India"
+                    value={alertForm.dept}
+                    onChange={(e) => setAlertForm({ ...alertForm, dept: e.target.value })}
+                    style={{ width: '100%', padding: '0.6rem 0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '0.88rem', boxSizing: 'border-box' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>
+                    Total Vacancies
+                  </label>
+                  <input 
+                    type="text" 
+                    placeholder="e.g. 210 Vacancies"
+                    value={alertForm.posts}
+                    onChange={(e) => setAlertForm({ ...alertForm, posts: e.target.value })}
+                    style={{ width: '100%', padding: '0.6rem 0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '0.88rem', boxSizing: 'border-box' }}
+                  />
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>
+                    Speed Requirement
+                  </label>
+                  <input 
+                    type="text" 
+                    placeholder="e.g. 100 WPM English"
+                    value={alertForm.speedReq}
+                    onChange={(e) => setAlertForm({ ...alertForm, speedReq: e.target.value })}
+                    style={{ width: '100%', padding: '0.6rem 0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '0.88rem', boxSizing: 'border-box' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>
+                    Application Deadline
+                  </label>
+                  <input 
+                    type="text" 
+                    placeholder="e.g. 15 Jan 2027"
+                    value={alertForm.deadline}
+                    onChange={(e) => setAlertForm({ ...alertForm, deadline: e.target.value })}
+                    style={{ width: '100%', padding: '0.6rem 0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '0.88rem', boxSizing: 'border-box' }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>
+                  Official Notification URL
+                </label>
+                <input 
+                  type="url" 
+                  placeholder="https://..."
+                  value={alertForm.link}
+                  onChange={(e) => setAlertForm({ ...alertForm, link: e.target.value })}
+                  style={{ width: '100%', padding: '0.6rem 0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '0.88rem', boxSizing: 'border-box' }}
+                />
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px' }}>
+                <input 
+                  type="checkbox" 
+                  id="urgentAlertCheckbox"
+                  checked={alertForm.urgent}
+                  onChange={(e) => setAlertForm({ ...alertForm, urgent: e.target.checked })}
+                  style={{ cursor: 'pointer', width: '16px', height: '16px' }}
+                />
+                <label htmlFor="urgentAlertCheckbox" style={{ fontSize: '0.84rem', fontWeight: 600, color: '#334155', cursor: 'pointer' }}>
+                  Mark as High Priority / Urgent Notice
+                </label>
+              </div>
+
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid #f1f5f9' }}>
+                <button type="button" className="btn btn-secondary" onClick={() => setNewAlertModalOpen(false)}>
+                  Cancel
+                </button>
+                <button type="submit" className="btn btn-primary" style={{ background: '#F83458', borderColor: '#F83458', color: '#FFFFFF' }}>
+                  Publish Live Alert
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: Issue Student Diploma */}
+      {newDiplomaModalOpen && (
+        <div className="admin-modal-backdrop" onClick={() => setNewDiplomaModalOpen(false)}>
+          <div className="admin-modal-card" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '540px' }}>
+            <div className="admin-modal-header">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Award size={18} color="#0F172A" />
+                <h3 className="modal-title">Issue Verified Student Diploma / Certificate</h3>
+              </div>
+              <button className="modal-close-btn" onClick={() => setNewDiplomaModalOpen(false)}>×</button>
+            </div>
+            <form onSubmit={handleCreateDiploma} style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>
+                    Candidate Name *
+                  </label>
+                  <input 
+                    type="text" 
+                    required
+                    placeholder="e.g. Rahul Kumar"
+                    value={diplomaForm.studentName}
+                    onChange={(e) => setDiplomaForm({ ...diplomaForm, studentName: e.target.value })}
+                    style={{ width: '100%', padding: '0.6rem 0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '0.88rem', boxSizing: 'border-box' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>
+                    Roll Number *
+                  </label>
+                  <input 
+                    type="text" 
+                    required
+                    placeholder="e.g. SP-2026-095"
+                    value={diplomaForm.rollNo}
+                    onChange={(e) => setDiplomaForm({ ...diplomaForm, rollNo: e.target.value })}
+                    style={{ width: '100%', padding: '0.6rem 0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '0.88rem', boxSizing: 'border-box' }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>
+                  Certification Program *
+                </label>
+                <select
+                  value={diplomaForm.program}
+                  onChange={(e) => setDiplomaForm({ ...diplomaForm, program: e.target.value })}
+                  style={{ width: '100%', padding: '0.6rem 0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '0.88rem', background: '#FFFFFF', boxSizing: 'border-box' }}
+                >
+                  <option value="Diploma in Computer Application (DCA - 6 Months)">Diploma in Computer Application (DCA - 6 Months)</option>
+                  <option value="Advance Diploma in Computer Application (ADCA - 1 Year)">Advance Diploma in Computer Application (ADCA - 1 Year)</option>
+                  <option value="Pitman High-Speed Shorthand (80 WPM Certified)">Pitman High-Speed Shorthand (80 WPM Certified)</option>
+                  <option value="Pitman High-Speed Shorthand (100 WPM Certified)">Pitman High-Speed Shorthand (100 WPM Certified)</option>
+                  <option value="Parliamentary Reporter Shorthand (120 WPM Certified)">Parliamentary Reporter Shorthand (120 WPM Certified)</option>
+                  <option value="Professional Bilingual Computer Typing (Hindi & English)">Professional Bilingual Computer Typing (Hindi & English)</option>
+                </select>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>
+                    Grade / Accuracy Score
+                  </label>
+                  <input 
+                    type="text" 
+                    placeholder="e.g. Grade A+ (96.5% Marks)"
+                    value={diplomaForm.grade}
+                    onChange={(e) => setDiplomaForm({ ...diplomaForm, grade: e.target.value })}
+                    style={{ width: '100%', padding: '0.6rem 0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '0.88rem', boxSizing: 'border-box' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>
+                    Dispatch / Collection Status
+                  </label>
+                  <select
+                    value={diplomaForm.dispatchStatus}
+                    onChange={(e) => setDiplomaForm({ ...diplomaForm, dispatchStatus: e.target.value })}
+                    style={{ width: '100%', padding: '0.6rem 0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '0.88rem', background: '#FFFFFF', boxSizing: 'border-box' }}
+                  >
+                    <option value="Verified & Dispatched">Verified & Dispatched</option>
+                    <option value="Ready for Center Pickup">Ready for Center Pickup</option>
+                    <option value="Under Quality Printing">Under Quality Printing</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid #f1f5f9' }}>
+                <button type="button" className="btn btn-secondary" onClick={() => setNewDiplomaModalOpen(false)}>
+                  Cancel
+                </button>
+                <button type="submit" className="btn btn-primary" style={{ background: '#0F172A', borderColor: '#0F172A', color: '#FFFFFF' }}>
+                  Issue Diploma Record
+                </button>
               </div>
             </form>
           </div>

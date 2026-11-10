@@ -4,6 +4,7 @@ export const INITIAL_USER = {
   email: "shadabca@gmail.com",
   rollNo: "SP-2026-084",
   state: "Bihar",
+  role: "admin",
   language: "English",
   subscription: {
     plan: "12 Month Unlimited (Shorthand + Typing)",
