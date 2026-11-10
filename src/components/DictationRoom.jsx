@@ -370,7 +370,7 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
                   padding: '0.45rem 0.85rem',
                   borderRadius: 8,
                   border: '1px solid #1c1917',
-                  background: showDigitalCanvas ? '#1c1917' : '#FAF7F2',
+                  background: showDigitalCanvas ? '#1c1917' : '#F3EEE3',
                   color: showDigitalCanvas ? '#fafaf9' : '#1c1917',
                   fontSize: '0.8rem',
                   fontWeight: 600,
@@ -501,7 +501,7 @@ export default function DictationRoom({ test, onProceedToTyping, onCancel }) {
                     <button 
                       className="btn-proceed-transcription"
                       onClick={() => setInReadingPhase(true)}
-                      style={{ background: '#D97706', borderColor: '#B45309', color: '#FAF7F2' }}
+                      style={{ background: '#D97706', borderColor: '#B45309', color: '#F3EEE3' }}
                     >
                       <Clock size={18} />
                       <span>Start Official 5-Min Reading Period</span>

@@ -20,11 +20,11 @@
   --font-kruti: 'Kruti Dev', sans-serif;
 
   /* Corporate EdTech Color Palette (Warm Stone & Cashmere) */
-  --bg-app: #faf9f6;
-  --bg-sidebar: #FAF7F2;
-  --bg-surface: #FAF7F2;
-  --bg-subtle: #f5f4f0;
-  --bg-hover: #ebe8e2;
+  --bg-app: #F3EEE3;
+  --bg-sidebar: #F3EEE3;
+  --bg-surface: #F3EEE3;
+  --bg-subtle: #F3EEE3;
+  --bg-hover: #F3EEE3;
 
   --navy-950: #0c0a09;
   --navy-900: #1c1917;
@@ -35,18 +35,18 @@
   --navy-400: #a8a29e;
   --navy-300: #d6d3d1;
   --navy-200: #e7e5e4;
-  --navy-100: #f5f4f0;
-  --navy-50:  #faf9f6;
+  --navy-100: #F3EEE3;
+  --navy-50:  #F3EEE3;
 
   --blue-700: #292524;
   --blue-600: #1c1917;
   --blue-500: #44403c;
   --blue-400: #78716c;
-  --blue-100: #f5f4f0;
-  --blue-50: #faf9f6;
+  --blue-100: #F3EEE3;
+  --blue-50: #F3EEE3;
 
   --indigo-600: #1c1917;
-  --indigo-50:  #faf9f6;
+  --indigo-50:  #F3EEE3;
 
   --emerald-600: #D9541E;
   --emerald-500: #D9541E;
@@ -55,7 +55,7 @@
 
   --rose-600: #111111;
   --rose-500: #262626;
-  --rose-100: #FAF7F2;
+  --rose-100: #F3EEE3;
   --rose-50:  #F3EEE3;
 
   --amber-600: #D9541E;
@@ -91,22 +91,22 @@
 /* Global Text Selection in Sleek Cyber Blue */
 ::selection {
   background-color: #1c1917 !important;
-  color: #FAF7F2 !important;
+  color: #F3EEE3 !important;
 }
 
 ::-moz-selection {
   background-color: #1c1917 !important;
-  color: #FAF7F2 !important;
+  color: #F3EEE3 !important;
 }
 
 *::selection {
   background-color: #1c1917 !important;
-  color: #FAF7F2 !important;
+  color: #F3EEE3 !important;
 }
 
 *::-moz-selection {
   background-color: #1c1917 !important;
-  color: #FAF7F2 !important;
+  color: #F3EEE3 !important;
 }
 
 *, *::before, *::after {
@@ -158,7 +158,7 @@ input, textarea, select { font-family: inherit; color: inherit; }
 
 /* Corporate Cards */
 .saas-card {
-  background: #FAF7F2 !important;
+  background: #F3EEE3 !important;
   border: 1px solid rgba(17, 17, 17, 0.12) !important;
   border-radius: var(--radius-lg);
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
@@ -200,13 +200,13 @@ input, textarea, select { font-family: inherit; color: inherit; }
 }
 
 .btn-secondary {
-  background: #FAF7F2 !important;
+  background: #F3EEE3 !important;
   color: #111111 !important;
   border: 1px solid rgba(17, 17, 17, 0.14) !important;
   box-shadow: var(--shadow-xs);
 }
 .btn-secondary:hover {
-  background: #EBE5D8 !important;
+  background: #F3EEE3 !important;
   border-color: rgba(17, 17, 17, 0.25) !important;
   color: #1c1917 !important;
 }
@@ -217,13 +217,13 @@ input, textarea, select { font-family: inherit; color: inherit; }
   border: 1px solid #e7e5e4 !important;
 }
 .btn-outline:hover {
-  background: #faf9f6 !important;
+  background: #F3EEE3 !important;
   border-color: #1c1917 !important;
 }
 
 .btn-emerald {
   background: #D9541E !important;
-  color: #FAF7F2 !important;
+  color: #F3EEE3 !important;
 }
 .btn-emerald:hover {
   background: #BF4515 !important;
@@ -244,19 +244,19 @@ input, textarea, select { font-family: inherit; color: inherit; }
   border-radius: var(--radius-full);
 }
 
-.badge-blue { background: #FAF7F2 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.12) !important; }
+.badge-blue { background: #F3EEE3 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.12) !important; }
 .badge-emerald { background: rgba(217, 84, 30, 0.08) !important; color: #D9541E !important; border: 1px solid rgba(217, 84, 30, 0.22) !important; }
-.badge-amber { background: #FAF7F2 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.14) !important; }
-.badge-rose { background: #FAF7F2 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.14) !important; }
-.badge-navy { background: #FAF7F2 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.12) !important; }
+.badge-amber { background: #F3EEE3 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.14) !important; }
+.badge-rose { background: #F3EEE3 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.14) !important; }
+.badge-navy { background: #F3EEE3 !important; color: #111111 !important; border: 1px solid rgba(17, 17, 17, 0.12) !important; }
 
 .font-mono { font-family: var(--font-mono) !important; }
 .font-kruti { font-family: 'Kruti Dev', sans-serif !important; font-size: 1.25rem !important; }
 .font-devanagari { font-family: var(--font-devanagari) !important; }
 
 /* Strict 3-Color System Utilities */
-.text-cream { color: #FAF7F2 !important; }
-.bg-cream { background-color: #FAF7F2 !important; }
+.text-cream { color: #F3EEE3 !important; }
+.bg-cream { background-color: #F3EEE3 !important; }
 .bg-cream-canvas { background-color: #F3EEE3 !important; }
 .text-ink { color: #111111 !important; }
 .bg-ink { background-color: #111111 !important; }

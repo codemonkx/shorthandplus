@@ -271,7 +271,7 @@ export default function ProfileSettingsModal({
 
             <div className="auth-field-group">
               <label className="auth-field-label">Registered Email (Read-Only)</label>
-              <div className="auth-input-wrapper" style={{ background: '#f5f5f4' }}>
+              <div className="auth-input-wrapper" style={{ background: '#F3EEE3' }}>
                 <Mail size={16} className="auth-input-icon" style={{ color: '#a8a29e' }} />
                 <input 
                   type="email" 

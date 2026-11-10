@@ -182,7 +182,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
         {/* Brand Header */}
         <div className="auth-modal-header">
           <div className="auth-header-brand-row">
-            <div className="auth-brand-badge" style={{ background: '#FAF7F2', border: '1.5px solid #fed7aa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="auth-brand-badge" style={{ background: '#F3EEE3', border: '1.5px solid #fed7aa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               {authMode === 'admin' ? (
                 <ShieldCheck size={22} color="#d97706" />
               ) : authMode === 'forgot' ? (
@@ -231,7 +231,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
               type="button"
               className="auth-switch-link"
               onClick={() => { setAuthMode('student'); setStatusMsg(null); setForgotStep(1); }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.82rem', fontWeight: 600, color: '#1c1917', background: '#f5f5f4', padding: '0.35rem 0.75rem', borderRadius: 6, border: '1px solid #e7e5e4' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.82rem', fontWeight: 600, color: '#1c1917', background: '#F3EEE3', padding: '0.35rem 0.75rem', borderRadius: 6, border: '1px solid #e7e5e4' }}
             >
               ← Back to Student Login
             </button>
@@ -291,9 +291,9 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
         )}
 
         {authMode === 'admin' && (
-          <div className="auth-demo-card" style={{ background: '#faf9f6', borderColor: '#e7e5e4' }}>
+          <div className="auth-demo-card" style={{ background: '#F3EEE3', borderColor: '#e7e5e4' }}>
             <div className="auth-demo-info">
-              <div className="auth-demo-avatar" style={{ background: '#f5f4f0', color: '#1c1917' }}>
+              <div className="auth-demo-avatar" style={{ background: '#F3EEE3', color: '#1c1917' }}>
                 <Key size={16} />
               </div>
               <div className="auth-demo-texts">
@@ -408,7 +408,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
                     </div>
                   ) : (
                     <div style={{
-                      background: '#faf9f6',
+                      background: '#F3EEE3',
                       border: '1px solid #e7e5e4',
                       borderRadius: '8px',
                       padding: '0.75rem 0.85rem',

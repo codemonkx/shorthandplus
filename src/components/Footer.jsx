@@ -144,7 +144,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
                 alignItems: 'center',
                 gap: '8px',
                 background: '#D9541E',
-                color: '#FAF7F2',
+                color: '#F3EEE3',
                 padding: '0.65rem 1.15rem',
                 borderRadius: '8px',
                 fontWeight: 700,
@@ -161,7 +161,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
         </div>
 
         {/* Compliance & Legal Policies Strip (Razorpay & IT Rules Compliant) */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', justifyContent: 'center', alignItems: 'center', padding: '1rem 0', borderTop: '1px solid rgba(250, 247, 242,0.08)', fontSize: '0.74rem', color: '#a8a29e' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', justifyContent: 'center', alignItems: 'center', padding: '1rem 0', borderTop: '1px solid rgba(243, 238, 227,0.08)', fontSize: '0.74rem', color: '#a8a29e' }}>
           <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" style={{ color: '#D9541E', textDecoration: 'none', fontWeight: 600 }}>https://stenoplus.in</a>
           <span>•</span>
           <button onClick={() => onOpenLegal && onOpenLegal('terms')} style={{ background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer', padding: 0 }}>Terms & Conditions</button>

@@ -24,7 +24,7 @@ export default function FloatingContactDock() {
       {showCallMenu && (
         <div 
           style={{
-            background: '#FAF7F2',
+            background: '#F3EEE3',
             borderRadius: '14px',
             boxShadow: '0 10px 30px rgba(17, 17, 17, 0.16), 0 2px 8px rgba(17, 17, 17, 0.06)',
             padding: '14px 16px',
@@ -79,7 +79,7 @@ export default function FloatingContactDock() {
                 alignItems: 'center',
                 gap: '8px',
                 padding: '8px 10px',
-                background: '#EBE5D8',
+                background: '#F3EEE3',
                 border: '1px solid rgba(17, 17, 17, 0.12)',
                 borderRadius: '8px',
                 color: '#111111',
@@ -110,7 +110,7 @@ export default function FloatingContactDock() {
             width: '46px',
             height: '46px',
             borderRadius: '50%',
-            background: '#FAF7F2',
+            background: '#F3EEE3',
             color: '#111111',
             border: '1.5px solid rgba(17, 17, 17, 0.18)',
             display: 'flex',
@@ -122,11 +122,11 @@ export default function FloatingContactDock() {
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'scale(1.08)';
-            e.currentTarget.style.background = '#EBE5D8';
+            e.currentTarget.style.background = '#F3EEE3';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.background = '#FAF7F2';
+            e.currentTarget.style.background = '#F3EEE3';
           }}
         >
           <Phone size={20} />
@@ -144,7 +144,7 @@ export default function FloatingContactDock() {
             height: '52px',
             borderRadius: '50%',
             background: '#D9541E',
-            color: '#FAF7F2',
+            color: '#F3EEE3',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',

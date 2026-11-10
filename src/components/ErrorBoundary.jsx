@@ -32,12 +32,12 @@ export class ErrorBoundary extends React.Component {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#faf9f6',
+          backgroundColor: '#F3EEE3',
           padding: '2rem',
           fontFamily: "'Inter', sans-serif"
         }}>
           <div style={{
-            background: '#FAF7F2',
+            background: '#F3EEE3',
             border: '1px solid #e7e5e4',
             borderRadius: '16px',
             padding: '2.5rem',
@@ -88,7 +88,7 @@ export class ErrorBoundary extends React.Component {
                   gap: '0.45rem',
                   padding: '0.65rem 1.25rem',
                   background: '#1c1917',
-                  color: '#FAF7F2',
+                  color: '#F3EEE3',
                   border: '1px solid #1c1917',
                   borderRadius: '8px',
                   fontWeight: 700,
@@ -108,7 +108,7 @@ export class ErrorBoundary extends React.Component {
                   alignItems: 'center',
                   gap: '0.45rem',
                   padding: '0.65rem 1.25rem',
-                  background: '#FAF7F2',
+                  background: '#F3EEE3',
                   color: '#1c1917',
                   border: '1px solid #e7e5e4',
                   borderRadius: '8px',

@@ -47,7 +47,7 @@ const GoogleIcon = () => (
 const YouTubeIcon = ({ size = 20 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
     <path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
-    <path fill="#FAF7F2" d="m9.545 15.568 6.273-3.568-6.273-3.568z"/>
+    <path fill="#F3EEE3" d="m9.545 15.568 6.273-3.568-6.273-3.568z"/>
   </svg>
 );
 
@@ -221,7 +221,7 @@ export default function LandingPage({
                 display: 'inline-flex', 
                 alignItems: 'center', 
                 gap: '8px', 
-                background: '#FAF7F2', 
+                background: '#F3EEE3', 
                 border: '1px solid rgba(17, 17, 17, 0.14)', 
                 borderRadius: '999px', 
                 padding: '6px 14px', 
@@ -271,7 +271,7 @@ export default function LandingPage({
                     alignItems: 'center',
                     gap: '8px',
                     background: '#D9541E',
-                    color: '#FAF7F2',
+                    color: '#F3EEE3',
                     border: 'none',
                     borderRadius: '10px',
                     padding: '0.85rem 1.6rem',
@@ -284,7 +284,7 @@ export default function LandingPage({
                   onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
                   onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                 >
-                  <Sparkles size={18} color="#FAF7F2" />
+                  <Sparkles size={18} color="#F3EEE3" />
                   <span>Book 3 Free Demo Classes</span>
                 </button>
 
@@ -321,7 +321,7 @@ export default function LandingPage({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '6px',
-                    background: '#FAF7F2',
+                    background: '#F3EEE3',
                     color: '#111111',
                     border: '1px solid rgba(17, 17, 17, 0.15)',
                     borderRadius: '10px',
@@ -358,13 +358,13 @@ export default function LandingPage({
             {/* Right Column: Clean Academy Welcome Card */}
             <div>
               <div style={{ 
-                background: '#FAF7F2', 
+                background: '#F3EEE3', 
                 border: '1.5px solid rgba(17, 17, 17, 0.12)', 
                 borderRadius: '16px', 
                 padding: '2rem', 
                 boxShadow: '0 8px 30px rgba(17, 17, 17, 0.04)' 
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid #f5f5f4', paddingBottom: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid #F3EEE3', paddingBottom: '1rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <img 
                       src="/assets/logo-big-s.png" 
@@ -416,7 +416,7 @@ export default function LandingPage({
                 </div>
 
                 {/* Key Academy Highlights Checklist */}
-                <div style={{ background: '#FAF7F2', borderRadius: '12px', padding: '1rem 1.15rem', marginBottom: '1.5rem', border: '1px solid rgba(17, 17, 17, 0.1)' }}>
+                <div style={{ background: '#F3EEE3', borderRadius: '12px', padding: '1rem 1.15rem', marginBottom: '1.5rem', border: '1px solid rgba(17, 17, 17, 0.1)' }}>
                   <span style={{ display: 'block', fontSize: '0.78rem', fontWeight: 800, color: '#111111', textTransform: 'uppercase', marginBottom: '8px', letterSpacing: '0.5px' }}>
                     What You Get At Gaya Shorthand:
                   </span>
@@ -446,7 +446,7 @@ export default function LandingPage({
                     }}
                     style={{
                       background: '#D9541E',
-                      color: '#FAF7F2',
+                      color: '#F3EEE3',
                       border: 'none',
                       borderRadius: '8px',
                       padding: '0.75rem',
@@ -471,7 +471,7 @@ export default function LandingPage({
                     }}
                     style={{
                       background: '#1c1917',
-                      color: '#FAF7F2',
+                      color: '#F3EEE3',
                       border: 'none',
                       borderRadius: '8px',
                       padding: '0.75rem',
@@ -536,7 +536,7 @@ export default function LandingPage({
               <div 
                 key={c.id}
                 style={{
-                  background: '#FAF7F2',
+                  background: '#F3EEE3',
                   border: c.id === 'eng-steno' ? '1.5px solid #D9541E' : '1px solid rgba(17, 17, 17, 0.12)',
                   borderRadius: '16px',
                   padding: '1.75rem',
@@ -618,7 +618,7 @@ export default function LandingPage({
                     style={{
                       width: '100%',
                       background: '#D9541E',
-                      color: '#FAF7F2',
+                      color: '#F3EEE3',
                       border: 'none',
                       borderRadius: '8px',
                       padding: '0.75rem',
@@ -643,7 +643,7 @@ export default function LandingPage({
 
           {/* Skill Test Passes Bar (From user's price image: ₹30, ₹350, ₹1100, ₹2000) */}
           <div style={{ 
-            background: '#FAF7F2', 
+            background: '#F3EEE3', 
             border: '1px solid rgba(17, 17, 17, 0.14)', 
             borderRadius: '14px', 
             padding: '1.5rem 1.75rem',
@@ -670,7 +670,7 @@ export default function LandingPage({
                 <div 
                   key={idx}
                   style={{ 
-                    background: '#FAF7F2', 
+                    background: '#F3EEE3', 
                     border: '1px solid rgba(17, 17, 17, 0.12)', 
                     borderRadius: '8px', 
                     padding: '8px 12px',
@@ -718,7 +718,7 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 3: TARGET GOVERNMENT EXAMINATIONS
           ========================================================================= */}
-      <section style={{ padding: '4.5rem 1.25rem', background: '#FAF7F2', borderBottom: '1px solid rgba(17, 17, 17, 0.12)' }}>
+      <section style={{ padding: '4.5rem 1.25rem', background: '#F3EEE3', borderBottom: '1px solid rgba(17, 17, 17, 0.12)' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           
           <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 3rem' }}>
@@ -786,7 +786,7 @@ export default function LandingPage({
               <div 
                 key={i}
                 style={{
-                  background: '#FAF7F2',
+                  background: '#F3EEE3',
                   border: '1px solid rgba(17, 17, 17, 0.12)',
                   borderRadius: '12px',
                   padding: '1.25rem 1.4rem',
@@ -875,7 +875,7 @@ export default function LandingPage({
               <div 
                 key={i}
                 style={{
-                  background: '#FAF7F2',
+                  background: '#F3EEE3',
                   border: '1px solid rgba(17, 17, 17, 0.12)',
                   borderRadius: '14px',
                   padding: '1.75rem 1.5rem',
@@ -888,7 +888,7 @@ export default function LandingPage({
                   width: '46px', 
                   height: '46px', 
                   borderRadius: '10px', 
-                  background: '#FAF7F2', 
+                  background: '#F3EEE3', 
                   border: '1px solid rgba(17, 17, 17, 0.12)',
                   display: 'flex',
                   alignItems: 'center',
@@ -945,7 +945,7 @@ export default function LandingPage({
             
             {/* Left: YouTube Video Card */}
             <div style={{ 
-              background: '#FAF7F2', 
+              background: '#F3EEE3', 
               border: '1px solid rgba(17, 17, 17, 0.12)', 
               borderRadius: '16px', 
               padding: '1.75rem',
@@ -999,7 +999,7 @@ export default function LandingPage({
                       onClick={() => setIsPlayingYouTube(true)}
                       style={{ 
                         textAlign: 'center', 
-                        color: '#FAF7F2', 
+                        color: '#F3EEE3', 
                         padding: '1.5rem', 
                         zIndex: 1, 
                         cursor: 'pointer',
@@ -1018,14 +1018,14 @@ export default function LandingPage({
                         height: '58px', 
                         borderRadius: '50%', 
                         background: '#dc2626', 
-                        color: '#FAF7F2', 
+                        color: '#F3EEE3', 
                         display: 'flex', 
                         alignItems: 'center', 
                         justifyContent: 'center', 
                         margin: '0 auto 10px', 
                         boxShadow: '0 4px 14px rgba(220, 38, 38, 0.5)'
                       }}>
-                        <Play size={26} fill="#FAF7F2" style={{ marginLeft: '3px' }} />
+                        <Play size={26} fill="#F3EEE3" style={{ marginLeft: '3px' }} />
                       </div>
                       <span style={{ display: 'block', fontSize: '0.96rem', fontWeight: 800 }}>Watch Classroom Dictation Video</span>
                       <span style={{ fontSize: '0.78rem', color: '#a8a29e', marginTop: '3px' }}>Click to play on-screen demo • Gaya Shorthand Classes</span>
@@ -1041,7 +1041,7 @@ export default function LandingPage({
                 style={{
                   width: '100%',
                   background: '#dc2626',
-                  color: '#FAF7F2',
+                  color: '#F3EEE3',
                   border: 'none',
                   borderRadius: '8px',
                   padding: '0.8rem',
@@ -1065,7 +1065,7 @@ export default function LandingPage({
               
               {/* Google Reviews Aggregate Badge */}
               <div style={{ 
-                background: '#FAF7F2', 
+                background: '#F3EEE3', 
                 border: '1px solid rgba(17, 17, 17, 0.12)', 
                 borderRadius: '14px', 
                 padding: '1.25rem 1.5rem',
@@ -1111,7 +1111,7 @@ export default function LandingPage({
                 <div 
                   key={i}
                   style={{
-                    background: '#FAF7F2',
+                    background: '#F3EEE3',
                     border: '1px solid rgba(17, 17, 17, 0.12)',
                     borderRadius: '12px',
                     padding: '1.15rem 1.25rem',
@@ -1165,7 +1165,7 @@ export default function LandingPage({
                 Gaya Coaching Center & Helplines
               </h2>
               
-              <div style={{ background: '#FAF7F2', border: '1px solid rgba(17, 17, 17, 0.12)', borderRadius: '14px', padding: '1.5rem', marginBottom: '1.25rem' }}>
+              <div style={{ background: '#F3EEE3', border: '1px solid rgba(17, 17, 17, 0.12)', borderRadius: '14px', padding: '1.5rem', marginBottom: '1.25rem' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '12px' }}>
                   <MapPin size={20} color="#D9541E" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div>
@@ -1252,7 +1252,7 @@ export default function LandingPage({
                     <div 
                       key={faq.id}
                       style={{
-                        background: '#FAF7F2',
+                        background: '#F3EEE3',
                         border: '1px solid rgba(17, 17, 17, 0.12)',
                         borderRadius: '10px',
                         overflow: 'hidden',
@@ -1308,7 +1308,7 @@ export default function LandingPage({
 
           {/* Bottom Academy CTA Banner */}
           <div style={{ 
-            background: '#FAF7F2', 
+            background: '#F3EEE3', 
             border: '1.5px solid rgba(17, 17, 17, 0.12)',
             borderRadius: '16px', 
             padding: '2.5rem 2rem', 
@@ -1338,7 +1338,7 @@ export default function LandingPage({
                 href="tel:9204123453"
                 style={{
                   background: '#111111',
-                  color: '#FAF7F2',
+                  color: '#F3EEE3',
                   border: 'none',
                   borderRadius: '8px',
                   padding: '0.75rem 1.4rem',
@@ -1351,7 +1351,7 @@ export default function LandingPage({
                   boxShadow: '0 2px 8px rgba(17, 17, 17, 0.25)'
                 }}
               >
-                <Phone size={16} color="#FAF7F2" />
+                <Phone size={16} color="#F3EEE3" />
                 <span>Call Helpline: +91 9204123453</span>
               </a>
 
@@ -1362,7 +1362,7 @@ export default function LandingPage({
                 }}
                 style={{
                   background: '#D9541E',
-                  color: '#FAF7F2',
+                  color: '#F3EEE3',
                   border: 'none',
                   borderRadius: '8px',
                   padding: '0.75rem 1.4rem',
@@ -1375,7 +1375,7 @@ export default function LandingPage({
                   boxShadow: '0 2px 8px rgba(217, 84, 30, 0.28)'
                 }}
               >
-                <Sparkles size={16} color="#FAF7F2" />
+                <Sparkles size={16} color="#F3EEE3" />
                 <span>Book 3 Free Demo Classes</span>
               </button>
             </div>

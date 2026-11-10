@@ -131,7 +131,7 @@ export default function Sidebar({
             <button
               className={`sidebar-nav-item ${currentTab === 'admin' ? 'active' : ''}`}
               onClick={() => handleNav('admin')}
-              style={{ marginTop: '0.5rem', borderTop: '1px solid #f1f5f9' }}
+              style={{ marginTop: '0.5rem', borderTop: '1px solid #F3EEE3' }}
               title="Director & Faculty Admin Console"
             >
               <ShieldCheck size={17} className="text-royal-blue" />

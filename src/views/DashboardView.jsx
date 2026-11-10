@@ -310,7 +310,7 @@ export default function DashboardView({
               type="button" 
               onClick={() => onOpenCheckout ? onOpenCheckout('plan-1mo') : onNavigate('pricing')}
               className="btn btn-secondary btn-sm"
-              style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', borderColor: 'rgba(17, 17, 17, 0.12)', color: '#111111', background: '#FAF7F2' }}
+              style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', borderColor: 'rgba(17, 17, 17, 0.12)', color: '#111111', background: '#F3EEE3' }}
             >
               <CreditCard size={14} />
               <span>Manage / Upgrade</span>
@@ -319,10 +319,10 @@ export default function DashboardView({
         </div>
 
         {/* Recent Monthly Transactions Table */}
-        <div style={{ overflowX: 'auto', border: '1px solid rgba(17, 17, 17, 0.12)', borderRadius: '0.75rem', background: '#FAF7F2' }}>
+        <div style={{ overflowX: 'auto', border: '1px solid rgba(17, 17, 17, 0.12)', borderRadius: '0.75rem', background: '#F3EEE3' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem', textAlign: 'left' }}>
             <thead>
-              <tr style={{ background: '#faf9f6', borderBottom: '1px solid #e7e5e4', color: '#57534e', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <tr style={{ background: '#F3EEE3', borderBottom: '1px solid #e7e5e4', color: '#57534e', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 <th style={{ padding: '0.75rem 1rem' }}>Transaction ID</th>
                 <th style={{ padding: '0.75rem 1rem' }}>Subscription / Course</th>
                 <th style={{ padding: '0.75rem 1rem' }}>Billing Frequency</th>

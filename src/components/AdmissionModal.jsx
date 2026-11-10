@@ -155,7 +155,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
     >
       <div 
         style={{
-          background: '#FAF7F2',
+          background: '#F3EEE3',
           borderRadius: '16px',
           width: '100%',
           maxWidth: '680px',
@@ -170,7 +170,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
         <div style={{
           padding: '1.4rem 1.6rem',
           borderBottom: '1px solid #e7e5e4',
-          background: '#faf9f6',
+          background: '#F3EEE3',
           borderTopLeftRadius: '16px',
           borderTopRightRadius: '16px',
           display: 'flex',
@@ -194,7 +194,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
             onClick={onClose}
             aria-label="Close Admission Form"
             style={{
-              background: '#FAF7F2',
+              background: '#F3EEE3',
               border: '1px solid #e7e5e4',
               borderRadius: '8px',
               padding: '6px',
@@ -233,7 +233,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
 
               {/* Printable Slip Card */}
               <div style={{
-                background: '#faf9f6',
+                background: '#F3EEE3',
                 border: '1px solid #e7e5e4',
                 borderRadius: '12px',
                 padding: '1.25rem',
@@ -294,7 +294,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                     justifyContent: 'center',
                     gap: '0.5rem',
                     background: '#047857',
-                    color: '#FAF7F2',
+                    color: '#F3EEE3',
                     border: 'none',
                     borderRadius: '10px',
                     padding: '0.85rem 1.25rem',
@@ -320,7 +320,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                       justifyContent: 'center',
                       gap: '0.45rem',
                       background: '#15803d',
-                      color: '#FAF7F2',
+                      color: '#F3EEE3',
                       borderRadius: '10px',
                       padding: '0.75rem',
                       fontSize: '0.86rem',
@@ -339,7 +339,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: '0.45rem',
-                      background: '#faf9f6',
+                      background: '#F3EEE3',
                       border: '1px solid #d6d3d1',
                       color: '#1c1917',
                       borderRadius: '10px',
@@ -409,7 +409,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                       border: '1px solid #d6d3d1',
                       borderRadius: '8px',
                       fontSize: '0.9rem',
-                      background: '#faf9f6'
+                      background: '#F3EEE3'
                     }}
                   />
                 </div>
@@ -431,7 +431,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                       border: '1px solid #d6d3d1',
                       borderRadius: '8px',
                       fontSize: '0.9rem',
-                      background: '#faf9f6'
+                      background: '#F3EEE3'
                     }}
                   />
                 </div>
@@ -454,7 +454,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                       border: '1px solid #d6d3d1',
                       borderRadius: '8px',
                       fontSize: '0.9rem',
-                      background: '#faf9f6'
+                      background: '#F3EEE3'
                     }}
                   />
                 </div>
@@ -488,7 +488,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                       border: '1px solid #d6d3d1',
                       borderRadius: '8px',
                       fontSize: '0.9rem',
-                      background: formData.sameAsPhone ? '#f5f5f4' : '#faf9f6'
+                      background: formData.sameAsPhone ? '#F3EEE3' : '#F3EEE3'
                     }}
                   />
                 </div>
@@ -510,7 +510,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                       border: '1px solid #d6d3d1',
                       borderRadius: '8px',
                       fontSize: '0.9rem',
-                      background: '#faf9f6'
+                      background: '#F3EEE3'
                     }}
                   />
                 </div>
@@ -530,7 +530,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                       border: '1px solid #d6d3d1',
                       borderRadius: '8px',
                       fontSize: '0.9rem',
-                      background: '#faf9f6'
+                      background: '#F3EEE3'
                     }}
                   >
                     <option value="Male">Male (पुरुष)</option>
@@ -543,7 +543,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
 
               {/* Course Selection & Batch Preferences */}
               <div style={{
-                background: '#faf9f6',
+                background: '#F3EEE3',
                 border: '1px solid #e7e5e4',
                 borderRadius: '12px',
                 padding: '1.25rem',
@@ -570,7 +570,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                         border: '1px solid #d6d3d1',
                         borderRadius: '8px',
                         fontSize: '0.92rem',
-                        background: '#FAF7F2',
+                        background: '#F3EEE3',
                         fontWeight: 600
                       }}
                     >
@@ -597,7 +597,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                         border: '1px solid #d6d3d1',
                         borderRadius: '8px',
                         fontSize: '0.9rem',
-                        background: '#FAF7F2'
+                        background: '#F3EEE3'
                       }}
                     >
                       <option value="Offline Classroom (Gaya College More)">Offline Classroom (Gaya College More Center)</option>
@@ -620,7 +620,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                         border: '1px solid #d6d3d1',
                         borderRadius: '8px',
                         fontSize: '0.9rem',
-                        background: '#FAF7F2'
+                        background: '#F3EEE3'
                       }}
                     >
                       <option value="Morning (6:00 AM – 8:00 AM)">Morning Early Bird (6:00 AM – 8:00 AM)</option>
@@ -645,7 +645,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                         border: '1px solid #d6d3d1',
                         borderRadius: '8px',
                         fontSize: '0.9rem',
-                        background: '#FAF7F2'
+                        background: '#F3EEE3'
                       }}
                     >
                       <option value="SSC Stenographer Grade C & D">SSC Stenographer Grade C & D</option>
@@ -675,7 +675,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                         border: '1px solid #d6d3d1',
                         borderRadius: '8px',
                         fontSize: '0.9rem',
-                        background: '#FAF7F2'
+                        background: '#F3EEE3'
                       }}
                     />
                   </div>
@@ -694,7 +694,7 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
                   justifyContent: 'center',
                   gap: '0.5rem',
                   background: 'linear-gradient(135deg, #1c1917 0%, #292524 100%)',
-                  color: '#FAF7F2',
+                  color: '#F3EEE3',
                   border: 'none',
                   borderRadius: '10px',
                   padding: '0.85rem 1.25rem',

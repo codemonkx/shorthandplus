@@ -428,7 +428,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                   padding: '0.5rem 1rem',
                   borderRadius: '9999px',
                   border: isActive ? '1.5px solid #111111' : '1px solid rgba(17, 17, 17, 0.14)',
-                  background: isActive ? '#111111' : '#FAF7F2',
+                  background: isActive ? '#111111' : '#F3EEE3',
                   color: isActive ? '#F3EEE3' : '#111111',
                   fontSize: '0.84rem',
                   fontWeight: 700,
@@ -444,7 +444,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     fontWeight: 800,
                     padding: '0.1rem 0.45rem',
                     borderRadius: '9999px',
-                    background: isActive ? 'rgba(243, 238, 227, 0.2)' : '#EBE5D8',
+                    background: isActive ? 'rgba(243, 238, 227, 0.2)' : '#F3EEE3',
                     color: isActive ? '#F3EEE3' : '#555555'
                   }}>
                     {tab.count}
@@ -468,7 +468,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               <div
                 key={course.id}
                 style={{
-                  background: '#FAF7F2',
+                  background: '#F3EEE3',
                   border: course.popular ? '1.5px solid #D9541E' : '1px solid rgba(17, 17, 17, 0.12)',
                   borderRadius: '16px',
                   padding: '1.5rem',
@@ -535,7 +535,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       fontWeight: 700,
                       padding: '0.18rem 0.55rem',
                       borderRadius: '6px',
-                      background: '#FAF7F2',
+                      background: '#F3EEE3',
                       border: '1px solid rgba(17, 17, 17, 0.1)',
                       color: '#111111',
                       marginLeft: 'auto'
@@ -570,7 +570,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     gridTemplateColumns: '1fr 1fr',
                     gap: '0.5rem',
                     padding: '0.65rem 0.85rem',
-                    background: '#FAF7F2',
+                    background: '#F3EEE3',
                     border: '1px solid rgba(17, 17, 17, 0.1)',
                     borderRadius: '10px',
                     marginBottom: '1rem',
@@ -635,7 +635,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       <div style={{
                         marginTop: '0.5rem',
                         padding: '0.75rem',
-                        background: '#FAF7F2',
+                        background: '#F3EEE3',
                         border: '1px solid rgba(17, 17, 17, 0.12)',
                         borderRadius: '8px'
                       }}>
@@ -688,7 +688,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       padding: '0.65rem 1.15rem',
                       borderRadius: '8px',
                       background: '#D9541E',
-                      color: '#FAF7F2',
+                      color: '#F3EEE3',
                       fontWeight: 700,
                       fontSize: '0.86rem',
                       border: 'none',
@@ -711,7 +711,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
       {/* TARGET EXAMINATIONS BANNER */}
       <section style={{ maxWidth: 1240, margin: '0 auto 3rem', padding: '0 1.25rem' }}>
         <div style={{
-          background: '#FAF7F2',
+          background: '#F3EEE3',
           border: '1px solid rgba(17, 17, 17, 0.12)',
           borderRadius: '16px',
           padding: '1.75rem',
@@ -744,7 +744,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               fontSize: '0.8rem',
               fontWeight: 700,
               color: '#111111',
-              background: '#FAF7F2',
+              background: '#F3EEE3',
               padding: '0.45rem 0.85rem',
               borderRadius: '8px',
               border: '1px solid rgba(17, 17, 17, 0.12)'
@@ -762,7 +762,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               <div
                 key={exam.id}
                 style={{
-                  background: '#FAF7F2',
+                  background: '#F3EEE3',
                   border: '1px solid rgba(17, 17, 17, 0.1)',
                   borderRadius: '10px',
                   padding: '0.85rem 1rem',
@@ -800,7 +800,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
       {/* 2.5 TEACHING METHODOLOGY (शिक्षण पद्धति) */}
       <section style={{ maxWidth: 1200, margin: '1rem auto 3rem', padding: '0 1.25rem' }}>
         <div style={{
-          background: '#FAF7F2',
+          background: '#F3EEE3',
           border: '1px solid rgba(17, 17, 17, 0.12)',
           borderRadius: '16px',
           padding: '2rem',
@@ -838,7 +838,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
               <div
                 key={m.step}
                 style={{
-                  background: '#FAF7F2',
+                  background: '#F3EEE3',
                   border: '1px solid rgba(17, 17, 17, 0.1)',
                   borderRadius: '12px',
                   padding: '1.15rem',
@@ -902,7 +902,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
             </p>
 
             {/* Passes Filter Bar */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#FAF7F2', border: '1px solid rgba(17, 17, 17, 0.12)', padding: '0.35rem', borderRadius: '10px', marginTop: '1.25rem' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#F3EEE3', border: '1px solid rgba(17, 17, 17, 0.12)', padding: '0.35rem', borderRadius: '10px', marginTop: '1.25rem' }}>
               <button
                 type="button"
                 onClick={() => setPassFilter('all')}
@@ -965,7 +965,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                 <div 
                   key={plan.id} 
                   style={{
-                    background: '#FAF7F2',
+                    background: '#F3EEE3',
                     border: isPro ? '1.5px solid #D9541E' : '1px solid rgba(17, 17, 17, 0.12)',
                     borderRadius: '16px',
                     padding: '1.75rem',
@@ -1049,7 +1049,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                         padding: '0.75rem 1rem',
                         borderRadius: '8px',
                         background: '#D9541E',
-                        color: '#FAF7F2',
+                        color: '#F3EEE3',
                         fontSize: '0.88rem',
                         fontWeight: 700,
                         border: 'none',
@@ -1058,7 +1058,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                         transition: 'all 0.15s ease'
                       }}
                     >
-                      <Crown size={15} color="#FAF7F2" />
+                      <Crown size={15} color="#F3EEE3" />
                       <span>Activate with UPI (₹{plan.price})</span>
                     </button>
                   </div>
@@ -1072,7 +1072,7 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
       {/* 4. CONTACT & COUNSELING BANNER */}
       <section style={{ maxWidth: 1200, margin: '0 auto 3.5rem', padding: '0 1.25rem' }}>
         <div style={{
-          background: '#FAF7F2',
+          background: '#F3EEE3',
           border: '1.5px solid rgba(217, 84, 30, 0.35)',
           borderRadius: '16px',
           padding: '2rem 2.25rem',

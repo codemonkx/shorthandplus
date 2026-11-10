@@ -872,7 +872,7 @@ export default function AdminPortalView({
       <div className="admin-lock-screen-wrapper">
         <div className="admin-lock-card">
           <div className="admin-lock-shield-badge">
-            <Lock size={26} color="#FAF7F2" strokeWidth={2.2} />
+            <Lock size={26} color="#F3EEE3" strokeWidth={2.2} />
           </div>
 
           <div className="admin-lock-header">
@@ -969,7 +969,7 @@ export default function AdminPortalView({
         <div className="admin-header-container">
           <div className="admin-brand-cluster">
             <div className="admin-badge-squircle">
-              <ShieldCheck size={22} color="#FAF7F2" strokeWidth={2.4} />
+              <ShieldCheck size={22} color="#F3EEE3" strokeWidth={2.4} />
             </div>
             <div>
               <div className="admin-brand-title">
@@ -1187,7 +1187,7 @@ export default function AdminPortalView({
                   href={api.admin.getResultsCsvUrl()}
                   download="shorthand_results_register.csv"
                   className="btn-add-candidate-glow"
-                  style={{ background: '#FAF7F2', color: '#18181b', border: '1px solid #e4e4e7', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                  style={{ background: '#F3EEE3', color: '#18181b', border: '1px solid #e4e4e7', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                   title="Download complete examination results register as CSV"
                 >
                   <Download size={15} />
@@ -1391,7 +1391,7 @@ export default function AdminPortalView({
                               className="admin-btn-action"
                               onClick={() => resetStudentPassword(s.id, s.name)}
                               title="Set or generate temporary password for student"
-                              style={{ background: '#f5f5f4', color: '#1c1917', border: '1px solid #e7e5e4' }}
+                              style={{ background: '#F3EEE3', color: '#1c1917', border: '1px solid #e7e5e4' }}
                             >
                               <Key size={12} />
                               <span>Reset Pwd</span>
@@ -1538,7 +1538,7 @@ export default function AdminPortalView({
                   <button 
                     className="btn btn-sm"
                     onClick={() => setNewTypingModalOpen(true)}
-                    style={{ background: '#059669', color: '#FAF7F2', borderColor: '#059669', display: 'inline-flex', alignItems: 'center', gap: '0.45rem', fontWeight: '700' }}
+                    style={{ background: '#059669', color: '#F3EEE3', borderColor: '#059669', display: 'inline-flex', alignItems: 'center', gap: '0.45rem', fontWeight: '700' }}
                   >
                     <Keyboard size={15} />
                     <span>Upload New Text Typing Test</span>
@@ -2343,7 +2343,7 @@ export default function AdminPortalView({
                   type="button"
                   className="btn btn-primary btn-sm"
                   onClick={handleOpenAddCourse}
-                  style={{ background: '#1c1917', borderColor: '#1c1917', color: '#FAF7F2', display: 'inline-flex', alignItems: 'center', gap: '0.45rem', fontWeight: '700' }}
+                  style={{ background: '#1c1917', borderColor: '#1c1917', color: '#F3EEE3', display: 'inline-flex', alignItems: 'center', gap: '0.45rem', fontWeight: '700' }}
                 >
                   <Plus size={15} />
                   <span>+ Add New Course Batch</span>
@@ -2404,7 +2404,7 @@ export default function AdminPortalView({
                   type="button" 
                   className="btn btn-primary btn-sm" 
                   onClick={handleOpenAddCourse}
-                  style={{ background: '#1c1917', borderColor: '#1c1917', color: '#FAF7F2' }}
+                  style={{ background: '#1c1917', borderColor: '#1c1917', color: '#F3EEE3' }}
                 >
                   <Plus size={14} />
                   <span>Create New Course</span>
@@ -2416,7 +2416,7 @@ export default function AdminPortalView({
                   <div 
                     key={course.id}
                     style={{
-                      background: '#FAF7F2',
+                      background: '#F3EEE3',
                       border: course.popular ? '1.5px solid #d6d3d1' : '1px solid #e7e5e4',
                       borderRadius: '16px',
                       padding: '1.4rem',
@@ -2433,7 +2433,7 @@ export default function AdminPortalView({
                         top: '12px',
                         right: '12px',
                         background: '#1c1917',
-                        color: '#FAF7F2',
+                        color: '#F3EEE3',
                         fontSize: '0.68rem',
                         fontWeight: '800',
                         padding: '0.2rem 0.55rem',
@@ -2448,7 +2448,7 @@ export default function AdminPortalView({
                       <span className={`badge ${course.tagColor || 'badge-amber'}`} style={{ fontSize: '0.72rem' }}>
                         {course.badge || course.category}
                       </span>
-                      <span className="font-mono" style={{ fontSize: '0.75rem', fontWeight: '700', color: '#1c1917', background: '#faf9f6', border: '1px solid #e7e5e4', padding: '0.15rem 0.45rem', borderRadius: '4px' }}>
+                      <span className="font-mono" style={{ fontSize: '0.75rem', fontWeight: '700', color: '#1c1917', background: '#F3EEE3', border: '1px solid #e7e5e4', padding: '0.15rem 0.45rem', borderRadius: '4px' }}>
                         {course.speedTarget}
                       </span>
                     </div>
@@ -2461,7 +2461,7 @@ export default function AdminPortalView({
                       {course.description}
                     </p>
 
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', background: '#faf9f6', border: '1px solid #e7e5e4', padding: '0.75rem 0.85rem', borderRadius: '10px', marginBottom: '0.9rem', fontSize: '0.78rem', color: '#44403c' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', background: '#F3EEE3', border: '1px solid #e7e5e4', padding: '0.75rem 0.85rem', borderRadius: '10px', marginBottom: '0.9rem', fontSize: '0.78rem', color: '#44403c' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
                         <Clock size={13} style={{ color: '#78716c' }} />
                         <span><strong>Duration:</strong> {course.duration}</span>
@@ -2496,7 +2496,7 @@ export default function AdminPortalView({
                     )}
 
                     {/* Actions Bar */}
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', borderTop: '1px solid #f1f5f9', paddingTop: '0.85rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', borderTop: '1px solid #F3EEE3', paddingTop: '0.85rem' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                         <button 
                           type="button"
@@ -2523,7 +2523,7 @@ export default function AdminPortalView({
                         type="button"
                         className="btn btn-sm"
                         onClick={() => setCurrentTab('courses')}
-                        style={{ background: '#f5f4f0', color: '#1c1917', fontSize: '0.75rem', padding: '0.35rem 0.65rem', display: 'inline-flex', alignItems: 'center', gap: '0.3rem', border: '1px solid #e7e5e4' }}
+                        style={{ background: '#F3EEE3', color: '#1c1917', fontSize: '0.75rem', padding: '0.35rem 0.65rem', display: 'inline-flex', alignItems: 'center', gap: '0.3rem', border: '1px solid #e7e5e4' }}
                         title="View on candidate course enrollment page"
                       >
                         <span>Preview</span>
@@ -3244,7 +3244,7 @@ export default function AdminPortalView({
                 </div>
 
                 {/* Master Benchmark Passage Section */}
-                <div className="dictation-section-block" style={{ background: '#f8fafc', borderColor: '#e2e8f0' }}>
+                <div className="dictation-section-block" style={{ background: '#F3EEE3', borderColor: '#e2e8f0' }}>
                   <div className="section-block-header">
                     <div className="header-left">
                       <span className="section-step-num" style={{ background: '#059669' }}>Text Input</span>
@@ -3395,7 +3395,7 @@ export default function AdminPortalView({
                     style={{ 
                       background: 'linear-gradient(135deg, #059669 0%, #047857 100%)', 
                       borderColor: '#059669', 
-                      color: '#FAF7F2',
+                      color: '#F3EEE3',
                       boxShadow: '0 4px 14px rgba(5, 150, 105, 0.25)' 
                     }}
                   >
@@ -3419,7 +3419,7 @@ export default function AdminPortalView({
               <div className="modal-header">
                 <div>
                   <div className="modal-title-with-badge">
-                    <span className="badge badge-purple" style={{ background: '#f5f4f0', color: '#1c1917', borderColor: '#e7e5e4' }}>
+                    <span className="badge badge-purple" style={{ background: '#F3EEE3', color: '#1c1917', borderColor: '#e7e5e4' }}>
                       <Video size={13} />
                       <span>Live Classroom Studio</span>
                     </span>
@@ -3439,7 +3439,7 @@ export default function AdminPortalView({
               </div>
 
               {/* Quick Template Presets Bar */}
-              <div className="modal-quick-presets-strip" style={{ background: '#f5f4f0', borderBottom: '1px solid #e7e5e4', padding: '0.65rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+              <div className="modal-quick-presets-strip" style={{ background: '#F3EEE3', borderBottom: '1px solid #e7e5e4', padding: '0.65rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
                 <span style={{ fontSize: '0.78rem', fontWeight: '700', color: '#57534e', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                   <Sparkles size={13} style={{ color: '#d97706' }} />
                   <span>Quick Presets:</span>
@@ -3448,7 +3448,7 @@ export default function AdminPortalView({
                   type="button" 
                   className="btn-template-pill"
                   onClick={() => loadClassTemplate('ssc80')}
-                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid #e7e5e4', background: '#FAF7F2', cursor: 'pointer', fontWeight: '600', color: '#1c1917' }}
+                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid #e7e5e4', background: '#F3EEE3', cursor: 'pointer', fontWeight: '600', color: '#1c1917' }}
                 >
                   ⚡ SSC Steno (80 WPM Morning)
                 </button>
@@ -3456,7 +3456,7 @@ export default function AdminPortalView({
                   type="button" 
                   className="btn-template-pill"
                   onClick={() => loadClassTemplate('judicial100')}
-                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid #e7e5e4', background: '#FAF7F2', cursor: 'pointer', fontWeight: '600', color: '#1c1917' }}
+                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid #e7e5e4', background: '#F3EEE3', cursor: 'pointer', fontWeight: '600', color: '#1c1917' }}
                 >
                   ⚖️ High Court Bench (100 WPM)
                 </button>
@@ -3464,7 +3464,7 @@ export default function AdminPortalView({
                   type="button" 
                   className="btn-template-pill"
                   onClick={() => loadClassTemplate('reporter120')}
-                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid #e7e5e4', background: '#FAF7F2', cursor: 'pointer', fontWeight: '600', color: '#1c1917' }}
+                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid #e7e5e4', background: '#F3EEE3', cursor: 'pointer', fontWeight: '600', color: '#1c1917' }}
                 >
                   🏛️ Parliament Reporter (120+ WPM)
                 </button>
@@ -3598,7 +3598,7 @@ export default function AdminPortalView({
                   </div>
 
                   {/* Immediate Go-Live Radio Selector */}
-                  <div style={{ marginTop: '0.85rem', padding: '0.75rem', background: '#FAF7F2', borderRadius: '8px', border: '1px solid #86efac', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+                  <div style={{ marginTop: '0.85rem', padding: '0.75rem', background: '#F3EEE3', borderRadius: '8px', border: '1px solid #86efac', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
                       <Radio size={18} style={{ color: newClassIsLive ? '#dc2626' : '#78716c' }} />
                       <div>
@@ -3624,8 +3624,8 @@ export default function AdminPortalView({
                           fontSize: '0.76rem',
                           fontWeight: '700',
                           cursor: 'pointer',
-                          background: newClassIsLive ? '#dc2626' : '#FAF7F2',
-                          color: newClassIsLive ? '#FAF7F2' : '#78716c',
+                          background: newClassIsLive ? '#dc2626' : '#F3EEE3',
+                          color: newClassIsLive ? '#F3EEE3' : '#78716c',
                           borderColor: newClassIsLive ? '#dc2626' : '#d6d3d1'
                         }}
                       >
@@ -3641,8 +3641,8 @@ export default function AdminPortalView({
                           fontSize: '0.76rem',
                           fontWeight: '700',
                           cursor: 'pointer',
-                          background: !newClassIsLive ? '#1c1917' : '#FAF7F2',
-                          color: !newClassIsLive ? '#FAF7F2' : '#78716c',
+                          background: !newClassIsLive ? '#1c1917' : '#F3EEE3',
+                          color: !newClassIsLive ? '#F3EEE3' : '#78716c',
                           borderColor: !newClassIsLive ? '#1c1917' : '#d6d3d1'
                         }}
                       >
@@ -3653,10 +3653,10 @@ export default function AdminPortalView({
                 </div>
 
                 {/* Row 5: Today's Dictation Topic & Live Whiteboard Master Passage */}
-                <div className="dictation-section-block" style={{ background: '#faf9f6', borderColor: '#e7e5e4', marginTop: '1rem' }}>
+                <div className="dictation-section-block" style={{ background: '#F3EEE3', borderColor: '#e7e5e4', marginTop: '1rem' }}>
                   <div className="section-block-header">
                     <div className="header-left">
-                      <span className="section-step-num" style={{ background: '#1c1917', color: '#FAF7F2' }}>Dictation</span>
+                      <span className="section-step-num" style={{ background: '#1c1917', color: '#F3EEE3' }}>Dictation</span>
                       <div>
                         <h4 className="section-block-title">Today's Live Dictation Topic & Reference Passage *</h4>
                         <p className="section-block-desc">
@@ -3692,7 +3692,7 @@ export default function AdminPortalView({
                 </div>
 
                 {/* Instant Availability Verification Strip */}
-                <div className="dictation-sync-verify-strip" style={{ background: '#f5f4f0', borderColor: '#e7e5e4', marginTop: '0.75rem' }}>
+                <div className="dictation-sync-verify-strip" style={{ background: '#F3EEE3', borderColor: '#e7e5e4', marginTop: '0.75rem' }}>
                   <div className="sync-col">
                     <span className="sync-label" style={{ color: '#57534e' }}>Target Speed</span>
                     <span className="sync-status is-ready font-mono" style={{ color: '#1c1917' }}>
@@ -3737,7 +3737,7 @@ export default function AdminPortalView({
                     style={{ 
                       background: 'linear-gradient(135deg, #18181b 0%, #4c0519 100%)', 
                       borderColor: '#18181b', 
-                      color: '#FAF7F2',
+                      color: '#F3EEE3',
                       boxShadow: '0 4px 14px rgba(136, 19, 55, 0.3)' 
                     }}
                   >
@@ -4061,7 +4061,7 @@ export default function AdminPortalView({
                   </div>
 
                   {/* Field: Flagship Popular Toggle */}
-                  <div className="field-group span-two" style={{ background: '#f4f4f5', padding: '0.85rem 1rem', borderRadius: '10px', border: '1px solid #e4e4e7' }}>
+                  <div className="field-group span-two" style={{ background: '#F3EEE3', padding: '0.85rem 1rem', borderRadius: '10px', border: '1px solid #e4e4e7' }}>
                     <label style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', cursor: 'pointer' }}>
                       <input 
                         type="checkbox" 
@@ -4130,7 +4130,7 @@ export default function AdminPortalView({
                   <button 
                     type="submit" 
                     className="btn btn-primary" 
-                    style={{ background: '#1c1917', borderColor: '#1c1917', color: '#FAF7F2', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+                    style={{ background: '#1c1917', borderColor: '#1c1917', color: '#F3EEE3', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
                   >
                     <CheckCircle2 size={15} />
                     <span>{editingCourse ? 'Save & Update Course' : 'Publish Course Batch'}</span>
