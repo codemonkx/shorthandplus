@@ -421,7 +421,35 @@ export async function initDatabase() {
         used INTEGER DEFAULT 0,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
       );
+
+      CREATE TABLE IF NOT EXISTS assessment_sessions (
+        id TEXT PRIMARY KEY,
+        user_id INTEGER,
+        test_id INTEGER NOT NULL,
+        status TEXT NOT NULL DEFAULT 'listening',
+        audio_started_at INTEGER,
+        audio_duration_secs INTEGER DEFAULT 300,
+        listening_completed_at INTEGER,
+        typing_started_at INTEGER,
+        typing_duration_secs INTEGER DEFAULT 600,
+        typing_expires_at INTEGER,
+        submitted_at INTEGER,
+        audio_play_count INTEGER DEFAULT 1,
+        typed_text TEXT,
+        result_id INTEGER,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (test_id) REFERENCES tests(id) ON DELETE CASCADE
+      );
     `);
+
+    // Ensure columns exist on tests table
+    try {
+      sqliteDb.exec(`ALTER TABLE tests ADD COLUMN typing_duration_mins INTEGER DEFAULT 10;`);
+    } catch {}
+    try {
+      sqliteDb.exec(`ALTER TABLE tests ADD COLUMN is_published INTEGER DEFAULT 1;`);
+    } catch {}
+
     console.log('✅ SQLite Database & Tables Initialized.');
 }
 

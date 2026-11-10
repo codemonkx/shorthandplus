@@ -128,6 +128,8 @@ CREATE TABLE IF NOT EXISTS tests (
   audio_duration INTEGER DEFAULT 300,
   difficulty VARCHAR(50) DEFAULT 'Medium',
   passage_text TEXT NOT NULL,
+  typing_duration_mins INTEGER DEFAULT 10,
+  is_published INTEGER DEFAULT 1,
   is_active INTEGER DEFAULT 1,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
@@ -157,6 +159,28 @@ CREATE TABLE IF NOT EXISTS test_results (
 
 CREATE INDEX IF NOT EXISTS idx_test_results_user ON test_results(user_id);
 CREATE INDEX IF NOT EXISTS idx_test_results_created ON test_results(created_at DESC);
+
+-- 7B. ASSESSMENT SESSIONS TABLE (Controlled Two-Stage Examination Sessions)
+CREATE TABLE IF NOT EXISTS assessment_sessions (
+  id VARCHAR(100) PRIMARY KEY,
+  user_id INTEGER,
+  test_id INTEGER NOT NULL REFERENCES tests(id) ON DELETE CASCADE,
+  status VARCHAR(50) NOT NULL DEFAULT 'listening', -- 'listening', 'typing', 'submitted', 'expired'
+  audio_started_at BIGINT,
+  audio_duration_secs INTEGER DEFAULT 300,
+  listening_completed_at BIGINT,
+  typing_started_at BIGINT,
+  typing_duration_secs INTEGER DEFAULT 600,
+  typing_expires_at BIGINT,
+  submitted_at BIGINT,
+  audio_play_count INTEGER DEFAULT 1,
+  typed_text TEXT,
+  result_id INTEGER REFERENCES test_results(id),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_assessment_sessions_user_test ON assessment_sessions(user_id, test_id);
+CREATE INDEX IF NOT EXISTS idx_assessment_sessions_status ON assessment_sessions(status);
 
 -- 8. LIVE CLASSES TABLE (Live Zoom Sessions with Protected Credentials)
 CREATE TABLE IF NOT EXISTS live_classes (

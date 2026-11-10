@@ -98,10 +98,20 @@ export const api = {
   // Tests & Submissions
   tests: {
     getAll: (type) => request(`/tests${type ? `?type=${type}` : ''}`),
+    getAdminAll: () => request('/tests/admin/all'),
     getById: (id) => request(`/tests/${id}`),
+    getAttempts: (id) => request(`/tests/${id}/attempts`),
     create: (test) => request('/tests', { method: 'POST', body: JSON.stringify(test) }),
     update: (id, test) => request(`/tests/${id}`, { method: 'PUT', body: JSON.stringify(test) }),
+    togglePublish: (id) => request(`/tests/${id}/toggle-publish`, { method: 'PATCH' }),
     delete: (id) => request(`/tests/${id}`, { method: 'DELETE' }),
+
+    // Two-Stage Controlled Assessment Sessions
+    startAssessment: (id) => request(`/tests/${id}/start-assessment`, { method: 'POST' }),
+    completeListening: (sessionId) => request(`/tests/assessment-session/${sessionId}/complete-listening`, { method: 'POST' }),
+    getSessionStatus: (sessionId) => request(`/tests/assessment-session/${sessionId}/status`),
+    submitAssessment: (sessionId, payload) => request(`/tests/assessment-session/${sessionId}/submit`, { method: 'POST', body: JSON.stringify(payload) }),
+
     submitResult: (result) => request('/tests/submit-result', { method: 'POST', body: JSON.stringify(result) }),
     getMyHistory: () => request('/tests/my-history'),
     getLeaderboard: (params = {}) => {

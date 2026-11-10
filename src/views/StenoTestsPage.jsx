@@ -52,7 +52,7 @@ export default function StenoTestsPage({
   const filteredTests = allStenoTests.filter((test) => {
     const matchesSearch = test.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           test.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          test.passageText.toLowerCase().includes(searchQuery.toLowerCase());
+                          (test.passageText || '').toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === 'All' || test.category === selectedCategory;
     const matchesSpeed = selectedSpeed === 'All' || test.speed === selectedSpeed;
     const matchesLanguage = selectedLanguage === 'All' || test.language.includes(selectedLanguage);
@@ -218,7 +218,9 @@ export default function StenoTestsPage({
                     {/* Card Title & Excerpt */}
                     <div className="calm-card-body">
                       <h3 className="calm-card-title">{test.title}</h3>
-                      <p className="calm-card-snippet">{test.passageText.slice(0, 150)}...</p>
+                      <p className="calm-card-snippet">
+                        {test.description || 'Standard examination audio dictation. Listen once, take down shorthand in your notepad, then transcribe within fixed time.'}
+                      </p>
                     </div>
 
                     {/* Meta & Action Row */}

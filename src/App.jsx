@@ -24,6 +24,7 @@ import LandingPage from './views/LandingPage';
 import CoursesPage from './views/CoursesPage';
 import ClassesPage from './views/ClassesPage';
 import OnlineClassView from './views/OnlineClassView';
+import AudioDictationAssessment from './components/AudioDictationAssessment';
 
 import { INITIAL_USER, STENO_TESTS, TYPING_TESTS, ONLINE_CLASSES_DATA, INITIAL_TRANSACTIONS, INITIAL_ACADEMY_COURSES } from './data/mockData';
 import api from './services/api';
@@ -214,6 +215,10 @@ export default function App() {
 
   const handleAddStenoTest = (newTest) => {
     setStenoTests((prev) => [newTest, ...prev]);
+  };
+
+  const handleUpdateStenoTest = (id, updatedFields) => {
+    setStenoTests((prev) => prev.map((t) => t.id === id ? { ...t, ...updatedFields } : t));
   };
 
   const handleDeleteStenoTest = (id) => {
@@ -543,10 +548,14 @@ export default function App() {
   if (examStage === 'dictation') {
     return (
       <div className="exam-fullscreen-wrapper">
-        <DictationRoom
+        <AudioDictationAssessment
           test={currentTest}
-          onProceedToTyping={handleProceedToTyping}
-          onCancel={handleExitExam}
+          user={user}
+          onBackToVault={() => handleExitExam(false)}
+          onViewHistory={() => {
+            handleExitExam(false);
+            setCurrentTab('results');
+          }}
         />
       </div>
     );
@@ -734,6 +743,7 @@ export default function App() {
         }}
         stenoTests={stenoTests}
         onAddStenoTest={handleAddStenoTest}
+        onUpdateStenoTest={handleUpdateStenoTest}
         onDeleteStenoTest={handleDeleteStenoTest}
         typingTests={typingTests}
         onAddTypingTest={handleAddTypingTest}
