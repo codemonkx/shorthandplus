@@ -2382,40 +2382,112 @@ export default function AdminPortalView({
           <div className="saas-card admin-content-card">
             
             {/* 1. Executive Studio Header Command Bar */}
-            <div className="admin-studio-header-card">
-              <div className="admin-studio-header-main">
-                <div className="admin-studio-brand-icon">
-                  <Radio size={24} className="text-cream" />
+            <div style={{
+              background: '#FFFFFF',
+              border: '1px solid rgba(0,0,0,0.08)',
+              borderRadius: '16px',
+              padding: '1.25rem 1.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '1.25rem',
+              flexWrap: 'wrap',
+              marginBottom: '1.25rem',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.02)'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem', flex: 1, minWidth: '320px' }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '12px',
+                  background: onlineClasses.some(c => c.isLive) ? 'linear-gradient(135deg, #F83458, #E11D48)' : 'linear-gradient(135deg, #0F172A, #334155)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  position: 'relative',
+                  flexShrink: 0,
+                  boxShadow: onlineClasses.some(c => c.isLive) ? '0 4px 14px rgba(248, 52, 88, 0.25)' : '0 4px 14px rgba(15, 23, 42, 0.15)'
+                }}>
+                  <Radio size={22} color="#FFFFFF" />
                   {onlineClasses.some(c => c.isLive) && (
-                    <span className="studio-icon-pulse-badge" />
+                    <span style={{
+                      position: 'absolute',
+                      top: '-3px',
+                      right: '-3px',
+                      width: '12px',
+                      height: '12px',
+                      background: '#10B981',
+                      border: '2px solid #FFFFFF',
+                      borderRadius: '50%'
+                    }} />
                   )}
                 </div>
-                <div className="admin-studio-brand-info">
-                  <div className="flex items-center gap-2.5 flex-wrap">
-                    <h3 className="admin-studio-title">Live Online Zoom Batches & Dictation Studio</h3>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', margin: 0, lineHeight: 1.25 }}>
+                      Live Online Zoom Batches & Dictation Studio
+                    </h3>
                     {onlineClasses.some(c => c.isLive) ? (
-                      <span className="admin-studio-live-badge">
-                        <span className="live-pulsing-dot-admin" />
+                      <span style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        padding: '3px 10px',
+                        borderRadius: '999px',
+                        background: 'rgba(239, 68, 68, 0.08)',
+                        border: '1px solid rgba(239, 68, 68, 0.2)',
+                        color: '#DC2626',
+                        fontSize: '0.72rem',
+                        fontWeight: 800,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.04em'
+                      }}>
+                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#DC2626' }} />
                         <span>{onlineClasses.filter(c => c.isLive).length} Class Live On-Air</span>
                       </span>
                     ) : (
-                      <span className="admin-studio-standby-badge">
+                      <span style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '5px',
+                        padding: '3px 10px',
+                        borderRadius: '999px',
+                        background: '#F1F5F9',
+                        border: '1px solid rgba(0,0,0,0.06)',
+                        color: '#64748B',
+                        fontSize: '0.72rem',
+                        fontWeight: 700
+                      }}>
                         <Clock size={11} />
                         <span>All Studios Standby</span>
                       </span>
                     )}
                   </div>
-                  <p className="admin-studio-desc">
+                  <p style={{ fontSize: '0.82rem', color: '#64748B', margin: '0.25rem 0 0', lineHeight: 1.45, maxWidth: '680px' }}>
                     Schedule, broadcast, and orchestrate real-time Zoom video classrooms. Any class marked "Live" is instantly pushed to candidate portals with 1-click joining.
                   </p>
                 </div>
               </div>
 
               {/* Studio Action Suite */}
-              <div className="admin-studio-actions">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
                 <button 
                   type="button"
-                  className={`btn-studio-action btn-studio-notice ${isBroadcastingNotice ? 'active' : ''}`}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    height: '40px',
+                    padding: '0 1.1rem',
+                    borderRadius: '10px',
+                    fontSize: '0.82rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    transition: 'all 0.15s ease',
+                    background: isBroadcastingNotice ? '#FEF3C7' : '#FFFFFF',
+                    border: isBroadcastingNotice ? '1px solid #F59E0B' : '1px solid rgba(217, 119, 6, 0.3)',
+                    color: '#B45309'
+                  }}
                   onClick={() => setIsBroadcastingNotice(!isBroadcastingNotice)}
                   title="Broadcast a live announcement ticker to all student dashboards"
                 >
@@ -2425,7 +2497,21 @@ export default function AdminPortalView({
 
                 <button 
                   type="button"
-                  className="btn-studio-action btn-studio-instant"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    height: '40px',
+                    padding: '0 1.1rem',
+                    borderRadius: '10px',
+                    fontSize: '0.82rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    transition: 'all 0.15s ease',
+                    background: '#FFFFFF',
+                    border: '1px solid rgba(248, 52, 88, 0.3)',
+                    color: '#F83458'
+                  }}
                   onClick={handleQuickStartLive}
                   title="Instantly launch an impromptu live broadcast on Zoom"
                 >
@@ -2435,7 +2521,22 @@ export default function AdminPortalView({
 
                 <button 
                   type="button"
-                  className="btn-studio-action btn-studio-primary"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    height: '40px',
+                    padding: '0 1.25rem',
+                    borderRadius: '10px',
+                    fontSize: '0.82rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    transition: 'all 0.15s ease',
+                    background: '#0F172A',
+                    border: '1px solid #0F172A',
+                    color: '#FFFFFF',
+                    boxShadow: '0 2px 8px rgba(15, 23, 42, 0.18)'
+                  }}
                   onClick={() => {
                     loadClassTemplate('ssc80');
                     setNewClassModalOpen(true);
@@ -2450,35 +2551,35 @@ export default function AdminPortalView({
 
             {/* Broadcast Live Notice Composer (Expandable) */}
             {isBroadcastingNotice && (
-              <form onSubmit={handlePostNotice} className="admin-notice-broadcast-box animate-fade-in mt-3 mb-3">
-                <div className="notice-box-header">
-                  <div className="flex items-center gap-2">
+              <form onSubmit={handlePostNotice} style={{ background: '#FFFBEB', border: '1px solid #FCD34D', borderRadius: '14px', padding: '1.25rem', marginTop: '1rem', marginBottom: '1.25rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.85rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <Megaphone size={16} className="text-amber-600" />
-                    <span className="font-bold text-sm text-slate-800">Broadcast Instant Alert to All Online Candidates</span>
+                    <span style={{ fontWeight: 800, fontSize: '0.88rem', color: '#92400E' }}>Broadcast Instant Alert to All Online Candidates</span>
                   </div>
                   <button 
                     type="button" 
-                    className="btn-close-notice-box" 
+                    style={{ background: 'transparent', border: 'none', color: '#B45309', cursor: 'pointer', padding: '4px' }}
                     onClick={() => setIsBroadcastingNotice(false)}
                   >
-                    <X size={15} />
+                    <X size={16} />
                   </button>
                 </div>
-                <div className="notice-box-body">
+                <div>
                   <input 
                     type="text" 
-                    className="field-input" 
+                    style={{ width: '100%', background: '#FFFFFF', border: '1px solid #F59E0B', borderRadius: '8px', padding: '0.65rem 1rem', fontSize: '0.85rem', color: '#0F172A', boxSizing: 'border-box' }}
                     placeholder="e.g. 📢 Attention Aspirants: SSC 80 WPM Parliamentary dictation begins in 5 mins. Keep shorthand pads ready!"
                     value={broadcastNoticeText}
                     onChange={(e) => setBroadcastNoticeText(e.target.value)}
                     required
                   />
-                  <div className="notice-actions-row mt-2">
-                    <button type="submit" className="btn btn-primary btn-sm" style={{ background: '#d97706', borderColor: '#d97706' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '0.75rem' }}>
+                    <button type="submit" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#D97706', border: '1px solid #D97706', color: '#FFFFFF', padding: '0.45rem 1rem', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer' }}>
                       <Send size={13} />
                       <span>Publish Banner to Students</span>
                     </button>
-                    <button type="button" className="btn btn-secondary btn-sm" onClick={() => setIsBroadcastingNotice(false)}>
+                    <button type="button" style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.1)', color: '#475569', padding: '0.45rem 0.85rem', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }} onClick={() => setIsBroadcastingNotice(false)}>
                       Cancel
                     </button>
                   </div>
@@ -2488,19 +2589,54 @@ export default function AdminPortalView({
 
             {/* Active Live Notice Banner Display (if set) */}
             {activeBroadcastNotice && (
-              <div className="admin-active-notice-banner animate-fade-in mt-3 mb-2">
-                <div className="admin-notice-left-content">
-                  <span className="notice-badge-pill">
-                    <span className="live-pulsing-dot-admin" style={{ background: '#f59e0b', boxShadow: '0 0 0 0 rgba(245, 158, 11, 0.7)' }} />
+              <div style={{
+                background: '#FEF2F2',
+                border: '1px solid rgba(239, 68, 68, 0.25)',
+                borderRadius: '12px',
+                padding: '0.85rem 1.25rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '1rem',
+                marginTop: '1rem',
+                marginBottom: '1.25rem',
+                flexWrap: 'wrap'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: 1, minWidth: '280px' }}>
+                  <span style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '5px',
+                    padding: '3px 8px',
+                    borderRadius: '6px',
+                    background: '#DC2626',
+                    color: '#FFFFFF',
+                    fontSize: '0.7rem',
+                    fontWeight: 800,
+                    letterSpacing: '0.5px'
+                  }}>
+                    <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#FFFFFF' }} />
                     <span>STUDENT ALERT ACTIVE</span>
                   </span>
-                  <p className="notice-text-content">
-                    <span>{activeBroadcastNotice}</span>
+                  <p style={{ margin: 0, fontSize: '0.85rem', color: '#991B1B', fontWeight: 600, lineHeight: 1.4 }}>
+                    {activeBroadcastNotice}
                   </p>
                 </div>
                 <button 
                   type="button" 
-                  className="btn-clear-active-notice" 
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '5px',
+                    background: '#FFFFFF',
+                    border: '1px solid rgba(239, 68, 68, 0.3)',
+                    color: '#DC2626',
+                    padding: '0.4rem 0.85rem',
+                    borderRadius: '8px',
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    cursor: 'pointer'
+                  }}
                   onClick={handleClearNotice}
                   title="Clear notice banner for students"
                 >
@@ -2511,132 +2647,350 @@ export default function AdminPortalView({
             )}
 
             {/* 4 Executive KPI Studio Telemetry Cards */}
-            <div className="admin-class-kpi-row mt-3 mb-3">
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
+              gap: '1rem',
+              marginTop: '1.25rem',
+              marginBottom: '1.25rem'
+            }}>
               {/* Card 1: Live Broadcasts */}
-              <div className={`class-kpi-capsule kpi-card-broadcasts ${onlineClasses.some(c => c.isLive) ? 'is-on-air' : ''}`}>
-                <div className="capsule-icon-wrap bg-rose-50 text-rose-600 border-rose-100">
+              <div style={{
+                background: '#FFFFFF',
+                border: onlineClasses.some(c => c.isLive) ? '1px solid rgba(248, 52, 88, 0.3)' : '1px solid rgba(0,0,0,0.07)',
+                borderRadius: '14px',
+                padding: '1.15rem 1.25rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.02)'
+              }}>
+                <div style={{
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(248, 52, 88, 0.08)',
+                  color: '#F83458',
+                  border: '1px solid rgba(248, 52, 88, 0.15)',
+                  flexShrink: 0
+                }}>
                   <Radio size={18} />
                 </div>
-                <div className="capsule-col">
-                  <span className="capsule-label">Live Broadcasts</span>
-                  <div className="capsule-val-row">
-                    <strong className="capsule-val font-mono">
+                <div>
+                  <span style={{ display: 'block', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B', fontWeight: 700 }}>
+                    Live Broadcasts
+                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', margin: '2px 0' }}>
+                    <strong style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
                       {onlineClasses.filter(c => c.isLive).length} On-Air
                     </strong>
-                    {onlineClasses.some(c => c.isLive) && <span className="kpi-live-beacon" />}
+                    {onlineClasses.some(c => c.isLive) && (
+                      <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#EF4444' }} />
+                    )}
                   </div>
-                  <span className="capsule-sub-badge badge-sub-rose">
+                  <span style={{ fontSize: '0.72rem', fontWeight: 600, color: onlineClasses.some(c => c.isLive) ? '#DC2626' : '#64748B' }}>
                     {onlineClasses.some(c => c.isLive) ? 'Pulsing live call active' : 'All studios on standby'}
                   </span>
                 </div>
               </div>
 
               {/* Card 2: Total Batches */}
-              <div className="class-kpi-capsule kpi-card-batches">
-                <div className="capsule-icon-wrap bg-amber-50 text-amber-700 border-stone-200">
+              <div style={{
+                background: '#FFFFFF',
+                border: '1px solid rgba(0,0,0,0.07)',
+                borderRadius: '14px',
+                padding: '1.15rem 1.25rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.02)'
+              }}>
+                <div style={{
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(245, 158, 11, 0.08)',
+                  color: '#D97706',
+                  border: '1px solid rgba(245, 158, 11, 0.2)',
+                  flexShrink: 0
+                }}>
                   <Calendar size={18} />
                 </div>
-                <div className="capsule-col">
-                  <span className="capsule-label">Total Batches</span>
-                  <div className="capsule-val-row">
-                    <strong className="capsule-val font-mono">{onlineClasses.length} Scheduled</strong>
+                <div>
+                  <span style={{ display: 'block', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B', fontWeight: 700 }}>
+                    Total Batches
+                  </span>
+                  <div style={{ margin: '2px 0' }}>
+                    <strong style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                      {onlineClasses.length} Scheduled
+                    </strong>
                   </div>
-                  <span className="capsule-sub-badge badge-sub-amber">Covering 6:00 AM – 7:30 PM</span>
+                  <span style={{ fontSize: '0.72rem', fontWeight: 600, color: '#64748B' }}>
+                    Covering 6:00 AM – 7:30 PM
+                  </span>
                 </div>
               </div>
 
               {/* Card 3: Enrolled Students */}
-              <div className="class-kpi-capsule kpi-card-learners">
-                <div className="capsule-icon-wrap bg-emerald-50 text-emerald-600 border-emerald-100">
+              <div style={{
+                background: '#FFFFFF',
+                border: '1px solid rgba(0,0,0,0.07)',
+                borderRadius: '14px',
+                padding: '1.15rem 1.25rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.02)'
+              }}>
+                <div style={{
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(16, 185, 129, 0.08)',
+                  color: '#059669',
+                  border: '1px solid rgba(16, 185, 129, 0.2)',
+                  flexShrink: 0
+                }}>
                   <Users size={18} />
                 </div>
-                <div className="capsule-col">
-                  <span className="capsule-label">Enrolled Students</span>
-                  <div className="capsule-val-row">
-                    <strong className="capsule-val font-mono">
+                <div>
+                  <span style={{ display: 'block', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B', fontWeight: 700 }}>
+                    Enrolled Students
+                  </span>
+                  <div style={{ margin: '2px 0' }}>
+                    <strong style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
                       {onlineClasses.reduce((acc, c) => acc + (c.attendees || 1), 0)} Aspirants
                     </strong>
                   </div>
-                  <span className="capsule-sub-badge badge-sub-emerald">Active zoom learners</span>
+                  <span style={{ fontSize: '0.72rem', fontWeight: 600, color: '#059669' }}>
+                    Active zoom learners
+                  </span>
                 </div>
               </div>
 
               {/* Card 4: Student Sync Engine */}
-              <div className="class-kpi-capsule kpi-card-sync">
-                <div className="capsule-icon-wrap bg-purple-50 text-purple-600 border-purple-100">
+              <div style={{
+                background: '#FFFFFF',
+                border: '1px solid rgba(0,0,0,0.07)',
+                borderRadius: '14px',
+                padding: '1.15rem 1.25rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.02)'
+              }}>
+                <div style={{
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(147, 51, 234, 0.08)',
+                  color: '#7C3AED',
+                  border: '1px solid rgba(147, 51, 234, 0.2)',
+                  flexShrink: 0
+                }}>
                   <ShieldCheck size={18} />
                 </div>
-                <div className="capsule-col">
-                  <span className="capsule-label">Student Sync Engine</span>
-                  <div className="capsule-val-row">
-                    <strong className="capsule-val font-mono text-emerald-600">✓ 100% Active</strong>
+                <div>
+                  <span style={{ display: 'block', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B', fontWeight: 700 }}>
+                    Student Sync Engine
+                  </span>
+                  <div style={{ margin: '2px 0' }}>
+                    <strong style={{ fontSize: '1.35rem', fontWeight: 800, color: '#059669', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                      ✓ 100% Active
+                    </strong>
                   </div>
-                  <span className="capsule-sub-badge badge-sub-indigo">Instant push to candidate app</span>
+                  <span style={{ fontSize: '0.72rem', fontWeight: 600, color: '#64748B' }}>
+                    Instant push to candidate app
+                  </span>
                 </div>
               </div>
             </div>
 
             {/* Filter Pills, Search Bar & View Mode Switcher */}
-            <div className="admin-class-filter-strip">
-              <div className="filter-pills-group">
+            <div style={{
+              background: '#F8FAFC',
+              border: '1px solid rgba(0,0,0,0.06)',
+              borderRadius: '14px',
+              padding: '0.65rem 0.85rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '0.75rem',
+              marginBottom: '1.25rem'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
                 <button 
                   type="button" 
-                  className={`class-filter-pill ${classFilterStatus === 'all' ? 'active' : ''}`}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '5px 12px',
+                    borderRadius: '8px',
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    border: '1px solid transparent',
+                    background: classFilterStatus === 'all' ? '#0F172A' : '#FFFFFF',
+                    color: classFilterStatus === 'all' ? '#FFFFFF' : '#475569',
+                    boxShadow: classFilterStatus === 'all' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
+                  }}
                   onClick={() => setClassFilterStatus('all')}
                 >
                   <span>All Classes</span>
-                  <span className="pill-count-tag">{onlineClasses.length}</span>
+                  <span style={{
+                    padding: '1px 6px',
+                    borderRadius: '999px',
+                    fontSize: '0.7rem',
+                    background: classFilterStatus === 'all' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.06)'
+                  }}>
+                    {onlineClasses.length}
+                  </span>
                 </button>
                 <button 
                   type="button" 
-                  className={`class-filter-pill ${classFilterStatus === 'live' ? 'active pill-live' : ''}`}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '5px 12px',
+                    borderRadius: '8px',
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    border: '1px solid transparent',
+                    background: classFilterStatus === 'live' ? '#DC2626' : '#FFFFFF',
+                    color: classFilterStatus === 'live' ? '#FFFFFF' : '#475569',
+                    boxShadow: classFilterStatus === 'live' ? '0 1px 3px rgba(220,38,38,0.2)' : 'none'
+                  }}
                   onClick={() => setClassFilterStatus('live')}
                 >
-                  <span className="live-dot-mini" />
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: classFilterStatus === 'live' ? '#FFFFFF' : '#DC2626' }} />
                   <span>Live Now</span>
-                  <span className="pill-count-tag">{onlineClasses.filter(c => c.isLive).length}</span>
+                  <span style={{
+                    padding: '1px 6px',
+                    borderRadius: '999px',
+                    fontSize: '0.7rem',
+                    background: classFilterStatus === 'live' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.06)'
+                  }}>
+                    {onlineClasses.filter(c => c.isLive).length}
+                  </span>
                 </button>
                 <button 
                   type="button" 
-                  className={`class-filter-pill ${classFilterStatus === 'upcoming' ? 'active' : ''}`}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '5px 12px',
+                    borderRadius: '8px',
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    border: '1px solid transparent',
+                    background: classFilterStatus === 'upcoming' ? '#0F172A' : '#FFFFFF',
+                    color: classFilterStatus === 'upcoming' ? '#FFFFFF' : '#475569',
+                    boxShadow: classFilterStatus === 'upcoming' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
+                  }}
                   onClick={() => setClassFilterStatus('upcoming')}
                 >
                   <span>Upcoming Scheduled</span>
-                  <span className="pill-count-tag">{onlineClasses.filter(c => !c.isLive && c.badgeClass !== 'badge-replay').length}</span>
+                  <span style={{
+                    padding: '1px 6px',
+                    borderRadius: '999px',
+                    fontSize: '0.7rem',
+                    background: classFilterStatus === 'upcoming' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.06)'
+                  }}>
+                    {onlineClasses.filter(c => !c.isLive && c.badgeClass !== 'badge-replay').length}
+                  </span>
                 </button>
                 <button 
                   type="button" 
-                  className={`class-filter-pill ${classFilterStatus === 'replays' ? 'active' : ''}`}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '5px 12px',
+                    borderRadius: '8px',
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    border: '1px solid transparent',
+                    background: classFilterStatus === 'replays' ? '#0F172A' : '#FFFFFF',
+                    color: classFilterStatus === 'replays' ? '#FFFFFF' : '#475569',
+                    boxShadow: classFilterStatus === 'replays' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
+                  }}
                   onClick={() => setClassFilterStatus('replays')}
                 >
                   <span>Archives & Replays</span>
-                  <span className="pill-count-tag">{onlineClasses.filter(c => c.badgeClass === 'badge-replay').length}</span>
+                  <span style={{
+                    padding: '1px 6px',
+                    borderRadius: '999px',
+                    fontSize: '0.7rem',
+                    background: classFilterStatus === 'replays' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.06)'
+                  }}>
+                    {onlineClasses.filter(c => c.badgeClass === 'badge-replay').length}
+                  </span>
                 </button>
               </div>
 
-              <div className="flex items-center gap-3 flex-wrap">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
                 {/* Search Box */}
-                <div className="admin-search-wrap-mini">
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  background: '#FFFFFF',
+                  border: '1px solid rgba(0,0,0,0.1)',
+                  borderRadius: '8px',
+                  padding: '4px 10px',
+                  width: '260px'
+                }}>
                   <Search size={14} className="text-muted" />
                   <input 
                     type="text" 
-                    placeholder="Search batch, instructor, room, speed..."
+                    placeholder="Search batch, instructor, room..."
                     value={classSearchQuery}
                     onChange={(e) => setClassSearchQuery(e.target.value)}
-                    className="admin-mini-search-input"
+                    style={{ border: 'none', background: 'transparent', outline: 'none', fontSize: '0.8rem', width: '100%' }}
                   />
                   {classSearchQuery && (
-                    <button type="button" onClick={() => setClassSearchQuery('')} className="btn-clear-search">
+                    <button type="button" onClick={() => setClassSearchQuery('')} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
                       <X size={12} />
                     </button>
                   )}
                 </div>
 
                 {/* View Mode Toggle: Grid vs Timetable */}
-                <div className="admin-view-switcher-pills">
+                <div style={{ display: 'flex', background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '8px', padding: '2px' }}>
                   <button 
                     type="button" 
-                    className={`btn-view-toggle ${classViewMode === 'grid' ? 'active' : ''}`}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      padding: '4px 10px',
+                      borderRadius: '6px',
+                      fontSize: '0.75rem',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      border: 'none',
+                      background: classViewMode === 'grid' ? '#0F172A' : 'transparent',
+                      color: classViewMode === 'grid' ? '#FFFFFF' : '#64748B'
+                    }}
                     onClick={() => setClassViewMode('grid')}
                     title="Grid Card View"
                   >
@@ -2645,7 +2999,19 @@ export default function AdminPortalView({
                   </button>
                   <button 
                     type="button" 
-                    className={`btn-view-toggle ${classViewMode === 'timetable' ? 'active' : ''}`}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      padding: '4px 10px',
+                      borderRadius: '6px',
+                      fontSize: '0.75rem',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      border: 'none',
+                      background: classViewMode === 'timetable' ? '#0F172A' : 'transparent',
+                      color: classViewMode === 'timetable' ? '#FFFFFF' : '#64748B'
+                    }}
                     onClick={() => setClassViewMode('timetable')}
                     title="Daily Timetable Table View"
                   >
@@ -2658,157 +3024,313 @@ export default function AdminPortalView({
 
             {/* VIEW A: Class Cards Grid */}
             {classViewMode === 'grid' && (
-              <div className="admin-classes-grid mt-3">
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
+                gap: '1.25rem',
+                marginTop: '1.25rem'
+              }}>
                 {filteredOnlineClasses.map((item) => (
-                  <div key={item.id} className={`admin-class-card ${item.isLive ? 'is-live-card' : ''}`}>
+                  <div key={item.id} style={{
+                    background: '#FFFFFF',
+                    border: item.isLive ? '1.5px solid rgba(248, 52, 88, 0.4)' : '1px solid rgba(0,0,0,0.08)',
+                    borderRadius: '16px',
+                    padding: '1.35rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    boxShadow: item.isLive ? '0 4px 20px rgba(248, 52, 88, 0.08)' : '0 2px 6px rgba(0,0,0,0.02)',
+                    transition: 'all 0.15s ease'
+                  }}>
                     {/* Top Status & Tools Bar */}
-                    <div className="card-top-bar">
-                      <div className="card-status-container">
-                        {item.isLive ? (
-                          <span className="admin-status-pill-live">
-                            <span className="live-pulsing-dot-admin" />
-                            <span>LIVE NOW ON ZOOM</span>
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
+                        <div>
+                          {item.isLive ? (
+                            <span style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '6px',
+                              padding: '3px 10px',
+                              borderRadius: '999px',
+                              background: 'rgba(248, 52, 88, 0.08)',
+                              border: '1px solid rgba(248, 52, 88, 0.25)',
+                              color: '#F83458',
+                              fontSize: '0.7rem',
+                              fontWeight: 800,
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.04em'
+                            }}>
+                              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#F83458' }} />
+                              <span>LIVE NOW ON ZOOM</span>
+                            </span>
+                          ) : item.badgeClass === 'badge-replay' ? (
+                            <span style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '5px',
+                              padding: '3px 10px',
+                              borderRadius: '999px',
+                              background: 'rgba(100, 116, 139, 0.08)',
+                              border: '1px solid rgba(0,0,0,0.06)',
+                              color: '#475569',
+                              fontSize: '0.7rem',
+                              fontWeight: 700
+                            }}>
+                              <span>RECORDED ARCHIVE</span>
+                            </span>
+                          ) : (
+                            <span style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '5px',
+                              padding: '3px 10px',
+                              borderRadius: '999px',
+                              background: '#F1F5F9',
+                              border: '1px solid rgba(0,0,0,0.06)',
+                              color: '#0F172A',
+                              fontSize: '0.7rem',
+                              fontWeight: 700
+                            }}>
+                              <Clock size={11} />
+                              <span>SCHEDULED</span>
+                            </span>
+                          )}
+                        </div>
+
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                          <button 
+                            type="button"
+                            style={{
+                              background: '#F8FAFC',
+                              border: '1px solid rgba(0,0,0,0.08)',
+                              borderRadius: '6px',
+                              padding: '5px 7px',
+                              cursor: 'pointer',
+                              color: '#475569',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}
+                            onClick={() => handleCopyClassInvite(item)}
+                            title="Copy Full Zoom Invite text"
+                          >
+                            {copiedClassId === item.id ? <Check size={13} className="text-emerald-600" /> : <Copy size={13} />}
+                          </button>
+                          <button 
+                            type="button"
+                            style={{
+                              background: '#F8FAFC',
+                              border: '1px solid rgba(0,0,0,0.08)',
+                              borderRadius: '6px',
+                              padding: '5px 7px',
+                              cursor: 'pointer',
+                              color: '#475569',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}
+                            onClick={() => setEditingClass({ ...item })}
+                            title="Edit this class details"
+                          >
+                            <Edit3 size={13} />
+                          </button>
+                          <button 
+                            type="button"
+                            style={{
+                              background: '#FEF2F2',
+                              border: '1px solid rgba(220, 38, 38, 0.2)',
+                              borderRadius: '6px',
+                              padding: '5px 7px',
+                              cursor: 'pointer',
+                              color: '#DC2626',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}
+                            onClick={() => {
+                              if (confirm(`Delete online class "${item.title}"?`)) {
+                                if (onDeleteOnlineClass) onDeleteOnlineClass(item.id);
+                              }
+                            }}
+                            title="Delete this class"
+                          >
+                            <Trash2 size={13} />
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Card Title & Meta Badges */}
+                      <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0F172A', lineHeight: 1.35, margin: '0 0 0.65rem' }}>
+                        {item.title}
+                      </h4>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap', marginBottom: '0.85rem' }}>
+                        <span style={{ background: '#F1F5F9', color: '#334155', padding: '3px 8px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 700 }}>
+                          {item.shift}
+                        </span>
+                        <span style={{ background: 'rgba(248, 52, 88, 0.08)', color: '#F83458', padding: '3px 8px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 800 }}>
+                          {item.speed}
+                        </span>
+                        <span style={{ background: '#F8FAFC', border: '1px solid rgba(0,0,0,0.06)', color: '#64748B', padding: '3px 8px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 600 }}>
+                          {item.roomNo}
+                        </span>
+                      </div>
+
+                      {/* Faculty & Schedule Timing Bar */}
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '10px',
+                        padding: '8px 10px',
+                        background: '#F8FAFC',
+                        borderRadius: '10px',
+                        border: '1px solid rgba(0,0,0,0.05)',
+                        marginBottom: '0.85rem'
+                      }}>
+                        <div style={{
+                          width: '32px',
+                          height: '32px',
+                          borderRadius: '50%',
+                          background: '#0F172A',
+                          color: '#FFFFFF',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontWeight: 800,
+                          fontSize: '0.75rem',
+                          flexShrink: 0
+                        }}>
+                          {item.instructor.split(' ').map(n => n[0]).join('').slice(0, 2) || 'GS'}
+                        </div>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <span style={{ display: 'block', fontWeight: 700, fontSize: '0.82rem', color: '#0F172A' }}>
+                            {item.instructor}
                           </span>
-                        ) : item.badgeClass === 'badge-replay' ? (
-                          <span className="admin-status-pill-replay">
-                            <span>RECORDED ARCHIVE</span>
-                          </span>
-                        ) : (
-                          <span className="admin-status-pill-upcoming">
-                            <Clock size={11} />
-                            <span>SCHEDULED</span>
-                          </span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.72rem', color: '#64748B' }}>
+                            <span><Clock size={10} className="inline mr-1 text-slate-400" />{item.time}</span>
+                            <span>•</span>
+                            <span style={{ fontWeight: 600, color: '#334155' }}>{item.attendees || 1} Aspirants</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Zoom Credentials Strip */}
+                      <div style={{
+                        background: '#F8FAFC',
+                        border: '1px solid rgba(0,0,0,0.06)',
+                        borderRadius: '10px',
+                        padding: '8px 12px',
+                        display: 'grid',
+                        gridTemplateColumns: '1.4fr 1fr auto',
+                        gap: '8px',
+                        alignItems: 'center',
+                        marginBottom: '0.85rem'
+                      }}>
+                        <div>
+                          <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B' }}>Meeting ID</span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            <strong style={{ fontSize: '0.78rem', color: '#0F172A', fontFamily: 'monospace' }}>{item.zoomMeetingId}</strong>
+                            <button 
+                              type="button" 
+                              style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px', color: '#64748B' }}
+                              onClick={() => {
+                                navigator.clipboard.writeText(item.zoomMeetingId);
+                                setCopiedClassId(`id-${item.id}`);
+                                setTimeout(() => setCopiedClassId(null), 2000);
+                              }}
+                              title="Copy Meeting ID"
+                            >
+                              {copiedClassId === `id-${item.id}` ? <Check size={11} className="text-emerald-600" /> : <Copy size={11} />}
+                            </button>
+                          </div>
+                        </div>
+
+                        <div>
+                          <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B' }}>Passcode</span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            <strong style={{ fontSize: '0.78rem', color: '#0F172A', fontFamily: 'monospace' }}>{item.zoomPasscode}</strong>
+                            <button 
+                              type="button" 
+                              style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px', color: '#64748B' }}
+                              onClick={() => {
+                                navigator.clipboard.writeText(item.zoomPasscode);
+                                setCopiedClassId(`pwd-${item.id}`);
+                                setTimeout(() => setCopiedClassId(null), 2000);
+                              }}
+                              title="Copy Passcode"
+                            >
+                              {copiedClassId === `pwd-${item.id}` ? <Check size={11} className="text-emerald-600" /> : <Copy size={11} />}
+                            </button>
+                          </div>
+                        </div>
+
+                        <div>
+                          <a 
+                            href={item.zoomAppUrl || `zoommtg://zoom.us/join?confno=${item.zoomMeetingId.replace(/\s+/g, '')}&pwd=${item.zoomPasscode}`}
+                            target="_blank" 
+                            rel="noreferrer" 
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '3px',
+                              background: '#0F172A',
+                              color: '#FFFFFF',
+                              padding: '4px 8px',
+                              borderRadius: '6px',
+                              fontSize: '0.72rem',
+                              fontWeight: 700,
+                              textDecoration: 'none'
+                            }}
+                            title="Open in Zoom Desktop App"
+                          >
+                            <span>Open</span>
+                            <ExternalLink size={10} />
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* Topic Box */}
+                      <div style={{
+                        background: '#FFFFFF',
+                        border: '1px solid rgba(0,0,0,0.06)',
+                        borderRadius: '10px',
+                        padding: '8px 12px',
+                        marginBottom: '1rem'
+                      }}>
+                        <span style={{ display: 'block', fontSize: '0.65rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#94A3B8', marginBottom: '2px' }}>
+                          TODAY'S DICTATION TOPIC
+                        </span>
+                        <strong style={{ display: 'block', fontSize: '0.82rem', color: '#0F172A', lineHeight: 1.35 }}>
+                          {item.todayTopic}
+                        </strong>
+                        {item.passageSnippet && (
+                          <p style={{ margin: '4px 0 0', fontSize: '0.72rem', color: '#64748B', fontStyle: 'italic', lineHeight: 1.35 }}>
+                            "{item.passageSnippet.slice(0, 95)}..."
+                          </p>
                         )}
                       </div>
-
-                      <div className="card-tools-group">
-                        <button 
-                          type="button"
-                          className="btn-card-tool-sleek"
-                          onClick={() => handleCopyClassInvite(item)}
-                          title="Copy Full Zoom Invite text"
-                        >
-                          {copiedClassId === item.id ? <Check size={13} className="text-emerald-600" /> : <Copy size={13} />}
-                        </button>
-                        <button 
-                          type="button"
-                          className="btn-card-tool-sleek"
-                          onClick={() => setEditingClass({ ...item })}
-                          title="Edit this class details"
-                        >
-                          <Edit3 size={13} />
-                        </button>
-                        <button 
-                          type="button"
-                          className="btn-card-tool-sleek btn-tool-delete"
-                          onClick={() => {
-                            if (confirm(`Delete online class "${item.title}"?`)) {
-                              if (onDeleteOnlineClass) onDeleteOnlineClass(item.id);
-                            }
-                          }}
-                          title="Delete this class"
-                        >
-                          <Trash2 size={13} />
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Card Title & Meta Badges */}
-                    <div className="card-title-section">
-                      <h4 className="admin-card-title">{item.title}</h4>
-                      <div className="card-pills-row">
-                        <span className="card-shift-tag-sleek">{item.shift}</span>
-                        <span className="card-speed-badge-sleek font-mono">{item.speed}</span>
-                        <span className="card-room-tag-sleek font-mono">{item.roomNo}</span>
-                      </div>
-                    </div>
-
-                    {/* Faculty & Schedule Timing Bar */}
-                    <div className="admin-faculty-row">
-                      <div className="faculty-avatar-circle-sleek">
-                        {item.instructor.split(' ').map(n => n[0]).join('').slice(0, 2) || 'GS'}
-                      </div>
-                      <div className="faculty-meta-sleek">
-                        <span className="faculty-name-sleek">{item.instructor}</span>
-                        <div className="faculty-sub-sleek">
-                          <span><Clock size={11} className="inline mr-1 text-slate-400" />{item.time}</span>
-                          <span className="dot-sep">•</span>
-                          <span className="text-stone-700 font-semibold">{item.attendees || 1} Aspirants</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Zoom Credentials Strip */}
-                    <div className="admin-creds-container">
-                      <div className="cred-cell">
-                        <span className="cred-mini-lbl">Zoom Meeting ID</span>
-                        <div className="cred-val-copy">
-                          <strong className="font-mono">{item.zoomMeetingId}</strong>
-                          <button 
-                            type="button" 
-                            className="btn-copy-chip"
-                            onClick={() => {
-                              navigator.clipboard.writeText(item.zoomMeetingId);
-                              setCopiedClassId(`id-${item.id}`);
-                              setTimeout(() => setCopiedClassId(null), 2000);
-                            }}
-                            title="Copy Meeting ID"
-                          >
-                            {copiedClassId === `id-${item.id}` ? <Check size={11} className="text-emerald-600" /> : <Copy size={11} />}
-                          </button>
-                        </div>
-                      </div>
-
-                      <div className="cred-cell">
-                        <span className="cred-mini-lbl">Passcode</span>
-                        <div className="cred-val-copy">
-                          <strong className="font-mono">{item.zoomPasscode}</strong>
-                          <button 
-                            type="button" 
-                            className="btn-copy-chip"
-                            onClick={() => {
-                              navigator.clipboard.writeText(item.zoomPasscode);
-                              setCopiedClassId(`pwd-${item.id}`);
-                              setTimeout(() => setCopiedClassId(null), 2000);
-                            }}
-                            title="Copy Passcode"
-                          >
-                            {copiedClassId === `pwd-${item.id}` ? <Check size={11} className="text-emerald-600" /> : <Copy size={11} />}
-                          </button>
-                        </div>
-                      </div>
-
-                      <div className="cred-cell cell-launch">
-                        <span className="cred-mini-lbl">Zoom App</span>
-                        <a 
-                          href={item.zoomAppUrl || `zoommtg://zoom.us/join?confno=${item.zoomMeetingId.replace(/\s+/g, '')}&pwd=${item.zoomPasscode}`}
-                          target="_blank" 
-                          rel="noreferrer" 
-                          className="link-launch-zoom"
-                          title="Open in Zoom Desktop App"
-                        >
-                          <span>Open</span>
-                          <ExternalLink size={11} />
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Topic Box (Clean, Editorial, Neutral) */}
-                    <div className="admin-topic-card-sleek">
-                      <span className="topic-card-lbl">TODAY'S DICTATION TOPIC</span>
-                      <strong className="topic-card-name">{item.todayTopic}</strong>
-                      {item.passageSnippet && (
-                        <p className="topic-passage-snippet">
-                          "{item.passageSnippet.slice(0, 95)}..."
-                        </p>
-                      )}
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="admin-card-actions-sleek">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', paddingTop: '10px', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
                       <button 
                         type="button"
-                        className={`btn-live-toggle-sleek ${item.isLive ? 'live-active-btn' : 'live-standby-btn'}`}
+                        style={{
+                          flex: 1,
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '6px',
+                          padding: '8px 12px',
+                          borderRadius: '8px',
+                          fontSize: '0.8rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          transition: 'all 0.15s ease',
+                          background: item.isLive ? '#FEF2F2' : '#FFFFFF',
+                          border: item.isLive ? '1px solid rgba(220, 38, 38, 0.3)' : '1px solid rgba(248, 52, 88, 0.3)',
+                          color: item.isLive ? '#DC2626' : '#F83458'
+                        }}
                         onClick={() => {
                           if (onToggleLiveOnlineClass) onToggleLiveOnlineClass(item.id);
                         }}
@@ -2829,7 +3351,22 @@ export default function AdminPortalView({
 
                       <button 
                         type="button"
-                        className="btn-view-class-sleek"
+                        style={{
+                          flex: 1,
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '6px',
+                          padding: '8px 12px',
+                          borderRadius: '8px',
+                          fontSize: '0.8rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          transition: 'all 0.15s ease',
+                          background: '#0F172A',
+                          border: '1px solid #0F172A',
+                          color: '#FFFFFF'
+                        }}
                         onClick={() => {
                           if (onJoinClassAsAdmin) onJoinClassAsAdmin(item.id);
                           else setCurrentTab('online-classes');
@@ -2911,7 +3448,7 @@ export default function AdminPortalView({
                             </button>
 
                             <button 
-                              type="button"
+                              type="button" 
                               className="btn-tbl-action tbl-enter"
                               onClick={() => {
                                 if (onJoinClassAsAdmin) onJoinClassAsAdmin(item.id);
@@ -2923,7 +3460,7 @@ export default function AdminPortalView({
                             </button>
 
                             <button 
-                              type="button"
+                              type="button" 
                               className="btn-tbl-action"
                               onClick={() => handleCopyClassInvite(item)}
                               title="Copy Invite"
@@ -2932,7 +3469,7 @@ export default function AdminPortalView({
                             </button>
 
                             <button 
-                              type="button"
+                              type="button" 
                               className="btn-tbl-action text-rose-600"
                               onClick={() => {
                                 if (confirm(`Delete online class "${item.title}"?`)) {
