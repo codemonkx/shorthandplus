@@ -3863,14 +3863,14 @@ button {
   min-width: 0 !important;
 }
 
-.candidate-registry-table th:nth-child(1), .candidate-registry-table td:nth-child(1) { width: 21% !important; }
-.candidate-registry-table th:nth-child(2), .candidate-registry-table td:nth-child(2) { width: 10% !important; }
-.candidate-registry-table th:nth-child(3), .candidate-registry-table td:nth-child(3) { width: 12% !important; }
+.candidate-registry-table th:nth-child(1), .candidate-registry-table td:nth-child(1) { width: 20% !important; }
+.candidate-registry-table th:nth-child(2), .candidate-registry-table td:nth-child(2) { width: 9% !important; }
+.candidate-registry-table th:nth-child(3), .candidate-registry-table td:nth-child(3) { width: 11% !important; }
 .candidate-registry-table th:nth-child(4), .candidate-registry-table td:nth-child(4) { width: 12% !important; }
 .candidate-registry-table th:nth-child(5), .candidate-registry-table td:nth-child(5) { width: 11% !important; }
 .candidate-registry-table th:nth-child(6), .candidate-registry-table td:nth-child(6) { width: 10% !important; }
 .candidate-registry-table th:nth-child(7), .candidate-registry-table td:nth-child(7) { width: 9% !important; }
-.candidate-registry-table th:nth-child(8), .candidate-registry-table td:nth-child(8) { width: 15% !important; text-align: right !important; }
+.candidate-registry-table th:nth-child(8), .candidate-registry-table td:nth-child(8) { width: 18% !important; text-align: right !important; }
 
 .candidate-registry-table th {
   padding: 0.65rem 0.45rem !important;
@@ -3900,6 +3900,25 @@ button {
   padding: 0 0.35rem !important;
   font-size: 0.7rem !important;
   gap: 0.2rem !important;
+}
+
+.candidate-registry-table .admin-btn-action.btn-delete {
+  width: 27px !important;
+  min-width: 27px !important;
+  max-width: 27px !important;
+  height: 27px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 6px !important;
+  color: #64748B !important;
+}
+
+.candidate-registry-table .admin-btn-action.btn-delete:hover {
+  background: #fef2f2 !important;
+  border-color: #fecaca !important;
+  color: #dc2626 !important;
 }
 
 .candidate-registry-table .admin-user-cell {

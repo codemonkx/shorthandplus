@@ -228,6 +228,37 @@ router.post('/students/:id/reset-password', verifyToken, requireAdmin, async (re
   }
 });
 
+// Permanently Delete / Remove Student Account
+router.delete('/students/:id', verifyToken, requireAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await db.get('SELECT id, name, role FROM users WHERE id = ?', id);
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'Student not found.' });
+    }
+
+    if (user.role === 'admin') {
+      return res.status(403).json({ success: false, message: 'Cannot delete administrator account.' });
+    }
+
+    // Clean up student related records across all tables
+    await db.run('DELETE FROM enrollments WHERE user_id = ?', id);
+    await db.run('DELETE FROM test_results WHERE user_id = ?', id);
+    await db.run('DELETE FROM password_resets WHERE user_id = ?', id);
+    await db.run('DELETE FROM transactions WHERE user_id = ?', id);
+    await db.run('DELETE FROM users WHERE id = ?', id);
+
+    return res.json({
+      success: true,
+      message: `Candidate "${user.name}" removed successfully.`
+    });
+  } catch (error) {
+    console.error('Error deleting student by admin:', error);
+    return res.status(500).json({ success: false, message: 'Server error removing student.' });
+  }
+});
+
 // Financial Ledger Transactions
 router.get('/transactions', verifyToken, requireAdmin, async (req, res) => {
   try {

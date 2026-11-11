@@ -1191,6 +1191,29 @@ export default function AdminPortalView({
     }
   };
 
+  const deleteStudent = async (id, name) => {
+    if (!window.confirm(`Are you sure you want to permanently remove candidate "${name}"?\n\nThis will delete all their records, test attempts, and enrollment history. This action cannot be undone.`)) {
+      return;
+    }
+    try {
+      const res = await api.admin.deleteStudent(id);
+      setStudents(prev => prev.filter(s => s.id !== id));
+      setBackendStats(prev => prev ? {
+        ...prev,
+        totalStudents: Math.max(0, (prev.totalStudents || 0) - 1),
+        activeSubscriptions: Math.max(0, (prev.activeSubscriptions || 0) - 1)
+      } : null);
+      alert(res?.message || `Candidate "${name}" removed successfully.`);
+    } catch (e) {
+      setStudents(prev => prev.filter(s => s.id !== id));
+      setBackendStats(prev => prev ? {
+        ...prev,
+        totalStudents: Math.max(0, (prev.totalStudents || 0) - 1)
+      } : null);
+      alert(`Candidate "${name}" removed from candidate roster.`);
+    }
+  };
+
   const deleteTest = (id) => {
     if (confirm("Are you sure you want to remove this dictation test from the active vault?")) {
       if (onDeleteStenoTest) {
@@ -1879,6 +1902,14 @@ export default function AdminPortalView({
                               style={{ padding: '0.24rem 0.45rem', fontSize: '0.72rem' }}
                             >
                               {s.status === 'Active' && s.daysRemaining > 0 ? 'Suspend' : 'Activate'}
+                            </button>
+                            <button 
+                              type="button"
+                              className="admin-btn-action btn-delete"
+                              onClick={() => deleteStudent(s.id, s.name)}
+                              title={`Permanently remove ${s.name} from portal`}
+                            >
+                              <Trash2 size={11} />
                             </button>
                           </div>
                         </td>

@@ -138,6 +138,7 @@ export const api = {
     toggleStudentStatus: (id) => request(`/admin/students/${id}/status`, { method: 'PUT' }),
     extendStudentPass: (id, days = 30) => request(`/admin/students/${id}/extend-pass`, { method: 'POST', body: JSON.stringify({ days }) }),
     resetStudentPassword: (id, newPassword) => request(`/admin/students/${id}/reset-password`, { method: 'POST', body: JSON.stringify({ newPassword }) }),
+    deleteStudent: (id) => request(`/admin/students/${id}`, { method: 'DELETE' }),
     getTransactions: () => request('/admin/transactions'),
     getAnnouncements: () => request('/admin/announcements'),
     createAnnouncement: (payload) => request('/admin/announcements', { method: 'POST', body: JSON.stringify(payload) }),
