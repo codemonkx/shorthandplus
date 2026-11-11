@@ -20188,7 +20188,7 @@ h1, h2, h3, h4, h5, h6 {
   border-collapse: separate;
   border-spacing: 0;
   text-align: left;
-  font-size: 0.86rem;
+  font-size: 0.82rem;
 }
 
 .corporate-table thead tr {
@@ -20196,11 +20196,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .corporate-table thead th {
-  padding: 0.85rem 1rem;
-  font-size: 0.72rem;
+  padding: 0.75rem 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: #475569;
   border-bottom: 1px solid #e2e8f0;
   white-space: nowrap;
@@ -20231,18 +20231,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .corporate-table tbody td {
-  padding: 0.95rem 1rem;
+  padding: 0.7rem 0.65rem;
   vertical-align: middle;
   color: #1e293b;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* Candidate Profile Cell (Fixing the Squished Text) */
+/* Candidate Profile Cell */
 .admin-user-cell {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  min-width: 220px;
+  gap: 0.65rem;
+  min-width: 0;
 }
 
 .admin-avatar-bubble {

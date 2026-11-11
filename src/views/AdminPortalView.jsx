@@ -1352,6 +1352,24 @@ export default function AdminPortalView({
     return 'pass-default';
   };
 
+  const formatPassName = (plan) => {
+    if (!plan || plan === 'No Active Plan' || plan.includes('No Active')) return 'No Active Plan';
+    if (plan.includes('12 Month') || plan.includes('12-Month') || plan.includes('Annual')) return '12-Mo Pro';
+    if (plan.includes('6 Month') || plan.includes('6-Month') || plan.includes('Scholar')) return '6-Mo Scholar';
+    if (plan.includes('Monthly') || plan.includes('Test Series')) return 'Monthly Pass';
+    if (plan.includes('1 Day') || plan.includes('1-Day') || plan.includes('Sprint')) return '1-Day Sprint';
+    return plan.length > 16 ? `${plan.slice(0, 14)}...` : plan;
+  };
+
+  const formatExamName = (exam) => {
+    if (!exam) return 'General';
+    if (exam.includes('Patna High Court & SSC')) return 'Patna HC & SSC';
+    if (exam.includes('Patna High Court')) return 'Patna HC';
+    if (exam.includes('SSC Steno Grade')) return exam.replace('SSC Steno Grade', 'SSC Gr.');
+    if (exam.includes('Jharkhand High Court')) return 'Jharkhand HC';
+    return exam;
+  };
+
   // SECURITY CLEARANCE GATE
   if (!isAdminAuthenticated) {
     return (
@@ -1710,7 +1728,7 @@ export default function AdminPortalView({
             </div>
 
             <div className="table-responsive">
-              <table className="corporate-table">
+              <table className="corporate-table candidate-registry-table">
                 <thead>
                   <tr>
                     <th>
@@ -1722,7 +1740,7 @@ export default function AdminPortalView({
                     <th>
                       <div className="th-content">
                         <Key size={13} />
-                        <span>Roll Number</span>
+                        <span>Roll No</span>
                       </div>
                     </th>
                     <th>
@@ -1734,19 +1752,19 @@ export default function AdminPortalView({
                     <th>
                       <div className="th-content">
                         <CreditCard size={13} />
-                        <span>Current Pass</span>
+                        <span>Pass Plan</span>
                       </div>
                     </th>
                     <th>
                       <div className="th-content">
                         <Clock size={13} />
-                        <span>Validity / Days Left</span>
+                        <span>Validity</span>
                       </div>
                     </th>
                     <th>
                       <div className="th-content">
                         <Gauge size={13} />
-                        <span>Steno Speed</span>
+                        <span>Speed</span>
                       </div>
                     </th>
                     <th>
@@ -1788,10 +1806,10 @@ export default function AdminPortalView({
                               {s.name.charAt(0)}
                             </div>
                             <div className="admin-user-info">
-                              <span className="admin-user-fullname">{s.name}</span>
-                              <span className="admin-user-email-text">
-                                <Mail size={12} className="admin-inline-mail-icon" />
-                                <span>{s.email}</span>
+                              <span className="admin-user-fullname" title={s.name}>{s.name}</span>
+                              <span className="admin-user-email-text" title={s.email}>
+                                <Mail size={11} className="admin-inline-mail-icon" />
+                                <span className="admin-email-text">{s.email}</span>
                               </span>
                             </div>
                           </div>
@@ -1802,21 +1820,21 @@ export default function AdminPortalView({
                           </span>
                         </td>
                         <td>
-                          <span className="admin-exam-capsule">
-                            {s.targetExam}
+                          <span className="admin-exam-capsule" title={s.targetExam}>
+                            {formatExamName(s.targetExam)}
                           </span>
                         </td>
                         <td>
-                          <span className={`admin-pass-chip ${getPassBadgeClass(s.plan)}`}>
+                          <span className={`admin-pass-chip ${getPassBadgeClass(s.plan)}`} title={s.plan}>
                             <Crown size={12} />
-                            <span>{s.plan}</span>
+                            <span>{formatPassName(s.plan)}</span>
                           </span>
                         </td>
                         <td>
                           <div className="admin-validity-widget">
                             <div className="validity-text-row">
                               <span className={`validity-days-badge ${s.daysRemaining === 0 ? 'badge-expired' : s.daysRemaining <= 10 ? 'badge-urgent' : s.daysRemaining <= 30 ? 'badge-warning' : 'badge-good'}`}>
-                                {s.daysRemaining === 0 ? 'Expired' : `${s.daysRemaining} days left`}
+                                {s.daysRemaining === 0 ? 'Expired' : `${s.daysRemaining}d left`}
                               </span>
                             </div>
                             {s.daysRemaining > 0 && (
@@ -1832,11 +1850,11 @@ export default function AdminPortalView({
                         <td>
                           <div className="admin-speed-widget">
                             <div className="speed-main-val">
-                              <Gauge size={13} style={{ color: '#d97706' }} />
+                              <Gauge size={12} style={{ color: '#d97706' }} />
                               <span className="speed-number">{s.speed}</span>
                               <span className="speed-unit">WPM</span>
                             </div>
-                            <span className="accuracy-subval">{s.accuracy}% accuracy</span>
+                            <span className="accuracy-subval">{s.accuracy}%</span>
                           </div>
                         </td>
                         <td>
@@ -1851,23 +1869,25 @@ export default function AdminPortalView({
                               className="admin-btn-action btn-extend"
                               onClick={() => extendStudentPlan(s.id)}
                               title="Extend validity +30 days (Saved to Database)"
+                              style={{ padding: '0.24rem 0.45rem', fontSize: '0.72rem' }}
                             >
-                              <Clock size={12} />
+                              <Clock size={11} />
                               <span>+30d</span>
                             </button>
                             <button 
                               className="admin-btn-action"
                               onClick={() => resetStudentPassword(s.id, s.name)}
-                              title="Set or generate temporary password for student"
-                              style={{ background: '#FFFFFF', color: '#0F172A', border: '1px solid rgba(0, 0, 0, 0.08)' }}
+                              title="Reset student password"
+                              style={{ background: '#FFFFFF', color: '#0F172A', border: '1px solid #E2E8F0', padding: '0.24rem 0.45rem', fontSize: '0.72rem' }}
                             >
-                              <Key size={12} />
-                              <span>Reset Pwd</span>
+                              <Key size={11} />
+                              <span>Reset</span>
                             </button>
                             <button 
                               className={`admin-btn-action ${s.status === 'Active' && s.daysRemaining > 0 ? 'btn-suspend' : 'btn-activate'}`}
                               onClick={() => toggleStudentStatus(s.id)}
                               title={s.status === 'Active' ? 'Suspend candidate account' : 'Activate candidate account'}
+                              style={{ padding: '0.24rem 0.45rem', fontSize: '0.72rem' }}
                             >
                               {s.status === 'Active' && s.daysRemaining > 0 ? 'Suspend' : 'Activate'}
                             </button>
