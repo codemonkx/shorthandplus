@@ -59,7 +59,9 @@ import {
   Send,
   ArrowRight,
   Save,
-  LogOut
+  LogOut,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import CustomSelect from '../components/CustomSelect';
 import { STENO_TESTS, TYPING_TESTS, PRICING_PLANS, INITIAL_ACADEMY_COURSES } from '../data/mockData';
@@ -328,6 +330,12 @@ export default function AdminPortalView({
   const [searchQuery, setSearchQuery] = useState('');
   const [filterPlan, setFilterPlan] = useState('All');
   const [statusFilter, setStatusFilter] = useState('All'); // 'All' | 'Active' | 'Expiring' | 'Expired'
+
+  // Pagination states
+  const [candidatePage, setCandidatePage] = useState(1);
+  const [candidatePageSize, setCandidatePageSize] = useState(10);
+  const [txnPage, setTxnPage] = useState(1);
+  const [txnPageSize, setTxnPageSize] = useState(10);
 
   // Modals state
   const [newTestModalOpen, setNewTestModalOpen] = useState(false);
@@ -1316,6 +1324,25 @@ export default function AdminPortalView({
     return matchesSearch && matchesPlan && matchesStatus;
   });
 
+  // Reset candidate page when filters change
+  useEffect(() => {
+    setCandidatePage(1);
+  }, [searchQuery, filterPlan, statusFilter]);
+
+  const candidateTotalPages = Math.ceil(filteredStudents.length / candidatePageSize) || 1;
+  const candidateStartIndex = (candidatePage - 1) * candidatePageSize;
+  const candidateEndIndex = Math.min(candidateStartIndex + candidatePageSize, filteredStudents.length);
+  const paginatedStudents = useMemo(() => {
+    return filteredStudents.slice(candidateStartIndex, candidateEndIndex);
+  }, [filteredStudents, candidateStartIndex, candidateEndIndex]);
+
+  const txnTotalPages = Math.ceil(transactions.length / txnPageSize) || 1;
+  const txnStartIndex = (txnPage - 1) * txnPageSize;
+  const txnEndIndex = Math.min(txnStartIndex + txnPageSize, transactions.length);
+  const paginatedTransactions = useMemo(() => {
+    return transactions.slice(txnStartIndex, txnEndIndex);
+  }, [transactions, txnStartIndex, txnEndIndex]);
+
   const getPassBadgeClass = (plan) => {
     if (!plan || plan.includes('No Active')) return 'pass-default';
     if (plan.includes('12-Month') || plan.includes('12 Month') || plan.includes('Annual')) return 'pass-annual';
@@ -1677,8 +1704,8 @@ export default function AdminPortalView({
                 </button>
               </div>
 
-              <div className="filter-result-pill">
-                <span>Showing <strong>{filteredStudents.length}</strong> of <strong>{countAll}</strong> Candidates</span>
+              <div className="filter-result-pill font-mono">
+                <span>Showing <strong>{filteredStudents.length === 0 ? 0 : candidateStartIndex + 1}–{candidateEndIndex}</strong> of <strong>{filteredStudents.length}</strong> Candidates</span>
               </div>
             </div>
 
@@ -1753,7 +1780,7 @@ export default function AdminPortalView({
                       </td>
                     </tr>
                   ) : (
-                    filteredStudents.map((s) => (
+                    paginatedStudents.map((s) => (
                       <tr key={`stud-${s.id}`}>
                         <td>
                           <div className="admin-user-cell">
@@ -1852,6 +1879,146 @@ export default function AdminPortalView({
                 </tbody>
               </table>
             </div>
+
+            {/* Candidate Pagination Controls */}
+            {filteredStudents.length > 0 && (
+              <div 
+                className="admin-table-pagination" 
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  gap: '1rem',
+                  padding: '0.9rem 1.15rem',
+                  marginTop: '0.85rem',
+                  background: '#F8FAFC',
+                  borderRadius: '10px',
+                  border: '1px solid #E2E8F0'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '0.84rem', color: '#64748B' }}>
+                  <span>
+                    Showing <strong style={{ color: '#0F172A' }}>{candidateStartIndex + 1}–{candidateEndIndex}</strong> of <strong style={{ color: '#0F172A' }}>{filteredStudents.length}</strong> candidates
+                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                    <span style={{ fontSize: '0.8rem' }}>Rows per page:</span>
+                    <select 
+                      value={candidatePageSize}
+                      onChange={(e) => {
+                        setCandidatePageSize(Number(e.target.value));
+                        setCandidatePage(1);
+                      }}
+                      style={{
+                        padding: '0.28rem 0.5rem',
+                        borderRadius: '6px',
+                        border: '1px solid #CBD5E1',
+                        background: '#FFFFFF',
+                        fontSize: '0.82rem',
+                        fontWeight: 600,
+                        color: '#0F172A',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      <option value={10}>10</option>
+                      <option value={20}>20</option>
+                      <option value={50}>50</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <button
+                    type="button"
+                    onClick={() => setCandidatePage(prev => Math.max(prev - 1, 1))}
+                    disabled={candidatePage <= 1}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      padding: '0.4rem 0.8rem',
+                      borderRadius: '6px',
+                      border: '1px solid #E2E8F0',
+                      background: candidatePage <= 1 ? '#F1F5F9' : '#FFFFFF',
+                      color: candidatePage <= 1 ? '#94A3B8' : '#0F172A',
+                      fontSize: '0.82rem',
+                      fontWeight: 600,
+                      cursor: candidatePage <= 1 ? 'not-allowed' : 'pointer',
+                      transition: 'all 0.15s ease'
+                    }}
+                  >
+                    <ChevronLeft size={14} />
+                    <span>Previous</span>
+                  </button>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    {Array.from({ length: candidateTotalPages }, (_, i) => i + 1)
+                      .filter(p => p === 1 || p === candidateTotalPages || Math.abs(p - candidatePage) <= 1)
+                      .reduce((acc, p, idx, arr) => {
+                        if (idx > 0 && p - arr[idx - 1] > 1) {
+                          acc.push(-1);
+                        }
+                        acc.push(p);
+                        return acc;
+                      }, [])
+                      .map((p, idx) => {
+                        if (p === -1) {
+                          return <span key={`ellipsis-${idx}`} style={{ padding: '0 4px', color: '#94A3B8', fontSize: '0.82rem' }}>...</span>;
+                        }
+                        const isActive = p === candidatePage;
+                        return (
+                          <button
+                            key={`cand-page-${p}`}
+                            type="button"
+                            onClick={() => setCandidatePage(p)}
+                            style={{
+                              minWidth: '30px',
+                              height: '30px',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              borderRadius: '6px',
+                              border: isActive ? '1px solid #0F172A' : '1px solid #E2E8F0',
+                              background: isActive ? '#0F172A' : '#FFFFFF',
+                              color: isActive ? '#FFFFFF' : '#0F172A',
+                              fontSize: '0.82rem',
+                              fontWeight: isActive ? 700 : 500,
+                              cursor: 'pointer',
+                              transition: 'all 0.15s ease'
+                            }}
+                          >
+                            {p}
+                          </button>
+                        );
+                      })
+                    }
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setCandidatePage(prev => Math.min(prev + 1, candidateTotalPages))}
+                    disabled={candidatePage >= candidateTotalPages}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      padding: '0.4rem 0.8rem',
+                      borderRadius: '6px',
+                      border: '1px solid #E2E8F0',
+                      background: candidatePage >= candidateTotalPages ? '#F1F5F9' : '#FFFFFF',
+                      color: candidatePage >= candidateTotalPages ? '#94A3B8' : '#0F172A',
+                      fontSize: '0.82rem',
+                      fontWeight: 600,
+                      cursor: candidatePage >= candidateTotalPages ? 'not-allowed' : 'pointer',
+                      transition: 'all 0.15s ease'
+                    }}
+                  >
+                    <span>Next</span>
+                    <ChevronRight size={14} />
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
@@ -2146,7 +2313,7 @@ export default function AdminPortalView({
                   </tr>
                 </thead>
                 <tbody>
-                  {transactions.map((t) => (
+                  {paginatedTransactions.map((t) => (
                     <tr key={`txn-${t.id}`}>
                       <td><span className="admin-roll-capsule font-mono">{t.id}</span></td>
                       <td>
@@ -2178,6 +2345,146 @@ export default function AdminPortalView({
                 </tbody>
               </table>
             </div>
+
+            {/* Transactions Pagination Controls */}
+            {transactions.length > 0 && (
+              <div 
+                className="admin-table-pagination" 
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  gap: '1rem',
+                  padding: '0.9rem 1.15rem',
+                  marginTop: '0.85rem',
+                  background: '#F8FAFC',
+                  borderRadius: '10px',
+                  border: '1px solid #E2E8F0'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '0.84rem', color: '#64748B' }}>
+                  <span>
+                    Showing <strong style={{ color: '#0F172A' }}>{txnStartIndex + 1}–{txnEndIndex}</strong> of <strong style={{ color: '#0F172A' }}>{transactions.length}</strong> transactions
+                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                    <span style={{ fontSize: '0.8rem' }}>Rows per page:</span>
+                    <select 
+                      value={txnPageSize}
+                      onChange={(e) => {
+                        setTxnPageSize(Number(e.target.value));
+                        setTxnPage(1);
+                      }}
+                      style={{
+                        padding: '0.28rem 0.5rem',
+                        borderRadius: '6px',
+                        border: '1px solid #CBD5E1',
+                        background: '#FFFFFF',
+                        fontSize: '0.82rem',
+                        fontWeight: 600,
+                        color: '#0F172A',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      <option value={10}>10</option>
+                      <option value={20}>20</option>
+                      <option value={50}>50</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <button
+                    type="button"
+                    onClick={() => setTxnPage(prev => Math.max(prev - 1, 1))}
+                    disabled={txnPage <= 1}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      padding: '0.4rem 0.8rem',
+                      borderRadius: '6px',
+                      border: '1px solid #E2E8F0',
+                      background: txnPage <= 1 ? '#F1F5F9' : '#FFFFFF',
+                      color: txnPage <= 1 ? '#94A3B8' : '#0F172A',
+                      fontSize: '0.82rem',
+                      fontWeight: 600,
+                      cursor: txnPage <= 1 ? 'not-allowed' : 'pointer',
+                      transition: 'all 0.15s ease'
+                    }}
+                  >
+                    <ChevronLeft size={14} />
+                    <span>Previous</span>
+                  </button>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    {Array.from({ length: txnTotalPages }, (_, i) => i + 1)
+                      .filter(p => p === 1 || p === txnTotalPages || Math.abs(p - txnPage) <= 1)
+                      .reduce((acc, p, idx, arr) => {
+                        if (idx > 0 && p - arr[idx - 1] > 1) {
+                          acc.push(-1);
+                        }
+                        acc.push(p);
+                        return acc;
+                      }, [])
+                      .map((p, idx) => {
+                        if (p === -1) {
+                          return <span key={`ellipsis-txn-${idx}`} style={{ padding: '0 4px', color: '#94A3B8', fontSize: '0.82rem' }}>...</span>;
+                        }
+                        const isActive = p === txnPage;
+                        return (
+                          <button
+                            key={`txn-page-${p}`}
+                            type="button"
+                            onClick={() => setTxnPage(p)}
+                            style={{
+                              minWidth: '30px',
+                              height: '30px',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              borderRadius: '6px',
+                              border: isActive ? '1px solid #0F172A' : '1px solid #E2E8F0',
+                              background: isActive ? '#0F172A' : '#FFFFFF',
+                              color: isActive ? '#FFFFFF' : '#0F172A',
+                              fontSize: '0.82rem',
+                              fontWeight: isActive ? 700 : 500,
+                              cursor: 'pointer',
+                              transition: 'all 0.15s ease'
+                            }}
+                          >
+                            {p}
+                          </button>
+                        );
+                      })
+                    }
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setTxnPage(prev => Math.min(prev + 1, txnTotalPages))}
+                    disabled={txnPage >= txnTotalPages}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      padding: '0.4rem 0.8rem',
+                      borderRadius: '6px',
+                      border: '1px solid #E2E8F0',
+                      background: txnPage >= txnTotalPages ? '#F1F5F9' : '#FFFFFF',
+                      color: txnPage >= txnTotalPages ? '#94A3B8' : '#0F172A',
+                      fontSize: '0.82rem',
+                      fontWeight: 600,
+                      cursor: txnPage >= txnTotalPages ? 'not-allowed' : 'pointer',
+                      transition: 'all 0.15s ease'
+                    }}
+                  >
+                    <span>Next</span>
+                    <ChevronRight size={14} />
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
