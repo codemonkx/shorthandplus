@@ -1523,14 +1523,14 @@ export default function AdminPortalView({
       {/* Main Admin Body */}
       <div className="admin-body-container">
         
-        {/* KPI Summary Cards */}
+        {/* KPI Summary Cards: Total Students, Total Audio Tests, Total Typing Tests */}
         <div className="admin-kpi-grid">
           <div className="saas-card admin-kpi-card">
             <div className="kpi-icon-wrap bg-stone-100">
               <Users size={20} className="text-stone-800" />
             </div>
             <div className="kpi-info-col">
-              <span className="kpi-label-text">Total Enrolled Aspirants</span>
+              <span className="kpi-label-text">Total Students</span>
               <div className="kpi-val-number font-mono">{backendStats?.totalStudents ?? students.length}</div>
               <span className="kpi-trend text-emerald font-mono">
                 {backendStats?.activeSubscriptions ?? students.filter(s => s.status === 'Active' || s.status === 'active').length} Active Enrolled
@@ -1539,38 +1539,27 @@ export default function AdminPortalView({
           </div>
 
           <div className="saas-card admin-kpi-card">
-            <div className="kpi-icon-wrap bg-emerald-subtle">
-              <CreditCard size={20} className="text-emerald" />
-            </div>
-            <div className="kpi-info-col">
-              <span className="kpi-label-text">Total Pass Revenue</span>
-              <div className="kpi-val-number font-mono">₹{totalRevenue.toLocaleString('en-IN')}</div>
-              <span className="kpi-trend text-emerald font-mono">{transactions.length} Verified Transactions</span>
-            </div>
-          </div>
-
-          <div className="saas-card admin-kpi-card">
             <div className="kpi-icon-wrap bg-amber-50">
               <Headphones size={20} className="text-amber-700" />
             </div>
             <div className="kpi-info-col">
-              <span className="kpi-label-text">Active Audio Dictations</span>
-              <div className="kpi-val-number font-mono">{tests.length} Tests</div>
+              <span className="kpi-label-text">Total Audio Tests</span>
+              <div className="kpi-val-number font-mono">{backendStats?.totalAudioTests ?? tests.length} Tests</div>
               <span className="kpi-trend text-stone-700 font-mono">
-                {tests.map(t => t.speed || t.speed_str).filter(Boolean).slice(0, 3).join(', ') || '80, 100, 120 WPM'}
+                {tests.map(t => t.speed || t.speed_str).filter(Boolean).slice(0, 3).join(', ') || '80, 100 WPM'} Active Audio
               </span>
             </div>
           </div>
 
           <div className="saas-card admin-kpi-card">
-            <div className="kpi-icon-wrap bg-rose-subtle">
-              <Video size={20} className="text-rose-600" />
+            <div className="kpi-icon-wrap bg-emerald-subtle">
+              <Keyboard size={20} className="text-emerald" />
             </div>
             <div className="kpi-info-col">
-              <span className="kpi-label-text">Live Zoom Batches</span>
-              <div className="kpi-val-number font-mono">{onlineClasses.length} Batches</div>
-              <span className="kpi-trend text-rose-600 font-mono">
-                {onlineClasses.filter(c => c.isLive).length} Active Live Now
+              <span className="kpi-label-text">Total Typing Tests</span>
+              <div className="kpi-val-number font-mono">{backendStats?.totalTypingTests ?? typingTests.length} Tests</div>
+              <span className="kpi-trend text-emerald font-mono">
+                {typingTests.map(t => (t.language && t.language.includes('Hindi')) ? 'Hindi' : 'English').filter((v, i, a) => a.indexOf(v) === i).join(' & ')} Practice Sets
               </span>
             </div>
           </div>

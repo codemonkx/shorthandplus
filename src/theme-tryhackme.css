@@ -2026,22 +2026,16 @@ tbody td {
   box-sizing: border-box !important;
 }
 
-/* Executive KPI Grid - 4 Columns */
+/* Executive KPI Grid - 3 Columns (Total Students, Audio Tests, Typing Tests) */
 .admin-kpi-grid {
   display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
+  grid-template-columns: repeat(3, 1fr) !important;
   gap: 1.25rem !important;
   width: 100% !important;
   box-sizing: border-box !important;
 }
 
-@media (max-width: 1024px) {
-  .admin-kpi-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-
-@media (max-width: 580px) {
+@media (max-width: 860px) {
   .admin-kpi-grid {
     grid-template-columns: 1fr !important;
   }

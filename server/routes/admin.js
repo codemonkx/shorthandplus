@@ -49,6 +49,12 @@ router.get('/stats', verifyToken, requireAdmin, async (req, res) => {
     `);
     const totalRevenue = Number(totalRevenueRow?.total || 0);
 
+    const totalAudioTestsRow = await db.get("SELECT COUNT(*) as count FROM tests WHERE type = 'steno' AND is_active = 1");
+    const totalAudioTests = Number(totalAudioTestsRow?.count || 0);
+
+    const totalTypingTestsRow = await db.get("SELECT COUNT(*) as count FROM tests WHERE type = 'typing' AND is_active = 1");
+    const totalTypingTests = Number(totalTypingTestsRow?.count || 0);
+
     const performance = await db.get(`
       SELECT 
         ROUND(AVG(accuracy_pct), 1) as avgAccuracy,
@@ -62,6 +68,8 @@ router.get('/stats', verifyToken, requireAdmin, async (req, res) => {
       stats: {
         totalStudents,
         activeSubscriptions: activeEnrollments,
+        totalAudioTests,
+        totalTypingTests,
         totalRevenue,
         avgAccuracy: Number(performance?.avgaccuracy || performance?.avgAccuracy || 0),
         avgSpeed: Number(performance?.avgspeed || performance?.avgSpeed || 0),
