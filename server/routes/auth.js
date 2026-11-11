@@ -264,17 +264,29 @@ router.get('/me', verifyToken, async (req, res) => {
 });
 
 // Verify Admin Security Passcode Server-Side
-router.post('/verify-admin-pin', authRateLimiter, (req, res) => {
+router.post('/verify-admin-pin', authRateLimiter, async (req, res) => {
   try {
     const { passcode } = req.body;
     const clean = (passcode || '').trim();
 
     if (clean === ADMIN_PIN) {
-      return res.json({ success: true, message: 'PIN verified successfully.' });
+      const adminUser = await db.get("SELECT id, name, email, role, roll_no, status FROM users WHERE role = 'admin' LIMIT 1");
+      const token = jwt.sign(
+        { id: adminUser?.id || 1, email: adminUser?.email || 'admin@gaya.com', role: 'admin' },
+        JWT_SECRET,
+        { expiresIn: '7d' }
+      );
+      return res.json({ 
+        success: true, 
+        message: 'PIN verified successfully.',
+        token,
+        user: adminUser || { id: 1, name: 'Shadab Sir (Director)', role: 'admin' }
+      });
     } else {
       return res.status(401).json({ success: false, message: 'Invalid security passcode.' });
     }
   } catch (error) {
+    console.error('Error verifying admin pin:', error);
     return res.status(500).json({ success: false, message: 'Error verifying PIN.' });
   }
 });

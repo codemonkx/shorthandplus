@@ -51,8 +51,8 @@ router.get('/stats', verifyToken, requireAdmin, async (req, res) => {
 
     const performance = await db.get(`
       SELECT 
-        ROUND(AVG(accuracy_pct)::numeric, 1) as avgAccuracy,
-        ROUND(AVG(speed_wpm)::numeric, 1) as avgSpeed,
+        ROUND(AVG(accuracy_pct), 1) as avgAccuracy,
+        ROUND(AVG(speed_wpm), 1) as avgSpeed,
         COUNT(*) as totalTestsConducted
       FROM test_results
     `);
@@ -62,10 +62,10 @@ router.get('/stats', verifyToken, requireAdmin, async (req, res) => {
       stats: {
         totalStudents,
         activeSubscriptions: activeEnrollments,
-        totalRevenue: totalRevenue || 74800,
-        avgAccuracy: Number(performance?.avgaccuracy || performance?.avgAccuracy || 94.2),
-        avgSpeed: Number(performance?.avgspeed || performance?.avgSpeed || 86.4),
-        totalTestsConducted: Number(performance?.totaltestsconducted || performance?.totalTestsConducted || 2840)
+        totalRevenue,
+        avgAccuracy: Number(performance?.avgaccuracy || performance?.avgAccuracy || 0),
+        avgSpeed: Number(performance?.avgspeed || performance?.avgSpeed || 0),
+        totalTestsConducted: Number(performance?.totaltestsconducted || performance?.totalTestsConducted || 0)
       }
     });
   } catch (error) {

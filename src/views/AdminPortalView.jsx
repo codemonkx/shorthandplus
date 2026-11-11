@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { 
   Users, 
   Headphones, 
@@ -63,7 +63,7 @@ import {
 } from 'lucide-react';
 import CustomSelect from '../components/CustomSelect';
 import { STENO_TESTS, TYPING_TESTS, PRICING_PLANS, INITIAL_ACADEMY_COURSES } from '../data/mockData';
-import api from '../services/api';
+import api, { setToken } from '../services/api';
 
 const INITIAL_ADMIN_STUDENTS = [
   { id: 1, name: "Shadab Khan", rollNo: "SP-2026-084", email: "shadabca@gmail.com", targetExam: "Patna High Court", plan: "12-Month Pro Active", speed: 96, accuracy: 92.4, daysRemaining: 248, status: "Active" },
@@ -246,7 +246,10 @@ export default function AdminPortalView({
     setPasscodeError('');
 
     try {
-      await api.auth.verifyAdminPin(passcode);
+      const pinRes = await api.auth.verifyAdminPin(passcode);
+      if (pinRes?.token) {
+        setToken(pinRes.token);
+      }
       try {
         sessionStorage.setItem('shorthand_admin_authenticated', 'true');
       } catch {}
@@ -275,13 +278,26 @@ export default function AdminPortalView({
     }
   }); // 'overview' | 'students' | 'tests' | 'finance' | 'announcements'
   const [students, setStudents] = useState(INITIAL_ADMIN_STUDENTS);
+  const [backendStats, setBackendStats] = useState(null);
 
-  // Fetch real students and cohort stats from backend when admin unlocked
+  // Fetch real students, transactions, and cohort stats from backend when admin unlocked
   useEffect(() => {
     if (isAdminAuthenticated) {
       api.admin.getStudents().then((res) => {
         if (res?.students && res.students.length > 0) {
           setStudents(res.students);
+        }
+      }).catch(() => {});
+
+      api.admin.getTransactions().then((res) => {
+        if (res?.transactions && res.transactions.length > 0) {
+          setLocalTransactions(res.transactions);
+        }
+      }).catch(() => {});
+
+      api.admin.getStats().then((res) => {
+        if (res?.stats) {
+          setBackendStats(res.stats);
         }
       }).catch(() => {});
     }
@@ -296,6 +312,18 @@ export default function AdminPortalView({
 
   const [localTransactions, setLocalTransactions] = useState(INITIAL_TRANSACTIONS);
   const transactions = propTransactions && propTransactions.length > 0 ? propTransactions : localTransactions;
+
+  const totalRevenue = useMemo(() => {
+    if (backendStats?.totalRevenue) {
+      return backendStats.totalRevenue;
+    }
+    return transactions.reduce((acc, t) => {
+      const amt = typeof t.amount === 'number' 
+        ? t.amount 
+        : parseFloat(String(t.amount).replace(/[^0-9.]/g, '')) || 0;
+      return acc + amt;
+    }, 0);
+  }, [backendStats, transactions]);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [filterPlan, setFilterPlan] = useState('All');
@@ -1458,8 +1486,10 @@ export default function AdminPortalView({
             </div>
             <div className="kpi-info-col">
               <span className="kpi-label-text">Total Enrolled Aspirants</span>
-              <div className="kpi-val-number font-mono">{students.length + 2838}</div>
-              <span className="kpi-trend text-emerald font-mono">+24 new this week</span>
+              <div className="kpi-val-number font-mono">{backendStats?.totalStudents ?? students.length}</div>
+              <span className="kpi-trend text-emerald font-mono">
+                {backendStats?.activeSubscriptions ?? students.filter(s => s.status === 'Active' || s.status === 'active').length} Active Enrolled
+              </span>
             </div>
           </div>
 
@@ -1468,9 +1498,9 @@ export default function AdminPortalView({
               <CreditCard size={20} className="text-emerald" />
             </div>
             <div className="kpi-info-col">
-              <span className="kpi-label-text">Monthly Pass Revenue</span>
-              <div className="kpi-val-number font-mono">₹3,48,200</div>
-              <span className="kpi-trend text-emerald font-mono">100% Instant Digital UPI</span>
+              <span className="kpi-label-text">Total Pass Revenue</span>
+              <div className="kpi-val-number font-mono">₹{totalRevenue.toLocaleString('en-IN')}</div>
+              <span className="kpi-trend text-emerald font-mono">{transactions.length} Verified Transactions</span>
             </div>
           </div>
 
@@ -1480,8 +1510,10 @@ export default function AdminPortalView({
             </div>
             <div className="kpi-info-col">
               <span className="kpi-label-text">Active Audio Dictations</span>
-              <div className="kpi-val-number font-mono">{tests.length + 1716} Tests</div>
-              <span className="kpi-trend text-stone-700 font-mono">80, 100, 120, 140 WPM</span>
+              <div className="kpi-val-number font-mono">{tests.length} Tests</div>
+              <span className="kpi-trend text-stone-700 font-mono">
+                {tests.map(t => t.speed || t.speed_str).filter(Boolean).slice(0, 3).join(', ') || '80, 100, 120 WPM'}
+              </span>
             </div>
           </div>
 
@@ -2094,8 +2126,8 @@ export default function AdminPortalView({
                 <p className="section-sub-sm">All payments processed via UPI QR and direct gateway with instant activation.</p>
               </div>
               <div className="stat-pill-highlight font-mono">
-                <span>Total Month: </span>
-                <strong>₹3,48,200</strong>
+                <span>Total Revenue: </span>
+                <strong>₹{totalRevenue.toLocaleString('en-IN')}</strong>
               </div>
             </div>
 
@@ -2198,7 +2230,9 @@ export default function AdminPortalView({
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '2px' }}>
-                    <h4 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0F172A', margin: 0, fontFamily: 'monospace' }}>248</h4>
+                    <h4 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0F172A', margin: 0, fontFamily: 'monospace' }}>
+                      {diplomas.filter(d => d.program?.includes('DCA') && !d.program?.includes('ADCA')).length || 1}
+                    </h4>
                     <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#10B981', background: 'rgba(16, 185, 129, 0.1)', padding: '2px 8px', borderRadius: '999px' }}>
                       Govt Recognized
                     </span>
@@ -2214,7 +2248,9 @@ export default function AdminPortalView({
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '2px' }}>
-                    <h4 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0F172A', margin: 0, fontFamily: 'monospace' }}>182</h4>
+                    <h4 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0F172A', margin: 0, fontFamily: 'monospace' }}>
+                      {diplomas.filter(d => d.program?.includes('ADCA')).length || 1}
+                    </h4>
                     <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#6366F1', background: 'rgba(99, 102, 241, 0.1)', padding: '2px 8px', borderRadius: '999px' }}>
                       ISO 9001 Valid
                     </span>
@@ -2230,7 +2266,9 @@ export default function AdminPortalView({
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '2px' }}>
-                    <h4 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0F172A', margin: 0, fontFamily: 'monospace' }}>415</h4>
+                    <h4 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0F172A', margin: 0, fontFamily: 'monospace' }}>
+                      {diplomas.filter(d => d.program?.includes('Speed') || d.program?.includes('Shorthand')).length || diplomas.length}
+                    </h4>
                     <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#059669', background: 'rgba(5, 150, 105, 0.1)', padding: '2px 8px', borderRadius: '999px' }}>
                       SSC / Court Calibrated
                     </span>
