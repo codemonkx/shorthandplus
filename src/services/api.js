@@ -124,6 +124,7 @@ export const api = {
   classes: {
     getLive: () => request('/classes/live'),
     scheduleLive: (cls) => request('/classes/live', { method: 'POST', body: JSON.stringify(cls) }),
+    updateLive: (id, cls) => request(`/classes/live/${id}`, { method: 'PUT', body: JSON.stringify(cls) }),
     toggleLive: (id) => request(`/classes/live/${id}/toggle-live`, { method: 'PUT' }),
     deleteLive: (id) => request(`/classes/live/${id}`, { method: 'DELETE' })
   },

@@ -205,6 +205,8 @@ CREATE TABLE IF NOT EXISTS live_classes (
   today_topic TEXT,
   room_no VARCHAR(50),
   mode VARCHAR(50),
+  passage_snippet TEXT,
+  key_outlines TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 

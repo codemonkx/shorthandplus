@@ -168,31 +168,73 @@ export default function App() {
     }
   }, [onlineClasses]);
 
-  const handleCreateOnlineClass = (newClass) => {
-    setOnlineClasses((prev) => [newClass, ...prev]);
-  };
-
-  const handleToggleLiveOnlineClass = (classId) => {
-    setOnlineClasses((prev) => prev.map((c) => {
-      if (c.id === classId) {
-        const nextLive = !c.isLive;
-        return {
-          ...c,
-          isLive: nextLive,
-          tag: nextLive ? '🔴 ZOOM LIVE CALL ACTIVE' : "TODAY'S REPLAY & ZOOM ARCHIVE",
-          badgeClass: nextLive ? 'badge-live' : 'badge-replay'
-        };
+  const handleCreateOnlineClass = async (newClass) => {
+    try {
+      const res = await api.classes.scheduleLive(newClass);
+      if (res?.class) {
+        setOnlineClasses((prev) => [res.class, ...prev]);
+        return res.class;
       }
-      return c;
-    }));
+    } catch (e) {
+      console.warn('Backend API scheduleLive error, falling back locally', e);
+    }
+    setOnlineClasses((prev) => [newClass, ...prev]);
+    return newClass;
   };
 
-  const handleDeleteOnlineClass = (classId) => {
+  const handleToggleLiveOnlineClass = async (classId) => {
+    try {
+      const res = await api.classes.toggleLive(classId);
+      setOnlineClasses((prev) => prev.map((c) => {
+        if (c.id === classId) {
+          const nextLive = res?.isLive !== undefined ? res.isLive : !c.isLive;
+          return {
+            ...c,
+            isLive: nextLive,
+            tag: nextLive ? '🔴 ZOOM LIVE CALL ACTIVE' : "TODAY'S REPLAY & ZOOM ARCHIVE",
+            badgeClass: nextLive ? 'badge-live' : 'badge-replay'
+          };
+        }
+        return c;
+      }));
+    } catch (e) {
+      console.warn('Backend API toggleLive error, falling back locally', e);
+      setOnlineClasses((prev) => prev.map((c) => {
+        if (c.id === classId) {
+          const nextLive = !c.isLive;
+          return {
+            ...c,
+            isLive: nextLive,
+            tag: nextLive ? '🔴 ZOOM LIVE CALL ACTIVE' : "TODAY'S REPLAY & ZOOM ARCHIVE",
+            badgeClass: nextLive ? 'badge-live' : 'badge-replay'
+          };
+        }
+        return c;
+      }));
+    }
+  };
+
+  const handleDeleteOnlineClass = async (classId) => {
+    try {
+      await api.classes.deleteLive(classId);
+    } catch (e) {
+      console.warn('Backend API deleteLive error, falling back locally', e);
+    }
     setOnlineClasses((prev) => prev.filter((c) => c.id !== classId));
   };
 
-  const handleUpdateOnlineClass = (updatedClass) => {
+  const handleUpdateOnlineClass = async (updatedClass) => {
+    try {
+      const res = await api.classes.updateLive(updatedClass.id, updatedClass);
+      if (res?.class) {
+        setOnlineClasses((prev) => prev.map((c) => (c.id === updatedClass.id ? res.class : c)));
+        return res.class;
+      }
+    } catch (e) {
+      console.warn('Backend API updateLive error, falling back locally', e);
+    }
     setOnlineClasses((prev) => prev.map((c) => (c.id === updatedClass.id ? updatedClass : c)));
+    return updatedClass;
   };
 
   // Centralized Audio Dictations (Steno Tests) State

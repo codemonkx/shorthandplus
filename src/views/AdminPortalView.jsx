@@ -349,6 +349,92 @@ export default function AdminPortalView({
   const [copiedClassId, setCopiedClassId] = useState(null);
   const [editingClass, setEditingClass] = useState(null);
 
+  // Live Class Scheduling Form State
+  const [newClassTitle, setNewClassTitle] = useState('');
+  const [newClassShift, setNewClassShift] = useState('Morning Core Batch');
+  const [newClassTime, setNewClassTime] = useState('8:30 AM – 10:30 AM');
+  const [newClassSpeed, setNewClassSpeed] = useState('80 WPM Standard');
+  const [newClassInstructor, setNewClassInstructor] = useState('Shadab Sir');
+  const [newClassMeetingId, setNewClassMeetingId] = useState('');
+  const [newClassPasscode, setNewClassPasscode] = useState('');
+  const [newClassRoom, setNewClassRoom] = useState('Zoom Room #01 (Studio Live)');
+  const [newClassIsLive, setNewClassIsLive] = useState(false);
+  const [newClassTopic, setNewClassTopic] = useState('');
+  const [newClassPassage, setNewClassPassage] = useState('');
+
+  const loadClassTemplate = (templateKey) => {
+    if (templateKey === 'ssc80') {
+      setNewClassTitle('SSC Stenographer Grade C & D — 80 WPM Live Speed Dictation & Transcription Lab');
+      setNewClassShift('Morning Core Batch');
+      setNewClassTime('8:30 AM – 10:30 AM');
+      setNewClassSpeed('80 WPM Standard');
+      setNewClassInstructor('Shadab Sir');
+      setNewClassMeetingId('842 9104 2281');
+      setNewClassPasscode('GAYA80WPM');
+      setNewClassRoom('Zoom Room #01 (Studio Live)');
+      setNewClassIsLive(true);
+      setNewClassTopic('Parliamentary Motion on State Infrastructure & Expenditure Audit');
+      setNewClassPassage('Mr. Speaker Sir, the motion was introduced in the House concerning national infrastructure expenditure and audited revenue accounts for the fiscal year 2025-2026. The state government along with the Auditor General presented a comprehensive assessment of capital allocations...');
+    } else if (templateKey === 'judicial100') {
+      setNewClassTitle('High Court Judicial Speed Bench: Criminal Appeals & Judgment Phrases');
+      setNewClassShift('Afternoon Judicial Series');
+      setNewClassTime('3:00 PM – 5:00 PM');
+      setNewClassSpeed('100 WPM Judicial');
+      setNewClassInstructor('Shadab Sir');
+      setNewClassMeetingId('879 3341 5520');
+      setNewClassPasscode('COURT100');
+      setNewClassRoom('Zoom Room #03 (Judicial Bench)');
+      setNewClassIsLive(false);
+      setNewClassTopic('Patna High Court Cr. Appeal 412/2025 Bench Dictation');
+      setNewClassPassage('In the High Court of Judicature at Patna, Criminal Appeal Number 412 of 2025. Heard the learned counsel for the appellant as well as the learned Additional Public Prosecutor for the State...');
+    } else if (templateKey === 'reporter120') {
+      setNewClassTitle('Parliament & Legislative Assembly Reporter 120+ WPM Elite Masterclass');
+      setNewClassShift('Evening Executive Bench');
+      setNewClassTime('5:30 PM – 7:30 PM');
+      setNewClassSpeed('120 - 140 WPM Elite');
+      setNewClassInstructor('Senior Court Master');
+      setNewClassMeetingId('891 4059 1133');
+      setNewClassPasscode('ELITE120');
+      setNewClassRoom('Zoom Room #04 (Executive Chamber)');
+      setNewClassIsLive(false);
+      setNewClassTopic('Lok Sabha Finance Bill Clause-by-Clause Rapid Dictation');
+      setNewClassPassage('The Finance Bill was taken up for consideration in the Lok Sabha. Several amendments moved by the Hon\'ble members from both Treasury and Opposition benches were examined clause by clause...');
+    }
+  };
+
+  const handlePublishOnlineClass = async (e) => {
+    e.preventDefault();
+    if (!newClassTitle.trim() || !newClassMeetingId.trim() || !newClassPasscode.trim()) {
+      alert('Please fill in Title, Zoom Meeting ID, and Passcode.');
+      return;
+    }
+
+    const payload = {
+      title: newClassTitle.trim(),
+      shift: newClassShift,
+      time: newClassTime || '8:30 AM – 10:30 AM',
+      instructor: newClassInstructor,
+      instructorRole: 'Faculty Director • 12 Years Experience',
+      speed: newClassSpeed,
+      isLive: Boolean(newClassIsLive),
+      zoomMeetingId: newClassMeetingId.trim(),
+      zoomPasscode: newClassPasscode.trim(),
+      roomNo: newClassRoom || 'Zoom Room #01 (Studio Live)',
+      todayTopic: newClassTopic.trim() || 'Speed Dictation Session',
+      passageSnippet: newClassPassage.trim() || ''
+    };
+
+    try {
+      if (onCreateOnlineClass) {
+        await onCreateOnlineClass(payload);
+      }
+      setNewClassModalOpen(false);
+      alert(newClassIsLive ? '🚀 Class created and broadcasted LIVE on Zoom!' : '📅 Live class batch successfully scheduled!');
+    } catch (err) {
+      alert(`Failed to schedule class: ${err.message}`);
+    }
+  };
+
   // Audio Dictation Test Management (Duration, Publish status, Edit, Attempts)
   const [testTypingDurationMins, setTestTypingDurationMins] = useState(10);
   const [testIsPublished, setTestIsPublished] = useState(1);

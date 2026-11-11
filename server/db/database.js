@@ -381,6 +381,8 @@ export async function initDatabase() {
         today_topic TEXT,
         room_no TEXT,
         mode TEXT,
+        passage_snippet TEXT,
+        key_outlines TEXT,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
       );
 
