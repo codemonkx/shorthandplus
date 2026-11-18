@@ -24,6 +24,7 @@ server/uploads/audio/*
 !server/uploads/audio/.gitkeep
 scratch/
 .agents/
+graphify-out/
 
 # Editor directories and files
 .vscode/*

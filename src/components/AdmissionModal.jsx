@@ -232,15 +232,18 @@ export default function AdmissionModal({ isOpen, onClose, onOpenCheckout }) {
               </p>
 
               {/* Printable Slip Card */}
-              <div style={{
-                background: '#FFFFFF',
-                border: '1px solid rgba(0, 0, 0, 0.08)',
-                borderRadius: '12px',
-                padding: '1.25rem',
-                textAlign: 'left',
-                marginBottom: '1.5rem',
-                fontSize: '0.86rem'
-              }}>
+              <div 
+                className="printable-admission-slip"
+                style={{
+                  background: '#FFFFFF',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
+                  borderRadius: '12px',
+                  padding: '1.25rem',
+                  textAlign: 'left',
+                  marginBottom: '1.5rem',
+                  fontSize: '0.86rem'
+                }}
+              >
                 <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', paddingBottom: '0.75rem', marginBottom: '0.75rem' }}>
                   <div>
                     <span style={{ fontSize: '0.72rem', color: '#64748B', textTransform: 'uppercase', fontWeight: 700 }}>Application Ref No.</span>

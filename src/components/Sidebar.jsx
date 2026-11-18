@@ -90,9 +90,17 @@ export default function Sidebar({
             <div className="user-plan-row">
               <span className="plan-badge">
                 <Crown size={12} className="text-amber" />
-                <span>12-Month Pro Active</span>
+                <span>
+                  {user.role === 'admin'
+                    ? 'Faculty Admin'
+                    : user.subscription?.status === 'Active'
+                      ? (user.subscription?.plan || 'Pro Active')
+                      : 'Free Tier / Expired'}
+                </span>
               </span>
-              <span className="days-left-badge font-mono">{user.subscription?.daysRemaining || 248}d</span>
+              <span className="days-left-badge font-mono">
+                {user.role === 'admin' ? '∞' : `${user.subscription?.daysRemaining ?? 0}d`}
+              </span>
             </div>
           </div>
         )}

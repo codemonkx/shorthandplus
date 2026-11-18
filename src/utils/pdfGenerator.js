@@ -176,7 +176,7 @@ export function generateCandidateDossierPdf(candidateData, examResult) {
   doc.setFontSize(7);
   doc.setTextColor(148, 163, 184);
   doc.text('Secure Cryptographic Dossier • Valid for High Court & Central Secretariat Skill Test Verification', 14, 285);
-  doc.text('Verify Online at https://shorthandplus.com/verify-dossier', 14, 289);
+  doc.text('Verify Online at https://stenoplus.in/verify-dossier', 14, 289);
 
   // Download PDF file
   const filename = `Shorthand_Dossier_${rollNo}_${Date.now()}.pdf`;

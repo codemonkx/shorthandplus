@@ -50,7 +50,7 @@ export default function CheckoutModal({ isOpen, onClose, selectedPlanId, onActiv
 
   const handleCopyUpi = () => {
     try {
-      navigator.clipboard.writeText('919204123453@paytm');
+      navigator.clipboard?.writeText('919204123453@paytm').catch(() => {});
       setCopiedUpi(true);
       setTimeout(() => setCopiedUpi(false), 2000);
     } catch {}
@@ -120,7 +120,7 @@ export default function CheckoutModal({ isOpen, onClose, selectedPlanId, onActiv
             order_id: order.id,
             prefill: {
               name: userInfo?.name || user?.name || 'Candidate',
-              email: userInfo?.email || user?.email || 'student@shorthandplus.com',
+              email: userInfo?.email || user?.email || 'student@stenoplus.in',
               contact: userInfo?.mobile || user?.mobile || '919204123453'
             },
             theme: {

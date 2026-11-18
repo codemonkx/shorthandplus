@@ -309,7 +309,7 @@ export default function ShorthandCanvas({
   };
 
   const handleCopyScratchpad = () => {
-    navigator.clipboard.writeText(scratchpadText);
+    navigator.clipboard?.writeText(scratchpadText).catch(() => {});
     setCopiedNote(true);
     setTimeout(() => setCopiedNote(false), 2200);
   };

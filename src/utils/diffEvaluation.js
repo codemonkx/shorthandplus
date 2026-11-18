@@ -32,7 +32,7 @@ function levenshteinDistance(s1, s2) {
 /**
  * Align master words and user words using Dynamic Programming (LCS)
  */
-export function evaluateTranscription(masterText = '', userText = '', timeTakenSecs = 300) {
+export function evaluateTranscription(masterText = '', userText = '', timeTakenSecs = 300, options = {}) {
   const masterWords = (masterText || '').trim().split(/\s+/).filter(Boolean);
   const userWords = (userText || '').trim().split(/\s+/).filter(Boolean);
 
@@ -148,8 +148,11 @@ export function evaluateTranscription(masterText = '', userText = '', timeTakenS
   const grossWpm = Math.round(totalTypedWords / timeMinutes);
   const netWpm = Math.max(0, Math.round((totalTypedWords - effectiveErrors) / timeMinutes));
 
-  // Official SSC Cutoff: 5% error margin for General, 7% for OBC/SC/ST
-  const isQualified = errorPercentage <= 7.0 && netWpm >= 30;
+  // Official Cutoff: In government exams (SSC Steno Grade C/D, High Court), qualification is primarily
+  // determined by error percentage staying within the prescribed tolerance (<= 7.0% for UR/OBC, <= 10% for SC/ST).
+  // For typing speed tests, an explicit minWpm threshold can be passed in options.
+  const maxErrorAllowed = options.maxErrorPct !== undefined ? options.maxErrorPct : 7.0;
+  const isQualified = totalTypedWords > 0 && errorPercentage <= maxErrorAllowed && (options.minWpm ? netWpm >= options.minWpm : true);
 
   return {
     diffTokens: aligned,

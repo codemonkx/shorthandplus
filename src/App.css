@@ -23035,6 +23035,129 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
+   Google Continue Buttons & Auth Separator
+   ========================================================================== */
+.btn-continue-google {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.82rem 1.25rem;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.btn-continue-google:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.btn-continue-google:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-continue-google:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.google-auth-divider {
+  display: flex;
+  align-items: center;
+  margin: 1.25rem 0;
+  text-align: center;
+}
+
+.google-auth-divider::before,
+.google-auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.google-auth-divider span {
+  padding: 0 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.google-account-chooser-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 1rem;
+}
+
+.google-account-chooser-card {
+  width: 100%;
+  max-width: 440px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 1.8rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  text-align: left;
+  animation: modalScaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.google-chooser-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.google-account-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  cursor: pointer;
+  margin-bottom: 0.75rem;
+  transition: all 0.15s ease;
+}
+
+.google-account-item:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.google-account-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #0f172a;
+  color: #ffffff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
    GOOGLE REVIEWS & WATERFALL STREAM ANIMATIONS
    Matches Rapid Steno / Gaya Shorthand Google Reviews UI with dynamic float
    ========================================================================== */
@@ -27411,4 +27534,30 @@ select option:checked {
 .target-exam-btn:hover {
   background: #fef3c7 !important;
   color: #b45309 !important;
+}
+
+/* =========================================================
+   CLEAN PRINT MEDIA STYLING (FOR ADMISSION SLIPS & SCORECARDS)
+   ========================================================= */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  .printable-admission-slip,
+  .printable-admission-slip * {
+    visibility: visible !important;
+  }
+  .printable-admission-slip {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 24px !important;
+    background: #FFFFFF !important;
+    border: 2px solid #0F172A !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    z-index: 9999999 !important;
+  }
 }

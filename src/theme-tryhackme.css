@@ -464,6 +464,37 @@ hr {
   }
 }
 
+@media (max-width: 640px) {
+  /* Public Navbar: Compact action cluster on phones */
+  .shorthand-nav-actions .btn-pill-portal {
+    display: none !important;
+  }
+  .shorthand-nav-actions button[title="Book 3 Free Demo Classes"] {
+    display: none !important;
+  }
+  .brand-name-text {
+    font-size: 1.15rem !important;
+  }
+
+  /* Candidate Portal TopBar: Compact telemetry on phones */
+  .topbar-telemetry-cluster {
+    display: none !important;
+  }
+  .topbar-avatar-btn .avatar-name {
+    display: none !important;
+  }
+  .topbar-breadcrumb-row {
+    display: none !important;
+  }
+  .topbar-page-heading {
+    font-size: 1rem !important;
+  }
+  .saas-topbar {
+    padding: 0 1rem !important;
+    height: 56px !important;
+  }
+}
+
 .shorthand-mobile-drawer {
   background: rgba(255, 255, 255, 0.96) !important;
   backdrop-filter: blur(20px) !important;
@@ -2950,6 +2981,15 @@ td:has(.admin-actions-cluster),
   color: #64748B !important;
 }
 
+.priority-live-banner h3 {
+  color: #FFFFFF !important;
+  text-shadow: none !important;
+}
+
+.priority-live-banner p {
+  color: #CBD5E1 !important;
+}
+
 .live-class-icon-wrapper {
   background: #FFFFFF !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
@@ -4049,6 +4089,14 @@ button {
   border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
   margin-top: auto !important;
 }
+
+@media (max-width: 640px) {
+  .floating-contact-dock {
+    bottom: 16px !important;
+    right: 16px !important;
+  }
+}
+
 
 
 

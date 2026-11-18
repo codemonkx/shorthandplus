@@ -372,8 +372,8 @@ export async function initDatabase() {
         is_live INTEGER DEFAULT 0,
         tag TEXT,
         badge_class TEXT,
-        zoom_meeting_id TEXT NOT NULL,
-        zoom_passcode TEXT NOT NULL,
+        zoom_meeting_id TEXT DEFAULT 'stenoplus-live',
+        zoom_passcode TEXT DEFAULT 'OPEN',
         zoom_direct_url TEXT,
         zoom_app_url TEXT,
         zoom_web_url TEXT,
@@ -450,6 +450,36 @@ export async function initDatabase() {
     } catch {}
     try {
       sqliteDb.exec(`ALTER TABLE tests ADD COLUMN is_published INTEGER DEFAULT 1;`);
+    } catch {}
+    try {
+      sqliteDb.exec(`ALTER TABLE live_classes ADD COLUMN meet_url TEXT;`);
+    } catch {}
+    try {
+      sqliteDb.exec(`ALTER TABLE live_classes ADD COLUMN meet_code TEXT;`);
+    } catch {}
+    try {
+      sqliteDb.exec(`ALTER TABLE live_classes ADD COLUMN passage_snippet TEXT;`);
+    } catch {}
+    try {
+      sqliteDb.exec(`ALTER TABLE live_classes ADD COLUMN key_outlines TEXT;`);
+    } catch {}
+    try {
+      sqliteDb.exec(`ALTER TABLE live_classes ADD COLUMN scheduled_date TEXT;`);
+    } catch {}
+    try {
+      sqliteDb.exec(`ALTER TABLE live_classes ADD COLUMN start_time TEXT;`);
+    } catch {}
+    try {
+      sqliteDb.exec(`ALTER TABLE live_classes ADD COLUMN duration_mins INTEGER DEFAULT 60;`);
+    } catch {}
+    try {
+      sqliteDb.exec(`ALTER TABLE live_classes ADD COLUMN course_name TEXT;`);
+    } catch {}
+    try {
+      sqliteDb.exec(`ALTER TABLE live_classes ADD COLUMN status TEXT DEFAULT 'upcoming';`);
+    } catch {}
+    try {
+      sqliteDb.exec(`ALTER TABLE live_classes ADD COLUMN cancelled_reason TEXT;`);
     } catch {}
 
     console.log('✅ SQLite Database & Tables Initialized.');

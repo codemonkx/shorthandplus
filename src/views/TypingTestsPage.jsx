@@ -30,6 +30,7 @@ import {
 } from 'lucide-react';
 import { TYPING_TESTS } from '../data/mockData';
 import CustomSelect from '../components/CustomSelect';
+import HindiKeyboardModal from '../components/HindiKeyboardModal';
 
 export default function TypingTestsPage({ onStartTypingTest, typingTests = TYPING_TESTS }) {
   const [selectedLang, setSelectedLang] = useState('All');
@@ -39,6 +40,7 @@ export default function TypingTestsPage({ onStartTypingTest, typingTests = TYPIN
   const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'table'
   const [previewTest, setPreviewTest] = useState(null);
   const [previewFontSize, setPreviewFontSize] = useState(16);
+  const [showKeyboardModal, setShowKeyboardModal] = useState(false);
 
   const languages = ['All', 'English', 'Hindi (Kruti Dev)', 'Hindi (Mangal)'];
   const difficulties = ['All', 'Easy', 'Medium', 'Hard'];
@@ -326,6 +328,30 @@ export default function TypingTestsPage({ onStartTypingTest, typingTests = TYPIN
               ))}
             </div>
           </div>
+
+          {/* Hindi Alt-Codes Cheatsheet Trigger */}
+          <button
+            type="button"
+            onClick={() => setShowKeyboardModal(true)}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '6px 12px',
+              borderRadius: '8px',
+              background: '#EFF6FF',
+              border: '1px solid #BFDBFE',
+              color: '#2563EB',
+              fontSize: '0.82rem',
+              fontWeight: 700,
+              cursor: 'pointer',
+              marginLeft: 'auto'
+            }}
+            title="View Kruti Dev 010 Alt-Codes and Mangal Inscript Keymap"
+          >
+            <Keyboard size={15} />
+            <span>Hindi Keymap & Alt-Codes</span>
+          </button>
         </div>
 
         {/* Active Query Status Bar */}
@@ -676,6 +702,11 @@ export default function TypingTestsPage({ onStartTypingTest, typingTests = TYPIN
           </div>
         </div>
       )}
+      {/* Hindi Alt-Codes & Mangal Reference Modal */}
+      <HindiKeyboardModal 
+        isOpen={showKeyboardModal} 
+        onClose={() => setShowKeyboardModal(false)} 
+      />
     </div>
   );
 }

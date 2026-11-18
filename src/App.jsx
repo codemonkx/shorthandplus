@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar';
 import Navbar from './components/Navbar';
@@ -9,22 +9,47 @@ import AdmissionModal from './components/AdmissionModal';
 import FloatingContactDock from './components/FloatingContactDock';
 import ProfileSettingsModal from './components/ProfileSettingsModal';
 import LegalPolicyModal from './components/LegalPolicyModal';
-import DictationRoom from './components/DictationRoom';
-import ExamEngine from './components/ExamEngine';
-import EvaluationResult from './components/EvaluationResult';
-
-import DashboardView from './views/DashboardView';
-import StenoTestsPage from './views/StenoTestsPage';
-import TypingTestsPage from './views/TypingTestsPage';
-import ResultsHistoryPage from './views/ResultsHistoryPage';
-import PricingPassesView from './views/PricingPassesView';
-import AboutAcademyView from './views/AboutAcademyView';
-import AdminPortalView from './views/AdminPortalView';
 import LandingPage from './views/LandingPage';
-import CoursesPage from './views/CoursesPage';
-import ClassesPage from './views/ClassesPage';
-import OnlineClassView from './views/OnlineClassView';
-import AudioDictationAssessment from './components/AudioDictationAssessment';
+
+// Lazy-loaded heavy views and exam engines for high-performance code splitting
+const DictationRoom = lazy(() => import('./components/DictationRoom'));
+const ExamEngine = lazy(() => import('./components/ExamEngine'));
+const EvaluationResult = lazy(() => import('./components/EvaluationResult'));
+const AudioDictationAssessment = lazy(() => import('./components/AudioDictationAssessment'));
+
+const DashboardView = lazy(() => import('./views/DashboardView'));
+const StenoTestsPage = lazy(() => import('./views/StenoTestsPage'));
+const TypingTestsPage = lazy(() => import('./views/TypingTestsPage'));
+const ResultsHistoryPage = lazy(() => import('./views/ResultsHistoryPage'));
+const PricingPassesView = lazy(() => import('./views/PricingPassesView'));
+const AboutAcademyView = lazy(() => import('./views/AboutAcademyView'));
+const AdminPortalView = lazy(() => import('./views/AdminPortalView'));
+const CoursesPage = lazy(() => import('./views/CoursesPage'));
+const ClassesPage = lazy(() => import('./views/ClassesPage'));
+const OnlineClassView = lazy(() => import('./views/OnlineClassView'));
+
+const LoadingFallback = () => (
+  <div style={{
+    minHeight: '60vh',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '1rem',
+    color: '#64748B',
+    fontFamily: 'Inter, system-ui, sans-serif'
+  }}>
+    <div style={{
+      width: '38px',
+      height: '38px',
+      border: '3px solid #E2E8F0',
+      borderTopColor: '#0F172A',
+      borderRadius: '50%',
+      animation: 'spin 0.8s linear infinite'
+    }} />
+    <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#0F172A' }}>Loading Shorthand Plus...</span>
+  </div>
+);
 
 import { INITIAL_USER, STENO_TESTS, TYPING_TESTS, ONLINE_CLASSES_DATA, INITIAL_TRANSACTIONS, INITIAL_ACADEMY_COURSES } from './data/mockData';
 import api from './services/api';
@@ -76,9 +101,10 @@ export default function App() {
       if (isExplicitlyLoggedOut === 'true') return null;
       const saved = localStorage.getItem('shorthand_current_user');
       if (saved) return JSON.parse(saved);
-      return INITIAL_USER;
+      // In development, fallback to INITIAL_USER for developer convenience; in production default to guest (null)
+      return import.meta.env.DEV ? INITIAL_USER : null;
     } catch {
-      return INITIAL_USER;
+      return import.meta.env.DEV ? INITIAL_USER : null;
     }
   });
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -117,9 +143,14 @@ export default function App() {
       }).catch(() => {});
     }
 
-    api.classes.getLive().then((res) => {
-      if (res?.classes && res.classes.length > 0) setOnlineClasses(res.classes);
-    }).catch(() => {});
+    const syncLiveClasses = () => {
+      api.classes.getLive().then((res) => {
+        if (res?.classes && res.classes.length > 0) setOnlineClasses(res.classes);
+      }).catch(() => {});
+    };
+
+    syncLiveClasses();
+    const liveSyncTimer = setInterval(syncLiveClasses, 30000);
 
     api.courses.getAll().then((res) => {
       if (res?.courses && res.courses.length > 0) setAcademyCourses(res.courses);
@@ -136,6 +167,8 @@ export default function App() {
     api.admin.getTransactions().then((res) => {
       if (res?.transactions && res.transactions.length > 0) setTransactions(res.transactions);
     }).catch(() => {});
+
+    return () => clearInterval(liveSyncTimer);
   }, []);
 
   // Centralized Live Online Classes State
@@ -191,7 +224,7 @@ export default function App() {
           return {
             ...c,
             isLive: nextLive,
-            tag: nextLive ? '🔴 ZOOM LIVE CALL ACTIVE' : "TODAY'S REPLAY & ZOOM ARCHIVE",
+            tag: nextLive ? '🔴 GOOGLE MEET LIVE CALL ACTIVE' : "TODAY'S REPLAY & ARCHIVE",
             badgeClass: nextLive ? 'badge-live' : 'badge-replay'
           };
         }
@@ -205,7 +238,7 @@ export default function App() {
           return {
             ...c,
             isLive: nextLive,
-            tag: nextLive ? '🔴 ZOOM LIVE CALL ACTIVE' : "TODAY'S REPLAY & ZOOM ARCHIVE",
+            tag: nextLive ? '🔴 GOOGLE MEET LIVE CALL ACTIVE' : "TODAY'S REPLAY & ARCHIVE",
             badgeClass: nextLive ? 'badge-live' : 'badge-replay'
           };
         }
@@ -235,6 +268,67 @@ export default function App() {
     }
     setOnlineClasses((prev) => prev.map((c) => (c.id === updatedClass.id ? updatedClass : c)));
     return updatedClass;
+  };
+
+  const handleStartOnlineClass = async (classId) => {
+    try {
+      const res = await api.classes.startLive(classId);
+      if (res?.class) {
+        setOnlineClasses((prev) => prev.map((c) => (c.id === classId ? res.class : c)));
+        return res;
+      }
+    } catch (e) {
+      console.warn('Backend API startLive error, updating locally', e);
+    }
+    setOnlineClasses((prev) => prev.map((c) => (c.id === classId ? {
+      ...c,
+      status: 'live',
+      isLive: true,
+      tag: '🔴 GOOGLE MEET LIVE CALL ACTIVE',
+      badgeClass: 'badge-live'
+    } : c)));
+    return { success: true };
+  };
+
+  const handleCompleteOnlineClass = async (classId) => {
+    try {
+      const res = await api.classes.completeLive(classId);
+      if (res?.class) {
+        setOnlineClasses((prev) => prev.map((c) => (c.id === classId ? res.class : c)));
+        return res;
+      }
+    } catch (e) {
+      console.warn('Backend API completeLive error, updating locally', e);
+    }
+    setOnlineClasses((prev) => prev.map((c) => (c.id === classId ? {
+      ...c,
+      status: 'completed',
+      isLive: false,
+      tag: 'COMPLETED',
+      badgeClass: 'badge-completed'
+    } : c)));
+    return { success: true };
+  };
+
+  const handleCancelOnlineClass = async (classId, reason) => {
+    try {
+      const res = await api.classes.cancelLive(classId, reason);
+      if (res?.class) {
+        setOnlineClasses((prev) => prev.map((c) => (c.id === classId ? res.class : c)));
+        return res;
+      }
+    } catch (e) {
+      console.warn('Backend API cancelLive error, updating locally', e);
+    }
+    setOnlineClasses((prev) => prev.map((c) => (c.id === classId ? {
+      ...c,
+      status: 'cancelled',
+      isLive: false,
+      cancelledReason: reason || 'Cancelled by teacher',
+      tag: 'CANCELLED',
+      badgeClass: 'badge-cancelled'
+    } : c)));
+    return { success: true };
   };
 
   // Centralized Audio Dictations (Steno Tests) State
@@ -594,15 +688,17 @@ export default function App() {
   if (examStage === 'dictation') {
     return (
       <div className="exam-fullscreen-wrapper">
-        <AudioDictationAssessment
-          test={currentTest}
-          user={user}
-          onBackToVault={() => handleExitExam(false)}
-          onViewHistory={() => {
-            handleExitExam(false);
-            setCurrentTab('results');
-          }}
-        />
+        <Suspense fallback={<LoadingFallback />}>
+          <AudioDictationAssessment
+            test={currentTest}
+            user={user}
+            onBackToVault={() => handleExitExam(false)}
+            onViewHistory={() => {
+              handleExitExam(false);
+              setCurrentTab('results');
+            }}
+          />
+        </Suspense>
       </div>
     );
   }
@@ -610,11 +706,13 @@ export default function App() {
   if (examStage === 'exam') {
     return (
       <div className="exam-fullscreen-wrapper">
-        <ExamEngine
-          test={currentTest}
-          onSubmitExam={handleSubmitExam}
-          onCancel={handleExitExam}
-        />
+        <Suspense fallback={<LoadingFallback />}>
+          <ExamEngine
+            test={currentTest}
+            onSubmitExam={handleSubmitExam}
+            onCancel={handleExitExam}
+          />
+        </Suspense>
       </div>
     );
   }
@@ -643,13 +741,15 @@ export default function App() {
             onLogout={handleLogout}
           />
           <main className="saas-content-area">
-            <EvaluationResult
-              submission={latestSubmission}
-              user={user}
-              onRetake={handleRetakeExam}
-              onBackToDashboard={() => handleExitExam(true)}
-              onBackToTests={() => handleExitExam(false)}
-            />
+            <Suspense fallback={<LoadingFallback />}>
+              <EvaluationResult
+                submission={latestSubmission}
+                user={user}
+                onRetake={handleRetakeExam}
+                onBackToDashboard={() => handleExitExam(true)}
+                onBackToTests={() => handleExitExam(false)}
+              />
+            </Suspense>
           </main>
         </div>
       </div>
@@ -671,49 +771,51 @@ export default function App() {
           onOpenAdmission={() => setAdmissionModalOpen(true)}
         />
         <main className="public-main-content">
-          {currentTab === 'landing' && (
-            <LandingPage
-              onStartFullTest={handleStartStenoTest}
-              onOpenAuth={() => handleOpenAuth('student')}
-              onLoginSuccess={handleLoginSuccess}
-              onOpenCheckout={() => handleOpenCheckoutWithPlan()}
-              onSelectPlan={handleOpenCheckoutWithPlan}
-              onOpenAdmission={() => setAdmissionModalOpen(true)}
-              setCurrentTab={setCurrentTab}
-            />
-          )}
-
-          {currentTab === 'courses' && (
-            <CoursesPage
-              courses={academyCourses}
-              onSelectPlan={handleOpenCheckoutWithPlan}
-              onOpenCheckout={(plan) => handleOpenCheckoutWithPlan(plan)}
-              onOpenAdmission={() => setAdmissionModalOpen(true)}
-              setCurrentTab={setCurrentTab}
-            />
-          )}
-
-          {currentTab === 'classes' && (
-            <ClassesPage
-              onOpenCheckout={() => handleOpenCheckoutWithPlan()}
-              setCurrentTab={setCurrentTab}
-              onlineClasses={onlineClasses}
-              onSelectClass={(classId) => {
-                setSelectedOnlineClassId(classId);
-                setCurrentTab('online-classes');
-              }}
-            />
-          )}
-
-          {currentTab === 'about' && (
-            <div className="public-page-padded-wrapper">
-              <AboutAcademyView
+          <Suspense fallback={<LoadingFallback />}>
+            {currentTab === 'landing' && (
+              <LandingPage
+                onStartFullTest={handleStartStenoTest}
+                onOpenAuth={() => handleOpenAuth('student')}
+                onLoginSuccess={handleLoginSuccess}
                 onOpenCheckout={() => handleOpenCheckoutWithPlan()}
+                onSelectPlan={handleOpenCheckoutWithPlan}
                 onOpenAdmission={() => setAdmissionModalOpen(true)}
                 setCurrentTab={setCurrentTab}
               />
-            </div>
-          )}
+            )}
+
+            {currentTab === 'courses' && (
+              <CoursesPage
+                courses={academyCourses}
+                onSelectPlan={handleOpenCheckoutWithPlan}
+                onOpenCheckout={(plan) => handleOpenCheckoutWithPlan(plan)}
+                onOpenAdmission={() => setAdmissionModalOpen(true)}
+                setCurrentTab={setCurrentTab}
+              />
+            )}
+
+            {currentTab === 'classes' && (
+              <ClassesPage
+                onOpenCheckout={() => handleOpenCheckoutWithPlan()}
+                setCurrentTab={setCurrentTab}
+                onlineClasses={onlineClasses}
+                onSelectClass={(classId) => {
+                  setSelectedOnlineClassId(classId);
+                  setCurrentTab('online-classes');
+                }}
+              />
+            )}
+
+            {currentTab === 'about' && (
+              <div className="public-page-padded-wrapper">
+                <AboutAcademyView
+                  onOpenCheckout={() => handleOpenCheckoutWithPlan()}
+                  onOpenAdmission={() => setAdmissionModalOpen(true)}
+                  setCurrentTab={setCurrentTab}
+                />
+              </div>
+            )}
+          </Suspense>
         </main>
         <Footer 
           onOpenCheckout={() => handleOpenCheckoutWithPlan()}
@@ -772,34 +874,40 @@ export default function App() {
     }
 
     return (
-      <AdminPortalView 
-        user={user}
-        setCurrentTab={setCurrentTab}
-        onLogout={handleLogout}
-        onStartTest={handleStartStenoTest}
-        onStartTypingTest={handleStartTypingTest}
-        onlineClasses={onlineClasses}
-        onCreateOnlineClass={handleCreateOnlineClass}
-        onToggleLiveOnlineClass={handleToggleLiveOnlineClass}
-        onDeleteOnlineClass={handleDeleteOnlineClass}
-        onUpdateOnlineClass={handleUpdateOnlineClass}
-        onJoinClassAsAdmin={(classId) => {
-          setSelectedOnlineClassId(classId);
-          setCurrentTab('online-classes');
-        }}
-        stenoTests={stenoTests}
-        onAddStenoTest={handleAddStenoTest}
-        onUpdateStenoTest={handleUpdateStenoTest}
-        onDeleteStenoTest={handleDeleteStenoTest}
-        typingTests={typingTests}
-        onAddTypingTest={handleAddTypingTest}
-        onDeleteTypingTest={handleDeleteTypingTest}
-        transactions={transactions}
-        courses={academyCourses}
-        onAddCourse={handleAddCourse}
-        onUpdateCourse={handleUpdateCourse}
-        onDeleteCourse={handleDeleteCourse}
-      />
+      <Suspense fallback={<LoadingFallback />}>
+        <AdminPortalView 
+          user={user}
+          setCurrentTab={setCurrentTab}
+          onLogout={handleLogout}
+          onLoginSuccess={handleLoginSuccess}
+          onStartTest={handleStartStenoTest}
+          onStartTypingTest={handleStartTypingTest}
+          onlineClasses={onlineClasses}
+          onCreateOnlineClass={handleCreateOnlineClass}
+          onToggleLiveOnlineClass={handleToggleLiveOnlineClass}
+          onStartOnlineClass={handleStartOnlineClass}
+          onCompleteOnlineClass={handleCompleteOnlineClass}
+          onCancelOnlineClass={handleCancelOnlineClass}
+          onDeleteOnlineClass={handleDeleteOnlineClass}
+          onUpdateOnlineClass={handleUpdateOnlineClass}
+          onJoinClassAsAdmin={(classId) => {
+            setSelectedOnlineClassId(classId);
+            setCurrentTab('online-classes');
+          }}
+          stenoTests={stenoTests}
+          onAddStenoTest={handleAddStenoTest}
+          onUpdateStenoTest={handleUpdateStenoTest}
+          onDeleteStenoTest={handleDeleteStenoTest}
+          typingTests={typingTests}
+          onAddTypingTest={handleAddTypingTest}
+          onDeleteTypingTest={handleDeleteTypingTest}
+          transactions={transactions}
+          courses={academyCourses}
+          onAddCourse={handleAddCourse}
+          onUpdateCourse={handleUpdateCourse}
+          onDeleteCourse={handleDeleteCourse}
+        />
+      </Suspense>
     );
   }
 
@@ -833,68 +941,71 @@ export default function App() {
         />
 
         <main className="saas-content-area">
-          {currentTab === 'dashboard' && (
-            <DashboardView
-              user={user}
-              onStartTest={handleStartStenoTest}
-              onViewResult={handleViewResult}
-              onNavigate={(tab) => setCurrentTab(tab)}
-              stenoTests={stenoTests}
-              typingTests={typingTests}
-              transactions={transactions}
-              onOpenCheckout={handleOpenCheckoutWithPlan}
-            />
-          )}
+          <Suspense fallback={<LoadingFallback />}>
+            {currentTab === 'dashboard' && (
+              <DashboardView
+                user={user}
+                onStartTest={handleStartStenoTest}
+                onViewResult={handleViewResult}
+                onNavigate={(tab) => setCurrentTab(tab)}
+                stenoTests={stenoTests}
+                typingTests={typingTests}
+                transactions={transactions}
+                onOpenCheckout={handleOpenCheckoutWithPlan}
+                onlineClasses={onlineClasses}
+              />
+            )}
 
-          {currentTab === 'online-classes' && (
-            <OnlineClassView
-              user={user}
-              onStartTest={handleStartStenoTest}
-              onStartTypingTest={handleStartTypingTest}
-              onOpenCheckout={() => handleOpenCheckoutWithPlan()}
-              setCurrentTab={setCurrentTab}
-              onlineClasses={onlineClasses}
-              selectedClassId={selectedOnlineClassId}
-            />
-          )}
+            {currentTab === 'online-classes' && (
+              <OnlineClassView
+                user={user}
+                onStartTest={handleStartStenoTest}
+                onStartTypingTest={handleStartTypingTest}
+                onOpenCheckout={() => handleOpenCheckoutWithPlan()}
+                setCurrentTab={setCurrentTab}
+                onlineClasses={onlineClasses}
+                selectedClassId={selectedOnlineClassId}
+              />
+            )}
 
-          {(currentTab === 'steno-vault' || currentTab === 'tests') && (
-            <StenoTestsPage
-              tests={stenoTests}
-              typingTests={typingTests}
-              onStartTest={handleStartStenoTest}
-              onStartTypingTest={handleStartTypingTest}
-            />
-          )}
+            {(currentTab === 'steno-vault' || currentTab === 'tests') && (
+              <StenoTestsPage
+                tests={stenoTests}
+                typingTests={typingTests}
+                onStartTest={handleStartStenoTest}
+                onStartTypingTest={handleStartTypingTest}
+              />
+            )}
 
-          {currentTab === 'typing-studio' && (
-            <TypingTestsPage
-              typingTests={typingTests}
-              onStartTypingTest={handleStartTypingTest}
-            />
-          )}
+            {currentTab === 'typing-studio' && (
+              <TypingTestsPage
+                typingTests={typingTests}
+                onStartTypingTest={handleStartTypingTest}
+              />
+            )}
 
-          {currentTab === 'results' && (
-            <ResultsHistoryPage
-              user={user}
-              onViewResult={handleViewResult}
-            />
-          )}
+            {currentTab === 'results' && (
+              <ResultsHistoryPage
+                user={user}
+                onViewResult={handleViewResult}
+              />
+            )}
 
-          {(currentTab === 'pricing' || currentTab === 'courses') && (
-            <PricingPassesView
-              onSelectPlan={handleOpenCheckoutWithPlan}
-              onOpenCheckout={() => handleOpenCheckoutWithPlan()}
-            />
-          )}
+            {(currentTab === 'pricing' || currentTab === 'courses') && (
+              <PricingPassesView
+                onSelectPlan={handleOpenCheckoutWithPlan}
+                onOpenCheckout={() => handleOpenCheckoutWithPlan()}
+              />
+            )}
 
-          {currentTab === 'about' && (
-            <AboutAcademyView
-              onOpenCheckout={() => handleOpenCheckoutWithPlan()}
-              onOpenAdmission={() => setAdmissionModalOpen(true)}
-              setCurrentTab={setCurrentTab}
-            />
-          )}
+            {currentTab === 'about' && (
+              <AboutAcademyView
+                onOpenCheckout={() => handleOpenCheckoutWithPlan()}
+                onOpenAdmission={() => setAdmissionModalOpen(true)}
+                setCurrentTab={setCurrentTab}
+              />
+            )}
+          </Suspense>
         </main>
       </div>
 

@@ -340,7 +340,7 @@ export default function LandingPage({
               </div>
 
               {/* 4 Precision Trust Metrics */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', paddingTop: '1.5rem', borderTop: '1px solid #E2E8F0' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid #E2E8F0' }}>
                 <div>
                   <strong style={{ display: 'block', fontSize: '1.35rem', fontWeight: 700, color: '#0F172A', letterSpacing: '-0.02em' }}>1,200+</strong>
                   <span style={{ fontSize: '0.78rem', color: '#64748B', fontWeight: 500 }}>Selections</span>
@@ -664,7 +664,7 @@ export default function LandingPage({
 
                 <ul style={{ listStyle: 'none', margin: '0 0 1.5rem', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {[
-                    "Offline Lab at Gaya College More & Live Zoom",
+                    "Offline Lab at Gaya College More & Live Google Meet",
                     "3 Free Demo Classes (Zero Upfront Risk)",
                     "DCA & ADCA Govt. Recognized Diplomas"
                   ].map((feat, i) => (

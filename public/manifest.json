@@ -1,0 +1,19 @@
+{
+  "short_name": "ShorthandPlus",
+  "name": "Shorthand Plus — Gaya Shorthand Classes",
+  "description": "Premier Stenography & Typing Exam Preparation Portal by Shadab Sir (Gaya College More)",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#F5F5F7",
+  "theme_color": "#0F172A",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/"
+}
+

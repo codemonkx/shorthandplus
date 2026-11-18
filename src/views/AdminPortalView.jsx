@@ -28,6 +28,7 @@ import {
   Eye, 
   Check, 
   X, 
+  XCircle,
   Lock, 
   Key, 
   EyeOff, 
@@ -66,6 +67,16 @@ import {
 import CustomSelect from '../components/CustomSelect';
 import { STENO_TESTS, TYPING_TESTS, PRICING_PLANS, INITIAL_ACADEMY_COURSES } from '../data/mockData';
 import api, { setToken } from '../services/api';
+import confetti from 'canvas-confetti';
+
+const GoogleIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+  </svg>
+);
 
 const INITIAL_ADMIN_STUDENTS = [
   { id: 1, name: "Shadab Khan", rollNo: "SP-2026-084", email: "shadabca@gmail.com", targetExam: "Patna High Court", plan: "12-Month Pro Active", speed: 96, accuracy: 92.4, daysRemaining: 248, status: "Active" },
@@ -206,11 +217,15 @@ export default function AdminPortalView({
   user, 
   setCurrentTab, 
   onLogout,
+  onLoginSuccess,
   onStartTest, 
   onStartTypingTest,
-  onlineClasses = [],
+  onlineClasses: propOnlineClasses = [],
   onCreateOnlineClass,
   onToggleLiveOnlineClass,
+  onStartOnlineClass,
+  onCompleteOnlineClass,
+  onCancelOnlineClass,
   onDeleteOnlineClass,
   onUpdateOnlineClass,
   onJoinClassAsAdmin,
@@ -227,6 +242,8 @@ export default function AdminPortalView({
   onUpdateCourse,
   onDeleteCourse
 }) {
+  const onlineClasses = Array.isArray(propOnlineClasses) ? propOnlineClasses : [];
+
   // Check if already authenticated via session or role
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(() => {
     if (user?.role === 'admin') return true;
@@ -242,6 +259,64 @@ export default function AdminPortalView({
   const [passcodeError, setPasscodeError] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
 
+  // Google Sign-In state for Admin clearance
+  const [showGoogleChooser, setShowGoogleChooser] = useState(false);
+  const [googleCustomEmail, setGoogleCustomEmail] = useState('');
+  const [googleCustomName, setGoogleCustomName] = useState('');
+
+  const handleGoogleAdminLogin = async (selectedEmail = null, selectedName = null) => {
+    setIsVerifying(true);
+    setPasscodeError('');
+
+    // If real GIS client is loaded and VITE_GOOGLE_CLIENT_ID is configured
+    if (!selectedEmail && window.google?.accounts?.id && import.meta.env.VITE_GOOGLE_CLIENT_ID) {
+      window.google.accounts.id.initialize({
+        client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+        callback: async (response) => {
+          try {
+            const res = await api.auth.googleLogin({
+              credential: response.credential,
+              mode: 'admin'
+            });
+            if (res.token) setToken(res.token);
+            try { sessionStorage.setItem('shorthand_admin_authenticated', 'true'); } catch {}
+            if (onLoginSuccess) onLoginSuccess(res.user);
+            setIsAdminAuthenticated(true);
+            confetti({ particleCount: 85, spread: 75, origin: { y: 0.55 }, colors: ['#4285F4', '#34A853', '#FBBC05', '#EA4335'] });
+          } catch (err) {
+            setPasscodeError(err.message || 'Google authentication failed.');
+          } finally {
+            setIsVerifying(false);
+          }
+        }
+      });
+      window.google.accounts.id.prompt();
+      return;
+    }
+
+    // Direct Google Clearance Authentication
+    const emailToUse = selectedEmail || 'stenoplus.in@gmail.com';
+    const nameToUse = selectedName || 'Shadab Sir (Director)';
+
+    try {
+      const res = await api.auth.googleLogin({
+        email: emailToUse,
+        name: nameToUse,
+        mode: 'admin'
+      });
+      if (res.token) setToken(res.token);
+      try { sessionStorage.setItem('shorthand_admin_authenticated', 'true'); } catch {}
+      if (onLoginSuccess) onLoginSuccess(res.user);
+      setIsAdminAuthenticated(true);
+      setShowGoogleChooser(false);
+      confetti({ particleCount: 85, spread: 75, origin: { y: 0.55 }, colors: ['#4285F4', '#34A853', '#FBBC05', '#EA4335'] });
+    } catch (err) {
+      setPasscodeError(err.message || 'Google clearance authentication failed.');
+    } finally {
+      setIsVerifying(false);
+    }
+  };
+
   const handlePasscodeSubmit = async (e) => {
     e.preventDefault();
     setIsVerifying(true);
@@ -255,6 +330,9 @@ export default function AdminPortalView({
       try {
         sessionStorage.setItem('shorthand_admin_authenticated', 'true');
       } catch {}
+      if (pinRes?.user && onLoginSuccess) {
+        onLoginSuccess(pinRes.user);
+      }
       setIsAdminAuthenticated(true);
     } catch (err) {
       setPasscodeError(err.message || 'Invalid Director PIN or Passcode. Access restricted to authorized faculty.');
@@ -281,6 +359,8 @@ export default function AdminPortalView({
   }); // 'overview' | 'students' | 'tests' | 'finance' | 'announcements'
   const [students, setStudents] = useState(INITIAL_ADMIN_STUDENTS);
   const [backendStats, setBackendStats] = useState(null);
+  const [localTransactions, setLocalTransactions] = useState(INITIAL_TRANSACTIONS);
+  const transactions = propTransactions && propTransactions.length > 0 ? propTransactions : localTransactions;
 
   // Fetch real students, transactions, and cohort stats from backend when admin unlocked
   useEffect(() => {
@@ -312,8 +392,6 @@ export default function AdminPortalView({
   const [localTypingTests, setLocalTypingTests] = useState(TYPING_TESTS);
   const typingTests = propTypingTests && propTypingTests.length > 0 ? propTypingTests : localTypingTests;
 
-  const [localTransactions, setLocalTransactions] = useState(INITIAL_TRANSACTIONS);
-  const transactions = propTransactions && propTransactions.length > 0 ? propTransactions : localTransactions;
 
   const totalRevenue = useMemo(() => {
     if (backendStats?.totalRevenue) {
@@ -349,53 +427,115 @@ export default function AdminPortalView({
   const [copiedClassId, setCopiedClassId] = useState(null);
   const [editingClass, setEditingClass] = useState(null);
 
+  // Cancel Class Modal State
+  const [cancelModalClass, setCancelModalClass] = useState(null);
+  const [cancelReasonText, setCancelReasonText] = useState('');
+
   // Live Class Scheduling Form State
   const [newClassTitle, setNewClassTitle] = useState('');
+  const [newClassCourseId, setNewClassCourseId] = useState('course-ssc');
+  const [newClassCourseName, setNewClassCourseName] = useState('SSC Stenographer Grade C & D');
+  const [newClassScheduledDate, setNewClassScheduledDate] = useState(() => new Date().toISOString().split('T')[0]);
+  const [newClassStartTime, setNewClassStartTime] = useState('8:30 AM');
+  const [newClassDurationMins, setNewClassDurationMins] = useState(60);
   const [newClassShift, setNewClassShift] = useState('Morning Core Batch');
   const [newClassTime, setNewClassTime] = useState('8:30 AM – 10:30 AM');
   const [newClassSpeed, setNewClassSpeed] = useState('80 WPM Standard');
   const [newClassInstructor, setNewClassInstructor] = useState('Shadab Sir');
   const [newClassMeetingId, setNewClassMeetingId] = useState('');
   const [newClassPasscode, setNewClassPasscode] = useState('');
-  const [newClassRoom, setNewClassRoom] = useState('Zoom Room #01 (Studio Live)');
+  const [newClassRoom, setNewClassRoom] = useState('Google Meet Room #01 (Studio Live)');
   const [newClassIsLive, setNewClassIsLive] = useState(false);
   const [newClassTopic, setNewClassTopic] = useState('');
   const [newClassPassage, setNewClassPassage] = useState('');
 
+  const handleStartClassAction = async (item) => {
+    try {
+      if (onStartOnlineClass) {
+        await onStartOnlineClass(item.id);
+      }
+      const targetUrl = item.meetUrl || item.googleMeetUrl || (item.meetCode ? `https://meet.google.com/${item.meetCode}` : 'https://meet.google.com/new');
+      window.open(targetUrl, '_blank');
+    } catch (err) {
+      alert(`Failed to start class: ${err.message}`);
+    }
+  };
+
+  const handleCompleteClassAction = async (classId) => {
+    if (!window.confirm('Mark this live class as Completed? The session will end and move to completed archives.')) return;
+    try {
+      if (onCompleteOnlineClass) {
+        await onCompleteOnlineClass(classId);
+      }
+      alert('Class marked as completed!');
+    } catch (err) {
+      alert(`Failed to complete class: ${err.message}`);
+    }
+  };
+
+  const handleConfirmCancelClass = async () => {
+    if (!cancelModalClass) return;
+    try {
+      if (onCancelOnlineClass) {
+        await onCancelOnlineClass(cancelModalClass.id, cancelReasonText || 'Class cancelled by teacher due to schedule adjustment.');
+      }
+      setCancelModalClass(null);
+      setCancelReasonText('');
+      alert('Class has been cancelled and enrolled students notified.');
+    } catch (err) {
+      alert(`Failed to cancel class: ${err.message}`);
+    }
+  };
+
   const loadClassTemplate = (templateKey) => {
     if (templateKey === 'ssc80') {
       setNewClassTitle('SSC Stenographer Grade C & D — 80 WPM Live Speed Dictation & Transcription Lab');
+      setNewClassCourseId('course-ssc');
+      setNewClassCourseName('SSC Stenographer Grade C & D');
+      setNewClassScheduledDate(new Date().toISOString().split('T')[0]);
+      setNewClassStartTime('8:30 AM');
+      setNewClassDurationMins(120);
       setNewClassShift('Morning Core Batch');
       setNewClassTime('8:30 AM – 10:30 AM');
       setNewClassSpeed('80 WPM Standard');
       setNewClassInstructor('Shadab Sir');
-      setNewClassMeetingId('842 9104 2281');
-      setNewClassPasscode('GAYA80WPM');
-      setNewClassRoom('Zoom Room #01 (Studio Live)');
+      setNewClassMeetingId('https://meet.google.com/new');
+      setNewClassPasscode('OPEN');
+      setNewClassRoom('Google Meet Room #01 (Studio Live)');
       setNewClassIsLive(true);
       setNewClassTopic('Parliamentary Motion on State Infrastructure & Expenditure Audit');
       setNewClassPassage('Mr. Speaker Sir, the motion was introduced in the House concerning national infrastructure expenditure and audited revenue accounts for the fiscal year 2025-2026. The state government along with the Auditor General presented a comprehensive assessment of capital allocations...');
     } else if (templateKey === 'judicial100') {
       setNewClassTitle('High Court Judicial Speed Bench: Criminal Appeals & Judgment Phrases');
+      setNewClassCourseId('course-court');
+      setNewClassCourseName('High Court Judicial Speed Bench');
+      setNewClassScheduledDate(new Date().toISOString().split('T')[0]);
+      setNewClassStartTime('3:00 PM');
+      setNewClassDurationMins(90);
       setNewClassShift('Afternoon Judicial Series');
-      setNewClassTime('3:00 PM – 5:00 PM');
+      setNewClassTime('3:00 PM – 4:30 PM');
       setNewClassSpeed('100 WPM Judicial');
       setNewClassInstructor('Shadab Sir');
-      setNewClassMeetingId('879 3341 5520');
-      setNewClassPasscode('COURT100');
-      setNewClassRoom('Zoom Room #03 (Judicial Bench)');
+      setNewClassMeetingId('https://meet.google.com/new');
+      setNewClassPasscode('OPEN');
+      setNewClassRoom('Google Meet Room #03 (Judicial Bench)');
       setNewClassIsLive(false);
       setNewClassTopic('Patna High Court Cr. Appeal 412/2025 Bench Dictation');
       setNewClassPassage('In the High Court of Judicature at Patna, Criminal Appeal Number 412 of 2025. Heard the learned counsel for the appellant as well as the learned Additional Public Prosecutor for the State...');
     } else if (templateKey === 'reporter120') {
       setNewClassTitle('Parliament & Legislative Assembly Reporter 120+ WPM Elite Masterclass');
+      setNewClassCourseId('course-ssc');
+      setNewClassCourseName('SSC Stenographer Grade C & D');
+      setNewClassScheduledDate(new Date().toISOString().split('T')[0]);
+      setNewClassStartTime('5:30 PM');
+      setNewClassDurationMins(60);
       setNewClassShift('Evening Executive Bench');
-      setNewClassTime('5:30 PM – 7:30 PM');
+      setNewClassTime('5:30 PM – 6:30 PM');
       setNewClassSpeed('120 - 140 WPM Elite');
       setNewClassInstructor('Senior Court Master');
-      setNewClassMeetingId('891 4059 1133');
-      setNewClassPasscode('ELITE120');
-      setNewClassRoom('Zoom Room #04 (Executive Chamber)');
+      setNewClassMeetingId('https://meet.google.com/new');
+      setNewClassPasscode('OPEN');
+      setNewClassRoom('Google Meet Room #04 (Executive Chamber)');
       setNewClassIsLive(false);
       setNewClassTopic('Lok Sabha Finance Bill Clause-by-Clause Rapid Dictation');
       setNewClassPassage('The Finance Bill was taken up for consideration in the Lok Sabha. Several amendments moved by the Hon\'ble members from both Treasury and Opposition benches were examined clause by clause...');
@@ -404,22 +544,36 @@ export default function AdminPortalView({
 
   const handlePublishOnlineClass = async (e) => {
     e.preventDefault();
-    if (!newClassTitle.trim() || !newClassMeetingId.trim() || !newClassPasscode.trim()) {
-      alert('Please fill in Title, Zoom Meeting ID, and Passcode.');
+    if (!newClassTitle.trim()) {
+      alert('Please fill in Class Title.');
       return;
     }
 
+    const rawMeet = newClassMeetingId.trim();
+    const finalMeetUrl = rawMeet.startsWith('http') ? rawMeet : (rawMeet ? `https://meet.google.com/${rawMeet.replace(/\s+/g, '-').toLowerCase()}` : 'https://meet.google.com/new');
+    const finalMeetCode = finalMeetUrl.replace(/^https?:\/\/meet\.google\.com\//i, '').split('?')[0] || 'live';
+
     const payload = {
       title: newClassTitle.trim(),
+      courseId: newClassCourseId,
+      courseName: newClassCourseName,
+      scheduledDate: newClassScheduledDate,
+      startTime: newClassStartTime,
+      durationMins: Number(newClassDurationMins) || 60,
       shift: newClassShift,
-      time: newClassTime || '8:30 AM – 10:30 AM',
+      time: `${newClassStartTime} (${newClassDurationMins}m)`,
       instructor: newClassInstructor,
-      instructorRole: 'Faculty Director • 12 Years Experience',
+      instructorRole: 'Faculty Director • stenoplus.in@gmail.com',
       speed: newClassSpeed,
       isLive: Boolean(newClassIsLive),
-      zoomMeetingId: newClassMeetingId.trim(),
-      zoomPasscode: newClassPasscode.trim(),
-      roomNo: newClassRoom || 'Zoom Room #01 (Studio Live)',
+      status: newClassIsLive ? 'live' : 'upcoming',
+      meetUrl: finalMeetUrl,
+      meetCode: finalMeetCode,
+      googleMeetUrl: finalMeetUrl,
+      zoomMeetingId: finalMeetCode,
+      zoomPasscode: newClassPasscode.trim() || 'OPEN',
+      zoomDirectUrl: finalMeetUrl,
+      roomNo: (newClassRoom || 'Google Meet Room #01 (Studio Live)').replace(/Zoom Room/g, 'Google Meet Room'),
       todayTopic: newClassTopic.trim() || 'Speed Dictation Session',
       passageSnippet: newClassPassage.trim() || ''
     };
@@ -429,7 +583,7 @@ export default function AdminPortalView({
         await onCreateOnlineClass(payload);
       }
       setNewClassModalOpen(false);
-      alert(newClassIsLive ? '🚀 Class created and broadcasted LIVE on Zoom!' : '📅 Live class batch successfully scheduled!');
+      alert(newClassIsLive ? '🚀 Class created and broadcasted LIVE on Google Meet!' : '📅 Live class batch successfully scheduled!');
     } catch (err) {
       alert(`Failed to schedule class: ${err.message}`);
     }
@@ -632,7 +786,7 @@ export default function AdminPortalView({
     speedTarget: '0 → 80 WPM',
     duration: '3 to 4 Months',
     fee: '₹700 / Month',
-    mode: 'Online Live Zoom + Audio Lab',
+    mode: 'Online Live Google Meet + Audio Lab',
     popular: false,
     description: '',
     syllabusText: ''
@@ -647,7 +801,7 @@ export default function AdminPortalView({
       speedTarget: '0 → 80 WPM',
       duration: '3 to 4 Months',
       fee: '₹700 / Month',
-      mode: 'Online Live Zoom + Audio Lab Access',
+      mode: 'Online Live Google Meet + Audio Lab Access',
       popular: false,
       description: 'Comprehensive curriculum with daily outlines, speed dictations, and error calculation.',
       syllabusText: 'Complete Theory & Stroke Geometry\nDaily Handwritten Outline Corrections\nGrammalogues & Phraseography Drills\nProgressive Speed Dictations: 40 → 60 → 80 WPM'
@@ -699,7 +853,7 @@ export default function AdminPortalView({
         speedTarget: courseForm.speedTarget.trim() || '80 WPM',
         duration: courseForm.duration.trim() || '3 Months',
         fee: courseForm.fee.trim() || '₹499 / Month',
-        mode: courseForm.mode.trim() || 'Online Live Zoom',
+        mode: courseForm.mode.trim() || 'Online Live Google Meet',
         popular: !!courseForm.popular,
         description: courseForm.description.trim(),
         syllabus: syllabusArray.length > 0 ? syllabusArray : ['Complete official curriculum & exam speed tests']
@@ -720,7 +874,7 @@ export default function AdminPortalView({
         speedTarget: courseForm.speedTarget.trim() || '80 WPM',
         duration: courseForm.duration.trim() || '3 Months',
         fee: courseForm.fee.trim() || '₹499 / Month',
-        mode: courseForm.mode.trim() || 'Online Live Zoom',
+        mode: courseForm.mode.trim() || 'Online Live Google Meet',
         popular: !!courseForm.popular,
         description: courseForm.description.trim(),
         syllabus: syllabusArray.length > 0 ? syllabusArray : ['Complete official curriculum & exam speed tests']
@@ -766,7 +920,7 @@ export default function AdminPortalView({
   const [broadcastNoticeText, setBroadcastNoticeText] = useState('');
   const [activeBroadcastNotice, setActiveBroadcastNotice] = useState(() => {
     try {
-      return localStorage.getItem('shorthand_live_announcement') || '🔴 SSC Stenographer Grade C & D 80 WPM live dictation is broadcasting now in Zoom Room #01. Students may join.';
+      return localStorage.getItem('shorthand_live_announcement') || '🔴 SSC Stenographer Grade C & D 80 WPM live dictation is broadcasting now in Google Meet Room #01. Students may join.';
     } catch {
       return '';
     }
@@ -793,17 +947,16 @@ export default function AdminPortalView({
   };
 
   const handleCopyClassInvite = (item) => {
-    const cleanId = item.zoomMeetingId.replace(/\s+/g, '');
-    const directUrl = item.zoomDirectUrl || `https://zoom.us/j/${cleanId}?pwd=${item.zoomPasscode}`;
-    const inviteText = `🏛️ GAYA SHORTHAND CLASSES — LIVE ZOOM CLASS INVITE\n\n` +
+    const meetCode = item.meetCode || item.zoomMeetingId || 'stenoplus-live';
+    const directUrl = item.meetUrl || item.googleMeetUrl || (item.zoomDirectUrl?.includes('meet.google') ? item.zoomDirectUrl : (meetCode ? `https://meet.google.com/${meetCode}` : 'https://meet.google.com/new'));
+    const inviteText = `🏛️ GAYA SHORTHAND CLASSES — LIVE GOOGLE MEET CLASS INVITE\n\n` +
       `Batch: ${item.title}\n` +
       `Timing: ${item.time} (${item.shift})\n` +
       `Speed: ${item.speed} | Faculty: ${item.instructor} (${item.roomNo})\n` +
       `Topic Today: ${item.todayTopic}\n\n` +
-      `Zoom Meeting ID: ${item.zoomMeetingId}\n` +
-      `Passcode: ${item.zoomPasscode}\n` +
-      `Join Direct: ${directUrl}`;
-    navigator.clipboard.writeText(inviteText);
+      `Google Meet Code: ${meetCode}\n` +
+      `Join Direct Link: ${directUrl}`;
+    navigator.clipboard?.writeText(inviteText).catch(() => {});
     setCopiedClassId(item.id);
     setTimeout(() => setCopiedClassId(null), 2500);
   };
@@ -829,17 +982,20 @@ export default function AdminPortalView({
       speed: '80 - 100 WPM Dynamic',
       attendees: 1,
       isLive: true,
-      tag: '🔴 ZOOM LIVE CALL ACTIVE',
+      tag: '🔴 GOOGLE MEET LIVE CALL ACTIVE',
       badgeClass: 'badge-live',
-      zoomMeetingId: '842 9104 2281',
-      zoomPasscode: 'GAYA80WPM',
-      zoomDirectUrl: `https://zoom.us/j/${cleanId}?pwd=GAYA80WPM`,
-      zoomAppUrl: `zoommtg://zoom.us/join?confno=${cleanId}&pwd=GAYA80WPM`,
-      zoomWebUrl: `https://app.zoom.us/wc/${cleanId}/join`,
-      description: 'Impromptu high-speed dictation test broadcasted live on Zoom. Real-time stroke feedback and immediate typing transcription.',
+      meetUrl: 'https://meet.google.com/new',
+      meetCode: 'stenoplus-live',
+      googleMeetUrl: 'https://meet.google.com/new',
+      zoomMeetingId: 'stenoplus-live',
+      zoomPasscode: 'OPEN',
+      zoomDirectUrl: 'https://meet.google.com/new',
+      zoomAppUrl: 'https://meet.google.com/new',
+      zoomWebUrl: 'https://meet.google.com/new',
+      description: 'Impromptu high-speed dictation test broadcasted live on Google Meet. Real-time stroke feedback and immediate typing transcription.',
       todayTopic: 'Live Parliamentary & Judicial Mixed Rapid Test',
       passageSnippet: 'Mr. Chairman Sir, we rise today to examine the emergent fiscal provisions outlined in the statutory report...',
-      roomNo: 'Zoom Room #01 (Studio Live)'
+      roomNo: 'Google Meet Room #01 (Studio Live)'
     };
     if (onCreateOnlineClass) onCreateOnlineClass(quickBatch);
     alert('Impromptu Live Class created and launched on air! Students can join right now.');
@@ -856,18 +1012,27 @@ export default function AdminPortalView({
   };
 
   const filteredOnlineClasses = (onlineClasses || []).filter((batch) => {
-    if (classFilterStatus === 'live' && !batch.isLive) return false;
-    if (classFilterStatus === 'upcoming' && (batch.isLive || batch.badgeClass === 'badge-replay')) return false;
-    if (classFilterStatus === 'replays' && batch.badgeClass !== 'badge-replay') return false;
+    if (!batch) return false;
+    const isLive = batch.status === 'live' || Boolean(batch.isLive);
+    const isCompleted = batch.status === 'completed';
+    const isCancelled = batch.status === 'cancelled';
+    const isUpcoming = !isLive && !isCompleted && !isCancelled;
+
+    if (classFilterStatus === 'live' && !isLive) return false;
+    if (classFilterStatus === 'upcoming' && !isUpcoming) return false;
+    if (classFilterStatus === 'completed' && !isCompleted) return false;
+    if (classFilterStatus === 'cancelled' && !isCancelled) return false;
+
     if (classSearchQuery.trim()) {
       const q = classSearchQuery.toLowerCase();
       return (
-        batch.title.toLowerCase().includes(q) ||
-        batch.shift.toLowerCase().includes(q) ||
-        batch.todayTopic.toLowerCase().includes(q) ||
-        batch.speed.toLowerCase().includes(q) ||
+        (batch.title && batch.title.toLowerCase().includes(q)) ||
+        (batch.courseName && batch.courseName.toLowerCase().includes(q)) ||
+        (batch.shift && batch.shift.toLowerCase().includes(q)) ||
+        (batch.todayTopic && batch.todayTopic.toLowerCase().includes(q)) ||
+        (batch.speed && batch.speed.toLowerCase().includes(q)) ||
         (batch.instructor && batch.instructor.toLowerCase().includes(q)) ||
-        (batch.zoomMeetingId && batch.zoomMeetingId.includes(q))
+        (batch.meetCode && batch.meetCode.toLowerCase().includes(q))
       );
     }
     return true;
@@ -1439,14 +1604,16 @@ export default function AdminPortalView({
   }, [searchQuery, filterPlan, statusFilter]);
 
   const candidateTotalPages = Math.ceil(filteredStudents.length / candidatePageSize) || 1;
-  const candidateStartIndex = (candidatePage - 1) * candidatePageSize;
+  const safeCandidatePage = Math.max(1, Math.min(candidatePage, candidateTotalPages));
+  const candidateStartIndex = (safeCandidatePage - 1) * candidatePageSize;
   const candidateEndIndex = Math.min(candidateStartIndex + candidatePageSize, filteredStudents.length);
   const paginatedStudents = useMemo(() => {
     return filteredStudents.slice(candidateStartIndex, candidateEndIndex);
   }, [filteredStudents, candidateStartIndex, candidateEndIndex]);
 
   const txnTotalPages = Math.ceil(transactions.length / txnPageSize) || 1;
-  const txnStartIndex = (txnPage - 1) * txnPageSize;
+  const safeTxnPage = Math.max(1, Math.min(txnPage, txnTotalPages));
+  const txnStartIndex = (safeTxnPage - 1) * txnPageSize;
   const txnEndIndex = Math.min(txnStartIndex + txnPageSize, transactions.length);
   const paginatedTransactions = useMemo(() => {
     return transactions.slice(txnStartIndex, txnEndIndex);
@@ -1497,6 +1664,42 @@ export default function AdminPortalView({
             <p>
               This portal manages confidential student admissions, exam question repositories, and financial records for Gaya Shorthand Classes.
             </p>
+          </div>
+
+          {/* Continue with Google Primary Clearance */}
+          <div style={{ marginBottom: '1.25rem' }}>
+            <button
+              type="button"
+              className="btn-continue-google"
+              onClick={() => handleGoogleAdminLogin()}
+              disabled={isVerifying}
+              title="Authenticate and unlock Faculty Admin Console directly with Google"
+            >
+              <GoogleIcon />
+              <span>Continue with Google</span>
+            </button>
+
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.5rem' }}>
+              <button
+                type="button"
+                onClick={() => setShowGoogleChooser(true)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  padding: 0,
+                  fontSize: '0.76rem',
+                  color: '#475569',
+                  textDecoration: 'underline',
+                  cursor: 'pointer'
+                }}
+              >
+                Sign in with another Google Email →
+              </button>
+            </div>
+          </div>
+
+          <div className="google-auth-divider">
+            <span>OR ENTER MASTER PIN</span>
           </div>
 
           <form onSubmit={handlePasscodeSubmit} className="admin-lock-form">
@@ -1570,6 +1773,86 @@ export default function AdminPortalView({
             <span>© Gaya Shorthand Classes • Protected Academic Network</span>
           </div>
         </div>
+
+        {/* Modal: Google Account Chooser for Admin Clearance */}
+        {showGoogleChooser && (
+          <div className="google-account-chooser-modal" onClick={() => setShowGoogleChooser(false)}>
+            <div className="google-account-chooser-card" onClick={(e) => e.stopPropagation()}>
+              <div className="google-chooser-header">
+                <GoogleIcon />
+                <div>
+                  <h4 style={{ margin: 0, fontSize: '1rem', fontWeight: 800, color: '#0F172A' }}>
+                    Choose Google Clearance Account
+                  </h4>
+                  <p style={{ margin: '2px 0 0', fontSize: '0.78rem', color: '#64748B' }}>
+                    Gaya Shorthand Classes Academic Director Access
+                  </p>
+                </div>
+              </div>
+
+              {/* Preset 1: Director Primary Account */}
+              <div 
+                className="google-account-item"
+                onClick={() => handleGoogleAdminLogin('stenoplus.in@gmail.com', 'Shadab Sir (Director)')}
+              >
+                <div className="google-account-avatar" style={{ background: '#0F172A' }}>
+                  SP
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontWeight: 700, fontSize: '0.85rem', color: '#0F172A' }}>
+                    Shadab Sir (Director)
+                  </div>
+                  <div style={{ fontSize: '0.75rem', color: '#64748B' }}>
+                    stenoplus.in@gmail.com • Verified Faculty Lead & Host
+                  </div>
+                </div>
+                <ShieldCheck size={16} color="#059669" />
+              </div>
+
+              {/* Option 2: Custom Google / Gmail Account */}
+              <div style={{ marginTop: '1rem', padding: '0.9rem', background: '#F8FAFC', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+                <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#334155', marginBottom: '0.4rem' }}>
+                  Use Your Custom Google / Gmail Account:
+                </span>
+                <input 
+                  type="email"
+                  className="field-input"
+                  placeholder="e.g. director.shorthand@gmail.com"
+                  value={googleCustomEmail}
+                  onChange={(e) => setGoogleCustomEmail(e.target.value)}
+                  style={{ marginBottom: '0.5rem', background: '#FFFFFF' }}
+                />
+                <input 
+                  type="text"
+                  className="field-input"
+                  placeholder="Your Full Name (e.g. Shadab Khan)"
+                  value={googleCustomName}
+                  onChange={(e) => setGoogleCustomName(e.target.value)}
+                  style={{ marginBottom: '0.65rem', background: '#FFFFFF' }}
+                />
+                <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
+                  <button 
+                    type="button" 
+                    className="btn btn-secondary" 
+                    style={{ padding: '0.4rem 0.8rem', fontSize: '0.78rem' }}
+                    onClick={() => setShowGoogleChooser(false)}
+                  >
+                    Cancel
+                  </button>
+                  <button 
+                    type="button" 
+                    className="btn btn-primary" 
+                    style={{ padding: '0.4rem 0.9rem', fontSize: '0.78rem', background: '#0F172A', borderColor: '#0F172A' }}
+                    disabled={!googleCustomEmail.includes('@') || isVerifying}
+                    onClick={() => handleGoogleAdminLogin(googleCustomEmail.trim(), googleCustomName.trim() || 'Faculty Director')}
+                  >
+                    {isVerifying ? 'Authorizing...' : 'Authorize as Director'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -1691,7 +1974,7 @@ export default function AdminPortalView({
             onClick={() => setActiveTab('classes')}
           >
             <Video size={16} />
-            <span>Live Zoom Classes</span>
+            <span>Live Google Meet Classes</span>
             <span className="admin-tab-count-pill font-mono">
               {onlineClasses.filter(c => c.isLive).length > 0 ? `${onlineClasses.filter(c => c.isLive).length} Live` : onlineClasses.length}
             </span>
@@ -3044,7 +3327,7 @@ export default function AdminPortalView({
         )}
 
 
-        {/* TAB 5: Live Online Classes & Zoom Studio Management */}
+        {/* TAB 5: Live Online Classes & Google Meet Studio Management */}
         {activeTab === 'classes' && (
           <div className="saas-card admin-content-card">
             
@@ -3092,7 +3375,7 @@ export default function AdminPortalView({
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
                     <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', margin: 0, lineHeight: 1.25 }}>
-                      Live Online Zoom Batches & Dictation Studio
+                      Live Online Google Meet Batches & Dictation Studio
                     </h3>
                     {onlineClasses.some(c => c.isLive) ? (
                       <span style={{
@@ -3131,7 +3414,7 @@ export default function AdminPortalView({
                     )}
                   </div>
                   <p style={{ fontSize: '0.82rem', color: '#64748B', margin: '0.25rem 0 0', lineHeight: 1.45, maxWidth: '680px' }}>
-                    Schedule, broadcast, and orchestrate real-time Zoom video classrooms. Any class marked "Live" is instantly pushed to candidate portals with 1-click joining.
+                    Schedule, broadcast, and orchestrate real-time Google Meet video classrooms. Any class marked "Live" is instantly pushed to candidate portals with 1-click joining.
                   </p>
                 </div>
               </div>
@@ -3180,7 +3463,7 @@ export default function AdminPortalView({
                     color: '#E11D48'
                   }}
                   onClick={handleQuickStartLive}
-                  title="Instantly launch an impromptu live broadcast on Zoom"
+                  title="Instantly launch an impromptu live broadcast on Google Meet"
                 >
                   <Zap size={14} className="fill-rose-500 text-rose-500" />
                   <span>Instant Live Class</span>
@@ -3208,7 +3491,7 @@ export default function AdminPortalView({
                     loadClassTemplate('ssc80');
                     setNewClassModalOpen(true);
                   }}
-                  title="Schedule and configure a new Zoom online class batch"
+                  title="Schedule and configure a new Google Meet class batch"
                 >
                   <Plus size={15} />
                   <span>Schedule Live Online Class</span>
@@ -3439,7 +3722,7 @@ export default function AdminPortalView({
                     </strong>
                   </div>
                   <span style={{ fontSize: '0.72rem', fontWeight: 600, color: '#059669' }}>
-                    Active zoom learners
+                    Active online learners
                   </span>
                 </div>
               </div>
@@ -3545,7 +3828,7 @@ export default function AdminPortalView({
                   }}
                   onClick={() => setClassFilterStatus('live')}
                 >
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: classFilterStatus === 'live' ? '#FFFFFF' : '#DC2626' }} />
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: classFilterStatus === 'live' ? '#FFFFFF' : '#DC2626', animation: 'beaconPulse 1.2s infinite' }} />
                   <span>Live Now</span>
                   <span style={{
                     padding: '1px 6px',
@@ -3553,7 +3836,7 @@ export default function AdminPortalView({
                     fontSize: '0.7rem',
                     background: classFilterStatus === 'live' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.06)'
                   }}>
-                    {onlineClasses.filter(c => c.isLive).length}
+                    {onlineClasses.filter(c => c.status === 'live' || c.isLive).length}
                   </span>
                 </button>
                 <button 
@@ -3574,14 +3857,15 @@ export default function AdminPortalView({
                   }}
                   onClick={() => setClassFilterStatus('upcoming')}
                 >
-                  <span>Upcoming Scheduled</span>
+                  <Clock size={12} />
+                  <span>Upcoming</span>
                   <span style={{
                     padding: '1px 6px',
                     borderRadius: '999px',
                     fontSize: '0.7rem',
                     background: classFilterStatus === 'upcoming' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.06)'
                   }}>
-                    {onlineClasses.filter(c => !c.isLive && c.badgeClass !== 'badge-replay').length}
+                    {onlineClasses.filter(c => c.status === 'upcoming' || (!c.isLive && c.status !== 'completed' && c.status !== 'cancelled')).length}
                   </span>
                 </button>
                 <button 
@@ -3596,20 +3880,50 @@ export default function AdminPortalView({
                     fontWeight: 700,
                     cursor: 'pointer',
                     border: '1px solid transparent',
-                    background: classFilterStatus === 'replays' ? '#0F172A' : '#FFFFFF',
-                    color: classFilterStatus === 'replays' ? '#FFFFFF' : '#475569',
-                    boxShadow: classFilterStatus === 'replays' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
+                    background: classFilterStatus === 'completed' ? '#0F172A' : '#FFFFFF',
+                    color: classFilterStatus === 'completed' ? '#FFFFFF' : '#475569',
+                    boxShadow: classFilterStatus === 'completed' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
                   }}
-                  onClick={() => setClassFilterStatus('replays')}
+                  onClick={() => setClassFilterStatus('completed')}
                 >
-                  <span>Archives & Replays</span>
+                  <CheckCircle2 size={12} />
+                  <span>Completed</span>
                   <span style={{
                     padding: '1px 6px',
                     borderRadius: '999px',
                     fontSize: '0.7rem',
-                    background: classFilterStatus === 'replays' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.06)'
+                    background: classFilterStatus === 'completed' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.06)'
                   }}>
-                    {onlineClasses.filter(c => c.badgeClass === 'badge-replay').length}
+                    {onlineClasses.filter(c => c.status === 'completed').length}
+                  </span>
+                </button>
+                <button 
+                  type="button" 
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '5px 12px',
+                    borderRadius: '8px',
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    border: '1px solid transparent',
+                    background: classFilterStatus === 'cancelled' ? '#0F172A' : '#FFFFFF',
+                    color: classFilterStatus === 'cancelled' ? '#FFFFFF' : '#475569',
+                    boxShadow: classFilterStatus === 'cancelled' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
+                  }}
+                  onClick={() => setClassFilterStatus('cancelled')}
+                >
+                  <XCircle size={12} />
+                  <span>Cancelled</span>
+                  <span style={{
+                    padding: '1px 6px',
+                    borderRadius: '999px',
+                    fontSize: '0.7rem',
+                    background: classFilterStatus === 'cancelled' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.06)'
+                  }}>
+                    {onlineClasses.filter(c => c.status === 'cancelled').length}
                   </span>
                 </button>
               </div>
@@ -3729,7 +4043,7 @@ export default function AdminPortalView({
                               letterSpacing: '0.04em'
                             }}>
                               <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#E11D48' }} />
-                              <span>LIVE NOW ON ZOOM</span>
+                              <span>LIVE NOW ON GOOGLE MEET</span>
                             </span>
                           ) : item.badgeClass === 'badge-replay' ? (
                             <span style={{
@@ -3780,7 +4094,7 @@ export default function AdminPortalView({
                               justifyContent: 'center'
                             }}
                             onClick={() => handleCopyClassInvite(item)}
-                            title="Copy Full Zoom Invite text"
+                            title="Copy Full Google Meet Invite text"
                           >
                             {copiedClassId === item.id ? <Check size={13} className="text-emerald-600" /> : <Copy size={13} />}
                           </button>
@@ -3867,21 +4181,21 @@ export default function AdminPortalView({
                           fontSize: '0.75rem',
                           flexShrink: 0
                         }}>
-                          {item.instructor.split(' ').map(n => n[0]).join('').slice(0, 2) || 'GS'}
+                          {(item.instructor || 'Shadab Sir').split(' ').map(n => n[0]).join('').slice(0, 2) || 'SS'}
                         </div>
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <span style={{ display: 'block', fontWeight: 700, fontSize: '0.82rem', color: '#0F172A' }}>
-                            {item.instructor}
+                            {item.instructor || 'Shadab Sir'}
                           </span>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.72rem', color: '#64748B' }}>
-                            <span><Clock size={10} className="inline mr-1 text-slate-400" />{item.time}</span>
+                            <span><Clock size={10} className="inline mr-1 text-slate-400" />{item.time || item.startTime || '8:30 AM'}</span>
                             <span>•</span>
                             <span style={{ fontWeight: 600, color: '#334155' }}>{item.attendees || 1} Aspirants</span>
                           </div>
                         </div>
                       </div>
 
-                      {/* Zoom Credentials Strip */}
+                      {/* Google Meet Details Strip */}
                       <div style={{
                         background: '#F8FAFC',
                         border: '1px solid rgba(0,0,0,0.06)',
@@ -3894,18 +4208,18 @@ export default function AdminPortalView({
                         marginBottom: '0.85rem'
                       }}>
                         <div>
-                          <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B' }}>Meeting ID</span>
+                          <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B' }}>Meet Code</span>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <strong style={{ fontSize: '0.78rem', color: '#0F172A', fontFamily: 'monospace' }}>{item.zoomMeetingId}</strong>
+                            <strong style={{ fontSize: '0.78rem', color: '#0F172A', fontFamily: 'monospace' }}>{item.meetCode || item.zoomMeetingId || 'stenoplus-live'}</strong>
                             <button 
                               type="button" 
                               style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px', color: '#64748B' }}
                               onClick={() => {
-                                navigator.clipboard.writeText(item.zoomMeetingId);
+                                navigator.clipboard?.writeText(item.meetCode || item.zoomMeetingId || 'stenoplus-live').catch(() => {});
                                 setCopiedClassId(`id-${item.id}`);
                                 setTimeout(() => setCopiedClassId(null), 2000);
                               }}
-                              title="Copy Meeting ID"
+                              title="Copy Meeting Code"
                             >
                               {copiedClassId === `id-${item.id}` ? <Check size={11} className="text-emerald-600" /> : <Copy size={11} />}
                             </button>
@@ -3913,45 +4227,33 @@ export default function AdminPortalView({
                         </div>
 
                         <div>
-                          <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B' }}>Passcode</span>
+                          <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B' }}>Host Account</span>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <strong style={{ fontSize: '0.78rem', color: '#0F172A', fontFamily: 'monospace' }}>{item.zoomPasscode}</strong>
-                            <button 
-                              type="button" 
-                              style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px', color: '#64748B' }}
-                              onClick={() => {
-                                navigator.clipboard.writeText(item.zoomPasscode);
-                                setCopiedClassId(`pwd-${item.id}`);
-                                setTimeout(() => setCopiedClassId(null), 2000);
-                              }}
-                              title="Copy Passcode"
-                            >
-                              {copiedClassId === `pwd-${item.id}` ? <Check size={11} className="text-emerald-600" /> : <Copy size={11} />}
-                            </button>
+                            <strong style={{ fontSize: '0.74rem', color: '#0f766e', fontFamily: 'monospace' }}>stenoplus.in@gmail.com</strong>
                           </div>
                         </div>
 
                         <div>
                           <a 
-                            href={item.zoomAppUrl || `zoommtg://zoom.us/join?confno=${item.zoomMeetingId.replace(/\s+/g, '')}&pwd=${item.zoomPasscode}`}
+                            href={item.meetUrl || item.googleMeetUrl || (item.meetCode ? `https://meet.google.com/${item.meetCode}` : 'https://meet.google.com/new')}
                             target="_blank" 
                             rel="noreferrer" 
                             style={{
                               display: 'inline-flex',
                               alignItems: 'center',
-                              gap: '3px',
+                              gap: '4px',
                               background: '#0F172A',
                               color: '#FFFFFF',
-                              padding: '4px 8px',
+                              padding: '5px 10px',
                               borderRadius: '6px',
-                              fontSize: '0.72rem',
+                              fontSize: '0.74rem',
                               fontWeight: 700,
                               textDecoration: 'none'
                             }}
-                            title="Open in Zoom Desktop App"
+                            title="Join Google Meet as Teacher Host (stenoplus.in@gmail.com)"
                           >
-                            <span>Open</span>
-                            <ExternalLink size={10} />
+                            <span>Join as Host</span>
+                            <ExternalLink size={11} />
                           </a>
                         </div>
                       </div>
@@ -3978,71 +4280,229 @@ export default function AdminPortalView({
                       </div>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', paddingTop: '10px', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-                      <button 
-                        type="button"
-                        style={{
-                          flex: 1,
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          gap: '6px',
-                          padding: '8px 12px',
-                          borderRadius: '8px',
-                          fontSize: '0.8rem',
-                          fontWeight: 700,
-                          cursor: 'pointer',
-                          transition: 'all 0.15s ease',
-                          background: item.isLive ? '#FEF2F2' : '#FFFFFF',
-                          border: item.isLive ? '1px solid rgba(220, 38, 38, 0.3)' : '1px solid rgba(37, 99, 235, 0.3)',
-                          color: item.isLive ? '#DC2626' : '#2563EB'
-                        }}
-                        onClick={() => {
-                          if (onToggleLiveOnlineClass) onToggleLiveOnlineClass(item.id);
-                        }}
-                        title={item.isLive ? "End live broadcast" : "Start live broadcast on Zoom"}
-                      >
-                        {item.isLive ? (
-                          <>
-                            <Square size={13} />
-                            <span>End Session</span>
-                          </>
-                        ) : (
-                          <>
-                            <Radio size={13} className="text-rose-600" />
-                            <span>Go Live Now</span>
-                          </>
-                        )}
-                      </button>
+                    {/* Action Buttons Bar */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', paddingTop: '10px', borderTop: '1px solid rgba(0,0,0,0.06)', flexWrap: 'wrap' }}>
+                      {/* Upcoming Class Actions */}
+                      {(!item.isLive && item.status !== 'completed' && item.status !== 'cancelled') && (
+                        <>
+                          <button 
+                            type="button"
+                            style={{
+                              flex: 1,
+                              minWidth: '120px',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              gap: '6px',
+                              padding: '8px 12px',
+                              borderRadius: '8px',
+                              fontSize: '0.8rem',
+                              fontWeight: 700,
+                              cursor: 'pointer',
+                              background: '#0F766E',
+                              border: '1px solid #0D9488',
+                              color: '#FFFFFF',
+                              boxShadow: '0 2px 6px rgba(15, 118, 110, 0.25)'
+                            }}
+                            onClick={() => handleStartClassAction(item)}
+                            title="Start class session & open Google Meet as Host"
+                          >
+                            <Play size={14} fill="currentColor" />
+                            <span>Start Class</span>
+                          </button>
 
-                      <button 
-                        type="button"
-                        style={{
-                          flex: 1,
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          gap: '6px',
-                          padding: '8px 12px',
-                          borderRadius: '8px',
-                          fontSize: '0.8rem',
-                          fontWeight: 700,
-                          cursor: 'pointer',
-                          transition: 'all 0.15s ease',
-                          background: '#0F172A',
-                          border: '1px solid #0F172A',
-                          color: '#FFFFFF'
-                        }}
-                        onClick={() => {
-                          if (onJoinClassAsAdmin) onJoinClassAsAdmin(item.id);
-                          else setCurrentTab('online-classes');
-                        }}
-                        title="View Class Join Page"
-                      >
-                        <Eye size={13} />
-                        <span>View Class Page</span>
-                      </button>
+                          <button 
+                            type="button"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              gap: '4px',
+                              padding: '8px 10px',
+                              borderRadius: '8px',
+                              fontSize: '0.78rem',
+                              fontWeight: 600,
+                              cursor: 'pointer',
+                              background: '#FFFFFF',
+                              border: '1px solid #CBD5E1',
+                              color: '#334155'
+                            }}
+                            onClick={() => setEditingClass({ ...item })}
+                            title="Edit schedule, title, or Google Meet link"
+                          >
+                            <Edit3 size={13} />
+                            <span>Edit</span>
+                          </button>
+
+                          <button 
+                            type="button"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              gap: '4px',
+                              padding: '8px 10px',
+                              borderRadius: '8px',
+                              fontSize: '0.78rem',
+                              fontWeight: 600,
+                              cursor: 'pointer',
+                              background: '#FEF2F2',
+                              border: '1px solid #FCA5A5',
+                              color: '#DC2626'
+                            }}
+                            onClick={() => {
+                              setCancelModalClass(item);
+                              setCancelReasonText('');
+                            }}
+                            title="Cancel this class and notify students"
+                          >
+                            <XCircle size={13} />
+                            <span>Cancel</span>
+                          </button>
+                        </>
+                      )}
+
+                      {/* Live Class Actions */}
+                      {(item.isLive || item.status === 'live') && (
+                        <>
+                          <button 
+                            type="button"
+                            style={{
+                              flex: 1,
+                              minWidth: '130px',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              gap: '6px',
+                              padding: '8px 12px',
+                              borderRadius: '8px',
+                              fontSize: '0.8rem',
+                              fontWeight: 700,
+                              cursor: 'pointer',
+                              background: '#0F766E',
+                              border: '1px solid #0D9488',
+                              color: '#FFFFFF'
+                            }}
+                            onClick={() => {
+                              const targetUrl = item.meetUrl || item.googleMeetUrl || (item.meetCode ? 'https://meet.google.com/' + item.meetCode : 'https://meet.google.com/new');
+                              window.open(targetUrl, '_blank');
+                            }}
+                            title="Open Google Meet Session as Host"
+                          >
+                            <Video size={14} />
+                            <span>Conduct on Meet</span>
+                            <ExternalLink size={11} />
+                          </button>
+
+                          <button 
+                            type="button"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              gap: '4px',
+                              padding: '8px 12px',
+                              borderRadius: '8px',
+                              fontSize: '0.78rem',
+                              fontWeight: 700,
+                              cursor: 'pointer',
+                              background: '#1E293B',
+                              border: '1px solid #0F172A',
+                              color: '#FFFFFF'
+                            }}
+                            onClick={() => handleCompleteClassAction(item.id)}
+                            title="Finish and mark class as completed"
+                          >
+                            <CheckCircle2 size={13} className="text-emerald-400" />
+                            <span>Complete Class</span>
+                          </button>
+
+                          <button 
+                            type="button"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              gap: '4px',
+                              padding: '8px 10px',
+                              borderRadius: '8px',
+                              fontSize: '0.78rem',
+                              fontWeight: 600,
+                              cursor: 'pointer',
+                              background: '#FEF2F2',
+                              border: '1px solid #FCA5A5',
+                              color: '#DC2626'
+                            }}
+                            onClick={() => {
+                              setCancelModalClass(item);
+                              setCancelReasonText('');
+                            }}
+                            title="Cancel class"
+                          >
+                            <XCircle size={13} />
+                            <span>Cancel</span>
+                          </button>
+                        </>
+                      )}
+
+                      {/* Completed Class Actions */}
+                      {item.status === 'completed' && (
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '8px' }}>
+                          <span style={{ fontSize: '0.78rem', color: '#166534', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                            <CheckCircle2 size={13} />
+                            <span>Class Finished & Archived</span>
+                          </span>
+                          <button 
+                            type="button"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '4px',
+                              padding: '6px 10px',
+                              borderRadius: '6px',
+                              fontSize: '0.76rem',
+                              fontWeight: 600,
+                              cursor: 'pointer',
+                              background: '#FFFFFF',
+                              border: '1px solid #CBD5E1',
+                              color: '#475569'
+                            }}
+                            onClick={() => setEditingClass({ ...item })}
+                          >
+                            <Edit3 size={12} />
+                            <span>Edit Record</span>
+                          </button>
+                        </div>
+                      )}
+
+                      {/* Cancelled Class Actions */}
+                      {item.status === 'cancelled' && (
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '8px', flexWrap: 'wrap' }}>
+                          <span style={{ fontSize: '0.75rem', color: '#991B1B', fontWeight: 600 }}>
+                            Cancelled: {item.cancelledReason || 'By teacher'}
+                          </span>
+                          <button 
+                            type="button"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '4px',
+                              padding: '6px 10px',
+                              borderRadius: '6px',
+                              fontSize: '0.76rem',
+                              fontWeight: 600,
+                              cursor: 'pointer',
+                              background: '#FFFFFF',
+                              border: '1px solid #CBD5E1',
+                              color: '#475569'
+                            }}
+                            onClick={() => setEditingClass({ ...item, status: 'upcoming' })}
+                          >
+                            <RefreshCw size={12} />
+                            <span>Reschedule</span>
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -4069,71 +4529,111 @@ export default function AdminPortalView({
                       <tr key={item.id} className={item.isLive ? 'row-live-highlight' : ''}>
                         <td>
                           <div className="timetable-shift-col">
-                            <strong>{item.shift}</strong>
-                            <span className="text-xs text-muted font-mono">{item.time}</span>
+                            <strong>{item.shift || 'General Shift'}</strong>
+                            <span className="text-xs text-muted font-mono">{item.time || item.startTime || '8:30 AM'}</span>
                           </div>
                         </td>
                         <td>
                           <div className="timetable-title-col">
-                            <span className="font-bold text-slate-800 text-sm">{item.title}</span>
-                            <span className="badge-speed-pill font-mono">{item.speed}</span>
+                            <span className="font-bold text-slate-800 text-sm">{item.title || 'Live Class Session'}</span>
+                            <span className="badge-speed-pill font-mono">{item.speed || '80 WPM Standard'}</span>
                           </div>
                         </td>
                         <td>
-                          <span className="text-xs text-slate-700">{item.todayTopic}</span>
+                          <span className="text-xs text-slate-700">{item.todayTopic || 'Live Speed Dictation Session'}</span>
                         </td>
                         <td>
                           <div className="font-mono text-xs">
-                            <div>ID: <strong>{item.zoomMeetingId}</strong></div>
-                            <div className="text-muted">Pass: <strong>{item.zoomPasscode}</strong></div>
+                            <div>Code: <strong style={{ color: '#0f766e' }}>{item.meetCode || 'stenoplus-live'}</strong></div>
+                            <div className="text-muted" style={{ fontSize: '0.7rem' }}>stenoplus.in@gmail.com</div>
                           </div>
                         </td>
                         <td>
                           <div className="text-xs">
-                            <strong className="text-slate-800">{item.instructor}</strong>
-                            <div className="text-muted">{item.roomNo}</div>
+                            <strong className="text-slate-800">{item.instructor || 'Shadab Sir'}</strong>
+                            <div className="text-muted">{item.roomNo || 'Google Meet Room #01'}</div>
                           </div>
                         </td>
                         <td>
-                          <span className={`card-status-pill ${item.badgeClass}`}>
-                            {item.isLive && <span className="live-dot-mini" />}
-                            {item.isLive ? 'LIVE' : item.badgeClass === 'badge-replay' ? 'Replay' : 'Upcoming'}
-                          </span>
+                          {item.isLive || item.status === 'live' ? (
+                            <span className="card-status-pill badge-live">
+                              <span className="live-dot-mini" />
+                              LIVE NOW
+                            </span>
+                          ) : item.status === 'completed' ? (
+                            <span className="card-status-pill badge-completed" style={{ background: '#DCFCE7', color: '#166534' }}>
+                              Completed
+                            </span>
+                          ) : item.status === 'cancelled' ? (
+                            <span className="card-status-pill badge-cancelled" style={{ background: '#FEE2E2', color: '#991B1B' }}>
+                              Cancelled
+                            </span>
+                          ) : (
+                            <span className="card-status-pill badge-upcoming">
+                              Upcoming
+                            </span>
+                          )}
                         </td>
                         <td style={{ textAlign: 'right' }}>
                           <div className="flex items-center justify-end gap-1">
-                            <button 
-                              type="button"
-                              className={`btn-tbl-action ${item.isLive ? 'tbl-stop' : 'tbl-start'}`}
-                              onClick={() => {
-                                if (onToggleLiveOnlineClass) onToggleLiveOnlineClass(item.id);
-                              }}
-                              title={item.isLive ? "Stop live" : "Start live"}
-                            >
-                              {item.isLive ? <Square size={12} /> : <Radio size={12} />}
-                              <span>{item.isLive ? 'Stop' : 'Go Live'}</span>
-                            </button>
+                            {(!item.isLive && item.status !== 'completed' && item.status !== 'cancelled') && (
+                              <button 
+                                type="button"
+                                className="btn-tbl-action tbl-start"
+                                onClick={() => handleStartClassAction(item)}
+                                title="Start Class on Google Meet"
+                              >
+                                <Play size={12} fill="currentColor" />
+                                <span>Start</span>
+                              </button>
+                            )}
 
-                            <button 
-                              type="button" 
-                              className="btn-tbl-action tbl-enter"
-                              onClick={() => {
-                                if (onJoinClassAsAdmin) onJoinClassAsAdmin(item.id);
-                                else setCurrentTab('online-classes');
-                              }}
-                              title="View Class Page"
-                            >
-                              <Eye size={12} />
-                            </button>
+                            {(item.isLive || item.status === 'live') && (
+                              <>
+                                <a 
+                                  href={item.meetUrl || `https://meet.google.com/${item.meetCode}`}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="btn-tbl-action tbl-enter"
+                                  title="Enter Google Meet call as Host"
+                                >
+                                  <Video size={12} />
+                                  <span>Meet</span>
+                                </a>
+                                <button 
+                                  type="button"
+                                  className="btn-tbl-action tbl-stop"
+                                  onClick={() => handleCompleteClassAction(item.id)}
+                                  title="Complete this session"
+                                >
+                                  <CheckCircle2 size={12} />
+                                  <span>Complete</span>
+                                </button>
+                              </>
+                            )}
 
                             <button 
                               type="button" 
                               className="btn-tbl-action"
-                              onClick={() => handleCopyClassInvite(item)}
-                              title="Copy Invite"
+                              onClick={() => setEditingClass({ ...item })}
+                              title="Edit Class"
                             >
-                              <Copy size={12} />
+                              <Edit3 size={12} />
                             </button>
+
+                            {item.status !== 'cancelled' && (
+                              <button 
+                                type="button" 
+                                className="btn-tbl-action text-amber-600"
+                                onClick={() => {
+                                  setCancelModalClass(item);
+                                  setCancelReasonText('');
+                                }}
+                                title="Cancel Class"
+                              >
+                                <XCircle size={12} />
+                              </button>
+                            )}
 
                             <button 
                               type="button" 
@@ -5289,7 +5789,7 @@ export default function AdminPortalView({
         </div>
       )}
 
-      {/* MODAL 4: Schedule / Create New Live Online Zoom Class */}
+      {/* MODAL 4: Schedule / Create New Live Online Google Meet Class */}
       {newClassModalOpen && (
         <div className="modal-backdrop">
           <div className="saas-card modal-window admin-modal-wide">
@@ -5303,7 +5803,7 @@ export default function AdminPortalView({
                       <Video size={13} />
                       <span>Live Classroom Studio</span>
                     </span>
-                    <h3 className="modal-title">Schedule / Launch Live Online Class on Zoom</h3>
+                    <h3 className="modal-title">Schedule / Launch Live Online Class on Google Meet</h3>
                   </div>
                   <p className="modal-subtitle">
                     Create or go live with a real-time shorthand & dictation session. This class is instantly synced and displayed to all students with 1-click joining.
@@ -5363,6 +5863,60 @@ export default function AdminPortalView({
                     onChange={(e) => setNewClassTitle(e.target.value)}
                     required
                   />
+                </div>
+
+                {/* Course Selection */}
+                <div className="form-group-field">
+                  <label className="field-label">Target Course (Enrolled candidates will see this class) *</label>
+                  <CustomSelect 
+                    value={newClassCourseId}
+                    onChange={(val) => {
+                      setNewClassCourseId(val);
+                      const found = (propCourses || INITIAL_ACADEMY_COURSES).find(c => c.id === val);
+                      if (found) setNewClassCourseName(found.title || found.name);
+                    }}
+                    options={(propCourses && propCourses.length > 0 ? propCourses : INITIAL_ACADEMY_COURSES).map(c => ({
+                      value: c.id,
+                      label: `${c.title || c.name} (${c.level || 'Enrolled Course'})`
+                    }))}
+                  />
+                </div>
+
+                {/* Date, Start Time & Duration */}
+                <div className="grid-3-fields">
+                  <div className="form-group-field">
+                    <label className="field-label">Scheduled Date *</label>
+                    <input 
+                      type="date" 
+                      className="field-input font-mono" 
+                      value={newClassScheduledDate}
+                      onChange={(e) => setNewClassScheduledDate(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="form-group-field">
+                    <label className="field-label">Starting Time *</label>
+                    <input 
+                      type="text" 
+                      className="field-input font-mono" 
+                      placeholder="e.g. 8:30 AM"
+                      value={newClassStartTime}
+                      onChange={(e) => setNewClassStartTime(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="form-group-field">
+                    <label className="field-label">Duration (Minutes) *</label>
+                    <input 
+                      type="number" 
+                      min="15"
+                      step="15"
+                      className="field-input font-mono" 
+                      value={newClassDurationMins}
+                      onChange={(e) => setNewClassDurationMins(e.target.value)}
+                      required
+                    />
+                  </div>
                 </div>
 
                 {/* Row 2: Shift, Time, Speed Tier, Instructor */}
@@ -5426,27 +5980,39 @@ export default function AdminPortalView({
                   </div>
                 </div>
 
-                {/* Row 4: Zoom Credentials & Live Status Switch */}
+                {/* Row 4: Google Meet Link & Live Status Switch */}
                 <div className="dictation-section-block" style={{ background: '#f0fdf4', borderColor: '#bbf7d0' }}>
                   <div className="section-block-header">
                     <div className="header-left">
-                      <span className="section-step-num" style={{ background: '#16a34a' }}>Zoom Sync</span>
+                      <span className="section-step-num" style={{ background: '#0f766e' }}>Google Meet</span>
                       <div>
-                        <h4 className="section-block-title" style={{ color: '#14532d' }}>Zoom Meeting Credentials & Live Broadcast Status *</h4>
-                        <p className="section-block-desc" style={{ color: '#166534' }}>
-                          Students can join automatically via direct link, or copy the Meeting ID & Passcode.
+                        <h4 className="section-block-title" style={{ color: '#134e4a' }}>Google Meet Link & Live Broadcast Status *</h4>
+                        <p className="section-block-desc" style={{ color: '#115e59' }}>
+                          Enter your Google Meet URL or 10-letter meeting code. Candidates can join with 1-click without downloading any apps.
                         </p>
                       </div>
                     </div>
                   </div>
 
                   <div className="grid-3-fields" style={{ marginTop: '0.75rem' }}>
-                    <div className="form-group-field">
-                      <label className="field-label" style={{ color: '#14532d' }}>Zoom Meeting ID *</label>
+                    <div className="form-group-field" style={{ gridColumn: 'span 2' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                        <label className="field-label" style={{ color: '#134e4a', margin: 0 }}>Google Meet URL or Meeting Code *</label>
+                        <a 
+                          href="https://meet.google.com/new" 
+                          target="_blank" 
+                          rel="noreferrer" 
+                          style={{ fontSize: '0.72rem', color: '#0f766e', fontWeight: 700, textDecoration: 'underline', display: 'inline-flex', alignItems: 'center', gap: '3px' }}
+                          title="Open Google Meet in your browser to start instant room with stenoplus.in@gmail.com"
+                        >
+                          <ExternalLink size={10} />
+                          <span>Generate on Meet (stenoplus.in@gmail.com)</span>
+                        </a>
+                      </div>
                       <input 
                         type="text" 
                         className="field-input font-mono font-bold" 
-                        placeholder="842 9104 2281"
+                        placeholder="https://meet.google.com/xxx-yyyy-zzz or xxx-yyyy-zzz"
                         value={newClassMeetingId}
                         onChange={(e) => setNewClassMeetingId(e.target.value)}
                         required
@@ -5454,23 +6020,11 @@ export default function AdminPortalView({
                     </div>
 
                     <div className="form-group-field">
-                      <label className="field-label" style={{ color: '#14532d' }}>Zoom Passcode *</label>
-                      <input 
-                        type="text" 
-                        className="field-input font-mono font-bold" 
-                        placeholder="GAYA80WPM"
-                        value={newClassPasscode}
-                        onChange={(e) => setNewClassPasscode(e.target.value)}
-                        required
-                      />
-                    </div>
-
-                    <div className="form-group-field">
-                      <label className="field-label" style={{ color: '#14532d' }}>Zoom Studio Room</label>
+                      <label className="field-label" style={{ color: '#134e4a' }}>Google Meet Room</label>
                       <input 
                         type="text" 
                         className="field-input" 
-                        placeholder="Zoom Room #01 (Studio Live)"
+                        placeholder="Google Meet Room #01 (Studio Live)"
                         value={newClassRoom}
                         onChange={(e) => setNewClassRoom(e.target.value)}
                       />
@@ -5487,7 +6041,7 @@ export default function AdminPortalView({
                         </div>
                         <div style={{ fontSize: '0.75rem', color: '#78716c' }}>
                           {newClassIsLive 
-                            ? '🔴 Marked LIVE NOW — shows pulsing red badge and enables 1-click In-Browser Video Studio.' 
+                            ? '🔴 Marked LIVE NOW — shows pulsing red badge and enables 1-click Google Meet launch.' 
                             : '⏳ Scheduled for Upcoming — candidates see start time and can bookmark.'}
                         </div>
                       </div>
@@ -5562,7 +6116,7 @@ export default function AdminPortalView({
                     <label className="field-label">Reference Dictation Passage Text</label>
                     <textarea 
                       className="transcript-textarea"
-                      placeholder="Paste or type the master dictation passage to be spoken on Zoom..."
+                      placeholder="Paste or type the master dictation passage to be spoken on Google Meet..."
                       rows={4}
                       style={{ minHeight: '100px' }}
                       value={newClassPassage}
@@ -5581,9 +6135,9 @@ export default function AdminPortalView({
                   </div>
                   <div className="sync-divider" style={{ background: 'rgba(0, 0, 0, 0.08)' }} />
                   <div className="sync-col">
-                    <span className="sync-label" style={{ color: '#57534e' }}>Zoom Direct Link</span>
+                    <span className="sync-label" style={{ color: '#57534e' }}>Google Meet Link</span>
                     <span className="sync-status is-ready font-mono" style={{ color: '#0F172A', fontSize: '0.75rem' }}>
-                      zoom.us/j/{newClassMeetingId.replace(/\s+/g, '')}
+                      {newClassMeetingId ? (newClassMeetingId.startsWith('http') ? newClassMeetingId : `meet.google.com/${newClassMeetingId}`) : 'meet.google.com/gsc-steno-live'}
                     </span>
                   </div>
                   <div className="sync-divider" style={{ background: 'rgba(0, 0, 0, 0.08)' }} />
@@ -5600,7 +6154,7 @@ export default function AdminPortalView({
               <div className="admin-modal-footer-sticky">
                 <span className="footer-hint-text">
                   <ShieldCheck size={14} style={{ color: '#10b981' }} />
-                  <span>Verified Zoom Classroom • Students can join via In-Browser Studio or Zoom Desktop App</span>
+                  <span>Google Workspace Classroom • Students can join via In-Browser Studio or Google Meet App</span>
                 </span>
 
                 <div className="admin-modal-footer-actions">
@@ -5640,7 +6194,7 @@ export default function AdminPortalView({
               <div className="modal-header">
                 <div>
                   <h3 className="modal-title">Edit Online Class Settings</h3>
-                  <p className="modal-subtitle">Update schedule time, Zoom credentials, or today's dictation topic.</p>
+                  <p className="modal-subtitle">Update schedule time, Google Meet link, or today's dictation topic.</p>
                 </div>
                 <button type="button" className="btn-modal-close" onClick={() => setEditingClass(null)}>
                   <X size={18} />
@@ -5656,6 +6210,75 @@ export default function AdminPortalView({
                     value={editingClass.title} 
                     onChange={(e) => setEditingClass({ ...editingClass, title: e.target.value })} 
                     required 
+                  />
+                </div>
+
+                <div className="form-group-field">
+                  <label className="field-label">Target Course</label>
+                  <CustomSelect 
+                    value={editingClass.courseId || 'course-ssc'}
+                    onChange={(val) => {
+                      const found = (propCourses || INITIAL_ACADEMY_COURSES).find(c => c.id === val);
+                      setEditingClass({
+                        ...editingClass,
+                        courseId: val,
+                        courseName: found ? (found.title || found.name) : editingClass.courseName
+                      });
+                    }}
+                    options={(propCourses && propCourses.length > 0 ? propCourses : INITIAL_ACADEMY_COURSES).map(c => ({
+                      value: c.id,
+                      label: `${c.title || c.name}`
+                    }))}
+                  />
+                </div>
+
+                <div className="grid-3-fields">
+                  <div className="form-group-field">
+                    <label className="field-label">Scheduled Date</label>
+                    <input 
+                      type="date" 
+                      className="field-input font-mono" 
+                      value={editingClass.scheduledDate || ''} 
+                      onChange={(e) => setEditingClass({ ...editingClass, scheduledDate: e.target.value })} 
+                    />
+                  </div>
+                  <div className="form-group-field">
+                    <label className="field-label">Start Time</label>
+                    <input 
+                      type="text" 
+                      className="field-input font-mono" 
+                      value={editingClass.startTime || editingClass.time || '8:30 AM'} 
+                      onChange={(e) => setEditingClass({ ...editingClass, startTime: e.target.value })} 
+                    />
+                  </div>
+                  <div className="form-group-field">
+                    <label className="field-label">Duration (Mins)</label>
+                    <input 
+                      type="number" 
+                      min="15"
+                      step="15"
+                      className="field-input font-mono" 
+                      value={editingClass.durationMins || 60} 
+                      onChange={(e) => setEditingClass({ ...editingClass, durationMins: e.target.value })} 
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group-field">
+                  <label className="field-label">Class Status</label>
+                  <CustomSelect 
+                    value={editingClass.status || (editingClass.isLive ? 'live' : 'upcoming')}
+                    onChange={(val) => setEditingClass({
+                      ...editingClass,
+                      status: val,
+                      isLive: val === 'live'
+                    })}
+                    options={[
+                      { value: 'upcoming', label: '⏳ Upcoming (Scheduled)' },
+                      { value: 'live', label: '🔴 Live Now (Active Broadcast)' },
+                      { value: 'completed', label: '✅ Completed (Archived Session)' },
+                      { value: 'cancelled', label: '❌ Cancelled' }
+                    ]}
                   />
                 </div>
 
@@ -5701,38 +6324,36 @@ export default function AdminPortalView({
                   </div>
                 </div>
 
-                <div className="grid-3-fields">
+                <div className="grid-2-fields">
                   <div className="form-group-field">
-                    <label className="field-label">Zoom Meeting ID *</label>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                      <label className="field-label" style={{ margin: 0 }}>Google Meet URL or Code *</label>
+                      <a 
+                        href="https://meet.google.com/new" 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        style={{ fontSize: '0.72rem', color: '#0f766e', fontWeight: 700, textDecoration: 'underline', display: 'inline-flex', alignItems: 'center', gap: '3px' }}
+                        title="Open Google Meet in your browser to start instant room with stenoplus.in@gmail.com"
+                      >
+                        <ExternalLink size={10} />
+                        <span>Generate on Meet (stenoplus.in@gmail.com)</span>
+                      </a>
+                    </div>
                     <input 
                       type="text" 
                       className="field-input font-mono font-bold" 
                       value={editingClass.zoomMeetingId} 
                       onChange={(e) => {
-                        const clean = e.target.value.replace(/\s+/g, '');
+                        const val = e.target.value.trim();
+                        const url = val.startsWith('http') ? val : `https://meet.google.com/${val.replace(/\s+/g, '-').toLowerCase()}`;
+                        const code = url.replace(/^https?:\/\/meet\.google\.com\//i, '').split('?')[0] || val;
                         setEditingClass({ 
                           ...editingClass, 
-                          zoomMeetingId: e.target.value,
-                          zoomDirectUrl: `https://zoom.us/j/${clean}?pwd=${editingClass.zoomPasscode}`,
-                          zoomAppUrl: `zoommtg://zoom.us/join?confno=${clean}&pwd=${editingClass.zoomPasscode}`
-                        });
-                      }} 
-                      required 
-                    />
-                  </div>
-                  <div className="form-group-field">
-                    <label className="field-label">Zoom Passcode *</label>
-                    <input 
-                      type="text" 
-                      className="field-input font-mono font-bold" 
-                      value={editingClass.zoomPasscode} 
-                      onChange={(e) => {
-                        const clean = editingClass.zoomMeetingId.replace(/\s+/g, '');
-                        setEditingClass({ 
-                          ...editingClass, 
-                          zoomPasscode: e.target.value,
-                          zoomDirectUrl: `https://zoom.us/j/${clean}?pwd=${e.target.value}`,
-                          zoomAppUrl: `zoommtg://zoom.us/join?confno=${clean}&pwd=${e.target.value}`
+                          zoomMeetingId: val,
+                          meetUrl: url,
+                          meetCode: code,
+                          googleMeetUrl: url,
+                          zoomDirectUrl: url
                         });
                       }} 
                       required 
@@ -5786,6 +6407,63 @@ export default function AdminPortalView({
                 </div>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: Cancel Live Class Confirmation Modal */}
+      {cancelModalClass && (
+        <div className="modal-backdrop">
+          <div className="saas-card modal-window" style={{ maxWidth: '480px' }}>
+            <div className="modal-header" style={{ borderBottom: '1px solid #FEE2E2', background: '#FEF2F2' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#FCA5A5', color: '#991B1B', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <XCircle size={18} />
+                </div>
+                <div>
+                  <h3 className="modal-title" style={{ color: '#991B1B' }}>Cancel Live Class</h3>
+                  <p className="modal-subtitle" style={{ color: '#B91C1C' }}>Enrolled students will be alerted on their dashboard</p>
+                </div>
+              </div>
+              <button type="button" className="btn-modal-close" onClick={() => setCancelModalClass(null)}>
+                <X size={18} />
+              </button>
+            </div>
+
+            <div className="modal-body" style={{ padding: '1.25rem' }}>
+              <p style={{ margin: '0 0 1rem', fontSize: '0.88rem', color: '#334155', lineHeight: 1.4 }}>
+                Are you sure you want to cancel <strong>"{cancelModalClass.title}"</strong>?
+              </p>
+
+              <div className="form-group-field">
+                <label className="field-label">Reason for Cancellation (Shown to Students)</label>
+                <textarea 
+                  className="field-input"
+                  rows={3}
+                  placeholder="e.g. Class postponed due to technical schedule adjustment. Next session tomorrow at 8:30 AM."
+                  value={cancelReasonText}
+                  onChange={(e) => setCancelReasonText(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="modal-footer" style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px', padding: '1rem 1.25rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+              <button 
+                type="button" 
+                className="btn btn-secondary" 
+                onClick={() => setCancelModalClass(null)}
+              >
+                Keep Scheduled
+              </button>
+              <button 
+                type="button" 
+                className="btn" 
+                style={{ background: '#DC2626', color: '#FFFFFF', fontWeight: 700 }}
+                onClick={handleConfirmCancelClass}
+              >
+                Confirm Cancellation
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -5929,12 +6607,12 @@ export default function AdminPortalView({
                   <div className="field-group">
                     <label className="field-label">
                       <span>Delivery Mode</span>
-                      <span className="field-sub">Offline Center or Online Live Zoom</span>
+                      <span className="field-sub">Offline Center or Online Live Google Meet</span>
                     </label>
                     <input 
                       type="text" 
                       className="field-input" 
-                      placeholder="e.g. Online Live Zoom + Audio Lab Access"
+                      placeholder="e.g. Online Live Google Meet + Audio Lab Access"
                       value={courseForm.mode}
                       onChange={(e) => setCourseForm({ ...courseForm, mode: e.target.value })}
                     />

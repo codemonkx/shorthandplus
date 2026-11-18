@@ -62,16 +62,18 @@ export default function Navbar({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Nav Items: Home, Courses, About
+  // Nav Items: Home, Courses, Batches & Live, About
   const navItems = [
     { id: 'landing', label: 'Home' },
     { id: 'courses', label: 'Courses' },
+    { id: 'classes', label: 'Batches & Live' },
     { id: 'about', label: 'About' },
   ];
 
   const isNavActive = (id) => {
     if (id === 'landing') return currentTab === 'landing';
     if (id === 'courses') return currentTab === 'courses' || currentTab === 'pricing';
+    if (id === 'classes') return currentTab === 'classes';
     if (id === 'about') return currentTab === 'about';
     return currentTab === id;
   };
@@ -290,7 +292,7 @@ export default function Navbar({
                       onClick={() => handleNavClick('online-classes')}
                     >
                       <Video size={15} className="text-rose-600" />
-                      <span>Live Zoom Online Class</span>
+                      <span>Live Google Meet Class</span>
                     </button>
 
                     <button 

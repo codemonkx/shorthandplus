@@ -17,13 +17,24 @@ import { generateCandidateDossierPdf } from '../utils/pdfGenerator';
 import { evaluateTranscription } from '../utils/diffEvaluation';
 
 export default function EvaluationResult({ 
-  submission, 
+  submission = {}, 
   user,
   onRetake, 
   onBackToDashboard, 
   onBackToTests 
 }) {
-  const { test, typedText, timeTakenSecs, backspaceCount, tabSwitchWarnings } = submission;
+  const safeSubmission = submission || {};
+  const test = safeSubmission.test || { 
+    id: 'sample',
+    title: 'Exam Practice Assessment', 
+    passageText: 'The learned counsel appearing on behalf of the appellant has contended before this Court that the findings recorded by the High Court are contrary to the evidence on record.', 
+    speed: 80,
+    category: 'SSC & High Court'
+  };
+  const typedText = safeSubmission.typedText || '';
+  const timeTakenSecs = safeSubmission.timeTakenSecs || 60;
+  const backspaceCount = safeSubmission.backspaceCount || 0;
+  const tabSwitchWarnings = safeSubmission.tabSwitchWarnings || 0;
   const [filterMode, setFilterMode] = useState('all');
   const [activeTab, setActiveTab] = useState('diff');
 
@@ -48,6 +59,8 @@ export default function EvaluationResult({
     netWpm,
     isQualified
   } = evalMetrics;
+
+  const missingCount = halfMistakes || 0;
 
   useEffect(() => {
     if (accuracy >= 80) {

@@ -557,7 +557,8 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     color: '#0F172A',
                     lineHeight: 1.35,
                     margin: '0 0 0.5rem',
-                    letterSpacing: '-0.015em'
+                    letterSpacing: '-0.015em',
+                    minHeight: '2.8rem'
                   }}>
                     {course.title}
                   </h3>
@@ -565,7 +566,12 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                     fontSize: '0.88rem',
                     color: '#64748B',
                     lineHeight: 1.5,
-                    margin: '0 0 1rem'
+                    margin: '0 0 1rem',
+                    minHeight: '3.9rem',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 3,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden'
                   }}>
                     {course.description}
                   </p>

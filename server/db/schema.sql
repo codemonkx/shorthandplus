@@ -182,22 +182,29 @@ CREATE TABLE IF NOT EXISTS assessment_sessions (
 CREATE INDEX IF NOT EXISTS idx_assessment_sessions_user_test ON assessment_sessions(user_id, test_id);
 CREATE INDEX IF NOT EXISTS idx_assessment_sessions_status ON assessment_sessions(status);
 
--- 8. LIVE CLASSES TABLE (Live Zoom Sessions with Protected Credentials)
+-- 8. LIVE CLASSES TABLE (Live Google Meet Sessions with Course Access Control)
 CREATE TABLE IF NOT EXISTS live_classes (
   id VARCHAR(100) PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
+  course_id VARCHAR(100),
+  course_name VARCHAR(255),
+  scheduled_date VARCHAR(50),
+  start_time VARCHAR(50),
+  duration_mins INTEGER DEFAULT 60,
   shift VARCHAR(50),
   time VARCHAR(100),
-  instructor VARCHAR(100),
-  instructor_role VARCHAR(100),
+  instructor VARCHAR(100) DEFAULT 'Shadab Sir',
+  instructor_role VARCHAR(100) DEFAULT 'Faculty Director',
   speed VARCHAR(50),
-  course_id VARCHAR(100),
   attendees INTEGER DEFAULT 100,
+  status VARCHAR(50) DEFAULT 'upcoming', -- 'upcoming' | 'live' | 'completed' | 'cancelled'
   is_live INTEGER DEFAULT 0,
   tag VARCHAR(50),
   badge_class VARCHAR(50),
-  zoom_meeting_id VARCHAR(100) NOT NULL,
-  zoom_passcode VARCHAR(100) NOT NULL,
+  meet_url TEXT NOT NULL,
+  meet_code VARCHAR(100),
+  zoom_meeting_id VARCHAR(100),
+  zoom_passcode VARCHAR(100),
   zoom_direct_url TEXT,
   zoom_app_url TEXT,
   zoom_web_url TEXT,
@@ -207,6 +214,7 @@ CREATE TABLE IF NOT EXISTS live_classes (
   mode VARCHAR(50),
   passage_snippet TEXT,
   key_outlines TEXT,
+  cancelled_reason TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -220,6 +228,8 @@ CREATE TABLE IF NOT EXISTS recorded_classes (
   speed VARCHAR(50),
   duration VARCHAR(50),
   course_id VARCHAR(100),
+  meet_url TEXT,
+  meet_code VARCHAR(100),
   zoom_meeting_id VARCHAR(100),
   zoom_passcode VARCHAR(100),
   zoom_direct_url TEXT,

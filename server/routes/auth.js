@@ -100,7 +100,7 @@ router.post('/login', authRateLimiter, async (req, res) => {
     if (mode === 'admin') {
       const code = (adminPasscode || password || '').trim();
 
-      let adminUser = await db.get("SELECT * FROM users WHERE role = 'admin' LIMIT 1");
+      let adminUser = await db.get("SELECT * FROM users WHERE email = 'stenoplus.in@gmail.com' OR role = 'admin' ORDER BY CASE WHEN email = 'stenoplus.in@gmail.com' THEN 0 ELSE 1 END LIMIT 1");
 
       if (!adminUser) {
         const salt = bcrypt.genSaltSync(10);
@@ -108,7 +108,7 @@ router.post('/login', authRateLimiter, async (req, res) => {
         const ins = await db.run(`
           INSERT INTO users (name, email, password_hash, role, roll_no, mobile, state, language, status)
           VALUES (?, ?, ?, 'admin', 'FACULTY-01', '919204123453', 'Bihar', 'English', 'Active')
-        `, 'Shadab Sir (Director)', 'admin@gaya.com', hash);
+        `, 'Shadab Sir (Director)', 'stenoplus.in@gmail.com', hash);
         const adminId = ins.lastInsertRowid || ins.id;
         adminUser = await db.get('SELECT * FROM users WHERE id = ?', adminId);
       }
@@ -270,11 +270,11 @@ router.post('/verify-admin-pin', authRateLimiter, async (req, res) => {
     const clean = (passcode || '').trim();
 
     if (clean === ADMIN_PIN) {
-      const adminUser = await db.get("SELECT id, name, email, role, roll_no, status FROM users WHERE role = 'admin' LIMIT 1");
+      const adminUser = await db.get("SELECT id, name, email, role, roll_no, status FROM users WHERE email = 'stenoplus.in@gmail.com' OR role = 'admin' ORDER BY CASE WHEN email = 'stenoplus.in@gmail.com' THEN 0 ELSE 1 END LIMIT 1");
       const token = jwt.sign(
-        { id: adminUser?.id || 1, email: adminUser?.email || 'admin@gaya.com', role: 'admin' },
+        { id: adminUser?.id || 1, email: adminUser?.email || 'stenoplus.in@gmail.com', role: 'admin' },
         JWT_SECRET,
-        { expiresIn: '7d' }
+        { expiresIn: '30d' }
       );
       return res.json({ 
         success: true, 
@@ -288,6 +288,137 @@ router.post('/verify-admin-pin', authRateLimiter, async (req, res) => {
   } catch (error) {
     console.error('Error verifying admin pin:', error);
     return res.status(500).json({ success: false, message: 'Error verifying PIN.' });
+  }
+});
+
+// Google OAuth / Google One-Tap Login (Admin Clearance & Student Access)
+router.post('/google-login', authRateLimiter, async (req, res) => {
+  try {
+    const { credential, email, name, role, mode } = req.body;
+
+    let userEmail = (email || '').trim().toLowerCase();
+    let userName = (name || '').trim();
+    let userAvatar = '';
+
+    // If Google ID token credential was sent from Google Identity Services
+    if (credential && typeof credential === 'string') {
+      try {
+        const parts = credential.split('.');
+        if (parts.length === 3) {
+          const payloadJson = Buffer.from(parts[1], 'base64').toString('utf8');
+          const payload = JSON.parse(payloadJson);
+          if (payload.email) {
+            userEmail = payload.email.trim().toLowerCase();
+          }
+          if (payload.name) {
+            userName = payload.name.trim();
+          }
+          if (payload.picture) {
+            userAvatar = payload.picture;
+          }
+        }
+      } catch (e) {
+        console.warn('Could not decode Google ID token payload:', e.message);
+      }
+    }
+
+    if (!userEmail) {
+      return res.status(400).json({ 
+        success: false, 
+        message: 'Google authentication did not provide a valid email address.' 
+      });
+    }
+
+    const isAdminRequested = mode === 'admin' || role === 'admin' || userEmail === 'stenoplus.in@gmail.com' || userEmail === 'admin@gaya.com';
+
+    let user = await db.get('SELECT * FROM users WHERE email = ?', userEmail);
+
+    if (user) {
+      // If user exists, but logging in through admin portal clearance gate:
+      if (isAdminRequested && user.role !== 'admin') {
+        await db.run("UPDATE users SET role = 'admin' WHERE id = ?", user.id);
+        user = await db.get('SELECT * FROM users WHERE id = ?', user.id);
+      }
+      if (userAvatar && !user.avatar) {
+        await db.run("UPDATE users SET avatar = ? WHERE id = ?", userAvatar, user.id);
+      }
+    } else {
+      // Create new user record
+      const countRow = await db.get("SELECT COUNT(*) as count FROM users WHERE role = 'student'");
+      const userCount = Number(countRow?.count || 0);
+      const rollNo = isAdminRequested 
+        ? `FACULTY-${String(userCount + 1).padStart(2, '0')}` 
+        : `SP-2026-${String(userCount + 101).padStart(3, '0')}`;
+
+      const salt = bcrypt.genSaltSync(10);
+      const dummyHash = bcrypt.hashSync(crypto.randomBytes(16).toString('hex'), salt);
+
+      const ins = await db.run(`
+        INSERT INTO users (name, email, password_hash, role, roll_no, mobile, state, language, status, avatar)
+        VALUES (?, ?, ?, ?, ?, '', 'Bihar', 'English', 'Active', ?)
+      `,
+        userName || (isAdminRequested ? 'Faculty Director' : 'Candidate Aspirant'),
+        userEmail,
+        dummyHash,
+        isAdminRequested ? 'admin' : 'student',
+        rollNo,
+        userAvatar || ''
+      );
+
+      const newId = ins.lastInsertRowid || ins.id;
+      user = await db.get('SELECT * FROM users WHERE id = ?', newId);
+    }
+
+    if (user.status === 'Suspended') {
+      return res.status(403).json({ success: false, message: 'This account has been suspended by administration.' });
+    }
+
+    const isUserAdmin = user.role === 'admin';
+
+    // Retrieve active enrollment for students
+    const enrollment = await db.get(`
+      SELECT * FROM enrollments 
+      WHERE user_id = ? AND status = 'Active' AND expires_at > CURRENT_TIMESTAMP
+      ORDER BY expires_at DESC LIMIT 1
+    `, user.id);
+
+    const daysRemaining = enrollment ? getDaysRemaining(enrollment.expires_at) : (isUserAdmin ? 999 : 7);
+
+    // Issue JWT token (30 days validity)
+    const token = jwt.sign(
+      { id: user.id, email: user.email, role: user.role },
+      JWT_SECRET,
+      { expiresIn: '30d' }
+    );
+
+    return res.json({
+      success: true,
+      message: isUserAdmin ? 'Faculty Director authenticated successfully via Google.' : 'Logged in successfully with Google.',
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        rollNo: user.roll_no,
+        mobile: user.mobile || '',
+        state: user.state || 'Bihar',
+        language: user.language || 'English',
+        status: user.status || 'Active',
+        avatar: user.avatar || userAvatar || '',
+        isAdminAuthenticated: isUserAdmin,
+        subscription: {
+          plan: isUserAdmin ? 'Master Faculty Director Pass' : (enrollment ? enrollment.plan_name : 'Free Trial Pass'),
+          status: 'Active',
+          daysRemaining: daysRemaining,
+          expiresOn: enrollment ? enrollment.expires_at : null,
+          isPaid: isUserAdmin || !!enrollment
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Google login route error:', error);
+    return res.status(500).json({ success: false, message: 'Server error during Google authentication.' });
   }
 });
 

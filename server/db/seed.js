@@ -20,11 +20,11 @@ export async function seedDatabase() {
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
       `;
 
-      // Admin Director
+      // Admin Director (stenoplus.in@gmail.com)
       await db.run(
         insertUserSql,
         'Shadab Sir (Director)',
-        'admin@gaya.com',
+        'stenoplus.in@gmail.com',
         adminPassHash,
         'admin',
         'FACULTY-01',
@@ -528,8 +528,8 @@ export async function seedDatabase() {
 
       // 6. Seed Live Classes
       const insertLiveClassSql = `
-        INSERT INTO live_classes (id, title, shift, time, instructor, instructor_role, speed, course_id, attendees, is_live, tag, badge_class, zoom_meeting_id, zoom_passcode, zoom_direct_url, zoom_app_url, zoom_web_url, description, today_topic, room_no, mode)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO live_classes (id, title, shift, time, instructor, instructor_role, speed, course_id, attendees, is_live, tag, badge_class, meet_url, meet_code, zoom_meeting_id, zoom_passcode, zoom_direct_url, zoom_app_url, zoom_web_url, description, today_topic, room_no, mode)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `;
 
       await db.run(
@@ -544,17 +544,19 @@ export async function seedDatabase() {
         'course-ssc',
         142,
         1,
-        '🔴 ZOOM LIVE CALL ACTIVE',
+        '🔴 GOOGLE MEET LIVE CALL ACTIVE',
         'badge-live',
-        '842 9104 2281',
-        'GAYA80WPM',
-        'https://zoom.us/j/84291042281?pwd=GAYA80WPM',
-        'zoommtg://zoom.us/join?confno=84291042281&pwd=GAYA80WPM',
-        'https://app.zoom.us/wc/84291042281/join',
-        'Interactive Zoom Video Call: Real-time 5-minute parliamentary dictation, instant stroke correction on digital whiteboard, live audio feedback, and strict transcription grading.',
+        'https://meet.google.com/new',
+        'stenoplus-live',
+        'stenoplus-live',
+        'OPEN',
+        'https://meet.google.com/new',
+        'https://meet.google.com/new',
+        'https://meet.google.com/new',
+        'Interactive Google Meet Video Call: Real-time 5-minute parliamentary dictation, instant stroke correction on digital whiteboard, live audio feedback, and strict transcription grading.',
         'Parliamentary Motion on State Infrastructure & Expenditure Audit',
-        'Zoom Room #01 (Studio Live)',
-        'Zoom Live Call + Shorthand Whiteboard + Typing Lab'
+        'Google Meet Room #01 (Studio Live)',
+        'Google Meet Live Call + Shorthand Whiteboard + Typing Lab'
       );
 
       await db.run(
@@ -569,17 +571,19 @@ export async function seedDatabase() {
         'course-court',
         115,
         0,
-        'STARTS AT 3:00 PM ON ZOOM',
+        'STARTS AT 3:00 PM ON GOOGLE MEET',
         'badge-upcoming',
-        '879 3341 5520',
-        'COURT100',
-        'https://zoom.us/j/87933415520?pwd=COURT100',
-        'zoommtg://zoom.us/join?confno=87933415520&pwd=COURT100',
-        'https://app.zoom.us/wc/87933415520/join',
-        'Authentic criminal appeals, civil revisions, and high-frequency legal Latin maxims calibrated strictly for High Court exams with live Zoom courtroom simulation.',
+        'https://meet.google.com/new',
+        'stenoplus-court',
+        'stenoplus-court',
+        'OPEN',
+        'https://meet.google.com/new',
+        'https://meet.google.com/new',
+        'https://meet.google.com/new',
+        'Authentic criminal appeals, civil revisions, and high-frequency legal Latin maxims calibrated strictly for High Court exams with live Google Meet courtroom simulation.',
         'Patna High Court Cr. Appeal 412/2025 Bench Dictation',
-        'Zoom Room #03 (Judicial Bench)',
-        'Live Zoom Video Call + Audio Vault'
+        'Google Meet Room #03 (Judicial Bench)',
+        'Live Google Meet Video Call + Audio Vault'
       );
 
       // 7. Seed Transactions
@@ -618,7 +622,7 @@ export async function seedDatabase() {
       );
       await db.run(
         insertAnnSql,
-        '🔴 SSC Stenographer Grade C & D 80 WPM live dictation is broadcasting now in Zoom Room #01. Students may join.',
+        '🔴 SSC Stenographer Grade C & D 80 WPM live dictation is broadcasting now on Google Meet Room #01. Students may join.',
         'Live Notice',
         'Live Now',
         'Broadcast banner for all online students.',
@@ -626,6 +630,137 @@ export async function seedDatabase() {
       );
 
       console.log('✅ Initial database seed completed successfully!');
+    }
+
+    // Ensure Faculty Director stenoplus.in@gmail.com is always registered and has admin role
+    const existingDirector = await db.get("SELECT id, role FROM users WHERE email = 'stenoplus.in@gmail.com'");
+    if (!existingDirector) {
+      const existingFaculty01 = await db.get("SELECT id FROM users WHERE roll_no = 'FACULTY-01'");
+      if (existingFaculty01) {
+        await db.run("UPDATE users SET email = 'stenoplus.in@gmail.com', name = 'Shadab Sir (Director)', role = 'admin' WHERE id = ?", existingFaculty01.id);
+        console.log('👑 Existing Faculty-01 updated to stenoplus.in@gmail.com.');
+      } else {
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync('admin', salt);
+        await db.run(`
+          INSERT INTO users (name, email, password_hash, role, roll_no, mobile, state, language, status)
+          VALUES (?, ?, ?, 'admin', 'FACULTY-01', '919204123453', 'Bihar', 'English', 'Active')
+        `, 'Shadab Sir (Director)', 'stenoplus.in@gmail.com', hash);
+        console.log('👑 Verified Faculty Director stenoplus.in@gmail.com registered.');
+      }
+    } else if (existingDirector.role !== 'admin') {
+      await db.run("UPDATE users SET role = 'admin' WHERE email = 'stenoplus.in@gmail.com'");
+    }
+
+    // Ensure initial live classes exist in the database
+    const classCountRow = await db.get('SELECT COUNT(*) as count FROM live_classes');
+    if (Number(classCountRow?.count || 0) === 0) {
+      console.log('🎥 Seeding initial Google Meet live classes into database...');
+      const insertLiveClassSql = `
+        INSERT INTO live_classes (id, title, shift, time, instructor, instructor_role, speed, course_id, attendees, is_live, status, tag, badge_class, meet_url, meet_code, zoom_meeting_id, zoom_passcode, zoom_direct_url, description, today_topic, room_no, mode)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `;
+      await db.run(
+        insertLiveClassSql,
+        'class-live-1',
+        'SSC Stenographer Grade C & D — 80 WPM Live Speed Dictation & Transcription Lab',
+        'Morning Core Batch',
+        '8:30 AM (60m)',
+        'Shadab Sir',
+        'Faculty Director • stenoplus.in@gmail.com',
+        '80 WPM Standard',
+        'course-ssc',
+        142,
+        1,
+        'live',
+        '🔴 GOOGLE MEET LIVE CALL ACTIVE',
+        'badge-live',
+        'https://meet.google.com/new',
+        'stenoplus-live',
+        'stenoplus-live',
+        'OPEN',
+        'https://meet.google.com/new',
+        'Interactive Google Meet Video Call: Real-time 5-minute parliamentary dictation, instant stroke correction on digital whiteboard, live audio feedback, and strict transcription grading.',
+        'Parliamentary Motion on State Infrastructure & Expenditure Audit',
+        'Google Meet Room #01 (Studio Live)',
+        'Google Meet Live Call + Shorthand Whiteboard + Typing Lab'
+      );
+      await db.run(
+        insertLiveClassSql,
+        'class-theory-2',
+        'Basic Pitman Shorthand Theory: Vowel Positions, Circles & Hook Formations',
+        'Morning Early Bird',
+        '6:00 AM (60m)',
+        'Shadab Sir',
+        'Faculty Director • stenoplus.in@gmail.com',
+        'Beginners (0 - 60 WPM)',
+        'course-pitman',
+        98,
+        0,
+        'completed',
+        'COMPLETED',
+        'badge-completed',
+        'https://meet.google.com/new',
+        'stenoplus-theory',
+        'stenoplus-theory',
+        'OPEN',
+        'https://meet.google.com/new',
+        'Comprehensive consonant joinings, light/heavy vowels, diphthongs, and initial R and L hooks with daily outline verification over Google Meet.',
+        'Chapter 14: Compound Consonants & Intersected Words',
+        'Google Meet Room #02 (Theory Hall)',
+        'Google Meet Recorded Session + Outline Check'
+      );
+      await db.run(
+        insertLiveClassSql,
+        'class-judiciary-3',
+        'High Court Judicial Speed Bench: Criminal Appeals & Judgment Phrases',
+        'Afternoon Judicial Series',
+        '3:00 PM (90m)',
+        'Shadab Sir',
+        'Faculty Director • stenoplus.in@gmail.com',
+        '100 WPM Judicial',
+        'course-court',
+        115,
+        0,
+        'upcoming',
+        'UPCOMING',
+        'badge-upcoming',
+        'https://meet.google.com/new',
+        'stenoplus-court',
+        'stenoplus-court',
+        'OPEN',
+        'https://meet.google.com/new',
+        'Authentic criminal appeals, civil revisions, and high-frequency legal Latin maxims calibrated strictly for High Court exams with live Google Meet courtroom simulation.',
+        'Patna High Court Cr. Appeal 412/2025 Bench Dictation',
+        'Google Meet Room #03 (Judicial Bench)',
+        'Live Google Meet Video Call + Audio Vault'
+      );
+      await db.run(
+        insertLiveClassSql,
+        'class-reporter-4',
+        'Parliament & Legislative Assembly Reporter 120+ WPM Elite Masterclass',
+        'Evening Executive Bench',
+        '5:30 PM (60m)',
+        'Shadab Sir',
+        'Faculty Director • stenoplus.in@gmail.com',
+        '120 - 140 WPM Elite',
+        'course-ssc',
+        64,
+        0,
+        'upcoming',
+        'UPCOMING',
+        'badge-upcoming',
+        'https://meet.google.com/new',
+        'stenoplus-reporter',
+        'stenoplus-reporter',
+        'OPEN',
+        'https://meet.google.com/new',
+        'Rapid speech phraseography, advanced parliamentary contractions, and high-speed multi-speaker debate capture conducted in exclusive Google Meet cohort.',
+        'Lok Sabha Finance Bill Clause-by-Clause Rapid Dictation',
+        'Google Meet Room #04 (Executive Chamber)',
+        'Elite Google Meet Live Call + Rapid Transcription'
+      );
+      console.log('✅ Verified initial live classes seeded.');
     }
   } catch (err) {
     console.error('Error during database seeding:', err);

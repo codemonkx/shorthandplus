@@ -16,6 +16,15 @@ export const ADMISSION_COURSES = [
   { value: 'English & Hindi Typing', label: '5. English & Hindi Typing' }
 ];
 
+const GoogleIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+  </svg>
+);
+
 export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab = 'student' }) {
   // authMode: 'student' | 'admin' | 'register' | 'forgot'
   const [authMode, setAuthMode] = useState(initialTab);
@@ -28,6 +37,73 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
   const [showPassword, setShowPassword] = useState(false);
   const [statusMsg, setStatusMsg] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Google Sign-In state
+  const [showGoogleChooser, setShowGoogleChooser] = useState(false);
+  const [googleCustomEmail, setGoogleCustomEmail] = useState('');
+  const [googleCustomName, setGoogleCustomName] = useState('');
+
+  const handleGoogleSignIn = async (selectedEmail = null, selectedName = null) => {
+    setIsSubmitting(true);
+    setStatusMsg(null);
+
+    // If real GIS client is loaded and VITE_GOOGLE_CLIENT_ID is configured
+    if (!selectedEmail && window.google?.accounts?.id && import.meta.env.VITE_GOOGLE_CLIENT_ID) {
+      window.google.accounts.id.initialize({
+        client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+        callback: async (response) => {
+          try {
+            const res = await api.auth.googleLogin({
+              credential: response.credential,
+              mode: authMode === 'admin' ? 'admin' : 'student'
+            });
+            if (res.token) setToken(res.token);
+            if (res.user?.role === 'admin') {
+              try { sessionStorage.setItem('shorthand_admin_authenticated', 'true'); } catch {}
+            }
+            confetti({ particleCount: 75, spread: 65, origin: { y: 0.55 }, colors: ['#4285F4', '#34A853', '#FBBC05', '#EA4335'] });
+            setStatusMsg({ type: 'success', text: `Welcome ${res.user?.name || 'User'}! Signed in with Google.` });
+            setTimeout(() => {
+              onLoginSuccess(res.user);
+              onClose();
+            }, 500);
+          } catch (err) {
+            setStatusMsg({ type: 'error', text: err.message || 'Google authentication failed.' });
+          } finally {
+            setIsSubmitting(false);
+          }
+        }
+      });
+      window.google.accounts.id.prompt();
+      return;
+    }
+
+    const emailToUse = selectedEmail || (authMode === 'admin' ? 'stenoplus.in@gmail.com' : 'shadabca@gmail.com');
+    const nameToUse = selectedName || (authMode === 'admin' ? 'Shadab Sir (Director)' : 'Shadab Khan');
+
+    try {
+      const res = await api.auth.googleLogin({
+        email: emailToUse,
+        name: nameToUse,
+        mode: authMode === 'admin' ? 'admin' : 'student'
+      });
+      if (res.token) setToken(res.token);
+      if (res.user?.role === 'admin') {
+        try { sessionStorage.setItem('shorthand_admin_authenticated', 'true'); } catch {}
+      }
+      confetti({ particleCount: 75, spread: 65, origin: { y: 0.55 }, colors: ['#4285F4', '#34A853', '#FBBC05', '#EA4335'] });
+      setStatusMsg({ type: 'success', text: `Welcome ${res.user?.name}! Signed in via Google.` });
+      setShowGoogleChooser(false);
+      setTimeout(() => {
+        onLoginSuccess(res.user);
+        onClose();
+      }, 500);
+    } catch (err) {
+      setStatusMsg({ type: 'error', text: err.message || 'Google sign-in failed.' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   // Forgot password specific state (Email Recovery)
   const [forgotStep, setForgotStep] = useState(1); // 1 = enter email, 2 = enter otp & new pwd
@@ -634,6 +710,49 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
               </>
             )}
           </button>
+
+          {/* Continue with Google Option */}
+          {authMode !== 'forgot' && (
+            <>
+              <div className="google-auth-divider">
+                <span>OR</span>
+              </div>
+
+              <button
+                type="button"
+                className="btn-continue-google"
+                onClick={() => handleGoogleSignIn()}
+                disabled={isSubmitting}
+              >
+                <GoogleIcon />
+                <span>
+                  {authMode === 'admin' 
+                    ? 'Continue with Google (Director)' 
+                    : authMode === 'register' 
+                      ? 'Register with Google' 
+                      : 'Continue with Google'}
+                </span>
+              </button>
+
+              <div style={{ textAlign: 'center', marginTop: '0.45rem' }}>
+                <button
+                  type="button"
+                  onClick={() => setShowGoogleChooser(true)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    fontSize: '0.74rem',
+                    color: '#64748B',
+                    textDecoration: 'underline',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Sign in with another Google Email →
+                </button>
+              </div>
+            </>
+          )}
         </form>
 
         {/* Footer Navigation Switcher */}
@@ -695,6 +814,89 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, initialTab 
             <span>256-Bit SSL Encrypted • Shorthand Plus Enterprise Authentication</span>
           </div>
         </div>
+
+        {/* Google Account Chooser Modal */}
+        {showGoogleChooser && (
+          <div className="google-account-chooser-modal" onClick={() => setShowGoogleChooser(false)}>
+            <div className="google-account-chooser-card" onClick={(e) => e.stopPropagation()}>
+              <div className="google-chooser-header">
+                <GoogleIcon />
+                <div>
+                  <h4 style={{ margin: 0, fontSize: '1rem', fontWeight: 800, color: '#0F172A' }}>
+                    Sign in with Google
+                  </h4>
+                  <p style={{ margin: '2px 0 0', fontSize: '0.78rem', color: '#64748B' }}>
+                    {authMode === 'admin' ? 'Faculty Director Clearance Access' : 'Shorthand Plus Candidate Portal'}
+                  </p>
+                </div>
+              </div>
+
+              {/* Preset Account Option */}
+              <div 
+                className="google-account-item"
+                onClick={() => handleGoogleSignIn(
+                  authMode === 'admin' ? 'stenoplus.in@gmail.com' : 'shadabca@gmail.com', 
+                  authMode === 'admin' ? 'Shadab Sir (Director)' : 'Shadab Khan'
+                )}
+              >
+                <div className="google-account-avatar" style={{ background: '#0F172A' }}>
+                  {authMode === 'admin' ? 'SP' : 'SK'}
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontWeight: 700, fontSize: '0.85rem', color: '#0F172A' }}>
+                    {authMode === 'admin' ? 'Shadab Sir (Director)' : 'Shadab Khan'}
+                  </div>
+                  <div style={{ fontSize: '0.75rem', color: '#64748B' }}>
+                    {authMode === 'admin' ? 'stenoplus.in@gmail.com • Verified Faculty Lead' : 'shadabca@gmail.com • Student Aspirant'}
+                  </div>
+                </div>
+                <CheckCircle2 size={16} color="#059669" />
+              </div>
+
+              {/* Custom Google Account Form */}
+              <div style={{ marginTop: '1rem', padding: '0.9rem', background: '#F8FAFC', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+                <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#334155', marginBottom: '0.4rem' }}>
+                  Or enter your Gmail address:
+                </span>
+                <input 
+                  type="email"
+                  className="field-input"
+                  placeholder="e.g. yourname@gmail.com"
+                  value={googleCustomEmail}
+                  onChange={(e) => setGoogleCustomEmail(e.target.value)}
+                  style={{ marginBottom: '0.5rem', background: '#FFFFFF' }}
+                />
+                <input 
+                  type="text"
+                  className="field-input"
+                  placeholder="Your Full Name"
+                  value={googleCustomName}
+                  onChange={(e) => setGoogleCustomName(e.target.value)}
+                  style={{ marginBottom: '0.65rem', background: '#FFFFFF' }}
+                />
+                <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
+                  <button 
+                    type="button" 
+                    className="btn btn-secondary" 
+                    style={{ padding: '0.4rem 0.8rem', fontSize: '0.78rem' }}
+                    onClick={() => setShowGoogleChooser(false)}
+                  >
+                    Cancel
+                  </button>
+                  <button 
+                    type="button" 
+                    className="btn btn-primary" 
+                    style={{ padding: '0.4rem 0.9rem', fontSize: '0.78rem', background: '#0F172A', borderColor: '#0F172A' }}
+                    disabled={!googleCustomEmail.includes('@') || isSubmitting}
+                    onClick={() => handleGoogleSignIn(googleCustomEmail.trim(), googleCustomName.trim() || 'Candidate Aspirant')}
+                  >
+                    {isSubmitting ? 'Authenticating...' : 'Sign In with Google'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

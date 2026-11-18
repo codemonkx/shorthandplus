@@ -17,7 +17,8 @@ import {
   FileText,
   Award,
   Zap,
-  PenTool
+  PenTool,
+  Clock
 } from 'lucide-react';
 import ShorthandCanvas from './ShorthandCanvas';
 

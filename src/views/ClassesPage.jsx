@@ -227,8 +227,8 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
     : null;
 
   const handleCopyId = () => {
-    const idToCopy = activeClass?.zoomMeetingId || '842 9104 2281';
-    navigator.clipboard.writeText(idToCopy);
+    const codeToCopy = activeClass?.meetCode || activeClass?.zoomMeetingId || 'gsc-steno-live';
+    navigator.clipboard?.writeText(codeToCopy).catch(() => {});
     setCopiedId(true);
     setTimeout(() => setCopiedId(false), 2000);
   };
@@ -261,7 +261,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
             Classroom Batches, Timetable & Live Dictations
           </h1>
           <p className="classes-hero-desc" style={{ fontSize: '1rem', color: '#64748B', lineHeight: 1.6, margin: '0 auto 1.5rem', maxWidth: '780px' }}>
-            Attend daily in-person classes at our Gaya academy or access live broadcast Zoom dictations from anywhere. Daily batches guided by <strong>Shadab Sir (12 Years Experience)</strong> spanning 6:00 AM to 8:00 PM.
+            Attend daily in-person classes at our Gaya academy or access live broadcast Google Meet dictations from anywhere. Daily batches guided by <strong>Shadab Sir (12 Years Experience)</strong> spanning 6:00 AM to 8:00 PM.
           </p>
 
           {/* Tab Navigation Switcher - Clean Enterprise Pills */}
@@ -277,7 +277,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
             padding: 0
           }}>
             {[
-              { id: 'online-live', label: 'Live Zoom Studio', hasDot: true },
+              { id: 'online-live', label: 'Live Google Meet Studio', hasDot: true },
               { id: 'batches', label: 'Daily Academy Batches' },
               { id: 'timetable', label: 'Weekly Timetable' },
               { id: 'diplomas', label: 'Govt. Diplomas (ADCA/DCA)' },
@@ -346,7 +346,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
       {/* 2. MAIN CONTENT SECTIONS */}
       <div className="classes-content-container">
 
-        {/* TAB 0: LIVE ONLINE ZOOM STUDIO */}
+        {/* TAB 0: LIVE ONLINE GOOGLE MEET STUDIO */}
         {activeTab === 'online-live' && (
           <div className="classes-online-live-showcase">
             {/* Live Broadcast Hero Card */}
@@ -369,9 +369,9 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 <div className="live-status-row">
                   <span className={`live-broadcast-pill ${activeClass?.isLive ? '' : 'pill-upcoming'}`}>
                     {activeClass?.isLive && <span className="live-pulsing-dot" />}
-                    <span>{activeClass?.isLive ? 'ZOOM BROADCAST LIVE NOW' : (activeClass?.tag || 'UPCOMING ON ZOOM')}</span>
+                    <span>{activeClass?.isLive ? 'GOOGLE MEET BROADCAST LIVE NOW' : (activeClass?.tag || 'UPCOMING ON GOOGLE MEET')}</span>
                   </span>
-                  <span className="online-room-badge font-mono">{activeClass?.roomNo || 'Zoom Room #01 • Studio Live'}</span>
+                  <span className="online-room-badge font-mono">{activeClass?.roomNo?.replace(/Zoom Room/g, 'Google Meet Room') || 'Google Meet Room #01 • Studio Live'}</span>
                   <span className="online-attendees-badge font-mono">
                     <Users size={12} />
                     <span>{activeClass ? (activeClass.attendees || 1) : 142} Active Candidates</span>
@@ -385,16 +385,16 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   Conducted by <strong>{activeClass?.instructor || 'Shadab Sir'}</strong> ({activeClass?.instructorRole || '12 Years Experience'}). {activeClass?.description || 'Real-time 5-minute parliamentary dictation, synchronized digital shorthand whiteboard with interactive student drawing, live audio player with 0.8x-1.3x pacing, and immediate transcription grading.'}
                 </p>
 
-                {/* Zoom Credentials Box */}
+                {/* Google Meet Credentials Box */}
                 <div className="live-hero-creds-strip" style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', background: '#F8FAFC', border: '1px solid #E2E8F0', padding: '10px 14px', borderRadius: '12px', margin: '1rem 0' }}>
                   <div className="cred-bubble" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#FFFFFF', border: '1px solid #E2E8F0', padding: '6px 12px', borderRadius: '8px', fontSize: '0.85rem' }}>
-                    <span className="lbl" style={{ color: '#64748B', fontWeight: 600 }}>Meeting ID:</span>
-                    <strong className="font-mono" style={{ color: '#0F172A' }}>{activeClass?.zoomMeetingId || '842 9104 2281'}</strong>
+                    <span className="lbl" style={{ color: '#64748B', fontWeight: 600 }}>Meet Code:</span>
+                    <strong className="font-mono" style={{ color: '#0F172A' }}>{activeClass?.meetCode || activeClass?.zoomMeetingId || 'gsc-steno-live'}</strong>
                     <button 
                       type="button" 
                       className="btn-inline-copy"
                       onClick={handleCopyId}
-                      title="Copy Meeting ID"
+                      title="Copy Meeting Code"
                       style={{ border: 'none', background: '#FFFFFF', padding: '2px 6px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '3px' }}
                     >
                       {copiedId ? <Check size={12} color="#059669" /> : <Copy size={12} />}
@@ -402,8 +402,8 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     </button>
                   </div>
                   <div className="cred-bubble" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#FFFFFF', border: '1px solid #E2E8F0', padding: '6px 12px', borderRadius: '8px', fontSize: '0.85rem' }}>
-                    <span className="lbl" style={{ color: '#64748B', fontWeight: 600 }}>Passcode:</span>
-                    <strong className="font-mono" style={{ color: '#0F172A' }}>{activeClass?.zoomPasscode || 'GAYA80WPM'}</strong>
+                    <span className="lbl" style={{ color: '#64748B', fontWeight: 600 }}>Platform:</span>
+                    <strong className="font-mono text-teal-700" style={{ color: '#0f766e' }}>Google Meet</strong>
                   </div>
                   <div className="cred-bubble" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#FFFFFF', border: '1px solid #E2E8F0', padding: '6px 12px', borderRadius: '8px', fontSize: '0.85rem' }}>
                     <span className="lbl" style={{ color: '#64748B', fontWeight: 600 }}>Schedule:</span>
@@ -442,21 +442,21 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     }}
                   >
                     <Video size={16} />
-                    <span>Enter Live Zoom Studio (In-Browser)</span>
+                    <span>Enter Live Meet Studio (In-Browser)</span>
                     <ArrowRight size={15} />
                   </button>
 
                   <a 
-                    href={activeClass?.zoomAppUrl || "zoommtg://zoom.us/join?confno=84291042281&pwd=GAYA80WPM"}
+                    href={activeClass?.meetUrl || activeClass?.googleMeetUrl || (activeClass?.zoomDirectUrl?.includes('meet.google') ? activeClass.zoomDirectUrl : 'https://meet.google.com/gsc-steno-live')}
                     target="_blank"
                     rel="noreferrer"
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '8px',
-                      background: '#FFFFFF',
-                      color: '#0F172A',
-                      border: '1.5px solid rgba(0, 0, 0, 0.08)',
+                      background: '#0f766e',
+                      color: '#FFFFFF',
+                      border: '1.5px solid #0f766e',
                       borderRadius: '10px',
                       padding: '0.85rem 1.3rem',
                       fontSize: '0.9rem',
@@ -465,7 +465,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     }}
                   >
                     <ExternalLink size={15} />
-                    <span>Launch in Zoom Desktop App</span>
+                    <span>Launch in Google Meet</span>
                   </a>
                 </div>
               </div>
@@ -501,7 +501,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     <div className="mini-features-list">
                       <div className="mini-feat-item">
                         <CheckCircle2 size={13} color="#059669" />
-                        <span>Direct Zoom Classroom Entrance & Meeting Passcodes</span>
+                        <span>Direct Google Meet Classroom Entrance & 1-Click Access</span>
                       </div>
                       <div className="mini-feat-item">
                         <CheckCircle2 size={13} color="#059669" />
@@ -632,12 +632,12 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   1-Click Typing Test Handover
                 </h3>
                 <p style={{ fontSize: '0.88rem', color: '#555555', lineHeight: 1.6, margin: 0 }}>
-                  Immediately transition from the live Zoom dictation into the exam typing engine to transcribe your strokes with instant accuracy metrics.
+                  Immediately transition from the live Google Meet dictation into the exam typing engine to transcribe your strokes with instant accuracy metrics.
                 </p>
               </div>
             </div>
 
-            {/* All 4 Daily Zoom Batches Schedule */}
+            {/* All 4 Daily Google Meet Batches Schedule */}
             <div style={{
               background: '#FFFFFF',
               border: '1px solid rgba(0, 0, 0, 0.08)',
@@ -651,7 +651,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                   Daily Broadcast Timetable
                 </span>
                 <h3 style={{ fontSize: '1.35rem', fontWeight: 850, color: '#0F172A', margin: '0.2rem 0 0.4rem' }}>
-                  All 4 Daily Online Zoom Dictation Batches
+                  All 4 Daily Online Google Meet Dictation Batches
                 </h3>
                 <p style={{ fontSize: '0.88rem', color: '#64748B', margin: 0 }}>
                   All online sessions are recorded and available for replay 24/7 in the Candidate Portal.
@@ -664,10 +664,10 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 gap: '1rem'
               }}>
                 {(onlineClasses && onlineClasses.length > 0 ? onlineClasses : [
-                  { id: 'class-theory-2', time: '6:00 AM – 8:00 AM', badgeClass: 'badge-replay', tag: 'Recording Ready', title: 'Basic Pitman Theory & New Strokes', speed: 'Beginners (0 - 60 WPM)', zoomMeetingId: '815 6742 9904' },
-                  { id: 'class-live-1', isLive: true, time: '8:30 AM – 10:30 AM', badgeClass: 'badge-live', tag: '● Active Live', title: 'SSC Grade C & D 80 WPM Speed Lab', speed: '80 WPM Standard', zoomMeetingId: '842 9104 2281' },
-                  { id: 'class-judicial-3', time: '3:00 PM – 5:00 PM', badgeClass: 'badge-upcoming', tag: 'Starts 3:00 PM', title: 'High Court Judicial 100 WPM Bench', speed: '100 WPM Judicial', zoomMeetingId: '879 3341 5520' },
-                  { id: 'class-reporter-4', time: '5:30 PM – 7:30 PM', badgeClass: 'badge-upcoming', tag: 'Starts 5:30 PM', title: 'Assembly Reporter 120+ WPM Elite', speed: '120-140 WPM', zoomMeetingId: '891 4059 1133' }
+                  { id: 'class-theory-2', time: '6:00 AM – 8:00 AM', badgeClass: 'badge-replay', tag: 'Recording Ready', title: 'Basic Pitman Theory & New Strokes', speed: 'Beginners (0 - 60 WPM)', meetCode: 'gsc-theory-am', zoomMeetingId: 'gsc-theory-am' },
+                  { id: 'class-live-1', isLive: true, time: '8:30 AM – 10:30 AM', badgeClass: 'badge-live', tag: '● Active Live', title: 'SSC Grade C & D 80 WPM Speed Lab', speed: '80 WPM Standard', meetCode: 'gsc-steno-live', zoomMeetingId: 'gsc-steno-live' },
+                  { id: 'class-judicial-3', time: '3:00 PM – 5:00 PM', badgeClass: 'badge-upcoming', tag: 'Starts 3:00 PM', title: 'High Court Judicial 100 WPM Bench', speed: '100 WPM Judicial', meetCode: 'gsc-court-pm', zoomMeetingId: 'gsc-court-pm' },
+                  { id: 'class-reporter-4', time: '5:30 PM – 7:30 PM', badgeClass: 'badge-upcoming', tag: 'Starts 5:30 PM', title: 'Assembly Reporter 120+ WPM Elite', speed: '120-140 WPM', meetCode: 'gsc-assembly-eve', zoomMeetingId: 'gsc-assembly-eve' }
                 ]).map((b) => (
                   <div 
                     key={b.id} 
@@ -723,7 +723,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         borderRadius: '6px',
                         display: 'inline-block'
                       }}>
-                        {b.speed} • Zoom ID: {b.zoomMeetingId}
+                        {b.speed} • Meet: {b.meetCode || b.zoomMeetingId}
                       </div>
                     </div>
 
@@ -1675,7 +1675,7 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                         <button
                           type="button"
                           onClick={() => {
-                            navigator.clipboard.writeText(item.shorthandStroke);
+                            navigator.clipboard?.writeText(item.shorthandStroke).catch(() => {});
                             setCopiedOutlineId(item.id);
                             setTimeout(() => setCopiedOutlineId(null), 1500);
                           }}

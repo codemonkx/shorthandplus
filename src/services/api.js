@@ -65,6 +65,7 @@ export const api = {
     forgotPassword: (email) => request('/auth/forgot-password', { method: 'POST', body: JSON.stringify({ email }) }),
     resetPassword: (payload) => request('/auth/reset-password', { method: 'POST', body: JSON.stringify(payload) }),
     verifyAdminPin: (passcode) => request('/auth/verify-admin-pin', { method: 'POST', body: JSON.stringify({ passcode }) }),
+    googleLogin: (payload) => request('/auth/google-login', { method: 'POST', body: JSON.stringify(payload) }),
     logout: () => {
       setToken(null);
       try {
@@ -125,6 +126,9 @@ export const api = {
     getLive: () => request('/classes/live'),
     scheduleLive: (cls) => request('/classes/live', { method: 'POST', body: JSON.stringify(cls) }),
     updateLive: (id, cls) => request(`/classes/live/${id}`, { method: 'PUT', body: JSON.stringify(cls) }),
+    startLive: (id) => request(`/classes/live/${id}/start`, { method: 'PUT' }),
+    completeLive: (id) => request(`/classes/live/${id}/complete`, { method: 'PUT' }),
+    cancelLive: (id, reason) => request(`/classes/live/${id}/cancel`, { method: 'PUT', body: JSON.stringify({ reason }) }),
     toggleLive: (id) => request(`/classes/live/${id}/toggle-live`, { method: 'PUT' }),
     deleteLive: (id) => request(`/classes/live/${id}`, { method: 'DELETE' })
   },
