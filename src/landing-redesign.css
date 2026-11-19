@@ -1,62 +1,65 @@
 /* ==========================================================================
-   SHORTHAND PLUS — PRESTIGE EDITORIAL DESIGN SYSTEM
-   Theme: Midnight Obsidian, Judicial Amber-Gold & Alabaster Porcelain
-   Fonts: Outfit (Display), Inter (Body), JetBrains Mono (Telemetry)
+   SHORTHAND PLUS — PREMIUM LIGHT DESIGN SYSTEM (APPLE / STRIPE AESTHETIC)
+   Canvas: Luminous Pure White & Alabaster (#FFFFFF / #F8FAFC)
+   Typography: Deep Ink Slate (#0F172A), Slate Body (#475569)
+   Accents: Vibrant Sapphire Blue (#2563EB), Radiant Amber (#F59E0B), Emerald (#10B981)
+   Elevation: Soft multi-layered ambient shadows, delicate hair-thin borders
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --sp-font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sp-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sp-font-mono: 'JetBrains Mono', monospace;
 
-  /* Obsidian Hero Atmosphere */
-  --obsidian-950: #05070B;
-  --obsidian-900: #080C14;
-  --obsidian-850: #0D121F;
-  --obsidian-800: #121A2C;
-  --obsidian-700: #1A243C;
-  --obsidian-border: rgba(255, 255, 255, 0.08);
-  --obsidian-border-hover: rgba(255, 255, 255, 0.16);
+  /* Surfaces */
+  --sp-bg-canvas: #FFFFFF;
+  --sp-bg-subtle: #F8FAFC;
+  --sp-bg-surface: #FFFFFF;
+  --sp-bg-raised: #F1F5F9;
 
-  /* Gold & Amber Accents */
-  --amber-gold: #F59E0B;
-  --amber-dark: #D97706;
-  --amber-glow: rgba(245, 158, 11, 0.28);
-  --amber-surface: rgba(245, 158, 11, 0.08);
-  --amber-border: rgba(245, 158, 11, 0.24);
+  /* Ink Typography */
+  --sp-text-title: #0F172A;
+  --sp-text-body: #475569;
+  --sp-text-muted: #64748B;
+  --sp-text-faint: #94A3B8;
 
-  /* Emerald Qualified Accents */
-  --emerald-accent: #10B981;
-  --emerald-dark: #059669;
-  --emerald-glow: rgba(16, 185, 129, 0.25);
-  --emerald-surface: rgba(16, 185, 129, 0.08);
-  --emerald-border: rgba(16, 185, 129, 0.24);
+  /* Brand Accents */
+  --sp-blue-600: #2563EB;
+  --sp-blue-700: #1D4ED8;
+  --sp-blue-50: #EFF6FF;
+  --sp-blue-100: #DBEAFE;
+  --sp-blue-border: rgba(37, 99, 235, 0.16);
 
-  /* Light Editorial Canvas */
-  --canvas-alabaster: #FAF9F6;
-  --surface-white: #FFFFFF;
-  --surface-raised: #F4F2EC;
-  --card-border: rgba(15, 23, 42, 0.08);
-  --card-border-hover: rgba(15, 23, 42, 0.16);
-  --text-dark: #0F172A;
-  --text-body: #475569;
-  --text-muted: #64748B;
-  --text-caption: #94A3B8;
+  --sp-amber-500: #F59E0B;
+  --sp-amber-600: #D97706;
+  --sp-amber-50: #FFFBEB;
+  --sp-amber-border: rgba(245, 158, 11, 0.2);
 
-  /* Elevation Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 8px 24px -4px rgba(15, 23, 42, 0.06);
-  --shadow-lg: 0 20px 40px -12px rgba(15, 23, 42, 0.08);
-  --shadow-glow: 0 0 35px rgba(245, 158, 11, 0.22);
+  --sp-emerald-500: #10B981;
+  --sp-emerald-600: #059669;
+  --sp-emerald-50: #ECFDF5;
+  --sp-emerald-border: rgba(16, 185, 129, 0.2);
+
+  /* Delicate Borders */
+  --sp-border-subtle: rgba(15, 23, 42, 0.06);
+  --sp-border-hover: rgba(37, 99, 235, 0.22);
+  --sp-border-strong: rgba(15, 23, 42, 0.12);
+
+  /* Apple/Stripe-Style Diffused Shadows */
+  --sp-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --sp-shadow-sm: 0 2px 8px -2px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --sp-shadow-md: 0 8px 24px -4px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+  --sp-shadow-lg: 0 20px 48px -12px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+  --sp-shadow-float: 0 25px 60px -15px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.04);
 }
 
-/* Base resets & typography */
+/* Base Wrapper */
 .sp-landing-root {
-  font-family: var(--font-body);
-  color: var(--text-dark);
-  background-color: var(--canvas-alabaster);
+  font-family: var(--sp-font-body);
+  background-color: var(--sp-bg-canvas);
+  color: var(--sp-text-title);
   overflow-x: hidden;
   width: 100%;
   margin: 0;
@@ -68,43 +71,30 @@
 .sp-landing-root h2,
 .sp-landing-root h3,
 .sp-landing-root h4 {
-  font-family: var(--font-display);
+  font-family: var(--sp-font-display);
   letter-spacing: -0.025em;
   font-weight: 700;
+  color: var(--sp-text-title);
 }
 
 /* ==========================================================================
-   1. HERO SECTION — MIDNIGHT OBSIDIAN & GOLDEN ILLUMINATION
+   1. LUMINOUS HERO SECTION (APPLE / STRIPE CLEAN LIGHT AESTHETIC)
    ========================================================================== */
 
 .sp-hero-section {
   position: relative;
-  background-color: var(--obsidian-900);
+  background-color: var(--sp-bg-canvas);
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(217, 119, 6, 0.16) 0%, transparent 60%),
-    radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 90% 40%, rgba(16, 185, 129, 0.06) 0%, transparent 45%);
-  color: #FFFFFF;
-  padding: 4.5rem 1.5rem 4rem;
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(37, 99, 235, 0.07) 0%, transparent 65%),
+    radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 15% 30%, rgba(16, 185, 129, 0.04) 0%, transparent 40%);
+  padding: 4.5rem 1.5rem 5rem;
+  border-bottom: 1px solid var(--sp-border-subtle);
   overflow: hidden;
-  border-bottom: 1px solid var(--obsidian-border);
-}
-
-/* Subtle steno stroke background grid */
-.sp-hero-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  pointer-events: none;
-  opacity: 0.8;
 }
 
 .sp-hero-container {
-  max-width: 1260px;
+  max-width: 1240px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -112,7 +102,7 @@
 
 .sp-hero-grid {
   display: grid;
-  grid-templateColumns: 1fr;
+  grid-template-columns: 1fr;
   gap: 3.5rem;
   align-items: center;
 }
@@ -120,68 +110,68 @@
 @media (min-width: 1024px) {
   .sp-hero-grid {
     grid-template-columns: 1.15fr 0.95fr;
-    gap: 4rem;
+    gap: 4.5rem;
   }
 }
 
-/* Pill badge on Hero */
+/* Pill Badge */
 .sp-hero-pill-badge {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 16px;
+  gap: 8px;
+  padding: 6px 14px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--obsidian-border);
-  backdrop-filter: blur(12px);
+  background: var(--sp-blue-50);
+  border: 1px solid var(--sp-blue-border);
   font-size: 0.82rem;
-  font-weight: 500;
-  color: #E2E8F0;
+  font-weight: 600;
+  color: var(--sp-blue-600);
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--sp-shadow-xs);
 }
 
 .sp-pulse-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: var(--emerald-accent);
-  box-shadow: 0 0 10px var(--emerald-accent);
+  background: var(--sp-emerald-500);
+  box-shadow: 0 0 8px var(--sp-emerald-500);
   animation: sp-pulse 2s infinite;
 }
 
 @keyframes sp-pulse {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-  70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
 }
 
+/* Typography */
 .sp-hero-title {
-  font-size: clamp(2.3rem, 4.4vw, 3.8rem);
+  font-size: clamp(2.3rem, 4.4vw, 3.6rem);
   line-height: 1.12;
   font-weight: 800;
-  letter-spacing: -0.03em;
-  margin: 0 0 1.35rem;
-  color: #FFFFFF !important;
+  letter-spacing: -0.035em;
+  margin: 0 0 1.25rem;
+  color: var(--sp-text-title);
 }
 
-.sp-title-gradient-gold {
-  background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 50%, #D97706 100%);
+.sp-title-gradient {
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 50%, #3B82F6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
 }
 
 .sp-hero-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   line-height: 1.65;
-  color: #94A3B8 !important;
-  max-width: 580px;
+  color: var(--sp-text-body);
+  max-width: 560px;
   margin: 0 0 2.25rem;
 }
 
 .sp-hero-subtitle strong {
-  color: #F8FAFC !important;
+  color: var(--sp-text-title);
   font-weight: 600;
 }
 
@@ -190,120 +180,118 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
+  gap: 0.85rem;
   margin-bottom: 2.75rem;
 }
 
-.sp-btn-gold {
+.sp-btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 0.95rem 1.85rem;
+  gap: 8px;
+  padding: 0.85rem 1.65rem;
   border-radius: 12px;
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  color: #070A12;
-  font-weight: 700;
-  font-size: 0.95rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #0F172A;
+  color: #FFFFFF !important;
+  font-weight: 600;
+  font-size: 0.94rem;
+  border: 1px solid #0F172A;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(217, 119, 6, 0.35);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
 }
 
-.sp-btn-gold:hover {
+.sp-btn-primary:hover {
+  background: #1E293B;
+  border-color: #1E293B;
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(217, 119, 6, 0.45);
-  background: linear-gradient(135deg, #FBBF24 0%, #EA580C 100%);
-  color: #000000;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+  color: #FFFFFF !important;
 }
 
-.sp-btn-glass {
+.sp-btn-secondary {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 0.95rem 1.65rem;
+  gap: 8px;
+  padding: 0.85rem 1.5rem;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--obsidian-border);
-  color: #F8FAFC;
+  background: #FFFFFF;
+  border: 1px solid var(--sp-border-strong);
+  color: var(--sp-text-title);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   cursor: pointer;
-  backdrop-filter: blur(12px);
+  box-shadow: var(--sp-shadow-xs);
   transition: all 0.2s ease;
   text-decoration: none;
 }
 
-.sp-btn-glass:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.22);
+.sp-btn-secondary:hover {
+  background: var(--sp-bg-subtle);
+  border-color: #CBD5E1;
   transform: translateY(-2px);
-  color: #FFFFFF;
+  color: var(--sp-text-title);
 }
 
-.sp-btn-link-demo {
+.sp-btn-ghost {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   background: transparent;
   border: none;
-  color: #CBD5E1;
-  font-size: 0.9rem;
+  color: var(--sp-text-body);
   font-weight: 600;
+  font-size: 0.92rem;
   cursor: pointer;
-  padding: 0.5rem 0.75rem;
-  transition: color 0.15s ease;
+  padding: 0.85rem 1rem;
+  transition: all 0.2s ease;
 }
 
-.sp-btn-link-demo:hover {
-  color: var(--amber-gold);
+.sp-btn-ghost:hover {
+  color: var(--sp-blue-600);
+  transform: translateX(2px);
 }
 
-/* 4 Trust Numbers Ribbon */
+/* 4 Trust Metrics Ribbon */
 .sp-hero-stats-ribbon {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
   padding-top: 1.75rem;
-  border-top: 1px solid var(--obsidian-border);
-}
-
-@media (max-width: 640px) {
-  .sp-hero-stats-ribbon {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
+  border-top: 1px solid var(--sp-border-subtle);
 }
 
 .sp-stat-item .sp-stat-num {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
   font-weight: 800;
-  color: #FFFFFF;
-  line-height: 1;
-  margin-bottom: 4px;
-  letter-spacing: -0.02em;
+  color: var(--sp-text-title);
+  letter-spacing: -0.03em;
+  font-family: var(--sp-font-display);
+  line-height: 1.2;
 }
 
 .sp-stat-item .sp-stat-label {
   font-size: 0.78rem;
-  color: #94A3B8;
+  color: var(--sp-text-muted);
   font-weight: 500;
+  margin-top: 3px;
 }
 
 /* ==========================================================================
-   2. HERO RIGHT CARD — COURT SKILL SIMULATOR HUD
+   2. REFINED MACOS-STYLE SKILL SIMULATOR CARD (LIGHT SURFACE)
    ========================================================================== */
 
 .sp-hud-card {
-  background: rgba(13, 18, 31, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #FFFFFF;
+  border: 1px solid var(--sp-border-subtle);
   border-radius: 20px;
-  padding: 1.85rem;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(217, 119, 6, 0.08);
-  position: relative;
+  padding: 1.75rem;
+  box-shadow: var(--sp-shadow-float);
+  transition: all 0.3s ease;
+}
+
+.sp-hud-card:hover {
+  box-shadow: 0 30px 70px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(37, 99, 235, 0.1);
 }
 
 .sp-hud-header {
@@ -311,35 +299,47 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--obsidian-border);
   margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--sp-border-subtle);
+}
+
+.sp-hud-window-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sp-hud-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #CBD5E1;
 }
 
 .sp-hud-badge-live {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #F8FAFC;
-  letter-spacing: 0.02em;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--sp-text-title);
+  margin-left: 8px;
 }
 
 .sp-hud-tag-court {
   font-size: 0.72rem;
-  font-weight: 700;
-  background: var(--amber-surface);
-  color: var(--amber-gold);
-  border: 1px solid var(--amber-border);
-  padding: 3px 9px;
+  font-weight: 600;
+  background: var(--sp-bg-subtle);
+  color: var(--sp-text-muted);
+  padding: 3px 8px;
   border-radius: 6px;
-  font-family: var(--font-mono);
+  border: 1px solid var(--sp-border-subtle);
 }
 
-/* Stage 1 Audio Box */
+/* Stage 1: Audio Track Waveform */
 .sp-hud-stage-box {
-  background: rgba(8, 12, 20, 0.7);
-  border: 1px solid var(--obsidian-border);
+  background: var(--sp-bg-subtle);
+  border: 1px solid var(--sp-border-subtle);
   border-radius: 14px;
   padding: 1.15rem;
   margin-bottom: 1rem;
@@ -349,78 +349,69 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.85rem;
+  margin-bottom: 10px;
 }
 
 .sp-hud-track-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
   font-size: 0.88rem;
   font-weight: 600;
-  color: #F8FAFC;
+  color: var(--sp-text-title);
 }
 
-/* Animated Equalizer Waveform */
 .sp-equalizer-bars {
   display: flex;
   align-items: flex-end;
   gap: 3px;
-  height: 28px;
-  padding: 3px 0;
+  height: 26px;
+  padding: 4px 0;
 }
 
 .sp-eq-bar {
   flex: 1;
-  background: linear-gradient(180deg, var(--amber-gold) 0%, rgba(217, 119, 6, 0.3) 100%);
+  background: var(--sp-blue-600);
   border-radius: 2px;
-  animation: sp-wave 1.2s ease-in-out infinite alternate;
+  opacity: 0.85;
+  animation: sp-wave 1.6s ease-in-out infinite alternate;
 }
 
 @keyframes sp-wave {
-  0% { height: 25%; }
-  50% { height: 95%; }
-  100% { height: 40%; }
+  0% { transform: scaleY(0.35); }
+  100% { transform: scaleY(1); }
 }
 
 .sp-hud-subtext {
   display: flex;
   justify-content: space-between;
   margin-top: 8px;
-  font-size: 0.74rem;
-  color: #64748B;
-  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--sp-text-muted);
+  font-family: var(--sp-font-mono);
 }
 
-/* Stage 2 Typing Box */
+/* Stage 2: Timed Transcription Box */
 .sp-hud-transcription-box {
-  background: rgba(8, 12, 20, 0.7);
-  border: 1px solid var(--obsidian-border);
+  background: #FFFFFF;
+  border: 1px solid var(--sp-border-subtle);
   border-radius: 14px;
   padding: 1.15rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .sp-typewriter-text {
-  font-family: var(--font-mono);
+  font-family: var(--sp-font-mono);
   font-size: 0.82rem;
-  color: #CBD5E1;
   line-height: 1.55;
-  background: rgba(13, 18, 31, 0.8);
+  color: var(--sp-text-body);
+  margin: 0;
+  background: var(--sp-bg-subtle);
   padding: 10px 12px;
   border-radius: 8px;
-  border: 1px dashed rgba(255, 255, 255, 0.12);
-  margin: 0;
+  border: 1px dashed #CBD5E1;
 }
 
 .sp-cursor {
-  display: inline-block;
-  width: 7px;
-  height: 14px;
-  background: var(--amber-gold);
-  margin-left: 2px;
-  vertical-align: middle;
-  animation: sp-blink 1s infinite;
+  border-right: 2px solid var(--sp-blue-600);
+  animation: sp-blink 0.9s infinite;
 }
 
 @keyframes sp-blink {
@@ -437,8 +428,8 @@
 }
 
 .sp-hud-score-tile {
-  background: rgba(8, 12, 20, 0.6);
-  border: 1px solid var(--obsidian-border);
+  background: var(--sp-bg-subtle);
+  border: 1px solid var(--sp-border-subtle);
   border-radius: 10px;
   padding: 10px 8px;
   text-align: center;
@@ -447,41 +438,35 @@
 .sp-score-label {
   display: block;
   font-size: 0.68rem;
-  color: #64748B;
+  color: var(--sp-text-muted);
   font-weight: 600;
   text-transform: uppercase;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 .sp-score-val {
-  font-family: var(--font-mono);
+  font-family: var(--sp-font-mono);
   font-size: 1.15rem;
   font-weight: 800;
-  color: #FFFFFF;
+  color: var(--sp-text-title);
+}
+
+.sp-score-val.blue {
+  color: var(--sp-blue-600);
 }
 
 .sp-score-val.emerald {
-  color: var(--emerald-accent);
-}
-
-.sp-score-val.gold {
-  color: var(--amber-gold);
+  color: var(--sp-emerald-600);
 }
 
 /* ==========================================================================
-   3. TARGET EXAM BENCHES STRIP
+   3. TARGET EXAM BENCHES (CLEAN PILL TILES)
    ========================================================================== */
 
 .sp-benches-section {
-  background: var(--surface-white);
-  padding: 2.5rem 1.5rem;
-  border-bottom: 1px solid var(--card-border);
-}
-
-.sp-benches-header {
-  text-align: center;
-  max-width: 780px;
-  margin: 0 auto 2rem;
+  background: var(--sp-bg-subtle);
+  padding: 4rem 1.5rem;
+  border-bottom: 1px solid var(--sp-border-subtle);
 }
 
 .sp-section-pill {
@@ -490,20 +475,33 @@
   gap: 6px;
   padding: 4px 12px;
   border-radius: 9999px;
-  background: var(--amber-surface);
-  color: var(--amber-dark);
+  background: var(--sp-blue-50);
+  color: var(--sp-blue-600);
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   margin-bottom: 0.75rem;
-  border: 1px solid var(--amber-border);
+  border: 1px solid var(--sp-blue-border);
 }
 
-.sp-benches-title {
-  font-size: 1.65rem;
-  color: var(--text-dark);
-  margin: 0 0 0.5rem;
+.sp-section-heading-center {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3rem;
+}
+
+.sp-section-h2 {
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  color: var(--sp-text-title);
+  margin: 0 0 0.75rem;
+}
+
+.sp-section-lead {
+  font-size: 1.02rem;
+  color: var(--sp-text-muted);
+  line-height: 1.6;
+  margin: 0;
 }
 
 .sp-benches-grid {
@@ -515,28 +513,28 @@
 }
 
 .sp-bench-card {
-  background: var(--surface-white);
-  border: 1px solid var(--card-border);
-  border-radius: 14px;
-  padding: 1.25rem;
+  background: #FFFFFF;
+  border: 1px solid var(--sp-border-subtle);
+  border-radius: 16px;
+  padding: 1.35rem;
   transition: all 0.25s ease;
-  position: relative;
+  box-shadow: var(--sp-shadow-xs);
 }
 
 .sp-bench-card:hover {
   transform: translateY(-3px);
-  border-color: var(--card-border-hover);
-  box-shadow: var(--shadow-md);
+  border-color: var(--sp-border-hover);
+  box-shadow: var(--sp-shadow-md);
 }
 
 .sp-bench-court-badge {
   font-size: 0.72rem;
   font-weight: 700;
-  font-family: var(--font-mono);
-  color: var(--text-muted);
-  background: var(--surface-raised);
-  padding: 2px 8px;
-  border-radius: 4px;
+  font-family: var(--sp-font-mono);
+  color: var(--sp-blue-600);
+  background: var(--sp-blue-50);
+  padding: 3px 8px;
+  border-radius: 6px;
   display: inline-block;
   margin-bottom: 0.5rem;
 }
@@ -544,564 +542,25 @@
 .sp-bench-name {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--sp-text-title);
   margin: 0 0 0.4rem;
 }
 
 .sp-bench-desc {
-  font-size: 0.84rem;
-  color: var(--text-body);
+  font-size: 0.85rem;
+  color: var(--sp-text-body);
   line-height: 1.5;
   margin: 0;
 }
 
 /* ==========================================================================
-   4. CANONICAL COURSES SECTION
+   4. 3 CORE GATEWAYS (ELEVATED CARDS)
    ========================================================================== */
 
-.sp-courses-section {
-  padding: 4.5rem 1.5rem;
-  background: var(--canvas-alabaster);
-  border-bottom: 1px solid var(--card-border);
-}
-
-.sp-section-heading-center {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 3rem;
-}
-
-.sp-section-h2 {
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-  color: var(--text-dark);
-  margin: 0 0 0.75rem;
-}
-
-.sp-section-lead {
-  font-size: 1.05rem;
-  color: var(--text-body);
-  line-height: 1.6;
-  margin: 0;
-}
-
-.sp-courses-grid {
-  max-width: 1240px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 1.75rem;
-}
-
-.sp-course-card {
-  background: var(--surface-white);
-  border: 1px solid var(--card-border);
-  border-radius: 18px;
-  padding: 1.85rem;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  box-shadow: var(--shadow-sm);
-}
-
-.sp-course-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(217, 119, 6, 0.4);
-  box-shadow: 0 20px 40px -10px rgba(217, 119, 6, 0.12);
-}
-
-.sp-course-card.featured {
-  border: 2px solid var(--amber-gold);
-}
-
-.sp-course-featured-ribbon {
-  position: absolute;
-  top: -12px;
-  right: 20px;
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  color: #000000;
-  font-weight: 800;
-  font-size: 0.72rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 3px 12px;
-  border-radius: 9999px;
-  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
-}
-
-.sp-course-badge-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.sp-course-tag {
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 6px;
-  background: var(--surface-raised);
-  color: var(--text-dark);
-}
-
-.sp-course-speed {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--amber-dark);
-}
-
-.sp-course-title {
-  font-size: 1.35rem;
-  color: var(--text-dark);
-  margin: 0 0 0.5rem;
-  font-weight: 700;
-}
-
-.sp-course-desc {
-  font-size: 0.88rem;
-  color: var(--text-body);
-  line-height: 1.55;
-  margin: 0 0 1.25rem;
-}
-
-.sp-course-price-box {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  padding: 0.75rem 0;
-  border-top: 1px solid var(--card-border);
-  border-bottom: 1px solid var(--card-border);
-  margin-bottom: 1.25rem;
-}
-
-.sp-course-price-now {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--text-dark);
-}
-
-.sp-course-price-was {
-  font-size: 0.95rem;
-  color: var(--text-caption);
-  text-decoration: line-through;
-}
-
-.sp-course-duration {
-  margin-left: auto;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.sp-course-features-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  flex-grow: 1;
-}
-
-.sp-course-feature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 0.85rem;
-  color: var(--text-body);
-  line-height: 1.45;
-}
-
-.sp-course-actions-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  margin-top: auto;
-}
-
-.sp-btn-enroll-card {
-  padding: 0.75rem;
-  border-radius: 10px;
-  background: var(--text-dark);
-  color: #FFFFFF;
-  font-weight: 700;
-  font-size: 0.85rem;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.15s ease;
-}
-
-.sp-btn-enroll-card:hover {
-  background: #1E293B;
-  transform: translateY(-1px);
-}
-
-.sp-btn-whatsapp-card {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 0.75rem;
-  border-radius: 10px;
-  background: rgba(37, 211, 102, 0.08);
-  color: #059669;
-  border: 1px solid rgba(37, 211, 102, 0.25);
-  font-weight: 700;
-  font-size: 0.85rem;
-  text-decoration: none;
-  transition: all 0.15s ease;
-}
-
-.sp-btn-whatsapp-card:hover {
-  background: #25D366;
-  color: #FFFFFF;
-  border-color: #25D366;
-}
-
-/* ==========================================================================
-   5. TEACHING METHODOLOGY ROADMAP
-   ========================================================================== */
-
-.sp-methodology-section {
-  padding: 4.5rem 1.5rem;
-  background: var(--surface-white);
-  border-bottom: 1px solid var(--card-border);
-}
-
-.sp-methodology-grid {
-  max-width: 1240px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
-}
-
-.sp-step-card {
-  background: var(--canvas-alabaster);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
-  padding: 1.5rem;
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-.sp-step-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--amber-dark);
-  box-shadow: var(--shadow-md);
-  background: var(--surface-white);
-}
-
-.sp-step-num-badge {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  background: var(--amber-surface);
-  color: var(--amber-dark);
-  border: 1px solid var(--amber-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-family: var(--font-mono);
-  font-size: 0.92rem;
-  margin-bottom: 1rem;
-}
-
-.sp-step-title {
-  font-size: 1.05rem;
-  color: var(--text-dark);
-  margin: 0 0 0.4rem;
-}
-
-.sp-step-hindi {
-  display: block;
-  font-size: 0.82rem;
-  color: var(--amber-dark);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.sp-step-desc {
-  font-size: 0.84rem;
-  color: var(--text-body);
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* ==========================================================================
-   6. LIVE GOOGLE MEET CLASSROOM STRIP
-   ========================================================================== */
-
-.sp-live-banner-section {
-  padding: 3rem 1.5rem;
-  background: var(--obsidian-900);
-  color: #FFFFFF;
-  border-bottom: 1px solid var(--obsidian-border);
-}
-
-.sp-live-banner-card {
-  max-width: 1240px;
-  margin: 0 auto;
-  background: linear-gradient(135deg, rgba(13, 18, 31, 0.95) 0%, rgba(20, 28, 46, 0.95) 100%);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  border-radius: 20px;
-  padding: 2.25rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(245, 158, 11, 0.1);
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  align-items: center;
-}
-
-@media (min-width: 900px) {
-  .sp-live-banner-card {
-    grid-template-columns: 1.4fr 1fr;
-    gap: 3rem;
-  }
-}
-
-.sp-live-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--emerald-accent);
-  background: rgba(16, 185, 129, 0.1);
-  padding: 4px 12px;
-  border-radius: 9999px;
-  border: 1px solid rgba(16, 185, 129, 0.25);
-  margin-bottom: 0.85rem;
-}
-
-.sp-live-title {
-  font-size: 1.75rem;
-  color: #FFFFFF !important;
-  margin: 0 0 0.5rem;
-}
-
-.sp-live-desc {
-  font-size: 0.92rem;
-  color: #94A3B8 !important;
-  line-height: 1.6;
-  margin: 0 0 1.25rem;
-}
-
-/* ==========================================================================
-   7. GOOGLE REVIEWS & TESTIMONIALS
-   ========================================================================== */
-
-.sp-reviews-section {
-  padding: 4.5rem 1.5rem;
-  background: var(--canvas-alabaster);
-  border-bottom: 1px solid var(--card-border);
-}
-
-.sp-reviews-grid {
-  max-width: 1240px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-}
-
-.sp-review-card {
-  background: var(--surface-white);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
-  padding: 1.65rem;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  transition: all 0.2s ease;
-}
-
-.sp-review-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.sp-stars-row {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  color: #F59E0B;
-  margin-bottom: 0.85rem;
-}
-
-.sp-review-quote {
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: var(--text-dark);
-  margin: 0 0 1.25rem;
-  flex-grow: 1;
-}
-
-.sp-reviewer-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border-top: 1px solid var(--card-border);
-  padding-top: 1rem;
-}
-
-.sp-reviewer-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--amber-surface);
-  color: var(--amber-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 0.95rem;
-}
-
-.sp-reviewer-name {
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--text-dark);
-}
-
-.sp-reviewer-tag {
-  font-size: 0.76rem;
-  color: var(--text-muted);
-}
-
-/* ==========================================================================
-   8. OFFLINE CENTER & GOOGLE MAPS
-   ========================================================================== */
-
-.sp-center-section {
-  padding: 4.5rem 1.5rem;
-  background: var(--surface-white);
-  border-bottom: 1px solid var(--card-border);
-}
-
-.sp-center-grid {
-  max-width: 1240px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  align-items: center;
-}
-
-@media (min-width: 960px) {
-  .sp-center-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 3.5rem;
-  }
-}
-
-.sp-map-frame {
-  width: 100%;
-  height: 380px;
-  border-radius: 18px;
-  border: 1px solid var(--card-border);
-  box-shadow: var(--shadow-md);
-}
-
-/* ==========================================================================
-   9. FAQS ACCORDION
-   ========================================================================== */
-
-.sp-faq-section {
-  padding: 4.5rem 1.5rem;
-  background: var(--canvas-alabaster);
-  border-bottom: 1px solid var(--card-border);
-}
-
-.sp-faq-accordion {
-  max-width: 820px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.sp-faq-item {
-  background: var(--surface-white);
-  border: 1px solid var(--card-border);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: all 0.2s ease;
-}
-
-.sp-faq-item:hover {
-  border-color: var(--card-border-hover);
-}
-
-.sp-faq-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem 1.5rem;
-  background: none;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-dark);
-}
-
-.sp-faq-body {
-  padding: 0 1.5rem 1.35rem;
-  font-size: 0.92rem;
-  line-height: 1.65;
-  color: var(--text-body);
-}
-
-/* ==========================================================================
-   10. BOTTOM HERO CTA
-   ========================================================================== */
-
-.sp-cta-banner {
-  padding: 5rem 1.5rem;
-  background: var(--obsidian-900);
-  background-image: radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.2) 0%, transparent 70%);
-  color: #FFFFFF;
-  text-align: center;
-  position: relative;
-}
-
-.sp-cta-container {
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-.sp-cta-title {
-  font-size: clamp(2.1rem, 3.8vw, 3.2rem);
-  color: #FFFFFF !important;
-  margin: 0 0 1rem;
-}
-
-.sp-cta-desc {
-  font-size: 1.1rem;
-  color: #94A3B8 !important;
-  line-height: 1.6;
-  margin: 0 0 2rem;
-}
-
-
-/* ==========================================================================
-   11. GATEWAYS, WORKFLOW, PILLARS & VIDEO STYLES
-   ========================================================================== */
-
-/* Gateways 3-Card Grid */
 .sp-gateways-section {
-  padding: 4.5rem 1.5rem;
-  background: var(--surface-white);
-  border-bottom: 1px solid var(--card-border);
+  padding: 5rem 1.5rem;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--sp-border-subtle);
 }
 
 .sp-gateways-grid {
@@ -1109,73 +568,83 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.75rem;
+  gap: 2rem;
 }
 
 .sp-gateway-card {
-  background: var(--canvas-alabaster);
-  border: 1px solid var(--card-border);
-  border-radius: 18px;
+  background: #FFFFFF;
+  border: 1px solid var(--sp-border-subtle);
+  border-radius: 20px;
   padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  box-shadow: var(--sp-shadow-sm);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .sp-gateway-card:hover {
   transform: translateY(-4px);
-  border-color: var(--amber-gold);
-  box-shadow: var(--shadow-lg), 0 0 20px rgba(245, 158, 11, 0.12);
+  border-color: var(--sp-border-hover);
+  box-shadow: var(--sp-shadow-lg);
 }
 
 .sp-gateway-badge {
   position: absolute;
-  top: 18px;
-  right: 18px;
+  top: 20px;
+  right: 20px;
   font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-weight: 600;
   padding: 3px 10px;
   border-radius: 9999px;
-  background: var(--surface-white);
-  border: 1px solid var(--card-border);
-  color: var(--text-muted);
+  background: var(--sp-bg-subtle);
+  color: var(--sp-text-muted);
+  border: 1px solid var(--sp-border-subtle);
 }
 
 .sp-gateway-icon-box {
-  width: 52px;
-  height: 52px;
+  width: 50px;
+  height: 50px;
   border-radius: 14px;
-  background: var(--surface-white);
-  border: 1px solid var(--card-border);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.5rem;
-  color: var(--text-dark);
-  box-shadow: var(--shadow-sm);
+}
+
+.sp-gateway-icon-box.blue {
+  background: var(--sp-blue-50);
+  color: var(--sp-blue-600);
+}
+
+.sp-gateway-icon-box.amber {
+  background: var(--sp-amber-50);
+  color: var(--sp-amber-600);
+}
+
+.sp-gateway-icon-box.purple {
+  background: #FAF5FF;
+  color: #7C3AED;
 }
 
 .sp-gateway-title {
   font-size: 1.35rem;
   font-weight: 800;
-  color: var(--text-dark);
+  color: var(--sp-text-title);
   margin: 0 0 0.75rem;
 }
 
 .sp-gateway-desc {
-  font-size: 0.95rem;
-  color: var(--text-body);
+  font-size: 0.94rem;
+  color: var(--sp-text-body);
   line-height: 1.6;
   margin: 0 0 1.5rem;
 }
 
 .sp-gateway-features {
   list-style: none;
-  margin: 0 0 1.75rem;
+  margin: 0 0 2rem;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -1187,40 +656,18 @@
   align-items: flex-start;
   gap: 10px;
   font-size: 0.88rem;
-  color: var(--text-dark);
+  color: var(--sp-text-title);
   font-weight: 500;
 }
 
-.sp-btn-gateway {
-  width: 100%;
-  padding: 0.85rem 1.25rem;
-  border-radius: 10px;
-  background: var(--obsidian-900);
-  color: #FFFFFF;
-  border: 1px solid var(--obsidian-900);
-  font-weight: 600;
-  font-size: 0.92rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-}
+/* ==========================================================================
+   5. TWO-STAGE TEST WORKFLOW (CLEAN TIMELINE CARDS)
+   ========================================================================== */
 
-.sp-btn-gateway:hover {
-  background: #1E293B;
-  border-color: #1E293B;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.2);
-}
-
-/* 3-Step Exam Workflow */
 .sp-workflow-section {
-  padding: 4.5rem 1.5rem;
-  background: var(--canvas-alabaster);
-  border-bottom: 1px solid var(--card-border);
+  padding: 5rem 1.5rem;
+  background: var(--sp-bg-subtle);
+  border-bottom: 1px solid var(--sp-border-subtle);
 }
 
 .sp-workflow-grid {
@@ -1232,29 +679,29 @@
 }
 
 .sp-workflow-card {
-  background: var(--surface-white);
-  border: 1px solid var(--card-border);
+  background: #FFFFFF;
+  border: 1px solid var(--sp-border-subtle);
   border-radius: 18px;
   padding: 2.25rem 1.85rem;
-  position: relative;
+  box-shadow: var(--sp-shadow-xs);
   transition: all 0.25s ease;
 }
 
 .sp-workflow-card:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--card-border-hover);
+  border-color: var(--sp-border-hover);
+  box-shadow: var(--sp-shadow-md);
 }
 
 .sp-workflow-step-num {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 800;
-  color: var(--amber-gold);
-  background: var(--amber-surface);
-  border: 1px solid var(--amber-border);
-  padding: 4px 12px;
-  border-radius: 8px;
+  font-family: var(--sp-font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--sp-blue-600);
+  background: var(--sp-blue-50);
+  border: 1px solid var(--sp-blue-border);
+  padding: 3px 10px;
+  border-radius: 6px;
   display: inline-block;
   margin-bottom: 1.25rem;
 }
@@ -1262,18 +709,356 @@
 .sp-workflow-title {
   font-size: 1.25rem;
   font-weight: 800;
-  color: var(--text-dark);
+  color: var(--sp-text-title);
   margin: 0 0 0.75rem;
 }
 
 .sp-workflow-desc {
   font-size: 0.92rem;
-  color: var(--text-body);
+  color: var(--sp-text-body);
   line-height: 1.6;
   margin: 0;
 }
 
-/* 4 Pillars Grid */
+/* ==========================================================================
+   6. 5 CORE COURSES & TRANSPARENT PRICING
+   ========================================================================== */
+
+.sp-courses-section {
+  padding: 5rem 1.5rem;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--sp-border-subtle);
+}
+
+.sp-courses-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.85rem;
+}
+
+.sp-course-card {
+  background: #FFFFFF;
+  border: 1px solid var(--sp-border-subtle);
+  border-radius: 20px;
+  padding: 2rem 1.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--sp-shadow-sm);
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.sp-course-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sp-border-hover);
+  box-shadow: var(--sp-shadow-lg);
+}
+
+.sp-course-card.featured {
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 12px 30px -4px rgba(37, 99, 235, 0.12), var(--sp-shadow-sm);
+}
+
+.sp-course-featured-ribbon {
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  background: #0F172A;
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  box-shadow: var(--sp-shadow-xs);
+}
+
+.sp-course-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.sp-course-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+
+.sp-course-speed {
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--sp-font-mono);
+  color: var(--sp-text-muted);
+}
+
+.sp-course-title {
+  font-size: 1.28rem;
+  font-weight: 800;
+  color: var(--sp-text-title);
+  margin: 0 0 0.4rem;
+}
+
+.sp-course-desc {
+  font-size: 0.88rem;
+  color: var(--sp-text-muted);
+  line-height: 1.5;
+  margin: 0 0 1.5rem;
+}
+
+.sp-course-price-box {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--sp-border-subtle);
+}
+
+.sp-course-price-now {
+  font-size: 1.85rem;
+  font-weight: 850;
+  color: var(--sp-text-title);
+  font-family: var(--sp-font-display);
+}
+
+.sp-course-price-was {
+  font-size: 0.95rem;
+  color: var(--sp-text-faint);
+  text-decoration: line-through;
+}
+
+.sp-course-duration {
+  font-size: 0.85rem;
+  color: var(--sp-text-muted);
+}
+
+.sp-course-features-list {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sp-course-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.86rem;
+  color: var(--sp-text-body);
+}
+
+.sp-course-actions-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sp-btn-enroll-card {
+  width: 100%;
+  padding: 0.8rem 1.25rem;
+  border-radius: 10px;
+  background: #0F172A;
+  color: #FFFFFF !important;
+  border: 1px solid #0F172A;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sp-btn-enroll-card:hover {
+  background: #1E293B;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+}
+
+.sp-btn-whatsapp-card {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  background: var(--sp-emerald-50);
+  color: var(--sp-emerald-600);
+  border: 1px solid var(--sp-emerald-border);
+  font-weight: 600;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.sp-btn-whatsapp-card:hover {
+  background: #D1FAE5;
+  color: var(--sp-emerald-600);
+}
+
+/* ==========================================================================
+   7. 8-STEP TEACHING METHODOLOGY ROADMAP
+   ========================================================================== */
+
+.sp-methodology-section {
+  padding: 5rem 1.5rem;
+  background: var(--sp-bg-subtle);
+  border-bottom: 1px solid var(--sp-border-subtle);
+}
+
+.sp-methodology-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.sp-step-card {
+  background: #FFFFFF;
+  border: 1px solid var(--sp-border-subtle);
+  border-radius: 16px;
+  padding: 1.65rem 1.5rem;
+  box-shadow: var(--sp-shadow-xs);
+  transition: all 0.25s ease;
+}
+
+.sp-step-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sp-border-hover);
+  box-shadow: var(--sp-shadow-md);
+}
+
+.sp-step-num-badge {
+  font-family: var(--sp-font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--sp-blue-600);
+  background: var(--sp-blue-50);
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 0.85rem;
+}
+
+.sp-step-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--sp-text-title);
+  margin: 0 0 0.25rem;
+}
+
+.sp-step-hindi {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--sp-amber-600);
+  font-weight: 600;
+  margin-bottom: 0.65rem;
+}
+
+.sp-step-desc {
+  font-size: 0.86rem;
+  color: var(--sp-text-body);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ==========================================================================
+   8. LIVE GOOGLE MEET CLASSROOM STRIP (PREMIUM SAPPHIRE CARD)
+   ========================================================================== */
+
+.sp-live-banner-section {
+  padding: 3.5rem 1.5rem;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--sp-border-subtle);
+}
+
+.sp-live-banner-card {
+  max-width: 1240px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #1D4ED8 100%);
+  border-radius: 20px;
+  padding: 2.75rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  box-shadow: var(--sp-shadow-lg);
+  color: #FFFFFF;
+}
+
+@media (min-width: 1024px) {
+  .sp-live-banner-card {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.sp-live-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #A7F3D0;
+  background: rgba(16, 185, 129, 0.2);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  margin-bottom: 0.85rem;
+}
+
+.sp-live-title {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #FFFFFF !important;
+  margin: 0 0 0.5rem;
+}
+
+.sp-live-desc {
+  font-size: 0.95rem;
+  color: #E2E8F0 !important;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.sp-btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.85rem 1.65rem;
+  border-radius: 12px;
+  background: #FFFFFF;
+  color: #0F172A !important;
+  font-weight: 700;
+  font-size: 0.92rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.sp-btn-white:hover {
+  background: #F8FAFC;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   9. 4 PILLARS (WHY GAYA SHORTHAND CLASSES)
+   ========================================================================== */
+
 .sp-pillars-grid {
   max-width: 1240px;
   margin: 0 auto;
@@ -1283,55 +1068,64 @@
 }
 
 .sp-pillar-card {
-  background: var(--surface-white);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
+  background: #FFFFFF;
+  border: 1px solid var(--sp-border-subtle);
+  border-radius: 18px;
   padding: 1.85rem 1.5rem;
+  box-shadow: var(--sp-shadow-xs);
   transition: all 0.25s ease;
 }
 
 .sp-pillar-card:hover {
   transform: translateY(-3px);
-  border-color: var(--card-border-hover);
-  box-shadow: var(--shadow-md);
+  border-color: var(--sp-border-hover);
+  box-shadow: var(--sp-shadow-md);
 }
 
 .sp-pillar-icon {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: var(--canvas-alabaster);
-  border: 1px solid var(--card-border);
+  background: var(--sp-blue-50);
+  color: var(--sp-blue-600);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
-  color: var(--amber-gold);
 }
 
 .sp-pillar-title {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--sp-text-title);
   margin: 0 0 0.5rem;
 }
 
 .sp-pillar-desc {
   font-size: 0.88rem;
-  color: var(--text-body);
+  color: var(--sp-text-body);
   line-height: 1.55;
   margin: 0;
 }
 
-/* Classroom Video Showcase */
+/* ==========================================================================
+   10. VIDEO DEMO & GOOGLE REVIEWS
+   ========================================================================== */
+
+.sp-reviews-section {
+  padding: 5rem 1.5rem;
+  background: var(--sp-bg-subtle);
+  border-bottom: 1px solid var(--sp-border-subtle);
+}
+
 .sp-video-container {
-  max-width: 900px;
+  max-width: 860px;
   margin: 0 auto 3.5rem;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: var(--shadow-lg), 0 0 30px rgba(0, 0, 0, 0.12);
-  border: 1px solid var(--card-border);
-  background: #000000;
+  box-shadow: var(--sp-shadow-lg);
+  border: 1px solid var(--sp-border-subtle);
+  background: #0F172A;
 }
 
 .sp-video-facade {
@@ -1357,21 +1151,22 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 72px;
-  height: 72px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
-  background: rgba(245, 158, 11, 0.95);
-  box-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
+  background: #FFFFFF;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #070A12;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--sp-blue-600);
+  transition: all 0.25s ease;
 }
 
 .sp-video-facade:hover .sp-play-badge {
-  transform: translate(-50%, -50%) scale(1.12);
-  background: #FBBF24;
+  transform: translate(-50%, -50%) scale(1.1);
+  background: #FFFFFF;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
 }
 
 .sp-video-caption {
@@ -1380,17 +1175,180 @@
   left: 0;
   right: 0;
   padding: 1.5rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, transparent 100%);
   color: #FFFFFF;
 }
 
 .sp-video-caption h4 {
   font-size: 1.15rem;
   margin: 0 0 4px;
+  color: #FFFFFF !important;
 }
 
 .sp-video-caption p {
   font-size: 0.85rem;
-  color: #CBD5E1;
+  color: #CBD5E1 !important;
   margin: 0;
+}
+
+.sp-reviews-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+}
+
+.sp-review-card {
+  background: #FFFFFF;
+  border: 1px solid var(--sp-border-subtle);
+  border-radius: 18px;
+  padding: 1.75rem;
+  box-shadow: var(--sp-shadow-xs);
+  transition: all 0.25s ease;
+}
+
+.sp-review-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sp-border-hover);
+  box-shadow: var(--sp-shadow-md);
+}
+
+.sp-stars-row {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 1rem;
+}
+
+.sp-review-quote {
+  font-size: 0.92rem;
+  color: var(--sp-text-body);
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+}
+
+.sp-reviewer-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sp-reviewer-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--sp-blue-50);
+  color: var(--sp-blue-600);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.sp-reviewer-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--sp-text-title);
+}
+
+.sp-reviewer-tag {
+  font-size: 0.75rem;
+  color: var(--sp-text-muted);
+}
+
+/* ==========================================================================
+   11. CENTER LOCATION & FAQS
+   ========================================================================== */
+
+.sp-center-section {
+  padding: 5rem 1.5rem;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--sp-border-subtle);
+}
+
+.sp-center-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+}
+
+@media (min-width: 1024px) {
+  .sp-center-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.sp-faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.sp-faq-item {
+  background: #FFFFFF;
+  border: 1px solid var(--sp-border-subtle);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: var(--sp-shadow-xs);
+}
+
+.sp-faq-item:hover {
+  border-color: var(--sp-border-hover);
+}
+
+.sp-faq-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--sp-font-display);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--sp-text-title);
+}
+
+.sp-faq-body {
+  padding: 0 1.5rem 1.35rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--sp-text-body);
+}
+
+/* ==========================================================================
+   12. CLOSING CTA BANNER (CLEAN & LUMINOUS)
+   ========================================================================== */
+
+.sp-cta-banner {
+  padding: 5rem 1.5rem;
+  background: var(--sp-bg-subtle);
+  text-align: center;
+  position: relative;
+}
+
+.sp-cta-container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.sp-cta-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--sp-text-title);
+  margin: 0 0 1rem;
+}
+
+.sp-cta-desc {
+  font-size: 1.05rem;
+  color: var(--sp-text-muted);
+  line-height: 1.6;
+  margin: 0 0 2.25rem;
 }

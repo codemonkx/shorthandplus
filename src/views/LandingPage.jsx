@@ -18,22 +18,19 @@ import {
   GraduationCap, 
   BookOpen, 
   Check, 
-  ExternalLink,
   Headphones, 
   Keyboard, 
   Layers, 
   FileText, 
   Zap, 
   Tv, 
-  Cpu, 
-  Briefcase, 
-  Globe
+  Cpu
 } from 'lucide-react';
 import { TARGET_EXAMINATIONS } from '../data/mockData';
 import '../landing-redesign.css';
 
 const GoogleIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
     <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
     <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
@@ -41,7 +38,7 @@ const GoogleIcon = () => (
   </svg>
 );
 
-const YouTubeIcon = ({ size = 22 }) => (
+const YouTubeIcon = ({ size = 20 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
     <path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
     <path fill="#FFFFFF" d="m9.545 15.568 6.273-3.568-6.273-3.568z"/>
@@ -52,27 +49,27 @@ const TOP_FAQS = [
   {
     id: 1,
     q: "What is the duration of the shorthand course?",
-    a: "The duration of the shorthand course depends on the student's learning speed and practice level. The Basic Pitman course typically takes 3 to 4 months for complete book coverage. We provide systematic training from basic to advanced levels (50 to 140 WPM), focusing on speed, accuracy, and exam preparation."
+    a: "The duration depends on the student's learning speed and practice schedule. The basic Pitman theory course typically takes 3 to 4 months for complete book coverage. We provide structured training from basic theory to 140 WPM exam dictations."
   },
   {
     id: 2,
-    q: "Can beginners join shorthand classes?",
-    a: "Yes! Beginners are welcome. No prior knowledge of shorthand is required. We start from the absolute basics (strokes, consonants, vowels) and gradually develop students' skills through regular daily practice and personalized notebook checking."
+    q: "Can complete beginners join shorthand classes?",
+    a: "Yes! Beginners are welcome. No prior knowledge is required. We start from basic consonants, vowels, and stroke angles, backed by daily individual notebook verification."
   },
   {
     id: 3,
-    q: "Is English shorthand taught from the basic level?",
-    a: "Yes. English shorthand is taught from the absolute beginner level covering basic Pitman strokes, consonants, vowels, word formation, phrases, grammalogues, and progressing up to advanced 120+ WPM dictations."
+    q: "Is English shorthand taught from the foundation level?",
+    a: "Yes. English shorthand starts from absolute fundamentals: basic Pitman strokes, vowels, grammalogues, intersections, and phraseography, progressing to 120+ WPM speed batches."
   },
   {
     id: 4,
-    q: "Do you provide Hindi shorthand classes?",
-    a: "Yes. We provide complete Hindi shorthand training starting from fundamentals (स्वर एवं व्यंजन) and progressing towards higher speed (50 to 120+ WPM) with Kruti Dev 010 and Mangal Inscript typing and legal judgment dictations."
+    q: "Do you provide Hindi shorthand & typing classes?",
+    a: "Yes. We provide complete Hindi shorthand (स्वर, व्यंजन एवं आंकड़े) with dual-font computer typing in Kruti Dev 010 and Mangal Inscript for High Court and Civil Court exams."
   },
   {
     id: 5,
     q: "Are demo classes available before enrollment?",
-    a: "Yes! We offer 3 Free Demo Classes so that students can experience our teaching methodology, interactive classroom environment, and modern typing lab before paying any admission fee."
+    a: "Yes! We offer 3 Free Trial Demo Classes so you can experience our teaching methodology, notebook checks, and computer lab before paying any admission fee."
   }
 ];
 
@@ -91,8 +88,8 @@ export default function LandingPage({
   const fireConfetti = () => {
     try {
       confetti({
-        particleCount: 80,
-        spread: 65,
+        particleCount: 70,
+        spread: 60,
         origin: { y: 0.6 }
       });
     } catch {}
@@ -109,7 +106,7 @@ export default function LandingPage({
     {
       id: "eng-steno",
       badge: "Flagship Shorthand",
-      badgeColor: "#F59E0B",
+      badgeColor: "#2563EB",
       title: "English Shorthand (Pitman)",
       subtitle: "Basic Pitman theory to 120 WPM exam dictations",
       price: "₹4,500",
@@ -126,7 +123,7 @@ export default function LandingPage({
     {
       id: "hindi-steno",
       badge: "High Court & SSC Special",
-      badgeColor: "#10B981",
+      badgeColor: "#059669",
       title: "Hindi Shorthand (हिंदी आशुलिपि)",
       subtitle: "Complete Hindi theory & speed dictation batch",
       price: "₹4,500",
@@ -143,7 +140,7 @@ export default function LandingPage({
     {
       id: "typing-combo",
       badge: "Dual-Font Typing Lab",
-      badgeColor: "#3B82F6",
+      badgeColor: "#0284C7",
       title: "English & Hindi Typing Lab",
       subtitle: "QWERTY, Kruti Dev 010 & Mangal Inscript",
       price: "₹350",
@@ -160,7 +157,7 @@ export default function LandingPage({
     {
       id: "court-special",
       badge: "Judicial Bench Special",
-      badgeColor: "#EC4899",
+      badgeColor: "#7C3AED",
       title: "High Court Judicial Speed Series",
       subtitle: "Live courtroom judgments & legal transcription",
       price: "₹700",
@@ -177,7 +174,7 @@ export default function LandingPage({
     {
       id: "computer-diplomas",
       badge: "Govt. Recognized Certification",
-      badgeColor: "#8B5CF6",
+      badgeColor: "#D97706",
       title: "Computer Diplomas (ADCA / DCA)",
       subtitle: "6 to 12 Months Recognized Diplomas",
       price: "₹1,200",
@@ -197,7 +194,7 @@ export default function LandingPage({
     <div className="sp-landing-root">
       
       {/* =========================================================================
-          SECTION 1: HERO SECTION — MIDNIGHT OBSIDIAN & GOLDEN ILLUMINATION
+          SECTION 1: LUMINOUS HERO SECTION (APPLE / STRIPE CLEAN LIGHT)
           ========================================================================= */}
       <section className="sp-hero-section">
         <div className="sp-hero-container">
@@ -205,27 +202,23 @@ export default function LandingPage({
             
             {/* Left Column: Direct Value Proposition */}
             <div>
-              {/* Institution Pill Badge */}
               <div className="sp-hero-pill-badge">
                 <span className="sp-pulse-dot" />
                 <span>Gaya Shorthand Classes · Est. 2012 · 12+ Years Coaching</span>
               </div>
 
-              {/* Master Headline */}
               <h1 className="sp-hero-title">
-                The Gold Standard in Shorthand & Typing for <span className="sp-title-gradient-gold">Government Exams</span>
+                The Gold Standard in Shorthand & Typing for <span className="sp-title-gradient">Government Exams</span>
               </h1>
 
-              {/* Subtitle */}
               <p className="sp-hero-subtitle">
                 Master Pitman Shorthand (50–140 WPM), bilingual computer typing (Kruti Dev & Mangal), and legal dictations. Complete preparation guided by <strong>Shadab Sir (12 Years Exp)</strong> at Gaya College More, backed by real-time automated SSC error evaluation.
               </p>
 
-              {/* Hero CTA Cluster */}
               <div className="sp-hero-cta-cluster">
                 <button
                   type="button"
-                  className="sp-btn-gold"
+                  className="sp-btn-primary"
                   onClick={() => {
                     if (setCurrentTab) setCurrentTab('tests');
                   }}
@@ -237,7 +230,7 @@ export default function LandingPage({
 
                 <button
                   type="button"
-                  className="sp-btn-glass"
+                  className="sp-btn-secondary"
                   onClick={() => {
                     if (setCurrentTab) setCurrentTab('typing-studio');
                   }}
@@ -248,7 +241,7 @@ export default function LandingPage({
 
                 <button
                   type="button"
-                  className="sp-btn-link-demo"
+                  className="sp-btn-ghost"
                   onClick={() => {
                     fireConfetti();
                     if (onOpenAdmission) onOpenAdmission();
@@ -259,7 +252,7 @@ export default function LandingPage({
                 </button>
               </div>
 
-              {/* 4 Precision Trust Metrics Ribbon */}
+              {/* 4 Precision Trust Metrics */}
               <div className="sp-hero-stats-ribbon">
                 <div className="sp-stat-item">
                   <div className="sp-stat-num">1,200+</div>
@@ -281,15 +274,14 @@ export default function LandingPage({
 
             </div>
 
-            {/* Right Column: Courtroom Stenography Skill Simulator HUD */}
+            {/* Right Column: Clean macOS-Style Skill Simulator Window */}
             <div>
               <div className="sp-hud-card">
-                {/* HUD Header */}
                 <div className="sp-hud-header">
                   <div className="sp-hud-window-controls">
-                    <span className="sp-hud-dot" />
-                    <span className="sp-hud-dot" />
-                    <span className="sp-hud-dot" />
+                    <span className="sp-hud-dot" style={{ background: '#EF4444' }} />
+                    <span className="sp-hud-dot" style={{ background: '#F59E0B' }} />
+                    <span className="sp-hud-dot" style={{ background: '#10B981' }} />
                     <span className="sp-hud-badge-live">
                       <span className="sp-pulse-dot" style={{ width: '6px', height: '6px' }} />
                       Two-Stage Exam Engine Live
@@ -300,23 +292,22 @@ export default function LandingPage({
                   </span>
                 </div>
 
-                {/* Stage 1: Audio Track Waveform */}
+                {/* Stage 1: Audio Track Preview */}
                 <div className="sp-hud-stage-box">
                   <div className="sp-hud-stage-top">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <Headphones size={15} color="#F59E0B" />
+                      <Headphones size={15} color="#2563EB" />
                       <span className="sp-hud-track-title">
                         Patna High Court Bench 80 WPM
                       </span>
                     </div>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#10B981', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '2px 8px', borderRadius: '4px' }}>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#059669', background: '#ECFDF5', border: '1px solid #A7F3D0', padding: '2px 8px', borderRadius: '4px' }}>
                       Stage 1 Audio ✓
                     </span>
                   </div>
 
-                  {/* Visual Equalizer Bars */}
                   <div className="sp-equalizer-bars">
-                    {[40, 75, 100, 55, 90, 65, 80, 45, 95, 70, 85, 60, 90, 50, 75, 95, 65, 85, 45, 30, 80, 60].map((h, i) => (
+                    {[35, 60, 90, 45, 80, 100, 65, 40, 75, 95, 60, 85, 50, 70, 90, 40, 65, 80, 55, 30, 75, 50].map((h, i) => (
                       <span key={i} className="sp-eq-bar" style={{ height: `${h}%`, animationDelay: `${i * 0.08}s` }} />
                     ))}
                   </div>
@@ -330,10 +321,10 @@ export default function LandingPage({
                 <div className="sp-hud-transcription-box">
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <Keyboard size={15} color="#94A3B8" />
-                      <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#E2E8F0' }}>Stage 2: Transcription</span>
+                      <Keyboard size={15} color="#64748B" />
+                      <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#0F172A' }}>Stage 2: Transcription</span>
                     </div>
-                    <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#F59E0B', fontFamily: 'JetBrains Mono, monospace', background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.25)', padding: '2px 8px', borderRadius: '4px' }}>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#2563EB', fontFamily: 'JetBrains Mono, monospace', background: '#EFF6FF', border: '1px solid #BFDBFE', padding: '2px 8px', borderRadius: '4px' }}>
                       ⏱ 09:42 remaining
                     </span>
                   </div>
@@ -346,7 +337,7 @@ export default function LandingPage({
                 <div className="sp-hud-scorecard-grid">
                   <div className="sp-hud-score-tile">
                     <span className="sp-score-label">Net Speed</span>
-                    <span className="sp-score-val gold">84 WPM</span>
+                    <span className="sp-score-val blue">84 WPM</span>
                   </div>
                   <div className="sp-hud-score-tile">
                     <span className="sp-score-label">Accuracy</span>
@@ -358,10 +349,9 @@ export default function LandingPage({
                   </div>
                 </div>
 
-                {/* Direct Action Button */}
                 <button
                   type="button"
-                  className="sp-btn-gold"
+                  className="sp-btn-primary"
                   style={{ width: '100%', justifyContent: 'center' }}
                   onClick={() => setCurrentTab && setCurrentTab('tests')}
                 >
@@ -377,18 +367,18 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 2: TARGET GOVERNMENT EXAM BENCHES STRIP
+          SECTION 2: TARGET GOVERNMENT EXAM BENCHES
           ========================================================================= */}
       <section className="sp-benches-section">
-        <div className="sp-benches-header">
+        <div className="sp-section-heading-center">
           <span className="sp-section-pill">
             <ShieldCheck size={14} />
             Target Exam Benches
           </span>
-          <h2 className="sp-benches-title">
+          <h2 className="sp-section-h2">
             Tailored for High Courts, SSC & Judicial Benches
           </h2>
-          <p style={{ fontSize: '0.92rem', color: '#64748B', margin: 0 }}>
+          <p className="sp-section-lead">
             Every dictation and typing passage is calibrated to match official recruitment standards:
           </p>
         </div>
@@ -405,7 +395,7 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 3: THE 3 CORE GATEWAYS (WHAT YOU CAN DO ON SHORTHAND PLUS)
+          SECTION 3: THE 3 CORE GATEWAYS (CURRICULUM TRACKS)
           ========================================================================= */}
       <section className="sp-gateways-section">
         <div className="sp-section-heading-center">
@@ -426,12 +416,12 @@ export default function LandingPage({
           <div className="sp-gateway-card">
             <span className="sp-gateway-badge">Standard SSC Benchmark</span>
             <div>
-              <div className="sp-gateway-icon-box">
-                <Headphones size={24} color="#D97706" />
+              <div className="sp-gateway-icon-box amber">
+                <Headphones size={24} />
               </div>
               <h3 className="sp-gateway-title">Audio Dictation Vault</h3>
               <p className="sp-gateway-desc">
-                Calibrated <strong>80, 100, 120, 140 WPM</strong> voice dictations. Follows strict examination rules: audio plays once without rewind, followed by a timed typing screen and automated SSC mistake scoring.
+                Calibrated <strong>80, 100, 120, 140 WPM</strong> voice dictations. Follows strict examination rules: audio plays once without rewind, followed by timed transcription and automated SSC scoring.
               </p>
               <ul className="sp-gateway-features">
                 {[
@@ -440,7 +430,7 @@ export default function LandingPage({
                   "Instant LCS Word-by-Word Diff Evaluation"
                 ].map((feat, i) => (
                   <li key={i} className="sp-gateway-feature-item">
-                    <CheckCircle2 size={16} color="#10B981" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0, marginTop: '2px' }} />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -448,7 +438,8 @@ export default function LandingPage({
             </div>
             <button
               type="button"
-              className="sp-btn-gateway"
+              className="sp-btn-primary"
+              style={{ width: '100%', justifyContent: 'center' }}
               onClick={() => setCurrentTab && setCurrentTab('tests')}
             >
               <span>Launch Dictation Vault</span>
@@ -460,8 +451,8 @@ export default function LandingPage({
           <div className="sp-gateway-card">
             <span className="sp-gateway-badge">Bilingual Engine</span>
             <div>
-              <div className="sp-gateway-icon-box">
-                <Keyboard size={24} color="#2563EB" />
+              <div className="sp-gateway-icon-box blue">
+                <Keyboard size={24} />
               </div>
               <h3 className="sp-gateway-title">Computer Typing Studio</h3>
               <p className="sp-gateway-desc">
@@ -474,7 +465,7 @@ export default function LandingPage({
                   "Official Court Passage Test Bank"
                 ].map((feat, i) => (
                   <li key={i} className="sp-gateway-feature-item">
-                    <CheckCircle2 size={16} color="#10B981" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0, marginTop: '2px' }} />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -482,7 +473,8 @@ export default function LandingPage({
             </div>
             <button
               type="button"
-              className="sp-btn-gateway"
+              className="sp-btn-primary"
+              style={{ width: '100%', justifyContent: 'center' }}
               onClick={() => setCurrentTab && setCurrentTab('typing-studio')}
             >
               <span>Enter Typing Studio</span>
@@ -494,8 +486,8 @@ export default function LandingPage({
           <div className="sp-gateway-card">
             <span className="sp-gateway-badge">Gaya Center</span>
             <div>
-              <div className="sp-gateway-icon-box">
-                <GraduationCap size={24} color="#7C3AED" />
+              <div className="sp-gateway-icon-box purple">
+                <GraduationCap size={24} />
               </div>
               <h3 className="sp-gateway-title">Classroom & Offline Coaching</h3>
               <p className="sp-gateway-desc">
@@ -508,7 +500,7 @@ export default function LandingPage({
                   "Modern Computer Lab with Mechanical Keyboards"
                 ].map((feat, i) => (
                   <li key={i} className="sp-gateway-feature-item">
-                    <CheckCircle2 size={16} color="#10B981" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0, marginTop: '2px' }} />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -516,7 +508,8 @@ export default function LandingPage({
             </div>
             <button
               type="button"
-              className="sp-btn-gateway"
+              className="sp-btn-primary"
+              style={{ width: '100%', justifyContent: 'center' }}
               onClick={() => {
                 fireConfetti();
                 if (onOpenAdmission) onOpenAdmission();
@@ -551,7 +544,7 @@ export default function LandingPage({
             <span className="sp-workflow-step-num">STAGE 01</span>
             <h3 className="sp-workflow-title">Listen & Take Shorthand Notes</h3>
             <p className="sp-workflow-desc">
-              Listen to high-fidelity audio dictation calibrated to your target speed (80, 100, 120 WPM). You write notes in your shorthand notebook. The audio plays once with no rewind or pause.
+              Listen to calibrated audio dictation (80, 100, 120 WPM) and take shorthand notes in your notebook. Audio plays strictly once with no pause or rewind.
             </p>
           </div>
 
@@ -603,7 +596,7 @@ export default function LandingPage({
                 
                 <div>
                   <div className="sp-course-badge-row">
-                    <span className="sp-course-tag" style={{ color: course.badgeColor, background: `${course.badgeColor}15`, borderColor: `${course.badgeColor}30` }}>
+                    <span className="sp-course-tag" style={{ color: course.badgeColor, background: `${course.badgeColor}12`, borderColor: `${course.badgeColor}25` }}>
                       {course.badge}
                     </span>
                     <span className="sp-course-speed">{course.speed}</span>
@@ -621,7 +614,7 @@ export default function LandingPage({
                   <ul className="sp-course-features-list">
                     {course.highlights.map((item, i) => (
                       <li key={i} className="sp-course-feature-item">
-                        <Check size={16} color="#10B981" style={{ flexShrink: 0, marginTop: '2px' }} />
+                        <Check size={16} color="#059669" style={{ flexShrink: 0, marginTop: '2px' }} />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -644,7 +637,7 @@ export default function LandingPage({
                     rel="noopener noreferrer"
                     className="sp-btn-whatsapp-card"
                   >
-                    <MessageCircle size={15} color="#10B981" />
+                    <MessageCircle size={15} color="#059669" />
                     <span>WhatsApp Inquiry</span>
                   </a>
                 </div>
@@ -713,7 +706,7 @@ export default function LandingPage({
               step: "07",
               title: "Full Two-Stage Mock Exams",
               hindi: "पूर्ण दो-चरणीय परीक्षा अभ्यास",
-              desc: "Audio dictation with a single-play lock, 5-minute reading clock, timed transcription, and automated diff scoring."
+              desc: "Audio dictation with single-play lock, 5-minute reading clock, timed transcription, and automated diff scoring."
             },
             {
               step: "08",
@@ -751,7 +744,7 @@ export default function LandingPage({
           </div>
           <button
             type="button"
-            className="sp-btn-gold"
+            className="sp-btn-white"
             onClick={() => {
               if (setCurrentTab) setCurrentTab('classes');
             }}
@@ -856,7 +849,7 @@ export default function LandingPage({
                 className="sp-video-thumb"
               />
               <div className="sp-play-badge">
-                <Play size={28} fill="#070A12" style={{ marginLeft: '4px' }} />
+                <Play size={26} fill="#2563EB" color="#2563EB" style={{ marginLeft: '4px' }} />
               </div>
               <div className="sp-video-caption">
                 <h4>Watch Classroom Speed Dictation Demo</h4>
@@ -924,14 +917,14 @@ export default function LandingPage({
               Gaya Coaching Center & Helplines
             </h2>
 
-            <div style={{ background: 'var(--canvas-alabaster)', border: '1px solid var(--card-border)', borderRadius: '18px', padding: '1.85rem', marginBottom: '1.5rem' }}>
+            <div style={{ background: 'var(--sp-bg-subtle)', border: '1px solid var(--sp-border-subtle)', borderRadius: '18px', padding: '1.85rem', marginBottom: '1.5rem' }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', marginBottom: '16px' }}>
-                <MapPin size={22} color="#D97706" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <MapPin size={22} color="#2563EB" style={{ flexShrink: 0, marginTop: '2px' }} />
                 <div>
-                  <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-dark)', margin: '0 0 4px' }}>
+                  <h4 style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--sp-text-title)', margin: '0 0 4px' }}>
                     Address:
                   </h4>
-                  <p style={{ fontSize: '0.92rem', color: 'var(--text-body)', margin: 0, lineHeight: 1.5 }}>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--sp-text-body)', margin: 0, lineHeight: 1.5 }}>
                     <strong>Gaya Shorthand Classes</strong><br />
                     Gaya College More, Opposite Cyber Thana, Gayaji, Bihar - 823001
                   </p>
@@ -939,25 +932,25 @@ export default function LandingPage({
               </div>
 
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', marginBottom: '16px' }}>
-                <Phone size={20} color="#10B981" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <Phone size={20} color="#059669" style={{ flexShrink: 0, marginTop: '2px' }} />
                 <div>
-                  <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-dark)', margin: '0 0 4px' }}>
+                  <h4 style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--sp-text-title)', margin: '0 0 4px' }}>
                     Direct Helplines:
                   </h4>
-                  <p style={{ fontSize: '0.92rem', color: 'var(--text-body)', margin: 0, lineHeight: 1.5 }}>
-                    Director (Shadab Sir): <a href="tel:9204123453" style={{ color: '#D97706', fontWeight: 700 }}>+91 9204123453</a><br />
-                    Admissions Desk: <a href="tel:7870377214" style={{ color: 'var(--text-dark)', fontWeight: 700 }}>+91 7870377214</a>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--sp-text-body)', margin: 0, lineHeight: 1.5 }}>
+                    Director (Shadab Sir): <a href="tel:9204123453" style={{ color: '#2563EB', fontWeight: 700 }}>+91 9204123453</a><br />
+                    Admissions Desk: <a href="tel:7870377214" style={{ color: 'var(--sp-text-title)', fontWeight: 700 }}>+91 7870377214</a>
                   </p>
                 </div>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
-                <Clock size={20} color="#3B82F6" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <Clock size={20} color="#D97706" style={{ flexShrink: 0, marginTop: '2px' }} />
                 <div>
-                  <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-dark)', margin: '0 0 4px' }}>
+                  <h4 style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--sp-text-title)', margin: '0 0 4px' }}>
                     Office & Class Timings:
                   </h4>
-                  <p style={{ fontSize: '0.92rem', color: 'var(--text-body)', margin: 0, lineHeight: 1.5 }}>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--sp-text-body)', margin: 0, lineHeight: 1.5 }}>
                     Morning 7:00 AM – 11:30 AM • Evening 3:30 PM – 7:30 PM (Mon to Sat)
                   </p>
                 </div>
@@ -965,7 +958,7 @@ export default function LandingPage({
             </div>
 
             {/* Embedded Google Map */}
-            <div style={{ borderRadius: '18px', overflow: 'hidden', border: '1px solid var(--card-border)', height: '240px' }}>
+            <div style={{ borderRadius: '18px', overflow: 'hidden', border: '1px solid var(--sp-border-subtle)', height: '240px', boxShadow: 'var(--sp-shadow-xs)' }}>
               <iframe
                 title="Gaya Shorthand Classes Google Map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14470.573215849887!2d84.9912061!3d24.7938367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f32a510526e855%3A0x6bfa332617757917!2sGaya%20College%2C%20Gaya!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
@@ -1000,7 +993,7 @@ export default function LandingPage({
                       onClick={() => setActiveFaq(isOpen ? null : faq.id)}
                     >
                       <span>{faq.q}</span>
-                      {isOpen ? <ChevronUp size={20} color="#D97706" /> : <ChevronDown size={20} color="#94A3B8" />}
+                      {isOpen ? <ChevronUp size={20} color="#2563EB" /> : <ChevronDown size={20} color="#94A3B8" />}
                     </button>
                     {isOpen && (
                       <div className="sp-faq-body">
@@ -1015,7 +1008,7 @@ export default function LandingPage({
             <div style={{ marginTop: '1.75rem', textAlign: 'left' }}>
               <a
                 href="tel:9204123453"
-                style={{ fontSize: '0.92rem', fontWeight: 700, color: '#D97706', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                style={{ fontSize: '0.92rem', fontWeight: 700, color: '#2563EB', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
               >
                 <Phone size={16} />
                 <span>Have additional questions? Call Helpline: +91 9204123453</span>
@@ -1026,7 +1019,7 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 11: BOTTOM PRESTIGE HERO CTA BANNER
+          SECTION 11: CLOSING CTA BANNER (CLEAN & LUMINOUS)
           ========================================================================= */}
       <section className="sp-cta-banner">
         <div className="sp-cta-container">
@@ -1043,7 +1036,7 @@ export default function LandingPage({
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
             <button
               type="button"
-              className="sp-btn-gold"
+              className="sp-btn-primary"
               onClick={() => {
                 fireConfetti();
                 if (onOpenAdmission) onOpenAdmission();
@@ -1056,7 +1049,7 @@ export default function LandingPage({
 
             <a
               href="tel:9204123453"
-              className="sp-btn-glass"
+              className="sp-btn-secondary"
             >
               <Phone size={18} />
               <span>Call Helpline: +91 9204123453</span>
