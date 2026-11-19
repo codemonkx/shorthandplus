@@ -1,0 +1,1396 @@
+/* ==========================================================================
+   SHORTHAND PLUS — PRESTIGE EDITORIAL DESIGN SYSTEM
+   Theme: Midnight Obsidian, Judicial Amber-Gold & Alabaster Porcelain
+   Fonts: Outfit (Display), Inter (Body), JetBrains Mono (Telemetry)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Obsidian Hero Atmosphere */
+  --obsidian-950: #05070B;
+  --obsidian-900: #080C14;
+  --obsidian-850: #0D121F;
+  --obsidian-800: #121A2C;
+  --obsidian-700: #1A243C;
+  --obsidian-border: rgba(255, 255, 255, 0.08);
+  --obsidian-border-hover: rgba(255, 255, 255, 0.16);
+
+  /* Gold & Amber Accents */
+  --amber-gold: #F59E0B;
+  --amber-dark: #D97706;
+  --amber-glow: rgba(245, 158, 11, 0.28);
+  --amber-surface: rgba(245, 158, 11, 0.08);
+  --amber-border: rgba(245, 158, 11, 0.24);
+
+  /* Emerald Qualified Accents */
+  --emerald-accent: #10B981;
+  --emerald-dark: #059669;
+  --emerald-glow: rgba(16, 185, 129, 0.25);
+  --emerald-surface: rgba(16, 185, 129, 0.08);
+  --emerald-border: rgba(16, 185, 129, 0.24);
+
+  /* Light Editorial Canvas */
+  --canvas-alabaster: #FAF9F6;
+  --surface-white: #FFFFFF;
+  --surface-raised: #F4F2EC;
+  --card-border: rgba(15, 23, 42, 0.08);
+  --card-border-hover: rgba(15, 23, 42, 0.16);
+  --text-dark: #0F172A;
+  --text-body: #475569;
+  --text-muted: #64748B;
+  --text-caption: #94A3B8;
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px -4px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 20px 40px -12px rgba(15, 23, 42, 0.08);
+  --shadow-glow: 0 0 35px rgba(245, 158, 11, 0.22);
+}
+
+/* Base resets & typography */
+.sp-landing-root {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background-color: var(--canvas-alabaster);
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sp-landing-root h1,
+.sp-landing-root h2,
+.sp-landing-root h3,
+.sp-landing-root h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   1. HERO SECTION — MIDNIGHT OBSIDIAN & GOLDEN ILLUMINATION
+   ========================================================================== */
+
+.sp-hero-section {
+  position: relative;
+  background-color: var(--obsidian-900);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(217, 119, 6, 0.16) 0%, transparent 60%),
+    radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 90% 40%, rgba(16, 185, 129, 0.06) 0%, transparent 45%);
+  color: #FFFFFF;
+  padding: 4.5rem 1.5rem 4rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+/* Subtle steno stroke background grid */
+.sp-hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.sp-hero-container {
+  max-width: 1260px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.sp-hero-grid {
+  display: grid;
+  grid-templateColumns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .sp-hero-grid {
+    grid-template-columns: 1.15fr 0.95fr;
+    gap: 4rem;
+  }
+}
+
+/* Pill badge on Hero */
+.sp-hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--obsidian-border);
+  backdrop-filter: blur(12px);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #E2E8F0;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sp-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--emerald-accent);
+  box-shadow: 0 0 10px var(--emerald-accent);
+  animation: sp-pulse 2s infinite;
+}
+
+@keyframes sp-pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.sp-hero-title {
+  font-size: clamp(2.3rem, 4.4vw, 3.8rem);
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.35rem;
+  color: #FFFFFF !important;
+}
+
+.sp-title-gradient-gold {
+  background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 50%, #D97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.sp-hero-subtitle {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: #94A3B8 !important;
+  max-width: 580px;
+  margin: 0 0 2.25rem;
+}
+
+.sp-hero-subtitle strong {
+  color: #F8FAFC !important;
+  font-weight: 600;
+}
+
+/* Hero CTA Cluster */
+.sp-hero-cta-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.75rem;
+}
+
+.sp-btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.95rem 1.85rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #070A12;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(217, 119, 6, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.sp-btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(217, 119, 6, 0.45);
+  background: linear-gradient(135deg, #FBBF24 0%, #EA580C 100%);
+  color: #000000;
+}
+
+.sp-btn-glass {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.95rem 1.65rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--obsidian-border);
+  color: #F8FAFC;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.sp-btn-glass:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+  color: #FFFFFF;
+}
+
+.sp-btn-link-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #CBD5E1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  transition: color 0.15s ease;
+}
+
+.sp-btn-link-demo:hover {
+  color: var(--amber-gold);
+}
+
+/* 4 Trust Numbers Ribbon */
+.sp-hero-stats-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--obsidian-border);
+}
+
+@media (max-width: 640px) {
+  .sp-hero-stats-ribbon {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.sp-stat-item .sp-stat-num {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+
+.sp-stat-item .sp-stat-label {
+  font-size: 0.78rem;
+  color: #94A3B8;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   2. HERO RIGHT CARD — COURT SKILL SIMULATOR HUD
+   ========================================================================== */
+
+.sp-hud-card {
+  background: rgba(13, 18, 31, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 1.85rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(217, 119, 6, 0.08);
+  position: relative;
+}
+
+.sp-hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--obsidian-border);
+  margin-bottom: 1.25rem;
+}
+
+.sp-hud-badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  letter-spacing: 0.02em;
+}
+
+.sp-hud-tag-court {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--amber-surface);
+  color: var(--amber-gold);
+  border: 1px solid var(--amber-border);
+  padding: 3px 9px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+}
+
+/* Stage 1 Audio Box */
+.sp-hud-stage-box {
+  background: rgba(8, 12, 20, 0.7);
+  border: 1px solid var(--obsidian-border);
+  border-radius: 14px;
+  padding: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.sp-hud-stage-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.sp-hud-track-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #F8FAFC;
+}
+
+/* Animated Equalizer Waveform */
+.sp-equalizer-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 28px;
+  padding: 3px 0;
+}
+
+.sp-eq-bar {
+  flex: 1;
+  background: linear-gradient(180deg, var(--amber-gold) 0%, rgba(217, 119, 6, 0.3) 100%);
+  border-radius: 2px;
+  animation: sp-wave 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes sp-wave {
+  0% { height: 25%; }
+  50% { height: 95%; }
+  100% { height: 40%; }
+}
+
+.sp-hud-subtext {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 0.74rem;
+  color: #64748B;
+  font-family: var(--font-mono);
+}
+
+/* Stage 2 Typing Box */
+.sp-hud-transcription-box {
+  background: rgba(8, 12, 20, 0.7);
+  border: 1px solid var(--obsidian-border);
+  border-radius: 14px;
+  padding: 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.sp-typewriter-text {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #CBD5E1;
+  line-height: 1.55;
+  background: rgba(13, 18, 31, 0.8);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  margin: 0;
+}
+
+.sp-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  background: var(--amber-gold);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: sp-blink 1s infinite;
+}
+
+@keyframes sp-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Scorecard HUD Grid */
+.sp-hud-scorecard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.sp-hud-score-tile {
+  background: rgba(8, 12, 20, 0.6);
+  border: 1px solid var(--obsidian-border);
+  border-radius: 10px;
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.sp-score-label {
+  display: block;
+  font-size: 0.68rem;
+  color: #64748B;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.sp-score-val {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.sp-score-val.emerald {
+  color: var(--emerald-accent);
+}
+
+.sp-score-val.gold {
+  color: var(--amber-gold);
+}
+
+/* ==========================================================================
+   3. TARGET EXAM BENCHES STRIP
+   ========================================================================== */
+
+.sp-benches-section {
+  background: var(--surface-white);
+  padding: 2.5rem 1.5rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.sp-benches-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 2rem;
+}
+
+.sp-section-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: var(--amber-surface);
+  color: var(--amber-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--amber-border);
+}
+
+.sp-benches-title {
+  font-size: 1.65rem;
+  color: var(--text-dark);
+  margin: 0 0 0.5rem;
+}
+
+.sp-benches-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.sp-bench-card {
+  background: var(--surface-white);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.sp-bench-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--card-border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.sp-bench-court-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  background: var(--surface-raised);
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.sp-bench-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 0.4rem;
+}
+
+.sp-bench-desc {
+  font-size: 0.84rem;
+  color: var(--text-body);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   4. CANONICAL COURSES SECTION
+   ========================================================================== */
+
+.sp-courses-section {
+  padding: 4.5rem 1.5rem;
+  background: var(--canvas-alabaster);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.sp-section-heading-center {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+
+.sp-section-h2 {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  color: var(--text-dark);
+  margin: 0 0 0.75rem;
+}
+
+.sp-section-lead {
+  font-size: 1.05rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.sp-courses-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.75rem;
+}
+
+.sp-course-card {
+  background: var(--surface-white);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 1.85rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.sp-course-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(217, 119, 6, 0.4);
+  box-shadow: 0 20px 40px -10px rgba(217, 119, 6, 0.12);
+}
+
+.sp-course-card.featured {
+  border: 2px solid var(--amber-gold);
+}
+
+.sp-course-featured-ribbon {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #000000;
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+}
+
+.sp-course-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.sp-course-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: var(--surface-raised);
+  color: var(--text-dark);
+}
+
+.sp-course-speed {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--amber-dark);
+}
+
+.sp-course-title {
+  font-size: 1.35rem;
+  color: var(--text-dark);
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+}
+
+.sp-course-desc {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  line-height: 1.55;
+  margin: 0 0 1.25rem;
+}
+
+.sp-course-price-box {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+  margin-bottom: 1.25rem;
+}
+
+.sp-course-price-now {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.sp-course-price-was {
+  font-size: 0.95rem;
+  color: var(--text-caption);
+  text-decoration: line-through;
+}
+
+.sp-course-duration {
+  margin-left: auto;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.sp-course-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex-grow: 1;
+}
+
+.sp-course-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-body);
+  line-height: 1.45;
+}
+
+.sp-course-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.sp-btn-enroll-card {
+  padding: 0.75rem;
+  border-radius: 10px;
+  background: var(--text-dark);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+.sp-btn-enroll-card:hover {
+  background: #1E293B;
+  transform: translateY(-1px);
+}
+
+.sp-btn-whatsapp-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0.75rem;
+  border-radius: 10px;
+  background: rgba(37, 211, 102, 0.08);
+  color: #059669;
+  border: 1px solid rgba(37, 211, 102, 0.25);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.sp-btn-whatsapp-card:hover {
+  background: #25D366;
+  color: #FFFFFF;
+  border-color: #25D366;
+}
+
+/* ==========================================================================
+   5. TEACHING METHODOLOGY ROADMAP
+   ========================================================================== */
+
+.sp-methodology-section {
+  padding: 4.5rem 1.5rem;
+  background: var(--surface-white);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.sp-methodology-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.sp-step-card {
+  background: var(--canvas-alabaster);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.sp-step-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--amber-dark);
+  box-shadow: var(--shadow-md);
+  background: var(--surface-white);
+}
+
+.sp-step-num-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--amber-surface);
+  color: var(--amber-dark);
+  border: 1px solid var(--amber-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  margin-bottom: 1rem;
+}
+
+.sp-step-title {
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  margin: 0 0 0.4rem;
+}
+
+.sp-step-hindi {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--amber-dark);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.sp-step-desc {
+  font-size: 0.84rem;
+  color: var(--text-body);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   6. LIVE GOOGLE MEET CLASSROOM STRIP
+   ========================================================================== */
+
+.sp-live-banner-section {
+  padding: 3rem 1.5rem;
+  background: var(--obsidian-900);
+  color: #FFFFFF;
+  border-bottom: 1px solid var(--obsidian-border);
+}
+
+.sp-live-banner-card {
+  max-width: 1240px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(13, 18, 31, 0.95) 0%, rgba(20, 28, 46, 0.95) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 20px;
+  padding: 2.25rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(245, 158, 11, 0.1);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .sp-live-banner-card {
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+  }
+}
+
+.sp-live-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--emerald-accent);
+  background: rgba(16, 185, 129, 0.1);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  margin-bottom: 0.85rem;
+}
+
+.sp-live-title {
+  font-size: 1.75rem;
+  color: #FFFFFF !important;
+  margin: 0 0 0.5rem;
+}
+
+.sp-live-desc {
+  font-size: 0.92rem;
+  color: #94A3B8 !important;
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+}
+
+/* ==========================================================================
+   7. GOOGLE REVIEWS & TESTIMONIALS
+   ========================================================================== */
+
+.sp-reviews-section {
+  padding: 4.5rem 1.5rem;
+  background: var(--canvas-alabaster);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.sp-reviews-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.sp-review-card {
+  background: var(--surface-white);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.65rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+
+.sp-review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.sp-stars-row {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #F59E0B;
+  margin-bottom: 0.85rem;
+}
+
+.sp-review-quote {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  margin: 0 0 1.25rem;
+  flex-grow: 1;
+}
+
+.sp-reviewer-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--card-border);
+  padding-top: 1rem;
+}
+
+.sp-reviewer-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--amber-surface);
+  color: var(--amber-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.sp-reviewer-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+.sp-reviewer-tag {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   8. OFFLINE CENTER & GOOGLE MAPS
+   ========================================================================== */
+
+.sp-center-section {
+  padding: 4.5rem 1.5rem;
+  background: var(--surface-white);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.sp-center-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .sp-center-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+  }
+}
+
+.sp-map-frame {
+  width: 100%;
+  height: 380px;
+  border-radius: 18px;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   9. FAQS ACCORDION
+   ========================================================================== */
+
+.sp-faq-section {
+  padding: 4.5rem 1.5rem;
+  background: var(--canvas-alabaster);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.sp-faq-accordion {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.sp-faq-item {
+  background: var(--surface-white);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.sp-faq-item:hover {
+  border-color: var(--card-border-hover);
+}
+
+.sp-faq-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.sp-faq-body {
+  padding: 0 1.5rem 1.35rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-body);
+}
+
+/* ==========================================================================
+   10. BOTTOM HERO CTA
+   ========================================================================== */
+
+.sp-cta-banner {
+  padding: 5rem 1.5rem;
+  background: var(--obsidian-900);
+  background-image: radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.2) 0%, transparent 70%);
+  color: #FFFFFF;
+  text-align: center;
+  position: relative;
+}
+
+.sp-cta-container {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.sp-cta-title {
+  font-size: clamp(2.1rem, 3.8vw, 3.2rem);
+  color: #FFFFFF !important;
+  margin: 0 0 1rem;
+}
+
+.sp-cta-desc {
+  font-size: 1.1rem;
+  color: #94A3B8 !important;
+  line-height: 1.6;
+  margin: 0 0 2rem;
+}
+
+
+/* ==========================================================================
+   11. GATEWAYS, WORKFLOW, PILLARS & VIDEO STYLES
+   ========================================================================== */
+
+/* Gateways 3-Card Grid */
+.sp-gateways-section {
+  padding: 4.5rem 1.5rem;
+  background: var(--surface-white);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.sp-gateways-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+}
+
+.sp-gateway-card {
+  background: var(--canvas-alabaster);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sp-gateway-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--amber-gold);
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(245, 158, 11, 0.12);
+}
+
+.sp-gateway-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: var(--surface-white);
+  border: 1px solid var(--card-border);
+  color: var(--text-muted);
+}
+
+.sp-gateway-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--surface-white);
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.sp-gateway-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0 0 0.75rem;
+}
+
+.sp-gateway-desc {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+}
+
+.sp-gateway-features {
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sp-gateway-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.sp-btn-gateway {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border-radius: 10px;
+  background: var(--obsidian-900);
+  color: #FFFFFF;
+  border: 1px solid var(--obsidian-900);
+  font-weight: 600;
+  font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.sp-btn-gateway:hover {
+  background: #1E293B;
+  border-color: #1E293B;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.2);
+}
+
+/* 3-Step Exam Workflow */
+.sp-workflow-section {
+  padding: 4.5rem 1.5rem;
+  background: var(--canvas-alabaster);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.sp-workflow-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.75rem;
+}
+
+.sp-workflow-card {
+  background: var(--surface-white);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 2.25rem 1.85rem;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.sp-workflow-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--card-border-hover);
+}
+
+.sp-workflow-step-num {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--amber-gold);
+  background: var(--amber-surface);
+  border: 1px solid var(--amber-border);
+  padding: 4px 12px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+
+.sp-workflow-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0 0 0.75rem;
+}
+
+.sp-workflow-desc {
+  font-size: 0.92rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 4 Pillars Grid */
+.sp-pillars-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.sp-pillar-card {
+  background: var(--surface-white);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.85rem 1.5rem;
+  transition: all 0.25s ease;
+}
+
+.sp-pillar-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--card-border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.sp-pillar-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--canvas-alabaster);
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: var(--amber-gold);
+}
+
+.sp-pillar-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 0.5rem;
+}
+
+.sp-pillar-desc {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Classroom Video Showcase */
+.sp-video-container {
+  max-width: 900px;
+  margin: 0 auto 3.5rem;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--card-border);
+  background: #000000;
+}
+
+.sp-video-facade {
+  position: relative;
+  cursor: pointer;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.sp-video-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.sp-video-facade:hover .sp-video-thumb {
+  transform: scale(1.03);
+}
+
+.sp-play-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.95);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #070A12;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sp-video-facade:hover .sp-play-badge {
+  transform: translate(-50%, -50%) scale(1.12);
+  background: #FBBF24;
+}
+
+.sp-video-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+  color: #FFFFFF;
+}
+
+.sp-video-caption h4 {
+  font-size: 1.15rem;
+  margin: 0 0 4px;
+}
+
+.sp-video-caption p {
+  font-size: 0.85rem;
+  color: #CBD5E1;
+  margin: 0;
+}
