@@ -274,91 +274,63 @@ export default function LandingPage({
 
             </div>
 
-            {/* Right Column: Clean macOS-Style Skill Simulator Window */}
+            {/* Right Column: Hero Visual Showcase Image Card */}
             <div>
-              <div className="sp-hud-card">
-                <div className="sp-hud-header">
-                  <div className="sp-hud-window-controls">
-                    <span className="sp-hud-dot" style={{ background: '#EF4444' }} />
-                    <span className="sp-hud-dot" style={{ background: '#F59E0B' }} />
-                    <span className="sp-hud-dot" style={{ background: '#10B981' }} />
-                    <span className="sp-hud-badge-live">
-                      <span className="sp-pulse-dot" style={{ width: '6px', height: '6px' }} />
-                      Two-Stage Exam Engine Live
-                    </span>
-                  </div>
-                  <span className="sp-hud-tag-court">
-                    SSC / Court Pattern
-                  </span>
-                </div>
-
-                {/* Stage 1: Audio Track Preview */}
-                <div className="sp-hud-stage-box">
-                  <div className="sp-hud-stage-top">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <Headphones size={15} color="#2563EB" />
-                      <span className="sp-hud-track-title">
-                        Patna High Court Bench 80 WPM
+              <div className="sp-hero-image-card">
+                <div className="sp-hero-image-wrap">
+                  <img 
+                    src="/assets/hero-banner.jpg" 
+                    alt="Shorthand Plus Professional Dictation & Typing Studio" 
+                    className="sp-hero-image"
+                  />
+                  <div className="sp-hero-image-overlay">
+                    <div className="sp-hero-floating-top">
+                      <div className="sp-hero-floating-badge">
+                        <span className="sp-pulse-dot" style={{ width: '6px', height: '6px' }} />
+                        <span>Two-Stage Exam Engine Live</span>
+                      </div>
+                      <span className="sp-hero-floating-tag">
+                        SSC / Court Pattern
                       </span>
                     </div>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#059669', background: '#ECFDF5', border: '1px solid #A7F3D0', padding: '2px 8px', borderRadius: '4px' }}>
-                      Stage 1 Audio ✓
-                    </span>
-                  </div>
 
-                  <div className="sp-equalizer-bars">
-                    {[35, 60, 90, 45, 80, 100, 65, 40, 75, 95, 60, 85, 50, 70, 90, 40, 65, 80, 55, 30, 75, 50].map((h, i) => (
-                      <span key={i} className="sp-eq-bar" style={{ height: `${h}%`, animationDelay: `${i * 0.08}s` }} />
-                    ))}
-                  </div>
-                  <div className="sp-hud-subtext">
-                    <span>05:00 Calibrated Dictation</span>
-                    <span>Single-Play Strict Lock</span>
-                  </div>
-                </div>
-
-                {/* Stage 2: Timed Typing Transcription Preview */}
-                <div className="sp-hud-transcription-box">
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <Keyboard size={15} color="#64748B" />
-                      <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#0F172A' }}>Stage 2: Transcription</span>
+                    <div className="sp-hero-floating-bottom">
+                      <div className="sp-hero-image-caption">
+                        <h4>Real-Time Audio Dictation & Typing Studio</h4>
+                        <p>Calibrated 50–140 WPM speech dictations · Instant word diff evaluation</p>
+                      </div>
                     </div>
-                    <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#2563EB', fontFamily: 'JetBrains Mono, monospace', background: '#EFF6FF', border: '1px solid #BFDBFE', padding: '2px 8px', borderRadius: '4px' }}>
-                      ⏱ 09:42 remaining
-                    </span>
-                  </div>
-                  <p className="sp-typewriter-text">
-                    "The learned counsel appearing on behalf of the appellant has contended that the High Court erred in law..."<span className="sp-cursor">&nbsp;</span>
-                  </p>
-                </div>
-
-                {/* Instant Evaluation Scorecard */}
-                <div className="sp-hud-scorecard-grid">
-                  <div className="sp-hud-score-tile">
-                    <span className="sp-score-label">Net Speed</span>
-                    <span className="sp-score-val blue">84 WPM</span>
-                  </div>
-                  <div className="sp-hud-score-tile">
-                    <span className="sp-score-label">Accuracy</span>
-                    <span className="sp-score-val emerald">98.2%</span>
-                  </div>
-                  <div className="sp-hud-score-tile">
-                    <span className="sp-score-label">Result</span>
-                    <span className="sp-score-val emerald" style={{ fontSize: '0.95rem' }}>Qualified</span>
                   </div>
                 </div>
 
-                <button
-                  type="button"
-                  className="sp-btn-primary"
-                  style={{ width: '100%', justifyContent: 'center' }}
-                  onClick={() => setCurrentTab && setCurrentTab('tests')}
-                >
-                  <Headphones size={16} />
-                  <span>Launch Audio Dictation Vault</span>
-                  <ArrowRight size={15} />
-                </button>
+                {/* Card Footer Telemetry & Action */}
+                <div className="sp-hero-image-footer">
+                  <div className="sp-hero-chips-row">
+                    <div className="sp-hero-telemetry-chip">
+                      <span>Net Speed:</span>
+                      <strong>84 WPM</strong>
+                    </div>
+                    <div className="sp-hero-telemetry-chip emerald">
+                      <span>Accuracy:</span>
+                      <strong>98.2%</strong>
+                    </div>
+                    <div className="sp-hero-telemetry-chip emerald">
+                      <span>Status:</span>
+                      <strong>Qualified ✓</strong>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="sp-btn-primary"
+                    style={{ width: '100%', justifyContent: 'center' }}
+                    onClick={() => setCurrentTab && setCurrentTab('tests')}
+                  >
+                    <Headphones size={16} />
+                    <span>Launch Audio Dictation Vault</span>
+                    <ArrowRight size={15} />
+                  </button>
+                </div>
               </div>
             </div>
 

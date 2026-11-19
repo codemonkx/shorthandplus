@@ -281,6 +281,145 @@
    2. REFINED MACOS-STYLE SKILL SIMULATOR CARD (LIGHT SURFACE)
    ========================================================================== */
 
+/* ==========================================================================
+   2. HERO VISUAL SHOWCASE (IMAGE WITH FLOATING TELEMETRY CHIPS)
+   ========================================================================== */
+
+.sp-hero-image-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #FFFFFF;
+  border: 1px solid var(--sp-border-subtle);
+  box-shadow: var(--sp-shadow-float);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sp-hero-image-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 35px 80px -20px rgba(15, 23, 42, 0.16), 0 0 0 1px rgba(37, 99, 235, 0.12);
+}
+
+.sp-hero-image-wrap {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  overflow: hidden;
+  background: #0F172A;
+}
+
+.sp-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sp-hero-image-card:hover .sp-hero-image {
+  transform: scale(1.03);
+}
+
+.sp-hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.1) 40%, rgba(15, 23, 42, 0.75) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.sp-hero-floating-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sp-hero-floating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0F172A;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.sp-hero-floating-tag {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.sp-hero-floating-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.sp-hero-image-caption h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #FFFFFF !important;
+  margin: 0 0 3px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.sp-hero-image-caption p {
+  font-size: 0.82rem;
+  color: #E2E8F0 !important;
+  margin: 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.sp-hero-image-footer {
+  background: #FFFFFF;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sp-hero-chips-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.sp-hero-telemetry-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  background: var(--sp-bg-subtle);
+  border: 1px solid var(--sp-border-subtle);
+  font-size: 0.78rem;
+  color: var(--sp-text-body);
+}
+
+.sp-hero-telemetry-chip strong {
+  color: var(--sp-blue-600);
+  font-family: var(--sp-font-mono);
+  font-weight: 700;
+}
+
+.sp-hero-telemetry-chip.emerald strong {
+  color: var(--sp-emerald-600);
+}
+
 .sp-hud-card {
   background: #FFFFFF;
   border: 1px solid var(--sp-border-subtle);
