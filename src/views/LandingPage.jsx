@@ -198,142 +198,122 @@ export default function LandingPage({
           ========================================================================= */}
       <section className="sp-hero-section">
         <div className="sp-hero-container">
-          <div className="sp-hero-grid">
-            
-            {/* Left Column: Direct Value Proposition */}
-            <div>
-              <div className="sp-hero-pill-badge">
-                <span className="sp-pulse-dot" />
-                <span>Gaya Shorthand Classes · Est. 2012 · 12+ Years Coaching</span>
-              </div>
-
-              <h1 className="sp-hero-title">
-                The Gold Standard in Shorthand & Typing for <span className="sp-title-gradient">Government Exams</span>
-              </h1>
-
-              <p className="sp-hero-subtitle">
-                Master Pitman Shorthand (50–140 WPM), bilingual computer typing (Kruti Dev & Mangal), and legal dictations. Complete preparation guided by <strong>Shadab Sir (12 Years Exp)</strong> at Gaya College More, backed by real-time automated SSC error evaluation.
-              </p>
-
-              <div className="sp-hero-cta-cluster">
-                <button
-                  type="button"
-                  className="sp-btn-primary"
-                  onClick={() => {
-                    if (setCurrentTab) setCurrentTab('tests');
-                  }}
-                >
-                  <Headphones size={18} />
-                  <span>Start Audio Dictation Practice</span>
-                  <ArrowRight size={16} />
-                </button>
-
-                <button
-                  type="button"
-                  className="sp-btn-secondary"
-                  onClick={() => {
-                    if (setCurrentTab) setCurrentTab('typing-studio');
-                  }}
-                >
-                  <Keyboard size={18} />
-                  <span>Try Typing Lab</span>
-                </button>
-
-                <button
-                  type="button"
-                  className="sp-btn-ghost"
-                  onClick={() => {
-                    fireConfetti();
-                    if (onOpenAdmission) onOpenAdmission();
-                  }}
-                >
-                  <span>Book 3 Free Demos</span>
-                  <ArrowRight size={14} />
-                </button>
-              </div>
-
-              {/* 4 Precision Trust Metrics */}
-              <div className="sp-hero-stats-ribbon">
-                <div className="sp-stat-item">
-                  <div className="sp-stat-num">1,200+</div>
-                  <div className="sp-stat-label">Govt. Selections</div>
-                </div>
-                <div className="sp-stat-item">
-                  <div className="sp-stat-num">50–140</div>
-                  <div className="sp-stat-label">WPM Calibrated Audio</div>
-                </div>
-                <div className="sp-stat-item">
-                  <div className="sp-stat-num">98.5%</div>
-                  <div className="sp-stat-label">Exam Accuracy Rate</div>
-                </div>
-                <div className="sp-stat-item">
-                  <div className="sp-stat-num">4.9 ★</div>
-                  <div className="sp-stat-label">Google Rating (140+ Revs)</div>
-                </div>
-              </div>
-
+          
+          {/* Centered Value Proposition */}
+          <div className="sp-hero-center-header">
+            <div className="sp-hero-pill-badge">
+              <span className="sp-pulse-dot" />
+              <span>Gaya Shorthand Classes · Est. 2012 · 12+ Years Coaching</span>
             </div>
 
-            {/* Right Column: Hero Visual Showcase Image Card */}
-            <div>
-              <div className="sp-hero-image-card">
-                <div className="sp-hero-image-wrap">
-                  <img 
-                    src="/assets/hero-banner.jpg" 
-                    alt="Shorthand Plus Professional Dictation & Typing Studio" 
-                    className="sp-hero-image"
-                  />
-                  <div className="sp-hero-image-overlay">
-                    <div className="sp-hero-floating-top">
-                      <div className="sp-hero-floating-badge">
-                        <span className="sp-pulse-dot" style={{ width: '6px', height: '6px' }} />
-                        <span>Two-Stage Exam Engine Live</span>
-                      </div>
-                      <span className="sp-hero-floating-tag">
-                        SSC / Court Pattern
-                      </span>
-                    </div>
+            <h1 className="sp-hero-title">
+              The Gold Standard in Shorthand & Typing for <span className="sp-title-gradient">Government Exams</span>
+            </h1>
 
-                    <div className="sp-hero-floating-bottom">
-                      <div className="sp-hero-image-caption">
-                        <h4>Real-Time Audio Dictation & Typing Studio</h4>
-                        <p>Calibrated 50–140 WPM speech dictations · Instant word diff evaluation</p>
-                      </div>
-                    </div>
+            <p className="sp-hero-subtitle">
+              Master Pitman Shorthand (50–140 WPM), bilingual computer typing (Kruti Dev & Mangal), and legal dictations. Complete preparation guided by <strong>Shadab Sir (12 Years Exp)</strong> at Gaya College More, backed by real-time automated SSC error evaluation.
+            </p>
+
+            <div className="sp-hero-cta-cluster">
+              <button
+                type="button"
+                className="sp-btn-primary"
+                onClick={() => {
+                  if (setCurrentTab) setCurrentTab('tests');
+                }}
+              >
+                <Headphones size={18} />
+                <span>Start Audio Dictation Practice</span>
+                <ArrowRight size={16} />
+              </button>
+
+              <button
+                type="button"
+                className="sp-btn-secondary"
+                onClick={() => {
+                  if (setCurrentTab) setCurrentTab('typing-studio');
+                }}
+              >
+                <Keyboard size={18} />
+                <span>Try Typing Lab</span>
+              </button>
+
+              <button
+                type="button"
+                className="sp-btn-ghost"
+                onClick={() => {
+                  fireConfetti();
+                  if (onOpenAdmission) onOpenAdmission();
+                }}
+              >
+                <span>Book 3 Free Demos</span>
+                <ArrowRight size={14} />
+              </button>
+            </div>
+          </div>
+
+          {/* Grand Centerpiece Visual Showcase Image */}
+          <div className="sp-hero-centerpiece-container">
+            <div className="sp-hero-centerpiece-card">
+              <img 
+                src="/assets/hero-banner.jpg" 
+                alt="Shorthand Plus Professional Dictation & Typing Studio" 
+                className="sp-hero-centerpiece-img"
+              />
+              <div className="sp-hero-centerpiece-overlay">
+                <div className="sp-centerpiece-top">
+                  <div className="sp-hero-floating-badge">
+                    <span className="sp-pulse-dot" style={{ width: '6px', height: '6px' }} />
+                    <span>Two-Stage Exam Engine Live</span>
                   </div>
+                  <span className="sp-hero-floating-tag">
+                    SSC / High Court Standard
+                  </span>
                 </div>
 
-                {/* Card Footer Telemetry & Action */}
-                <div className="sp-hero-image-footer">
-                  <div className="sp-hero-chips-row">
-                    <div className="sp-hero-telemetry-chip">
-                      <span>Net Speed:</span>
+                <div className="sp-centerpiece-bottom">
+                  <div className="sp-centerpiece-caption">
+                    <h3>Real-Time Audio Dictation & Typing Studio</h3>
+                    <p>Calibrated 50–140 WPM speech dictations with instant word-by-word diff evaluation</p>
+                  </div>
+
+                  <div className="sp-centerpiece-telemetry">
+                    <div className="sp-centerpiece-pill">
+                      <span>Speed:</span>
                       <strong>84 WPM</strong>
                     </div>
-                    <div className="sp-hero-telemetry-chip emerald">
+                    <div className="sp-centerpiece-pill emerald">
                       <span>Accuracy:</span>
                       <strong>98.2%</strong>
                     </div>
-                    <div className="sp-hero-telemetry-chip emerald">
-                      <span>Status:</span>
+                    <div className="sp-centerpiece-pill emerald">
+                      <span>Result:</span>
                       <strong>Qualified ✓</strong>
                     </div>
                   </div>
-
-                  <button
-                    type="button"
-                    className="sp-btn-primary"
-                    style={{ width: '100%', justifyContent: 'center' }}
-                    onClick={() => setCurrentTab && setCurrentTab('tests')}
-                  >
-                    <Headphones size={16} />
-                    <span>Launch Audio Dictation Vault</span>
-                    <ArrowRight size={15} />
-                  </button>
                 </div>
               </div>
             </div>
 
+            {/* 4 Precision Trust Metrics directly under the centerpiece */}
+            <div className="sp-hero-stats-ribbon" style={{ marginTop: '2.5rem' }}>
+              <div className="sp-stat-item">
+                <div className="sp-stat-num">1,200+</div>
+                <div className="sp-stat-label">Govt. Selections</div>
+              </div>
+              <div className="sp-stat-item">
+                <div className="sp-stat-num">50–140</div>
+                <div className="sp-stat-label">WPM Calibrated Audio</div>
+              </div>
+              <div className="sp-stat-item">
+                <div className="sp-stat-num">98.5%</div>
+                <div className="sp-stat-label">Exam Accuracy Rate</div>
+              </div>
+              <div className="sp-stat-item">
+                <div className="sp-stat-num">4.9 ★</div>
+                <div className="sp-stat-label">Google Rating (140+ Revs)</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
