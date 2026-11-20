@@ -194,125 +194,94 @@ export default function LandingPage({
     <div className="sp-landing-root">
       
       {/* =========================================================================
-          SECTION 1: LUMINOUS HERO SECTION (APPLE / STRIPE CLEAN LIGHT)
+          SECTION 1: FULL-BLEED HIGH-IMPACT INSTITUTION HERO (AUTHENTIC & EDITORIAL)
           ========================================================================= */}
-      <section className="sp-hero-section">
-        <div className="sp-hero-container">
-          
-          {/* Centered Value Proposition */}
-          <div className="sp-hero-center-header">
-            <div className="sp-hero-pill-badge">
-              <span className="sp-pulse-dot" />
-              <span>Gaya Shorthand Classes · Est. 2012 · 12+ Years Coaching</span>
-            </div>
+      <section className="sp-fullbleed-hero">
+        {/* Full-Bleed Background Media */}
+        <div className="sp-hero-bg-media">
+          <img 
+            src="/assets/hero-banner.jpg" 
+            alt="Shorthand Plus Professional Stenography & Typing Lab" 
+            className="sp-hero-bg-img"
+          />
+        </div>
 
-            <h1 className="sp-hero-title">
-              The Gold Standard in Shorthand & Typing for <span className="sp-title-gradient">Government Exams</span>
+        {/* Directional Contrast Scrim */}
+        <div className="sp-hero-scrim" />
+
+        {/* Left-Aligned Asymmetric Content Grid */}
+        <div className="sp-hero-content-wrap">
+          <div className="sp-hero-text-block">
+            {/* Eyebrow: Tracked out, uppercase, solid academic typography */}
+            <span className="sp-hero-eyebrow">
+              GAYA SHORTHAND CLASSES &middot; EST. 2012
+            </span>
+
+            {/* H1 Headline: Solid pure white, tight tracking */}
+            <h1 className="sp-hero-h1">
+              The Gold Standard in Shorthand & Typing for Government Exams
             </h1>
 
-            <p className="sp-hero-subtitle">
-              Master Pitman Shorthand (50–140 WPM), bilingual computer typing (Kruti Dev & Mangal), and legal dictations. Complete preparation guided by <strong>Shadab Sir (12 Years Exp)</strong> at Gaya College More, backed by real-time automated SSC error evaluation.
+            {/* Subheadline: Refined neutral tone */}
+            <p className="sp-hero-subheadline">
+              Master Pitman Shorthand (50–140 WPM), bilingual computer typing (Kruti Dev & Mangal), and legal dictations. Guided by <strong>Shadab Sir</strong> at Gaya College More with automated SSC error evaluation.
             </p>
 
-            <div className="sp-hero-cta-cluster">
+            {/* Restrained CTA Group */}
+            <div className="sp-hero-cta-group">
               <button
                 type="button"
-                className="sp-btn-primary"
+                className="sp-hero-btn-primary"
                 onClick={() => {
                   if (setCurrentTab) setCurrentTab('tests');
                 }}
               >
-                <Headphones size={18} />
                 <span>Start Audio Dictation Practice</span>
                 <ArrowRight size={16} />
               </button>
 
               <button
                 type="button"
-                className="sp-btn-secondary"
+                className="sp-hero-btn-secondary"
                 onClick={() => {
                   if (setCurrentTab) setCurrentTab('typing-studio');
                 }}
               >
-                <Keyboard size={18} />
                 <span>Try Typing Lab</span>
               </button>
 
               <button
                 type="button"
-                className="sp-btn-ghost"
+                className="sp-hero-btn-link"
                 onClick={() => {
                   fireConfetti();
                   if (onOpenAdmission) onOpenAdmission();
                 }}
               >
                 <span>Book 3 Free Demos</span>
-                <ArrowRight size={14} />
               </button>
             </div>
           </div>
+        </div>
 
-          {/* Grand Centerpiece Visual Showcase Image */}
-          <div className="sp-hero-centerpiece-container">
-            <div className="sp-hero-centerpiece-card">
-              <img 
-                src="/assets/hero-banner.jpg" 
-                alt="Shorthand Plus Professional Dictation & Typing Studio" 
-                className="sp-hero-centerpiece-img"
-              />
-              <div className="sp-hero-centerpiece-overlay">
-                <div className="sp-centerpiece-top">
-                  <div className="sp-hero-floating-badge">
-                    <span className="sp-pulse-dot" style={{ width: '6px', height: '6px' }} />
-                    <span>Two-Stage Exam Engine Live</span>
-                  </div>
-                  <span className="sp-hero-floating-tag">
-                    SSC / High Court Standard
-                  </span>
-                </div>
-
-                <div className="sp-centerpiece-bottom">
-                  <div className="sp-centerpiece-caption">
-                    <h3>Real-Time Audio Dictation & Typing Studio</h3>
-                    <p>Calibrated 50–140 WPM speech dictations with instant word-by-word diff evaluation</p>
-                  </div>
-
-                  <div className="sp-centerpiece-telemetry">
-                    <div className="sp-centerpiece-pill">
-                      <span>Speed:</span>
-                      <strong>84 WPM</strong>
-                    </div>
-                    <div className="sp-centerpiece-pill emerald">
-                      <span>Accuracy:</span>
-                      <strong>98.2%</strong>
-                    </div>
-                    <div className="sp-centerpiece-pill emerald">
-                      <span>Result:</span>
-                      <strong>Qualified ✓</strong>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        {/* Minimal Bottom Anchor Bar Separated by Hairline Border */}
+        <div className="sp-hero-anchor-bar">
+          <div className="sp-hero-anchor-container">
+            <div className="sp-hero-anchor-item">
+              <span className="sp-hero-anchor-dot" />
+              <span>12+ Years Coaching</span>
             </div>
-
-            {/* 4 Precision Trust Metrics directly under the centerpiece */}
-            <div className="sp-hero-stats-ribbon" style={{ marginTop: '2.5rem' }}>
-              <div className="sp-stat-item">
-                <div className="sp-stat-num">1,200+</div>
-                <div className="sp-stat-label">Govt. Selections</div>
-              </div>
-              <div className="sp-stat-item">
-                <div className="sp-stat-num">50–140</div>
-                <div className="sp-stat-label">WPM Calibrated Audio</div>
-              </div>
-              <div className="sp-stat-item">
-                <div className="sp-stat-num">98.5%</div>
-                <div className="sp-stat-label">Exam Accuracy Rate</div>
-              </div>
-              <div className="sp-stat-item">
-                <div className="sp-stat-num">4.9 ★</div>
-                <div className="sp-stat-label">Google Rating (140+ Revs)</div>
-              </div>
+            <div className="sp-hero-anchor-item">
+              <span className="sp-hero-anchor-dot" />
+              <span>50–140 WPM Pitman</span>
+            </div>
+            <div className="sp-hero-anchor-item">
+              <span className="sp-hero-anchor-dot" />
+              <span>Kruti Dev & Mangal</span>
+            </div>
+            <div className="sp-hero-anchor-item">
+              <span className="sp-hero-anchor-dot" />
+              <span>SSC & High Court Standard</span>
             </div>
           </div>
         </div>

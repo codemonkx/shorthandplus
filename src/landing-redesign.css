@@ -78,163 +78,253 @@
 }
 
 /* ==========================================================================
-   1. LUMINOUS HERO SECTION (APPLE / STRIPE CLEAN LIGHT AESTHETIC)
+   1. FULL-BLEED HIGH-IMPACT INSTITUTION HERO (AUTHENTIC & EDITORIAL)
    ========================================================================== */
 
-.sp-hero-section {
+.sp-fullbleed-hero {
   position: relative;
-  background-color: var(--sp-bg-canvas);
-  background-image: 
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(37, 99, 235, 0.07) 0%, transparent 65%),
-    radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 15% 30%, rgba(16, 185, 129, 0.04) 0%, transparent 40%);
-  padding: 4.5rem 1.5rem 5rem;
-  border-bottom: 1px solid var(--sp-border-subtle);
-  overflow: hidden;
-}
-
-.sp-hero-container {
-  max-width: 1240px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-}
-
-.sp-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3.5rem;
-  align-items: center;
-}
-
-@media (min-width: 1024px) {
-  .sp-hero-grid {
-    grid-template-columns: 1.15fr 0.95fr;
-    gap: 4.5rem;
-  }
-}
-
-/* Center-aligned flagship hero header */
-.sp-hero-center-header {
-  text-align: center;
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.sp-hero-center-header .sp-hero-pill-badge {
-  margin: 0 auto 1.5rem;
-}
-
-.sp-hero-center-header .sp-hero-subtitle {
-  max-width: 700px;
-  margin: 0 auto 2.25rem;
-}
-
-.sp-hero-center-header .sp-hero-cta-cluster {
-  justify-content: center;
-  margin: 0 auto 3rem;
-}
-
-/* Grand Centerpiece Image Showcase */
-.sp-hero-centerpiece-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.sp-hero-centerpiece-card {
-  position: relative;
-  border-radius: 24px;
-  overflow: hidden;
-  background: #0F172A;
-  box-shadow: 0 30px 80px -15px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(15, 23, 42, 0.08);
-  aspect-ratio: 16 / 9;
-  max-height: 580px;
   width: 100%;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.sp-hero-centerpiece-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 40px 100px -20px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(37, 99, 235, 0.15);
-}
-
-.sp-hero-centerpiece-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.sp-hero-centerpiece-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.05) 40%, rgba(15, 23, 42, 0.85) 100%);
+  min-height: 85vh;
+  min-height: calc(100vh - 72px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2rem;
+  background-color: #0A0A0C;
+  overflow: hidden;
 }
 
-.sp-centerpiece-top {
+.sp-hero-bg-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sp-hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Directional Scrim Overlay */
+.sp-hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    90deg, 
+    rgba(10, 10, 12, 0.94) 0%, 
+    rgba(10, 10, 12, 0.86) 42%, 
+    rgba(10, 10, 12, 0.52) 72%, 
+    rgba(10, 10, 12, 0.22) 100%
+  );
+}
+
+@media (max-width: 768px) {
+  .sp-hero-scrim {
+    background: linear-gradient(
+      180deg, 
+      rgba(10, 10, 12, 0.88) 0%, 
+      rgba(10, 10, 12, 0.93) 45%, 
+      rgba(10, 10, 12, 0.98) 100%
+    );
+  }
+}
+
+/* Left-Aligned Asymmetric Content Grid */
+.sp-hero-content-wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4.75rem 1.5rem 3.5rem;
+  flex-grow: 1;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+}
+
+.sp-hero-text-block {
+  max-width: 44rem;
+  text-align: left;
+}
+
+/* Eyebrow: Tracked-out, uppercase, no pulsing dot/pill */
+.sp-hero-eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #D4D4D8;
+  margin-bottom: 1.25rem;
+  font-family: var(--sp-font-body);
+}
+
+/* Headline: Solid white, tight tracking, crisp leading */
+.sp-hero-h1 {
+  font-size: clamp(2.35rem, 4.4vw, 3.75rem);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: #FFFFFF !important;
+  margin: 0 0 1.25rem;
+  font-family: var(--sp-font-display);
+}
+
+/* Subheadline: Refined neutral tone */
+.sp-hero-subheadline {
+  font-size: clamp(1.02rem, 1.2vw, 1.12rem);
+  line-height: 1.62;
+  color: #E4E4E7 !important;
+  margin: 0 0 2.25rem;
+  max-width: 38rem;
+}
+
+.sp-hero-subheadline strong {
+  color: #FFFFFF !important;
+  font-weight: 600;
+}
+
+/* Clean CTA Group */
+.sp-hero-cta-group {
+  display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 1rem;
 }
 
-.sp-centerpiece-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+@media (max-width: 480px) {
+  .sp-hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
 }
 
-.sp-centerpiece-caption h3 {
-  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
-  font-weight: 800;
-  color: #FFFFFF !important;
-  margin: 0 0 6px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-}
-
-.sp-centerpiece-caption p {
-  font-size: 0.92rem;
-  color: #E2E8F0 !important;
-  margin: 0;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
-}
-
-.sp-centerpiece-telemetry {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.sp-centerpiece-pill {
+.sp-hero-btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(16px);
-  color: #0F172A;
-  font-size: 0.82rem;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.85rem 1.65rem;
+  border-radius: 8px;
+  background: #FFFFFF !important;
+  color: #0A0A0C !important;
   font-weight: 600;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  font-size: 0.94rem;
+  border: 1px solid #FFFFFF !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
 }
 
-.sp-centerpiece-pill strong {
-  color: var(--sp-blue-600);
-  font-family: var(--sp-font-mono);
-  font-weight: 700;
+.sp-hero-btn-primary:focus,
+.sp-hero-btn-primary:active {
+  background: #FFFFFF !important;
+  color: #0A0A0C !important;
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
 }
 
-.sp-centerpiece-pill.emerald strong {
-  color: var(--sp-emerald-600);
+.sp-hero-btn-primary:hover {
+  background: #F4F4F5 !important;
+  transform: translateY(-1px);
+  color: #0A0A0C !important;
+}
+
+.sp-hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.85rem 1.5rem;
+  border-radius: 8px;
+  background: transparent;
+  color: #FFFFFF !important;
+  font-weight: 600;
+  font-size: 0.94rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.sp-hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-1px);
+  color: #FFFFFF !important;
+}
+
+.sp-hero-btn-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #D4D4D8;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  padding: 0.85rem 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.sp-hero-btn-link:hover {
+  color: #FFFFFF;
+}
+
+/* Bottom Anchor Bar */
+.sp-hero-anchor-bar {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(10, 10, 12, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.sp-hero-anchor-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.15rem 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .sp-hero-anchor-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem 1.25rem;
+    padding: 1rem 1.5rem;
+  }
+}
+
+.sp-hero-anchor-item {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #E4E4E7;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sp-hero-anchor-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
 }
 
 /* Pill Badge */
