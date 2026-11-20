@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
 import { 
   Play, 
+  Pause,
   Award, 
   ShieldCheck, 
   CheckCircle2, 
@@ -10,66 +11,43 @@ import {
   Clock, 
   Users, 
   ChevronDown, 
-  ChevronUp,
-  MessageCircle,
+  ChevronUp, 
   Phone, 
   MapPin, 
-  Sparkles, 
-  GraduationCap, 
-  BookOpen, 
-  Check, 
   Headphones, 
   Keyboard, 
-  Layers, 
   FileText, 
   Zap, 
-  Tv, 
-  Cpu
+  Check,
+  CheckCircle
 } from 'lucide-react';
-import { TARGET_EXAMINATIONS } from '../data/mockData';
 import '../landing-redesign.css';
-
-const GoogleIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
-    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
-  </svg>
-);
-
-const YouTubeIcon = ({ size = 20 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
-    <path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
-    <path fill="#FFFFFF" d="m9.545 15.568 6.273-3.568-6.273-3.568z"/>
-  </svg>
-);
 
 const TOP_FAQS = [
   {
     id: 1,
-    q: "What is the duration of the shorthand course?",
-    a: "The duration depends on the student's learning speed and practice schedule. The basic Pitman theory course typically takes 3 to 4 months for complete book coverage. We provide structured training from basic theory to 140 WPM exam dictations."
+    q: "What is the duration of the shorthand course from beginner to exam-ready?",
+    a: "The foundation Pitman theory course takes 3 to 4 months of structured study. After completing the theory book, speed development batches (60 to 120+ WPM) typically take another 2 to 3 months depending on daily transcription hours."
   },
   {
     id: 2,
-    q: "Can complete beginners join shorthand classes?",
-    a: "Yes! Beginners are welcome. No prior knowledge is required. We start from basic consonants, vowels, and stroke angles, backed by daily individual notebook verification."
+    q: "Can complete beginners join without prior typing or shorthand experience?",
+    a: "Yes. Over 80% of our students start as complete beginners. We teach fundamental stroke directions, light and dark curve distinctions, and vowel positioning from scratch, backed by daily individual notebook verification by Shadab Sir."
   },
   {
     id: 3,
-    q: "Is English shorthand taught from the foundation level?",
-    a: "Yes. English shorthand starts from absolute fundamentals: basic Pitman strokes, vowels, grammalogues, intersections, and phraseography, progressing to 120+ WPM speed batches."
+    q: "Which typing fonts are taught for High Court and Civil Court examinations?",
+    a: "We train candidates in English QWERTY, Hindi Kruti Dev 010, and Hindi Mangal Inscript. Our typing laboratory runs custom exam software that simulates official backspace-lock rules and calculates accurate gross and net WPM."
   },
   {
     id: 4,
-    q: "Do you provide Hindi shorthand & typing classes?",
-    a: "Yes. We provide complete Hindi shorthand (स्वर, व्यंजन एवं आंकड़े) with dual-font computer typing in Kruti Dev 010 and Mangal Inscript for High Court and Civil Court exams."
+    q: "How do live online interactive batches work for students outside Gaya?",
+    a: "Live online classes take place daily via Google Meet. Shadab Sir delivers live voice dictations, reviews handwritten outlines using a digital whiteboard, and students transcribe passages into our automated evaluation portal with instant scoring."
   },
   {
     id: 5,
-    q: "Are demo classes available before enrollment?",
-    a: "Yes! We offer 3 Free Trial Demo Classes so you can experience our teaching methodology, notebook checks, and computer lab before paying any admission fee."
+    q: "Are the 3 demo classes completely free before enrolling?",
+    a: "Yes. We offer 3 Free Trial Demo Classes with zero upfront payment. You can experience the classroom teaching methodology, live dictations, typing lab, and notebook checking before taking admission."
   }
 ];
 
@@ -82,8 +60,9 @@ export default function LandingPage({
   onOpenAdmission, 
   setCurrentTab 
 }) {
-  const [activeFaq, setActiveFaq] = useState(null);
-  const [isPlayingYouTube, setIsPlayingYouTube] = useState(false);
+  const [activeEngineTab, setActiveEngineTab] = useState(0);
+  const [activeFaq, setActiveFaq] = useState(1);
+  const [isPlayingAudioPreview, setIsPlayingAudioPreview] = useState(false);
 
   const fireConfetti = () => {
     try {
@@ -95,117 +74,41 @@ export default function LandingPage({
     } catch {}
   };
 
-  const handleEnrollClick = (courseTitle) => {
+  const handleOpenDemo = () => {
     fireConfetti();
     if (onOpenAdmission) {
       onOpenAdmission();
     }
   };
 
-  const coursesList = [
-    {
-      id: "eng-steno",
-      badge: "Flagship Shorthand",
-      badgeColor: "#2563EB",
-      title: "English Shorthand (Pitman)",
-      subtitle: "Basic Pitman theory to 120 WPM exam dictations",
-      price: "₹4,500",
-      originalPrice: "₹6,000",
-      duration: "3 to 4 Months",
-      speed: "50 to 120 WPM",
-      highlights: [
-        "Complete Pitman theory, grammalogues & phraseography",
-        "Daily handwritten outline verification by Shadab Sir",
-        "Audio dictations from 50 to 120 WPM with reading room",
-        "Targeted for SSC Steno Grade C & D, High Court & PA/PS"
-      ]
-    },
-    {
-      id: "hindi-steno",
-      badge: "High Court & SSC Special",
-      badgeColor: "#059669",
-      title: "Hindi Shorthand (हिंदी आशुलिपि)",
-      subtitle: "Complete Hindi theory & speed dictation batch",
-      price: "₹4,500",
-      originalPrice: "₹6,000",
-      duration: "3 to 4 Months",
-      speed: "50 to 120+ WPM",
-      highlights: [
-        "Complete Hindi steno rules (स्वर, व्यंजन एवं आंकड़े)",
-        "Daily Hindi audio dictations with outline checking",
-        "Kruti Dev 010 & Mangal Inscript dual transcription",
-        "Specialized for Patna High Court, Civil Courts & SSC"
-      ]
-    },
-    {
-      id: "typing-combo",
-      badge: "Dual-Font Typing Lab",
-      badgeColor: "#0284C7",
-      title: "English & Hindi Typing Lab",
-      subtitle: "QWERTY, Kruti Dev 010 & Mangal Inscript",
-      price: "₹350",
-      originalPrice: "₹500",
-      duration: "1 Month Pass",
-      speed: "30 to 60+ WPM",
-      highlights: [
-        "Scientific touch-typing finger positioning mastery",
-        "English QWERTY + Hindi Kruti Dev 010 & Mangal",
-        "Strict backspace lock exam simulation software",
-        "Automated gross & net WPM scoring with error calculation"
-      ]
-    },
-    {
-      id: "court-special",
-      badge: "Judicial Bench Special",
-      badgeColor: "#7C3AED",
-      title: "High Court Judicial Speed Series",
-      subtitle: "Live courtroom judgments & legal transcription",
-      price: "₹700",
-      originalPrice: "₹1,000",
-      duration: "1 Month Access",
-      speed: "80 & 100 WPM Legal",
-      highlights: [
-        "Authentic High Court criminal & civil judgment audio",
-        "Legal vocabulary, Latin maxims & judicial phrases",
-        "5-Minute reading clock with strict audio warnings",
-        "Official High Court mechanical keyboard simulation"
-      ]
-    },
-    {
-      id: "computer-diplomas",
-      badge: "Govt. Recognized Certification",
-      badgeColor: "#D97706",
-      title: "Computer Diplomas (ADCA / DCA)",
-      subtitle: "6 to 12 Months Recognized Diplomas",
-      price: "₹1,200",
-      originalPrice: "₹1,500",
-      duration: "6 / 12 Months",
-      speed: "IT Skills + Typing",
-      highlights: [
-        "Official DCA (6 Months) & ADCA (12 Months) programs",
-        "MS Office Suite (Word, Excel, PowerPoint) & Internet",
-        "Tally Prime with GST invoicing & practical accounting",
-        "Government recognized diploma with QR code verification"
-      ]
+  const handleStartTests = () => {
+    if (setCurrentTab) {
+      setCurrentTab('tests');
+    } else if (onStartFullTest) {
+      onStartFullTest();
     }
-  ];
+  };
+
+  const handleExploreCourses = () => {
+    if (setCurrentTab) {
+      setCurrentTab('courses');
+    }
+  };
 
   return (
     <div className="sp-landing-root">
       
       {/* =========================================================================
-          SECTION 1: EDITORIAL 2-COLUMN SPLIT HERO (HIGH-CONVERTING LIGHT THEME)
+          SECTION 1: EDITORIAL SPLIT HERO + EXAM TRUST STRIP (bg-white)
           ========================================================================= */}
-      <section className="sp-split-hero-section">
-        <div className="sp-split-hero-container">
-          
-          {/* 2-Column Asymmetric Split */}
-          <div className="sp-split-hero-grid">
+      <section className="sp-hero-section">
+        <div className="sp-hero-container">
+          <div className="sp-hero-grid">
             
             {/* Left Column (Copy, Trust Signals, CTAs) */}
-            <div className="sp-split-hero-left">
+            <div className="sp-hero-left">
               
-              {/* 1. Inline Trust Row (Top): 3 text indicators separated by thin vertical dividers */}
+              {/* Clean inline trust row (no pills, no glow) */}
               <div className="sp-hero-trust-row">
                 <span className="sp-hero-trust-item">Est. 2012 &middot; Gaya College More</span>
                 <span className="sp-hero-trust-divider" />
@@ -214,31 +117,24 @@ export default function LandingPage({
                 <span className="sp-hero-trust-item">SSC &amp; High Court Standard</span>
               </div>
 
-              {/* 2. H1 Headline: Bold, tight-tracked with editorial italic serif on Shorthand */}
-              <h1 className="sp-split-hero-h1">
+              {/* Bold H1 with editorial italic serif accent */}
+              <h1 className="sp-hero-h1">
                 The Gold Standard in{' '}
                 <span className="sp-hero-serif-accent">Shorthand</span>{' '}
                 &amp; Typing for Govt. Exams
               </h1>
 
-              {/* 3. Micro-Subheading */}
-              <div className="sp-hero-micro-subheading">
-                PITMAN SHORTHAND &middot; BILINGUAL TYPING &middot; AUTOMATED SSC EVALUATION
-              </div>
-
-              {/* 4. Body Copy */}
-              <p className="sp-split-hero-body">
-                Master Pitman Shorthand (50–140 WPM), Kruti Dev &amp; Mangal typing, and legal dictations. Complete exam-focused preparation guided by <strong>Shadab Sir</strong> with real-time error evaluation.
+              {/* Concise 2-line subheadline */}
+              <p className="sp-hero-subheadline">
+                Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong>Shadab Sir</strong> with automated SSC error evaluation.
               </p>
 
-              {/* 5. CTA Group */}
-              <div className="sp-split-hero-cta-group">
+              {/* Clean CTA row */}
+              <div className="sp-hero-cta-group">
                 <button
                   type="button"
-                  className="sp-split-btn-primary"
-                  onClick={() => {
-                    if (setCurrentTab) setCurrentTab('tests');
-                  }}
+                  className="sp-btn-ink-primary"
+                  onClick={handleStartTests}
                 >
                   <span>Start Audio Dictation</span>
                   <ArrowRight size={16} />
@@ -246,455 +142,561 @@ export default function LandingPage({
 
                 <button
                   type="button"
-                  className="sp-split-btn-secondary"
-                  onClick={() => {
-                    if (setCurrentTab) setCurrentTab('typing-studio');
-                  }}
+                  className="sp-btn-white-secondary"
+                  onClick={handleExploreCourses}
                 >
-                  <span>Try Typing Lab</span>
+                  <span>Explore Courses</span>
+                </button>
+
+                <button
+                  type="button"
+                  className="sp-hero-demo-link"
+                  onClick={handleOpenDemo}
+                >
+                  Book 3 Free Demos &rarr;
                 </button>
               </div>
 
-              {/* Reassurance Micro-Text */}
-              <p className="sp-hero-reassurance-text">
-                <button 
-                  type="button" 
-                  className="sp-hero-demo-link"
-                  onClick={() => {
-                    fireConfetti();
-                    if (onOpenAdmission) onOpenAdmission();
-                  }}
-                >
-                  Book 3 free demo classes
-                </button>{' '}
-                &middot; Offline &amp; Online batches available
-              </p>
             </div>
 
             {/* Right Column (Hero Visual Showcase) */}
-            <div className="sp-split-hero-right">
-              <div className="sp-hero-visual-frame">
-                <div className="sp-hero-visual-inner">
-                  <img 
-                    src="/assets/institution-hero.jpg" 
-                    alt="Shorthand Plus Stenography Classroom &amp; Typing Lab" 
-                    className="sp-hero-visual-img"
-                  />
-                </div>
-
-                {/* Floating Callout Card 1: Top-Left */}
-                <div className="sp-hero-callout-card sp-callout-top-left">
-                  <div className="sp-callout-icon-wrap sp-callout-icon-red">
-                    <Zap size={16} />
-                  </div>
-                  <div className="sp-callout-text">
-                    <div className="sp-callout-title">Two-Stage Exam Engine</div>
-                    <div className="sp-callout-desc">Real-time SSC error check</div>
-                  </div>
-                </div>
-
-                {/* Floating Callout Card 2: Bottom-Right */}
-                <div className="sp-hero-callout-card sp-callout-bottom-right">
-                  <div className="sp-callout-icon-wrap sp-callout-icon-blue">
-                    <Headphones size={16} />
-                  </div>
-                  <div className="sp-callout-text">
-                    <div className="sp-callout-title">50–140 WPM Audio</div>
-                    <div className="sp-callout-desc">Legal &amp; Pitman dictations</div>
-                  </div>
+            <div className="sp-hero-right">
+              <div className="sp-hero-media-card">
+                <img 
+                  src="/assets/institution-hero.jpg" 
+                  alt="Shorthand Plus Stenography Classroom &amp; Typing Lab" 
+                  className="sp-hero-img"
+                />
+                <div className="sp-hero-caption-bar">
+                  <div className="sp-caption-dot" />
+                  <span className="sp-caption-text">SSC &amp; High Court Exam Standard &middot; 50&ndash;140 WPM</span>
                 </div>
               </div>
             </div>
 
           </div>
+        </div>
 
-          {/* Bottom Exam Strip (Anchor) */}
-          <div className="sp-hero-bottom-exam-strip">
-            <div className="sp-exam-strip-label">PREPARING STUDENTS FOR</div>
-            <div className="sp-exam-strip-items">
+        {/* Flush Exam Authority Strip */}
+        <div className="sp-exam-strip">
+          <div className="sp-exam-strip-inner">
+            <span className="sp-exam-strip-label">PREPARING ASPIRANTS FOR</span>
+            <div className="sp-exam-strip-list">
               <span>SSC Stenographer</span>
-              <span className="sp-exam-strip-bullet">&middot;</span>
+              <span className="sp-strip-bullet">&middot;</span>
               <span>Patna High Court</span>
-              <span className="sp-exam-strip-bullet">&middot;</span>
+              <span className="sp-strip-bullet">&middot;</span>
               <span>Civil Court</span>
-              <span className="sp-exam-strip-bullet">&middot;</span>
+              <span className="sp-strip-bullet">&middot;</span>
               <span>EPFO</span>
-              <span className="sp-exam-strip-bullet">&middot;</span>
+              <span className="sp-strip-bullet">&middot;</span>
               <span>DRDO</span>
-              <span className="sp-exam-strip-bullet">&middot;</span>
+              <span className="sp-strip-bullet">&middot;</span>
               <span>BSSC</span>
             </div>
           </div>
-
         </div>
       </section>
 
       {/* =========================================================================
-          SECTION 2: TARGET GOVERNMENT EXAM BENCHES
+          SECTION 2: INTERACTIVE EXAM ENGINE SHOWCASE (THE CENTERPIECE)
           ========================================================================= */}
-      <section className="sp-benches-section">
-        <div className="sp-section-heading-center">
-          <span className="sp-section-eyebrow">TARGET EXAMINATION BENCHES</span>
-          <h2 className="sp-section-h2">
-            Tailored for High Courts, SSC &amp; Judicial Benches
-          </h2>
-          <p className="sp-section-lead">
-            Every dictation and typing passage is calibrated to match official recruitment standards:
-          </p>
-        </div>
-
-        {/* Crisp Flat 1px Architectural Grid */}
-        <div className="sp-arch-grid sp-arch-grid-4col">
-          {TARGET_EXAMINATIONS.slice(0, 8).map((exam) => (
-            <div key={exam.id} className="sp-arch-cell">
-              <span className="sp-bench-court-badge">{exam.category || 'Judicial Exam'}</span>
-              <h3 className="sp-bench-name">{exam.name}</h3>
-              <p className="sp-bench-desc">{exam.shortDesc || exam.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SECTION 3: THE 3 CORE GATEWAYS (CURRICULUM TRACKS)
-          ========================================================================= */}
-      <section className="sp-gateways-section">
-        <div className="sp-section-heading-center">
-          <span className="sp-section-eyebrow">CURRICULUM &amp; EXAMINATION TRACKS</span>
-          <h2 className="sp-section-h2">
-            Everything You Need to Clear Your Exam
-          </h2>
-          <p className="sp-section-lead">
-            Whether you want to practice high-speed audio dictations, master computer typing, or learn shorthand from scratch &mdash; select below:
-          </p>
-        </div>
-
-        <div className="sp-gateways-grid">
-          {/* Gateway 1: Dictation Vault */}
-          <div className="sp-gateway-card">
-            <span className="sp-gateway-category-tag">STANDARD SSC BENCHMARK</span>
-            <div>
-              <div className="sp-gateway-icon-box amber">
-                <Headphones size={22} />
-              </div>
-              <h3 className="sp-gateway-title">Audio Dictation Vault</h3>
-              <p className="sp-gateway-desc">
-                Calibrated <strong>80, 100, 120, 140 WPM</strong> voice dictations. Follows strict examination rules: audio plays once without rewind, followed by timed transcription and automated SSC scoring.
-              </p>
-              <ul className="sp-gateway-features">
-                {[
-                  "Patna High Court & SSC Standard Audio Tracks",
-                  "Single-Play Anti-Cheating Protocol",
-                  "Instant LCS Word-by-Word Diff Evaluation"
-                ].map((feat, i) => (
-                  <li key={i} className="sp-gateway-feature-item">
-                    <CheckCircle2 size={16} className="sp-gateway-check-icon" />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <button
-              type="button"
-              className="sp-btn-primary"
-              style={{ width: '100%', justifyContent: 'center' }}
-              onClick={() => setCurrentTab && setCurrentTab('tests')}
-            >
-              <span>Launch Dictation Vault</span>
-              <ArrowRight size={16} />
-            </button>
-          </div>
-
-          {/* Gateway 2: Typing Studio */}
-          <div className="sp-gateway-card">
-            <span className="sp-gateway-category-tag">BILINGUAL ENGINE</span>
-            <div>
-              <div className="sp-gateway-icon-box blue">
-                <Keyboard size={22} />
-              </div>
-              <h3 className="sp-gateway-title">Computer Typing Studio</h3>
-              <p className="sp-gateway-desc">
-                Practice typing in <strong>English, Hindi (Kruti Dev 010), and Hindi (Mangal Inscript)</strong>. Features authentic exam controls including strict backspace locking and real-time Net WPM calculation.
-              </p>
-              <ul className="sp-gateway-features">
-                {[
-                  "Kruti Dev 010 & Mangal Inscript Dual Support",
-                  "Configurable Backspace Lock (Strict Exam Mode)",
-                  "Official Court Passage Test Bank"
-                ].map((feat, i) => (
-                  <li key={i} className="sp-gateway-feature-item">
-                    <CheckCircle2 size={16} className="sp-gateway-check-icon" />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <button
-              type="button"
-              className="sp-btn-primary"
-              style={{ width: '100%', justifyContent: 'center' }}
-              onClick={() => setCurrentTab && setCurrentTab('typing-studio')}
-            >
-              <span>Enter Typing Studio</span>
-              <ArrowRight size={16} />
-            </button>
-          </div>
-
-          {/* Gateway 3: Offline Coaching */}
-          <div className="sp-gateway-card">
-            <span className="sp-gateway-category-tag">GAYA CENTER</span>
-            <div>
-              <div className="sp-gateway-icon-box purple">
-                <GraduationCap size={22} />
-              </div>
-              <h3 className="sp-gateway-title">Classroom &amp; Offline Coaching</h3>
-              <p className="sp-gateway-desc">
-                Under <strong>Shadab Sir (12 Years Exp)</strong> at Gaya College More. Daily handwriting outline checks, physical dictation speed batches, and full computer typing lab access.
-              </p>
-              <ul className="sp-gateway-features">
-                {[
-                  "Personalized Stroke Checking for Every Student",
-                  "3 Free Trial Demo Classes Before Enrolling",
-                  "Modern Computer Lab with Mechanical Keyboards"
-                ].map((feat, i) => (
-                  <li key={i} className="sp-gateway-feature-item">
-                    <CheckCircle2 size={16} className="sp-gateway-check-icon" />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <button
-              type="button"
-              className="sp-btn-primary"
-              style={{ width: '100%', justifyContent: 'center' }}
-              onClick={() => {
-                fireConfetti();
-                if (onOpenAdmission) onOpenAdmission();
-              }}
-            >
-              <span>Book 3 Free Demos</span>
-              <ArrowRight size={16} />
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SECTION 4: HOW THE TWO-STAGE DICTATION EXAM WORKS (3 SIMPLE STEPS)
-          ========================================================================= */}
-      <section className="sp-workflow-section">
-        <div className="sp-section-heading-center">
-          <span className="sp-section-eyebrow">SIMULATED TEST PROTOCOL</span>
-          <h2 className="sp-section-h2">
-            How The Two-Stage Exam Engine Works
-          </h2>
-          <p className="sp-section-lead">
-            We mirror the exact exam room procedure used by the Staff Selection Commission and High Court judicial recruitment boards:
-          </p>
-        </div>
-
-        <div className="sp-workflow-grid">
-          <div className="sp-workflow-card">
-            <span className="sp-workflow-step-num">STAGE 01</span>
-            <h3 className="sp-workflow-title">Listen &amp; Take Shorthand Notes</h3>
-            <p className="sp-workflow-desc">
-              Listen to calibrated audio dictation (80, 100, 120 WPM) and take shorthand notes in your notebook. Audio plays strictly once with no pause or rewind.
+      <section className="sp-engine-section">
+        <div className="sp-container">
+          
+          {/* Header (Left-aligned, max-w-2xl) */}
+          <div className="sp-engine-header">
+            <span className="sp-section-eyebrow">THE SHORTHAND PLUS PLATFORM</span>
+            <h2 className="sp-section-h2">
+              Built like the actual exam hall, down to every keystroke.
+            </h2>
+            <p className="sp-section-sub">
+              Experience the dual-stage examination simulation trusted by Bihar's top stenography qualifiers:
             </p>
           </div>
 
-          <div className="sp-workflow-card">
-            <span className="sp-workflow-step-num">STAGE 02</span>
-            <h3 className="sp-workflow-title">5-Minute Reading &amp; Transcription</h3>
-            <p className="sp-workflow-desc">
-              A 5-minute reading clock allows you to review and punctuate your handwritten shorthand outlines before typing, exactly as required in SSC &amp; Court examinations.
-            </p>
-          </div>
-
-          <div className="sp-workflow-card">
-            <span className="sp-workflow-step-num">STAGE 03</span>
-            <h3 className="sp-workflow-title">Type &amp; Instant SSC Scorecard</h3>
-            <p className="sp-workflow-desc">
-              Type your transcription on the timed screen. When you submit, our Longest Common Subsequence (LCS) engine instantly highlights Full Mistakes, Half Mistakes, Net WPM, and Qualifying Status.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SECTION 5: THE 5 CANONICAL COURSES & TRANSPARENT PRICING
-          ========================================================================= */}
-      <section className="sp-courses-section">
-        <div className="sp-section-heading-center">
-          <span className="sp-section-eyebrow">COURSES &amp; BATCHES</span>
-          <h2 className="sp-section-h2">
-            The 5 Core Courses with Transparent Fees
-          </h2>
-          <p className="sp-section-lead">
-            Choose your learning path. Every course includes daily practice, doubt-clearing sessions, and certified exam preparation.
-          </p>
-        </div>
-
-        <div className="sp-courses-grid">
-          {coursesList.map((course) => (
-            <div key={course.id} className="sp-course-card">
-              <div>
-                <div className="sp-course-meta-row">
-                  <span className="sp-course-speed">{course.speed}</span>
-                  <span className="sp-course-duration-badge">{course.duration}</span>
+          {/* 2-Column Interactive Split */}
+          <div className="sp-engine-grid">
+            
+            {/* Left Column: 3 Clickable Accordion/Tab Items */}
+            <div className="sp-engine-tabs">
+              
+              {/* Tab 0 */}
+              <div 
+                className={`sp-engine-tab-card ${activeEngineTab === 0 ? 'active' : ''}`}
+                onClick={() => setActiveEngineTab(0)}
+                role="button"
+                tabIndex={0}
+              >
+                <div className="sp-engine-tab-head">
+                  <span className="sp-engine-tab-num">01</span>
+                  <div className="sp-engine-tab-title-wrap">
+                    <h3 className="sp-engine-tab-title">Calibrated Audio Dictation</h3>
+                    <span className="sp-engine-tab-tag">50–140 WPM Standard</span>
+                  </div>
                 </div>
-
-                <h3 className="sp-course-title">{course.title}</h3>
-                <p className="sp-course-desc">{course.subtitle}</p>
-
-                <div className="sp-course-price-box">
-                  <span className="sp-course-price-now tabular-nums">{course.price}</span>
-                  {course.originalPrice && (
-                    <span className="sp-course-price-was tabular-nums">{course.originalPrice}</span>
-                  )}
-                </div>
-
-                <ul className="sp-course-features-list">
-                  {course.highlights.slice(0, 4).map((item, i) => (
-                    <li key={i} className="sp-course-feature-item">
-                      <Check size={15} className="sp-course-check-icon" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <p className="sp-engine-tab-desc">
+                  Practice 50–140 WPM Pitman &amp; High Court legal dictations with exam-accurate pacing, single-play lock, and mandatory 5-minute reading clock.
+                </p>
               </div>
 
-              <div className="sp-course-actions-row">
+              {/* Tab 1 */}
+              <div 
+                className={`sp-engine-tab-card ${activeEngineTab === 1 ? 'active' : ''}`}
+                onClick={() => setActiveEngineTab(1)}
+                role="button"
+                tabIndex={0}
+              >
+                <div className="sp-engine-tab-head">
+                  <span className="sp-engine-tab-num">02</span>
+                  <div className="sp-engine-tab-title-wrap">
+                    <h3 className="sp-engine-tab-title">Bilingual Typing Studio</h3>
+                    <span className="sp-engine-tab-tag">Kruti Dev &amp; Mangal</span>
+                  </div>
+                </div>
+                <p className="sp-engine-tab-desc">
+                  Dedicated English QWERTY, Hindi Kruti Dev 010, and Mangal Inscript typing drills with strict backspace-lock simulation and live gross/net WPM.
+                </p>
+              </div>
+
+              {/* Tab 2 */}
+              <div 
+                className={`sp-engine-tab-card ${activeEngineTab === 2 ? 'active' : ''}`}
+                onClick={() => setActiveEngineTab(2)}
+                role="button"
+                tabIndex={0}
+              >
+                <div className="sp-engine-tab-head">
+                  <span className="sp-engine-tab-num">03</span>
+                  <div className="sp-engine-tab-title-wrap">
+                    <h3 className="sp-engine-tab-title">Automated SSC Error Evaluation</h3>
+                    <span className="sp-engine-tab-tag">Full &amp; Half Error Scoring</span>
+                  </div>
+                </div>
+                <p className="sp-engine-tab-desc">
+                  Instant word-by-word diff checking full vs. half mistakes against official SSC and High Court cutoffs with exact percentage qualification criteria.
+                </p>
+              </div>
+
+            </div>
+
+            {/* Right Column: Live Stylized Software UI Mockup */}
+            <div className="sp-engine-preview-window">
+              
+              {/* Window Title Bar */}
+              <div className="sp-window-chrome">
+                <div className="sp-chrome-dots">
+                  <span className="sp-dot sp-dot-red" />
+                  <span className="sp-dot sp-dot-yellow" />
+                  <span className="sp-dot sp-dot-green" />
+                </div>
+                <div className="sp-chrome-title">
+                  {activeEngineTab === 0 && "Audio Exam Simulator v2.4 · Live Dictation Room"}
+                  {activeEngineTab === 1 && "Bilingual Typing Studio · Exam-Mode Lock Active"}
+                  {activeEngineTab === 2 && "Automated Evaluation Engine · Forensic Diff Report"}
+                </div>
+                <div className="sp-chrome-badge">EXAM ACTIVE</div>
+              </div>
+
+              {/* Mockup Canvas */}
+              <div className="sp-window-canvas">
+                
+                {/* TAB 0 PREVIEW: Audio Dictation Player */}
+                {activeEngineTab === 0 && (
+                  <div className="sp-preview-card">
+                    <div className="sp-preview-badge-row">
+                      <span className="sp-preview-status-pill">
+                        <span className="sp-live-dot" /> LIVE DICTATION
+                      </span>
+                      <span className="sp-preview-meta-tag">Track ID: PHC-LEGAL-104</span>
+                    </div>
+
+                    <h4 className="sp-preview-title">
+                      Patna High Court Legal Dictation &middot; 100 WPM
+                    </h4>
+                    <p className="sp-preview-sub">
+                      Case Law: Cr. Misc. Petitions &middot; Kailash Chandra Vol. 14 Calibration
+                    </p>
+
+                    {/* Speed Selector */}
+                    <div className="sp-speed-selector-row">
+                      <span className="sp-selector-label">CALIBRATED SPEED:</span>
+                      <div className="sp-speed-pills">
+                        <span className="sp-speed-pill">80 WPM</span>
+                        <span className="sp-speed-pill active">100 WPM</span>
+                        <span className="sp-speed-pill">120 WPM</span>
+                      </div>
+                    </div>
+
+                    {/* Minimalist Waveform Visualization */}
+                    <div className="sp-audio-player-box">
+                      <button 
+                        type="button"
+                        className="sp-audio-play-btn"
+                        onClick={() => setIsPlayingAudioPreview(!isPlayingAudioPreview)}
+                        title="Toggle Audio Simulation"
+                      >
+                        {isPlayingAudioPreview ? <Pause size={18} /> : <Play size={18} style={{ marginLeft: '2px' }} />}
+                      </button>
+
+                      <div className="sp-waveform-bars">
+                        {[40, 65, 30, 85, 95, 60, 45, 100, 75, 50, 90, 65, 40, 80, 55, 35, 70, 90, 60, 30].map((h, idx) => (
+                          <span 
+                            key={idx} 
+                            className={`sp-wave-bar ${isPlayingAudioPreview && idx < 12 ? 'active' : ''}`}
+                            style={{ height: `${h}%` }}
+                          />
+                        ))}
+                      </div>
+
+                      <div className="sp-audio-timer tabular-nums">
+                        {isPlayingAudioPreview ? "01:24" : "05:00"}
+                      </div>
+                    </div>
+
+                    <div className="sp-preview-footer-note">
+                      <span>Strict Single-Play Protocol: Audio plays once without rewind or pause.</span>
+                      <button 
+                        type="button" 
+                        className="sp-preview-cta-link"
+                        onClick={handleStartTests}
+                      >
+                        Launch Dictation Vault &rarr;
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* TAB 1 PREVIEW: Bilingual Typing Studio */}
+                {activeEngineTab === 1 && (
+                  <div className="sp-preview-card">
+                    <div className="sp-preview-badge-row">
+                      <span className="sp-preview-status-pill">
+                        <span className="sp-live-dot" /> BACKSPACE LOCKED
+                      </span>
+                      <span className="sp-preview-meta-tag">Exam Layout: Kruti Dev 010</span>
+                    </div>
+
+                    {/* Font & Layout Switcher */}
+                    <div className="sp-font-toggle-row">
+                      <span className="sp-font-tab">English QWERTY</span>
+                      <span className="sp-font-tab active">Hindi Kruti Dev 010</span>
+                      <span className="sp-font-tab">Mangal Inscript</span>
+                    </div>
+
+                    {/* Real-time stats row */}
+                    <div className="sp-preview-stats-bar">
+                      <div className="sp-stat-item">
+                        <span className="sp-stat-label">GROSS SPEED</span>
+                        <span className="sp-stat-val tabular-nums">46 WPM</span>
+                      </div>
+                      <div className="sp-stat-item">
+                        <span className="sp-stat-label">NET SPEED</span>
+                        <span className="sp-stat-val tabular-nums">42 WPM</span>
+                      </div>
+                      <div className="sp-stat-item">
+                        <span className="sp-stat-label">ACCURACY</span>
+                        <span className="sp-stat-val tabular-nums text-emerald">97.8%</span>
+                      </div>
+                      <div className="sp-stat-item">
+                        <span className="sp-stat-label">TIME LEFT</span>
+                        <span className="sp-stat-val tabular-nums">08:45</span>
+                      </div>
+                    </div>
+
+                    {/* Live Editor Preview Snippet */}
+                    <div className="sp-typing-passage-box">
+                      <span className="sp-typed-text">
+                        अभ्यर्थियों को सूचित किया जाता है कि पटना उच्च न्यायालय आशुलिपिक परीक्षा के लिए गति एवं शुद्धता सर्वोपरि
+                      </span>
+                      <span className="sp-typing-cursor" />
+                      <span className="sp-untyped-text">
+                        {' '}है। निर्धारित समय सीमा के भीतर कंप्यूटर टंकण पूर्ण करना अनिवार्य होगा।
+                      </span>
+                    </div>
+
+                    <div className="sp-preview-footer-note">
+                      <span>Strict Backspace Lock: Eliminates bad editing habits during live preparation.</span>
+                      <button 
+                        type="button" 
+                        className="sp-preview-cta-link"
+                        onClick={() => setCurrentTab && setCurrentTab('typing-studio')}
+                      >
+                        Enter Typing Studio &rarr;
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* TAB 2 PREVIEW: Automated SSC Error Evaluation */}
+                {activeEngineTab === 2 && (
+                  <div className="sp-preview-card">
+                    <div className="sp-preview-badge-row">
+                      <span className="sp-preview-status-pill qualified">
+                        <CheckCircle size={14} /> QUALIFIED &middot; SSC GRADE C
+                      </span>
+                      <span className="sp-preview-meta-tag">Cutoff Allowed: 7.0%</span>
+                    </div>
+
+                    <h4 className="sp-preview-title">
+                      LCS Forensic Word-by-Word Error Breakdown
+                    </h4>
+
+                    {/* Diff Highlighting Display */}
+                    <div className="sp-diff-passage-box">
+                      <p className="sp-diff-text">
+                        The proceedings of the{' '}
+                        <del className="sp-diff-omission" title="Full Mistake: Word Omitted">
+                          honorable
+                        </del>{' '}
+                        court were adjourned today after hearing the{' '}
+                        <span className="sp-diff-half-mistake" title="Half Mistake: Spelling typo">
+                          parlimentary
+                        </span>{' '}
+                        arguments presented in the constitutional writ petition without any unnecessary delay.
+                      </p>
+                    </div>
+
+                    {/* Legend */}
+                    <div className="sp-diff-legend-row">
+                      <div className="sp-legend-item">
+                        <span className="sp-legend-box sp-legend-red" />
+                        <span>Full Mistake (Omission / Addition) &middot; -1.0</span>
+                      </div>
+                      <div className="sp-legend-item">
+                        <span className="sp-legend-box sp-legend-amber" />
+                        <span>Half Mistake (Spelling / Case) &middot; -0.5</span>
+                      </div>
+                    </div>
+
+                    {/* Score Summary Metrics */}
+                    <div className="sp-diff-score-grid">
+                      <div className="sp-diff-score-cell">
+                        <span className="sp-diff-label">FULL MISTAKES</span>
+                        <span className="sp-diff-value tabular-nums">1 (Omission)</span>
+                      </div>
+                      <div className="sp-diff-score-cell">
+                        <span className="sp-diff-label">HALF MISTAKES</span>
+                        <span className="sp-diff-value tabular-nums">1 (Spelling)</span>
+                      </div>
+                      <div className="sp-diff-score-cell">
+                        <span className="sp-diff-label">TOTAL ERROR RATE</span>
+                        <span className="sp-diff-value tabular-nums text-emerald">1.5%</span>
+                      </div>
+                      <div className="sp-diff-score-cell">
+                        <span className="sp-diff-label">NET ACCURACY</span>
+                        <span className="sp-diff-value tabular-nums font-bold">98.5%</span>
+                      </div>
+                    </div>
+
+                    <div className="sp-preview-footer-note">
+                      <span>Full SSC Standard: Certified evaluation matching official Staff Selection Commission rules.</span>
+                      <button 
+                        type="button" 
+                        className="sp-preview-cta-link"
+                        onClick={handleStartTests}
+                      >
+                        Try Full Mock Exam &rarr;
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 3: HOW PREPARATION WORKS (MINIMAL HORIZONTAL TIMELINE)
+          ========================================================================= */}
+      <section className="sp-timeline-section">
+        <div className="sp-container">
+          
+          <div className="sp-timeline-head-row">
+            <div>
+              <span className="sp-section-eyebrow">PEDAGOGICAL ROADMAP</span>
+              <h2 className="sp-section-h2" style={{ textAlign: 'left', margin: 0 }}>
+                From First Outline to Final Selection.
+              </h2>
+            </div>
+            <button
+              type="button"
+              className="sp-timeline-all-courses-link"
+              onClick={handleExploreCourses}
+            >
+              <span>View All Courses</span>
+              <ArrowRight size={15} />
+            </button>
+          </div>
+
+          <div className="sp-timeline-grid">
+            
+            {/* Step 1 */}
+            <div className="sp-timeline-col">
+              <span className="sp-timeline-num">01</span>
+              <h3 className="sp-timeline-title">Listen &amp; Write Shorthand</h3>
+              <p className="sp-timeline-desc">
+                Take calibrated live or studio dictations in your physical stenography notebook at <strong>60 to 140 WPM</strong>. Master light/dark stroke discrimination and phraseography without hesitations.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="sp-timeline-col">
+              <span className="sp-timeline-num">02</span>
+              <h3 className="sp-timeline-title">Transcribe Under Exam Clock</h3>
+              <p className="sp-timeline-desc">
+                Review outlines during the 5-minute reading clock, then transcribe in <strong>English, Kruti Dev 010, or Mangal</strong> under strict official exam-hall timing and backspace-lock rules.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="sp-timeline-col">
+              <span className="sp-timeline-num">03</span>
+              <h3 className="sp-timeline-title">Fix Every Single Mistake</h3>
+              <p className="sp-timeline-desc">
+                Receive automated full and half-mistake percentage reports instantly, combined with daily <strong>handwritten outline review</strong> by Shadab Sir to eliminate recurring stroke angle flaws.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 4: LEGACY & MENTOR EDITORIAL SPLIT (bg-white)
+          ========================================================================= */}
+      <section className="sp-mentor-section">
+        <div className="sp-container">
+          <div className="sp-mentor-grid">
+            
+            {/* Left Column: Editorial Narrative & Mentor Legacy */}
+            <div className="sp-mentor-narrative">
+              <span className="sp-section-eyebrow">GAYA SHORTHAND CLASSES &middot; EST. 2012</span>
+              <h2 className="sp-section-h2" style={{ textAlign: 'left' }}>
+                12+ Years of Discipline. Guided Directly by Shadab Sir.
+              </h2>
+              
+              <div className="sp-mentor-text-block">
+                <p>
+                  Founded at Gaya College More in 2012, <strong>Gaya Shorthand Classes</strong> has established itself as Bihar's premier preparatory academy for government stenography aspirants. Over 1,200 candidates have qualified for Central &amp; State services under direct personal mentorship.
+                </p>
+                <p>
+                  We believe that while automated software is indispensable for measuring speed, true shorthand mastery demands traditional stroke discipline. Every single outline, curve angle, and grammalogue contraction is inspected daily so bad habits never carry into the examination hall.
+                </p>
+              </div>
+
+              {/* Flush Stat Strip */}
+              <div className="sp-mentor-stats-strip">
+                <div className="sp-stat-box">
+                  <div className="sp-stat-number tabular-nums">12+ Yrs</div>
+                  <div className="sp-stat-caption">Coaching Legacy</div>
+                </div>
+                <div className="sp-stat-box">
+                  <div className="sp-stat-number tabular-nums">50&ndash;140</div>
+                  <div className="sp-stat-caption">WPM Training Range</div>
+                </div>
+                <div className="sp-stat-box">
+                  <div className="sp-stat-number">Offline + Live</div>
+                  <div className="sp-stat-caption">Gaya &amp; Google Meet</div>
+                </div>
+              </div>
+
+              <div style={{ marginTop: '2rem' }}>
                 <button
                   type="button"
-                  className="sp-btn-course-enroll"
-                  onClick={() => handleEnrollClick(course.title)}
+                  className="sp-mentor-story-link"
+                  onClick={() => setCurrentTab && setCurrentTab('about')}
                 >
-                  <span>Enroll Now &middot; 3 Days Demo</span>
+                  <span>Read Our Story &amp; Methodology</span>
                   <ArrowRight size={15} />
                 </button>
-
-                <a
-                  href={`https://wa.me/919204123453?text=Hi%20Shadab%20Sir,%20I%20am%20interested%20in%20${encodeURIComponent(course.title)}%20at%20Gaya%20Shorthand%20Classes.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="sp-course-whatsapp-link"
-                >
-                  <MessageCircle size={14} />
-                  <span>WhatsApp Inquiry</span>
-                </a>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* =========================================================================
-          SECTION 6: 8-STEP TEACHING METHODOLOGY ROADMAP
-          ========================================================================= */}
-      <section className="sp-methodology-section">
-        <div className="sp-section-heading-center">
-          <span className="sp-section-eyebrow">PEDAGOGY &amp; CURRICULUM</span>
-          <h2 className="sp-section-h2">
-            The 8-Step Path to Shorthand Mastery
-          </h2>
-          <p className="sp-section-lead">
-            Developed over 12+ years of coaching hundreds of successful candidates across Bihar, Jharkhand, and Central government departments:
-          </p>
-        </div>
+            {/* Right Column: 4 Core Pillars Credential Card */}
+            <div className="sp-mentor-pillars-card">
+              <div className="sp-pillars-card-head">
+                <h3 className="sp-pillars-heading">Institutional Principles</h3>
+                <span className="sp-pillars-tag">CORE PILLARS</span>
+              </div>
 
-        {/* Crisp Flat 1px Architectural Grid */}
-        <div className="sp-arch-grid sp-arch-grid-4col">
-          {[
-            {
-              step: "01",
-              title: "Basic Pitman Strokes",
-              hindi: "मूल रेखाएँ एवं कोण",
-              desc: "Consonants, straight and curved strokes, heavy and light lines, vowel placements, and positioning rules."
-            },
-            {
-              step: "02",
-              title: "Word Formation & Grammalogues",
-              hindi: "शब्द निर्माण एवं चिन्ह",
-              desc: "Joining strokes, logograms, short forms, and high-frequency contractions to build early muscle memory."
-            },
-            {
-              step: "03",
-              title: "Phraseography & Intersections",
-              hindi: "वाक्यांश एवं अंतर्विच्छेदन",
-              desc: "Joining words without lifting the pen — the secret technique that accelerates speed past 60 WPM."
-            },
-            {
-              step: "04",
-              title: "Kailash Chandra Dictations",
-              hindi: "कैलाश चंद्र पत्रिका अभ्यास",
-              desc: "Systematic dictation practice from Volumes 1 to 24, starting at 60 WPM and progressing to 100 WPM."
-            },
-            {
-              step: "05",
-              title: "High Court Legal Series",
-              hindi: "उच्च न्यायालय विधिक आलेख",
-              desc: "Judicial judgments, civil petitions, FIR vocabulary, and Latin maxims designed for High Court skill tests."
-            },
-            {
-              step: "06",
-              title: "Bilingual Typing Lab",
-              hindi: "द्विभाषी टंकण प्रयोगशाला",
-              desc: "Daily timed typing in English and Hindi (Kruti Dev 010 & Mangal) with strict backspace lock software."
-            },
-            {
-              step: "07",
-              title: "Full Two-Stage Mock Exams",
-              hindi: "पूर्ण दो-चरणीय परीक्षा अभ्यास",
-              desc: "Audio dictation with single-play lock, 5-minute reading clock, timed transcription, and automated diff scoring."
-            },
-            {
-              step: "08",
-              title: "Individual Notebook Checking",
-              hindi: "व्यक्तिगत उत्तर-पुस्तिका जांच",
-              desc: "Daily personalized review of handwritten outlines by Shadab Sir to eliminate common angle and stroke errors."
-            }
-          ].map((item, idx) => (
-            <div key={idx} className="sp-arch-cell">
-              <span className="sp-step-num-badge">STEP {item.step}</span>
-              <h3 className="sp-step-title">{item.title}</h3>
-              <span className="sp-step-hindi">{item.hindi}</span>
-              <p className="sp-step-desc">{item.desc}</p>
+              <div className="sp-pillars-list">
+                
+                <div className="sp-pillar-item">
+                  <div className="sp-pillar-header">
+                    <CheckCircle2 size={18} className="sp-pillar-icon" />
+                    <h4 className="sp-pillar-title">Personal Outline Checking</h4>
+                  </div>
+                  <p className="sp-pillar-desc">
+                    Daily physical review of shorthand notebooks by Shadab Sir to correct stroke angles, proportion, and phraseography before bad habits take root.
+                  </p>
+                </div>
+
+                <div className="sp-pillar-item">
+                  <div className="sp-pillar-header">
+                    <CheckCircle2 size={18} className="sp-pillar-icon" />
+                    <h4 className="sp-pillar-title">Bilingual Typing Mastery</h4>
+                  </div>
+                  <p className="sp-pillar-desc">
+                    Comprehensive dual-stream training across English Pitman and Hindi Shorthand with both Kruti Dev 010 and Mangal Inscript typing labs.
+                  </p>
+                </div>
+
+                <div className="sp-pillar-item">
+                  <div className="sp-pillar-header">
+                    <CheckCircle2 size={18} className="sp-pillar-icon" />
+                    <h4 className="sp-pillar-title">Daily Legal &amp; Parliamentary Dictations</h4>
+                  </div>
+                  <p className="sp-pillar-desc">
+                    High Court judgments, civil petitions, FIR vocabulary, and Kailash Chandra volumes calibrated to exact official recruitment speeds.
+                  </p>
+                </div>
+
+                <div className="sp-pillar-item">
+                  <div className="sp-pillar-header">
+                    <CheckCircle2 size={18} className="sp-pillar-icon" />
+                    <h4 className="sp-pillar-title">Transparent Coaching with 3 Free Demo Classes</h4>
+                  </div>
+                  <p className="sp-pillar-desc">
+                    Experience our classroom instruction, typing lab computers, and dictation methodology completely free before paying any admission fee.
+                  </p>
+                </div>
+
+              </div>
             </div>
-          ))}
+
+          </div>
         </div>
       </section>
 
       {/* =========================================================================
-          SECTION 7: LIVE GOOGLE MEET CLASSROOM STRIP (EDITORIAL INK AESTHETIC)
+          SECTION 5: HIGH-CONTRAST LIVE ONLINE CLASSES BANNER (bg-white)
           ========================================================================= */}
       <section className="sp-live-banner-section">
-        <div className="sp-live-banner-container">
+        <div className="sp-container">
           <div className="sp-live-banner-card">
             
-            {/* Subtle architectural dot-grid accent */}
-            <div className="sp-live-pattern-accent" aria-hidden="true" />
-
             {/* Left Content Column */}
             <div className="sp-live-content-col">
-              {/* Eyebrow Label: Static solid red dot + uppercase tracked label */}
               <div className="sp-live-eyebrow">
                 <span className="sp-live-static-dot" />
                 <span>LIVE ONLINE INTERACTIVE BATCHES</span>
               </div>
 
-              {/* Headline with editorial italic serif */}
-              <h3 className="sp-live-headline">
+              <h2 className="sp-live-headline">
                 Can't Visit the Gaya Center?{' '}
                 <span className="sp-live-serif-accent">Join Live Online Classes</span>
-              </h3>
+              </h2>
 
-              {/* Body Copy */}
               <p className="sp-live-body">
-                Interactive Google Meet sessions with live dictations, digital whiteboard outline checking, and real-time doubt resolution with <strong>Shadab Sir</strong>.
+                Daily Google Meet dictations, live digital whiteboard outline checking, and real-time doubt resolution with <strong>Shadab Sir</strong>.
               </p>
 
-              {/* Compact Feature Strip */}
               <div className="sp-live-features-strip">
                 <span className="sp-live-feat-item">Google Meet Live</span>
                 <span className="sp-live-feat-divider">&middot;</span>
@@ -710,14 +712,14 @@ export default function LandingPage({
                 type="button"
                 className="sp-live-btn-white"
                 onClick={() => {
-                  if (setCurrentTab) setCurrentTab('classes');
+                  if (setCurrentTab) setCurrentTab('batches');
                 }}
               >
-                <span>View Online Class Schedule</span>
+                <span>View Live Class Schedule</span>
                 <ArrowRight size={16} />
               </button>
               <span className="sp-live-caption">
-                Daily live slots &middot; Recorded sessions included
+                Morning &amp; evening batches available
               </span>
             </div>
 
@@ -726,294 +728,214 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 8: WHY GAYA SHORTHAND CLASSES? (THE 4 PILLARS)
+          SECTION 6: ASPIRANT VOICES (EDITORIAL TESTIMONIALS)
           ========================================================================= */}
-      <section className="sp-gateways-section">
-        <div className="sp-section-heading-center">
-          <span className="sp-section-eyebrow">INSTITUTIONAL EXCELLENCE</span>
-          <h2 className="sp-section-h2">
-            Why Students Choose Gaya Shorthand Classes
-          </h2>
-          <p className="sp-section-lead">
-            Four key pillars that have produced top rankers across SSC and High Court stenographer examinations:
-          </p>
-        </div>
-
-        {/* Crisp Flat 1px Architectural Grid */}
-        <div className="sp-arch-grid sp-arch-grid-4col">
-          {[
-            {
-              icon: <Award size={22} className="sp-pillar-icon-svg" />,
-              title: "12+ Years Proven Track Record",
-              desc: "Directed by Shadab Sir since 2012 with 1,200+ selections across SSC, Patna High Court, Civil Courts, and Secretariat."
-            },
-            {
-              icon: <Cpu size={22} className="sp-pillar-icon-svg" />,
-              title: "Two-Stage AI-Powered Testing",
-              desc: "Audio dictation with single-play lock, strict transcription timing, and automated word-by-word SSC error evaluation."
-            },
-            {
-              icon: <Keyboard size={22} className="sp-pillar-icon-svg" />,
-              title: "Dedicated Bilingual Typing Lab",
-              desc: "English and Hindi typing with dual-font support (Kruti Dev 010 and Mangal Inscript) and strict exam simulations."
-            },
-            {
-              icon: <FileText size={22} className="sp-pillar-icon-svg" />,
-              title: "Individual Notebook Checking",
-              desc: "Every student's shorthand notebook is checked daily by Shadab Sir to correct stroke angles, sizes, and positionings."
-            }
-          ].map((pillar, idx) => (
-            <div key={idx} className="sp-arch-cell">
-              <div className="sp-pillar-icon-box">{pillar.icon}</div>
-              <h3 className="sp-pillar-title">{pillar.title}</h3>
-              <p className="sp-pillar-desc">{pillar.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SECTION 9: CLASSROOM VIDEO DEMO & GOOGLE REVIEWS (SOCIAL PROOF)
-          ========================================================================= */}
-      <section className="sp-reviews-section">
-        <div className="sp-section-heading-center">
-          <span className="sp-section-eyebrow">VERIFIED SOCIAL PROOF</span>
-          <h2 className="sp-section-h2">
-            See Our Classroom &amp; Hear From Successful Students
-          </h2>
-          <p className="sp-section-lead">
-            Over 140+ students have rated Gaya Shorthand Classes 4.9/5 on Google for authentic coaching and results.
-          </p>
-        </div>
-
-        {/* Video Demo Container */}
-        <div className="sp-video-container">
-          {isPlayingYouTube ? (
-            <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.youtube-nocookie.com/embed/jfKfPfyJRdk?autoplay=1&rel=0"
-                title="Gaya Shorthand Classes - Speed Dictation & Whiteboard Demo"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                style={{ border: 'none', position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-              />
-            </div>
-          ) : (
-            <div 
-              className="sp-video-facade" 
-              onClick={() => setIsPlayingYouTube(true)}
-              title="Click to Play Classroom Demonstration Video"
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&auto=format&fit=crop&q=80" 
-                alt="Classroom Dictation Session Preview" 
-                className="sp-video-thumb"
-              />
-              <div className="sp-play-badge">
-                <Play size={24} fill="#0F172A" color="#0F172A" style={{ marginLeft: '4px' }} />
-              </div>
-              <div className="sp-video-caption">
-                <h4>Watch Classroom Speed Dictation Demo</h4>
-                <p>Instructor: Shadab Sir (12 Years Exp) &middot; Kailash Chandra 80 &amp; 100 WPM Live Whiteboard Review</p>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Student Testimonials Grid */}
-        <div className="sp-reviews-grid">
-          {[
-            {
-              name: "Anjali Verma",
-              exam: "SSC Stenographer Grade C",
-              rating: 5,
-              text: "\u201cShadab Sir's daily dictation practice and 5-minute reading room made all the difference in my SSC skill test. Individual notebook checking helped fix my stroke angles completely!\u201d"
-            },
-            {
-              name: "Rakesh Kumar",
-              exam: "Patna High Court Personal Assistant",
-              rating: 5,
-              text: "\u201cThe strict backspace lock simulation and legal judgment audio series mirrored the exact Patna High Court exam software. Cracked my exam with 98% accuracy!\u201d"
-            },
-            {
-              name: "Md. Tariq",
-              exam: "Jharkhand High Court & Civil Courts",
-              rating: 5,
-              text: "\u201cBest shorthand and typing institute in Gaya. The dual font support (Kruti Dev 010 and Mangal) in their computer lab is unmatched for judicial exam aspirants.\u201d"
-            }
-          ].map((rev, i) => (
-            <div key={i} className="sp-review-card">
-              <div className="sp-stars-row">
-                {[...Array(rev.rating)].map((_, s) => (
-                  <Star key={s} size={15} fill="#B91C1C" color="#B91C1C" />
-                ))}
-              </div>
-              <p className="sp-review-quote">{rev.text}</p>
-              <div className="sp-reviewer-row">
-                <div className="sp-reviewer-avatar">
-                  {rev.name.charAt(0)}
-                </div>
-                <div>
-                  <div className="sp-reviewer-name">{rev.name}</div>
-                  <div className="sp-reviewer-tag">{rev.exam}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SECTION 10: GAYA CENTER LOCATION, CONTACTS & TOP FAQS
-          ========================================================================= */}
-      <section className="sp-center-section">
-        <div className="sp-center-grid">
-          {/* Left Column: Center Location & Hours */}
-          <div>
-            <span className="sp-section-eyebrow">VISIT OUR CENTER</span>
-            <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
-              Gaya Coaching Center &amp; Helplines
+      <section className="sp-voices-section">
+        <div className="sp-container">
+          
+          <div className="sp-voices-header">
+            <span className="sp-section-eyebrow">STUDENT OUTCOMES</span>
+            <h2 className="sp-section-h2">
+              Trusted by Serious Aspirants.
             </h2>
-
-            <div className="sp-center-location-card">
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', marginBottom: '16px' }}>
-                <MapPin size={20} color="#0F172A" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <div>
-                  <h4 style={{ fontSize: '0.98rem', fontWeight: 700, color: '#0F172A', margin: '0 0 4px' }}>
-                    Address:
-                  </h4>
-                  <p style={{ fontSize: '0.9rem', color: '#475569', margin: 0, lineHeight: 1.5 }}>
-                    <strong>Gaya Shorthand Classes</strong><br />
-                    Gaya College More, Opposite Cyber Thana, Gayaji, Bihar - 823001
-                  </p>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', marginBottom: '16px' }}>
-                <Phone size={18} color="#0F172A" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <div>
-                  <h4 style={{ fontSize: '0.98rem', fontWeight: 700, color: '#0F172A', margin: '0 0 4px' }}>
-                    Direct Helplines:
-                  </h4>
-                  <p style={{ fontSize: '0.9rem', color: '#475569', margin: 0, lineHeight: 1.5 }}>
-                    Director (Shadab Sir): <a href="tel:9204123453" style={{ color: '#0F172A', fontWeight: 700, textDecoration: 'underline' }}>+91 9204123453</a><br />
-                    Admissions Desk: <a href="tel:7870377214" style={{ color: '#0F172A', fontWeight: 700, textDecoration: 'underline' }}>+91 7870377214</a>
-                  </p>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
-                <Clock size={18} color="#0F172A" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <div>
-                  <h4 style={{ fontSize: '0.98rem', fontWeight: 700, color: '#0F172A', margin: '0 0 4px' }}>
-                    Office &amp; Class Timings:
-                  </h4>
-                  <p style={{ fontSize: '0.9rem', color: '#475569', margin: 0, lineHeight: 1.5 }}>
-                    Morning 7:00 AM &ndash; 11:30 AM &bull; Evening 3:30 PM &ndash; 7:30 PM (Mon to Sat)
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Embedded Google Map */}
-            <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid #E2E8F0', height: '240px' }}>
-              <iframe
-                title="Gaya Shorthand Classes Google Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14470.573215849887!2d84.9912061!3d24.7938367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f32a510526e855%3A0x6bfa332617757917!2sGaya%20College%2C%20Gaya!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-          </div>
-
-          {/* Right Column: FAQs Accordion */}
-          <div>
-            <span className="sp-section-eyebrow">ADMISSIONS FAQ</span>
-            <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
-              Frequently Asked Questions
-            </h2>
-
-            <div className="sp-faq-accordion">
-              {TOP_FAQS.map((faq) => {
-                const isOpen = activeFaq === faq.id;
-                return (
-                  <div key={faq.id} className="sp-faq-item">
-                    <button
-                      type="button"
-                      className="sp-faq-btn"
-                      onClick={() => setActiveFaq(isOpen ? null : faq.id)}
-                    >
-                      <span>{faq.q}</span>
-                      {isOpen ? <ChevronUp size={18} color="#0F172A" /> : <ChevronDown size={18} color="#94A3B8" />}
-                    </button>
-                    {isOpen && (
-                      <div className="sp-faq-body">
-                        {faq.a}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            <div style={{ marginTop: '1.75rem', textAlign: 'left' }}>
-              <a
-                href="tel:9204123453"
-                style={{ fontSize: '0.88rem', fontWeight: 600, color: '#0F172A', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
-              >
-                <Phone size={15} />
-                <span>Have additional questions? Call Helpline: +91 9204123453</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SECTION 11: CLOSING CTA BANNER (EDITORIAL DEEP INK)
-          ========================================================================= */}
-      <section className="sp-cta-banner">
-        <div className="sp-cta-container">
-          <div className="sp-cta-card">
-            <span className="sp-section-eyebrow" style={{ color: '#94A3B8' }}>
-              ESTD. 2012 &middot; GAYA SHORTHAND CLASSES
-            </span>
-            <h2 className="sp-cta-title">
-              Learn Today, Lead Tomorrow
-            </h2>
-            <p className="sp-cta-desc">
-              Begin your government stenographer journey with <strong>3 Free Demo Classes</strong> at Gaya Shorthand Classes. Guided by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>.
+            <p className="sp-section-sub">
+              Verified experiences from candidates who built their shorthand speed and cleared recruitment skill tests:
             </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', justifyContent: 'center' }}>
-              <button
-                type="button"
-                className="sp-split-btn-primary"
-                onClick={() => {
-                  fireConfetti();
-                  if (onOpenAdmission) onOpenAdmission();
-                }}
-              >
-                <span>Book 3 Free Demo Classes</span>
-                <ArrowRight size={16} />
-              </button>
+          </div>
 
-              <a
-                href="tel:9204123453"
-                className="sp-split-btn-secondary"
-              >
-                <Phone size={16} />
-                <span>Call Helpline: +91 9204123453</span>
-              </a>
+          <div className="sp-voices-grid">
+            
+            {/* Review 1 */}
+            <div className="sp-voice-card">
+              <div>
+                <div className="sp-voice-stars">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={15} fill="#B91C1C" color="#B91C1C" />
+                  ))}
+                </div>
+                <p className="sp-voice-quote">
+                  &ldquo;Shadab Sir's daily dictation practice and 5-minute reading room made all the difference in my SSC skill test. Individual notebook checking helped fix my stroke angles completely.&rdquo;
+                </p>
+              </div>
+              <div className="sp-voice-author-block">
+                <div className="sp-voice-author-name">Anjali Verma</div>
+                <div className="sp-voice-author-tag">SSC STENOGRAPHER GRADE C &middot; 100 WPM</div>
+              </div>
+            </div>
+
+            {/* Review 2 */}
+            <div className="sp-voice-card">
+              <div>
+                <div className="sp-voice-stars">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={15} fill="#B91C1C" color="#B91C1C" />
+                  ))}
+                </div>
+                <p className="sp-voice-quote">
+                  &ldquo;The strict backspace lock simulation and legal judgment audio series mirrored the exact Patna High Court exam software. Reached 100 WPM with zero guesswork.&rdquo;
+                </p>
+              </div>
+              <div className="sp-voice-author-block">
+                <div className="sp-voice-author-name">Rakesh Kumar</div>
+                <div className="sp-voice-author-tag">PATNA HIGH COURT PA &middot; 98% ACCURACY</div>
+              </div>
+            </div>
+
+            {/* Review 3 */}
+            <div className="sp-voice-card">
+              <div>
+                <div className="sp-voice-stars">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={15} fill="#B91C1C" color="#B91C1C" />
+                  ))}
+                </div>
+                <p className="sp-voice-quote">
+                  &ldquo;Best shorthand institute in Gaya. The dual font support (Kruti Dev 010 and Mangal) in their computer lab is unmatched for judicial exam aspirants.&rdquo;
+                </p>
+              </div>
+              <div className="sp-voice-author-block">
+                <div className="sp-voice-author-name">Md. Tariq</div>
+                <div className="sp-voice-author-tag">BIHAR CIVIL COURT STENOGRAPHER</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 7: COMPACT CENTER DETAILS + FAQ SPLIT & TIGHT CLOSING BAND
+          ========================================================================= */}
+      <section className="sp-center-faq-section">
+        <div className="sp-container">
+          
+          <div className="sp-center-faq-grid">
+            
+            {/* Left Column: Center Location & Helplines */}
+            <div className="sp-center-card">
+              <span className="sp-section-eyebrow">VISIT OUR CENTER</span>
+              <h3 className="sp-center-heading">
+                Gaya Coaching Center &amp; Helplines
+              </h3>
+
+              <div className="sp-center-info-list">
+                
+                <div className="sp-center-info-row">
+                  <MapPin size={20} className="sp-center-info-icon" />
+                  <div>
+                    <h4 className="sp-info-label">Address:</h4>
+                    <p className="sp-info-text">
+                      <strong>Gaya Shorthand Classes</strong><br />
+                      Gaya College More, Opposite Cyber Thana, Gaya, Bihar &ndash; 823001
+                    </p>
+                  </div>
+                </div>
+
+                <div className="sp-center-info-row">
+                  <Clock size={19} className="sp-center-info-icon" />
+                  <div>
+                    <h4 className="sp-info-label">Batch &amp; Lab Timings:</h4>
+                    <p className="sp-info-text">
+                      6:00 AM &ndash; 11:00 AM &amp; 2:00 PM &ndash; 8:00 PM (Monday to Saturday)
+                    </p>
+                  </div>
+                </div>
+
+                <div className="sp-center-info-row">
+                  <Phone size={19} className="sp-center-info-icon" />
+                  <div>
+                    <h4 className="sp-info-label">Helplines &amp; Inquiries:</h4>
+                    <p className="sp-info-text">
+                      Director (Shadab Sir): <a href="tel:9204123453">+91 9204123453</a><br />
+                      Admissions Desk: <a href="tel:7870377214">+91 7870377214</a>
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+              <div className="sp-center-action-row">
+                <button
+                  type="button"
+                  className="sp-btn-ink-primary"
+                  style={{ width: '100%', justifyContent: 'center' }}
+                  onClick={handleOpenDemo}
+                >
+                  <span>Book 3 Free Demos</span>
+                  <ArrowRight size={16} />
+                </button>
+              </div>
+            </div>
+
+            {/* Right Column: Interactive FAQ Accordion */}
+            <div className="sp-faq-wrap">
+              <span className="sp-section-eyebrow">ADMISSIONS FAQ</span>
+              <h3 className="sp-center-heading">
+                Frequently Asked Questions
+              </h3>
+
+              <div className="sp-faq-accordion">
+                {TOP_FAQS.map((faq) => {
+                  const isOpen = activeFaq === faq.id;
+                  return (
+                    <div key={faq.id} className="sp-faq-item">
+                      <button
+                        type="button"
+                        className="sp-faq-btn"
+                        onClick={() => setActiveFaq(isOpen ? null : faq.id)}
+                      >
+                        <span className="sp-faq-question-text">{faq.q}</span>
+                        {isOpen ? <ChevronUp size={18} color="#0F172A" /> : <ChevronDown size={18} color="#94A3B8" />}
+                      </button>
+                      {isOpen && (
+                        <div className="sp-faq-body">
+                          {faq.a}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* Tight Closing CTA Strip (Directly above footer, zero awkward gap) */}
+        <div className="sp-closing-cta-strip">
+          <div className="sp-container">
+            <div className="sp-closing-cta-box">
+              <h2 className="sp-closing-h2">
+                Ready to Build Exam-Hall Speed?
+              </h2>
+              <p className="sp-closing-sub">
+                Join over 1,200 successful candidates trained under Shadab Sir. Book your 3 free demo classes today.
+              </p>
+              <div className="sp-closing-btn-row">
+                <button
+                  type="button"
+                  className="sp-btn-white-primary"
+                  onClick={handleStartTests}
+                >
+                  <span>Start Free Dictation Test</span>
+                  <ArrowRight size={16} />
+                </button>
+
+                <button
+                  type="button"
+                  className="sp-btn-ink-outline"
+                  onClick={handleExploreCourses}
+                >
+                  <span>Explore All Courses</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
+
       </section>
 
     </div>
