@@ -1425,82 +1425,183 @@
    8. LIVE GOOGLE MEET CLASSROOM STRIP (PREMIUM SAPPHIRE CARD)
    ========================================================================== */
 
+/* ==========================================================================
+   7. LIVE ONLINE CLASSES BANNER (EDITORIAL DEEP INK)
+   ========================================================================== */
+
 .sp-live-banner-section {
   padding: 3.5rem 1.5rem;
   background: #FFFFFF;
-  border-bottom: 1px solid var(--sp-border-subtle);
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.sp-live-banner-container {
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .sp-live-banner-card {
-  max-width: 1240px;
-  margin: 0 auto;
-  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #1D4ED8 100%);
-  border-radius: 20px;
-  padding: 2.75rem 2.25rem;
+  position: relative;
+  background-color: #0F172A;
+  border: 1px solid #1E293B;
+  border-radius: 1rem;
+  padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  align-items: flex-start;
-  justify-content: space-between;
-  box-shadow: var(--sp-shadow-lg);
-  color: #FFFFFF;
+  gap: 2rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.12);
 }
 
 @media (min-width: 1024px) {
   .sp-live-banner-card {
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    padding: 3rem 3.5rem;
   }
 }
 
-.sp-live-tag {
+/* Subtle architectural dot grid on the right */
+.sp-live-pattern-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 40%;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: radial-gradient(#94A3B8 1px, transparent 1px);
+  background-size: 16px 16px;
+  mask-image: linear-gradient(to left, black 20%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, black 20%, transparent 100%);
+}
+
+.sp-live-content-col {
+  position: relative;
+  z-index: 2;
+  max-width: 42rem;
+  text-align: left;
+}
+
+/* Eyebrow Label */
+.sp-live-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #A7F3D0;
-  background: rgba(16, 185, 129, 0.2);
-  padding: 4px 12px;
-  border-radius: 9999px;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #94A3B8;
   margin-bottom: 0.85rem;
 }
 
-.sp-live-title {
-  font-size: 1.65rem;
-  font-weight: 800;
+.sp-live-static-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #B91C1C;
+  flex-shrink: 0;
+}
+
+/* Headline */
+.sp-live-headline {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
   color: #FFFFFF !important;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.85rem;
+  font-family: var(--sp-font-display);
 }
 
-.sp-live-desc {
+.sp-live-serif-accent {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #CBD5E1;
+}
+
+/* Body Copy */
+.sp-live-body {
   font-size: 0.95rem;
-  color: #E2E8F0 !important;
   line-height: 1.6;
-  margin: 0;
+  color: #CBD5E1 !important;
+  margin: 0 0 1.25rem;
+  max-width: 38rem;
 }
 
-.sp-btn-white {
+.sp-live-body strong {
+  color: #FFFFFF !important;
+  font-weight: 600;
+}
+
+/* Compact Feature Strip */
+.sp-live-features-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #94A3B8;
+}
+
+.sp-live-feat-item {
+  color: #94A3B8;
+}
+
+.sp-live-feat-divider {
+  color: #475569;
+  font-weight: bold;
+}
+
+/* Right Action Column */
+.sp-live-action-col {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+@media (min-width: 1024px) {
+  .sp-live-action-col {
+    align-items: flex-end;
+  }
+}
+
+.sp-live-btn-white {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 0.85rem 1.65rem;
-  border-radius: 12px;
-  background: #FFFFFF;
+  padding: 0.875rem 1.65rem;
+  border-radius: 8px;
+  background: #FFFFFF !important;
   color: #0F172A !important;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.92rem;
-  border: none;
+  border: 1px solid #FFFFFF !important;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
   transition: all 0.2s ease;
   white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
-.sp-btn-white:hover {
-  background: #F8FAFC;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+.sp-live-btn-white:hover {
+  background: #F1F5F9 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.sp-live-caption {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  letter-spacing: -0.01em;
 }
 
 /* ==========================================================================

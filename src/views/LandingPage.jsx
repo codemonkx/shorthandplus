@@ -689,33 +689,62 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 7: LIVE GOOGLE MEET CLASSROOM STRIP
+          SECTION 7: LIVE GOOGLE MEET CLASSROOM STRIP (EDITORIAL INK AESTHETIC)
           ========================================================================= */}
       <section className="sp-live-banner-section">
-        <div className="sp-live-banner-card">
-          <div style={{ maxWidth: '720px' }}>
-            <span className="sp-live-tag">
-              <span className="sp-pulse-dot" style={{ width: '6px', height: '6px' }} />
-              Live Online Interactive Batches
-            </span>
-            <h3 className="sp-live-title">
-              Can't Visit Gaya Center? Join Live Online Classes
-            </h3>
-            <p className="sp-live-desc">
-              Interactive Google Meet classes with screen sharing, live dictations, digital whiteboard outline checking, and real-time doubt resolution with <strong>Shadab Sir</strong>.
-            </p>
+        <div className="sp-live-banner-container">
+          <div className="sp-live-banner-card">
+            
+            {/* Subtle architectural dot-grid accent */}
+            <div className="sp-live-pattern-accent" aria-hidden="true" />
+
+            {/* Left Content Column */}
+            <div className="sp-live-content-col">
+              {/* Eyebrow Label: Static solid red dot + uppercase tracked label */}
+              <div className="sp-live-eyebrow">
+                <span className="sp-live-static-dot" />
+                <span>LIVE ONLINE INTERACTIVE BATCHES</span>
+              </div>
+
+              {/* Headline with editorial italic serif */}
+              <h3 className="sp-live-headline">
+                Can't Visit the Gaya Center?{' '}
+                <span className="sp-live-serif-accent">Join Live Online Classes</span>
+              </h3>
+
+              {/* Body Copy */}
+              <p className="sp-live-body">
+                Interactive Google Meet sessions with live dictations, digital whiteboard outline checking, and real-time doubt resolution with <strong>Shadab Sir</strong>.
+              </p>
+
+              {/* Compact Feature Strip */}
+              <div className="sp-live-features-strip">
+                <span className="sp-live-feat-item">Google Meet Live</span>
+                <span className="sp-live-feat-divider">&middot;</span>
+                <span className="sp-live-feat-item">Whiteboard Outline Review</span>
+                <span className="sp-live-feat-divider">&middot;</span>
+                <span className="sp-live-feat-item">Direct Doubt Resolution</span>
+              </div>
+            </div>
+
+            {/* Right Action Block */}
+            <div className="sp-live-action-col">
+              <button
+                type="button"
+                className="sp-live-btn-white"
+                onClick={() => {
+                  if (setCurrentTab) setCurrentTab('classes');
+                }}
+              >
+                <span>View Online Class Schedule</span>
+                <ArrowRight size={16} />
+              </button>
+              <span className="sp-live-caption">
+                Daily live slots &middot; Recorded sessions included
+              </span>
+            </div>
+
           </div>
-          <button
-            type="button"
-            className="sp-btn-white"
-            onClick={() => {
-              if (setCurrentTab) setCurrentTab('classes');
-            }}
-          >
-            <Tv size={18} />
-            <span>View Online Class Schedule</span>
-            <ArrowRight size={16} />
-          </button>
         </div>
       </section>
 
