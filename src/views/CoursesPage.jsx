@@ -1,24 +1,15 @@
 import React, { useState } from 'react';
 import { 
   GraduationCap, 
-  Crown, 
-  CheckCircle2, 
   Clock, 
   ArrowRight, 
-  Sparkles,
-  Phone,
-  FileText,
-  Keyboard,
-  BookOpen,
-  Award,
-  Zap,
-  Check,
-  ChevronDown,
-  ChevronUp,
-  ShieldCheck,
-  MapPin
+  Phone, 
+  Check, 
+  ChevronDown, 
+  ChevronUp
 } from 'lucide-react';
 import { PRICING_PLANS, TARGET_EXAMINATIONS, TEACHING_METHODOLOGY } from '../data/mockData';
+import '../landing-redesign.css';
 
 const ACADEMY_COURSES = [
   {
@@ -277,26 +268,13 @@ const ACADEMY_COURSES = [
   }
 ];
 
-const renderCourseIcon = (iconName) => {
-  switch (iconName) {
-    case 'BookOpen':
-      return <BookOpen size={18} color="#2563EB" />;
-    case 'FileText':
-      return <FileText size={18} color="#2563EB" />;
-    case 'Keyboard':
-      return <Keyboard size={18} color="#2563EB" />;
-    case 'ShieldCheck':
-      return <ShieldCheck size={18} color="#059669" />;
-    case 'Award':
-      return <Award size={18} color="#D97706" />;
-    case 'GraduationCap':
-      return <GraduationCap size={18} color="#7C3AED" />;
-    default:
-      return <BookOpen size={18} color="#2563EB" />;
-  }
-};
-
-export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, onOpenCheckout, onOpenAdmission, setCurrentTab }) {
+export default function CoursesPage({ 
+  courses = ACADEMY_COURSES, 
+  onSelectPlan, 
+  onOpenCheckout, 
+  onOpenAdmission, 
+  setCurrentTab 
+}) {
   const [filterCategory, setFilterCategory] = useState('all');
   const [passFilter, setPassFilter] = useState('all');
   const [expandedSyllabus, setExpandedSyllabus] = useState({});
@@ -361,300 +339,134 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
     return true;
   });
 
+  const CATEGORY_TABS = [
+    { id: 'all', label: 'All Programs', count: displayCourses.length },
+    { id: 'pitman', label: 'English Shorthand' },
+    { id: 'hindi-steno', label: 'Hindi Shorthand' },
+    { id: 'typing', label: 'Typing Lab' },
+    { id: 'court', label: 'High Court Judicial' },
+    { id: 'ssc', label: 'SSC Grade C & D' },
+    { id: 'diplomas', label: 'Diplomas (ADCA/DCA)' }
+  ];
+
   return (
-    <div className="courses-page-root" style={{ background: '#F8FAFC', minHeight: '100vh', color: '#0F172A' }}>
+    <div className="sp-courses-root">
       
-      {/* 1. HERO HEADER */}
-      <div className="courses-hero-banner" style={{ padding: '2rem 1.25rem 2.5rem', textAlign: 'center' }}>
-        <div className="courses-hero-container" style={{ maxWidth: '860px', margin: '0 auto' }}>
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.45rem',
-            background: '#F1F5F9',
-            border: '1px solid #E2E8F0',
-            color: '#475569',
-            fontSize: '0.75rem',
-            fontWeight: 600,
-            letterSpacing: '0.04em',
-            padding: '0.35rem 0.9rem',
-            borderRadius: '9999px',
-            marginBottom: '1rem'
-          }}>
-            <Sparkles size={13} color="#475569" />
-            <span>Official Curriculum & Test Passes · Est. 2012</span>
-          </div>
-          <h1 className="courses-hero-title" style={{ fontSize: 'clamp(1.9rem, 3vw, 2.4rem)', fontWeight: 700, margin: '0 0 0.85rem', letterSpacing: '-0.02em', color: '#0F172A' }}>
-            Stenography Courses & Examination Programs
+      {/* =========================================================================
+          SECTION A: CLEAN EDITORIAL PAGE HEADER + UNDERLINE FILTER BAR
+          ========================================================================= */}
+      <section className="sp-courses-header-section">
+        <div className="sp-courses-header-container">
+          <span className="sp-courses-eyebrow">
+            ACADEMY CURRICULUM &middot; OFFLINE &amp; LIVE ONLINE
+          </span>
+          <h1 className="sp-courses-h1">
+            Stenography Courses &amp; <span className="sp-courses-serif-accent">Examination</span> Programs
           </h1>
-          <p className="courses-hero-desc" style={{ fontSize: '1.02rem', color: '#64748B', lineHeight: 1.6, margin: 0 }}>
-            From absolute zero in Pitman Shorthand to cracking High Court & SSC Stenographer skill tests at 50–140 WPM. Guided by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong> with real-time dictations and exam simulations.
+          <p className="sp-courses-desc">
+            From absolute zero in Pitman Shorthand to cracking High Court &amp; SSC Stenographer skill tests at 50–140 WPM. Guided by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong> with real-time dictations and exam simulations.
           </p>
         </div>
-      </div>
 
-      {/* 2. ACADEMY COURSES & PROGRAMS */}
-      <section id="academy-courses" style={{ maxWidth: 1240, margin: '0 auto 3rem', padding: '0 1.25rem' }}>
-        
-        {/* Category Filter Pills (Independent buttons - NO big oval wrap) */}
-        <div style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '0.5rem',
-          marginBottom: '2rem'
-        }}>
-          {[
-            { id: 'all', label: 'All Programs', count: displayCourses.length },
-            { id: 'pitman', label: 'English Shorthand' },
-            { id: 'hindi-steno', label: 'Hindi Shorthand' },
-            { id: 'typing', label: 'Typing Lab' },
-            { id: 'court', label: 'High Court Judicial' },
-            { id: 'ssc', label: 'SSC Grade C & D' },
-            { id: 'diplomas', label: 'Diplomas (ADCA/DCA)' }
-          ].map((tab) => {
-            const isActive = filterCategory === tab.id;
-            return (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => handleSelectFilter(tab.id)}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '9999px',
-                  border: isActive ? '1.5px solid #0F172A' : '1px solid rgba(0, 0, 0, 0.08)',
-                  background: isActive ? '#0F172A' : '#FFFFFF',
-                  color: isActive ? '#FFFFFF' : '#0F172A',
-                  fontSize: '0.84rem',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  boxShadow: isActive ? '0 2px 8px rgba(17, 17, 17, 0.2)' : '0 1px 3px rgba(17, 17, 17, 0.04)',
-                  transition: 'all 0.18s ease'
-                }}
-              >
-                <span>{tab.label}</span>
-                {tab.count && (
-                  <span style={{
-                    fontSize: '0.72rem',
-                    fontWeight: 600,
-                    padding: '0.1rem 0.45rem',
-                    borderRadius: '9999px',
-                    background: isActive ? '#334155' : '#F1F5F9',
-                    color: isActive ? '#FFFFFF' : '#475569'
-                  }}>
-                    {tab.count}
-                  </span>
-                )}
-              </button>
-            );
-          })}
+        {/* Flush Single-Row Underline Filter Bar */}
+        <div className="sp-courses-filter-bar-wrap">
+          <div className="sp-courses-filter-bar" role="tablist">
+            {CATEGORY_TABS.map((tab) => {
+              const isActive = filterCategory === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => handleSelectFilter(tab.id)}
+                  className={`sp-courses-filter-tab ${isActive ? 'is-active' : ''}`}
+                >
+                  <span>{tab.label}</span>
+                  {tab.count !== undefined && (
+                    <span className="sp-courses-filter-count">({tab.count})</span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
+      </section>
 
-        {/* Course Cards Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-          gap: '1.5rem',
-          alignItems: 'stretch'
-        }}>
-          {filteredCourses.map((course) => {
-            const isSyllabusOpen = !!expandedSyllabus[course.id];
-            return (
-              <div
-                key={course.id}
-                style={{
-                  background: '#FFFFFF',
-                  border: '1px solid #E2E8F0',
-                  borderRadius: '16px',
-                  padding: '1.75rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  position: 'relative',
-                  boxShadow: '0 1px 3px rgba(15, 23, 42, 0.04)',
-                  transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#CBD5E1';
-                  e.currentTarget.style.boxShadow = '0 6px 18px -4px rgba(15, 23, 42, 0.08)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = '#E2E8F0';
-                  e.currentTarget.style.boxShadow = '0 1px 3px rgba(15, 23, 42, 0.04)';
-                }}
-              >
-                {/* Popular Flagship Ribbon */}
-                {course.popular && (
-                  <div style={{
-                    position: 'absolute',
-                    top: '1.25rem',
-                    right: '1.25rem',
-                    background: '#F1F5F9',
-                    border: '1px solid #E2E8F0',
-                    color: '#0F172A',
-                    fontSize: '0.72rem',
-                    fontWeight: 600,
-                    letterSpacing: '0.02em',
-                    padding: '0.2rem 0.65rem',
-                    borderRadius: '9999px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.35rem'
-                  }}>
-                    <span>Popular Batch</span>
-                  </div>
-                )}
-
-                <div>
-                  {/* Category & Speed Pill Row */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap', paddingRight: course.popular ? '7.5rem' : 0 }}>
-                    <div style={{
-                      width: 36,
-                      height: 36,
-                      borderRadius: '8px',
-                      background: '#F8FAFC',
-                      border: '1px solid #E2E8F0',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: '#0F172A',
-                      flexShrink: 0
-                    }}>
-                      {renderCourseIcon(course.icon)}
+      {/* =========================================================================
+          SECTION B: DECLUTTERED COURSE CARDS GRID
+          ========================================================================= */}
+      <section id="academy-courses" className="sp-courses-grid-section">
+        <div className="sp-courses-container">
+          <div className="sp-courses-cards-grid">
+            {filteredCourses.map((course) => {
+              const isSyllabusOpen = !!expandedSyllabus[course.id];
+              return (
+                <div key={course.id} className="sp-course-card">
+                  <div>
+                    {/* Top Metadata Row */}
+                    <div className="sp-course-card-top">
+                      <span className="sp-course-category-label">
+                        {course.category}
+                      </span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        {course.popular && (
+                          <span className="sp-course-popular-tag">
+                            Popular Batch
+                          </span>
+                        )}
+                        <span className="sp-course-speed-badge">
+                          &flash; {course.speedTarget}
+                        </span>
+                      </div>
                     </div>
-                    <span style={{
-                      fontSize: '0.76rem',
-                      fontWeight: 600,
-                      color: '#64748B',
-                      letterSpacing: '0.02em',
-                      textTransform: 'uppercase'
-                    }}>
-                      {course.category}
-                    </span>
-                    <span style={{
-                      fontFamily: 'JetBrains Mono, monospace',
-                      fontSize: '0.74rem',
-                      fontWeight: 600,
-                      padding: '0.2rem 0.5rem',
-                      borderRadius: '6px',
-                      background: '#F8FAFC',
-                      border: '1px solid #E2E8F0',
-                      color: '#0F172A',
-                      marginLeft: 'auto'
-                    }}>
-                      ⚡ {course.speedTarget}
-                    </span>
-                  </div>
 
-                  {/* Title & Description */}
-                  <h3 style={{
-                    fontSize: '1.2rem',
-                    fontWeight: 700,
-                    color: '#0F172A',
-                    lineHeight: 1.35,
-                    margin: '0 0 0.5rem',
-                    letterSpacing: '-0.015em',
-                    minHeight: '2.8rem'
-                  }}>
-                    {course.title}
-                  </h3>
-                  <p style={{
-                    fontSize: '0.88rem',
-                    color: '#64748B',
-                    lineHeight: 1.5,
-                    margin: '0 0 1rem',
-                    minHeight: '3.9rem',
-                    display: '-webkit-box',
-                    WebkitLineClamp: 3,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden'
-                  }}>
-                    {course.description}
-                  </p>
+                    {/* Title & Description */}
+                    <h3 className="sp-course-title">
+                      {course.title}
+                    </h3>
+                    <p className="sp-course-desc">
+                      {course.description}
+                    </p>
 
-                  {/* Quick Specs Pill Strip */}
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
-                    gap: '0.5rem',
-                    padding: '0.65rem 0.85rem',
-                    background: '#F8FAFC',
-                    border: '1px solid #E2E8F0',
-                    borderRadius: '10px',
-                    marginBottom: '1.25rem',
-                    fontSize: '0.78rem',
-                    color: '#0F172A'
-                  }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                      <Clock size={13} color="#64748B" className="shrink-0" />
-                      <span><strong>Duration:</strong> {course.duration}</span>
+                    {/* Flush Key-Value Specs (No nested gray box) */}
+                    <div className="sp-course-specs-strip">
+                      <div className="sp-course-spec-item">
+                        <Clock className="sp-course-spec-icon" />
+                        <span><strong>Duration:</strong> {course.duration}</span>
+                      </div>
+                      <div className="sp-course-spec-item">
+                        <GraduationCap className="sp-course-spec-icon" />
+                        <span><strong>Format:</strong> {course.mode}</span>
+                      </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                      <GraduationCap size={13} color="#64748B" className="shrink-0" />
-                      <span><strong>Format:</strong> {course.mode}</span>
-                    </div>
-                  </div>
 
-                  {/* High Impact Highlights */}
-                  <div style={{ marginBottom: '0.85rem' }}>
-                    <div style={{
-                      fontSize: '0.72rem',
-                      fontWeight: 600,
-                      color: '#64748B',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.04em',
-                      marginBottom: '0.5rem'
-                    }}>
-                      Key Highlights:
-                    </div>
-                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                    {/* Curriculum Highlights */}
+                    <ul className="sp-course-highlights-list">
                       {(course.highlights || course.syllabus.slice(0, 4)).map((item, idx) => (
-                        <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.84rem', color: '#334155', lineHeight: 1.45 }}>
-                          <Check size={14} style={{ color: '#059669', flexShrink: 0, marginTop: '2px', strokeWidth: 2.5 }} />
+                        <li key={idx} className="sp-course-highlight-item">
+                          <Check className="sp-course-check-icon" />
                           <span>{item}</span>
                         </li>
                       ))}
                     </ul>
-                  </div>
 
-                  {/* Expandable Full Syllabus Toggle */}
-                  <div style={{ marginBottom: '1.25rem' }}>
+                    {/* Expandable Syllabus Toggle */}
                     <button
                       type="button"
                       onClick={() => toggleSyllabus(course.id)}
-                      style={{
-                        background: 'transparent',
-                        border: 'none',
-                        color: '#0F172A',
-                        fontSize: '0.8rem',
-                        fontWeight: 600,
-                        cursor: 'pointer',
-                        padding: '0.2rem 0',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '0.3rem'
-                      }}
+                      className="sp-course-syllabus-toggle"
                     >
                       <span>{isSyllabusOpen ? 'Hide Full Syllabus' : `View Full Syllabus (${course.syllabus.length} Topics)`}</span>
                       {isSyllabusOpen ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
                     </button>
 
                     {isSyllabusOpen && (
-                      <div style={{
-                        marginTop: '0.5rem',
-                        padding: '0.85rem 1rem',
-                        background: '#F8FAFC',
-                        border: '1px solid #E2E8F0',
-                        borderRadius: '10px'
-                      }}>
-                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                      <div className="sp-course-syllabus-drawer">
+                        <ul>
                           {course.syllabus.map((s, idx) => (
-                            <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.8rem', color: '#475569', lineHeight: 1.4 }}>
-                              <span style={{ color: '#0F172A', fontWeight: 600 }}>•</span>
+                            <li key={idx}>
+                              <span style={{ color: '#0F172A', fontWeight: 600 }}>&bull;</span>
                               <span>{s}</span>
                             </li>
                           ))}
@@ -662,149 +474,70 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
                       </div>
                     )}
                   </div>
-                </div>
 
-                {/* Card Action & Fee Footer */}
-                <div style={{
-                  paddingTop: '1.25rem',
-                  borderTop: '1px solid #F1F5F9',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: '0.75rem',
-                  marginTop: 'auto'
-                }}>
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem' }}>
-                      <span style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0F172A', fontFamily: 'JetBrains Mono, monospace' }}>
-                        {course.fee}
-                      </span>
-                      {course.originalFee && (
-                        <span style={{ fontSize: '0.88rem', color: '#94A3B8', textDecoration: 'line-through', fontWeight: 500 }}>
-                          {course.originalFee}
+                  {/* Card Footer */}
+                  <div className="sp-course-footer">
+                    <div className="sp-course-price-wrap">
+                      <div className="sp-course-price-row">
+                        <span className="sp-course-price">
+                          {course.fee}
                         </span>
-                      )}
+                        {course.originalFee && (
+                          <span className="sp-course-original-price">
+                            {course.originalFee}
+                          </span>
+                        )}
+                      </div>
+                      <span className="sp-course-price-sub">
+                        {course.feeType || 'Official Curriculum'}
+                      </span>
                     </div>
-                    <div style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: 500 }}>
-                      {course.feeType || 'Official Curriculum'}
-                    </div>
-                  </div>
 
-                  <button
-                    type="button"
-                    onClick={() => handleEnroll(course)}
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.45rem',
-                      padding: '0.7rem 1.15rem',
-                      borderRadius: '8px',
-                      background: '#0F172A',
-                      color: '#FFFFFF',
-                      fontWeight: 600,
-                      fontSize: '0.88rem',
-                      border: '1px solid #0F172A',
-                      cursor: 'pointer',
-                      boxShadow: '0 1px 3px rgba(15, 23, 42, 0.12)',
-                      transition: 'background 0.15s ease',
-                      flexShrink: 0
-                    }}
-                    onMouseEnter={(e) => { e.currentTarget.style.background = '#1E293B'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.background = '#0F172A'; }}
-                  >
-                    <span>Enroll Now</span>
-                    <ArrowRight size={14} />
-                  </button>
+                    <button
+                      type="button"
+                      onClick={() => handleEnroll(course)}
+                      className="sp-course-enroll-btn"
+                    >
+                      <span>Enroll Now</span>
+                      <ArrowRight size={14} />
+                    </button>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* TARGET EXAMINATIONS BANNER */}
-      <section style={{ maxWidth: 1240, margin: '0 auto 3.5rem', padding: '0 1.25rem' }}>
-        <div style={{
-          background: '#FFFFFF',
-          border: '1px solid #E2E8F0',
-          borderRadius: '20px',
-          padding: '2.25rem',
-          boxShadow: '0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px -4px rgba(15, 23, 42, 0.04)'
-        }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', marginBottom: '1.75rem' }}>
-            <div>
-              <span style={{
-                fontSize: '0.72rem',
-                fontWeight: 600,
-                letterSpacing: '0.04em',
-                textTransform: 'uppercase',
-                color: '#475569',
-                background: '#F1F5F9',
-                border: '1px solid #E2E8F0',
-                padding: '0.25rem 0.65rem',
-                borderRadius: '999px',
-                display: 'inline-block',
-                marginBottom: '0.5rem'
-              }}>
-                Government Exams Covered
-              </span>
-              <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#0F172A', margin: 0, letterSpacing: '-0.01em' }}>
-                कौन-कौन सी परीक्षाओं की तैयारी कराई जाती है?
-              </h2>
-              <p style={{ fontSize: '0.9rem', color: '#64748B', margin: '0.35rem 0 0' }}>
-                Our courses provide skill-based training for various government stenographer and typing examinations.
-              </p>
-            </div>
-            <div style={{
-              fontSize: '0.8rem',
-              fontWeight: 600,
-              color: '#0F172A',
-              background: '#F8FAFC',
-              padding: '0.45rem 0.85rem',
-              borderRadius: '8px',
-              border: '1px solid #E2E8F0'
-            }}>
-              9 National & State Exam Benches
-            </div>
+      {/* =========================================================================
+          SECTION C: EXAM COVERAGE DIRECTORY
+          ========================================================================= */}
+      <section className="sp-exams-section">
+        <div className="sp-courses-container">
+          <div className="sp-exams-header">
+            <span className="sp-courses-eyebrow">
+              EXAMINATION BENCHES COVERED
+            </span>
+            <h2 className="sp-section-h2" style={{ margin: '0.25rem 0 0.5rem' }}>
+              National &amp; State Government Recruitment Examinations
+            </h2>
+            <p className="sp-courses-desc" style={{ maxWidth: '44rem' }}>
+              Specialized speed batches calibrated for official notification criteria, vocabulary benches, and exam-hall backspace-lock rules.
+            </p>
           </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '1rem'
-          }}>
+          <div className="sp-exams-grid">
             {TARGET_EXAMINATIONS.map((exam) => (
-              <div
-                key={exam.id}
-                style={{
-                  background: '#FFFFFF',
-                  border: '1px solid #E2E8F0',
-                  borderRadius: '10px',
-                  padding: '1rem 1.25rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: '0.5rem'
-                }}
-              >
+              <div key={exam.id} className="sp-exam-cell">
                 <div>
-                  <div style={{ fontSize: '0.88rem', fontWeight: 600, color: '#0F172A' }}>
+                  <div className="sp-exam-cell-title">
                     {exam.title}
                   </div>
-                  <div style={{ fontSize: '0.75rem', color: '#64748B' }}>
-                    {exam.speed} • {exam.category}
+                  <div className="sp-exam-cell-sub">
+                    {exam.category}
                   </div>
                 </div>
-                <span style={{
-                  fontSize: '0.72rem',
-                  fontWeight: 600,
-                  padding: '0.2rem 0.55rem',
-                  borderRadius: '4px',
-                  background: '#F8FAFC',
-                  border: '1px solid #E2E8F0',
-                  color: '#0F172A',
-                  flexShrink: 0
-                }}>
+                <span className="sp-exam-cell-badge">
                   {exam.speed}
                 </span>
               </div>
@@ -813,281 +546,144 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
         </div>
       </section>
 
-      {/* 2.5 TEACHING METHODOLOGY (शिक्षण पद्धति) */}
-      <section style={{ maxWidth: 1240, margin: '1rem auto 3.5rem', padding: '0 1.25rem' }}>
-        <div style={{
-          background: '#FFFFFF',
-          border: '1px solid #E2E8F0',
-          borderRadius: '20px',
-          padding: '2.5rem',
-          boxShadow: '0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px -4px rgba(15, 23, 42, 0.04)'
-        }}>
-          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-            <span style={{
-              fontSize: '0.74rem',
-              fontWeight: 800,
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              color: '#059669',
-              background: '#ECFDF5',
-              border: '1px solid #A7F3D0',
-              padding: '0.3rem 0.75rem',
-              borderRadius: '999px',
-              display: 'inline-block',
-              marginBottom: '0.5rem'
-            }}>
-              STRUCTURED PEDAGOGY • GAYA SHORTHAND CLASSES
-            </span>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 850, color: '#0F172A', margin: 0, letterSpacing: '-0.02em' }}>
-              Teaching Methodology (शिक्षण पद्धति)
-            </h2>
-            <p style={{ fontSize: '0.92rem', color: '#64748B', margin: '0.45rem auto 0', maxWidth: 660 }}>
-              Our 8-stage training methodology guided by <strong>Shadab Sir (12 Years Experience)</strong> ensures continuous speed and accuracy improvement.
-            </p>
-          </div>
+      {/* =========================================================================
+          SECTION D: STRUCTURED TRAINING METHODOLOGY
+          ========================================================================= */}
+      <section className="sp-methodology-section">
+        <div className="sp-courses-container">
+          <span className="sp-courses-eyebrow">
+            STRUCTURED PEDAGOGY &middot; GAYA SHORTHAND CLASSES
+          </span>
+          <h2 className="sp-section-h2" style={{ margin: '0.25rem 0 0.5rem' }}>
+            8-Stage Teaching Methodology (शिक्षण पद्धति)
+          </h2>
+          <p className="sp-courses-desc" style={{ maxWidth: '42rem' }}>
+            Guided by <strong>Shadab Sir (12+ Years Experience)</strong> to systematically build accuracy and audio transcription speed from 50 to 140 WPM.
+          </p>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '1.25rem'
-          }}>
-            {TEACHING_METHODOLOGY.map((m) => (
-              <div
-                key={m.step}
-                style={{
-                  background: '#F8FAFC',
-                  border: '1px solid #E2E8F0',
-                  borderRadius: '14px',
-                  padding: '1.35rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.5rem'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span style={{
-                    fontSize: '0.76rem',
-                    fontWeight: 800,
-                    fontFamily: 'SF Mono, monospace',
-                    color: '#2563EB',
-                    background: '#EFF6FF',
-                    padding: '0.2rem 0.55rem',
-                    borderRadius: '6px',
-                    border: '1px solid #BFDBFE'
-                  }}>
-                    {m.step}
-                  </span>
-                  <span style={{ fontSize: '0.76rem', fontWeight: 700, color: '#059669' }}>
-                    {m.hindi}
-                  </span>
+          <div className="sp-methodology-grid">
+            {TEACHING_METHODOLOGY.map((m, idx) => {
+              const stepNum = String(idx + 1).padStart(2, '0');
+              return (
+                <div key={m.step || idx} className="sp-methodology-cell">
+                  <div>
+                    <div className="sp-methodology-num">{stepNum}</div>
+                    <div className="sp-methodology-title">{m.title}</div>
+                    <div className="sp-methodology-hindi">{m.hindi}</div>
+                    <p className="sp-methodology-desc">{m.desc}</p>
+                  </div>
                 </div>
-                <div style={{ fontSize: '0.96rem', fontWeight: 800, color: '#0F172A' }}>
-                  {m.title}
-                </div>
-                <div style={{ fontSize: '0.84rem', color: '#64748B', lineHeight: 1.55 }}>
-                  {m.desc}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* 3. SUBSCRIPTION & TEST SERIES PASSES */}
-      <section id="test-passes" style={{ maxWidth: 1240, margin: '0 auto 3.5rem', padding: '0 1.25rem' }}>
-        <div style={{ width: '100%' }}>
-          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-            <span style={{
-              fontSize: '0.74rem',
-              fontWeight: 800,
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              color: '#2563EB',
-              background: '#EFF6FF',
-              border: '1px solid #BFDBFE',
-              padding: '0.3rem 0.75rem',
-              borderRadius: '999px',
-              display: 'inline-block',
-              marginBottom: '0.5rem'
-            }}>
-              INSTANT TEST PORTAL ACCESS
-            </span>
-            <h2 style={{ fontSize: '1.6rem', fontWeight: 850, color: '#0F172A', margin: '0 0 0.45rem', letterSpacing: '-0.02em' }}>
-              Online Test Series & Audio Vault Passes
-            </h2>
-            <p style={{ fontSize: '0.94rem', color: '#64748B', margin: '0 auto', maxWidth: 640 }}>
-              Instant access with UPI & QR code. Practice anytime with real exam reading rooms and automated error calculation.
-            </p>
+      {/* =========================================================================
+          SECTION E: ONLINE TEST SERIES & MOCK PASSES
+          ========================================================================= */}
+      <section id="test-passes" className="sp-passes-section">
+        <div className="sp-courses-container">
+          <div className="sp-passes-header-row">
+            <div>
+              <span className="sp-courses-eyebrow">
+                SELF-PACED PRACTICE ENGINE
+              </span>
+              <h2 className="sp-section-h2" style={{ margin: '0.25rem 0 0.5rem' }}>
+                Online Test Series &amp; Mock Passes
+              </h2>
+              <p className="sp-courses-desc" style={{ maxWidth: '40rem' }}>
+                Instant access with UPI &amp; QR code. Practice anytime with real exam reading rooms and automated error calculation.
+              </p>
+            </div>
 
-            {/* Passes Filter Bar */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#FFFFFF', border: '1px solid #E2E8F0', padding: '0.4rem', borderRadius: '12px', marginTop: '1.5rem', boxShadow: '0 1px 3px rgba(15, 23, 42, 0.04)' }}>
+            {/* Segmented Filter Control */}
+            <div className="sp-segmented-filter" role="tablist">
               <button
                 type="button"
                 onClick={() => setPassFilter('all')}
-                style={{
-                  padding: '0.45rem 1rem',
-                  borderRadius: '8px',
-                  border: 'none',
-                  background: passFilter === 'all' ? '#0F172A' : 'transparent',
-                  color: passFilter === 'all' ? '#FFFFFF' : '#64748B',
-                  fontSize: '0.84rem',
-                  fontWeight: 700,
-                  cursor: 'pointer'
-                }}
+                className={`sp-segmented-btn ${passFilter === 'all' ? 'is-active' : ''}`}
               >
                 All Passes (7)
               </button>
               <button
                 type="button"
                 onClick={() => setPassFilter('passes')}
-                style={{
-                  padding: '0.45rem 1rem',
-                  borderRadius: '8px',
-                  border: 'none',
-                  background: passFilter === 'passes' ? '#0F172A' : 'transparent',
-                  color: passFilter === 'passes' ? '#FFFFFF' : '#64748B',
-                  fontSize: '0.84rem',
-                  fontWeight: 700,
-                  cursor: 'pointer'
-                }}
+                className={`sp-segmented-btn ${passFilter === 'passes' ? 'is-active' : ''}`}
               >
-                Daily & Monthly Passes (4)
+                Daily &amp; Monthly (4)
               </button>
               <button
                 type="button"
                 onClick={() => setPassFilter('special')}
-                style={{
-                  padding: '0.45rem 1rem',
-                  borderRadius: '8px',
-                  border: 'none',
-                  background: passFilter === 'special' ? '#0F172A' : 'transparent',
-                  color: passFilter === 'special' ? '#FFFFFF' : '#64748B',
-                  fontSize: '0.84rem',
-                  fontWeight: 700,
-                  cursor: 'pointer'
-                }}
+                className={`sp-segmented-btn ${passFilter === 'special' ? 'is-active' : ''}`}
               >
-                High Court & Foundation (3)
+                High Court &amp; Foundation (3)
               </button>
             </div>
           </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '1.5rem'
-          }}>
+          <div className="sp-passes-grid">
             {filteredPasses.map((plan) => {
-              const isPro = plan.popular || plan.id === 'plan-12mo';
+              const isRecommended = plan.id === 'plan-6mo' || plan.popular;
               return (
                 <div 
                   key={plan.id} 
-                  style={{
-                    background: '#FFFFFF',
-                    border: '1px solid #E2E8F0',
-                    borderRadius: '16px',
-                    padding: '2rem 1.75rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    position: 'relative',
-                    boxShadow: '0 1px 3px rgba(15, 23, 42, 0.04)',
-                    transition: 'border-color 0.15s ease, box-shadow 0.15s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#CBD5E1';
-                    e.currentTarget.style.boxShadow = '0 6px 18px -4px rgba(15, 23, 42, 0.08)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = '#E2E8F0';
-                    e.currentTarget.style.boxShadow = '0 1px 3px rgba(15, 23, 42, 0.04)';
-                  }}
+                  className={`sp-pass-card ${isRecommended ? 'is-recommended' : ''}`}
                 >
                   {plan.badge && (
-                    <div style={{
-                      position: 'absolute',
-                      top: '1.25rem',
-                      right: '1.25rem',
-                      background: '#F1F5F9',
-                      border: '1px solid #E2E8F0',
-                      color: '#0F172A',
-                      fontSize: '0.72rem',
-                      fontWeight: 600,
-                      padding: '0.2rem 0.65rem',
-                      borderRadius: '999px'
-                    }}>
+                    <span className="sp-pass-badge">
                       {plan.badge}
-                    </div>
+                    </span>
                   )}
 
                   <div>
                     {plan.seriesTitle && (
-                      <div style={{ fontSize: '0.74rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em', color: '#64748B', marginBottom: '0.35rem' }}>
+                      <div className="sp-pass-series-title">
                         {plan.seriesTitle}
                       </div>
                     )}
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0F172A', margin: '0 0 0.5rem', letterSpacing: '-0.01em' }}>
+                    <h3 className="sp-pass-title">
                       {plan.name}
                     </h3>
-                    <p style={{ fontSize: '0.86rem', color: '#64748B', lineHeight: 1.55, margin: '0 0 1.25rem' }}>
+                    <p className="sp-pass-desc">
                       {plan.description}
                     </p>
                     
-                    <div style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.25rem' }}>
+                    <div className="sp-pass-price-row">
                       {plan.originalPrice && (
-                        <span style={{ textDecoration: 'line-through', color: '#94A3B8', fontSize: '1rem', fontWeight: 600, marginRight: '0.2rem' }}>
+                        <span className="sp-pass-original-price">
                           ₹{plan.originalPrice}
                         </span>
                       )}
-                      <span style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0F172A' }}>₹</span>
-                      <span style={{ fontSize: '2rem', fontWeight: 700, color: '#0F172A', fontFamily: 'JetBrains Mono, monospace' }}>
+                      <span className="sp-pass-currency">₹</span>
+                      <span className="sp-pass-price">
                         {plan.price}
                       </span>
-                      <span style={{ fontSize: '0.82rem', color: '#64748B', fontWeight: 500 }}>
+                      <span className="sp-pass-duration">
                         / {plan.duration}
                       </span>
                     </div>
 
-                    <div style={{ height: '1px', background: '#F1F5F9', margin: '0 0 1.25rem' }} />
-
-                    <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.75rem', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                    <ul className="sp-pass-features-list">
                       {plan.features.map((feat, i) => (
-                        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontSize: '0.86rem', color: '#334155', lineHeight: 1.45 }}>
-                          <CheckCircle2 size={15} style={{ color: '#059669', flexShrink: 0, marginTop: '2px' }} />
+                        <li key={i} className="sp-pass-feature-item">
+                          <Check className="sp-course-check-icon" />
                           <span>{feat}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: 'auto' }}>
+                  <div>
                     <button 
                       type="button"
                       onClick={() => {
                         if (onSelectPlan) onSelectPlan(plan.id);
                         if (onOpenCheckout) onOpenCheckout(plan.id);
                       }}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '0.5rem',
-                        width: '100%',
-                        padding: '0.8rem 1rem',
-                        borderRadius: '8px',
-                        background: '#0F172A',
-                        color: '#FFFFFF',
-                        fontSize: '0.9rem',
-                        fontWeight: 600,
-                        border: '1px solid #0F172A',
-                        cursor: 'pointer',
-                        boxShadow: '0 1px 3px rgba(15, 23, 42, 0.12)',
-                        transition: 'background 0.15s ease'
-                      }}
-                      onMouseEnter={(e) => { e.currentTarget.style.background = '#1E293B'; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.background = '#0F172A'; }}
+                      className={isRecommended ? 'sp-pass-btn-primary' : 'sp-pass-btn-secondary'}
                     >
-                      <Crown size={15} color="#FFFFFF" />
                       <span>Activate with UPI (₹{plan.price})</span>
                     </button>
                   </div>
@@ -1098,58 +694,54 @@ export default function CoursesPage({ courses = ACADEMY_COURSES, onSelectPlan, o
         </div>
       </section>
 
-      {/* 4. CONTACT & COUNSELING BANNER */}
-      <section style={{ maxWidth: 1240, margin: '0 auto 4rem', padding: '0 1.25rem' }}>
-        <div style={{
-          background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
-          borderRadius: '24px',
-          padding: '2.5rem 2.5rem',
-          boxShadow: '0 20px 40px -12px rgba(15, 23, 42, 0.25)',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '1.5rem',
-          border: '1px solid rgba(255, 255, 255, 0.08)'
-        }}>
-          <div style={{ maxWidth: 680 }}>
-            <span style={{
-              fontSize: '0.76rem',
-              fontWeight: 800,
-              textTransform: 'uppercase',
-              letterSpacing: '1px',
-              color: '#38BDF8',
-              display: 'inline-block',
-              marginBottom: '0.4rem'
-            }}>
-              DIRECT FACULTY GUIDANCE
-            </span>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 850, color: '#FFFFFF', margin: '0 0 0.5rem', letterSpacing: '-0.015em' }}>
-              Unsure which course or speed batch is right for you?
-            </h3>
-            <p style={{ fontSize: '0.94rem', color: '#CBD5E1', margin: 0, lineHeight: 1.6 }}>
-              Speak directly with our senior instructors or Head Faculty <strong>Shadab Sir (12 Years Experience)</strong> for a personalized skill assessment.
-            </p>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
+      {/* =========================================================================
+          SECTION F: BOTTOM DARK CTA BANNER
+          ========================================================================= */}
+      <section className="sp-courses-dark-banner-section">
+        <div className="sp-courses-container">
+          <div className="sp-courses-dark-banner-box">
+            <div>
+              <span style={{ 
+                fontFamily: 'var(--sp-font-sans)',
+                fontSize: '11px', 
+                fontWeight: 600, 
+                textTransform: 'uppercase', 
+                letterSpacing: '0.16em', 
+                color: '#94A3B8', 
+                display: 'block', 
+                marginBottom: '0.4rem' 
+              }}>
+                DIRECT FACULTY GUIDANCE
+              </span>
+              <h2 style={{ 
+                fontFamily: 'var(--sp-font-sans)',
+                fontSize: '1.5rem', 
+                fontWeight: 700, 
+                color: '#FFFFFF', 
+                margin: '0 0 0.5rem', 
+                letterSpacing: '-0.02em', 
+                lineHeight: 1.25 
+              }}>
+                Unsure which course or speed batch is right for you?
+              </h2>
+              <p style={{ 
+                fontFamily: 'var(--sp-font-sans)',
+                fontSize: '0.875rem', 
+                color: '#CBD5E1', 
+                margin: 0, 
+                lineHeight: 1.6, 
+                maxWidth: '38rem' 
+              }}>
+                Speak directly with senior instructors or Head Faculty <strong>Shadab Sir (12+ Years Experience)</strong> for a personalized skill assessment.
+              </p>
+            </div>
+
             <a 
               href="tel:+919204123453"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.55rem',
-                padding: '0.85rem 1.6rem',
-                borderRadius: '12px',
-                background: '#2563EB',
-                color: '#FFFFFF',
-                fontWeight: 700,
-                fontSize: '0.92rem',
-                textDecoration: 'none',
-                boxShadow: '0 4px 14px rgba(37, 99, 235, 0.35)'
-              }}
+              className="sp-courses-dark-banner-btn"
             >
-              <Phone size={16} color="#FFFFFF" />
-              <span>Call Helpline: +91 9204123453</span>
+              <Phone size={15} style={{ flexShrink: 0 }} />
+              <span>Call Helpline &middot; +91 9204123453</span>
             </a>
           </div>
         </div>
