@@ -904,37 +904,7 @@ export default function LandingPage({
 
         </div>
 
-        {/* Tight Closing CTA Strip (Directly above footer, zero awkward gap) */}
-        <div className="sp-closing-cta-strip">
-          <div className="sp-container">
-            <div className="sp-closing-cta-box">
-              <h2 className="sp-closing-h2">
-                Ready to Build Exam-Hall Speed?
-              </h2>
-              <p className="sp-closing-sub">
-                Join over 1,200 successful candidates trained under Shadab Sir. Book your 3 free demo classes today.
-              </p>
-              <div className="sp-closing-btn-row">
-                <button
-                  type="button"
-                  className="sp-btn-white-primary"
-                  onClick={handleStartTests}
-                >
-                  <span>Start Free Dictation Test</span>
-                  <ArrowRight size={16} />
-                </button>
 
-                <button
-                  type="button"
-                  className="sp-btn-ink-outline"
-                  onClick={handleExploreCourses}
-                >
-                  <span>Explore All Courses</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
 
       </section>
 
