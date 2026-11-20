@@ -1,189 +1,253 @@
 import React from 'react';
-import { GraduationCap, ShieldCheck, Award, Phone, Mail, MapPin, Clock, ArrowRight, Lock } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Lock } from 'lucide-react';
 
 export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
+  const currentYear = new Date().getFullYear();
+
+  const handleNav = (tab) => {
+    if (setCurrentTab) {
+      setCurrentTab(tab);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <footer className="clean-footer-wrapper">
-      <div className="clean-footer-container">
-        <div className="footer-columns-grid">
+    <footer className="clean-footer-wrapper bg-[#FAFAFA] border-t border-slate-200 text-slate-600 font-sans">
+      <div className="clean-footer-container max-w-7xl mx-auto px-6 pt-16 pb-10">
+        
+        {/* Main 12-Column Asymmetric Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14">
           
-          {/* Column 1: Brand & Institution Overview */}
-          <div className="footer-col brand-info-col">
+          {/* Column 1: Brand & Legacy (lg:col-span-4) */}
+          <div className="lg:col-span-4">
             <div 
-              className="footer-brand-title" 
-              onClick={() => { setCurrentTab('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}
+              className="flex items-center gap-3 cursor-pointer group w-fit"
+              onClick={() => handleNav('landing')}
+              role="button"
+              tabIndex={0}
             >
-              <div className="brand-logo-s-wrap footer-logo-wrap" style={{ width: '40px', height: '40px' }}>
-                <img 
-                  src="/assets/logo-big-s.png" 
-                  alt="Steno Plus Big S Logo" 
-                  style={{ height: '38px', width: 'auto', objectFit: 'contain' }}
-                />
-              </div>
-              <div className="footer-brand-text">
-                <span className="brand-h1">SHORTHAND PLUS</span>
-                <span className="brand-sub">Gaya Shorthand Classes • Learn Today, Lead Tomorrow!</span>
+              <img 
+                src="/assets/logo-big-s.png" 
+                alt="Shorthand Plus" 
+                className="h-8 w-auto object-contain transition-transform group-hover:scale-105"
+              />
+              <div>
+                <span className="block text-sm font-bold tracking-tight text-slate-900 leading-none">
+                  SHORTHAND PLUS
+                </span>
+                <span className="block text-[11px] font-medium text-slate-500 mt-1">
+                  Gaya Shorthand Classes · Est. 2012
+                </span>
               </div>
             </div>
 
-            <p className="footer-summary-text">
-              Under experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>, Gaya Shorthand Classes (SHORTHAND PLUS) is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning (50–140 WPM).
+            <p className="mt-4 text-sm leading-relaxed text-slate-600 max-w-xs">
+              Guided by Shadab Sir (12+ Years Experience). Offline &amp; live online coaching for Pitman Shorthand (50–140 WPM), bilingual typing, and government computer diplomas.
             </p>
-          </div>
-
-          {/* Column 2: Examination & Practice Rooms */}
-          <div className="footer-col">
-            <h4 className="footer-heading">Target Exam Benches</h4>
-            <ul className="footer-links-list">
-              <li>
-                <button onClick={() => { setCurrentTab('courses'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  SSC Stenographer Grade C & D
-                </button>
-              </li>
-              <li>
-                <button onClick={() => { setCurrentTab('courses'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  Supreme Court Stenographer & SPA
-                </button>
-              </li>
-              <li>
-                <button onClick={() => { setCurrentTab('courses'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  Delhi High Court PA / SPA Series
-                </button>
-              </li>
-              <li>
-                <button onClick={() => { setCurrentTab('courses'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  Patna & Jharkhand High Court Dictations
-                </button>
-              </li>
-              <li>
-                <button onClick={() => { setCurrentTab('courses'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  BSF & CRPF ASI Stenographer Tests
-                </button>
-              </li>
-              <li>
-                <button onClick={() => { setCurrentTab('courses'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  Hindi (Kruti Dev / Mangal) & English Typing
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Accredited Diplomas */}
-          <div className="footer-col">
-            <h4 className="footer-heading">Computer Diplomas</h4>
-            <ul className="footer-links-list">
-              <li>
-                <button onClick={() => { setCurrentTab('classes'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  DCA (Diploma in Computer Applications - 6 Mos)
-                </button>
-              </li>
-              <li>
-                <button onClick={() => { setCurrentTab('classes'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  ADCA (Advance Diploma - 1 Year)
-                </button>
-              </li>
-              <li>
-                <button onClick={() => { setCurrentTab('classes'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  Tally Prime with GST Certification
-                </button>
-              </li>
-              <li>
-                <button onClick={() => { setCurrentTab('classes'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  PGDCA Post Graduate Diploma
-                </button>
-              </li>
-              <li>
-                <button onClick={() => { setCurrentTab('classes'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  Verified Shorthand Speed Certificate (50–140 WPM)
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4: Gaya Offline Center & Contacts */}
-          <div className="footer-col contact-col">
-            <h4 className="footer-heading">Academy Contact</h4>
-            <ul className="footer-contact-details">
-              <li>
-                <MapPin size={16} color="#2563EB" className="shrink-0" />
-                <span>Gaya College More, Opposite Cyber Thana, Gayaji, Bihar</span>
-              </li>
-              <li>
-                <Phone size={16} color="#2563EB" className="shrink-0" />
-                <span>Contact: +91 7870377214 / +91 9204123453</span>
-              </li>
-              <li>
-                <Mail size={16} color="#2563EB" className="shrink-0" />
-                <a href="mailto:stenoplus.in@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
-                  stenoplus.in@gmail.com
-                </a>
-              </li>
-              <li>
-                <Clock size={16} color="#2563EB" className="shrink-0" />
-                <span>Daily Batches: 6:00 AM – 11:00 AM & 3:00 PM – 8:00 PM</span>
-              </li>
-            </ul>
 
             <a 
               href="tel:+919204123453"
-              className="footer-director-call-btn"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)',
-                color: '#FFFFFF',
-                padding: '0.75rem 1.25rem',
-                borderRadius: '10px',
-                fontWeight: 700,
-                textDecoration: 'none',
-                marginTop: '1rem',
-                boxShadow: '0 4px 12px rgba(37, 99, 235, 0.28)'
-              }}
+              className="mt-6 bg-slate-900 text-white hover:bg-slate-800 px-4 py-2.5 rounded-lg text-xs font-semibold inline-flex items-center gap-2 transition-colors w-fit shadow-sm"
             >
-              <Phone size={15} />
-              <span>Call Helpline (+91 9204123453)</span>
+              <Phone className="w-3.5 h-3.5" />
+              <span>Call Helpline · +91 9204123453</span>
             </a>
           </div>
 
+          {/* Column 2: Quick Navigation (lg:col-span-2) */}
+          <div className="lg:col-span-2">
+            <h4 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-900 mb-4">
+              ACADEMY
+            </h4>
+            <ul className="space-y-2.5 text-sm text-slate-600 list-none p-0 m-0">
+              <li>
+                <button 
+                  type="button" 
+                  onClick={() => handleNav('landing')}
+                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                >
+                  Home
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button" 
+                  onClick={() => handleNav('courses')}
+                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                >
+                  All Courses
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button" 
+                  onClick={() => handleNav('classes')}
+                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                >
+                  Batches &amp; Live
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button" 
+                  onClick={() => handleNav('about')}
+                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                >
+                  About Shadab Sir
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button" 
+                  onClick={() => handleNav('dashboard')}
+                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                >
+                  Candidate Portal
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Target Exams & Diplomas (lg:col-span-3) */}
+          <div className="lg:col-span-3">
+            <h4 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-900 mb-4">
+              PROGRAMS &amp; EXAMS
+            </h4>
+            <ul className="space-y-2.5 text-sm text-slate-600 list-none p-0 m-0">
+              <li>
+                <button 
+                  type="button" 
+                  onClick={() => handleNav('courses')}
+                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                >
+                  SSC Stenographer Grade C &amp; D
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button" 
+                  onClick={() => handleNav('courses')}
+                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                >
+                  High Court &amp; Supreme Court PA/SPA
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button" 
+                  onClick={() => handleNav('courses')}
+                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                >
+                  BSF &amp; CRPF ASI Stenographer
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button" 
+                  onClick={() => handleNav('courses')}
+                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                >
+                  Hindi (Kruti Dev / Mangal) &amp; English Typing
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button" 
+                  onClick={() => handleNav('classes')}
+                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                >
+                  DCA, ADCA, PGDCA &amp; Tally Prime
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Gaya Center & Timings (lg:col-span-3) */}
+          <div className="lg:col-span-3">
+            <h4 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-900 mb-4">
+              GAYA CENTER
+            </h4>
+            <ul className="space-y-3 text-sm text-slate-600 list-none p-0 m-0">
+              <li className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-slate-400" />
+                <span className="leading-snug">Gaya College More, Opposite Cyber Thana, Gayaji, Bihar</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <Phone className="w-4 h-4 shrink-0 mt-0.5 text-slate-400" />
+                <span className="tabular-nums">+91 7870377214 / +91 9204123453</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <Mail className="w-4 h-4 shrink-0 mt-0.5 text-slate-400" />
+                <a 
+                  href="mailto:stenoplus.in@gmail.com" 
+                  className="hover:text-slate-900 transition-colors text-slate-600 no-underline"
+                >
+                  stenoplus.in@gmail.com
+                </a>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <Clock className="w-4 h-4 shrink-0 mt-0.5 text-slate-400" />
+                <span className="tabular-nums">6:00 AM – 11:00 AM &amp; 3:00 PM – 8:00 PM</span>
+              </li>
+            </ul>
+          </div>
+
         </div>
 
-        {/* Compliance & Legal Policies Strip (Razorpay & IT Rules Compliant) */}
-        <div className="footer-compliance-strip">
-          <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" className="footer-compliance-link">https://stenoplus.in</a>
-          <span>•</span>
-          <button onClick={() => onOpenLegal && onOpenLegal('terms')} className="footer-compliance-btn">Terms & Conditions</button>
-          <span>•</span>
-          <button onClick={() => onOpenLegal && onOpenLegal('privacy')} className="footer-compliance-btn">Privacy Policy</button>
-          <span>•</span>
-          <button onClick={() => onOpenLegal && onOpenLegal('refund')} className="footer-compliance-btn">Cancellation & Refund Policy</button>
-          <span>•</span>
-          <button onClick={() => onOpenLegal && onOpenLegal('contact')} className="footer-compliance-btn">Grievance Officer & Center Support</button>
-        </div>
-
-        {/* Bottom Copyright & Verification Strip */}
-        <div className="footer-bottom-bar">
-          <p className="copyright-text">
-            © {new Date().getFullYear()} SHORTHAND PLUS (Gaya Shorthand Classes • stenoplus.in). All rights reserved.
+        {/* Clean Unified Bottom Bar */}
+        <div className="border-t border-slate-200 pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs text-slate-500 font-sans">
+          
+          {/* Left: Copyright */}
+          <p className="m-0 leading-normal">
+            &copy; {currentYear} Shorthand Plus (Gaya Shorthand Classes &middot; stenoplus.in). All rights reserved.
           </p>
-          <div className="footer-badges-strip">
-            <span>Official Government Skill Test Software</span>
-            <span className="dot-sep">•</span>
-            <span>Accredited Examination Engine</span>
-            <span className="dot-sep">•</span>
-            <span>Govt. Certificate Verification System</span>
-            <span className="dot-sep">•</span>
+
+          {/* Right: Legal & Staff Access */}
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <button 
-              className="footer-admin-link-btn"
-              onClick={() => { setCurrentTab('admin'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              type="button"
+              onClick={() => onOpenLegal && onOpenLegal('terms')}
+              className="text-xs text-slate-500 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+            >
+              Terms
+            </button>
+            <button 
+              type="button"
+              onClick={() => onOpenLegal && onOpenLegal('privacy')}
+              className="text-xs text-slate-500 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+            >
+              Privacy
+            </button>
+            <button 
+              type="button"
+              onClick={() => onOpenLegal && onOpenLegal('refund')}
+              className="text-xs text-slate-500 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+            >
+              Refund Policy
+            </button>
+            <button 
+              type="button"
+              onClick={() => onOpenLegal && onOpenLegal('contact')}
+              className="text-xs text-slate-500 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+            >
+              Grievance &amp; Support
+            </button>
+
+            <span className="h-3 w-px bg-slate-300 hidden sm:inline-block" />
+
+            <button 
+              type="button"
+              onClick={() => handleNav('admin')}
+              className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-slate-900 font-medium transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
               title="Authorized Faculty & Director Login Only (PIN Protected)"
             >
-              <Lock size={11} className="inline-block mr-1 opacity-60" />
+              <Lock className="w-3.5 h-3.5 text-slate-400" />
               <span>Staff Access</span>
             </button>
           </div>
+
         </div>
+
       </div>
     </footer>
   );

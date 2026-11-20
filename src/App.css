@@ -18010,17 +18010,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   11. CLEAN FOOTER - HARMONIZED WITH BRAND THEME
+   11. EDITORIAL FOOTER - CRISP AGENCY-GRADE DESIGN SYSTEM
    ========================================================================== */
 .clean-footer-wrapper {
-  background: #FFFFFF !important;
-  border-top: 1px solid #e2e8f0 !important;
-  padding: 4.5rem 1.25rem 2.25rem !important;
+  background-color: #FAFAFA !important;
+  border-top: 1px solid #E2E8F0 !important;
+  color: #475569 !important;
+  font-family: var(--font-sans) !important;
+  padding: 0 !important;
 }
 
 .clean-footer-container {
-  max-width: 1280px !important;
+  max-width: 80rem !important;
   margin: 0 auto !important;
+  padding: 4rem 1.5rem 2.5rem !important;
 }
 
 .footer-columns-grid {
