@@ -8,6 +8,10 @@ import {
   ChevronDown, 
   ChevronUp,
   Search,
+  BookOpen,
+  Keyboard,
+  ShieldCheck,
+  Award,
   Sparkles
 } from 'lucide-react';
 import { PRICING_PLANS, TARGET_EXAMINATIONS, TEACHING_METHODOLOGY } from '../data/mockData';
@@ -45,6 +49,7 @@ const ACADEMY_COURSES = [
     ],
     mode: 'Gaya Lab + Online Portal',
     popular: true,
+    flagshipNum: '01',
     icon: 'BookOpen'
   },
   {
@@ -79,6 +84,7 @@ const ACADEMY_COURSES = [
     ],
     mode: 'Gaya Lab + Online Portal',
     popular: true,
+    flagshipNum: '02',
     icon: 'FileText'
   },
   {
@@ -112,6 +118,7 @@ const ACADEMY_COURSES = [
     ],
     mode: 'Classroom Lab + Typing Software',
     popular: true,
+    flagshipNum: '03',
     icon: 'Keyboard'
   },
   {
@@ -279,7 +286,7 @@ export default function CoursesPage({
 }) {
   const [filterCategory, setFilterCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [passFilter, setPassFilter] = useState('all');
+  const [passFilter, setPassFilter] = useState('unlimited');
   const [expandedSyllabus, setExpandedSyllabus] = useState({});
 
   const toggleSyllabus = (courseId) => {
@@ -381,15 +388,118 @@ export default function CoursesPage({
     PRICING_PLANS.find(p => p.id === 'plan-pitman')
   ].filter(Boolean);
 
-  const renderCourseCard = (course, isFlagship = false) => {
+  const renderFlagshipCard = (course, index) => {
+    const isSyllabusOpen = !!expandedSyllabus[course.id];
+    const numLabel = `0${index + 1} · FLAGSHIP`;
+    return (
+      <div key={course.id} className="sp-flagship-card">
+        <div className="sp-flagship-accent-bar" />
+        
+        <div className="sp-flagship-body">
+          {/* Top Micro-Row */}
+          <div className="sp-flagship-top-band">
+            <span className="sp-flagship-num">
+              {numLabel}
+            </span>
+            <span className="sp-course-speed-badge">
+              {course.speedTarget}
+            </span>
+          </div>
+
+          {/* Title & Description */}
+          <h3 className="sp-course-title">
+            {course.title}
+          </h3>
+          <p className="sp-course-desc">
+            {course.description}
+          </p>
+
+          {/* Flush Key-Value Specs */}
+          <div className="sp-course-specs-strip">
+            <div className="sp-course-spec-item">
+              <Clock className="sp-course-spec-icon" />
+              <span><strong>Duration:</strong> {course.duration}</span>
+            </div>
+            <div className="sp-course-spec-item">
+              <GraduationCap className="sp-course-spec-icon" />
+              <span><strong>Format:</strong> {course.mode}</span>
+            </div>
+          </div>
+
+          {/* Curriculum Highlights (Max 3) */}
+          <ul className="sp-course-highlights-list">
+            {(course.highlights || course.syllabus.slice(0, 3)).slice(0, 3).map((item, idx) => (
+              <li key={idx} className="sp-course-highlight-item">
+                <Check className="sp-course-check-icon" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* Expandable Syllabus Toggle */}
+          <button
+            type="button"
+            onClick={() => toggleSyllabus(course.id)}
+            className="sp-course-syllabus-toggle"
+          >
+            <span>{isSyllabusOpen ? 'Hide Full Syllabus' : `View Full Syllabus (${course.syllabus.length} Topics)`}</span>
+            {isSyllabusOpen ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
+          </button>
+
+          {isSyllabusOpen && (
+            <div className="sp-course-syllabus-drawer">
+              <ul>
+                {course.syllabus.map((s, idx) => (
+                  <li key={idx}>
+                    <span style={{ color: '#0F172A', fontWeight: 600 }}>&bull;</span>
+                    <span>{s}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        {/* Card Footer */}
+        <div className="sp-course-footer">
+          <div className="sp-course-price-wrap">
+            <div className="sp-course-price-row">
+              <span className="sp-course-price">
+                {course.fee}
+              </span>
+              {course.originalFee && (
+                <span className="sp-course-original-price">
+                  {course.originalFee}
+                </span>
+              )}
+            </div>
+            <span className="sp-course-price-sub">
+              {course.feeType || 'Official Curriculum'}
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => handleEnroll(course)}
+            className="sp-course-enroll-btn"
+          >
+            <span>Enroll Now</span>
+            <ArrowRight size={14} />
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const renderStandardCard = (course) => {
     const isSyllabusOpen = !!expandedSyllabus[course.id];
     return (
       <div key={course.id} className="sp-course-card">
         <div>
           {/* Top Micro-Row */}
           <div className="sp-course-card-top">
-            <span className={isFlagship ? "sp-course-popular-tag" : "sp-course-category-label"}>
-              {isFlagship ? `FLAGSHIP \u00B7 ${course.category}` : course.category}
+            <span className="sp-course-category-label">
+              {course.category}
             </span>
             <span className="sp-course-speed-badge">
               {course.speedTarget}
@@ -485,80 +595,192 @@ export default function CoursesPage({
     <div className="sp-courses-root">
       
       {/* =========================================================================
-          SECTION A: CLEAN EDITORIAL PAGE HEADER + UNDERLINE FILTER & SEARCH BAR
+          SECTION 1: DEEP INK EDITORIAL HERO & INTERACTIVE TRACK FINDER
           ========================================================================= */}
-      <section className="sp-courses-header-section">
-        <div className="sp-courses-header-container">
-          <span className="sp-courses-eyebrow">
-            ACADEMY CURRICULUM &middot; OFFLINE &amp; LIVE ONLINE
-          </span>
-          <h1 className="sp-courses-h1">
-            Stenography Courses &amp; <span className="sp-courses-serif-accent">Examination</span> Programs
-          </h1>
-          <p className="sp-courses-desc">
-            From absolute zero in Pitman Shorthand to cracking High Court &amp; SSC Stenographer skill tests at 50–140 WPM. Guided by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong> with real-time dictations and exam simulations.
-          </p>
-        </div>
+      <section className="sp-courses-dark-hero">
+        <div className="sp-courses-hero-grid">
+          
+          {/* Left Column: Editorial Headline & Credentials */}
+          <div className="sp-courses-hero-left">
+            <span className="sp-courses-hero-eyebrow">
+              ACADEMY CURRICULUM &middot; GAYA CENTER &amp; LIVE ONLINE
+            </span>
+            <h1 className="sp-courses-hero-h1">
+              Stenography Courses &amp; <span className="sp-courses-hero-serif">Examination</span> Programs
+            </h1>
+            <p className="sp-courses-hero-subtext">
+              From absolute zero in Pitman Shorthand to cracking High Court &amp; SSC Stenographer skill tests at 50–140 WPM. Guided by Shadab Sir (12+ Years Experience) with real-time dictations and automated error calculation.
+            </p>
 
-        {/* Flush Single-Row Underline Filter & Search Toolbar */}
-        <div className="sp-courses-filter-bar-wrap">
-          <div className="sp-courses-filter-row">
-            
-            {/* Category Tabs */}
-            <div className="sp-courses-filter-bar" role="tablist">
-              {CATEGORY_TABS.map((tab) => {
-                const isActive = filterCategory === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    onClick={() => handleSelectFilter(tab.id)}
-                    className={`sp-courses-filter-tab ${isActive ? 'is-active' : ''}`}
-                  >
-                    <span>{tab.label}</span>
-                    {tab.count !== undefined && (
-                      <span className="sp-courses-filter-count">({tab.count})</span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Compact Search & Counter Toolbar */}
-            <div className="sp-courses-search-wrap">
-              <span className="sp-courses-results-counter">
-                Showing {filteredCourses.length} {filteredCourses.length === 1 ? 'program' : 'programs'}
-              </span>
-              <div className="sp-courses-search-box">
-                <Search size={14} className="sp-courses-search-icon" />
-                <input 
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search Patna HC, Kruti Dev..."
-                  className="sp-courses-search-input"
-                />
-                {searchQuery && (
-                  <button 
-                    type="button" 
-                    onClick={() => setSearchQuery('')}
-                    className="sp-courses-search-clear"
-                    title="Clear search"
-                  >
-                    &times;
-                  </button>
-                )}
+            <div className="sp-courses-hero-stats">
+              <div className="sp-courses-hero-stat-item">
+                <span className="sp-courses-hero-stat-dot" />
+                <span style={{ color: '#FFFFFF', fontWeight: 600 }}>15+ Structured Programs</span>
+              </div>
+              <div className="sp-courses-hero-stat-item">
+                <span className="sp-courses-hero-stat-dot" />
+                <span>50–140 WPM Speed Range</span>
+              </div>
+              <div className="sp-courses-hero-stat-item">
+                <span className="sp-courses-hero-stat-dot" />
+                <span>3 Free Demo Classes</span>
+              </div>
+              <div className="sp-courses-hero-stat-item">
+                <span className="sp-courses-hero-stat-dot" />
+                <span>Gaya Lab + Live Portal</span>
               </div>
             </div>
-
           </div>
+
+          {/* Right Column: "Find Your Track" Quick-Selector Panel */}
+          <div className="sp-track-finder-panel">
+            <div className="sp-track-finder-header">
+              <h3 className="sp-track-finder-title">
+                Find Your Ideal Track
+              </h3>
+              <p className="sp-track-finder-sub">
+                Click your goal to filter programs below:
+              </p>
+            </div>
+
+            <div className="sp-track-finder-grid">
+              {/* Goal 1: Beginner */}
+              <button
+                type="button"
+                onClick={() => handleSelectFilter('pitman')}
+                className="sp-track-goal-btn"
+              >
+                <span className="sp-track-goal-title">
+                  <span>Beginner (0 WPM)</span>
+                  <ArrowRight size={12} style={{ color: '#94A3B8' }} />
+                </span>
+                <span className="sp-track-goal-sub">
+                  Learn Pitman from Zero
+                </span>
+              </button>
+
+              {/* Goal 2: SSC Steno */}
+              <button
+                type="button"
+                onClick={() => handleSelectFilter('ssc')}
+                className="sp-track-goal-btn"
+              >
+                <span className="sp-track-goal-title">
+                  <span>SSC Steno (80–100)</span>
+                  <ArrowRight size={12} style={{ color: '#94A3B8' }} />
+                </span>
+                <span className="sp-track-goal-sub">
+                  Grade C &amp; D Speed Batch
+                </span>
+              </button>
+
+              {/* Goal 3: High Court */}
+              <button
+                type="button"
+                onClick={() => handleSelectFilter('court')}
+                className="sp-track-goal-btn"
+              >
+                <span className="sp-track-goal-title">
+                  <span>High Court Legal</span>
+                  <ArrowRight size={12} style={{ color: '#94A3B8' }} />
+                </span>
+                <span className="sp-track-goal-sub">
+                  Judicial Judgment Dictations
+                </span>
+              </button>
+
+              {/* Goal 4: Typing & Diplomas */}
+              <button
+                type="button"
+                onClick={() => handleSelectFilter('typing')}
+                className="sp-track-goal-btn"
+              >
+                <span className="sp-track-goal-title">
+                  <span>Typing &amp; Diplomas</span>
+                  <ArrowRight size={12} style={{ color: '#94A3B8' }} />
+                </span>
+                <span className="sp-track-goal-sub">
+                  Hindi/English &amp; ADCA/DCA
+                </span>
+              </button>
+            </div>
+          </div>
+
         </div>
       </section>
 
       {/* =========================================================================
-          SECTION B: DECLUSTERED COURSE CATALOG (FLAGSHIP SPOTLIGHT + COMPACT ROWS)
+          SECTION 2: STICKY GLASSMORPHIC FILTER & LIVE SEARCH BAR
+          ========================================================================= */}
+      <div className="sp-courses-sticky-bar">
+        <div className="sp-courses-sticky-container">
+          
+          {/* Scrollable Horizontal Underline Tabs */}
+          <div className="sp-courses-sticky-tabs" role="tablist">
+            {CATEGORY_TABS.map((tab) => {
+              const isActive = filterCategory === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => handleSelectFilter(tab.id)}
+                  className={`sp-courses-filter-tab ${isActive ? 'is-active' : ''}`}
+                >
+                  <span>{tab.label}</span>
+                  {tab.count !== undefined && (
+                    <span className="sp-courses-filter-count">({tab.count})</span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Right Toolbar: Counter + Compact Search */}
+          <div className="sp-courses-sticky-right">
+            <span className="sp-courses-count-pill">
+              Showing {filteredCourses.length} {filteredCourses.length === 1 ? 'program' : 'programs'}
+            </span>
+            
+            <div className="sp-courses-search-wrap-sticky">
+              <Search size={13} className="sp-courses-search-icon" />
+              <input 
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search Patna HC, Kruti Dev..."
+                className="sp-courses-search-input-sticky"
+              />
+              {searchQuery && (
+                <button 
+                  type="button" 
+                  onClick={() => setSearchQuery('')}
+                  style={{
+                    position: 'absolute',
+                    right: '0.5rem',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'none',
+                    border: 'none',
+                    color: '#94A3B8',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    lineHeight: 1
+                  }}
+                  title="Clear search"
+                >
+                  &times;
+                </button>
+              )}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* =========================================================================
+          SECTION 3: CURATED FLAGSHIP TRIO & ACCORDION COURSE DIRECTORY
           ========================================================================= */}
       <section id="academy-courses" className="sp-courses-grid-section">
         <div className="sp-courses-container">
@@ -580,70 +802,120 @@ export default function CoursesPage({
             </div>
           )}
 
-          {/* Layout Mode 1: Split View ("All Programs" default with Flagship Spotlight + 2-Column Compact Rows) */}
+          {/* Layout Mode 1: Bespoke Split ("All Programs" default with Flagship Spotlight + Table Directory) */}
           {showSplitSections && (
             <>
-              {/* Part A: Flagship Programs Spotlight */}
+              {/* Part A: Flagship Programs Spotlight (Top 3 Courses) */}
               <div className="sp-flagship-section-header">
-                <span className="sp-courses-eyebrow">PREMIER BATCHES</span>
+                <span className="sp-courses-eyebrow">PREMIER FOUNDATIONS</span>
                 <h2 className="sp-courses-sub-h2">Flagship Programs Spotlight</h2>
               </div>
 
-              <div className="sp-courses-cards-grid">
-                {flagshipCourses.map((course) => renderCourseCard(course, true))}
+              <div className="sp-courses-cards-grid" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}>
+                {flagshipCourses.map((course, idx) => renderFlagshipCard(course, idx))}
               </div>
 
-              {/* Part B: Specialized, Crash & Diploma Programs (Compact 2-Column Rows) */}
-              <div className="sp-specialized-section-header">
-                <div>
-                  <span className="sp-courses-eyebrow">SPECIALIZED BATCHES &amp; DIPLOMAS</span>
-                  <h3 className="sp-courses-sub-h2">Specialized Speed Benches &amp; Computer Diplomas</h3>
+              {/* Part B: Interactive Expandable Course Directory (Remaining Programs) */}
+              <div className="sp-directory-section">
+                <div className="sp-directory-header">
+                  <span className="sp-directory-eyebrow">
+                    SPECIALIZED BATCHES &amp; EXAM SPEED TRACKS
+                  </span>
+                  <h2 className="sp-directory-h2">
+                    Judicial Benches, Central Govt Batches &amp; Computer Diplomas
+                  </h2>
                 </div>
-                <span className="sp-specialized-counter">
-                  {specializedCourses.length} Programs
-                </span>
-              </div>
 
-              <div className="sp-compact-rows-grid">
-                {specializedCourses.map((course) => (
-                  <div key={course.id} className="sp-compact-course-row">
-                    <div className="sp-compact-row-left">
-                      <div className="sp-compact-meta-line">
-                        <span>{course.category}</span>
-                        <span className="sp-compact-dot">&middot;</span>
-                        <span style={{ color: '#0F172A', fontVariantNumeric: 'tabular-nums' }}>
-                          {course.speedTarget}
-                        </span>
-                      </div>
-                      <h4 className="sp-compact-title">
-                        {course.title}
-                      </h4>
-                      <p className="sp-compact-desc">
-                        {course.description}
-                      </p>
-                      <div className="sp-compact-meta-strip">
-                        <Clock size={12} className="sp-course-spec-icon" />
-                        <span>{course.duration}</span>
-                        <span className="sp-compact-dot">&middot;</span>
-                        <GraduationCap size={12} className="sp-course-spec-icon" />
-                        <span>{course.mode}</span>
-                      </div>
-                    </div>
+                <div className="sp-directory-table">
+                  {specializedCourses.map((course) => {
+                    const isSyllabusOpen = !!expandedSyllabus[course.id];
+                    return (
+                      <div key={course.id} className="sp-directory-row">
+                        {/* Main Interactive Row */}
+                        <div 
+                          className="sp-directory-row-main"
+                          onClick={() => toggleSyllabus(course.id)}
+                        >
+                          {/* Left: Info */}
+                          <div className="sp-directory-col-info">
+                            <div className="sp-directory-badge-wrap">
+                              <span className="sp-directory-category-tag">
+                                {course.category}
+                              </span>
+                              {course.badge && (
+                                <span className="sp-directory-badge">
+                                  {course.badge}
+                                </span>
+                              )}
+                            </div>
+                            <h3 className="sp-directory-title">
+                              {course.title}
+                            </h3>
+                            <p className="sp-directory-desc">
+                              {course.description}
+                            </p>
+                          </div>
 
-                    <div className="sp-compact-row-right">
-                      <span className="sp-compact-price">
-                        {course.fee}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => handleEnroll(course)}
-                        className="sp-compact-enroll-btn"
-                      >
-                        <span>View / Enroll &rarr;</span>
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                          {/* Center: Specs */}
+                          <div className="sp-directory-col-specs">
+                            <span className="sp-directory-spec-pill">
+                              {course.speedTarget}
+                            </span>
+                            <span className="sp-directory-spec-pill">
+                              {course.duration}
+                            </span>
+                          </div>
+
+                          {/* Right: Fee + Actions */}
+                          <div 
+                            className="sp-directory-col-actions"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <div className="sp-directory-fee-block">
+                              <span className="sp-directory-fee">
+                                {course.fee}
+                              </span>
+                              <span className="sp-directory-fee-sub">
+                                {course.feeType || 'Official Curriculum'}
+                              </span>
+                            </div>
+
+                            <button
+                              type="button"
+                              onClick={() => toggleSyllabus(course.id)}
+                              className="sp-directory-syllabus-btn"
+                            >
+                              <span>{isSyllabusOpen ? 'Hide Syllabus' : 'View Syllabus'}</span>
+                              {isSyllabusOpen ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                            </button>
+
+                            <button
+                              type="button"
+                              onClick={() => handleEnroll(course)}
+                              className="sp-directory-enroll-btn"
+                            >
+                              <span>Enroll Now</span>
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Inline Expandable Syllabus Drawer */}
+                        {isSyllabusOpen && (
+                          <div className="sp-directory-drawer">
+                            <div className="sp-directory-drawer-grid">
+                              {course.syllabus.map((topic, i) => (
+                                <div key={i} className="sp-directory-drawer-item">
+                                  <span style={{ color: '#B91C1C', fontWeight: 700 }}>&bull;</span>
+                                  <span>{topic}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </>
           )}
@@ -651,7 +923,7 @@ export default function CoursesPage({
           {/* Layout Mode 2: Unified Filtered/Searched Grid */}
           {!showSplitSections && filteredCourses.length > 0 && (
             <div className="sp-courses-cards-grid">
-              {filteredCourses.map((course) => renderCourseCard(course, course.popular))}
+              {filteredCourses.map((course) => renderStandardCard(course))}
             </div>
           )}
 
@@ -729,59 +1001,127 @@ export default function CoursesPage({
       </section>
 
       {/* =========================================================================
-          SECTION E: ONLINE TEST SERIES & MOCK PASSES (SYMMETRICAL 4+3 GRID)
+          SECTION E: ONLINE TEST SERIES & MOCK PASSES (HIGH-CONTRAST DISTINCTION)
           ========================================================================= */}
       <section id="test-passes" className="sp-passes-section">
         <div className="sp-courses-container">
           <div className="sp-passes-header-row">
             <div>
               <span className="sp-courses-eyebrow">
-                SELF-PACED PRACTICE ENGINE
+                DAILY SPEED DICTATIONS &amp; EXAM SIMULATION
               </span>
               <h2 className="sp-section-h2" style={{ margin: '0.25rem 0 0.5rem' }}>
-                Online Test Series &amp; Mock Passes
+                Practice Passes &amp; Test Series
               </h2>
               <p className="sp-courses-desc" style={{ maxWidth: '40rem' }}>
                 Instant access with UPI &amp; QR code. Practice anytime with real exam reading rooms and automated error calculation.
               </p>
             </div>
 
-            {/* Segmented Filter Control */}
+            {/* Segmented Filter Control: 4 Duration Passes vs 3 Targeted Tracks */}
             <div className="sp-segmented-filter" role="tablist">
               <button
                 type="button"
-                onClick={() => setPassFilter('all')}
-                className={`sp-segmented-btn ${passFilter === 'all' ? 'is-active' : ''}`}
+                onClick={() => setPassFilter('unlimited')}
+                className={`sp-segmented-btn ${passFilter === 'unlimited' ? 'is-active' : ''}`}
               >
-                All Passes (7)
-              </button>
-              <button
-                type="button"
-                onClick={() => setPassFilter('passes')}
-                className={`sp-segmented-btn ${passFilter === 'passes' ? 'is-active' : ''}`}
-              >
-                Daily &amp; Monthly (4)
+                Unlimited Duration Passes (4)
               </button>
               <button
                 type="button"
                 onClick={() => setPassFilter('special')}
                 className={`sp-segmented-btn ${passFilter === 'special' ? 'is-active' : ''}`}
               >
-                High Court &amp; Foundation (3)
+                Targeted Court &amp; Pitman Tracks (3)
               </button>
             </div>
           </div>
 
-          {/* Row 1: Core Unlimited Duration Passes (4 Columns) */}
-          {(passFilter === 'all' || passFilter === 'passes') && (
+          {/* Row 1: Core Unlimited Duration Passes (Balanced 4 Columns with Inverted Dark Card) */}
+          {passFilter === 'unlimited' && (
             <div className="sp-passes-grid-4col">
               {corePasses.map((plan) => {
-                // Highlight ONLY 1-Month Test Series (plan-1mo)
-                const isRecommended = plan.id === 'plan-1mo';
+                // Highlight ONLY 1-Month Test Series (plan-1mo) with Inverted Dark Card
+                const isInvertedDark = plan.id === 'plan-1mo';
                 return (
                   <div 
                     key={plan.id} 
-                    className={`sp-pass-card ${isRecommended ? 'is-recommended' : ''}`}
+                    className={`sp-pass-card ${isInvertedDark ? 'is-inverted-dark' : ''}`}
+                  >
+                    {isInvertedDark ? (
+                      <span className="sp-pass-badge">
+                        MOST POPULAR &middot; 80–100 WPM
+                      </span>
+                    ) : plan.badge ? (
+                      <span className="sp-pass-badge">
+                        {plan.badge}
+                      </span>
+                    ) : null}
+
+                    <div>
+                      {plan.seriesTitle && (
+                        <div className="sp-pass-series-title">
+                          {plan.seriesTitle}
+                        </div>
+                      )}
+                      <h3 className="sp-pass-title">
+                        {plan.name}
+                      </h3>
+                      <p className="sp-pass-desc">
+                        {plan.description}
+                      </p>
+                      
+                      <div className="sp-pass-price-row">
+                        {plan.originalPrice && (
+                          <span className="sp-pass-original-price">
+                            ₹{plan.originalPrice}
+                          </span>
+                        )}
+                        <span className="sp-pass-currency">₹</span>
+                        <span className="sp-pass-price">
+                          {plan.price}
+                        </span>
+                        <span className="sp-pass-duration">
+                          / {plan.duration}
+                        </span>
+                      </div>
+
+                      <ul className="sp-pass-features-list">
+                        {plan.features.map((feat, i) => (
+                          <li key={i} className="sp-pass-feature-item">
+                            <Check className="sp-course-check-icon" />
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <button 
+                        type="button"
+                        onClick={() => {
+                          if (onSelectPlan) onSelectPlan(plan.id);
+                          if (onOpenCheckout) onOpenCheckout(plan.id);
+                        }}
+                        className={isInvertedDark ? 'sp-pass-btn-white' : 'sp-pass-btn-secondary'}
+                      >
+                        <span>Activate with UPI (₹{plan.price})</span>
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Row 2: Court & Pitman Targeted Tracks (Balanced 3 Columns) */}
+          {passFilter === 'special' && (
+            <div className="sp-passes-grid-3col">
+              {specializedPasses.map((plan) => {
+                return (
+                  <div 
+                    key={plan.id} 
+                    className="sp-pass-card"
                   >
                     {plan.badge && (
                       <span className="sp-pass-badge">
@@ -834,7 +1174,7 @@ export default function CoursesPage({
                           if (onSelectPlan) onSelectPlan(plan.id);
                           if (onOpenCheckout) onOpenCheckout(plan.id);
                         }}
-                        className={isRecommended ? 'sp-pass-btn-primary' : 'sp-pass-btn-secondary'}
+                        className="sp-pass-btn-secondary"
                       >
                         <span>Activate with UPI (₹{plan.price})</span>
                       </button>
@@ -845,95 +1185,11 @@ export default function CoursesPage({
             </div>
           )}
 
-          {/* Row 2: Exam-Specific & Full Book Passes (3 Columns) */}
-          {(passFilter === 'all' || passFilter === 'special') && (
-            <>
-              {passFilter === 'all' && (
-                <div className="sp-passes-row2-header">
-                  <span className="sp-courses-eyebrow">
-                    COURT SPECIALS &amp; COMPLETE PITMAN TRACK
-                  </span>
-                  <h3 className="sp-passes-row2-title">
-                    Targeted Courtroom Dictations &amp; Foundation Course
-                  </h3>
-                </div>
-              )}
-
-              <div className="sp-passes-grid-3col">
-                {specializedPasses.map((plan) => {
-                  return (
-                    <div 
-                      key={plan.id} 
-                      className="sp-pass-card"
-                    >
-                      {plan.badge && (
-                        <span className="sp-pass-badge">
-                          {plan.badge}
-                        </span>
-                      )}
-
-                      <div>
-                        {plan.seriesTitle && (
-                          <div className="sp-pass-series-title">
-                            {plan.seriesTitle}
-                          </div>
-                        )}
-                        <h3 className="sp-pass-title">
-                          {plan.name}
-                        </h3>
-                        <p className="sp-pass-desc">
-                          {plan.description}
-                        </p>
-                        
-                        <div className="sp-pass-price-row">
-                          {plan.originalPrice && (
-                            <span className="sp-pass-original-price">
-                              ₹{plan.originalPrice}
-                            </span>
-                          )}
-                          <span className="sp-pass-currency">₹</span>
-                          <span className="sp-pass-price">
-                            {plan.price}
-                          </span>
-                          <span className="sp-pass-duration">
-                            / {plan.duration}
-                          </span>
-                        </div>
-
-                        <ul className="sp-pass-features-list">
-                          {plan.features.map((feat, i) => (
-                            <li key={i} className="sp-pass-feature-item">
-                              <Check className="sp-course-check-icon" />
-                              <span>{feat}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div>
-                        <button 
-                          type="button"
-                          onClick={() => {
-                            if (onSelectPlan) onSelectPlan(plan.id);
-                            if (onOpenCheckout) onOpenCheckout(plan.id);
-                          }}
-                          className="sp-pass-btn-secondary"
-                        >
-                          <span>Activate with UPI (₹{plan.price})</span>
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </>
-          )}
-
         </div>
       </section>
 
       {/* =========================================================================
-          SECTION F: BOTTOM DARK CTA BANNER (PRESERVED)
+          SECTION 6: BOTTOM DARK CTA BANNER (PRESERVED)
           ========================================================================= */}
       <section className="sp-courses-dark-banner-section">
         <div className="sp-courses-container">
