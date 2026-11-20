@@ -200,8 +200,8 @@ export default function LandingPage({
         {/* Full-Bleed Background Media */}
         <div className="sp-hero-bg-media">
           <img 
-            src="/assets/hero-banner.jpg" 
-            alt="Shorthand Plus Professional Stenography & Typing Lab" 
+            src="/assets/institution-hero.jpg" 
+            alt="Gaya Shorthand Classes - Authentic Stenography Coaching & Typing Lab" 
             className="sp-hero-bg-img"
           />
         </div>
