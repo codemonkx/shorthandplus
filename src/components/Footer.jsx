@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Clock, Lock } from 'lucide-react';
+import '../landing-redesign.css';
 
 export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
   const currentYear = new Date().getFullYear();
@@ -12,59 +13,62 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
   };
 
   return (
-    <footer className="clean-footer-wrapper bg-[#FAFAFA] border-t border-slate-200 text-slate-600 font-sans">
-      <div className="clean-footer-container max-w-7xl mx-auto px-6 pt-16 pb-10">
+    <footer className="sp-footer clean-footer-wrapper">
+      <div className="sp-footer-container clean-footer-container">
         
         {/* Main 12-Column Asymmetric Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14">
+        <div className="sp-footer-grid">
           
           {/* Column 1: Brand & Legacy (lg:col-span-4) */}
-          <div className="lg:col-span-4">
+          <div className="sp-footer-col-brand">
             <div 
-              className="flex items-center gap-3 cursor-pointer group w-fit"
+              className="sp-footer-brand-title"
               onClick={() => handleNav('landing')}
               role="button"
               tabIndex={0}
             >
-              <img 
-                src="/assets/logo-big-s.png" 
-                alt="Shorthand Plus" 
-                className="h-8 w-auto object-contain transition-transform group-hover:scale-105"
-              />
+              <div className="sp-footer-logo-wrap" style={{ width: '32px', height: '32px', overflow: 'hidden' }}>
+                <img 
+                  src="/assets/logo-big-s.png" 
+                  alt="Shorthand Plus" 
+                  className="sp-footer-logo-img"
+                  style={{ height: '32px', width: '32px', maxHeight: '32px', maxWidth: '32px', objectFit: 'contain' }}
+                />
+              </div>
               <div>
-                <span className="block text-sm font-bold tracking-tight text-slate-900 leading-none">
+                <span className="sp-footer-brand-name">
                   SHORTHAND PLUS
                 </span>
-                <span className="block text-[11px] font-medium text-slate-500 mt-1">
-                  Gaya Shorthand Classes · Est. 2012
+                <span className="sp-footer-brand-sub">
+                  Gaya Shorthand Classes &middot; Est. 2012
                 </span>
               </div>
             </div>
 
-            <p className="mt-4 text-sm leading-relaxed text-slate-600 max-w-xs">
+            <p className="sp-footer-summary">
               Guided by Shadab Sir (12+ Years Experience). Offline &amp; live online coaching for Pitman Shorthand (50–140 WPM), bilingual typing, and government computer diplomas.
             </p>
 
             <a 
               href="tel:+919204123453"
-              className="mt-6 bg-slate-900 text-white hover:bg-slate-800 px-4 py-2.5 rounded-lg text-xs font-semibold inline-flex items-center gap-2 transition-colors w-fit shadow-sm"
+              className="sp-footer-helpline-btn"
             >
-              <Phone className="w-3.5 h-3.5" />
-              <span>Call Helpline · +91 9204123453</span>
+              <Phone style={{ width: '14px', height: '14px', flexShrink: 0 }} />
+              <span>Call Helpline &middot; +91 9204123453</span>
             </a>
           </div>
 
           {/* Column 2: Quick Navigation (lg:col-span-2) */}
-          <div className="lg:col-span-2">
-            <h4 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-900 mb-4">
+          <div className="sp-footer-col-nav">
+            <h4 className="sp-footer-heading">
               ACADEMY
             </h4>
-            <ul className="space-y-2.5 text-sm text-slate-600 list-none p-0 m-0">
+            <ul className="sp-footer-links">
               <li>
                 <button 
                   type="button" 
                   onClick={() => handleNav('landing')}
-                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                  className="sp-footer-link-btn"
                 >
                   Home
                 </button>
@@ -73,7 +77,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
                 <button 
                   type="button" 
                   onClick={() => handleNav('courses')}
-                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                  className="sp-footer-link-btn"
                 >
                   All Courses
                 </button>
@@ -82,7 +86,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
                 <button 
                   type="button" 
                   onClick={() => handleNav('classes')}
-                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                  className="sp-footer-link-btn"
                 >
                   Batches &amp; Live
                 </button>
@@ -91,7 +95,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
                 <button 
                   type="button" 
                   onClick={() => handleNav('about')}
-                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                  className="sp-footer-link-btn"
                 >
                   About Shadab Sir
                 </button>
@@ -100,7 +104,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
                 <button 
                   type="button" 
                   onClick={() => handleNav('dashboard')}
-                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                  className="sp-footer-link-btn"
                 >
                   Candidate Portal
                 </button>
@@ -109,16 +113,16 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
           </div>
 
           {/* Column 3: Target Exams & Diplomas (lg:col-span-3) */}
-          <div className="lg:col-span-3">
-            <h4 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-900 mb-4">
+          <div className="sp-footer-col-programs">
+            <h4 className="sp-footer-heading">
               PROGRAMS &amp; EXAMS
             </h4>
-            <ul className="space-y-2.5 text-sm text-slate-600 list-none p-0 m-0">
+            <ul className="sp-footer-links">
               <li>
                 <button 
                   type="button" 
                   onClick={() => handleNav('courses')}
-                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                  className="sp-footer-link-btn"
                 >
                   SSC Stenographer Grade C &amp; D
                 </button>
@@ -127,7 +131,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
                 <button 
                   type="button" 
                   onClick={() => handleNav('courses')}
-                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                  className="sp-footer-link-btn"
                 >
                   High Court &amp; Supreme Court PA/SPA
                 </button>
@@ -136,7 +140,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
                 <button 
                   type="button" 
                   onClick={() => handleNav('courses')}
-                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                  className="sp-footer-link-btn"
                 >
                   BSF &amp; CRPF ASI Stenographer
                 </button>
@@ -145,7 +149,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
                 <button 
                   type="button" 
                   onClick={() => handleNav('courses')}
-                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                  className="sp-footer-link-btn"
                 >
                   Hindi (Kruti Dev / Mangal) &amp; English Typing
                 </button>
@@ -154,7 +158,7 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
                 <button 
                   type="button" 
                   onClick={() => handleNav('classes')}
-                  className="text-left text-sm text-slate-600 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+                  className="sp-footer-link-btn"
                 >
                   DCA, ADCA, PGDCA &amp; Tally Prime
                 </button>
@@ -163,31 +167,31 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
           </div>
 
           {/* Column 4: Gaya Center & Timings (lg:col-span-3) */}
-          <div className="lg:col-span-3">
-            <h4 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-900 mb-4">
+          <div className="sp-footer-col-center">
+            <h4 className="sp-footer-heading">
               GAYA CENTER
             </h4>
-            <ul className="space-y-3 text-sm text-slate-600 list-none p-0 m-0">
-              <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-slate-400" />
-                <span className="leading-snug">Gaya College More, Opposite Cyber Thana, Gayaji, Bihar</span>
+            <ul className="sp-footer-contact-list">
+              <li className="sp-footer-contact-item">
+                <MapPin className="sp-footer-contact-icon" />
+                <span>Gaya College More, Opposite Cyber Thana, Gayaji, Bihar</span>
               </li>
-              <li className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 shrink-0 mt-0.5 text-slate-400" />
-                <span className="tabular-nums">+91 7870377214 / +91 9204123453</span>
+              <li className="sp-footer-contact-item">
+                <Phone className="sp-footer-contact-icon" />
+                <span style={{ fontVariantNumeric: 'tabular-nums' }}>+91 7870377214 / +91 9204123453</span>
               </li>
-              <li className="flex items-start gap-2.5">
-                <Mail className="w-4 h-4 shrink-0 mt-0.5 text-slate-400" />
+              <li className="sp-footer-contact-item">
+                <Mail className="sp-footer-contact-icon" />
                 <a 
                   href="mailto:stenoplus.in@gmail.com" 
-                  className="hover:text-slate-900 transition-colors text-slate-600 no-underline"
+                  className="sp-footer-email-link"
                 >
                   stenoplus.in@gmail.com
                 </a>
               </li>
-              <li className="flex items-start gap-2.5">
-                <Clock className="w-4 h-4 shrink-0 mt-0.5 text-slate-400" />
-                <span className="tabular-nums">6:00 AM – 11:00 AM &amp; 3:00 PM – 8:00 PM</span>
+              <li className="sp-footer-contact-item">
+                <Clock className="sp-footer-contact-icon" />
+                <span style={{ fontVariantNumeric: 'tabular-nums' }}>6:00 AM – 11:00 AM &amp; 3:00 PM – 8:00 PM</span>
               </li>
             </ul>
           </div>
@@ -195,53 +199,53 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
         </div>
 
         {/* Clean Unified Bottom Bar */}
-        <div className="border-t border-slate-200 pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs text-slate-500 font-sans">
+        <div className="sp-footer-bottom">
           
           {/* Left: Copyright */}
-          <p className="m-0 leading-normal">
+          <p className="sp-footer-copyright">
             &copy; {currentYear} Shorthand Plus (Gaya Shorthand Classes &middot; stenoplus.in). All rights reserved.
           </p>
 
           {/* Right: Legal & Staff Access */}
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <div className="sp-footer-legal-group">
             <button 
               type="button"
               onClick={() => onOpenLegal && onOpenLegal('terms')}
-              className="text-xs text-slate-500 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+              className="sp-footer-legal-btn"
             >
               Terms
             </button>
             <button 
               type="button"
               onClick={() => onOpenLegal && onOpenLegal('privacy')}
-              className="text-xs text-slate-500 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+              className="sp-footer-legal-btn"
             >
               Privacy
             </button>
             <button 
               type="button"
               onClick={() => onOpenLegal && onOpenLegal('refund')}
-              className="text-xs text-slate-500 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+              className="sp-footer-legal-btn"
             >
               Refund Policy
             </button>
             <button 
               type="button"
               onClick={() => onOpenLegal && onOpenLegal('contact')}
-              className="text-xs text-slate-500 hover:text-slate-900 transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+              className="sp-footer-legal-btn"
             >
               Grievance &amp; Support
             </button>
 
-            <span className="h-3 w-px bg-slate-300 hidden sm:inline-block" />
+            <span className="sp-footer-divider" />
 
             <button 
               type="button"
               onClick={() => handleNav('admin')}
-              className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-slate-900 font-medium transition-colors p-0 bg-transparent border-0 cursor-pointer font-sans"
+              className="sp-footer-staff-btn"
               title="Authorized Faculty & Director Login Only (PIN Protected)"
             >
-              <Lock className="w-3.5 h-3.5 text-slate-400" />
+              <Lock className="sp-footer-lock-icon" />
               <span>Staff Access</span>
             </button>
           </div>
