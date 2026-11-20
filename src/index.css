@@ -7,7 +7,7 @@
    - Typography & Structure: #0F172A (Deep Slate Ink)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @font-face {
   font-family: 'Kruti Dev';
@@ -16,12 +16,15 @@
 }
 
 :root {
-  /* Fonts */
-  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Global Typography System (Plus Jakarta Sans + Instrument Serif + JetBrains Mono) */
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-devanagari: 'Noto Sans Devanagari', sans-serif;
   --font-kruti: 'Kruti Dev', sans-serif;
+
+  --font-display: var(--font-sans);
+  --font-body: var(--font-sans);
 
   /* Apple News+ 3-Color Palette */
   --bg-app: #F5F5F7;
@@ -128,14 +131,20 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-app);
-  color: var(--text-main);
+  color: #0F172A;
   min-height: 100vh;
   line-height: 1.5;
   overflow-x: hidden;
   width: 100%;
 }
+
+.font-sans { font-family: var(--font-sans) !important; }
+.font-serif { font-family: var(--font-serif) !important; }
+.font-mono { font-family: var(--font-mono) !important; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);

@@ -30,17 +30,6 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
             <p className="footer-summary-text">
               Under experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>, Gaya Shorthand Classes (SHORTHAND PLUS) is a professional training center (OFFLINE/ONLINE) dedicated to enhancing typing, shorthand, and computer skills with a modern approach to learning (50–140 WPM).
             </p>
-
-            <div className="footer-trust-chips-row">
-              <span className="footer-trust-chip">
-                <ShieldCheck size={14} color="#2563EB" />
-                <span>AI-Based Real-Time Evaluation</span>
-              </span>
-              <span className="footer-trust-chip">
-                <Award size={14} color="#059669" />
-                <span>50–140 WPM Certified Speeds</span>
-              </span>
-            </div>
           </div>
 
           {/* Column 2: Examination & Practice Rooms */}
@@ -161,16 +150,16 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
         </div>
 
         {/* Compliance & Legal Policies Strip (Razorpay & IT Rules Compliant) */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', justifyContent: 'center', alignItems: 'center', padding: '1rem 0', borderTop: '1px solid rgba(245, 245, 247,0.08)', fontSize: '0.74rem', color: '#a8a29e' }}>
-          <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" style={{ color: '#2563EB', textDecoration: 'none', fontWeight: 600 }}>https://stenoplus.in</a>
+        <div className="footer-compliance-strip">
+          <a href="https://stenoplus.in" target="_blank" rel="noopener noreferrer" className="footer-compliance-link">https://stenoplus.in</a>
           <span>•</span>
-          <button onClick={() => onOpenLegal && onOpenLegal('terms')} style={{ background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer', padding: 0 }}>Terms & Conditions</button>
+          <button onClick={() => onOpenLegal && onOpenLegal('terms')} className="footer-compliance-btn">Terms & Conditions</button>
           <span>•</span>
-          <button onClick={() => onOpenLegal && onOpenLegal('privacy')} style={{ background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer', padding: 0 }}>Privacy Policy</button>
+          <button onClick={() => onOpenLegal && onOpenLegal('privacy')} className="footer-compliance-btn">Privacy Policy</button>
           <span>•</span>
-          <button onClick={() => onOpenLegal && onOpenLegal('refund')} style={{ background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer', padding: 0 }}>Cancellation & Refund Policy</button>
+          <button onClick={() => onOpenLegal && onOpenLegal('refund')} className="footer-compliance-btn">Cancellation & Refund Policy</button>
           <span>•</span>
-          <button onClick={() => onOpenLegal && onOpenLegal('contact')} style={{ background: 'none', border: 'none', color: '#a8a29e', cursor: 'pointer', padding: 0 }}>Grievance Officer & Center Support</button>
+          <button onClick={() => onOpenLegal && onOpenLegal('contact')} className="footer-compliance-btn">Grievance Officer & Center Support</button>
         </div>
 
         {/* Bottom Copyright & Verification Strip */}

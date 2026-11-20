@@ -690,7 +690,7 @@ export default function LandingPage({
 
               <h2 className="sp-live-headline">
                 Can't Visit the Gaya Center?{' '}
-                <span className="sp-live-serif-accent">Join Live Online Classes</span>
+                <span className="sp-live-serif-accent whitespace-nowrap">Join Live Online Classes</span>
               </h2>
 
               <p className="sp-live-body">
@@ -815,9 +815,9 @@ export default function LandingPage({
             {/* Left Column: Center Location & Helplines */}
             <div className="sp-center-card">
               <span className="sp-section-eyebrow">VISIT OUR CENTER</span>
-              <h3 className="sp-center-heading">
+              <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
                 Gaya Coaching Center &amp; Helplines
-              </h3>
+              </h2>
 
               <div className="sp-center-info-list">
                 
@@ -871,9 +871,9 @@ export default function LandingPage({
             {/* Right Column: Interactive FAQ Accordion */}
             <div className="sp-faq-wrap">
               <span className="sp-section-eyebrow">ADMISSIONS FAQ</span>
-              <h3 className="sp-center-heading">
+              <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
                 Frequently Asked Questions
-              </h3>
+              </h2>
 
               <div className="sp-faq-accordion">
                 {TOP_FAQS.map((faq) => {
