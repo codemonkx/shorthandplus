@@ -194,96 +194,138 @@ export default function LandingPage({
     <div className="sp-landing-root">
       
       {/* =========================================================================
-          SECTION 1: FULL-BLEED HIGH-IMPACT INSTITUTION HERO (AUTHENTIC & EDITORIAL)
+          SECTION 1: EDITORIAL 2-COLUMN SPLIT HERO (HIGH-CONVERTING LIGHT THEME)
           ========================================================================= */}
-      <section className="sp-fullbleed-hero">
-        {/* Full-Bleed Background Media */}
-        <div className="sp-hero-bg-media">
-          <img 
-            src="/assets/institution-hero.jpg" 
-            alt="Gaya Shorthand Classes - Authentic Stenography Coaching & Typing Lab" 
-            className="sp-hero-bg-img"
-          />
-        </div>
+      <section className="sp-split-hero-section">
+        <div className="sp-split-hero-container">
+          
+          {/* 2-Column Asymmetric Split */}
+          <div className="sp-split-hero-grid">
+            
+            {/* Left Column (Copy, Trust Signals, CTAs) */}
+            <div className="sp-split-hero-left">
+              
+              {/* 1. Inline Trust Row (Top): 3 text indicators separated by thin vertical dividers */}
+              <div className="sp-hero-trust-row">
+                <span className="sp-hero-trust-item">Est. 2012 &middot; Gaya College More</span>
+                <span className="sp-hero-trust-divider" />
+                <span className="sp-hero-trust-item">12+ Years Coaching</span>
+                <span className="sp-hero-trust-divider" />
+                <span className="sp-hero-trust-item">SSC &amp; High Court Standard</span>
+              </div>
 
-        {/* Directional Contrast Scrim */}
-        <div className="sp-hero-scrim" />
+              {/* 2. H1 Headline: Bold, tight-tracked with editorial italic serif on Shorthand */}
+              <h1 className="sp-split-hero-h1">
+                The Gold Standard in{' '}
+                <span className="sp-hero-serif-accent">Shorthand</span>{' '}
+                &amp; Typing for Govt. Exams
+              </h1>
 
-        {/* Left-Aligned Asymmetric Content Grid */}
-        <div className="sp-hero-content-wrap">
-          <div className="sp-hero-text-block">
-            {/* Eyebrow: Tracked out, uppercase, solid academic typography */}
-            <span className="sp-hero-eyebrow">
-              GAYA SHORTHAND CLASSES &middot; EST. 2012
-            </span>
+              {/* 3. Micro-Subheading */}
+              <div className="sp-hero-micro-subheading">
+                PITMAN SHORTHAND &middot; BILINGUAL TYPING &middot; AUTOMATED SSC EVALUATION
+              </div>
 
-            {/* H1 Headline: Solid pure white, tight tracking */}
-            <h1 className="sp-hero-h1">
-              The Gold Standard in Shorthand & Typing for Government Exams
-            </h1>
+              {/* 4. Body Copy */}
+              <p className="sp-split-hero-body">
+                Master Pitman Shorthand (50–140 WPM), Kruti Dev &amp; Mangal typing, and legal dictations. Complete exam-focused preparation guided by <strong>Shadab Sir</strong> with real-time error evaluation.
+              </p>
 
-            {/* Subheadline: Refined neutral tone */}
-            <p className="sp-hero-subheadline">
-              Master Pitman Shorthand (50–140 WPM), bilingual computer typing (Kruti Dev & Mangal), and legal dictations. Guided by <strong>Shadab Sir</strong> at Gaya College More with automated SSC error evaluation.
-            </p>
+              {/* 5. CTA Group */}
+              <div className="sp-split-hero-cta-group">
+                <button
+                  type="button"
+                  className="sp-split-btn-primary"
+                  onClick={() => {
+                    if (setCurrentTab) setCurrentTab('tests');
+                  }}
+                >
+                  <span>Start Audio Dictation</span>
+                  <ArrowRight size={16} />
+                </button>
 
-            {/* Restrained CTA Group */}
-            <div className="sp-hero-cta-group">
-              <button
-                type="button"
-                className="sp-hero-btn-primary"
-                onClick={() => {
-                  if (setCurrentTab) setCurrentTab('tests');
-                }}
-              >
-                <span>Start Audio Dictation Practice</span>
-                <ArrowRight size={16} />
-              </button>
+                <button
+                  type="button"
+                  className="sp-split-btn-secondary"
+                  onClick={() => {
+                    if (setCurrentTab) setCurrentTab('typing-studio');
+                  }}
+                >
+                  <span>Try Typing Lab</span>
+                </button>
+              </div>
 
-              <button
-                type="button"
-                className="sp-hero-btn-secondary"
-                onClick={() => {
-                  if (setCurrentTab) setCurrentTab('typing-studio');
-                }}
-              >
-                <span>Try Typing Lab</span>
-              </button>
+              {/* Reassurance Micro-Text */}
+              <p className="sp-hero-reassurance-text">
+                <button 
+                  type="button" 
+                  className="sp-hero-demo-link"
+                  onClick={() => {
+                    fireConfetti();
+                    if (onOpenAdmission) onOpenAdmission();
+                  }}
+                >
+                  Book 3 free demo classes
+                </button>{' '}
+                &middot; Offline &amp; Online batches available
+              </p>
+            </div>
 
-              <button
-                type="button"
-                className="sp-hero-btn-link"
-                onClick={() => {
-                  fireConfetti();
-                  if (onOpenAdmission) onOpenAdmission();
-                }}
-              >
-                <span>Book 3 Free Demos</span>
-              </button>
+            {/* Right Column (Hero Visual Showcase) */}
+            <div className="sp-split-hero-right">
+              <div className="sp-hero-visual-frame">
+                <div className="sp-hero-visual-inner">
+                  <img 
+                    src="/assets/institution-hero.jpg" 
+                    alt="Shorthand Plus Stenography Classroom &amp; Typing Lab" 
+                    className="sp-hero-visual-img"
+                  />
+                </div>
+
+                {/* Floating Callout Card 1: Top-Left */}
+                <div className="sp-hero-callout-card sp-callout-top-left">
+                  <div className="sp-callout-icon-wrap sp-callout-icon-red">
+                    <Zap size={16} />
+                  </div>
+                  <div className="sp-callout-text">
+                    <div className="sp-callout-title">Two-Stage Exam Engine</div>
+                    <div className="sp-callout-desc">Real-time SSC error check</div>
+                  </div>
+                </div>
+
+                {/* Floating Callout Card 2: Bottom-Right */}
+                <div className="sp-hero-callout-card sp-callout-bottom-right">
+                  <div className="sp-callout-icon-wrap sp-callout-icon-blue">
+                    <Headphones size={16} />
+                  </div>
+                  <div className="sp-callout-text">
+                    <div className="sp-callout-title">50–140 WPM Audio</div>
+                    <div className="sp-callout-desc">Legal &amp; Pitman dictations</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Bottom Exam Strip (Anchor) */}
+          <div className="sp-hero-bottom-exam-strip">
+            <div className="sp-exam-strip-label">PREPARING STUDENTS FOR</div>
+            <div className="sp-exam-strip-items">
+              <span>SSC Stenographer</span>
+              <span className="sp-exam-strip-bullet">&middot;</span>
+              <span>Patna High Court</span>
+              <span className="sp-exam-strip-bullet">&middot;</span>
+              <span>Civil Court</span>
+              <span className="sp-exam-strip-bullet">&middot;</span>
+              <span>EPFO</span>
+              <span className="sp-exam-strip-bullet">&middot;</span>
+              <span>DRDO</span>
+              <span className="sp-exam-strip-bullet">&middot;</span>
+              <span>BSSC</span>
             </div>
           </div>
-        </div>
 
-        {/* Minimal Bottom Anchor Bar Separated by Hairline Border */}
-        <div className="sp-hero-anchor-bar">
-          <div className="sp-hero-anchor-container">
-            <div className="sp-hero-anchor-item">
-              <span className="sp-hero-anchor-dot" />
-              <span>12+ Years Coaching</span>
-            </div>
-            <div className="sp-hero-anchor-item">
-              <span className="sp-hero-anchor-dot" />
-              <span>50–140 WPM Pitman</span>
-            </div>
-            <div className="sp-hero-anchor-item">
-              <span className="sp-hero-anchor-dot" />
-              <span>Kruti Dev & Mangal</span>
-            </div>
-            <div className="sp-hero-anchor-item">
-              <span className="sp-hero-anchor-dot" />
-              <span>SSC & High Court Standard</span>
-            </div>
-          </div>
         </div>
       </section>
 
