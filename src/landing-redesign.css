@@ -939,155 +939,206 @@
   margin: 0 auto 3rem;
 }
 
+/* ==========================================================================
+   2. SECTION HEADINGS & ARCHITECTURAL GRID SYSTEM
+   ========================================================================== */
+
+.sp-section-heading-center {
+  max-width: 760px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.sp-section-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #64748B;
+  margin-bottom: 0.75rem;
+  font-family: var(--sp-font-body);
+}
+
 .sp-section-h2 {
   font-size: clamp(1.8rem, 3.2vw, 2.5rem);
-  color: var(--sp-text-title);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #0F172A !important;
   margin: 0 0 0.75rem;
+  line-height: 1.18;
 }
 
 .sp-section-lead {
   font-size: 1.02rem;
-  color: var(--sp-text-muted);
+  color: #64748B !important;
   line-height: 1.6;
   margin: 0;
 }
 
-.sp-benches-grid {
+/* Crisp Flat 1px Architectural Grid System (Zero Gap, Blueprint Precision) */
+.sp-arch-grid {
   max-width: 1240px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
-}
-
-.sp-bench-card {
+  grid-template-columns: 1fr;
+  border-top: 1px solid #E2E8F0;
+  border-left: 1px solid #E2E8F0;
   background: #FFFFFF;
-  border: 1px solid var(--sp-border-subtle);
-  border-radius: 16px;
-  padding: 1.35rem;
-  transition: all 0.25s ease;
-  box-shadow: var(--sp-shadow-xs);
 }
 
-.sp-bench-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--sp-border-hover);
-  box-shadow: var(--sp-shadow-md);
+@media (min-width: 640px) {
+  .sp-arch-grid-4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .sp-arch-grid-4col {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.sp-arch-cell {
+  background: #FFFFFF;
+  border-right: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: background-color 0.2s ease;
+}
+
+.sp-arch-cell:hover {
+  background-color: #F8FAFC;
+}
+
+/* Exam Benches Elements Inside Arch Cell */
+.sp-benches-section {
+  padding: 5rem 1.5rem;
+  background: #FAFAFA;
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .sp-bench-court-badge {
   font-size: 0.72rem;
   font-weight: 700;
-  font-family: var(--sp-font-mono);
-  color: var(--sp-blue-600);
-  background: var(--sp-blue-50);
-  padding: 3px 8px;
-  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  margin-bottom: 0.65rem;
   display: inline-block;
-  margin-bottom: 0.5rem;
 }
 
 .sp-bench-name {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--sp-text-title);
-  margin: 0 0 0.4rem;
+  color: #0F172A;
+  margin: 0 0 0.35rem;
+  line-height: 1.3;
 }
 
 .sp-bench-desc {
   font-size: 0.85rem;
-  color: var(--sp-text-body);
+  color: #475569;
   line-height: 1.5;
   margin: 0;
 }
 
 /* ==========================================================================
-   4. 3 CORE GATEWAYS (ELEVATED CARDS)
+   3. 3 CORE GATEWAYS (CLEAN WHITE EDITORIAL CARDS)
    ========================================================================== */
 
 .sp-gateways-section {
   padding: 5rem 1.5rem;
   background: #FFFFFF;
-  border-bottom: 1px solid var(--sp-border-subtle);
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .sp-gateways-grid {
   max-width: 1240px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 1024px) {
+  .sp-gateways-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .sp-gateway-card {
   background: #FFFFFF;
-  border: 1px solid var(--sp-border-subtle);
-  border-radius: 20px;
-  padding: 2.25rem 2rem;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 2.25rem 1.85rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
-  box-shadow: var(--sp-shadow-sm);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+  transition: border-color 0.2s ease;
 }
 
 .sp-gateway-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--sp-border-hover);
-  box-shadow: var(--sp-shadow-lg);
+  border-color: #CBD5E1;
 }
 
-.sp-gateway-badge {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+.sp-gateway-category-tag {
   font-size: 0.72rem;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 9999px;
-  background: var(--sp-bg-subtle);
-  color: var(--sp-text-muted);
-  border: 1px solid var(--sp-border-subtle);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #64748B;
+  margin-bottom: 1.25rem;
+  display: block;
 }
 
 .sp-gateway-icon-box {
-  width: 50px;
-  height: 50px;
-  border-radius: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
-}
-
-.sp-gateway-icon-box.blue {
-  background: var(--sp-blue-50);
-  color: var(--sp-blue-600);
+  margin-bottom: 1.25rem;
 }
 
 .sp-gateway-icon-box.amber {
-  background: var(--sp-amber-50);
-  color: var(--sp-amber-600);
+  background: #FEF3C7;
+  color: #B45309;
+}
+
+.sp-gateway-icon-box.blue {
+  background: #EFF6FF;
+  color: #1D4ED8;
 }
 
 .sp-gateway-icon-box.purple {
   background: #FAF5FF;
-  color: #7C3AED;
+  color: #7E22CE;
 }
 
 .sp-gateway-title {
-  font-size: 1.35rem;
+  font-size: 1.28rem;
   font-weight: 800;
-  color: var(--sp-text-title);
-  margin: 0 0 0.75rem;
+  color: #0F172A;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
 }
 
 .sp-gateway-desc {
-  font-size: 0.94rem;
-  color: var(--sp-text-body);
+  font-size: 0.92rem;
+  color: #475569;
   line-height: 1.6;
   margin: 0 0 1.5rem;
+}
+
+.sp-gateway-desc strong {
+  color: #0F172A;
+  font-weight: 600;
 }
 
 .sp-gateway-features {
@@ -1096,167 +1147,166 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.75rem;
 }
 
 .sp-gateway-feature-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 8px;
   font-size: 0.88rem;
-  color: var(--sp-text-title);
+  color: #334155;
   font-weight: 500;
 }
 
+.sp-gateway-check-icon {
+  color: #B91C1C;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
 /* ==========================================================================
-   5. TWO-STAGE TEST WORKFLOW (CLEAN TIMELINE CARDS)
+   4. TWO-STAGE TEST WORKFLOW (CLEAN TIMELINE CARDS)
    ========================================================================== */
 
 .sp-workflow-section {
   padding: 5rem 1.5rem;
-  background: var(--sp-bg-subtle);
-  border-bottom: 1px solid var(--sp-border-subtle);
+  background: #FAFAFA;
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .sp-workflow-grid {
   max-width: 1240px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .sp-workflow-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .sp-workflow-card {
   background: #FFFFFF;
-  border: 1px solid var(--sp-border-subtle);
-  border-radius: 18px;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
   padding: 2.25rem 1.85rem;
-  box-shadow: var(--sp-shadow-xs);
-  transition: all 0.25s ease;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+  transition: border-color 0.2s ease;
 }
 
 .sp-workflow-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--sp-border-hover);
-  box-shadow: var(--sp-shadow-md);
+  border-color: #CBD5E1;
 }
 
 .sp-workflow-step-num {
   font-family: var(--sp-font-mono);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: var(--sp-blue-600);
-  background: var(--sp-blue-50);
-  border: 1px solid var(--sp-blue-border);
-  padding: 3px 10px;
-  border-radius: 6px;
+  color: #64748B;
+  letter-spacing: 0.08em;
   display: inline-block;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .sp-workflow-title {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--sp-text-title);
-  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 0.65rem;
+  letter-spacing: -0.02em;
 }
 
 .sp-workflow-desc {
-  font-size: 0.92rem;
-  color: var(--sp-text-body);
+  font-size: 0.9rem;
+  color: #475569;
   line-height: 1.6;
   margin: 0;
 }
 
 /* ==========================================================================
-   6. 5 CORE COURSES & TRANSPARENT PRICING
+   5. 5 CORE COURSES & TRANSPARENT PRICING
    ========================================================================== */
 
 .sp-courses-section {
   padding: 5rem 1.5rem;
   background: #FFFFFF;
-  border-bottom: 1px solid var(--sp-border-subtle);
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .sp-courses-grid {
   max-width: 1240px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 1.85rem;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .sp-courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .sp-courses-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .sp-course-card {
   background: #FFFFFF;
-  border: 1px solid var(--sp-border-subtle);
-  border-radius: 20px;
-  padding: 2rem 1.85rem;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 2rem 1.75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: var(--sp-shadow-sm);
-  transition: all 0.25s ease;
-  position: relative;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+  transition: border-color 0.2s ease;
 }
 
 .sp-course-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--sp-border-hover);
-  box-shadow: var(--sp-shadow-lg);
+  border-color: #CBD5E1;
 }
 
-.sp-course-card.featured {
-  border-color: rgba(37, 99, 235, 0.4);
-  box-shadow: 0 12px 30px -4px rgba(37, 99, 235, 0.12), var(--sp-shadow-sm);
-}
-
-.sp-course-featured-ribbon {
-  position: absolute;
-  top: -12px;
-  left: 24px;
-  background: #0F172A;
-  color: #FFFFFF;
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 9999px;
-  box-shadow: var(--sp-shadow-xs);
-}
-
-.sp-course-badge-row {
+.sp-course-meta-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.25rem;
 }
 
-.sp-course-tag {
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 6px;
-  border: 1px solid transparent;
-}
-
 .sp-course-speed {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 700;
   font-family: var(--sp-font-mono);
-  color: var(--sp-text-muted);
+  color: #0F172A;
+  letter-spacing: -0.01em;
+}
+
+.sp-course-duration-badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #64748B;
 }
 
 .sp-course-title {
-  font-size: 1.28rem;
-  font-weight: 800;
-  color: var(--sp-text-title);
-  margin: 0 0 0.4rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 0.35rem;
+  line-height: 1.3;
 }
 
 .sp-course-desc {
-  font-size: 0.88rem;
-  color: var(--sp-text-muted);
+  font-size: 0.86rem;
+  color: #64748B;
   line-height: 1.5;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1.25rem;
 }
 
 .sp-course-price-box {
@@ -1265,57 +1315,63 @@
   gap: 8px;
   margin-bottom: 1.5rem;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--sp-border-subtle);
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .sp-course-price-now {
-  font-size: 1.85rem;
-  font-weight: 850;
-  color: var(--sp-text-title);
-  font-family: var(--sp-font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0F172A;
+  font-family: var(--sp-font-mono);
+  font-feature-settings: 'tnum';
+  letter-spacing: -0.02em;
 }
 
 .sp-course-price-was {
   font-size: 0.95rem;
-  color: var(--sp-text-faint);
+  color: #94A3B8;
   text-decoration: line-through;
-}
-
-.sp-course-duration {
-  font-size: 0.85rem;
-  color: var(--sp-text-muted);
+  font-family: var(--sp-font-mono);
+  font-feature-settings: 'tnum';
 }
 
 .sp-course-features-list {
   list-style: none;
-  margin: 0 0 2rem;
+  margin: 0 0 1.75rem;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.65rem;
 }
 
 .sp-course-feature-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 0.86rem;
-  color: var(--sp-text-body);
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.45;
+}
+
+.sp-course-check-icon {
+  color: #0F172A;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .sp-course-actions-row {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
-.sp-btn-enroll-card {
+.sp-btn-course-enroll {
   width: 100%;
-  padding: 0.8rem 1.25rem;
-  border-radius: 10px;
-  background: #0F172A;
+  padding: 0.85rem 1.25rem;
+  border-radius: 8px;
+  background: #0F172A !important;
   color: #FFFFFF !important;
-  border: 1px solid #0F172A;
+  border: 1px solid #0F172A !important;
   font-weight: 600;
   font-size: 0.9rem;
   display: flex;
@@ -1326,98 +1382,68 @@
   transition: all 0.2s ease;
 }
 
-.sp-btn-enroll-card:hover {
-  background: #1E293B;
-  color: #FFFFFF !important;
-  transform: translateY(-2px);
+.sp-btn-course-enroll:hover {
+  background: #1E293B !important;
+  border-color: #1E293B !important;
+  transform: translateY(-1px);
 }
 
-.sp-btn-whatsapp-card {
-  width: 100%;
-  padding: 0.75rem 1.25rem;
-  border-radius: 10px;
-  background: var(--sp-emerald-50);
-  color: var(--sp-emerald-600);
-  border: 1px solid var(--sp-emerald-border);
-  font-weight: 600;
-  font-size: 0.88rem;
+.sp-course-whatsapp-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748B;
   text-decoration: none;
-  transition: all 0.2s ease;
+  padding: 0.4rem;
+  transition: color 0.2s ease;
 }
 
-.sp-btn-whatsapp-card:hover {
-  background: #D1FAE5;
-  color: var(--sp-emerald-600);
+.sp-course-whatsapp-link:hover {
+  color: #0F172A;
 }
 
 /* ==========================================================================
-   7. 8-STEP TEACHING METHODOLOGY ROADMAP
+   6. 8-STEP TEACHING METHODOLOGY (ARCHITECTURAL GRID)
    ========================================================================== */
 
 .sp-methodology-section {
   padding: 5rem 1.5rem;
-  background: var(--sp-bg-subtle);
-  border-bottom: 1px solid var(--sp-border-subtle);
-}
-
-.sp-methodology-grid {
-  max-width: 1240px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-.sp-step-card {
-  background: #FFFFFF;
-  border: 1px solid var(--sp-border-subtle);
-  border-radius: 16px;
-  padding: 1.65rem 1.5rem;
-  box-shadow: var(--sp-shadow-xs);
-  transition: all 0.25s ease;
-}
-
-.sp-step-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--sp-border-hover);
-  box-shadow: var(--sp-shadow-md);
+  background: #FAFAFA;
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .sp-step-num-badge {
   font-family: var(--sp-font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--sp-blue-600);
-  background: var(--sp-blue-50);
-  padding: 3px 8px;
-  border-radius: 6px;
-  display: inline-block;
-  margin-bottom: 0.85rem;
+  color: #64748B;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 .sp-step-title {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--sp-text-title);
+  color: #0F172A;
   margin: 0 0 0.25rem;
 }
 
 .sp-step-hindi {
   display: block;
   font-size: 0.78rem;
-  color: var(--sp-amber-600);
+  color: #B91C1C;
   font-weight: 600;
   margin-bottom: 0.65rem;
 }
 
 .sp-step-desc {
-  font-size: 0.86rem;
-  color: var(--sp-text-body);
-  line-height: 1.55;
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.5;
   margin: 0;
 }
 
@@ -1608,72 +1634,57 @@
    9. 4 PILLARS (WHY GAYA SHORTHAND CLASSES)
    ========================================================================== */
 
-.sp-pillars-grid {
-  max-width: 1240px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
+/* ==========================================================================
+   7. 4 PILLARS (INSTITUTIONAL EXCELLENCE)
+   ========================================================================== */
 
-.sp-pillar-card {
-  background: #FFFFFF;
-  border: 1px solid var(--sp-border-subtle);
-  border-radius: 18px;
-  padding: 1.85rem 1.5rem;
-  box-shadow: var(--sp-shadow-xs);
-  transition: all 0.25s ease;
-}
-
-.sp-pillar-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--sp-border-hover);
-  box-shadow: var(--sp-shadow-md);
-}
-
-.sp-pillar-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: var(--sp-blue-50);
-  color: var(--sp-blue-600);
+.sp-pillar-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #F1F5F9;
+  color: #0F172A;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.sp-pillar-icon-svg {
+  color: #0F172A;
 }
 
 .sp-pillar-title {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: var(--sp-text-title);
-  margin: 0 0 0.5rem;
+  color: #0F172A;
+  margin: 0 0 0.35rem;
 }
 
 .sp-pillar-desc {
-  font-size: 0.88rem;
-  color: var(--sp-text-body);
-  line-height: 1.55;
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.5;
   margin: 0;
 }
 
 /* ==========================================================================
-   10. VIDEO DEMO & GOOGLE REVIEWS
+   8. VIDEO DEMO & GOOGLE REVIEWS
    ========================================================================== */
 
 .sp-reviews-section {
   padding: 5rem 1.5rem;
-  background: var(--sp-bg-subtle);
-  border-bottom: 1px solid var(--sp-border-subtle);
+  background: #FAFAFA;
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .sp-video-container {
   max-width: 860px;
   margin: 0 auto 3.5rem;
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: var(--sp-shadow-lg);
-  border: 1px solid var(--sp-border-subtle);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  border: 1px solid #E2E8F0;
   background: #0F172A;
 }
 
@@ -1692,7 +1703,7 @@
 }
 
 .sp-video-facade:hover .sp-video-thumb {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .sp-play-badge {
@@ -1700,22 +1711,21 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 68px;
-  height: 68px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: #FFFFFF;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--sp-blue-600);
-  transition: all 0.25s ease;
+  color: #0F172A;
+  transition: all 0.2s ease;
 }
 
 .sp-video-facade:hover .sp-play-badge {
-  transform: translate(-50%, -50%) scale(1.1);
-  background: #FFFFFF;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
 .sp-video-caption {
@@ -1724,18 +1734,19 @@
   left: 0;
   right: 0;
   padding: 1.5rem;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, transparent 100%);
   color: #FFFFFF;
 }
 
 .sp-video-caption h4 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   margin: 0 0 4px;
   color: #FFFFFF !important;
+  font-weight: 700;
 }
 
 .sp-video-caption p {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: #CBD5E1 !important;
   margin: 0;
 }
@@ -1744,23 +1755,25 @@
   max-width: 1240px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .sp-reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .sp-review-card {
   background: #FFFFFF;
-  border: 1px solid var(--sp-border-subtle);
-  border-radius: 18px;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
   padding: 1.75rem;
-  box-shadow: var(--sp-shadow-xs);
-  transition: all 0.25s ease;
-}
-
-.sp-review-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--sp-border-hover);
-  box-shadow: var(--sp-shadow-md);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .sp-stars-row {
@@ -1771,9 +1784,9 @@
 
 .sp-review-quote {
   font-size: 0.92rem;
-  color: var(--sp-text-body);
+  color: #334155;
   line-height: 1.6;
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.5rem;
 }
 
 .sp-reviewer-row {
@@ -1783,37 +1796,37 @@
 }
 
 .sp-reviewer-avatar {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: var(--sp-blue-50);
-  color: var(--sp-blue-600);
+  background: #0F172A;
+  color: #FFFFFF;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .sp-reviewer-name {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: var(--sp-text-title);
+  color: #0F172A;
 }
 
 .sp-reviewer-tag {
   font-size: 0.75rem;
-  color: var(--sp-text-muted);
+  color: #64748B;
 }
 
 /* ==========================================================================
-   11. CENTER LOCATION & FAQS
+   9. CENTER LOCATION & FAQS
    ========================================================================== */
 
 .sp-center-section {
   padding: 5rem 1.5rem;
   background: #FFFFFF;
-  border-bottom: 1px solid var(--sp-border-subtle);
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .sp-center-grid {
@@ -1831,23 +1844,24 @@
   }
 }
 
+.sp-center-location-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Crisp Clean FAQ Accordion with border-b dividers */
 .sp-faq-accordion {
+  border-top: 1px solid #E2E8F0;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
 }
 
 .sp-faq-item {
-  background: #FFFFFF;
-  border: 1px solid var(--sp-border-subtle);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: all 0.2s ease;
-  box-shadow: var(--sp-shadow-xs);
-}
-
-.sp-faq-item:hover {
-  border-color: var(--sp-border-hover);
+  border-bottom: 1px solid #E2E8F0;
+  background: transparent;
 }
 
 .sp-faq-btn {
@@ -1855,49 +1869,64 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem 0;
   background: none;
   border: none;
   text-align: left;
   cursor: pointer;
-  font-family: var(--sp-font-display);
-  font-size: 1.02rem;
+  font-size: 0.98rem;
   font-weight: 700;
-  color: var(--sp-text-title);
+  color: #0F172A;
+  transition: color 0.2s ease;
+}
+
+.sp-faq-btn:hover {
+  color: #B91C1C;
 }
 
 .sp-faq-body {
-  padding: 0 1.5rem 1.35rem;
+  padding: 0 0 1.25rem;
   font-size: 0.92rem;
   line-height: 1.65;
-  color: var(--sp-text-body);
+  color: #475569;
 }
 
 /* ==========================================================================
-   12. CLOSING CTA BANNER (CLEAN & LUMINOUS)
+   10. CLOSING CTA BANNER (EDITORIAL DEEP INK)
    ========================================================================== */
 
 .sp-cta-banner {
   padding: 5rem 1.5rem;
-  background: var(--sp-bg-subtle);
-  text-align: center;
-  position: relative;
+  background: #FAFAFA;
 }
 
 .sp-cta-container {
-  max-width: 720px;
+  max-width: 1240px;
   margin: 0 auto;
 }
 
+.sp-cta-card {
+  background-color: #0F172A;
+  border: 1px solid #1E293B;
+  border-radius: 1rem;
+  padding: 3.5rem 2rem;
+  text-align: center;
+  color: #FFFFFF;
+  box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.12);
+}
+
 .sp-cta-title {
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
-  color: var(--sp-text-title);
-  margin: 0 0 1rem;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: #FFFFFF !important;
+  margin: 0.5rem 0 1rem;
+  letter-spacing: -0.03em;
 }
 
 .sp-cta-desc {
-  font-size: 1.05rem;
-  color: var(--sp-text-muted);
+  font-size: 1rem;
   line-height: 1.6;
-  margin: 0 0 2.25rem;
+  color: #CBD5E1 !important;
+  max-width: 38rem;
+  margin: 0 auto 2rem;
 }

@@ -334,21 +334,19 @@ export default function LandingPage({
           ========================================================================= */}
       <section className="sp-benches-section">
         <div className="sp-section-heading-center">
-          <span className="sp-section-pill">
-            <ShieldCheck size={14} />
-            Target Exam Benches
-          </span>
+          <span className="sp-section-eyebrow">TARGET EXAMINATION BENCHES</span>
           <h2 className="sp-section-h2">
-            Tailored for High Courts, SSC & Judicial Benches
+            Tailored for High Courts, SSC &amp; Judicial Benches
           </h2>
           <p className="sp-section-lead">
             Every dictation and typing passage is calibrated to match official recruitment standards:
           </p>
         </div>
 
-        <div className="sp-benches-grid">
+        {/* Crisp Flat 1px Architectural Grid */}
+        <div className="sp-arch-grid sp-arch-grid-4col">
           {TARGET_EXAMINATIONS.slice(0, 8).map((exam) => (
-            <div key={exam.id} className="sp-bench-card">
+            <div key={exam.id} className="sp-arch-cell">
               <span className="sp-bench-court-badge">{exam.category || 'Judicial Exam'}</span>
               <h3 className="sp-bench-name">{exam.name}</h3>
               <p className="sp-bench-desc">{exam.shortDesc || exam.description}</p>
@@ -362,25 +360,22 @@ export default function LandingPage({
           ========================================================================= */}
       <section className="sp-gateways-section">
         <div className="sp-section-heading-center">
-          <span className="sp-section-pill">
-            <Layers size={14} />
-            Curriculum & Examination Tracks
-          </span>
+          <span className="sp-section-eyebrow">CURRICULUM &amp; EXAMINATION TRACKS</span>
           <h2 className="sp-section-h2">
             Everything You Need to Clear Your Exam
           </h2>
           <p className="sp-section-lead">
-            Whether you want to practice high-speed audio dictations, master computer typing, or learn shorthand from scratch — select below:
+            Whether you want to practice high-speed audio dictations, master computer typing, or learn shorthand from scratch &mdash; select below:
           </p>
         </div>
 
         <div className="sp-gateways-grid">
           {/* Gateway 1: Dictation Vault */}
           <div className="sp-gateway-card">
-            <span className="sp-gateway-badge">Standard SSC Benchmark</span>
+            <span className="sp-gateway-category-tag">STANDARD SSC BENCHMARK</span>
             <div>
               <div className="sp-gateway-icon-box amber">
-                <Headphones size={24} />
+                <Headphones size={22} />
               </div>
               <h3 className="sp-gateway-title">Audio Dictation Vault</h3>
               <p className="sp-gateway-desc">
@@ -393,7 +388,7 @@ export default function LandingPage({
                   "Instant LCS Word-by-Word Diff Evaluation"
                 ].map((feat, i) => (
                   <li key={i} className="sp-gateway-feature-item">
-                    <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <CheckCircle2 size={16} className="sp-gateway-check-icon" />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -412,10 +407,10 @@ export default function LandingPage({
 
           {/* Gateway 2: Typing Studio */}
           <div className="sp-gateway-card">
-            <span className="sp-gateway-badge">Bilingual Engine</span>
+            <span className="sp-gateway-category-tag">BILINGUAL ENGINE</span>
             <div>
               <div className="sp-gateway-icon-box blue">
-                <Keyboard size={24} />
+                <Keyboard size={22} />
               </div>
               <h3 className="sp-gateway-title">Computer Typing Studio</h3>
               <p className="sp-gateway-desc">
@@ -428,7 +423,7 @@ export default function LandingPage({
                   "Official Court Passage Test Bank"
                 ].map((feat, i) => (
                   <li key={i} className="sp-gateway-feature-item">
-                    <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <CheckCircle2 size={16} className="sp-gateway-check-icon" />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -447,12 +442,12 @@ export default function LandingPage({
 
           {/* Gateway 3: Offline Coaching */}
           <div className="sp-gateway-card">
-            <span className="sp-gateway-badge">Gaya Center</span>
+            <span className="sp-gateway-category-tag">GAYA CENTER</span>
             <div>
               <div className="sp-gateway-icon-box purple">
-                <GraduationCap size={24} />
+                <GraduationCap size={22} />
               </div>
-              <h3 className="sp-gateway-title">Classroom & Offline Coaching</h3>
+              <h3 className="sp-gateway-title">Classroom &amp; Offline Coaching</h3>
               <p className="sp-gateway-desc">
                 Under <strong>Shadab Sir (12 Years Exp)</strong> at Gaya College More. Daily handwriting outline checks, physical dictation speed batches, and full computer typing lab access.
               </p>
@@ -463,7 +458,7 @@ export default function LandingPage({
                   "Modern Computer Lab with Mechanical Keyboards"
                 ].map((feat, i) => (
                   <li key={i} className="sp-gateway-feature-item">
-                    <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <CheckCircle2 size={16} className="sp-gateway-check-icon" />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -490,10 +485,7 @@ export default function LandingPage({
           ========================================================================= */}
       <section className="sp-workflow-section">
         <div className="sp-section-heading-center">
-          <span className="sp-section-pill">
-            <Zap size={14} />
-            Simulated Test Protocol
-          </span>
+          <span className="sp-section-eyebrow">SIMULATED TEST PROTOCOL</span>
           <h2 className="sp-section-h2">
             How The Two-Stage Exam Engine Works
           </h2>
@@ -505,7 +497,7 @@ export default function LandingPage({
         <div className="sp-workflow-grid">
           <div className="sp-workflow-card">
             <span className="sp-workflow-step-num">STAGE 01</span>
-            <h3 className="sp-workflow-title">Listen & Take Shorthand Notes</h3>
+            <h3 className="sp-workflow-title">Listen &amp; Take Shorthand Notes</h3>
             <p className="sp-workflow-desc">
               Listen to calibrated audio dictation (80, 100, 120 WPM) and take shorthand notes in your notebook. Audio plays strictly once with no pause or rewind.
             </p>
@@ -513,15 +505,15 @@ export default function LandingPage({
 
           <div className="sp-workflow-card">
             <span className="sp-workflow-step-num">STAGE 02</span>
-            <h3 className="sp-workflow-title">5-Minute Reading & Transcription</h3>
+            <h3 className="sp-workflow-title">5-Minute Reading &amp; Transcription</h3>
             <p className="sp-workflow-desc">
-              A 5-minute reading clock allows you to review and punctuate your handwritten shorthand outlines before typing, exactly as required in SSC & Court examinations.
+              A 5-minute reading clock allows you to review and punctuate your handwritten shorthand outlines before typing, exactly as required in SSC &amp; Court examinations.
             </p>
           </div>
 
           <div className="sp-workflow-card">
             <span className="sp-workflow-step-num">STAGE 03</span>
-            <h3 className="sp-workflow-title">Type & Instant SSC Scorecard</h3>
+            <h3 className="sp-workflow-title">Type &amp; Instant SSC Scorecard</h3>
             <p className="sp-workflow-desc">
               Type your transcription on the timed screen. When you submit, our Longest Common Subsequence (LCS) engine instantly highlights Full Mistakes, Half Mistakes, Net WPM, and Qualifying Status.
             </p>
@@ -534,10 +526,7 @@ export default function LandingPage({
           ========================================================================= */}
       <section className="sp-courses-section">
         <div className="sp-section-heading-center">
-          <span className="sp-section-pill">
-            <Award size={14} />
-            Courses & Batches
-          </span>
+          <span className="sp-section-eyebrow">COURSES &amp; BATCHES</span>
           <h2 className="sp-section-h2">
             The 5 Core Courses with Transparent Fees
           </h2>
@@ -547,66 +536,56 @@ export default function LandingPage({
         </div>
 
         <div className="sp-courses-grid">
-          {coursesList.map((course, idx) => {
-            const isFeatured = idx === 0;
-            return (
-              <div key={course.id} className={`sp-course-card ${isFeatured ? 'featured' : ''}`}>
-                {isFeatured && (
-                  <div className="sp-course-featured-ribbon">
-                    Most Popular Choice
-                  </div>
-                )}
-                
-                <div>
-                  <div className="sp-course-badge-row">
-                    <span className="sp-course-tag" style={{ color: course.badgeColor, background: `${course.badgeColor}12`, borderColor: `${course.badgeColor}25` }}>
-                      {course.badge}
-                    </span>
-                    <span className="sp-course-speed">{course.speed}</span>
-                  </div>
-
-                  <h3 className="sp-course-title">{course.title}</h3>
-                  <p className="sp-course-desc">{course.subtitle}</p>
-
-                  <div className="sp-course-price-box">
-                    <span className="sp-course-price-now">{course.price}</span>
-                    <span className="sp-course-price-was">{course.originalPrice}</span>
-                    <span className="sp-course-duration">/ {course.duration}</span>
-                  </div>
-
-                  <ul className="sp-course-features-list">
-                    {course.highlights.map((item, i) => (
-                      <li key={i} className="sp-course-feature-item">
-                        <Check size={16} color="#059669" style={{ flexShrink: 0, marginTop: '2px' }} />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+          {coursesList.map((course) => (
+            <div key={course.id} className="sp-course-card">
+              <div>
+                <div className="sp-course-meta-row">
+                  <span className="sp-course-speed">{course.speed}</span>
+                  <span className="sp-course-duration-badge">{course.duration}</span>
                 </div>
 
-                <div className="sp-course-actions-row">
-                  <button
-                    type="button"
-                    className="sp-btn-enroll-card"
-                    onClick={() => handleEnrollClick(course.title)}
-                  >
-                    <span>Enroll Now (3 Days Demo)</span>
-                    <ArrowRight size={15} />
-                  </button>
+                <h3 className="sp-course-title">{course.title}</h3>
+                <p className="sp-course-desc">{course.subtitle}</p>
 
-                  <a
-                    href={`https://wa.me/919204123453?text=Hi%20Shadab%20Sir,%20I%20am%20interested%20in%20${encodeURIComponent(course.title)}%20at%20Gaya%20Shorthand%20Classes.`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="sp-btn-whatsapp-card"
-                  >
-                    <MessageCircle size={15} color="#059669" />
-                    <span>WhatsApp Inquiry</span>
-                  </a>
+                <div className="sp-course-price-box">
+                  <span className="sp-course-price-now tabular-nums">{course.price}</span>
+                  {course.originalPrice && (
+                    <span className="sp-course-price-was tabular-nums">{course.originalPrice}</span>
+                  )}
                 </div>
+
+                <ul className="sp-course-features-list">
+                  {course.highlights.slice(0, 4).map((item, i) => (
+                    <li key={i} className="sp-course-feature-item">
+                      <Check size={15} className="sp-course-check-icon" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            );
-          })}
+
+              <div className="sp-course-actions-row">
+                <button
+                  type="button"
+                  className="sp-btn-course-enroll"
+                  onClick={() => handleEnrollClick(course.title)}
+                >
+                  <span>Enroll Now &middot; 3 Days Demo</span>
+                  <ArrowRight size={15} />
+                </button>
+
+                <a
+                  href={`https://wa.me/919204123453?text=Hi%20Shadab%20Sir,%20I%20am%20interested%20in%20${encodeURIComponent(course.title)}%20at%20Gaya%20Shorthand%20Classes.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="sp-course-whatsapp-link"
+                >
+                  <MessageCircle size={14} />
+                  <span>WhatsApp Inquiry</span>
+                </a>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -615,10 +594,7 @@ export default function LandingPage({
           ========================================================================= */}
       <section className="sp-methodology-section">
         <div className="sp-section-heading-center">
-          <span className="sp-section-pill">
-            <BookOpen size={14} />
-            Pedagogy & Curriculum
-          </span>
+          <span className="sp-section-eyebrow">PEDAGOGY &amp; CURRICULUM</span>
           <h2 className="sp-section-h2">
             The 8-Step Path to Shorthand Mastery
           </h2>
@@ -627,7 +603,8 @@ export default function LandingPage({
           </p>
         </div>
 
-        <div className="sp-methodology-grid">
+        {/* Crisp Flat 1px Architectural Grid */}
+        <div className="sp-arch-grid sp-arch-grid-4col">
           {[
             {
               step: "01",
@@ -678,7 +655,7 @@ export default function LandingPage({
               desc: "Daily personalized review of handwritten outlines by Shadab Sir to eliminate common angle and stroke errors."
             }
           ].map((item, idx) => (
-            <div key={idx} className="sp-step-card">
+            <div key={idx} className="sp-arch-cell">
               <span className="sp-step-num-badge">STEP {item.step}</span>
               <h3 className="sp-step-title">{item.title}</h3>
               <span className="sp-step-hindi">{item.hindi}</span>
@@ -753,10 +730,7 @@ export default function LandingPage({
           ========================================================================= */}
       <section className="sp-gateways-section">
         <div className="sp-section-heading-center">
-          <span className="sp-section-pill">
-            <Sparkles size={14} />
-            Institutional Excellence
-          </span>
+          <span className="sp-section-eyebrow">INSTITUTIONAL EXCELLENCE</span>
           <h2 className="sp-section-h2">
             Why Students Choose Gaya Shorthand Classes
           </h2>
@@ -765,31 +739,32 @@ export default function LandingPage({
           </p>
         </div>
 
-        <div className="sp-pillars-grid">
+        {/* Crisp Flat 1px Architectural Grid */}
+        <div className="sp-arch-grid sp-arch-grid-4col">
           {[
             {
-              icon: <Award size={24} />,
+              icon: <Award size={22} className="sp-pillar-icon-svg" />,
               title: "12+ Years Proven Track Record",
               desc: "Directed by Shadab Sir since 2012 with 1,200+ selections across SSC, Patna High Court, Civil Courts, and Secretariat."
             },
             {
-              icon: <Cpu size={24} />,
+              icon: <Cpu size={22} className="sp-pillar-icon-svg" />,
               title: "Two-Stage AI-Powered Testing",
               desc: "Audio dictation with single-play lock, strict transcription timing, and automated word-by-word SSC error evaluation."
             },
             {
-              icon: <Keyboard size={24} />,
+              icon: <Keyboard size={22} className="sp-pillar-icon-svg" />,
               title: "Dedicated Bilingual Typing Lab",
               desc: "English and Hindi typing with dual-font support (Kruti Dev 010 and Mangal Inscript) and strict exam simulations."
             },
             {
-              icon: <FileText size={24} />,
+              icon: <FileText size={22} className="sp-pillar-icon-svg" />,
               title: "Individual Notebook Checking",
               desc: "Every student's shorthand notebook is checked daily by Shadab Sir to correct stroke angles, sizes, and positionings."
             }
           ].map((pillar, idx) => (
-            <div key={idx} className="sp-pillar-card">
-              <div className="sp-pillar-icon">{pillar.icon}</div>
+            <div key={idx} className="sp-arch-cell">
+              <div className="sp-pillar-icon-box">{pillar.icon}</div>
               <h3 className="sp-pillar-title">{pillar.title}</h3>
               <p className="sp-pillar-desc">{pillar.desc}</p>
             </div>
@@ -802,12 +777,9 @@ export default function LandingPage({
           ========================================================================= */}
       <section className="sp-reviews-section">
         <div className="sp-section-heading-center">
-          <span className="sp-section-pill">
-            <Star size={14} />
-            Verified Social Proof
-          </span>
+          <span className="sp-section-eyebrow">VERIFIED SOCIAL PROOF</span>
           <h2 className="sp-section-h2">
-            See Our Classroom & Hear From Successful Students
+            See Our Classroom &amp; Hear From Successful Students
           </h2>
           <p className="sp-section-lead">
             Over 140+ students have rated Gaya Shorthand Classes 4.9/5 on Google for authentic coaching and results.
@@ -841,11 +813,11 @@ export default function LandingPage({
                 className="sp-video-thumb"
               />
               <div className="sp-play-badge">
-                <Play size={26} fill="#2563EB" color="#2563EB" style={{ marginLeft: '4px' }} />
+                <Play size={24} fill="#0F172A" color="#0F172A" style={{ marginLeft: '4px' }} />
               </div>
               <div className="sp-video-caption">
                 <h4>Watch Classroom Speed Dictation Demo</h4>
-                <p>Instructor: Shadab Sir (12 Years Exp) · Kailash Chandra 80 & 100 WPM Live Whiteboard Review</p>
+                <p>Instructor: Shadab Sir (12 Years Exp) &middot; Kailash Chandra 80 &amp; 100 WPM Live Whiteboard Review</p>
               </div>
             </div>
           )}
@@ -858,25 +830,25 @@ export default function LandingPage({
               name: "Anjali Verma",
               exam: "SSC Stenographer Grade C",
               rating: 5,
-              text: "“Shadab Sir's daily dictation practice and 5-minute reading room made all the difference in my SSC skill test. Individual notebook checking helped fix my stroke angles completely!”"
+              text: "\u201cShadab Sir's daily dictation practice and 5-minute reading room made all the difference in my SSC skill test. Individual notebook checking helped fix my stroke angles completely!\u201d"
             },
             {
               name: "Rakesh Kumar",
               exam: "Patna High Court Personal Assistant",
               rating: 5,
-              text: "“The strict backspace lock simulation and legal judgment audio series mirrored the exact Patna High Court exam software. Cracked my exam with 98% accuracy!”"
+              text: "\u201cThe strict backspace lock simulation and legal judgment audio series mirrored the exact Patna High Court exam software. Cracked my exam with 98% accuracy!\u201d"
             },
             {
               name: "Md. Tariq",
               exam: "Jharkhand High Court & Civil Courts",
               rating: 5,
-              text: "“Best shorthand and typing institute in Gaya. The dual font support (Kruti Dev 010 and Mangal) in their computer lab is unmatched for judicial exam aspirants.”"
+              text: "\u201cBest shorthand and typing institute in Gaya. The dual font support (Kruti Dev 010 and Mangal) in their computer lab is unmatched for judicial exam aspirants.\u201d"
             }
           ].map((rev, i) => (
             <div key={i} className="sp-review-card">
               <div className="sp-stars-row">
                 {[...Array(rev.rating)].map((_, s) => (
-                  <Star key={s} size={15} fill="#F59E0B" color="#F59E0B" />
+                  <Star key={s} size={15} fill="#B91C1C" color="#B91C1C" />
                 ))}
               </div>
               <p className="sp-review-quote">{rev.text}</p>
@@ -901,22 +873,19 @@ export default function LandingPage({
         <div className="sp-center-grid">
           {/* Left Column: Center Location & Hours */}
           <div>
-            <span className="sp-section-pill">
-              <MapPin size={14} />
-              Visit Our Center
-            </span>
+            <span className="sp-section-eyebrow">VISIT OUR CENTER</span>
             <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
-              Gaya Coaching Center & Helplines
+              Gaya Coaching Center &amp; Helplines
             </h2>
 
-            <div style={{ background: 'var(--sp-bg-subtle)', border: '1px solid var(--sp-border-subtle)', borderRadius: '18px', padding: '1.85rem', marginBottom: '1.5rem' }}>
+            <div className="sp-center-location-card">
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', marginBottom: '16px' }}>
-                <MapPin size={22} color="#2563EB" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <MapPin size={20} color="#0F172A" style={{ flexShrink: 0, marginTop: '2px' }} />
                 <div>
-                  <h4 style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--sp-text-title)', margin: '0 0 4px' }}>
+                  <h4 style={{ fontSize: '0.98rem', fontWeight: 700, color: '#0F172A', margin: '0 0 4px' }}>
                     Address:
                   </h4>
-                  <p style={{ fontSize: '0.92rem', color: 'var(--sp-text-body)', margin: 0, lineHeight: 1.5 }}>
+                  <p style={{ fontSize: '0.9rem', color: '#475569', margin: 0, lineHeight: 1.5 }}>
                     <strong>Gaya Shorthand Classes</strong><br />
                     Gaya College More, Opposite Cyber Thana, Gayaji, Bihar - 823001
                   </p>
@@ -924,33 +893,33 @@ export default function LandingPage({
               </div>
 
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', marginBottom: '16px' }}>
-                <Phone size={20} color="#059669" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <Phone size={18} color="#0F172A" style={{ flexShrink: 0, marginTop: '2px' }} />
                 <div>
-                  <h4 style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--sp-text-title)', margin: '0 0 4px' }}>
+                  <h4 style={{ fontSize: '0.98rem', fontWeight: 700, color: '#0F172A', margin: '0 0 4px' }}>
                     Direct Helplines:
                   </h4>
-                  <p style={{ fontSize: '0.92rem', color: 'var(--sp-text-body)', margin: 0, lineHeight: 1.5 }}>
-                    Director (Shadab Sir): <a href="tel:9204123453" style={{ color: '#2563EB', fontWeight: 700 }}>+91 9204123453</a><br />
-                    Admissions Desk: <a href="tel:7870377214" style={{ color: 'var(--sp-text-title)', fontWeight: 700 }}>+91 7870377214</a>
+                  <p style={{ fontSize: '0.9rem', color: '#475569', margin: 0, lineHeight: 1.5 }}>
+                    Director (Shadab Sir): <a href="tel:9204123453" style={{ color: '#0F172A', fontWeight: 700, textDecoration: 'underline' }}>+91 9204123453</a><br />
+                    Admissions Desk: <a href="tel:7870377214" style={{ color: '#0F172A', fontWeight: 700, textDecoration: 'underline' }}>+91 7870377214</a>
                   </p>
                 </div>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
-                <Clock size={20} color="#D97706" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <Clock size={18} color="#0F172A" style={{ flexShrink: 0, marginTop: '2px' }} />
                 <div>
-                  <h4 style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--sp-text-title)', margin: '0 0 4px' }}>
-                    Office & Class Timings:
+                  <h4 style={{ fontSize: '0.98rem', fontWeight: 700, color: '#0F172A', margin: '0 0 4px' }}>
+                    Office &amp; Class Timings:
                   </h4>
-                  <p style={{ fontSize: '0.92rem', color: 'var(--sp-text-body)', margin: 0, lineHeight: 1.5 }}>
-                    Morning 7:00 AM – 11:30 AM • Evening 3:30 PM – 7:30 PM (Mon to Sat)
+                  <p style={{ fontSize: '0.9rem', color: '#475569', margin: 0, lineHeight: 1.5 }}>
+                    Morning 7:00 AM &ndash; 11:30 AM &bull; Evening 3:30 PM &ndash; 7:30 PM (Mon to Sat)
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Embedded Google Map */}
-            <div style={{ borderRadius: '18px', overflow: 'hidden', border: '1px solid var(--sp-border-subtle)', height: '240px', boxShadow: 'var(--sp-shadow-xs)' }}>
+            <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid #E2E8F0', height: '240px' }}>
               <iframe
                 title="Gaya Shorthand Classes Google Map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14470.573215849887!2d84.9912061!3d24.7938367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f32a510526e855%3A0x6bfa332617757917!2sGaya%20College%2C%20Gaya!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
@@ -966,10 +935,7 @@ export default function LandingPage({
 
           {/* Right Column: FAQs Accordion */}
           <div>
-            <span className="sp-section-pill">
-              <FileText size={14} />
-              Admissions FAQ
-            </span>
+            <span className="sp-section-eyebrow">ADMISSIONS FAQ</span>
             <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
               Frequently Asked Questions
             </h2>
@@ -985,7 +951,7 @@ export default function LandingPage({
                       onClick={() => setActiveFaq(isOpen ? null : faq.id)}
                     >
                       <span>{faq.q}</span>
-                      {isOpen ? <ChevronUp size={20} color="#2563EB" /> : <ChevronDown size={20} color="#94A3B8" />}
+                      {isOpen ? <ChevronUp size={18} color="#0F172A" /> : <ChevronDown size={18} color="#94A3B8" />}
                     </button>
                     {isOpen && (
                       <div className="sp-faq-body">
@@ -1000,9 +966,9 @@ export default function LandingPage({
             <div style={{ marginTop: '1.75rem', textAlign: 'left' }}>
               <a
                 href="tel:9204123453"
-                style={{ fontSize: '0.92rem', fontWeight: 700, color: '#2563EB', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                style={{ fontSize: '0.88rem', fontWeight: 600, color: '#0F172A', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
               >
-                <Phone size={16} />
+                <Phone size={15} />
                 <span>Have additional questions? Call Helpline: +91 9204123453</span>
               </a>
             </div>
@@ -1011,41 +977,41 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 11: CLOSING CTA BANNER (CLEAN & LUMINOUS)
+          SECTION 11: CLOSING CTA BANNER (EDITORIAL DEEP INK)
           ========================================================================= */}
       <section className="sp-cta-banner">
         <div className="sp-cta-container">
-          <span className="sp-hero-pill-badge" style={{ margin: '0 auto 1.25rem' }}>
-            <span className="sp-pulse-dot" />
-            Estd. 2012 · Gaya Shorthand Classes
-          </span>
-          <h2 className="sp-cta-title">
-            Learn Today, Lead Tomorrow
-          </h2>
-          <p className="sp-cta-desc">
-            Begin your government stenographer journey with <strong>3 Free Demo Classes</strong> at Gaya Shorthand Classes. Guided by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>.
-          </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
-            <button
-              type="button"
-              className="sp-btn-primary"
-              onClick={() => {
-                fireConfetti();
-                if (onOpenAdmission) onOpenAdmission();
-              }}
-            >
-              <Sparkles size={18} />
-              <span>Book 3 Free Demo Classes</span>
-              <ArrowRight size={16} />
-            </button>
+          <div className="sp-cta-card">
+            <span className="sp-section-eyebrow" style={{ color: '#94A3B8' }}>
+              ESTD. 2012 &middot; GAYA SHORTHAND CLASSES
+            </span>
+            <h2 className="sp-cta-title">
+              Learn Today, Lead Tomorrow
+            </h2>
+            <p className="sp-cta-desc">
+              Begin your government stenographer journey with <strong>3 Free Demo Classes</strong> at Gaya Shorthand Classes. Guided by experienced faculty <strong>Shadab Sir (12 Years Experience)</strong>.
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', justifyContent: 'center' }}>
+              <button
+                type="button"
+                className="sp-split-btn-primary"
+                onClick={() => {
+                  fireConfetti();
+                  if (onOpenAdmission) onOpenAdmission();
+                }}
+              >
+                <span>Book 3 Free Demo Classes</span>
+                <ArrowRight size={16} />
+              </button>
 
-            <a
-              href="tel:9204123453"
-              className="sp-btn-secondary"
-            >
-              <Phone size={18} />
-              <span>Call Helpline: +91 9204123453</span>
-            </a>
+              <a
+                href="tel:9204123453"
+                className="sp-split-btn-secondary"
+              >
+                <Phone size={16} />
+                <span>Call Helpline: +91 9204123453</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
