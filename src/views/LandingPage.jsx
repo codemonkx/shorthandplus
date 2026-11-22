@@ -222,55 +222,55 @@ export default function LandingPage({
             <circle cx="1115" cy="140" r="3.5" fill="#231418" />
             <line x1="1195" y1="135" x2="1205" y2="132" stroke="#231418" strokeWidth="2.5" strokeLinecap="round" />
 
-            {/* Fine ruled notebook hairlines (Bottom Left) */}
-            <line x1="0" y1="620" x2="520" y2="620" stroke="#231418" strokeWidth="1" strokeDasharray="4 6" />
-            <line x1="0" y1="670" x2="560" y2="670" stroke="#231418" strokeWidth="1" strokeDasharray="4 6" />
-            <line x1="0" y1="720" x2="600" y2="720" stroke="#231418" strokeWidth="1" strokeDasharray="4 6" />
+            {/* Fine ruled notebook hairlines (Bottom Left - Trimmed & Shifted to Lower Corner) */}
+            <line x1="0" y1="710" x2="260" y2="710" stroke="#231418" strokeWidth="1" strokeDasharray="4 6" />
+            <line x1="0" y1="750" x2="280" y2="750" stroke="#231418" strokeWidth="1" strokeDasharray="4 6" />
+            <line x1="0" y1="785" x2="300" y2="785" stroke="#231418" strokeWidth="1" strokeDasharray="4 6" />
 
-            {/* Authentic Pitman Shorthand Stroke Arcs (Bottom Left Cluster) */}
+            {/* Authentic Pitman Shorthand Stroke Arcs (Bottom Left Cluster - Lowered away from metrics) */}
             {/* Long curve stroke (Ith / The) */}
             <motion.path 
-              d="M60 580 C85 600 95 615 80 620" 
+              d="M40 680 C65 700 75 715 60 720" 
               stroke="#231418" strokeWidth="2.4" strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
+              initial={{ pathLength: 0.3, opacity: 0.85 }}
               animate={{ pathLength: 1, opacity: 1 }}
               transition={{ duration: 1.4, delay: 0.15, ease: TRANSITION_EASE }}
             />
             {/* Upward ray + small circle */}
             <motion.path 
-              d="M130 620 L165 575 A 9 9 0 1 1 155 565" 
+              d="M100 720 L135 675 A 9 9 0 1 1 125 665" 
               stroke="#231418" strokeWidth="2.2" strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
+              initial={{ pathLength: 0.3, opacity: 0.85 }}
               animate={{ pathLength: 1, opacity: 1 }}
               transition={{ duration: 1.4, delay: 0.2, ease: TRANSITION_EASE }}
             />
             {/* Horizontal stroke K/G with final N-hook */}
             <motion.path 
-              d="M210 620 L260 620 C270 615 272 610 265 608" 
+              d="M180 720 L230 720 C240 715 242 710 235 708" 
               stroke="#231418" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"
-              initial={{ pathLength: 0, opacity: 0 }}
+              initial={{ pathLength: 0.3, opacity: 0.85 }}
               animate={{ pathLength: 1, opacity: 1 }}
               transition={{ duration: 1.4, delay: 0.25, ease: TRANSITION_EASE }}
             />
             {/* Double curve grammalogue (Special / Speed) */}
             <motion.path 
-              d="M90 670 C120 640 150 690 190 670" 
+              d="M70 760 C100 735 130 780 170 760" 
               stroke="#231418" strokeWidth="2.4" strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
+              initial={{ pathLength: 0.3, opacity: 0.85 }}
               animate={{ pathLength: 1, opacity: 1 }}
               transition={{ duration: 1.4, delay: 0.3, ease: TRANSITION_EASE }}
             />
             {/* Intersected stroke (Government / High Court abbreviation) */}
             <motion.path 
-              d="M240 650 L275 690 M235 675 L285 665" 
+              d="M200 745 L235 780 M195 765 L245 755" 
               stroke="#231418" strokeWidth="2.5" strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
+              initial={{ pathLength: 0.3, opacity: 0.85 }}
               animate={{ pathLength: 1, opacity: 1 }}
               transition={{ duration: 1.4, delay: 0.35, ease: TRANSITION_EASE }}
             />
             {/* Vowel indicators */}
-            <circle cx="145" cy="595" r="3.5" fill="#231418" />
-            <circle cx="235" cy="635" r="3.5" fill="#231418" />
+            <circle cx="115" cy="695" r="3.5" fill="#231418" />
+            <circle cx="205" cy="735" r="3.5" fill="#231418" />
           </svg>
         </div>
 
@@ -517,13 +517,14 @@ export default function LandingPage({
                     fontFamily: "'Instrument Serif', Georgia, serif",
                     fontSize: '1.85rem',
                     color: '#231418',
-                    lineHeight: 1
+                    lineHeight: 1,
+                    fontVariantNumeric: 'tabular-nums'
                   }}
                 >
-                  &#8377;30+
+                  2,700+
                 </div>
                 <div style={{ fontSize: '11px', fontWeight: 500, color: '#8A7B7E', marginTop: '6px' }}>
-                  Online Test Passes
+                  Trained Aspirants
                 </div>
               </div>
             </div>
@@ -564,7 +565,7 @@ export default function LandingPage({
                   />
                 </div>
 
-                {/* Subtle Bottom Caption Inside Mat */}
+                {/* Clean Right-Aligned Caption Inside Mat */}
                 <div 
                   style={{
                     paddingTop: '10px',
@@ -573,14 +574,10 @@ export default function LandingPage({
                     paddingBottom: '2px',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'space-between',
+                    justifyContent: 'flex-end',
                     fontSize: '11px'
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ width: '6px', height: '6px', borderRadius: '9999px', backgroundColor: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
-                    <span style={{ fontWeight: 600, color: '#231418' }}>SSC &amp; High Court Exam Standard</span>
-                  </div>
                   <span 
                     style={{
                       fontFamily: "var(--font-mono, monospace)",
@@ -590,7 +587,7 @@ export default function LandingPage({
                       letterSpacing: '0.05em'
                     }}
                   >
-                    GAYA &middot; OFFLINE + LIVE
+                    SSC &amp; High Court Standard &middot; GAYA
                   </span>
                 </div>
               </motion.div>
@@ -1572,170 +1569,378 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 4: LEGACY & MENTOR EDITORIAL SPLIT (WARM CREAM #FBF8F3)
+          SECTION 4: DARK EDITORIAL STORY BAND (SHADAB SIR & GAYA LEGACY)
           ========================================================================= */}
-      <section className="sp-mentor-section bg-[#FBF8F3] border-t border-[#E8DFD3]">
-        <div className="sp-container">
-          <div className="sp-mentor-grid">
-            
-            {/* Left Column: Editorial Narrative & Mentor Legacy */}
-            <FadeUp>
-              <div className="sp-mentor-narrative">
-                <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
-                  GAYA SHORTHAND CLASSES &middot; EST. 2012
-                </span>
-                <h2 className="sp-section-h2" style={{ textAlign: 'left' }}>
-                  12+ Years of Discipline. Guided Directly by Shadab Sir.
-                </h2>
-                
-                <div className="sp-mentor-text-block">
-                  <p>
-                    Founded at Gaya College More in 2012, <strong>Gaya Shorthand Classes</strong> has established itself as Bihar's premier preparatory academy for government stenography aspirants. Over 1,200 candidates have qualified for Central &amp; State services under direct personal mentorship.
-                  </p>
-                  <p>
-                    We believe that while automated software is indispensable for measuring speed, true shorthand mastery demands traditional stroke discipline. Every single outline, curve angle, and grammalogue contraction is inspected daily so bad habits never carry into the examination hall.
-                  </p>
-                </div>
-
-                {/* Flush Stat Strip */}
-                <div className="sp-mentor-stats-strip">
-                  <div className="sp-stat-box">
-                    <div className="sp-stat-number tabular-nums">12+ Yrs</div>
-                    <div className="sp-stat-caption">Coaching Legacy</div>
-                  </div>
-                  <div className="sp-stat-box">
-                    <div className="sp-stat-number tabular-nums">50&ndash;140</div>
-                    <div className="sp-stat-caption">WPM Training Range</div>
-                  </div>
-                  <div className="sp-stat-box">
-                    <div className="sp-stat-number">Offline + Live</div>
-                    <div className="sp-stat-caption">Gaya &amp; Google Meet</div>
-                  </div>
-                </div>
-
-                <div style={{ marginTop: '1.75rem' }}>
-                  <button
-                    type="button"
-                    className="sp-mentor-story-link group"
-                    onClick={() => setCurrentTab && setCurrentTab('about')}
-                  >
-                    <span>Read Our Story &amp; Methodology</span>
-                    <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
-                  </button>
-                </div>
-              </div>
-            </FadeUp>
-
-            {/* Right Column: Mentor & Academy Visual Card */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.55, ease: TRANSITION_EASE }}
-              className="bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(35,20,24,0.04)]"
+      <section 
+        className="sp-dark-story-section"
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundColor: '#231418',
+          color: '#FAF6F0',
+          borderTop: '1px solid #3A2329',
+          borderBottom: '1px solid #3A2329',
+          width: '100%'
+        }}
+      >
+        <div className="sp-dark-story-grid">
+          
+          {/* Left Column (5 cols on desktop) */}
+          <div className="sp-dark-story-col-left">
+            <span 
+              style={{
+                fontSize: '11px',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.18em',
+                color: '#C9A3A8',
+                display: 'block'
+              }}
             >
-              {/* Top Visual Frame */}
-              <div className="aspect-[4/3] bg-[#E2DDD3] relative overflow-hidden">
-                <img 
-                  src="/assets/institution-hero.jpg" 
-                  alt="Shadab Sir - Gaya Shorthand Classes Classroom &amp; Mentor" 
-                  className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-[1.03]"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
-                />
-                <div className="absolute bottom-0 inset-x-0 bg-slate-900/90 text-white px-5 py-3 text-xs flex items-center justify-between backdrop-blur-xs">
-                  <span className="font-semibold text-white">Shadab Sir &middot; Founder &amp; Chief Instructor</span>
-                  <span className="text-slate-300 font-mono text-[11px]">Est. 2012 &middot; Gaya</span>
+              OUR LEGACY &middot; GUIDED BY SHADAB SIR
+            </span>
+
+            <h2 
+              style={{
+                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontSize: 'clamp(2rem, 3.5vw, 3.1rem)',
+                lineHeight: 1.06,
+                fontWeight: 400,
+                letterSpacing: '-0.015em',
+                color: '#FAF6F0',
+                margin: '0.75rem 0 0 0',
+                textAlign: 'left'
+              }}
+            >
+              Twelve years of discipline,{' '}
+              <span style={{ fontStyle: 'italic', color: '#E5B8BE' }}>
+                built for govt. selections.
+              </span>
+            </h2>
+
+            {/* Compact 4-item hairline mentorship list */}
+            <div 
+              style={{
+                marginTop: '1.5rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.625rem',
+                fontSize: '13.5px',
+                color: '#D6C7CA'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Check size={16} style={{ color: '#E5B8BE', flexShrink: 0 }} />
+                <span>Personal Pitman Outline Checking</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Check size={16} style={{ color: '#E5B8BE', flexShrink: 0 }} />
+                <span>Hindi Kruti Dev 010 &amp; Mangal Inscript Mastery</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Check size={16} style={{ color: '#E5B8BE', flexShrink: 0 }} />
+                <span>Daily High Court &amp; Parliamentary Dictations</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Check size={16} style={{ color: '#E5B8BE', flexShrink: 0 }} />
+                <span>3 Free Demo Classes Before Enrollment</span>
+              </div>
+            </div>
+
+            {/* Crisp Pill Outline CTA */}
+            <div style={{ marginTop: '1.75rem' }}>
+              <button
+                type="button"
+                onClick={() => {
+                  if (setCurrentTab) setCurrentTab('about');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  border: '1px solid #5A3A42',
+                  backgroundColor: 'transparent',
+                  color: '#FAF6F0',
+                  padding: '12px 24px',
+                  borderRadius: '9999px',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.borderColor = '#FAF6F0';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.borderColor = '#5A3A42';
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                }}
+              >
+                <span>Read Full Methodology</span>
+                <ArrowRight size={15} />
+              </button>
+            </div>
+          </div>
+
+          {/* Right Column (7 cols on desktop) */}
+          <div className="sp-dark-story-col-right">
+            <div 
+              style={{
+                fontSize: '14.5px',
+                lineHeight: 1.65,
+                color: '#D6C7CA',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1rem'
+              }}
+            >
+              <p style={{ margin: 0 }}>
+                Founded at Gaya College More in 2012, <strong style={{ color: '#FAF6F0', fontWeight: 500 }}>Gaya Shorthand Classes</strong> has established itself as Bihar's premier preparatory academy for government stenography aspirants. Over 1,200 candidates have qualified for Central &amp; State services under direct personal mentorship.
+              </p>
+              <p style={{ margin: 0 }}>
+                We believe that while automated software is indispensable for measuring speed, true shorthand mastery demands <strong style={{ color: '#FAF6F0', fontWeight: 500 }}>traditional stroke discipline</strong>. Every single outline, curve angle, and grammalogue contraction is inspected daily so bad habits never carry into the examination hall.
+              </p>
+            </div>
+
+            {/* 2x2 Hairline Milestone Grid Directly Underneath */}
+            <div 
+              className="sp-dark-milestone-grid"
+              style={{
+                marginTop: '2.25rem',
+                paddingTop: '2rem',
+                borderTop: '1px solid #3D252B'
+              }}
+            >
+              <div>
+                <div 
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.75rem, 2.5vw, 2.25rem)',
+                    lineHeight: 1,
+                    fontWeight: 400,
+                    color: '#FAF6F0'
+                  }}
+                >
+                  <AnimatedCounter value="2012" duration={0.6} />
+                </div>
+                <div style={{ fontSize: '12px', color: '#A89397', marginTop: '8px' }}>
+                  Founded at Gaya College More, Bihar
                 </div>
               </div>
 
-              {/* Compact 4-Point Summary Underneath */}
-              <div className="p-5 divide-y divide-[#D6D0C4]/60">
-                <div className="py-2.5 text-sm font-medium text-[#231418] flex items-center gap-2.5">
-                  <Check size={16} className="text-[#B91C1C] shrink-0" />
-                  <span>Personal Pitman Outline Checking</span>
+              <div>
+                <div 
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.75rem, 2.5vw, 2.25rem)',
+                    lineHeight: 1,
+                    fontWeight: 400,
+                    color: '#FAF6F0',
+                    fontVariantNumeric: 'tabular-nums'
+                  }}
+                >
+                  <AnimatedCounter value="50–140" duration={0.6} />
                 </div>
-                <div className="py-2.5 text-sm font-medium text-[#231418] flex items-center gap-2.5">
-                  <Check size={16} className="text-[#B91C1C] shrink-0" />
-                  <span>Hindi Kruti Dev 010 &amp; Mangal Inscript Mastery</span>
-                </div>
-                <div className="py-2.5 text-sm font-medium text-[#231418] flex items-center gap-2.5">
-                  <Check size={16} className="text-[#B91C1C] shrink-0" />
-                  <span>Daily High Court &amp; Parliamentary Dictations</span>
-                </div>
-                <div className="py-2.5 text-sm font-medium text-[#231418] flex items-center gap-2.5">
-                  <Check size={16} className="text-[#B91C1C] shrink-0" />
-                  <span>3 Free Demo Classes Before Enrollment</span>
+                <div style={{ fontSize: '12px', color: '#A89397', marginTop: '8px' }}>
+                  WPM Pitman &amp; Hindi Shorthand Range
                 </div>
               </div>
-            </motion.div>
+
+              <div>
+                <div 
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.75rem, 2.5vw, 2.25rem)',
+                    lineHeight: 1,
+                    fontWeight: 400,
+                    color: '#FAF6F0',
+                    fontVariantNumeric: 'tabular-nums'
+                  }}
+                >
+                  <AnimatedCounter value="2,700+" duration={0.6} />
+                </div>
+                <div style={{ fontSize: '12px', color: '#A89397', marginTop: '8px' }}>
+                  Aspirants Trained Across SSC &amp; Courts
+                </div>
+              </div>
+
+              <div>
+                <div 
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.75rem, 2.5vw, 2.25rem)',
+                    lineHeight: 1,
+                    fontWeight: 400,
+                    color: '#FAF6F0'
+                  }}
+                >
+                  Offline + Live
+                </div>
+                <div style={{ fontSize: '12px', color: '#A89397', marginTop: '8px' }}>
+                  Gaya Typing Lab &amp; Daily Google Meet
+                </div>
+              </div>
+            </div>
 
           </div>
+
         </div>
       </section>
 
       {/* =========================================================================
-          SECTION 5: REFINED LIGHT EDITORIAL LIVE ONLINE CLASSES BANNER
+          SECTION 5: WARM SAND LIVE BATCH STUDIO STRIP
           ========================================================================= */}
-      <section className="sp-live-banner-section bg-[#FBF8F3] border-t border-[#E8DFD3]">
-        <div className="sp-container">
-          <motion.div 
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, ease: TRANSITION_EASE }}
-            whileHover={{ y: -3 }}
-            className="sp-live-banner-card bg-[#FFFFFF] border border-[#E8DFD3] border-l-4 border-l-[#991B1B] rounded-2xl p-6 md:p-10 shadow-[0_4px_20px_rgba(35,20,24,0.04)]"
-          >
-            
-            {/* Left Content Column */}
-            <div className="sp-live-content-col">
-              <div className="sp-live-eyebrow">
-                <span className="sp-live-pulse-dot" style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#991B1B', display: 'inline-block' }} />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
-                  LIVE ONLINE INTERACTIVE BATCHES
-                </span>
-              </div>
-
-              <h2 className="sp-live-headline text-[#231418]">
-                Can't Visit the Gaya Center?{' '}
-                <span className="sp-live-serif-accent font-serif italic font-normal text-[#991B1B] whitespace-nowrap">
-                  Join Live Online Classes
-                </span>
-              </h2>
-
-              <p className="sp-live-body text-[#594A4D]">
-                Daily Google Meet dictations, live digital whiteboard outline checking, and real-time doubt resolution with <strong className="text-[#231418]">Shadab Sir</strong>.
-              </p>
-
-              <div className="sp-live-features-strip text-[#8A7B7E]">
-                <span className="sp-live-feat-item text-zinc-700 font-medium">Google Meet Live</span>
-                <span className="sp-live-feat-divider text-stone-300">&middot;</span>
-                <span className="sp-live-feat-item text-zinc-700 font-medium">Whiteboard Outline Review</span>
-                <span className="sp-live-feat-divider text-stone-300">&middot;</span>
-                <span className="sp-live-feat-item text-zinc-700 font-medium">Direct Doubt Resolution</span>
-              </div>
-            </div>
-
-            {/* Right Action Block */}
-            <div className="sp-live-action-col">
-              <motion.button
-                type="button"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="sp-btn-crimson group bg-[#991B1B] text-white hover:bg-[#7F1D1D] px-6 py-3.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2 shadow-sm"
-                onClick={() => {
-                  if (setCurrentTab) setCurrentTab('batches');
+      <section 
+        className="sp-live-studio-strip"
+        style={{
+          width: '100%',
+          backgroundColor: '#EFE7DC',
+          borderBottom: '1px solid #E0D5C7'
+        }}
+      >
+        <div className="sp-live-studio-row">
+          
+          {/* Left Column */}
+          <div style={{ minWidth: 0, textAlign: 'left' }}>
+            {/* Eyebrow with pulsing 6px #991B1B live dot */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              <span className="sp-live-pulse-dot" style={{ width: '6px', height: '6px', borderRadius: '9999px', backgroundColor: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
+              <span 
+                style={{
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.16em',
+                  color: '#594A4D'
                 }}
               >
-                <span>View Live Class Schedule</span>
-                <ArrowRight size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
-              </motion.button>
-              <span className="sp-live-caption text-[#8A7B7E] text-xs">
-                Morning &amp; evening batches available
+                LIVE GOOGLE MEET INTERACTIVE STUDIO
               </span>
             </div>
 
-          </motion.div>
+            {/* Editorial Serif H3 */}
+            <h3 
+              style={{
+                marginTop: '6px',
+                marginBottom: 0,
+                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontSize: 'clamp(1.75rem, 2.5vw, 2.15rem)',
+                lineHeight: 1.2,
+                fontWeight: 400,
+                color: '#231418'
+              }}
+            >
+              Can't visit the Gaya center?{' '}
+              <span style={{ fontStyle: 'italic', color: '#991B1B' }}>
+                Join live online classes.
+              </span>
+            </h3>
+
+            {/* 3 Crisp Daily Batch Timing Pills */}
+            <div 
+              style={{
+                marginTop: '1rem',
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                gap: '8px'
+              }}
+            >
+              <span 
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #DFD4C6',
+                  borderRadius: '9999px',
+                  padding: '4px 14px',
+                  fontSize: '11px',
+                  fontFamily: 'var(--font-mono, monospace)',
+                  fontWeight: 500,
+                  color: '#231418',
+                  fontVariantNumeric: 'tabular-nums'
+                }}
+              >
+                6:00 AM &middot; Pitman Theory
+              </span>
+              <span 
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #DFD4C6',
+                  borderRadius: '9999px',
+                  padding: '4px 14px',
+                  fontSize: '11px',
+                  fontFamily: 'var(--font-mono, monospace)',
+                  fontWeight: 500,
+                  color: '#231418',
+                  fontVariantNumeric: 'tabular-nums'
+                }}
+              >
+                8:30 AM &middot; SSC 80 WPM Live
+              </span>
+              <span 
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #DFD4C6',
+                  borderRadius: '9999px',
+                  padding: '4px 14px',
+                  fontSize: '11px',
+                  fontFamily: 'var(--font-mono, monospace)',
+                  fontWeight: 500,
+                  color: '#231418',
+                  fontVariantNumeric: 'tabular-nums'
+                }}
+              >
+                3:00 PM &middot; High Court Legal
+              </span>
+            </div>
+          </div>
+
+          {/* Right Column: CTA & Caption */}
+          <div 
+            style={{
+              flexShrink: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              gap: '6px'
+            }}
+            className="lg:items-end"
+          >
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.15 }}
+              onClick={() => {
+                if (setCurrentTab) setCurrentTab('classes');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              style={{
+                backgroundColor: '#991B1B',
+                color: '#FFFFFF',
+                padding: '13px 26px',
+                borderRadius: '9999px',
+                fontSize: '13.5px',
+                fontWeight: 600,
+                boxShadow: '0 8px 20px rgba(153, 27, 27, 0.20)',
+                whiteSpace: 'nowrap',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'background-color 0.2s ease'
+              }}
+            >
+              <span>View Live Class Schedule</span>
+              <ArrowRight size={16} />
+            </motion.button>
+            <span style={{ fontSize: '11px', color: '#6E5E61' }}>
+              Morning &amp; evening batches &middot; Direct doubt review
+            </span>
+          </div>
+
         </div>
       </section>
 

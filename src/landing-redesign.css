@@ -250,14 +250,14 @@
   background-color: #FBF8F3 !important;
   color: #231418 !important;
   overflow: hidden;
-  padding-top: 5rem;
-  padding-bottom: 2.5rem;
+  padding-top: 7rem;
+  padding-bottom: 3rem;
 }
 
 @media (min-width: 1024px) {
   .sp-bespoke-hero-section {
-    padding-top: 6rem;
-    padding-bottom: 3.5rem;
+    padding-top: 8rem;
+    padding-bottom: 4rem;
   }
 }
 
@@ -1249,9 +1249,102 @@
 }
 
 /* ==========================================================================
-   SECTION 4: LEGACY & MENTOR EDITORIAL SPLIT
+   SECTION 4: DARK EDITORIAL STORY BAND (SHADAB SIR & GAYA LEGACY)
    ========================================================================== */
 
+.sp-dark-story-section {
+  position: relative;
+  overflow: hidden;
+  background-color: #231418 !important;
+  color: #FAF6F0 !important;
+  padding: 4rem 1.5rem;
+  border-top: 1px solid #3A2329;
+  border-bottom: 1px solid #3A2329;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .sp-dark-story-section {
+    padding: 5.5rem 1.5rem;
+  }
+}
+
+.sp-dark-story-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .sp-dark-story-grid {
+    grid-template-columns: 5fr 7fr;
+    gap: 3.5rem;
+    align-items: flex-start;
+  }
+}
+
+.sp-dark-story-col-left {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.sp-dark-story-col-right {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.sp-dark-milestone-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+  row-gap: 1.75rem;
+  width: 100%;
+}
+
+/* ==========================================================================
+   SECTION 5: WARM SAND LIVE BATCH STUDIO STRIP
+   ========================================================================== */
+
+.sp-live-studio-strip {
+  width: 100%;
+  background-color: #EFE7DC !important;
+  border-bottom: 1px solid #E0D5C7;
+  padding: 2.5rem 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .sp-live-studio-strip {
+    padding: 3rem 1.5rem;
+  }
+}
+
+.sp-live-studio-row {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .sp-live-studio-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+/* Legacy compatibility classes */
 .sp-mentor-section {
   padding: 3.5rem 0;
   background-color: #FBF8F3 !important;
