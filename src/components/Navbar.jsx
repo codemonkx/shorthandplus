@@ -187,18 +187,18 @@ export default function Navbar({
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.4rem',
-                  padding: '0.45rem 1rem',
-                  borderRadius: '9999px',
-                  background: '#EFF6FF',
-                  color: '#2563EB',
-                  border: '1px solid #BFDBFE',
+                  padding: '0.45rem 0.95rem',
+                  borderRadius: '8px',
+                  background: '#222228',
+                  color: '#F5F3EE',
+                  border: '1px solid #32323A',
                   fontSize: '0.84rem',
-                  fontWeight: 700,
+                  fontWeight: 600,
                   cursor: 'pointer',
                   transition: 'all 0.15s ease'
                 }}
               >
-                <Sparkles size={14} color="#2563EB" />
+                <Sparkles size={14} color="#F87171" />
                 <span>Free Demo</span>
               </button>
 
@@ -213,13 +213,14 @@ export default function Navbar({
                   gap: '0.45rem',
                   padding: '0.42rem 1.05rem',
                   borderRadius: '8px',
-                  background: '#0F172A',
+                  background: '#B91C1C',
                   color: '#FFFFFF',
                   fontSize: '0.86rem',
                   fontWeight: 600,
-                  border: '1px solid #0F172A',
+                  border: '1px solid #B91C1C',
                   cursor: 'pointer',
-                  boxShadow: '0 1px 3px rgba(15, 23, 42, 0.12)'
+                  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.25)',
+                  transition: 'all 0.15s ease'
                 }}
               >
                 <LogIn size={14} />

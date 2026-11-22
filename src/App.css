@@ -2457,8 +2457,8 @@ input, select, textarea {
 
 /* CLEAN FOOTER */
 .clean-footer-wrapper {
-  background: #FFFFFF;
-  border-top: 1px solid var(--slate-200);
+  background: #16161A;
+  border-top: 1px solid #27272A;
   padding: 2.5rem 1.25rem 2rem;
 }
 
@@ -18013,7 +18013,7 @@ h1, h2, h3, h4, h5, h6 {
    11. EDITORIAL FOOTER - CRISP AGENCY-GRADE DESIGN SYSTEM (RICH CHARCOAL)
    ========================================================================== */
 .clean-footer-wrapper {
-  background-color: #18181B !important;
+  background-color: #16161A !important;
   border-top: 1px solid #27272A !important;
   color: #A1A1AA !important;
   font-family: var(--font-sans) !important;
@@ -18315,16 +18315,16 @@ h1, h2, h3, h4, h5, h6 {
    ========================================================================== */
 
 .shorthand-navbar-root {
-  background: rgba(255, 255, 255, 0.82) !important;
+  background: rgba(22, 22, 26, 0.95) !important;
   backdrop-filter: blur(20px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+  border-bottom: 1px solid #27272A !important;
   position: sticky !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   z-index: 1000 !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
   width: 100% !important;
   padding: 0 !important;
   pointer-events: auto !important;
@@ -18333,8 +18333,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .shorthand-navbar-root.is-scrolled {
   top: 0 !important;
-  background: rgba(255, 255, 255, 0.94) !important;
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
+  background: rgba(22, 22, 26, 0.98) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35) !important;
 }
 
 .shorthand-nav-container {
@@ -18387,7 +18387,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans) !important;
   font-size: 1.15rem !important;
   font-weight: 800 !important;
-  color: #0F172A !important;
+  color: #F5F3EE !important;
   letter-spacing: -0.02em !important;
   white-space: nowrap !important;
 }
@@ -18400,17 +18400,17 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0.35rem !important;
 }
 
-/* Sliding active indicator pill: Ink Black with Cream text */
+/* Sliding active indicator pill: Dark Slate with subtle border */
 .nav-sliding-pill {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   pointer-events: none !important;
   z-index: 1 !important;
-  background: #0F172A !important;
-  border: none !important;
+  background: #27272A !important;
+  border: 1px solid #3F3F46 !important;
   border-radius: 9999px !important;
-  box-shadow: 0 2px 8px rgba(17, 17, 17, 0.2) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
   will-change: transform, width, height;
 }
 
@@ -18439,22 +18439,22 @@ h1, h2, h3, h4, h5, h6 {
   white-space: nowrap !important;
 }
 
-/* Active Option: Cream text on Ink Black pill */
+/* Active Option: Off-white text */
 .nav-pill-item.active-pill {
-  color: #FFFFFF !important;
+  color: #F5F3EE !important;
   font-weight: 600 !important;
   background: transparent !important;
 }
 
-/* Inactive Options: Muted Ink */
+/* Inactive Options: Muted Slate */
 .nav-pill-item.inactive-link {
-  color: #475569 !important;
+  color: #A1A1AA !important;
   font-weight: 600 !important;
   background: transparent !important;
 }
 
 .nav-pill-item.inactive-link:hover {
-  color: #0F172A !important;
+  color: #F5F3EE !important;
 }
 
 /* 3. Right: Search Icon, Login, Sign Up */

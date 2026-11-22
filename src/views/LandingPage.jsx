@@ -99,9 +99,9 @@ export default function LandingPage({
     <div className="sp-landing-root">
       
       {/* =========================================================================
-          SECTION 1: EDITORIAL SPLIT HERO + EXAM TRUST STRIP (bg-white)
+          SECTION 1: EDITORIAL SPLIT HERO + EXAM TRUST STRIP (DEEP CHARCOAL)
           ========================================================================= */}
-      <section className="sp-hero-section">
+      <section className="sp-hero-section bg-[#16161A] text-[#F5F3EE] pt-14 pb-16 lg:pt-20 lg:pb-24 border-b border-[#27272A]">
         <div className="sp-hero-container">
           <div className="sp-hero-grid">
             
@@ -109,31 +109,31 @@ export default function LandingPage({
             <div className="sp-hero-left">
               
               {/* Clean inline trust row (no pills, no glow) */}
-              <div className="sp-hero-trust-row">
-                <span className="sp-hero-trust-item">Est. 2012 &middot; Gaya College More</span>
-                <span className="sp-hero-trust-divider" />
-                <span className="sp-hero-trust-item">12+ Years Coaching</span>
-                <span className="sp-hero-trust-divider" />
-                <span className="sp-hero-trust-item">SSC &amp; High Court Standard</span>
+              <div className="sp-hero-trust-row text-[#A1A1AA]">
+                <span className="sp-hero-trust-item text-[#A1A1AA]">Est. 2012 &middot; Gaya College More</span>
+                <span className="sp-hero-trust-divider bg-[#3F3F46]" />
+                <span className="sp-hero-trust-item text-[#A1A1AA]">12+ Years Coaching</span>
+                <span className="sp-hero-trust-divider bg-[#3F3F46]" />
+                <span className="sp-hero-trust-item text-[#A1A1AA]">SSC &amp; High Court Standard</span>
               </div>
 
               {/* Bold H1 with editorial italic serif accent */}
-              <h1 className="sp-hero-h1">
+              <h1 className="sp-hero-h1 text-[#F5F3EE]">
                 The Gold Standard in{' '}
-                <span className="sp-hero-serif-accent">Shorthand</span>{' '}
+                <span className="font-serif italic font-normal text-[#F87171] tracking-normal text-[1.08em] underline decoration-[#F87171]/40 underline-offset-8">Shorthand</span>{' '}
                 &amp; Typing for Govt. Exams
               </h1>
 
               {/* Concise 2-line subheadline */}
-              <p className="sp-hero-subheadline">
-                Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong>Shadab Sir</strong> with automated SSC error evaluation.
+              <p className="sp-hero-subheadline text-[#B4B4BE]">
+                Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong className="text-white">Shadab Sir</strong> with automated SSC error evaluation.
               </p>
 
               {/* Clean CTA row */}
               <div className="sp-hero-cta-group">
                 <button
                   type="button"
-                  className="sp-btn-ink-primary"
+                  className="sp-btn-ink-primary bg-[#B91C1C] text-white hover:bg-[#991B1B] px-5 py-3 rounded-lg text-sm font-semibold transition-colors shadow-sm"
                   onClick={handleStartTests}
                 >
                   <span>Start Audio Dictation</span>
@@ -142,7 +142,7 @@ export default function LandingPage({
 
                 <button
                   type="button"
-                  className="sp-btn-white-secondary bg-white border border-[#D6D2C8] text-zinc-900 hover:bg-[#F3F1EC] transition-colors"
+                  className="sp-btn-white-secondary bg-transparent border border-[#3F3F46] text-[#F5F3EE] hover:bg-[#222228] px-5 py-3 rounded-lg text-sm font-semibold transition-colors"
                   onClick={handleExploreCourses}
                 >
                   <span>Explore Courses</span>
@@ -150,7 +150,7 @@ export default function LandingPage({
 
                 <button
                   type="button"
-                  className="sp-hero-demo-link"
+                  className="sp-hero-demo-link text-[#D4D4D8] hover:text-white transition-colors"
                   onClick={handleOpenDemo}
                 >
                   Book 3 Free Demos &rarr;
@@ -158,7 +158,7 @@ export default function LandingPage({
               </div>
 
               {/* Pricing & Timing Reassurance micro-line */}
-              <p className="sp-hero-reassurance-line">
+              <p className="sp-hero-reassurance-line text-[#A1A1AA]">
                 Online passes from &#8377;30 &middot; Offline &amp; Live Google Meet batches &middot; 3 Free Demo Classes
               </p>
 
@@ -166,15 +166,15 @@ export default function LandingPage({
 
             {/* Right Column (Hero Visual Showcase) */}
             <div className="sp-hero-right">
-              <div className="sp-hero-media-card">
+              <div className="sp-hero-media-card border border-[#2E2E36] rounded-2xl overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.45)] bg-[#1A1A20]">
                 <img 
                   src="/assets/institution-hero.jpg" 
                   alt="Shorthand Plus Stenography Classroom &amp; Typing Lab" 
                   className="sp-hero-img"
                 />
-                <div className="sp-hero-caption-bar">
-                  <div className="sp-caption-dot" />
-                  <span className="sp-caption-text">SSC &amp; High Court Exam Standard &middot; 50&ndash;140 WPM</span>
+                <div className="sp-hero-caption-bar bg-[#16161A]/95 text-[#D4D4D8] border-t border-[#2E2E36]">
+                  <div className="sp-caption-dot bg-[#F87171]" />
+                  <span className="sp-caption-text text-[#D4D4D8]">SSC &amp; High Court Exam Standard &middot; 50&ndash;140 WPM</span>
                 </div>
               </div>
             </div>
@@ -183,21 +183,21 @@ export default function LandingPage({
         </div>
 
         {/* Flush Exam Authority Strip - Balanced Full-Width Flex Row */}
-        <div className="sp-exam-strip bg-[#F3F1EC] border-y border-[#E5E1D8]">
+        <div className="sp-exam-strip bg-[#1E1E24] border-y border-[#2E2E36]">
           <div className="sp-exam-strip-inner max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <span className="sp-exam-strip-label whitespace-nowrap text-zinc-600 font-semibold text-xs tracking-wider">PREPARING ASPIRANTS FOR</span>
-            <div className="sp-exam-strip-list flex-1 flex flex-wrap items-center justify-between md:justify-end lg:justify-between gap-x-6 gap-y-2 md:pl-12 text-zinc-800 font-semibold">
-              <span className="text-zinc-800 font-semibold">SSC Stenographer</span>
-              <span className="sp-strip-bullet text-[#D6D2C8]">&middot;</span>
-              <span className="text-zinc-800 font-semibold">Patna High Court</span>
-              <span className="sp-strip-bullet text-[#D6D2C8]">&middot;</span>
-              <span className="text-zinc-800 font-semibold">Civil Court</span>
-              <span className="sp-strip-bullet text-[#D6D2C8]">&middot;</span>
-              <span className="text-zinc-800 font-semibold">EPFO</span>
-              <span className="sp-strip-bullet text-[#D6D2C8]">&middot;</span>
-              <span className="text-zinc-800 font-semibold">DRDO</span>
-              <span className="sp-strip-bullet text-[#D6D2C8]">&middot;</span>
-              <span className="text-zinc-800 font-semibold">BSSC</span>
+            <span className="sp-exam-strip-label whitespace-nowrap text-[#8E8E99] font-semibold text-xs tracking-wider">PREPARING ASPIRANTS FOR</span>
+            <div className="sp-exam-strip-list flex-1 flex flex-wrap items-center justify-between md:justify-end lg:justify-between gap-x-6 gap-y-2 md:pl-12 text-[#E4E4E7] font-semibold">
+              <span className="text-[#E4E4E7] font-semibold">SSC Stenographer</span>
+              <span className="sp-strip-bullet text-[#3F3F46]">&middot;</span>
+              <span className="text-[#E4E4E7] font-semibold">Patna High Court</span>
+              <span className="sp-strip-bullet text-[#3F3F46]">&middot;</span>
+              <span className="text-[#E4E4E7] font-semibold">Civil Court</span>
+              <span className="sp-strip-bullet text-[#3F3F46]">&middot;</span>
+              <span className="text-[#E4E4E7] font-semibold">EPFO</span>
+              <span className="sp-strip-bullet text-[#3F3F46]">&middot;</span>
+              <span className="text-[#E4E4E7] font-semibold">DRDO</span>
+              <span className="sp-strip-bullet text-[#3F3F46]">&middot;</span>
+              <span className="text-[#E4E4E7] font-semibold">BSSC</span>
             </div>
           </div>
         </div>
@@ -321,20 +321,20 @@ export default function LandingPage({
             </div>
 
             {/* Right Column: Live Stylized Software UI Mockup */}
-            <div className="sp-engine-preview-outer bg-[#F3F1EC] border border-[#E5E1D8] rounded-2xl p-4 sm:p-5">
-              <div className="sp-engine-preview-window bg-white border border-zinc-200 rounded-xl overflow-hidden shadow-[0_12px_32px_rgba(24,24,27,0.08)]">
+            <div className="sp-engine-preview-outer bg-[#E2DDD3] border border-[#CEC8BA] rounded-2xl p-4 sm:p-5">
+              <div className="sp-engine-preview-window bg-[#F7F5F0] border border-[#CEC8BA] rounded-xl overflow-hidden shadow-[0_12px_32px_rgba(22,22,26,0.12)]">
                 
                 {/* Window Title Bar - Crisp Dark Charcoal Top Bar */}
-                <div className="sp-window-chrome bg-[#18181B] px-4 py-2.5 flex items-center justify-between text-xs text-zinc-300">
+                <div className="sp-window-chrome bg-[#16161A] border-b border-[#27272A] px-4 py-2.5 flex items-center justify-between text-xs text-zinc-300">
                   <div className="sp-chrome-dots flex items-center gap-1.5">
                     <span className="sp-dot w-2.5 h-2.5 rounded-full bg-[#EF4444]" />
                     <span className="sp-dot w-2.5 h-2.5 rounded-full bg-[#F59E0B]" />
                     <span className="sp-dot w-2.5 h-2.5 rounded-full bg-[#10B981]" />
                   </div>
-                  <div className="sp-chrome-title font-medium text-zinc-200 flex items-center gap-2">
-                    <span className="text-zinc-400 font-semibold tracking-wider text-[11px]">SHORTHAND PLUS &middot; EXAM ENGINE</span>
-                    <span className="text-zinc-600 hidden sm:inline">&middot;</span>
-                    <span className="text-zinc-300 hidden sm:inline text-xs">
+                  <div className="sp-chrome-title font-medium text-[#F5F3EE] flex items-center gap-2">
+                    <span className="text-[#A1A1AA] font-semibold tracking-wider text-[11px]">SHORTHAND PLUS &middot; EXAM ENGINE</span>
+                    <span className="text-[#52525B] hidden sm:inline">&middot;</span>
+                    <span className="text-[#E4E4E7] hidden sm:inline text-xs">
                       {activeEngineTab === 0 && "Live Audio Dictation Lab"}
                       {activeEngineTab === 1 && "Bilingual Typing Studio"}
                       {activeEngineTab === 2 && "Forensic Error Audit Diff"}
@@ -346,7 +346,7 @@ export default function LandingPage({
                 </div>
 
                 {/* Mockup Canvas */}
-                <div className="sp-window-canvas bg-white">
+                <div className="sp-window-canvas bg-[#F7F5F0]">
                 
                 {/* TAB 0 PREVIEW: Audio Dictation Player */}
                 {activeEngineTab === 0 && (
@@ -554,7 +554,7 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 3: HOW PREPARATION WORKS (MINIMAL HORIZONTAL TIMELINE)
           ========================================================================= */}
-      <section className="sp-timeline-section bg-[#F3F1EC] border-y border-[#E5E1D8]">
+      <section className="sp-timeline-section bg-[#ECE8E0] border-t border-[#D6D0C4]">
         <div className="sp-container">
           
           <div className="sp-timeline-head-row">
@@ -579,8 +579,8 @@ export default function LandingPage({
           <div className="sp-timeline-grid">
             
             {/* Step 1 */}
-            <div className="sp-timeline-col">
-              <span className="sp-timeline-num text-slate-400 font-bold">01</span>
+            <div className="sp-timeline-col border-t-2 border-[#D6D0C4]">
+              <span className="sp-timeline-num text-[#8C8578] font-bold">01</span>
               <h3 className="sp-timeline-title">Listen &amp; Write Shorthand</h3>
               <p className="sp-timeline-desc">
                 Take calibrated live or studio dictations in your physical stenography notebook at <strong>60 to 140 WPM</strong>. Master light/dark stroke discrimination and phraseography without hesitations.
@@ -588,8 +588,8 @@ export default function LandingPage({
             </div>
 
             {/* Step 2 */}
-            <div className="sp-timeline-col">
-              <span className="sp-timeline-num text-slate-400 font-bold">02</span>
+            <div className="sp-timeline-col border-t-2 border-[#D6D0C4]">
+              <span className="sp-timeline-num text-[#8C8578] font-bold">02</span>
               <h3 className="sp-timeline-title">Transcribe Under Exam Clock</h3>
               <p className="sp-timeline-desc">
                 Review outlines during the 5-minute reading clock, then transcribe in <strong>English, Kruti Dev 010, or Mangal</strong> under strict official exam-hall timing and backspace-lock rules.
@@ -597,8 +597,8 @@ export default function LandingPage({
             </div>
 
             {/* Step 3 */}
-            <div className="sp-timeline-col">
-              <span className="sp-timeline-num text-slate-400 font-bold">03</span>
+            <div className="sp-timeline-col border-t-2 border-[#D6D0C4]">
+              <span className="sp-timeline-num text-[#8C8578] font-bold">03</span>
               <h3 className="sp-timeline-title">Fix Every Single Mistake</h3>
               <p className="sp-timeline-desc">
                 Receive automated full and half-mistake percentage reports instantly, combined with daily <strong>handwritten outline review</strong> by Shadab Sir to eliminate recurring stroke angle flaws.
@@ -611,9 +611,9 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 4: LEGACY & MENTOR EDITORIAL SPLIT (bg-white)
+          SECTION 4: LEGACY & MENTOR EDITORIAL SPLIT (WARM PARCHMENT CANVAS)
           ========================================================================= */}
-      <section className="sp-mentor-section">
+      <section className="sp-mentor-section bg-[#ECE8E0] border-t border-[#D6D0C4]">
         <div className="sp-container">
           <div className="sp-mentor-grid">
             
@@ -663,11 +663,10 @@ export default function LandingPage({
               </div>
             </div>
 
-            {/* Right Column: Mentor & Academy Visual Card */}
-            <div className="bg-white border border-[#E5E1D8] rounded-2xl overflow-hidden shadow-xs">
+            {/* Right Column: Mentor & Academy Visual Card (Soft Ivory #F7F5F0) */}
+            <div className="bg-[#F7F5F0] border border-[#D6D0C4] rounded-2xl overflow-hidden shadow-xs">
               {/* Top Visual Frame */}
-              <div className="aspect-[4/3] bg-[#F3F1EC] relative overflow-hidden">
-                {/* TODO: Replace src with real portrait photo of Shadab Sir or Gaya classroom */}
+              <div className="aspect-[4/3] bg-[#E2DDD3] relative overflow-hidden">
                 <img 
                   src="/assets/institution-hero.jpg" 
                   alt="Shadab Sir - Gaya Shorthand Classes Classroom &amp; Mentor" 
@@ -681,7 +680,7 @@ export default function LandingPage({
               </div>
 
               {/* Compact 4-Point Summary Underneath */}
-              <div className="p-5 divide-y divide-[#E5E1D8]/60">
+              <div className="p-5 divide-y divide-[#D6D0C4]/60">
                 <div className="py-2.5 text-sm font-medium text-slate-800 flex items-center gap-2.5">
                   <Check size={16} className="text-[#B91C1C] shrink-0" />
                   <span>Personal Pitman Outline Checking</span>
@@ -708,9 +707,9 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 5: REFINED LIGHT EDITORIAL LIVE ONLINE CLASSES BANNER
           ========================================================================= */}
-      <section className="sp-live-banner-section bg-white">
+      <section className="sp-live-banner-section bg-[#ECE8E0] border-t border-[#D6D0C4]">
         <div className="sp-container">
-          <div className="sp-live-banner-card bg-[#F3F1EC] border border-[#E5E1D8] border-l-4 border-l-[#991B1B] rounded-2xl p-8 md:p-12">
+          <div className="sp-live-banner-card bg-[#F7F5F0] border border-[#D6D0C4] border-l-4 border-l-[#991B1B] rounded-2xl p-8 md:p-12">
             
             {/* Left Content Column */}
             <div className="sp-live-content-col">
@@ -765,7 +764,7 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 6: ASPIRANT VOICES (EDITORIAL TESTIMONIALS)
           ========================================================================= */}
-      <section className="sp-voices-section bg-[#F3F1EC] border-y border-[#E5E1D8]">
+      <section className="sp-voices-section bg-[#ECE8E0] border-t border-[#D6D0C4]">
         <div className="sp-container">
           
           <div className="sp-voices-header">
@@ -783,10 +782,10 @@ export default function LandingPage({
           <div className="sp-voices-grid">
             
             {/* Review 1 */}
-            <div className="sp-voice-card bg-white border border-[#E5E1D8] rounded-xl p-6 shadow-[0_2px_10px_rgba(24,24,27,0.03)] flex flex-col justify-between">
+            <div className="sp-voice-card bg-[#F7F5F0] border border-[#D6D0C4] rounded-xl p-6 shadow-xs flex flex-col justify-between">
               <div>
                 {/* Top Proof Row */}
-                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E5E1D8]">
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#D6D0C4]">
                   <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-900">
                     SSC Steno Grade C
                   </span>
@@ -812,10 +811,10 @@ export default function LandingPage({
             </div>
 
             {/* Review 2 */}
-            <div className="sp-voice-card bg-white border border-[#E5E1D8] rounded-xl p-6 shadow-[0_2px_10px_rgba(24,24,27,0.03)] flex flex-col justify-between">
+            <div className="sp-voice-card bg-[#F7F5F0] border border-[#D6D0C4] rounded-xl p-6 shadow-xs flex flex-col justify-between">
               <div>
                 {/* Top Proof Row */}
-                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E5E1D8]">
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#D6D0C4]">
                   <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-900">
                     Patna High Court PA
                   </span>
@@ -841,10 +840,10 @@ export default function LandingPage({
             </div>
 
             {/* Review 3 */}
-            <div className="sp-voice-card bg-white border border-[#E5E1D8] rounded-xl p-6 shadow-[0_2px_10px_rgba(24,24,27,0.03)] flex flex-col justify-between">
+            <div className="sp-voice-card bg-[#F7F5F0] border border-[#D6D0C4] rounded-xl p-6 shadow-xs flex flex-col justify-between">
               <div>
                 {/* Top Proof Row */}
-                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E5E1D8]">
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#D6D0C4]">
                   <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-900">
                     Civil Court Steno
                   </span>
@@ -877,13 +876,13 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 7: COMPACT CENTER DETAILS + FAQ SPLIT
           ========================================================================= */}
-      <section className="sp-center-faq-section">
+      <section className="sp-center-faq-section bg-[#ECE8E0] border-t border-[#D6D0C4]">
         <div className="sp-container">
           
           <div className="sp-center-faq-grid">
             
-            {/* Left Column: Center Location & Helplines */}
-            <div className="sp-center-card bg-[#F3F1EC] border border-[#E5E1D8] rounded-2xl">
+            {/* Left Column: Center Location & Helplines (Soft Ivory #F7F5F0) */}
+            <div className="sp-center-card bg-[#F7F5F0] border border-[#D6D0C4] rounded-2xl">
               <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">
                 VISIT OUR CENTER
               </span>
@@ -927,11 +926,11 @@ export default function LandingPage({
 
               </div>
 
-              {/* Secondary White Button (No Dark-on-Dark Stacking with Footer) */}
+              {/* Secondary Button */}
               <div className="sp-center-action-row">
                 <button
                   type="button"
-                  className="sp-btn-white-secondary bg-white border border-[#D6D2C8] text-zinc-900 hover:bg-[#F3F1EC]"
+                  className="sp-btn-white-secondary bg-[#F7F5F0] border border-[#B8B1A3] text-[#16161A] hover:bg-[#E2DDD3]"
                   style={{ width: '100%', justifyContent: 'center', padding: '0.75rem 1.25rem', fontSize: '0.875rem', fontWeight: 600 }}
                   onClick={handleOpenDemo}
                 >
@@ -980,11 +979,11 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 8: CONTAINED EDITORIAL CLOSING CONVERSION CARD (WARM STONE)
+          SECTION 8: CONTAINED EDITORIAL CLOSING CONVERSION CARD (WARM PARCHMENT CANVAS)
           ========================================================================= */}
-      <section className="sp-closing-cta-section bg-white pb-20">
+      <section className="sp-closing-cta-section bg-[#ECE8E0] border-t border-[#D6D0C4] pb-20">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="sp-closing-cta-card bg-[#F3F1EC] border border-[#E5E1D8] rounded-2xl py-14 px-6 text-center max-w-5xl mx-auto">
+          <div className="sp-closing-cta-card bg-[#F7F5F0] border border-[#D6D0C4] rounded-2xl py-14 px-6 text-center max-w-5xl mx-auto">
             <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 mb-3 block">
               GET STARTED TODAY
             </span>
@@ -999,14 +998,14 @@ export default function LandingPage({
             <div className="sp-closing-cta-buttons mt-8 flex flex-wrap items-center justify-center gap-3">
               <button
                 type="button"
-                className="sp-btn-ink-primary bg-[#18181B] text-white hover:bg-zinc-800 px-6 py-3.5 rounded-lg text-sm font-semibold"
+                className="sp-btn-ink-primary bg-[#16161A] text-[#F5F3EE] hover:bg-[#27272A] px-6 py-3.5 rounded-lg text-sm font-semibold transition-colors"
                 onClick={handleStartTests}
               >
                 <span>Start Free Dictation Test &rarr;</span>
               </button>
               <button
                 type="button"
-                className="sp-btn-white-secondary bg-white border border-[#D6D2C8] text-zinc-900 hover:bg-[#F3F1EC] px-6 py-3.5 rounded-lg text-sm font-semibold"
+                className="sp-btn-white-secondary bg-transparent border border-[#B8B1A3] text-[#16161A] hover:bg-[#ECE8E0] px-6 py-3.5 rounded-lg text-sm font-semibold transition-colors"
                 onClick={handleExploreCourses}
               >
                 <span>Explore All Courses</span>
