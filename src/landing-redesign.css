@@ -2028,16 +2028,16 @@
    COURSES PAGE EDITORIAL REDESIGN (AGENCY-GRADE TOKENS)
    ========================================================================== */
 .sp-courses-root {
-  background-color: #FAFAFA !important;
+  background-color: #ECE8E0 !important;
   min-height: 100vh !important;
-  color: #0F172A !important;
+  color: #16161A !important;
   font-family: var(--sp-font-sans) !important;
   width: 100% !important;
 }
 
 .sp-courses-header-section {
-  background-color: #FFFFFF !important;
-  border-bottom: 1px solid #E2E8F0 !important;
+  background-color: #ECE8E0 !important;
+  border-bottom: 1px solid #D6D0C4 !important;
   padding-top: 3.5rem !important;
   width: 100% !important;
 }
@@ -2143,7 +2143,7 @@
 
 /* Section B: Course Cards Grid */
 .sp-courses-grid-section {
-  background-color: #FAFAFA !important;
+  background-color: #ECE8E0 !important;
   padding: 4rem 1.5rem !important;
 }
 
@@ -2399,9 +2399,9 @@
 
 /* Section C: Exam Coverage Directory */
 .sp-exams-section {
-  background-color: #FFFFFF !important;
-  border-top: 1px solid #E2E8F0 !important;
-  border-bottom: 1px solid #E2E8F0 !important;
+  background-color: #ECE8E0 !important;
+  border-top: 1px solid #D6D0C4 !important;
+  border-bottom: 1px solid #D6D0C4 !important;
   padding: 4.5rem 1.5rem !important;
 }
 
@@ -2414,10 +2414,10 @@
 .sp-exams-grid {
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  border-top: 1px solid #E2E8F0 !important;
-  border-left: 1px solid #E2E8F0 !important;
+  border-top: 1px solid #D1CBBF !important;
+  border-left: 1px solid #D1CBBF !important;
   margin-top: 2rem !important;
-  background-color: #FFFFFF !important;
+  background-color: #F7F5F0 !important;
 }
 
 @media (max-width: 1024px) {
@@ -2433,8 +2433,8 @@
 }
 
 .sp-exam-cell {
-  border-right: 1px solid #E2E8F0 !important;
-  border-bottom: 1px solid #E2E8F0 !important;
+  border-right: 1px solid #D1CBBF !important;
+  border-bottom: 1px solid #D1CBBF !important;
   padding: 1.25rem 1.5rem !important;
   display: flex !important;
   align-items: center !important;
@@ -2444,19 +2444,19 @@
 }
 
 .sp-exam-cell:hover {
-  background-color: #FAFAFA !important;
+  background-color: #EFECE5 !important;
 }
 
 .sp-exam-cell-title {
   font-family: var(--sp-font-sans) !important;
   font-size: 0.875rem !important;
   font-weight: 600 !important;
-  color: #0F172A !important;
+  color: #16161A !important;
 }
 
 .sp-exam-cell-sub {
   font-size: 0.75rem !important;
-  color: #64748B !important;
+  color: #57534E !important;
   margin-top: 0.2rem !important;
 }
 
@@ -2464,24 +2464,24 @@
   font-family: var(--sp-font-sans) !important;
   font-size: 0.75rem !important;
   font-weight: 600 !important;
-  color: #475569 !important;
+  color: #991B1B !important;
   font-variant-numeric: tabular-nums !important;
   flex-shrink: 0 !important;
 }
 
 /* Section D: Structured Training Methodology */
 .sp-methodology-section {
-  background-color: #FAFAFA !important;
+  background-color: #ECE8E0 !important;
   padding: 4.5rem 1.5rem !important;
 }
 
 .sp-methodology-grid {
   display: grid !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  border-top: 1px solid #E2E8F0 !important;
-  border-left: 1px solid #E2E8F0 !important;
+  border-top: 1px solid #D1CBBF !important;
+  border-left: 1px solid #D1CBBF !important;
   margin-top: 2.5rem !important;
-  background-color: #FFFFFF !important;
+  background-color: #F7F5F0 !important;
 }
 
 @media (max-width: 1024px) {
@@ -2497,8 +2497,8 @@
 }
 
 .sp-methodology-cell {
-  border-right: 1px solid #E2E8F0 !important;
-  border-bottom: 1px solid #E2E8F0 !important;
+  border-right: 1px solid #D1CBBF !important;
+  border-bottom: 1px solid #D1CBBF !important;
   padding: 1.5rem !important;
   display: flex !important;
   flex-direction: column !important;
@@ -2506,14 +2506,14 @@
 }
 
 .sp-methodology-cell:hover {
-  background-color: #FAFAFA !important;
+  background-color: #EFECE5 !important;
 }
 
 .sp-methodology-num {
   font-family: var(--sp-font-sans) !important;
   font-size: 0.75rem !important;
   font-weight: 700 !important;
-  color: #94A3B8 !important;
+  color: #8C8578 !important;
   font-variant-numeric: tabular-nums !important;
   margin-bottom: 0.75rem !important;
 }
@@ -2522,28 +2522,28 @@
   font-family: var(--sp-font-sans) !important;
   font-size: 1rem !important;
   font-weight: 700 !important;
-  color: #0F172A !important;
+  color: #16161A !important;
   margin-bottom: 0.25rem !important;
 }
 
 .sp-methodology-hindi {
   font-size: 0.75rem !important;
   font-weight: 500 !important;
-  color: #64748B !important;
+  color: #78716C !important;
   margin-bottom: 0.5rem !important;
 }
 
 .sp-methodology-desc {
   font-size: 0.75rem !important;
   line-height: 1.6 !important;
-  color: #475569 !important;
+  color: #44403C !important;
   margin: 0 !important;
 }
 
 /* Section E: Online Test Series & Mock Passes */
 .sp-passes-section {
-  background-color: #FFFFFF !important;
-  border-top: 1px solid #E2E8F0 !important;
+  background-color: #ECE8E0 !important;
+  border-top: 1px solid #D6D0C4 !important;
   padding: 4.5rem 1.5rem 5rem !important;
 }
 
@@ -2599,9 +2599,9 @@
 }
 
 .sp-pass-card {
-  background-color: #FFFFFF !important;
-  border: 1px solid #E2E8F0 !important;
-  border-radius: 12px !important;
+  background-color: #F7F5F0 !important;
+  border: 1px solid #D1CBBF !important;
+  border-radius: 16px !important;
   padding: 1.75rem !important;
   display: flex !important;
   flex-direction: column !important;
@@ -2611,13 +2611,14 @@
 }
 
 .sp-pass-card:hover {
-  border-color: #CBD5E1 !important;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04) !important;
+  border-color: #B8B1A3 !important;
+  box-shadow: 0 4px 16px rgba(22, 22, 26, 0.06) !important;
 }
 
 .sp-pass-card.is-recommended {
-  border: 2px solid #0F172A !important;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08) !important;
+  border: 1px solid #C8C2B6 !important;
+  border-top: 4px solid #991B1B !important;
+  box-shadow: 0 4px 16px rgba(22, 22, 26, 0.06) !important;
 }
 
 .sp-pass-badge {
@@ -2628,10 +2629,10 @@
   font-size: 10px !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  color: #0F172A !important;
-  background-color: #F1F5F9 !important;
-  border: 1px solid #E2E8F0 !important;
+  letter-spacing: 0.14em !important;
+  color: #991B1B !important;
+  background-color: #EFECE5 !important;
+  border: 1px solid #D6D0C4 !important;
   padding: 0.2rem 0.55rem !important;
   border-radius: 9999px !important;
 }
@@ -2754,32 +2755,34 @@
   justify-content: center !important;
   gap: 0.45rem !important;
   padding: 0.75rem 1rem !important;
-  border-radius: 8px !important;
-  background-color: #FFFFFF !important;
-  color: #0F172A !important;
+  border-radius: 12px !important;
+  background-color: #EFECE5 !important;
+  color: #16161A !important;
   font-family: var(--sp-font-sans) !important;
   font-size: 0.875rem !important;
   font-weight: 600 !important;
-  border: 1px solid #CBD5E1 !important;
+  border: 1px solid #D1CBBF !important;
   cursor: pointer !important;
   transition: all 0.15s ease !important;
 }
 
 .sp-pass-btn-secondary:hover {
-  background-color: #F8FAFC !important;
-  border-color: #94A3B8 !important;
+  background-color: #16161A !important;
+  color: #F5F3EE !important;
+  border-color: #16161A !important;
 }
 
 /* Section F: Bottom Dark CTA Banner */
 .sp-courses-dark-banner-section {
-  background-color: #FFFFFF !important;
+  background-color: #ECE8E0 !important;
   padding-bottom: 5rem !important;
 }
 
 .sp-courses-dark-banner-box {
-  background-color: #0F172A !important;
+  background-color: #F7F5F0 !important;
   border-radius: 16px !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid #D1CBBF !important;
+  border-left: 4px solid #991B1B !important;
   padding: 2.5rem 3rem !important;
   display: flex !important;
   flex-direction: row !important;
@@ -2787,6 +2790,7 @@
   justify-content: space-between !important;
   gap: 2rem !important;
   flex-wrap: wrap !important;
+  box-shadow: 0 8px 28px rgba(22, 22, 26, 0.05) !important;
 }
 
 @media (max-width: 768px) {
@@ -2801,22 +2805,22 @@
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.5rem !important;
-  background-color: #FFFFFF !important;
-  color: #020617 !important;
+  background-color: #991B1B !important;
+  color: #FFFFFF !important;
   padding: 0.85rem 1.5rem !important;
-  border-radius: 8px !important;
+  border-radius: 12px !important;
   font-family: var(--sp-font-sans) !important;
   font-size: 0.875rem !important;
   font-weight: 600 !important;
   text-decoration: none !important;
   white-space: nowrap !important;
   transition: background-color 0.15s ease !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 6px 18px rgba(153, 27, 27, 0.20) !important;
 }
 
 .sp-courses-dark-banner-btn:hover {
-  background-color: #F1F5F9 !important;
-  color: #020617 !important;
+  background-color: #7F1D1D !important;
+  color: #FFFFFF !important;
 }
 
 /* ==========================================================================
@@ -3188,10 +3192,10 @@
    SECTION 1: DEEP INK EDITORIAL HERO & INTERACTIVE TRACK FINDER
    ========================================================================== */
 .sp-courses-dark-hero {
-  background-color: #0F172A !important;
-  color: #FFFFFF !important;
-  border-bottom: 1px solid #1E293B !important;
-  padding: 4.5rem 1.5rem !important;
+  background-color: #ECE8E0 !important;
+  color: #16161A !important;
+  border-bottom: 1px solid #D6D0C4 !important;
+  padding: 7rem 1.5rem 3.5rem !important;
   width: 100% !important;
 }
 
@@ -3221,18 +3225,18 @@
   font-size: 11px !important;
   font-weight: 600 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.18em !important;
-  color: #94A3B8 !important;
+  letter-spacing: 0.16em !important;
+  color: #57534E !important;
   display: block !important;
 }
 
 .sp-courses-hero-h1 {
   font-family: var(--sp-font-sans) !important;
-  font-size: clamp(2.1rem, 3.8vw, 3.1rem) !important;
+  font-size: clamp(2.1rem, 3.8vw, 3.25rem) !important;
   font-weight: 800 !important;
   letter-spacing: -0.03em !important;
   line-height: 1.08 !important;
-  color: #FFFFFF !important;
+  color: #16161A !important;
   margin: 0.75rem 0 1rem !important;
 }
 
@@ -3240,28 +3244,28 @@
   font-family: var(--sp-font-serif) !important;
   font-style: italic !important;
   font-weight: 400 !important;
-  color: #FB7185 !important;
+  color: #991B1B !important;
   letter-spacing: normal !important;
-  font-size: 1.05em !important;
+  font-size: 1.08em !important;
 }
 
 .sp-courses-hero-subtext {
   font-family: var(--sp-font-sans) !important;
   font-size: 1rem !important;
   line-height: 1.625 !important;
-  color: #CBD5E1 !important;
+  color: #44403C !important;
   max-width: 38rem !important;
   margin: 0 0 2rem !important;
 }
 
 .sp-courses-hero-stats {
-  border-top: 1px solid #1E293B !important;
+  border-top: 1px solid #D6D0C4 !important;
   padding-top: 1.5rem !important;
   display: flex !important;
   flex-wrap: wrap !important;
   gap: 1.5rem !important;
   font-size: 0.75rem !important;
-  color: #94A3B8 !important;
+  color: #57534E !important;
 }
 
 .sp-courses-hero-stat-item {
@@ -3274,18 +3278,17 @@
   width: 5px !important;
   height: 5px !important;
   border-radius: 9999px !important;
-  background-color: #B91C1C !important;
+  background-color: #991B1B !important;
   flex-shrink: 0 !important;
 }
 
 /* Track Finder Quick Selector Panel */
 .sp-track-finder-panel {
-  background-color: rgba(15, 23, 42, 0.92) !important;
-  border: 1px solid #334155 !important;
+  background-color: #F7F5F0 !important;
+  border: 1px solid #D1CBBF !important;
   border-radius: 16px !important;
   padding: 1.75rem !important;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3) !important;
-  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 14px 34px rgba(22, 22, 26, 0.06) !important;
 }
 
 .sp-track-finder-header {
@@ -3296,14 +3299,14 @@
   font-family: var(--sp-font-sans) !important;
   font-size: 1.05rem !important;
   font-weight: 700 !important;
-  color: #FFFFFF !important;
+  color: #16161A !important;
   margin: 0 0 0.25rem !important;
   letter-spacing: -0.015em !important;
 }
 
 .sp-track-finder-sub {
   font-size: 0.75rem !important;
-  color: #94A3B8 !important;
+  color: #57534E !important;
   margin: 0 !important;
 }
 
@@ -3320,8 +3323,8 @@
 }
 
 .sp-track-goal-btn {
-  background: rgba(30, 41, 59, 0.75) !important;
-  border: 1px solid rgba(51, 65, 85, 0.8) !important;
+  background: #EFECE5 !important;
+  border: 1px solid #D6D0C4 !important;
   padding: 0.875rem 1rem !important;
   border-radius: 12px !important;
   text-align: left !important;
@@ -3333,8 +3336,8 @@
 }
 
 .sp-track-goal-btn:hover {
-  background: #1E293B !important;
-  border-color: #94A3B8 !important;
+  background: #E4DFD5 !important;
+  border-color: rgba(153, 27, 27, 0.4) !important;
   transform: translateY(-1px) !important;
 }
 
@@ -3342,7 +3345,7 @@
   font-family: var(--sp-font-sans) !important;
   font-size: 0.8125rem !important;
   font-weight: 700 !important;
-  color: #FFFFFF !important;
+  color: #16161A !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -3350,7 +3353,7 @@
 
 .sp-track-goal-sub {
   font-size: 0.6875rem !important;
-  color: #94A3B8 !important;
+  color: #57534E !important;
   line-height: 1.35 !important;
 }
 
@@ -3359,13 +3362,14 @@
    ========================================================================== */
 .sp-courses-sticky-bar {
   position: sticky !important;
-  top: 64px !important;
-  z-index: 20 !important;
-  background-color: rgba(255, 255, 255, 0.96) !important;
-  backdrop-filter: blur(8px) !important;
-  border-bottom: 1px solid #E2E8F0 !important;
+  top: 76px !important;
+  z-index: 25 !important;
+  background-color: rgba(228, 223, 213, 0.95) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid #D1CBBF !important;
   padding: 0.625rem 1.5rem !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+  box-shadow: 0 4px 12px rgba(22, 22, 26, 0.04) !important;
   width: 100% !important;
 }
 
@@ -3382,7 +3386,7 @@
 .sp-courses-sticky-tabs {
   display: flex !important;
   align-items: center !important;
-  gap: 1.25rem !important;
+  gap: 0.5rem !important;
   overflow-x: auto !important;
   scrollbar-width: none !important;
 }
@@ -3410,46 +3414,44 @@
   padding-right: 1.75rem !important;
   font-family: var(--sp-font-sans) !important;
   font-size: 0.8125rem !important;
-  background-color: #F8FAFC !important;
-  border: 1px solid #CBD5E1 !important;
-  border-radius: 8px !important;
-  color: #0F172A !important;
+  background-color: #F7F5F0 !important;
+  border: 1px solid #D1CBBF !important;
+  border-radius: 9999px !important;
+  color: #16161A !important;
   outline: none !important;
   transition: all 0.15s ease !important;
 }
 
 .sp-courses-search-input-sticky:focus {
-  background-color: #FFFFFF !important;
-  border-color: #0F172A !important;
-  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.08) !important;
+  background-color: #FAF8F5 !important;
+  border-color: #991B1B !important;
+  box-shadow: 0 0 0 2px rgba(153, 27, 27, 0.12) !important;
 }
 
 /* ==========================================================================
    SECTION 3: CURATED FLAGSHIP TRIO & ACCORDION COURSE DIRECTORY
    ========================================================================== */
 .sp-flagship-card {
-  background-color: #FFFFFF !important;
-  border: 1px solid #E2E8F0 !important;
-  border-radius: 14px !important;
+  background-color: #F7F5F0 !important;
+  border: 1px solid #D1CBBF !important;
+  border-radius: 16px !important;
   position: relative !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
   overflow: hidden !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  box-shadow: 0 4px 16px rgba(22, 22, 26, 0.04) !important;
   transition: all 0.2s ease !important;
 }
 
 .sp-flagship-card:hover {
-  border-color: #CBD5E1 !important;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06) !important;
+  border-color: #B8B1A3 !important;
+  box-shadow: 0 8px 24px rgba(22, 22, 26, 0.08) !important;
   transform: translateY(-2px) !important;
 }
 
 .sp-flagship-accent-bar {
-  height: 3px !important;
-  width: 100% !important;
-  background-color: #B91C1C !important;
+  display: none !important;
 }
 
 .sp-flagship-body {
@@ -3468,8 +3470,8 @@
   font-size: 11px !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.12em !important;
-  color: #B91C1C !important;
+  letter-spacing: 0.14em !important;
+  color: #991B1B !important;
 }
 
 /* Horizontal Table Directory */
@@ -3487,7 +3489,7 @@
   font-weight: 600 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.16em !important;
-  color: #64748B !important;
+  color: #57534E !important;
   display: block !important;
   margin-bottom: 0.35rem !important;
 }
@@ -3497,20 +3499,20 @@
   font-size: 1.625rem !important;
   font-weight: 800 !important;
   letter-spacing: -0.025em !important;
-  color: #0F172A !important;
+  color: #16161A !important;
   margin: 0 !important;
 }
 
 .sp-directory-table {
-  background-color: #FFFFFF !important;
-  border: 1px solid #E2E8F0 !important;
+  background-color: #F7F5F0 !important;
+  border: 1px solid #D1CBBF !important;
   border-radius: 16px !important;
   overflow: hidden !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  box-shadow: 0 6px 20px rgba(22, 22, 26, 0.04) !important;
 }
 
 .sp-directory-row {
-  border-bottom: 1px solid #E2E8F0 !important;
+  border-bottom: 1px solid #DFD9CD !important;
   transition: background-color 0.15s ease !important;
 }
 
@@ -3537,7 +3539,7 @@
 }
 
 .sp-directory-row:hover {
-  background-color: rgba(248, 250, 252, 0.8) !important;
+  background-color: rgba(239, 236, 229, 0.7) !important;
 }
 
 .sp-directory-col-info {
@@ -3557,15 +3559,15 @@
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.08em !important;
-  color: #64748B !important;
+  color: #57534E !important;
 }
 
 .sp-directory-badge {
   font-size: 10px !important;
   font-weight: 600 !important;
-  color: #475569 !important;
-  background-color: #F1F5F9 !important;
-  border: 1px solid #E2E8F0 !important;
+  color: #44403C !important;
+  background-color: #EAE5DC !important;
+  border: 1px solid #D6D0C4 !important;
   padding: 0.1rem 0.45rem !important;
   border-radius: 4px !important;
 }
@@ -3575,13 +3577,13 @@
   font-size: 1.05rem !important;
   font-weight: 700 !important;
   letter-spacing: -0.015em !important;
-  color: #0F172A !important;
+  color: #16161A !important;
   margin: 0 0 0.25rem !important;
 }
 
 .sp-directory-desc {
   font-size: 0.8125rem !important;
-  color: #64748B !important;
+  color: #44403C !important;
   line-height: 1.45 !important;
   margin: 0 !important;
 }
@@ -3597,9 +3599,9 @@
 .sp-directory-spec-pill {
   font-size: 0.75rem !important;
   font-weight: 500 !important;
-  color: #475569 !important;
-  background-color: #F1F5F9 !important;
-  border: 1px solid #E2E8F0 !important;
+  color: #44403C !important;
+  background-color: #EAE5DC !important;
+  border: 1px solid #D6D0C4 !important;
   padding: 0.25rem 0.6rem !important;
   border-radius: 6px !important;
   font-variant-numeric: tabular-nums !important;
@@ -3635,13 +3637,13 @@
   font-family: var(--sp-font-sans) !important;
   font-size: 1.125rem !important;
   font-weight: 700 !important;
-  color: #0F172A !important;
+  color: #16161A !important;
   font-variant-numeric: tabular-nums !important;
 }
 
 .sp-directory-fee-sub {
   font-size: 10px !important;
-  color: #94A3B8 !important;
+  color: #57534E !important;
   display: block !important;
 }
 
@@ -3649,9 +3651,9 @@
   font-family: var(--sp-font-sans) !important;
   font-size: 0.75rem !important;
   font-weight: 600 !important;
-  color: #475569 !important;
+  color: #57534E !important;
   background: transparent !important;
-  border: 1px solid #CBD5E1 !important;
+  border: 1px solid #D1CBBF !important;
   padding: 0.45rem 0.75rem !important;
   border-radius: 6px !important;
   cursor: pointer !important;
@@ -3663,32 +3665,32 @@
 }
 
 .sp-directory-syllabus-btn:hover {
-  background-color: #F8FAFC !important;
-  color: #0F172A !important;
-  border-color: #94A3B8 !important;
+  background-color: #EFECE5 !important;
+  color: #16161A !important;
+  border-color: #B8B1A3 !important;
 }
 
 .sp-directory-enroll-btn {
   font-family: var(--sp-font-sans) !important;
   font-size: 0.75rem !important;
   font-weight: 600 !important;
-  background-color: #0F172A !important;
-  color: #FFFFFF !important;
+  background-color: #16161A !important;
+  color: #F5F3EE !important;
   padding: 0.5rem 0.9rem !important;
   border-radius: 6px !important;
-  border: 1px solid #0F172A !important;
+  border: 1px solid #16161A !important;
   cursor: pointer !important;
   transition: background-color 0.15s ease !important;
   white-space: nowrap !important;
 }
 
 .sp-directory-enroll-btn:hover {
-  background-color: #1E293B !important;
+  background-color: #27272A !important;
 }
 
 .sp-directory-drawer {
-  background-color: #F8FAFC !important;
-  border-top: 1px solid #E2E8F0 !important;
+  background-color: rgba(239, 236, 229, 0.6) !important;
+  border-top: 1px solid #DFD9CD !important;
   padding: 1.25rem 1.75rem !important;
 }
 
@@ -3697,7 +3699,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   gap: 0.5rem 1.5rem !important;
   font-size: 0.75rem !important;
-  color: #475569 !important;
+  color: #44403C !important;
 }
 
 @media (max-width: 640px) {
@@ -3713,7 +3715,7 @@
 }
 
 /* ==========================================================================
-   SECTION 4: HIGH-CONTRAST PASSES & INVERTED DARK CARD
+   SECTION 4: HIGH-CONTRAST PASSES & ELEVATED CRIMSON-ACCENT CARD
    ========================================================================== */
 .sp-passes-grid-4col {
   display: grid !important;
@@ -3735,58 +3737,59 @@
   }
 }
 
-/* Inverted Solid Deep Ink Card for Best Value Pass */
+/* Elevated Featured Pass Card (Soft Ivory with Crimson top accent) */
 .sp-pass-card.is-inverted-dark {
-  background-color: #0F172A !important;
-  color: #FFFFFF !important;
-  border: 1px solid #1E293B !important;
-  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25) !important;
+  background-color: #FAF8F5 !important;
+  color: #16161A !important;
+  border: 1px solid #C8C2B6 !important;
+  border-top: 4px solid #991B1B !important;
+  box-shadow: 0 14px 34px rgba(22, 22, 26, 0.08) !important;
 }
 
 .sp-pass-card.is-inverted-dark .sp-pass-badge {
-  background-color: #B91C1C !important;
-  color: #FFFFFF !important;
-  border-color: #B91C1C !important;
+  background-color: #F7F5F0 !important;
+  color: #991B1B !important;
+  border-color: #D1CBBF !important;
 }
 
 .sp-pass-card.is-inverted-dark .sp-pass-series-title {
-  color: #94A3B8 !important;
+  color: #57534E !important;
 }
 
 .sp-pass-card.is-inverted-dark .sp-pass-title {
-  color: #FFFFFF !important;
+  color: #16161A !important;
 }
 
 .sp-pass-card.is-inverted-dark .sp-pass-desc {
-  color: #CBD5E1 !important;
+  color: #44403C !important;
 }
 
 .sp-pass-card.is-inverted-dark .sp-pass-currency {
-  color: #FFFFFF !important;
+  color: #16161A !important;
 }
 
 .sp-pass-card.is-inverted-dark .sp-pass-price {
-  color: #FFFFFF !important;
+  color: #16161A !important;
 }
 
 .sp-pass-card.is-inverted-dark .sp-pass-duration {
-  color: #94A3B8 !important;
+  color: #57534E !important;
 }
 
 .sp-pass-card.is-inverted-dark .sp-pass-original-price {
-  color: #64748B !important;
+  color: #78716C !important;
 }
 
 .sp-pass-card.is-inverted-dark .sp-pass-features-list {
-  border-top-color: #1E293B !important;
+  border-top-color: #DFD9CD !important;
 }
 
 .sp-pass-card.is-inverted-dark .sp-pass-feature-item {
-  color: #E2E8F0 !important;
+  color: #44403C !important;
 }
 
 .sp-pass-card.is-inverted-dark .sp-course-check-icon {
-  color: #FB7185 !important;
+  color: #991B1B !important;
 }
 
 .sp-pass-btn-white {
@@ -3796,20 +3799,21 @@
   justify-content: center !important;
   gap: 0.45rem !important;
   padding: 0.75rem 1rem !important;
-  border-radius: 8px !important;
-  background-color: #FFFFFF !important;
-  color: #020617 !important;
+  border-radius: 12px !important;
+  background-color: #991B1B !important;
+  color: #FFFFFF !important;
   font-family: var(--sp-font-sans) !important;
   font-size: 0.875rem !important;
   font-weight: 700 !important;
-  border: 1px solid #FFFFFF !important;
+  border: 1px solid #991B1B !important;
   cursor: pointer !important;
   transition: all 0.15s ease !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 4px 14px rgba(153, 27, 27, 0.20) !important;
 }
 
 .sp-pass-btn-white:hover {
-  background-color: #F1F5F9 !important;
+  background-color: #7F1D1D !important;
+  border-color: #7F1D1D !important;
 }
 
 /* ==========================================================================
@@ -4070,6 +4074,56 @@
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
+
+/* ==========================================================================
+   COURSES PAGE RESPONSIVE GRID HELPERS
+   ========================================================================== */
+.sp-courses-hero-2col {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 40px;
+  align-items: center;
+}
+.sp-courses-hero-col-left {
+  grid-column: span 7 / span 7;
+}
+.sp-courses-hero-col-right {
+  grid-column: span 5 / span 5;
+}
+@media (max-width: 1023px) {
+  .sp-courses-hero-2col {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .sp-courses-hero-col-left,
+  .sp-courses-hero-col-right {
+    grid-column: span 12 / span 12 !important;
+  }
+}
+
+.sp-courses-spread-12col {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+.sp-courses-spread-left {
+  grid-column: span 5 / span 5;
+}
+.sp-courses-spread-right {
+  grid-column: span 7 / span 7;
+}
+@media (max-width: 1023px) {
+  .sp-courses-spread-12col {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+  .sp-courses-spread-left,
+  .sp-courses-spread-right {
+    grid-column: span 12 / span 12 !important;
+  }
+}
+
 
 
 
