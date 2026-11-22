@@ -4022,5 +4022,44 @@
   gap: 0.625rem !important;
 }
 
+/* ==========================================================================
+   RESPONSIVE OVERRIDES FOR HERO & ENGINE 2-COLUMN GRIDS (NO TAILWIND NEEDED)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .sp-nav-mobile-btn {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .sp-nav-center-links {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .sp-hero-grid-2col {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+  .sp-hero-col-left,
+  .sp-hero-col-right {
+    grid-column: span 12 / span 12 !important;
+  }
+  .sp-engine-grid-2col {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .sp-engine-col-tabs,
+  .sp-engine-col-preview {
+    grid-column: span 12 / span 12 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .sp-telemetry-4col {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
 
 

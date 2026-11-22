@@ -101,40 +101,129 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 1: EDITORIAL SPLIT HERO + EXAM TRUST STRIP (DEEP CHARCOAL)
           ========================================================================= */}
-      <section className="sp-hero-section bg-[#16161A] text-[#F5F3EE] pt-28 pb-16 lg:pt-36 lg:pb-24 border-b border-[#27272A]">
-        <div className="sp-hero-container">
-          <div className="sp-hero-grid">
-            
-            {/* Left Column (Copy, Trust Signals, CTAs) */}
-            <div className="sp-hero-left">
-              
-              {/* Clean inline trust row (no pills, no glow) */}
-              <div className="sp-hero-trust-row text-zinc-400">
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-400">Est. 2012 &middot; Gaya College More</span>
-                <span className="sp-hero-trust-divider bg-[#3F3F46]" />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-400">12+ Years Coaching</span>
-                <span className="sp-hero-trust-divider bg-[#3F3F46]" />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-400">SSC &amp; High Court Standard</span>
+      <section 
+        className="sp-hero-section"
+        style={{
+          backgroundColor: '#16161A',
+          color: '#F5F3EE',
+          borderBottom: '1px solid #27272A',
+          width: '100%',
+          paddingTop: '128px',
+          paddingBottom: '80px',
+          position: 'relative'
+        }}
+      >
+        <div 
+          className="sp-hero-container"
+          style={{
+            maxWidth: '1280px',
+            margin: '0 auto',
+            paddingLeft: '24px',
+            paddingRight: '24px'
+          }}
+        >
+          <div 
+            className="sp-hero-grid-2col"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(12, 1fr)',
+              gap: '48px',
+              alignItems: 'center'
+            }}
+          >
+            {/* Left Column (lg:col-span-6) */}
+            <div 
+              className="sp-hero-col-left"
+              style={{
+                gridColumn: 'span 6 / span 6',
+                minWidth: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                textAlign: 'left'
+              }}
+            >
+              {/* Eyebrow */}
+              <div 
+                style={{
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.16em',
+                  color: '#A1A1AA',
+                  marginBottom: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  flexWrap: 'wrap'
+                }}
+              >
+                <span>EST. 2012</span>
+                <span>&middot;</span>
+                <span>GAYA COLLEGE MORE</span>
+                <span>&middot;</span>
+                <span>12+ YEARS COACHING</span>
               </div>
 
-              {/* Bold H1 with editorial italic serif accent */}
-              <h1 className="mt-4 font-sans text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold tracking-[-0.03em] leading-[1.06] text-[#F5F3EE]">
+              {/* H1 */}
+              <h1 
+                style={{
+                  color: '#F5F3EE',
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  fontWeight: 800,
+                  fontSize: 'clamp(2.25rem, 4vw, 3.4rem)',
+                  lineHeight: 1.08,
+                  letterSpacing: '-0.03em',
+                  margin: '0 0 20px 0'
+                }}
+              >
                 The Gold Standard in{' '}
-                <span className="font-serif italic font-normal text-[#F87171] tracking-normal text-[1.08em]">Shorthand</span>{' '}
+                <span style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontStyle: 'italic', fontWeight: 400, color: '#F87171' }}>Shorthand</span>{' '}
                 &amp; Typing for Govt. Exams
               </h1>
 
-              {/* Concise 2-line subheadline */}
-              <p className="mt-5 text-base lg:text-lg text-zinc-300 leading-relaxed max-w-xl">
-                Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong className="text-white font-semibold">Shadab Sir</strong> with automated SSC error evaluation.
+              {/* Subheadline */}
+              <p 
+                style={{
+                  color: '#D4D4D8',
+                  fontSize: '16px',
+                  lineHeight: 1.6,
+                  maxWidth: '580px',
+                  margin: '0 0 28px 0'
+                }}
+              >
+                Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong style={{ color: '#FFFFFF', fontWeight: 600 }}>Shadab Sir</strong> with automated SSC error evaluation.
               </p>
 
-              {/* Clean CTA row */}
-              <div className="mt-8 flex flex-wrap items-center gap-4">
+              {/* Horizontal CTA Row */}
+              <div 
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  alignItems: 'center',
+                  gap: '12px',
+                  marginTop: '28px'
+                }}
+              >
                 <button
                   type="button"
-                  className="bg-[#B91C1C] hover:bg-[#991B1B] text-white px-6 py-3.5 rounded-xl text-sm font-semibold shadow-sm inline-flex items-center gap-2 transition-colors cursor-pointer"
                   onClick={handleStartTests}
+                  style={{
+                    background: '#B91C1C',
+                    color: '#FFFFFF',
+                    padding: '12px 22px',
+                    borderRadius: '10px',
+                    fontWeight: 600,
+                    fontSize: '14px',
+                    whiteSpace: 'nowrap',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+                    transition: 'background-color 0.15s'
+                  }}
                 >
                   <span>Start Audio Dictation</span>
                   <ArrowRight size={16} />
@@ -142,64 +231,170 @@ export default function LandingPage({
 
                 <button
                   type="button"
-                  className="bg-white/5 hover:bg-white/10 border border-white/20 text-[#F5F3EE] px-6 py-3.5 rounded-xl text-sm font-semibold transition-colors cursor-pointer inline-flex items-center gap-2"
                   onClick={handleExploreCourses}
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid rgba(255, 255, 255, 0.22)',
+                    color: '#F5F3EE',
+                    padding: '12px 22px',
+                    borderRadius: '10px',
+                    fontWeight: 600,
+                    fontSize: '14px',
+                    whiteSpace: 'nowrap',
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    transition: 'background-color 0.15s'
+                  }}
                 >
                   <span>Explore Courses</span>
                 </button>
 
                 <button
                   type="button"
-                  className="text-sm font-medium text-zinc-300 hover:text-white px-2 py-2 transition-colors cursor-pointer"
                   onClick={handleOpenDemo}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: '#D4D4D8',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    whiteSpace: 'nowrap',
+                    cursor: 'pointer',
+                    padding: '8px 4px',
+                    transition: 'color 0.15s'
+                  }}
                 >
                   Book 3 Free Demos &rarr;
                 </button>
               </div>
 
               {/* Pricing & Timing Reassurance micro-line */}
-              <p className="mt-5 text-xs text-zinc-400 font-medium">
+              <p 
+                style={{
+                  marginTop: '18px',
+                  fontSize: '12px',
+                  color: '#A1A1AA',
+                  fontWeight: 500
+                }}
+              >
                 Online passes from &#8377;30 &middot; Offline &amp; Live Google Meet batches &middot; 3 Free Demo Classes
               </p>
-
             </div>
 
-            {/* Right Column (Hero Visual Showcase) */}
-            <div className="sp-hero-right">
-              <div className="rounded-2xl border border-white/10 overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.45)] bg-[#1A1A20] relative w-full max-w-[540px]">
+            {/* Right Column (lg:col-span-6) */}
+            <div 
+              className="sp-hero-col-right"
+              style={{
+                gridColumn: 'span 6 / span 6',
+                minWidth: 0,
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center'
+              }}
+            >
+              <div 
+                style={{
+                  width: '100%',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  boxShadow: '0 24px 60px rgba(0, 0, 0, 0.45)',
+                  background: '#1A1A20',
+                  position: 'relative'
+                }}
+              >
                 <img 
                   src="/assets/institution-hero.jpg" 
                   alt="Shorthand Plus Stenography Classroom &amp; Typing Lab" 
-                  className="w-full h-[380px] object-cover object-center block"
+                  style={{
+                    width: '100%',
+                    aspectRatio: '4 / 3',
+                    objectFit: 'cover',
+                    display: 'block'
+                  }}
                 />
-                <div className="bg-[#16161A]/85 backdrop-blur-sm border-t border-white/10 px-4 py-3 flex items-center justify-between text-xs text-zinc-200">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#F87171] shrink-0" />
-                    <span className="font-medium text-zinc-200">SSC &amp; High Court Exam Standard</span>
+                <div 
+                  style={{
+                    background: '#1E1E24',
+                    padding: '12px 16px',
+                    color: '#E4E4E7',
+                    fontSize: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    borderTop: '1px solid rgba(255,255,255,0.08)'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#F87171', display: 'inline-block', flexShrink: 0 }} />
+                    <span style={{ fontWeight: 600 }}>SSC &amp; High Court Exam Standard</span>
                   </div>
-                  <span className="font-mono text-zinc-400 tabular-nums">50&ndash;140 WPM</span>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#A1A1AA' }}>50&ndash;140 WPM</span>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
 
-        {/* Flush Exam Authority Strip - Balanced Full-Width Flex Row */}
-        <div className="bg-[#E4DFD5] border-y border-[#D1CBBF] py-4">
-          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <span className="text-[#16161A] font-bold text-xs tracking-wider uppercase whitespace-nowrap">PREPARING ASPIRANTS FOR</span>
-            <div className="flex-1 flex flex-wrap items-center justify-between md:justify-end lg:justify-between gap-x-6 gap-y-2 md:pl-12 text-[#16161A] font-semibold text-xs sm:text-sm">
+        {/* Step 3: Exam Authority Strip (Directly Below Hero) */}
+        <div 
+          style={{
+            background: '#E4DFD5',
+            borderTop: '1px solid #D1CBBF',
+            borderBottom: '1px solid #D1CBBF',
+            padding: '16px 0',
+            width: '100%',
+            marginTop: '64px'
+          }}
+        >
+          <div 
+            style={{
+              maxWidth: '1280px',
+              margin: '0 auto',
+              paddingLeft: '24px',
+              paddingRight: '24px',
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '16px'
+            }}
+          >
+            <span 
+              style={{
+                fontSize: '11px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.14em',
+                color: '#52525B',
+                fontWeight: 600,
+                whiteSpace: 'nowrap'
+              }}
+            >
+              PREPARING ASPIRANTS FOR
+            </span>
+            <div 
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                gap: '24px',
+                color: '#16161A',
+                fontSize: '13px',
+                fontWeight: 600
+              }}
+            >
               <span>SSC Stenographer</span>
-              <span className="text-[#A8A294]">&middot;</span>
+              <span style={{ color: '#A8A294' }}>&middot;</span>
               <span>Patna High Court</span>
-              <span className="text-[#A8A294]">&middot;</span>
+              <span style={{ color: '#A8A294' }}>&middot;</span>
               <span>Civil Court</span>
-              <span className="text-[#A8A294]">&middot;</span>
+              <span style={{ color: '#A8A294' }}>&middot;</span>
               <span>EPFO</span>
-              <span className="text-[#A8A294]">&middot;</span>
+              <span style={{ color: '#A8A294' }}>&middot;</span>
               <span>DRDO</span>
-              <span className="text-[#A8A294]">&middot;</span>
+              <span style={{ color: '#A8A294' }}>&middot;</span>
               <span>BSSC</span>
             </div>
           </div>
@@ -209,53 +404,165 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 2: INTERACTIVE EXAM ENGINE SHOWCASE (THE CENTERPIECE)
           ========================================================================= */}
-      <section className="sp-engine-section">
-        <div className="sp-container">
-          
+      <section 
+        className="sp-engine-section"
+        style={{
+          background: '#ECE8E0',
+          padding: '80px 0',
+          width: '100%',
+          borderTop: '1px solid #D6D0C4'
+        }}
+      >
+        <div 
+          style={{
+            maxWidth: '1280px',
+            margin: '0 auto',
+            paddingLeft: '24px',
+            paddingRight: '24px'
+          }}
+        >
           {/* Header (Left-aligned, max-w-2xl) */}
-          <div className="sp-engine-header">
-            <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">
+          <div style={{ maxWidth: '680px', marginBottom: '40px', textAlign: 'left' }}>
+            <span 
+              style={{
+                fontSize: '11px',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.16em',
+                color: '#57534E',
+                marginBottom: '8px',
+                display: 'block'
+              }}
+            >
               THE SHORTHAND PLUS PLATFORM
             </span>
-            <h2 className="sp-section-h2">
+            <h2 
+              style={{
+                fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
+                fontWeight: 800,
+                color: '#16161A',
+                lineHeight: 1.15,
+                letterSpacing: '-0.025em',
+                margin: '0 0 12px 0'
+              }}
+            >
               Built like the actual exam hall, down to every keystroke.
             </h2>
-            <p className="sp-section-sub">
+            <p 
+              style={{
+                fontSize: '15px',
+                color: '#57534E',
+                lineHeight: 1.6,
+                margin: 0
+              }}
+            >
               Experience the dual-stage examination simulation trusted by Bihar's top stenography qualifiers:
             </p>
           </div>
 
-          {/* 2-Column Interactive Split */}
-          <div className="sp-engine-grid">
-            
-            {/* Left Column: 3 Clickable Accordion/Tab Items */}
-            <div className="flex flex-col gap-3">
-              
+          {/* 2-Column Interactive Split (lg:grid-cols-12 gap-10 items-start) */}
+          <div 
+            className="sp-engine-grid-2col"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(12, 1fr)',
+              gap: '40px',
+              alignItems: 'start'
+            }}
+          >
+            {/* Left Column (lg:col-span-5 — 3 Clickable Tabs) */}
+            <div 
+              className="sp-engine-col-tabs"
+              style={{
+                gridColumn: 'span 5 / span 5',
+                minWidth: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '12px'
+              }}
+            >
               {/* Tab 0 */}
               <div 
-                className={`${activeEngineTab === 0 ? 'bg-[#F7F5F0] border border-[#D1CBBF] border-l-[3px] border-l-[#991B1B] shadow-[0_4px_14px_rgba(22,22,26,0.04)]' : 'bg-transparent border border-transparent hover:bg-[#EAE5DC]/50'} rounded-xl p-5 cursor-pointer text-left transition-all`}
                 onClick={() => setActiveEngineTab(0)}
                 role="button"
                 tabIndex={0}
+                style={activeEngineTab === 0 ? {
+                  background: '#F7F5F0',
+                  border: '1px solid #D1CBBF',
+                  borderLeft: '3px solid #991B1B',
+                  borderRadius: '12px',
+                  padding: '20px',
+                  boxShadow: '0 4px 14px rgba(22,22,26,0.04)',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  transition: 'all 0.2s'
+                } : {
+                  padding: '18px 20px',
+                  borderBottom: '1px solid #D6D0C4',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  transition: 'all 0.2s',
+                  background: 'transparent'
+                }}
               >
-                <div className="flex items-start gap-4">
-                  <span className={`font-mono text-lg font-bold tabular-nums shrink-0 ${activeEngineTab === 0 ? 'text-[#991B1B]' : 'text-zinc-400'}`}>01</span>
-                  <div className="flex-1 flex flex-col gap-1">
-                    <div className="flex items-center justify-between gap-2">
-                      <h3 className={`text-base font-bold transition-colors ${activeEngineTab === 0 ? 'text-[#16161A]' : 'text-zinc-700'}`}>Calibrated Audio Dictation</h3>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                  <span 
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontSize: '18px',
+                      fontWeight: 700,
+                      color: activeEngineTab === 0 ? '#991B1B' : '#78716C',
+                      lineHeight: 1,
+                      flexShrink: 0
+                    }}
+                  >
+                    01
+                  </span>
+                  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+                      <h3 
+                        style={{
+                          fontSize: '16px',
+                          fontWeight: activeEngineTab === 0 ? 700 : 600,
+                          color: activeEngineTab === 0 ? '#16161A' : '#57534E',
+                          margin: 0,
+                          transition: 'color 0.2s'
+                        }}
+                      >
+                        Calibrated Audio Dictation
+                      </h3>
                       {activeEngineTab === 0 ? (
-                        <ChevronUp size={16} className="text-[#991B1B] shrink-0" />
+                        <ChevronUp size={16} color="#991B1B" style={{ flexShrink: 0 }} />
                       ) : (
-                        <ChevronDown size={16} className="text-zinc-400 shrink-0" />
+                        <ChevronDown size={16} color="#78716C" style={{ flexShrink: 0 }} />
                       )}
                     </div>
                     {activeEngineTab === 0 && (
-                      <span className="text-[11px] font-semibold uppercase tracking-wider text-[#991B1B]">50–140 WPM Standard</span>
+                      <span 
+                        style={{
+                          fontSize: '11px',
+                          fontWeight: 600,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.08em',
+                          color: '#991B1B'
+                        }}
+                      >
+                        50–140 WPM Standard
+                      </span>
                     )}
                   </div>
                 </div>
                 {activeEngineTab === 0 && (
-                  <p className="mt-3 text-sm text-zinc-600 leading-relaxed pl-8">
+                  <p 
+                    style={{
+                      marginTop: '12px',
+                      fontSize: '14px',
+                      color: '#57534E',
+                      lineHeight: 1.6,
+                      paddingLeft: '34px',
+                      margin: '12px 0 0 0'
+                    }}
+                  >
                     Practice 50–140 WPM Pitman &amp; High Court legal dictations with exam-accurate pacing, single-play lock, and mandatory 5-minute reading clock.
                   </p>
                 )}
@@ -263,29 +570,86 @@ export default function LandingPage({
 
               {/* Tab 1 */}
               <div 
-                className={`${activeEngineTab === 1 ? 'bg-[#F7F5F0] border border-[#D1CBBF] border-l-[3px] border-l-[#991B1B] shadow-[0_4px_14px_rgba(22,22,26,0.04)]' : 'bg-transparent border border-transparent hover:bg-[#EAE5DC]/50'} rounded-xl p-5 cursor-pointer text-left transition-all`}
                 onClick={() => setActiveEngineTab(1)}
                 role="button"
                 tabIndex={0}
+                style={activeEngineTab === 1 ? {
+                  background: '#F7F5F0',
+                  border: '1px solid #D1CBBF',
+                  borderLeft: '3px solid #991B1B',
+                  borderRadius: '12px',
+                  padding: '20px',
+                  boxShadow: '0 4px 14px rgba(22,22,26,0.04)',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  transition: 'all 0.2s'
+                } : {
+                  padding: '18px 20px',
+                  borderBottom: '1px solid #D6D0C4',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  transition: 'all 0.2s',
+                  background: 'transparent'
+                }}
               >
-                <div className="flex items-start gap-4">
-                  <span className={`font-mono text-lg font-bold tabular-nums shrink-0 ${activeEngineTab === 1 ? 'text-[#991B1B]' : 'text-zinc-400'}`}>02</span>
-                  <div className="flex-1 flex flex-col gap-1">
-                    <div className="flex items-center justify-between gap-2">
-                      <h3 className={`text-base font-bold transition-colors ${activeEngineTab === 1 ? 'text-[#16161A]' : 'text-zinc-700'}`}>Bilingual Typing Studio</h3>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                  <span 
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontSize: '18px',
+                      fontWeight: 700,
+                      color: activeEngineTab === 1 ? '#991B1B' : '#78716C',
+                      lineHeight: 1,
+                      flexShrink: 0
+                    }}
+                  >
+                    02
+                  </span>
+                  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+                      <h3 
+                        style={{
+                          fontSize: '16px',
+                          fontWeight: activeEngineTab === 1 ? 700 : 600,
+                          color: activeEngineTab === 1 ? '#16161A' : '#57534E',
+                          margin: 0,
+                          transition: 'color 0.2s'
+                        }}
+                      >
+                        Bilingual Typing Studio
+                      </h3>
                       {activeEngineTab === 1 ? (
-                        <ChevronUp size={16} className="text-[#991B1B] shrink-0" />
+                        <ChevronUp size={16} color="#991B1B" style={{ flexShrink: 0 }} />
                       ) : (
-                        <ChevronDown size={16} className="text-zinc-400 shrink-0" />
+                        <ChevronDown size={16} color="#78716C" style={{ flexShrink: 0 }} />
                       )}
                     </div>
                     {activeEngineTab === 1 && (
-                      <span className="text-[11px] font-semibold uppercase tracking-wider text-[#991B1B]">Kruti Dev &amp; Mangal</span>
+                      <span 
+                        style={{
+                          fontSize: '11px',
+                          fontWeight: 600,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.08em',
+                          color: '#991B1B'
+                        }}
+                      >
+                        Kruti Dev &amp; Mangal
+                      </span>
                     )}
                   </div>
                 </div>
                 {activeEngineTab === 1 && (
-                  <p className="mt-3 text-sm text-zinc-600 leading-relaxed pl-8">
+                  <p 
+                    style={{
+                      marginTop: '12px',
+                      fontSize: '14px',
+                      color: '#57534E',
+                      lineHeight: 1.6,
+                      paddingLeft: '34px',
+                      margin: '12px 0 0 0'
+                    }}
+                  >
                     Dedicated English QWERTY, Hindi Kruti Dev 010, and Mangal Inscript typing drills with strict backspace-lock simulation and live gross/net WPM.
                   </p>
                 )}
@@ -293,260 +657,480 @@ export default function LandingPage({
 
               {/* Tab 2 */}
               <div 
-                className={`${activeEngineTab === 2 ? 'bg-[#F7F5F0] border border-[#D1CBBF] border-l-[3px] border-l-[#991B1B] shadow-[0_4px_14px_rgba(22,22,26,0.04)]' : 'bg-transparent border border-transparent hover:bg-[#EAE5DC]/50'} rounded-xl p-5 cursor-pointer text-left transition-all`}
                 onClick={() => setActiveEngineTab(2)}
                 role="button"
                 tabIndex={0}
+                style={activeEngineTab === 2 ? {
+                  background: '#F7F5F0',
+                  border: '1px solid #D1CBBF',
+                  borderLeft: '3px solid #991B1B',
+                  borderRadius: '12px',
+                  padding: '20px',
+                  boxShadow: '0 4px 14px rgba(22,22,26,0.04)',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  transition: 'all 0.2s'
+                } : {
+                  padding: '18px 20px',
+                  borderBottom: '1px solid #D6D0C4',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  transition: 'all 0.2s',
+                  background: 'transparent'
+                }}
               >
-                <div className="flex items-start gap-4">
-                  <span className={`font-mono text-lg font-bold tabular-nums shrink-0 ${activeEngineTab === 2 ? 'text-[#991B1B]' : 'text-zinc-400'}`}>03</span>
-                  <div className="flex-1 flex flex-col gap-1">
-                    <div className="flex items-center justify-between gap-2">
-                      <h3 className={`text-base font-bold transition-colors ${activeEngineTab === 2 ? 'text-[#16161A]' : 'text-zinc-700'}`}>Automated SSC Error Evaluation</h3>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                  <span 
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontSize: '18px',
+                      fontWeight: 700,
+                      color: activeEngineTab === 2 ? '#991B1B' : '#78716C',
+                      lineHeight: 1,
+                      flexShrink: 0
+                    }}
+                  >
+                    03
+                  </span>
+                  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+                      <h3 
+                        style={{
+                          fontSize: '16px',
+                          fontWeight: activeEngineTab === 2 ? 700 : 600,
+                          color: activeEngineTab === 2 ? '#16161A' : '#57534E',
+                          margin: 0,
+                          transition: 'color 0.2s'
+                        }}
+                      >
+                        Automated SSC Error Evaluation
+                      </h3>
                       {activeEngineTab === 2 ? (
-                        <ChevronUp size={16} className="text-[#991B1B] shrink-0" />
+                        <ChevronUp size={16} color="#991B1B" style={{ flexShrink: 0 }} />
                       ) : (
-                        <ChevronDown size={16} className="text-zinc-400 shrink-0" />
+                        <ChevronDown size={16} color="#78716C" style={{ flexShrink: 0 }} />
                       )}
                     </div>
                     {activeEngineTab === 2 && (
-                      <span className="text-[11px] font-semibold uppercase tracking-wider text-[#991B1B]">Full &amp; Half Error Scoring</span>
+                      <span 
+                        style={{
+                          fontSize: '11px',
+                          fontWeight: 600,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.08em',
+                          color: '#991B1B'
+                        }}
+                      >
+                        Full &amp; Half Error Scoring
+                      </span>
                     )}
                   </div>
                 </div>
                 {activeEngineTab === 2 && (
-                  <p className="mt-3 text-sm text-zinc-600 leading-relaxed pl-8">
+                  <p 
+                    style={{
+                      marginTop: '12px',
+                      fontSize: '14px',
+                      color: '#57534E',
+                      lineHeight: 1.6,
+                      paddingLeft: '34px',
+                      margin: '12px 0 0 0'
+                    }}
+                  >
                     Instant word-by-word diff checking full vs. half mistakes against official SSC and High Court cutoffs with exact percentage qualification criteria.
                   </p>
                 )}
               </div>
-
             </div>
 
-            {/* Right Column: Live Stylized Software UI Mockup Card */}
-            <div className="bg-[#F7F5F0] border border-[#D1CBBF] rounded-2xl overflow-hidden shadow-[0_14px_36px_rgba(22,22,26,0.07)]">
-              
-              {/* Window Title Bar - Crisp Editorial macOS Bar */}
-              <div className="bg-[#EAE5DC] border-b border-[#D6D0C4] px-5 py-3 flex items-center justify-between text-xs">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#C4BEB2]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#C4BEB2]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#C4BEB2]" />
-                </div>
-                <div className="font-mono text-[11px] font-medium tracking-wider uppercase text-zinc-600 flex items-center gap-2">
-                  <span>SHORTHAND PLUS &middot; EXAM ENGINE</span>
-                  <span className="text-zinc-400 hidden sm:inline">&middot;</span>
-                  <span className="text-zinc-700 hidden sm:inline font-semibold">
-                    {activeEngineTab === 0 && "Live Audio Dictation Lab"}
-                    {activeEngineTab === 1 && "Bilingual Typing Studio"}
-                    {activeEngineTab === 2 && "Forensic Error Audit Diff"}
-                  </span>
-                </div>
-                <div className="inline-flex items-center gap-1.5 text-[11px] font-mono font-semibold text-emerald-700 bg-emerald-500/10 border border-emerald-600/20 px-2.5 py-1 rounded-md">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                  <span>LIVE SIMULATION</span>
-                </div>
-              </div>
-
-              {/* Mockup Canvas */}
-              <div className="p-6 sm:p-7 bg-[#F7F5F0]">
-              
-                {/* TAB 0 PREVIEW: Audio Dictation Player */}
-                {activeEngineTab === 0 && (
-                  <div className="flex flex-col gap-4">
-                    <div className="flex items-center justify-between flex-wrap gap-2">
-                      <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase text-[#991B1B]">
-                        <span className="w-2 h-2 rounded-full bg-[#991B1B]" /> LIVE DICTATION
-                      </span>
-                      <span className="font-mono text-xs text-zinc-500">Track ID: PHC-LEGAL-104</span>
+            {/* Right Column (lg:col-span-7 — Restored Software Mockup Window) */}
+            <div 
+              className="sp-engine-col-preview"
+              style={{
+                gridColumn: 'span 7 / span 7',
+                minWidth: 0,
+                width: '100%'
+              }}
+            >
+              <div 
+                style={{
+                  background: '#F7F5F0',
+                  border: '1px solid #D1CBBF',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  boxShadow: '0 14px 36px rgba(22, 22, 26, 0.07)',
+                  width: '100%'
+                }}
+              >
+                {/* Subtle Top Toolbar */}
+                <div 
+                  style={{
+                    background: '#EAE5DC',
+                    borderBottom: '1px solid #D6D0C4',
+                    padding: '12px 20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#C4BEB2', display: 'inline-block' }} />
+                      <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#C4BEB2', display: 'inline-block' }} />
+                      <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#C4BEB2', display: 'inline-block' }} />
                     </div>
+                    <span 
+                      style={{
+                        fontFamily: "'JetBrains Mono', monospace",
+                        fontSize: '11px',
+                        fontWeight: 600,
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        color: '#57534E',
+                        marginLeft: '8px'
+                      }}
+                    >
+                      SHORTHAND PLUS &middot; EXAM ENGINE
+                    </span>
+                  </div>
+                  
+                  <div 
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      color: '#047857',
+                      fontSize: '11px',
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontWeight: 700,
+                      background: 'rgba(5, 150, 105, 0.1)',
+                      border: '1px solid rgba(5, 150, 105, 0.2)',
+                      borderRadius: '6px',
+                      padding: '3px 8px'
+                    }}
+                  >
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#059669', display: 'inline-block' }} />
+                    <span>EXAM ACTIVE</span>
+                  </div>
+                </div>
 
+                {/* Mockup Body (padding: 24px) */}
+                <div style={{ padding: '24px', background: '#F7F5F0' }}>
+                  
+                  {/* Tab 0 Preview */}
+                  {activeEngineTab === 0 && (
                     <div>
-                      <h4 className="text-lg font-bold text-[#16161A]">
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#991B1B' }}>
+                          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#991B1B', display: 'inline-block' }} />
+                          LIVE DICTATION
+                        </span>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12px', color: '#78716C' }}>Track ID: PHC-LEGAL-104</span>
+                      </div>
+
+                      <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#16161A', margin: '14px 0 4px 0' }}>
                         Patna High Court Legal Dictation &middot; 100 WPM
                       </h4>
-                      <p className="text-xs text-zinc-600 mt-1">
+                      <p style={{ fontSize: '13px', color: '#57534E', margin: '0 0 16px 0' }}>
                         Case Law: Cr. Misc. Petitions &middot; Kailash Chandra Vol. 14 Calibration
                       </p>
-                    </div>
 
-                    {/* Speed Selector */}
-                    <div className="flex items-center gap-3 py-1">
-                      <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">CALIBRATED SPEED:</span>
-                      <div className="flex items-center gap-2">
-                        <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-white border border-[#DED8CC] text-zinc-700">80 WPM</span>
-                        <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-[#16161A] text-white">100 WPM</span>
-                        <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-white border border-[#DED8CC] text-zinc-700">120 WPM</span>
+                      {/* Speed Selector */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '12px 0' }}>
+                        <span style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#78716C' }}>CALIBRATED SPEED:</span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #DED8CC', color: '#57534E' }}>80 WPM</span>
+                          <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#16161A', color: '#FFFFFF' }}>100 WPM</span>
+                          <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #DED8CC', color: '#57534E' }}>120 WPM</span>
+                        </div>
                       </div>
-                    </div>
 
-                    {/* Minimalist Waveform Visualization */}
-                    <div className="bg-white/80 border border-[#DED8CC] rounded-xl p-4 flex items-center gap-4">
-                      <button 
-                        type="button"
-                        className="w-11 h-11 rounded-full bg-[#16161A] hover:bg-[#991B1B] text-white flex items-center justify-center transition-colors cursor-pointer shrink-0"
-                        onClick={() => setIsPlayingAudioPreview(!isPlayingAudioPreview)}
-                        title="Toggle Audio Simulation"
+                      {/* Waveform Player inside bordered panel */}
+                      <div 
+                        style={{
+                          background: '#F1EDE5',
+                          border: '1px solid #DED8CC',
+                          borderRadius: '12px',
+                          padding: '16px',
+                          margin: '16px 0',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '16px'
+                        }}
                       >
-                        {isPlayingAudioPreview ? <Pause size={18} fill="#FFFFFF" /> : <Play size={18} fill="#FFFFFF" />}
-                      </button>
+                        <button
+                          type="button"
+                          onClick={() => setIsPlayingAudioPreview(!isPlayingAudioPreview)}
+                          title="Toggle Audio Simulation"
+                          style={{
+                            width: '44px',
+                            height: '44px',
+                            borderRadius: '50%',
+                            background: '#16161A',
+                            border: 'none',
+                            color: '#FFFFFF',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0
+                          }}
+                        >
+                          {isPlayingAudioPreview ? <Pause size={18} fill="#FFFFFF" /> : <Play size={18} fill="#FFFFFF" />}
+                        </button>
 
-                      <div className="flex-1 h-9 flex items-center gap-1">
-                        {[40, 65, 30, 85, 95, 60, 45, 90, 100, 75, 40, 80, 60, 95, 50, 85, 30, 70, 90, 45].map((height, i) => (
-                          <span 
-                            key={i} 
-                            className={`flex-1 rounded-sm transition-colors ${isPlayingAudioPreview && i < 12 ? 'bg-[#991B1B]' : 'bg-[#DED8CC]'}`}
-                            style={{ height: `${height}%` }}
-                          />
-                        ))}
+                        <div style={{ flex: 1, height: '36px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          {[40, 65, 30, 85, 95, 60, 45, 90, 100, 75, 40, 80, 60, 95, 50, 85, 30, 70, 90, 45].map((height, i) => (
+                            <span 
+                              key={i} 
+                              style={{
+                                flex: 1,
+                                height: `${height}%`,
+                                borderRadius: '2px',
+                                background: isPlayingAudioPreview && i < 12 ? '#991B1B' : '#DED8CC',
+                                transition: 'background-color 0.2s'
+                              }}
+                            />
+                          ))}
+                        </div>
+
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '13px', fontWeight: 600, color: '#16161A', flexShrink: 0 }}>
+                          {isPlayingAudioPreview ? "02:14 / 05:00" : "00:00 / 05:00"}
+                        </span>
                       </div>
 
-                      <span className="font-mono text-xs font-semibold text-zinc-700 tabular-nums shrink-0">
-                        {isPlayingAudioPreview ? "02:14 / 05:00" : "00:00 / 05:00"}
-                      </span>
-                    </div>
-
-                    <div className="mt-2 pt-4 border-t border-[#DED8CC] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                      <span className="text-xs text-zinc-600">Strict Single-Play Protocol: Audio plays once without rewind or pause.</span>
-                      <button 
-                        type="button" 
-                        className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold text-[#16161A] hover:text-[#991B1B] transition-colors cursor-pointer"
-                        onClick={handleStartTests}
+                      {/* Bottom Footer Row */}
+                      <div 
+                        style={{
+                          marginTop: '20px',
+                          paddingTop: '16px',
+                          borderTop: '1px solid #DED8CC',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: '16px',
+                          flexWrap: 'wrap'
+                        }}
                       >
-                        <span>Open Full Dictation Lab &rarr;</span>
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {/* TAB 1 PREVIEW: Bilingual Typing Lab Simulator */}
-                {activeEngineTab === 1 && (
-                  <div className="flex flex-col gap-4">
-                    <div className="flex items-center justify-between flex-wrap gap-2">
-                      <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase text-[#991B1B]">
-                        <span className="w-2 h-2 rounded-full bg-[#991B1B]" /> TYPING BENCHMARK
-                      </span>
-                      <div className="flex items-center gap-1.5">
-                        <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-[#16161A] text-white">Kruti Dev 010</span>
-                        <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-white border border-[#DED8CC] text-zinc-600">Mangal Inscript</span>
-                        <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-white border border-[#DED8CC] text-zinc-600">English QWERTY</span>
+                        <span style={{ fontSize: '12px', color: '#57534E' }}>Strict Single-Play Protocol: Audio plays once without rewind or pause.</span>
+                        <button
+                          type="button"
+                          onClick={handleStartTests}
+                          style={{
+                            whiteSpace: 'nowrap',
+                            flexShrink: 0,
+                            background: 'none',
+                            border: 'none',
+                            color: '#16161A',
+                            fontWeight: 600,
+                            fontSize: '13px',
+                            cursor: 'pointer',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px'
+                          }}
+                        >
+                          <span>Open Full Dictation Lab &rarr;</span>
+                        </button>
                       </div>
                     </div>
+                  )}
 
-                    {/* Live Exam Telemetry HUD */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 border border-[#DED8CC] bg-[#F1EDE5] rounded-xl divide-y sm:divide-y-0 sm:divide-x divide-[#DED8CC] my-1">
-                      <div className="p-3 sm:p-4 flex flex-col gap-1">
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">GROSS SPEED</span>
-                        <span className="text-base font-mono font-bold text-[#16161A] tabular-nums">48.2 <span className="text-xs text-zinc-500 font-normal">WPM</span></span>
+                  {/* Tab 1 Preview (Bilingual Typing Studio) */}
+                  {activeEngineTab === 1 && (
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#991B1B' }}>
+                          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#991B1B', display: 'inline-block' }} />
+                          TYPING BENCHMARK
+                        </span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#16161A', color: '#FFFFFF' }}>Kruti Dev 010</span>
+                          <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #DED8CC', color: '#57534E' }}>Mangal Inscript</span>
+                          <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #DED8CC', color: '#57534E' }}>English QWERTY</span>
+                        </div>
                       </div>
-                      <div className="p-3 sm:p-4 flex flex-col gap-1">
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">NET ACCURACY</span>
-                        <span className="text-base font-mono font-bold text-emerald-700 tabular-nums">98.4%</span>
-                      </div>
-                      <div className="p-3 sm:p-4 flex flex-col gap-1">
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">BACKSPACE LOCK</span>
-                        <span className="text-base font-mono font-bold text-[#991B1B]">ENFORCED</span>
-                      </div>
-                      <div className="p-3 sm:p-4 flex flex-col gap-1">
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">TIME REMAINING</span>
-                        <span className="text-base font-mono font-bold text-[#16161A] tabular-nums">07:45</span>
-                      </div>
-                    </div>
 
-                    {/* Simulated Text Transcription Input Box */}
-                    <div className="bg-white/80 border border-[#DED8CC] rounded-xl p-4 font-sans text-sm leading-relaxed">
-                      <p className="font-hindi text-zinc-500">
-                        न्यायालय के आदेशानुसार उक्त याचिका पर सुनवाई करते हुए न्यायाधीश महोदय ने स्पष्ट किया कि...
-                      </p>
-                      <div className="mt-2 pt-2 border-t border-slate-100 flex items-center">
-                        <span className="font-hindi text-[#16161A] font-semibold">न्यायालय के आदेशानुसार उक्त</span>
-                        <span className="inline-block w-0.5 h-4 bg-[#991B1B] ml-0.5 animate-pulse" />
-                      </div>
-                    </div>
-
-                    <div className="mt-2 pt-4 border-t border-[#DED8CC] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                      <span className="text-xs text-zinc-600">Strict Backspace Lock: Eliminates bad editing habits during live preparation.</span>
-                      <button 
-                        type="button" 
-                        className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold text-[#16161A] hover:text-[#991B1B] transition-colors cursor-pointer"
-                        onClick={() => setCurrentTab && setCurrentTab('typing-studio')}
+                      {/* 4 Metrics in clean 4-column HUD grid */}
+                      <div 
+                        className="sp-telemetry-4col"
+                        style={{
+                          display: 'grid',
+                          gridTemplateColumns: 'repeat(4, 1fr)',
+                          gap: '12px',
+                          margin: '16px 0'
+                        }}
                       >
-                        <span>Launch Typing Engine &rarr;</span>
-                      </button>
-                    </div>
-                  </div>
-                )}
+                        <div style={{ background: '#F1EDE5', border: '1px solid #DED8CC', borderRadius: '12px', padding: '14px' }}>
+                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#78716C', marginBottom: '4px', display: 'block' }}>GROSS SPEED</span>
+                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#16161A' }}>48.2 <span style={{ fontSize: '12px', color: '#78716C', fontWeight: 500 }}>WPM</span></span>
+                        </div>
+                        <div style={{ background: '#F1EDE5', border: '1px solid #DED8CC', borderRadius: '12px', padding: '14px' }}>
+                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#78716C', marginBottom: '4px', display: 'block' }}>NET ACCURACY</span>
+                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#047857' }}>98.4%</span>
+                        </div>
+                        <div style={{ background: '#F1EDE5', border: '1px solid #DED8CC', borderRadius: '12px', padding: '14px' }}>
+                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#78716C', marginBottom: '4px', display: 'block' }}>BACKSPACE LOCK</span>
+                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#991B1B' }}>ENFORCED</span>
+                        </div>
+                        <div style={{ background: '#F1EDE5', border: '1px solid #DED8CC', borderRadius: '12px', padding: '14px' }}>
+                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#78716C', marginBottom: '4px', display: 'block' }}>TIME REMAINING</span>
+                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#16161A' }}>07:45</span>
+                        </div>
+                      </div>
 
-                {/* TAB 2 PREVIEW: Automated SSC Error Evaluation Diff */}
-                {activeEngineTab === 2 && (
-                  <div className="flex flex-col gap-4">
-                    <div className="flex items-center justify-between flex-wrap gap-2">
-                      <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase text-emerald-700">
-                        <span className="w-2 h-2 rounded-full bg-emerald-600" /> FORENSIC AUDIT
-                      </span>
-                      <span className="font-mono text-xs text-zinc-500">SSC Grade C &middot; 100 WPM</span>
-                    </div>
+                      {/* Simulated Text Transcription Input Box */}
+                      <div style={{ background: '#FFFFFF', border: '1px solid #DED8CC', borderRadius: '10px', padding: '16px', fontSize: '15px', margin: '16px 0', lineHeight: 1.7 }}>
+                        <p className="font-hindi" style={{ color: '#78716C', margin: '0 0 8px 0' }}>
+                          न्यायालय के आदेशानुसार उक्त याचिका पर सुनवाई करते हुए न्यायाधीश महोदय ने स्पष्ट किया कि...
+                        </p>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                          <span className="font-hindi" style={{ color: '#16161A', fontWeight: 600 }}>न्यायालय के आदेशानुसार उक्त</span>
+                          <span style={{ display: 'inline-block', width: '2px', height: '1.2em', background: '#991B1B', marginLeft: '3px' }} />
+                        </div>
+                      </div>
 
-                    {/* Diff Inspection Passage */}
-                    <div className="bg-white/80 border border-[#DED8CC] rounded-xl p-4 font-sans text-sm leading-relaxed">
-                      <p className="text-zinc-800 leading-relaxed m-0">
-                        The proceedings of the{' '}
-                        <del className="bg-rose-100 text-rose-800 line-through px-1.5 py-0.5 rounded font-semibold" title="Full Mistake: Word Omitted">
-                          honorable
-                        </del>{' '}
-                        court were adjourned today after hearing the{' '}
-                        <span className="border-b-2 border-amber-500 bg-amber-100 text-amber-900 px-1 py-0.5 rounded-sm font-semibold" title="Half Mistake: Spelling typo">
-                          parlimentary
-                        </span>{' '}
-                        arguments presented in the constitutional writ petition without any unnecessary delay.
-                      </p>
-                    </div>
-
-                    {/* Legend */}
-                    <div className="flex flex-wrap items-center gap-4 text-xs text-zinc-600">
-                      <div className="flex items-center gap-1.5">
-                        <span className="w-3 h-3 rounded-sm bg-rose-400" />
-                        <span>Full Mistake (Omission / Addition) &middot; -1.0</span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <span className="w-3 h-3 rounded-sm bg-amber-400" />
-                        <span>Half Mistake (Spelling / Case) &middot; -0.5</span>
-                      </div>
-                    </div>
-
-                    {/* Score Summary Metrics: 4-Column Telemetry Strip */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 border border-[#DED8CC] bg-[#F1EDE5] rounded-xl divide-y sm:divide-y-0 sm:divide-x divide-[#DED8CC] my-1">
-                      <div className="p-3 sm:p-4 flex flex-col gap-1">
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">FULL MISTAKES</span>
-                        <span className="text-base font-mono font-bold text-[#16161A] tabular-nums">1 (Omission)</span>
-                      </div>
-                      <div className="p-3 sm:p-4 flex flex-col gap-1">
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">HALF MISTAKES</span>
-                        <span className="text-base font-mono font-bold text-[#16161A] tabular-nums">1 (Spelling)</span>
-                      </div>
-                      <div className="p-3 sm:p-4 flex flex-col gap-1">
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">TOTAL ERROR RATE</span>
-                        <span className="text-base font-mono font-bold text-emerald-700 tabular-nums">1.5%</span>
-                      </div>
-                      <div className="p-3 sm:p-4 flex flex-col gap-1">
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">NET ACCURACY</span>
-                        <span className="text-base font-mono font-bold text-[#16161A] tabular-nums">98.5%</span>
-                      </div>
-                    </div>
-
-                    <div className="mt-2 pt-4 border-t border-[#DED8CC] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                      <span className="text-xs text-zinc-600">Full SSC Standard: Certified evaluation matching official Staff Selection Commission rules.</span>
-                      <button 
-                        type="button" 
-                        className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold text-[#16161A] hover:text-[#991B1B] transition-colors cursor-pointer"
-                        onClick={handleStartTests}
+                      {/* Bottom Footer Row */}
+                      <div 
+                        style={{
+                          marginTop: '20px',
+                          paddingTop: '16px',
+                          borderTop: '1px solid #DED8CC',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: '16px',
+                          flexWrap: 'wrap'
+                        }}
                       >
-                        <span>Try Full Mock Exam &rarr;</span>
-                      </button>
+                        <span style={{ fontSize: '12px', color: '#57534E' }}>Strict Backspace Lock: Eliminates bad editing habits during live preparation.</span>
+                        <button
+                          type="button"
+                          onClick={() => setCurrentTab && setCurrentTab('typing-studio')}
+                          style={{
+                            whiteSpace: 'nowrap',
+                            flexShrink: 0,
+                            background: 'none',
+                            border: 'none',
+                            color: '#16161A',
+                            fontWeight: 600,
+                            fontSize: '13px',
+                            cursor: 'pointer',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px'
+                          }}
+                        >
+                          <span>Launch Typing Engine &rarr;</span>
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
+                  {/* Tab 2 Preview (Automated SSC Error Evaluation Diff) */}
+                  {activeEngineTab === 2 && (
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#047857' }}>
+                          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#059669', display: 'inline-block' }} />
+                          FORENSIC AUDIT
+                        </span>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12px', color: '#78716C' }}>SSC Grade C &middot; 100 WPM</span>
+                      </div>
+
+                      {/* Diff Inspection Passage inside bordered panel */}
+                      <div style={{ background: '#FFFFFF', border: '1px solid #DED8CC', borderRadius: '12px', padding: '16px', margin: '16px 0', fontSize: '14px', lineHeight: 1.7 }}>
+                        <p style={{ color: '#16161A', margin: 0 }}>
+                          The proceedings of the{' '}
+                          <del style={{ background: '#FEE2E2', color: '#B91C1C', textDecoration: 'line-through', padding: '2px 6px', borderRadius: '4px', fontWeight: 600 }} title="Full Mistake: Word Omitted">
+                            honorable
+                          </del>{' '}
+                          court were adjourned today after hearing the{' '}
+                          <span style={{ borderBottom: '2px solid #F59E0B', background: '#FEF3C7', color: '#B45309', padding: '1px 5px', borderRadius: '2px', fontWeight: 600 }} title="Half Mistake: Spelling typo">
+                            parlimentary
+                          </span>{' '}
+                          arguments presented in the constitutional writ petition without any unnecessary delay.
+                        </p>
+                      </div>
+
+                      {/* Legend */}
+                      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '16px', fontSize: '12px', color: '#57534E', margin: '12px 0' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#F87171', display: 'inline-block' }} />
+                          <span>Full Mistake (Omission / Addition) &middot; -1.0</span>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#FBBF24', display: 'inline-block' }} />
+                          <span>Half Mistake (Spelling / Case) &middot; -0.5</span>
+                        </div>
+                      </div>
+
+                      {/* Score Summary Metrics: 4-Column Grid inside bordered panels */}
+                      <div 
+                        className="sp-telemetry-4col"
+                        style={{
+                          display: 'grid',
+                          gridTemplateColumns: 'repeat(4, 1fr)',
+                          gap: '12px',
+                          margin: '16px 0'
+                        }}
+                      >
+                        <div style={{ background: '#F1EDE5', border: '1px solid #DED8CC', borderRadius: '12px', padding: '14px' }}>
+                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#78716C', marginBottom: '4px', display: 'block' }}>FULL MISTAKES</span>
+                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#16161A' }}>1 (Omission)</span>
+                        </div>
+                        <div style={{ background: '#F1EDE5', border: '1px solid #DED8CC', borderRadius: '12px', padding: '14px' }}>
+                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#78716C', marginBottom: '4px', display: 'block' }}>HALF MISTAKES</span>
+                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#16161A' }}>1 (Spelling)</span>
+                        </div>
+                        <div style={{ background: '#F1EDE5', border: '1px solid #DED8CC', borderRadius: '12px', padding: '14px' }}>
+                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#78716C', marginBottom: '4px', display: 'block' }}>TOTAL ERROR RATE</span>
+                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#047857' }}>1.5%</span>
+                        </div>
+                        <div style={{ background: '#F1EDE5', border: '1px solid #DED8CC', borderRadius: '12px', padding: '14px' }}>
+                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#78716C', marginBottom: '4px', display: 'block' }}>NET ACCURACY</span>
+                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#16161A' }}>98.5%</span>
+                        </div>
+                      </div>
+
+                      {/* Bottom Footer Row */}
+                      <div 
+                        style={{
+                          marginTop: '20px',
+                          paddingTop: '16px',
+                          borderTop: '1px solid #DED8CC',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: '16px',
+                          flexWrap: 'wrap'
+                        }}
+                      >
+                        <span style={{ fontSize: '12px', color: '#57534E' }}>Full SSC Standard: Certified evaluation matching official Staff Selection Commission rules.</span>
+                        <button 
+                          type="button" 
+                          onClick={handleStartTests}
+                          style={{
+                            whiteSpace: 'nowrap',
+                            flexShrink: 0,
+                            background: 'none',
+                            border: 'none',
+                            color: '#16161A',
+                            fontWeight: 600,
+                            fontSize: '13px',
+                            cursor: 'pointer',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px'
+                          }}
+                        >
+                          <span>Try Full Mock Exam &rarr;</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                </div>
               </div>
             </div>
 
