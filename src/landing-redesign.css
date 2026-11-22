@@ -4124,6 +4124,40 @@
   }
 }
 
+/* ==========================================================================
+   CLASSES PAGE (WARM PARCHMENT REDESIGN)
+   ========================================================================== */
+.sp-classes-root,
+.classes-page-root {
+  background-color: #ECE8E0 !important;
+  min-height: 100vh !important;
+  color: #16161A !important;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+}
+
+.classes-hero-banner {
+  background: transparent !important;
+  border-bottom: none !important;
+}
+
+.classes-online-live-showcase,
+.classes-batches-view,
+.classes-timetable-view,
+.classes-diplomas-view,
+.classes-notices-view,
+.classes-outlines-view {
+  background: transparent !important;
+}
+
+.sp-classes-tab-dock {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.sp-classes-tab-dock::-webkit-scrollbar {
+  display: none;
+}
+
+
 
 
 
