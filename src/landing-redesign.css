@@ -1606,9 +1606,9 @@
 
 .sp-voices-section {
   padding: 3.5rem 0;
-  background-color: #EFE7DC !important;
-  border-top: 1px solid #E3D9CC !important;
-  border-bottom: none !important;
+  background-color: #FBF8F3 !important;
+  border-top: none !important;
+  border-bottom: 1px solid #E5DBD0 !important;
 }
 
 @media (min-width: 1024px) {
@@ -4090,12 +4090,15 @@
   color: #64748B !important; /* text-slate-500 */
 }
 
-/* Section 8: Contained Editorial Closing Conversion Card */
+/* Section 8: Open Warm-Glow Editorial Pre-Footer CTA */
 .sp-closing-cta-section {
   background-color: #FBF8F3 !important;
-  border-top: 1px solid #E8DFD3 !important;
-  padding: 2.5rem 0 3.5rem 0 !important;
+  border-top: 1px solid #E5DBD0 !important;
+  padding: 4.5rem 1.5rem !important;
   width: 100% !important;
+  position: relative !important;
+  overflow: hidden !important;
+  text-align: center !important;
 }
 
 .sp-closing-cta-card {

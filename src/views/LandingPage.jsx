@@ -77,6 +77,7 @@ export default function LandingPage({
   const [activeEngineTab, setActiveEngineTab] = useState(0);
   const [activeFaq, setActiveFaq] = useState(1);
   const [isPlayingAudioPreview, setIsPlayingAudioPreview] = useState(false);
+  const [previewSpeed, setPreviewSpeed] = useState('100');
 
   const fireConfetti = () => {
     try {
@@ -740,16 +741,18 @@ export default function LandingPage({
                 THE SHORTHAND PLUS PLATFORM
               </span>
               <h2 
+                className="font-serif font-normal text-3xl sm:text-4xl lg:text-[2.65rem] leading-[1.08] tracking-[-0.015em] text-[#231418]"
                 style={{
-                  fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
-                  fontWeight: 800,
+                  fontFamily: "'Instrument Serif', Georgia, serif",
+                  fontSize: 'clamp(1.875rem, 3.2vw, 2.65rem)',
+                  fontWeight: 400,
                   color: '#231418',
-                  lineHeight: 1.15,
-                  letterSpacing: '-0.025em',
+                  lineHeight: 1.08,
+                  letterSpacing: '-0.015em',
                   margin: '0 0 10px 0'
                 }}
               >
-                Built like the actual exam hall, down to every keystroke.
+                Built like the exam hall, <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>down to every keystroke.</span>
               </h2>
               <p 
                 style={{
@@ -1149,7 +1152,7 @@ export default function LandingPage({
                         </div>
 
                         <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: '14px 0 4px 0' }}>
-                          Patna High Court Legal Dictation &middot; 100 WPM
+                          Patna High Court Legal Dictation &middot; {previewSpeed} WPM
                         </h4>
                         <p style={{ fontSize: '13px', color: '#8A7B7E', margin: '0 0 16px 0' }}>
                           Case Law: Cr. Misc. Petitions &middot; Kailash Chandra Vol. 14 Calibration
@@ -1159,9 +1162,30 @@ export default function LandingPage({
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '12px 0' }}>
                           <span style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A7B7E' }}>CALIBRATED SPEED:</span>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #E8DFD3', color: '#8A7B7E' }}>80 WPM</span>
-                            <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#231418', color: '#FFFFFF' }}>100 WPM</span>
-                            <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #E8DFD3', color: '#8A7B7E' }}>120 WPM</span>
+                            {['80', '100', '120'].map((speed) => {
+                              const isActive = previewSpeed === speed;
+                              return (
+                                <button
+                                  key={speed}
+                                  type="button"
+                                  onClick={() => setPreviewSpeed(speed)}
+                                  style={{
+                                    padding: '4px 12px',
+                                    borderRadius: '9999px',
+                                    fontSize: '12px',
+                                    fontFamily: "'JetBrains Mono', monospace",
+                                    fontWeight: isActive ? 600 : 500,
+                                    backgroundColor: isActive ? '#231418' : '#EFE7DC',
+                                    color: isActive ? '#FAF6F0' : '#594A4D',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.15s ease'
+                                  }}
+                                >
+                                  {speed} WPM
+                                </button>
+                              );
+                            })}
                           </div>
                         </div>
 
@@ -1211,7 +1235,7 @@ export default function LandingPage({
                                   height: isPlayingAudioPreview ? `${Math.min(100, Math.max(25, (height + ((i % 4) * 12) * (i % 2 === 0 ? 1 : -0.5))))}%` : `${height}%`,
                                   borderRadius: '2px',
                                   background: isPlayingAudioPreview && i < 14 ? '#991B1B' : '#DED8CC',
-                                  transition: 'height 0.25s ease, background-color 0.2s ease'
+                                  transition: `height ${previewSpeed === '120' ? '0.12s' : previewSpeed === '80' ? '0.45s' : '0.25s'} ease, background-color 0.2s ease`
                                 }}
                               />
                             ))}
@@ -1486,8 +1510,20 @@ export default function LandingPage({
                 <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
                   PEDAGOGICAL ROADMAP
                 </span>
-                <h2 className="sp-section-h2" style={{ textAlign: 'left', margin: 0 }}>
-                  From First Outline to Final Selection.
+                <h2 
+                  className="sp-section-h2 font-serif font-normal text-3xl sm:text-4xl lg:text-[2.65rem] leading-[1.08] tracking-[-0.015em] text-[#231418]" 
+                  style={{ 
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.875rem, 3.2vw, 2.65rem)',
+                    fontWeight: 400,
+                    lineHeight: 1.08,
+                    letterSpacing: '-0.015em',
+                    color: '#231418',
+                    textAlign: 'left', 
+                    margin: 0 
+                  }}
+                >
+                  From first outline <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>to final selection.</span>
                 </h2>
               </div>
               <button
@@ -1525,7 +1561,18 @@ export default function LandingPage({
                 transition={{ duration: 0.2 }}
                 className="sp-timeline-col border-t-2 border-[#E8DFD3]"
               >
-                <span className="sp-timeline-num text-[#8A7B7E] font-bold">01</span>
+                <span 
+                  className="sp-timeline-num text-[#8A7B7E]"
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: '1.875rem',
+                    lineHeight: 1,
+                    color: '#8A7B7E',
+                    fontWeight: 400
+                  }}
+                >
+                  01
+                </span>
                 <h3 className="sp-timeline-title">Listen &amp; Write Shorthand</h3>
                 <p className="sp-timeline-desc">
                   Take calibrated live or studio dictations in your physical stenography notebook at <strong>60 to 140 WPM</strong>. Master light/dark stroke discrimination and phraseography without hesitations.
@@ -1540,7 +1587,18 @@ export default function LandingPage({
                 transition={{ duration: 0.2 }}
                 className="sp-timeline-col border-t-2 border-[#E8DFD3]"
               >
-                <span className="sp-timeline-num text-[#8A7B7E] font-bold">02</span>
+                <span 
+                  className="sp-timeline-num text-[#8A7B7E]"
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: '1.875rem',
+                    lineHeight: 1,
+                    color: '#8A7B7E',
+                    fontWeight: 400
+                  }}
+                >
+                  02
+                </span>
                 <h3 className="sp-timeline-title">Transcribe Under Exam Clock</h3>
                 <p className="sp-timeline-desc">
                   Review outlines during the 5-minute reading clock, then transcribe in <strong>English, Kruti Dev 010, or Mangal</strong> under strict official exam-hall timing and backspace-lock rules.
@@ -1555,7 +1613,18 @@ export default function LandingPage({
                 transition={{ duration: 0.2 }}
                 className="sp-timeline-col border-t-2 border-[#E8DFD3]"
               >
-                <span className="sp-timeline-num text-[#8A7B7E] font-bold">03</span>
+                <span 
+                  className="sp-timeline-num text-[#8A7B7E]"
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: '1.875rem',
+                    lineHeight: 1,
+                    color: '#8A7B7E',
+                    fontWeight: 400
+                  }}
+                >
+                  03
+                </span>
                 <h3 className="sp-timeline-title">Fix Every Single Mistake</h3>
                 <p className="sp-timeline-desc">
                   Receive automated full and half-mistake percentage reports instantly, combined with daily <strong>handwritten outline review</strong> by Shadab Sir to eliminate recurring stroke angle flaws.
@@ -1947,7 +2016,14 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 6: ASPIRANT VOICES (EDITORIAL TESTIMONIALS)
           ========================================================================= */}
-      <section className="sp-voices-section bg-[#EFE7DC] border-t border-[#E3D9CC]">
+      <section 
+        className="sp-voices-section bg-[#FBF8F3] py-14 lg:py-16 border-b border-[#E5DBD0]"
+        style={{
+          backgroundColor: '#FBF8F3',
+          borderTop: 'none',
+          borderBottom: '1px solid #E5DBD0'
+        }}
+      >
         <div className="sp-container">
           
           <FadeUp>
@@ -1955,8 +2031,18 @@ export default function LandingPage({
               <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
                 STUDENT OUTCOMES
               </span>
-              <h2 className="sp-section-h2">
-                Trusted by Serious Aspirants.
+              <h2 
+                className="sp-section-h2 font-serif font-normal text-3xl sm:text-4xl lg:text-[2.65rem] leading-[1.08] tracking-[-0.015em] text-[#231418]"
+                style={{
+                  fontFamily: "'Instrument Serif', Georgia, serif",
+                  fontSize: 'clamp(1.875rem, 3.2vw, 2.65rem)',
+                  fontWeight: 400,
+                  lineHeight: 1.08,
+                  letterSpacing: '-0.015em',
+                  color: '#231418'
+                }}
+              >
+                Trusted by <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>serious aspirants.</span>
               </h2>
               <p className="sp-section-sub">
                 Verified experiences from candidates who built their shorthand speed and cleared recruitment skill tests:
@@ -1974,13 +2060,25 @@ export default function LandingPage({
                 className="sp-voice-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-xl p-6 shadow-[0_4px_20px_rgba(35,20,24,0.04)] flex flex-col justify-between h-full"
               >
                 <div>
-                  {/* Top Proof Row */}
-                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E8DFD3]">
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#231418]">
-                      SSC Steno Grade C
+                  {/* Top Scorecard Badge */}
+                  <div 
+                    className="flex items-center justify-between pb-4 mb-4 border-b border-[#EFE7DC] text-[11px] font-mono"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      paddingBottom: '1rem',
+                      marginBottom: '1rem',
+                      borderBottom: '1px solid #EFE7DC',
+                      fontSize: '11px',
+                      fontFamily: "'JetBrains Mono', monospace"
+                    }}
+                  >
+                    <span style={{ color: '#991B1B', fontWeight: 700, letterSpacing: '0.06em' }}>
+                      SSC GRADE C
                     </span>
-                    <span className="text-xs font-semibold text-[#991B1B] tabular-nums">
-                      100 WPM &middot; 97.4% Acc
+                    <span style={{ color: '#594A4D', fontWeight: 600 }}>
+                      100 WPM &middot; 1.6% ERR
                     </span>
                   </div>
 
@@ -2009,13 +2107,25 @@ export default function LandingPage({
                 className="sp-voice-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-xl p-6 shadow-[0_4px_20px_rgba(35,20,24,0.04)] flex flex-col justify-between h-full"
               >
                 <div>
-                  {/* Top Proof Row */}
-                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E8DFD3]">
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#231418]">
-                      Patna High Court PA
+                  {/* Top Scorecard Badge */}
+                  <div 
+                    className="flex items-center justify-between pb-4 mb-4 border-b border-[#EFE7DC] text-[11px] font-mono"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      paddingBottom: '1rem',
+                      marginBottom: '1rem',
+                      borderBottom: '1px solid #EFE7DC',
+                      fontSize: '11px',
+                      fontFamily: "'JetBrains Mono', monospace"
+                    }}
+                  >
+                    <span style={{ color: '#991B1B', fontWeight: 700, letterSpacing: '0.06em' }}>
+                      PATNA HIGH COURT
                     </span>
-                    <span className="text-xs font-semibold text-[#991B1B] tabular-nums">
-                      100 WPM &middot; 98.2% Acc
+                    <span style={{ color: '#594A4D', fontWeight: 600 }}>
+                      80 WPM &middot; 98.8% ACC
                     </span>
                   </div>
 
@@ -2044,13 +2154,25 @@ export default function LandingPage({
                 className="sp-voice-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-xl p-6 shadow-[0_4px_20px_rgba(35,20,24,0.04)] flex flex-col justify-between h-full"
               >
                 <div>
-                  {/* Top Proof Row */}
-                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E8DFD3]">
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#231418]">
-                      Civil Court Steno
+                  {/* Top Scorecard Badge */}
+                  <div 
+                    className="flex items-center justify-between pb-4 mb-4 border-b border-[#EFE7DC] text-[11px] font-mono"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      paddingBottom: '1rem',
+                      marginBottom: '1rem',
+                      borderBottom: '1px solid #EFE7DC',
+                      fontSize: '11px',
+                      fontFamily: "'JetBrains Mono', monospace"
+                    }}
+                  >
+                    <span style={{ color: '#991B1B', fontWeight: 700, letterSpacing: '0.06em' }}>
+                      CIVIL COURT PA
                     </span>
-                    <span className="text-xs font-semibold text-[#991B1B] tabular-nums">
-                      80 WPM &middot; 96.8% Acc
+                    <span style={{ color: '#594A4D', fontWeight: 600 }}>
+                      80 WPM &middot; KRUTI DEV
                     </span>
                   </div>
 
@@ -2136,8 +2258,16 @@ export default function LandingPage({
                     type="button"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="sp-btn-white-secondary bg-[#FFFFFF] border border-[#E8DFD3] text-[#231418] hover:bg-[#FAF8F5]"
-                    style={{ width: '100%', justifyContent: 'center', padding: '0.75rem 1.25rem', fontSize: '0.875rem', fontWeight: 600 }}
+                    className="sp-btn-white-secondary bg-[#FFFFFF] border border-[#E8DFD3] text-[#231418] hover:bg-[#FAF8F5] rounded-full"
+                    style={{ 
+                      width: '100%', 
+                      justifyContent: 'center', 
+                      padding: '12px 24px', 
+                      fontSize: '13.5px', 
+                      fontWeight: 600,
+                      borderRadius: '9999px',
+                      cursor: 'pointer'
+                    }}
                     onClick={handleOpenDemo}
                   >
                     <span>Book 3 Free Demos &rarr;</span>
@@ -2152,8 +2282,20 @@ export default function LandingPage({
                 <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
                   ADMISSIONS FAQ
                 </span>
-                <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
-                  Frequently Asked Questions
+                <h2 
+                  className="sp-section-h2 font-serif font-normal text-3xl sm:text-4xl lg:text-[2.65rem] leading-[1.08] tracking-[-0.015em] text-[#231418]" 
+                  style={{ 
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.875rem, 3.2vw, 2.65rem)',
+                    fontWeight: 400,
+                    lineHeight: 1.08,
+                    letterSpacing: '-0.015em',
+                    color: '#231418',
+                    textAlign: 'left', 
+                    marginBottom: '1.25rem' 
+                  }}
+                >
+                  Frequently <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>asked questions.</span>
                 </h2>
 
                 <div className="sp-faq-accordion">
@@ -2204,49 +2346,118 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 8: CONTAINED EDITORIAL CLOSING CONVERSION CARD (WARM CREAM #FBF8F3 CANVAS)
+          SECTION 8: OPEN WARM-GLOW PRE-FOOTER CTA (WARM CREAM #FBF8F3 CANVAS)
           ========================================================================= */}
-      <section className="sp-closing-cta-section bg-[#FBF8F3] border-t border-[#E8DFD3] pb-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.97 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, ease: TRANSITION_EASE }}
-            className="sp-closing-cta-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl py-12 px-6 text-center max-w-5xl mx-auto"
-          >
-            <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8A7B7E] mb-3 block">
-              GET STARTED TODAY
+      <section 
+        className="sp-closing-cta-section relative overflow-hidden bg-[#FBF8F3] border-t border-[#E5DBD0] py-16 lg:py-20 text-center px-6"
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundColor: '#FBF8F3',
+          borderTop: '1px solid #E5DBD0',
+          padding: '4.5rem 1.5rem',
+          textAlign: 'center'
+        }}
+      >
+        {/* Radial warm glow */}
+        <div 
+          style={{ 
+            pointerEvents: 'none', 
+            position: 'absolute', 
+            inset: 0, 
+            background: 'radial-gradient(ellipse 65% 65% at 50% 50%, rgba(196, 132, 120, 0.16) 0%, rgba(251, 248, 243, 0) 75%)' 
+          }} 
+        />
+        <div style={{ maxWidth: '42rem', margin: '0 auto', position: 'relative', zIndex: 10 }}>
+          <FadeUp>
+            <span 
+              style={{ 
+                fontSize: '11px', 
+                fontWeight: 600, 
+                textTransform: 'uppercase', 
+                letterSpacing: '0.18em', 
+                color: '#991B1B', 
+                display: 'block', 
+                marginBottom: '12px' 
+              }}
+            >
+              GET STARTED TODAY &middot; 3 FREE DEMO CLASSES
             </span>
-            <h2 className="sp-closing-cta-h2 text-3xl lg:text-4xl font-bold tracking-tight text-[#231418]">
-              Ready to Build{' '}
-              <span className="font-serif italic font-normal text-[#991B1B]">Exam-Hall</span>{' '}
-              Speed?
+            <h2 
+              className="font-serif font-normal text-3xl sm:text-4xl lg:text-5xl text-[#231418] leading-tight"
+              style={{ 
+                fontFamily: "'Instrument Serif', Georgia, serif", 
+                fontSize: 'clamp(2.25rem, 4.2vw, 3.25rem)', 
+                fontWeight: 400, 
+                color: '#231418', 
+                lineHeight: 1.12, 
+                letterSpacing: '-0.02em', 
+                margin: '0 0 14px 0' 
+              }}
+            >
+              Ready to build <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>exam-hall speed?</span>
             </h2>
-            <p className="sp-closing-cta-sub mt-3 text-base text-[#594A4D] max-w-xl mx-auto">
-              Take a free calibrated audio dictation test online or visit our Gaya College More center for 3 free demo classes.
+            <p 
+              style={{ 
+                fontSize: '15px', 
+                color: '#594A4D', 
+                lineHeight: 1.6, 
+                maxWidth: '36rem', 
+                margin: '0 auto 28px auto' 
+              }}
+            >
+              Take a free calibrated audio dictation test online or visit our Gaya center for 3 free demo classes.
             </p>
-            <div className="sp-closing-cta-buttons mt-8 flex flex-wrap items-center justify-center gap-3">
+            <div 
+              style={{ 
+                display: 'flex', 
+                flexWrap: 'wrap', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                gap: '14px' 
+              }}
+            >
               <motion.button
                 type="button"
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                className="sp-btn-ink-primary bg-[#231418] text-[#F5F3EE] hover:bg-[#3A2228] px-6 py-3.5 rounded-lg text-sm font-semibold transition-colors"
                 onClick={handleStartTests}
+                style={{
+                  backgroundColor: '#231418',
+                  color: '#FAF6F0',
+                  borderRadius: '9999px',
+                  padding: '14px 28px',
+                  fontSize: '13.5px',
+                  fontWeight: 600,
+                  border: 'none',
+                  cursor: 'pointer',
+                  boxShadow: '0 8px 24px rgba(35, 20, 24, 0.16)',
+                  transition: 'background-color 0.2s ease'
+                }}
               >
                 <span>Start Free Dictation Test &rarr;</span>
               </motion.button>
               <motion.button
                 type="button"
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                className="sp-btn-white-secondary bg-transparent border border-[#DDD1C2] text-[#231418] hover:bg-[#EFE7DC] px-6 py-3.5 rounded-lg text-sm font-semibold transition-colors"
                 onClick={handleExploreCourses}
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #D8CCBE',
+                  color: '#231418',
+                  borderRadius: '9999px',
+                  padding: '14px 28px',
+                  fontSize: '13.5px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'background-color 0.2s ease'
+                }}
               >
                 <span>Explore All Courses</span>
               </motion.button>
             </div>
-          </motion.div>
+          </FadeUp>
         </div>
       </section>
 
