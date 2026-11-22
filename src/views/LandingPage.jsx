@@ -113,16 +113,14 @@ export default function LandingPage({
     <div className="sp-landing-root">
       
       {/* =========================================================================
-          SECTION 1: EDITORIAL SPLIT HERO (WARM CREAM #FBF8F3)
+          SECTION 1: BESPOKE EDITORIAL HERO WITH ANIMATED PITMAN SHORTHAND
           ========================================================================= */}
       <section 
-        className="sp-hero-section"
+        className="sp-bespoke-hero-section"
         style={{
           backgroundColor: '#FBF8F3',
           color: '#231418',
           width: '100%',
-          paddingTop: '104px',
-          paddingBottom: '48px',
           position: 'relative',
           overflow: 'hidden'
         }}
@@ -134,103 +132,213 @@ export default function LandingPage({
             inset: 0,
             backgroundImage: 'radial-gradient(#E2D8CC 1.2px, transparent 1.2px)',
             backgroundSize: '24px 24px',
-            opacity: 0.35,
+            opacity: 0.25,
             pointerEvents: 'none'
           }} 
         />
 
+        {/* Signature Background Detail: Animated Pitman Shorthand Line-Art */}
         <div 
-          className="sp-hero-container"
           style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            paddingLeft: '24px',
-            paddingRight: '24px',
-            position: 'relative',
-            zIndex: 1
+            position: 'absolute',
+            inset: 0,
+            zIndex: 0,
+            overflow: 'hidden',
+            pointerEvents: 'none',
+            userSelect: 'none'
           }}
         >
-          <div 
-            className="sp-hero-grid-2col"
+          <svg 
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(12, 1fr)',
-              gap: '40px',
-              alignItems: 'center'
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              opacity: 0.05,
+              pointerEvents: 'none'
             }}
+            viewBox="0 0 1440 800" 
+            fill="none" 
+            preserveAspectRatio="xMidYMid slice" 
+            xmlns="http://www.w3.org/2000/svg"
           >
-            {/* Left Column (lg:col-span-6) */}
+            {/* Fine ruled notebook hairlines (Top Right) */}
+            <line x1="860" y1="160" x2="1420" y2="160" stroke="#231418" strokeWidth="1" strokeDasharray="4 6" />
+            <line x1="880" y1="210" x2="1440" y2="210" stroke="#231418" strokeWidth="1" strokeDasharray="4 6" />
+            <line x1="920" y1="260" x2="1440" y2="260" stroke="#231418" strokeWidth="1" strokeDasharray="4 6" />
+            <line x1="950" y1="310" x2="1440" y2="310" stroke="#231418" strokeWidth="1" strokeDasharray="4 6" />
+
+            {/* Authentic Pitman Shorthand Stroke Arcs & Outlines (Top Right Cluster) */}
+            {/* Downward straight stroke (T/D) & Grammalogue tick */}
+            <motion.path 
+              d="M1020 110 L1020 160 M1020 160 L1040 175" 
+              stroke="#231418" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 1.4, ease: TRANSITION_EASE }}
+            />
+            {/* Light curve F/V arc */}
+            <motion.path 
+              d="M1080 115 C1105 130 1115 150 1095 160" 
+              stroke="#231418" strokeWidth="2" strokeLinecap="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 1.4, delay: 0.1, ease: TRANSITION_EASE }}
+            />
+            {/* Slanted stroke with initial R-hook (P-R) */}
+            <motion.path 
+              d="M1150 120 C1140 125 1145 135 1155 132 L1185 160" 
+              stroke="#231418" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 1.4, delay: 0.15, ease: TRANSITION_EASE }}
+            />
+            {/* Phraseography Circle & Stroke (as-is / is-as) */}
+            <motion.path 
+              d="M1230 148 A 12 12 0 1 1 1218 136 L1248 160" 
+              stroke="#231418" strokeWidth="2.2" strokeLinecap="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 1.4, delay: 0.2, ease: TRANSITION_EASE }}
+            />
+            {/* Compound outline: Ray + Ish + T (Shorthand outline) */}
+            <motion.path 
+              d="M1100 210 L1130 180 C1145 195 1165 195 1175 210 L1175 240" 
+              stroke="#231418" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 1.4, delay: 0.25, ease: TRANSITION_EASE }}
+            />
+            {/* Halving principle stroke (Court / Legal) */}
+            <motion.path 
+              d="M1230 210 C1250 195 1270 205 1285 210 M1285 210 L1295 198" 
+              stroke="#231418" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 1.4, delay: 0.3, ease: TRANSITION_EASE }}
+            />
+            {/* Vowel indicator dots and dashes */}
+            <circle cx="1035" cy="135" r="3.5" fill="#231418" />
+            <circle cx="1115" cy="140" r="3.5" fill="#231418" />
+            <line x1="1195" y1="135" x2="1205" y2="132" stroke="#231418" strokeWidth="2.5" strokeLinecap="round" />
+
+            {/* Fine ruled notebook hairlines (Bottom Left) */}
+            <line x1="0" y1="620" x2="520" y2="620" stroke="#231418" strokeWidth="1" strokeDasharray="4 6" />
+            <line x1="0" y1="670" x2="560" y2="670" stroke="#231418" strokeWidth="1" strokeDasharray="4 6" />
+            <line x1="0" y1="720" x2="600" y2="720" stroke="#231418" strokeWidth="1" strokeDasharray="4 6" />
+
+            {/* Authentic Pitman Shorthand Stroke Arcs (Bottom Left Cluster) */}
+            {/* Long curve stroke (Ith / The) */}
+            <motion.path 
+              d="M60 580 C85 600 95 615 80 620" 
+              stroke="#231418" strokeWidth="2.4" strokeLinecap="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 1.4, delay: 0.15, ease: TRANSITION_EASE }}
+            />
+            {/* Upward ray + small circle */}
+            <motion.path 
+              d="M130 620 L165 575 A 9 9 0 1 1 155 565" 
+              stroke="#231418" strokeWidth="2.2" strokeLinecap="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 1.4, delay: 0.2, ease: TRANSITION_EASE }}
+            />
+            {/* Horizontal stroke K/G with final N-hook */}
+            <motion.path 
+              d="M210 620 L260 620 C270 615 272 610 265 608" 
+              stroke="#231418" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 1.4, delay: 0.25, ease: TRANSITION_EASE }}
+            />
+            {/* Double curve grammalogue (Special / Speed) */}
+            <motion.path 
+              d="M90 670 C120 640 150 690 190 670" 
+              stroke="#231418" strokeWidth="2.4" strokeLinecap="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 1.4, delay: 0.3, ease: TRANSITION_EASE }}
+            />
+            {/* Intersected stroke (Government / High Court abbreviation) */}
+            <motion.path 
+              d="M240 650 L275 690 M235 675 L285 665" 
+              stroke="#231418" strokeWidth="2.5" strokeLinecap="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 1.4, delay: 0.35, ease: TRANSITION_EASE }}
+            />
+            {/* Vowel indicators */}
+            <circle cx="145" cy="595" r="3.5" fill="#231418" />
+            <circle cx="235" cy="635" r="3.5" fill="#231418" />
+          </svg>
+        </div>
+
+        {/* Inner container: desktop strict 2-column side-by-side */}
+        <div className="sp-bespoke-hero-grid">
+          
+          {/* Left Column (Desktop 1st Column) */}
+          <div className="sp-bespoke-hero-left">
+            
+            {/* Eyebrow */}
             <div 
-              className="sp-hero-col-left"
               style={{
-                gridColumn: 'span 6 / span 6',
-                minWidth: 0,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                textAlign: 'left'
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                flexWrap: 'wrap',
+                fontSize: '11px',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.18em',
+                color: '#8A7B7E',
+                marginBottom: '4px'
               }}
             >
-              {/* Eyebrow */}
-              <motion.div 
-                initial={{ opacity: 0.85, y: 6 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 0.3, ease: TRANSITION_EASE }}
-                style={{
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.16em',
-                  color: '#8A7B7E',
-                  marginBottom: '14px',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  flexWrap: 'wrap'
-                }}
-              >
-                <span className="sp-live-pulse-dot" style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
-                <span>EST. 2012</span>
-                <span>&middot;</span>
-                <span>GAYA COLLEGE MORE</span>
-                <span>&middot;</span>
-                <span>12+ YEARS COACHING</span>
-              </motion.div>
+              <span className="sp-live-pulse-dot" style={{ width: '6px', height: '6px', borderRadius: '9999px', backgroundColor: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
+              <span>EST. 2012</span>
+              <span>&middot;</span>
+              <span>GAYA COLLEGE MORE</span>
+              <span>&middot;</span>
+              <span>12+ YEARS COACHING</span>
+            </div>
 
-              {/* H1 */}
-              <motion.div 
-                initial={{ opacity: 0.85, y: 6 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 0.3, ease: TRANSITION_EASE }}
-              >
-                <h1 
-                  style={{
-                    color: '#231418',
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontWeight: 800,
-                    fontSize: 'clamp(2.25rem, 4vw, 3.45rem)',
-                    lineHeight: 1.08,
-                    letterSpacing: '-0.03em',
-                    margin: '0 0 18px 0'
-                  }}
+            {/* Commanding Display H1 (Masked Line-by-Line Reveal) */}
+            <h1 
+              style={{
+                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontSize: 'clamp(2.75rem, 4.5vw, 4.25rem)',
+                lineHeight: 1.08,
+                fontWeight: 400,
+                color: '#231418',
+                letterSpacing: '-0.02em',
+                margin: '1rem 0 0 0'
+              }}
+            >
+              <span style={{ display: 'block', overflow: 'hidden', paddingBottom: '3px' }}>
+                <motion.span 
+                  style={{ display: 'block' }}
+                  initial={{ opacity: 0.85, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55, delay: 0.05, ease: TRANSITION_EASE }}
                 >
-                  The Gold Standard in{' '}
-                  <span 
-                    style={{ 
-                      fontFamily: "'Instrument Serif', Georgia, serif", 
-                      fontStyle: 'italic', 
-                      fontWeight: 400, 
-                      color: '#991B1B',
-                      position: 'relative',
-                      display: 'inline-block'
-                    }}
-                  >
+                  The Gold Standard in
+                </motion.span>
+              </span>
+              <span style={{ display: 'block', overflow: 'hidden', paddingBottom: '3px' }}>
+                <motion.span 
+                  style={{ display: 'block' }}
+                  initial={{ opacity: 0.85, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55, delay: 0.14, ease: TRANSITION_EASE }}
+                >
+                  <span style={{ fontStyle: 'italic', color: '#991B1B', position: 'relative', display: 'inline-block' }}>
                     Shorthand
                     <svg 
                       style={{
                         position: 'absolute',
-                        left: 0,
                         bottom: '-4px',
+                        left: 0,
                         width: '100%',
                         height: '6px',
                         overflow: 'visible',
@@ -244,214 +352,288 @@ export default function LandingPage({
                         stroke="#991B1B" 
                         strokeWidth="2.5" 
                         strokeLinecap="round" 
-                        initial={{ pathLength: 0, opacity: 0 }} 
-                        animate={{ pathLength: 1, opacity: 0.85 }} 
-                        transition={{ duration: 0.8, delay: 0.35, ease: TRANSITION_EASE }} 
+                        initial={{ pathLength: 0.3, opacity: 0.85 }} 
+                        animate={{ pathLength: 1, opacity: 0.95 }} 
+                        transition={{ duration: 0.8, delay: 0.3, ease: TRANSITION_EASE }} 
                       />
                     </svg>
-                  </span>{' '}
-                  &amp; Typing for Govt. Exams
-                </h1>
-              </motion.div>
-
-              {/* Subheadline */}
-              <motion.div 
-                initial={{ opacity: 0.85, y: 6 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 0.3, ease: TRANSITION_EASE }}
-              >
-                <p 
-                  style={{
-                    color: '#594A4D',
-                    fontSize: '16px',
-                    lineHeight: 1.6,
-                    maxWidth: '580px',
-                    margin: '0 0 24px 0'
-                  }}
+                  </span>{' '}&amp; Typing
+                </motion.span>
+              </span>
+              <span style={{ display: 'block', overflow: 'hidden', paddingBottom: '3px' }}>
+                <motion.span 
+                  style={{ display: 'block' }}
+                  initial={{ opacity: 0.85, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55, delay: 0.23, ease: TRANSITION_EASE }}
                 >
-                  Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong style={{ color: '#231418', fontWeight: 700 }}>Shadab Sir</strong> with automated SSC error evaluation.
-                </p>
-              </motion.div>
+                  for Govt. Exams.
+                </motion.span>
+              </span>
+            </h1>
 
-              {/* Horizontal CTA Row */}
-              <motion.div 
-                initial={{ opacity: 0.85, y: 6 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 0.3, ease: TRANSITION_EASE }}
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  gap: '12px'
-                }}
-              >
-                <motion.button
-                  type="button"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.15 }}
-                  onClick={handleStartTests}
-                  className="group"
-                  style={{
-                    background: '#991B1B',
-                    color: '#FFFFFF',
-                    padding: '12px 22px',
-                    borderRadius: '10px',
-                    fontWeight: 600,
-                    fontSize: '14px',
-                    whiteSpace: 'nowrap',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    boxShadow: '0 2px 8px rgba(153, 27, 27, 0.25)',
-                    transition: 'background-color 0.15s ease'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#7F1D1D'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#991B1B'}
-                >
-                  <span>Start Audio Dictation</span>
-                  <ArrowRight size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
-                </motion.button>
-
-                <motion.button
-                  type="button"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.15 }}
-                  onClick={handleExploreCourses}
-                  style={{
-                    background: '#FFFFFF',
-                    border: '1px solid #C8C2B6',
-                    color: '#231418',
-                    padding: '12px 22px',
-                    borderRadius: '10px',
-                    fontWeight: 600,
-                    fontSize: '14px',
-                    whiteSpace: 'nowrap',
-                    cursor: 'pointer',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    boxShadow: '0 1px 3px rgba(22, 22, 26, 0.05)',
-                    transition: 'background-color 0.15s ease'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FAF8F5'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FFFFFF'}
-                >
-                  <span>Explore Courses</span>
-                </motion.button>
-
-                <motion.button
-                  type="button"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.15 }}
-                  onClick={handleOpenDemo}
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    color: '#594A4D',
-                    fontSize: '14px',
-                    fontWeight: 500,
-                    whiteSpace: 'nowrap',
-                    cursor: 'pointer',
-                    padding: '8px 4px',
-                    transition: 'color 0.15s ease'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#991B1B'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = '#594A4D'}
-                >
-                  Book 3 Free Demos &rarr;
-                </motion.button>
-              </motion.div>
-
-              {/* Pricing & Timing Reassurance micro-line */}
-              <motion.div 
-                initial={{ opacity: 0.85, y: 6 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 0.3, ease: TRANSITION_EASE }}
-                style={{
-                  marginTop: '18px',
-                  paddingTop: '14px',
-                  borderTop: '1px solid #E8DFD3',
-                  width: '100%',
-                  maxWidth: '580px'
-                }}
-              >
-                <p 
-                  style={{
-                    margin: 0,
-                    fontSize: '12px',
-                    color: '#8A7B7E',
-                    fontWeight: 500
-                  }}
-                >
-                  Online passes from &#8377;30 &middot; Offline &amp; Live Google Meet batches &middot; 3 Free Demo Classes
-                </p>
-              </motion.div>
-            </div>
-
-            {/* Right Column (lg:col-span-6) */}
-            <div 
-              className="sp-hero-col-right"
+            {/* Subheadline */}
+            <p 
               style={{
-                gridColumn: 'span 6 / span 6',
-                minWidth: 0,
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center'
+                marginTop: '1.25rem',
+                fontSize: '15.5px',
+                color: '#594A4D',
+                lineHeight: 1.6,
+                maxWidth: '520px',
+                marginBottom: 0
               }}
             >
+              Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong style={{ fontWeight: 600, color: '#231418' }}>Shadab Sir</strong> with automated SSC error evaluation.
+            </p>
+
+            {/* Refined Pill CTA Row */}
+            <div 
+              style={{
+                marginTop: '1.75rem',
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                gap: '0.75rem'
+              }}
+            >
+              <motion.button
+                type="button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.15 }}
+                onClick={handleStartTests}
+                style={{
+                  backgroundColor: '#991B1B',
+                  color: '#FFFFFF',
+                  padding: '13px 24px',
+                  borderRadius: '9999px',
+                  fontSize: '13.5px',
+                  fontWeight: 600,
+                  boxShadow: '0 8px 22px rgba(153,27,27,0.22)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.2s ease'
+                }}
+              >
+                <span>Start Audio Dictation</span>
+                <ArrowRight size={16} />
+              </motion.button>
+
+              <motion.button
+                type="button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.15 }}
+                onClick={handleExploreCourses}
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  color: '#231418',
+                  border: '1px solid #D8CCBE',
+                  padding: '13px 24px',
+                  borderRadius: '9999px',
+                  fontSize: '13.5px',
+                  fontWeight: 600,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.2s ease'
+                }}
+              >
+                <span>Explore Courses</span>
+              </motion.button>
+
+              <motion.button
+                type="button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.15 }}
+                onClick={handleOpenDemo}
+                style={{
+                  backgroundColor: 'transparent',
+                  color: '#594A4D',
+                  border: 'none',
+                  padding: '8px 12px',
+                  fontSize: '13.5px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                  transition: 'color 0.2s ease'
+                }}
+              >
+                Book 3 Free Demos &rarr;
+              </motion.button>
+            </div>
+
+            {/* Clean 3-Metric Proof Bar */}
+            <div 
+              style={{
+                marginTop: '2rem',
+                paddingTop: '1.5rem',
+                borderTop: '1px solid #E5DBD0',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '1.25rem',
+                maxWidth: '440px',
+                width: '100%'
+              }}
+            >
+              <div>
+                <div 
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: '1.85rem',
+                    color: '#231418',
+                    lineHeight: 1
+                  }}
+                >
+                  12+ Yrs
+                </div>
+                <div style={{ fontSize: '11px', fontWeight: 500, color: '#8A7B7E', marginTop: '6px' }}>
+                  Gaya Legacy
+                </div>
+              </div>
+              <div>
+                <div 
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: '1.85rem',
+                    color: '#231418',
+                    lineHeight: 1,
+                    fontVariantNumeric: 'tabular-nums'
+                  }}
+                >
+                  50&ndash;140
+                </div>
+                <div style={{ fontSize: '11px', fontWeight: 500, color: '#8A7B7E', marginTop: '6px' }}>
+                  WPM Speed Range
+                </div>
+              </div>
+              <div>
+                <div 
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: '1.85rem',
+                    color: '#231418',
+                    lineHeight: 1
+                  }}
+                >
+                  &#8377;30+
+                </div>
+                <div style={{ fontSize: '11px', fontWeight: 500, color: '#8A7B7E', marginTop: '6px' }}>
+                  Online Test Passes
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Right Column (Desktop 2nd Column) */}
+          <div className="sp-bespoke-hero-right">
+            <div style={{ position: 'relative', width: '100%', maxWidth: '540px', margin: '0 auto' }}>
+              {/* Architectural Warm-Sand Mat */}
               <motion.div 
-                initial={{ opacity: 0, scale: 0.96, y: 16 }}
+                initial={{ opacity: 0, scale: 0.97, y: 16 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.65, ease: TRANSITION_EASE }}
                 style={{
-                  width: '100%',
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  border: '1px solid #E8DFD3',
-                  boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
-                  background: '#FFFFFF',
-                  padding: '10px',
-                  boxSizing: 'border-box'
+                  backgroundColor: '#EFE7DC',
+                  padding: '12px',
+                  borderRadius: '26px',
+                  border: '1px solid #E0D5C7',
+                  boxShadow: '0 24px 54px rgba(35,20,24,0.10)'
                 }}
               >
-                <div style={{ overflow: 'hidden', borderRadius: '10px' }}>
+                {/* Classroom Photo inside overflow-hidden frame */}
+                <div style={{ overflow: 'hidden', borderRadius: '18px' }}>
                   <img 
                     src="/assets/institution-hero.jpg" 
                     alt="Shorthand Plus Stenography Classroom &amp; Typing Lab" 
                     style={{
                       width: '100%',
-                      aspectRatio: '4 / 3',
+                      aspectRatio: '4/3',
+                      borderRadius: '18px',
                       objectFit: 'cover',
                       display: 'block',
-                      transition: 'transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)'
+                      transition: 'transform 0.7s ease'
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
-                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                    onMouseOver={(e) => { e.currentTarget.style.transform = 'scale(1.03)'; }}
+                    onMouseOut={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
                   />
                 </div>
+
+                {/* Subtle Bottom Caption Inside Mat */}
                 <div 
                   style={{
-                    padding: '10px 14px 4px 14px',
+                    paddingTop: '10px',
+                    paddingLeft: '8px',
+                    paddingRight: '8px',
+                    paddingBottom: '2px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    fontSize: '12px'
+                    fontSize: '11px'
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
+                    <span style={{ width: '6px', height: '6px', borderRadius: '9999px', backgroundColor: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
                     <span style={{ fontWeight: 600, color: '#231418' }}>SSC &amp; High Court Exam Standard</span>
                   </div>
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#991B1B', fontWeight: 600, fontSize: '11px', letterSpacing: '0.04em' }}>50&ndash;140 WPM &middot; GAYA</span>
+                  <span 
+                    style={{
+                      fontFamily: "var(--font-mono, monospace)",
+                      fontWeight: 600,
+                      color: '#991B1B',
+                      fontVariantNumeric: 'tabular-nums',
+                      letterSpacing: '0.05em'
+                    }}
+                  >
+                    GAYA &middot; OFFLINE + LIVE
+                  </span>
                 </div>
+              </motion.div>
+
+              {/* Floating Live Telemetry Pill (Bottom-Left Overlap) */}
+              <motion.div 
+                initial={{ opacity: 0.85, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.25, ease: TRANSITION_EASE }}
+                className="sp-telemetry-pill"
+                style={{
+                  position: 'absolute',
+                  bottom: '-16px',
+                  left: '-16px',
+                  zIndex: 20,
+                  backgroundColor: 'rgba(255,255,255,0.96)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  border: '1px solid #E5DBD0',
+                  borderRadius: '9999px',
+                  padding: '8px 16px 8px 12px',
+                  boxShadow: '0 12px 30px rgba(35,20,24,0.12)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px'
+                }}
+              >
+                <span className="sp-live-pulse-dot" style={{ width: '8px', height: '8px', borderRadius: '9999px', backgroundColor: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
+                <span 
+                  style={{
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    color: '#231418',
+                    fontVariantNumeric: 'tabular-nums',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  Next Live Dictation &middot; 8:30 AM &middot; 80 WPM
+                </span>
               </motion.div>
             </div>
           </div>
+
         </div>
       </section>
 
