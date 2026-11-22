@@ -45,7 +45,7 @@ export default function Navbar({
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 24);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -136,80 +136,80 @@ export default function Navbar({
         top: '16px',
         left: '50%',
         transform: 'translateX(-50%)',
-        width: 'calc(100% - 2rem)',
+        width: 'calc(100% - 1.5rem)',
         maxWidth: '1180px',
         height: '64px',
         zIndex: 50,
-        background: 'rgba(247, 245, 240, 0.95)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        border: '1px solid rgba(214, 208, 196, 0.9)',
-        borderRadius: '16px',
-        padding: '0 20px',
+        background: scrolled ? 'rgba(247, 245, 240, 0.96)' : 'rgba(247, 245, 240, 0.88)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        border: '1px solid #D1CBBF',
+        borderRadius: '9999px',
+        padding: '0 16px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        boxShadow: '0 12px 32px rgba(22, 22, 26, 0.12), 0 2px 6px rgba(22, 22, 26, 0.04)',
+        boxShadow: scrolled 
+          ? '0 14px 38px rgba(22, 22, 26, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.85)' 
+          : '0 10px 32px rgba(22, 22, 26, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.85)',
+        transition: 'all 0.3s ease',
         boxSizing: 'border-box'
       }}
     >
-      {/* Brand: Big S Logo + 'SHORTHAND PLUS' */}
+      {/* Zone 1: Brand Lockup (Left) */}
       <div 
         onClick={() => handleNavClick('landing')} 
         title="Shorthand Plus (Gaya Shorthand Classes)"
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '10px',
+          gap: '8px',
           cursor: 'pointer',
           flexShrink: 0
         }}
       >
-        <div 
+        <img 
+          src="/assets/logo-big-s.png" 
+          alt="Shorthand Plus" 
           style={{
-            width: '36px',
-            height: '36px',
-            borderRadius: '8px',
-            overflow: 'hidden',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0
+            width: '32px',
+            height: '32px',
+            objectFit: 'contain',
+            flexShrink: 0,
+            display: 'block'
           }}
-        >
-          <img 
-            src="/assets/logo-big-s.png" 
-            alt="Shorthand Plus" 
-            style={{
-              width: '36px',
-              height: '36px',
-              objectFit: 'contain',
-              flexShrink: 0,
-              display: 'block'
-            }}
-          />
-        </div>
+        />
         <span 
           style={{
             color: '#16161A',
-            fontWeight: 700,
+            fontWeight: 800,
             fontSize: '14px',
-            letterSpacing: '0.02em',
+            letterSpacing: '-0.02em',
             textTransform: 'uppercase',
             whiteSpace: 'nowrap'
           }}
         >
           SHORTHAND PLUS
         </span>
+        <div className="sp-nav-brand-meta">
+          <span style={{ width: '1px', height: '14px', background: '#D1CBBF', margin: '0 10px' }} />
+          <span style={{ fontSize: '10px', fontWeight: 600, color: '#6B665C', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+            GAYA &middot; EST. 2012
+          </span>
+        </div>
       </div>
 
-      {/* Center Navigation Links: Home, Courses, Batches & Live, About */}
+      {/* Zone 2: Navigation Pill Track (Center) */}
       <nav 
         className="sp-nav-center-links"
         style={{
+          background: 'rgba(231, 226, 216, 0.85)',
+          border: '1px solid #D6D0C4',
+          padding: '4px',
+          borderRadius: '9999px',
           display: 'flex',
           alignItems: 'center',
-          gap: '6px'
+          gap: '2px'
         }}
       >
         {navItems.map((item) => {
@@ -219,34 +219,50 @@ export default function Navbar({
               key={item.id}
               onClick={() => handleNavClick(item.id)}
               style={active ? {
-                background: '#16161A',
-                color: '#FFFFFF',
+                background: '#FAF8F5',
+                color: '#16161A',
                 fontWeight: 600,
-                fontSize: '14px',
-                padding: '6px 14px',
-                borderRadius: '8px',
+                fontSize: '12px',
+                padding: '6px 16px',
+                borderRadius: '9999px',
                 border: 'none',
                 cursor: 'pointer',
+                boxShadow: '0 1px 3px rgba(22, 22, 26, 0.08)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
                 transition: 'all 0.15s ease'
               } : {
                 background: 'transparent',
                 color: '#57534E',
                 fontWeight: 500,
-                fontSize: '14px',
-                padding: '6px 14px',
-                borderRadius: '8px',
+                fontSize: '12px',
+                padding: '6px 16px',
+                borderRadius: '9999px',
                 border: 'none',
                 cursor: 'pointer',
                 transition: 'all 0.15s ease'
               }}
             >
-              {item.label}
+              {active && (
+                <span 
+                  style={{
+                    width: '5px',
+                    height: '5px',
+                    borderRadius: '50%',
+                    background: '#991B1B',
+                    display: 'inline-block',
+                    flexShrink: 0
+                  }}
+                />
+              )}
+              <span>{item.label}</span>
             </button>
           );
         })}
       </nav>
 
-      {/* Right Section: Student Login / User Controls */}
+      {/* Zone 3: User Controls & CTAs (Right) */}
       <div 
         style={{
           display: 'flex',
@@ -262,21 +278,21 @@ export default function Navbar({
               onClick={() => onOpenAdmission ? onOpenAdmission() : handleNavClick('courses')}
               title="Book 3 Free Demo Classes"
               style={{
-                background: 'rgba(22, 22, 26, 0.06)',
-                border: '1px solid rgba(22, 22, 26, 0.12)',
+                background: '#EFECE5',
+                border: '1px solid #D6D0C4',
                 color: '#16161A',
-                borderRadius: '10px',
-                padding: '6px 12px',
+                borderRadius: '9999px',
+                padding: '6px 14px',
                 fontSize: '12px',
                 fontWeight: 600,
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
                 cursor: 'pointer',
-                transition: 'background-color 0.15s'
+                transition: 'all 0.15s ease'
               }}
             >
-              <Sparkles size={13} style={{ color: '#B91C1C' }} />
+              <Sparkles size={13} style={{ color: '#991B1B' }} />
               <span>Free Demo</span>
             </button>
 
@@ -288,8 +304,8 @@ export default function Navbar({
                 background: '#B91C1C',
                 color: '#FFFFFF',
                 border: 'none',
-                borderRadius: '10px',
-                padding: '6px 14px',
+                borderRadius: '9999px',
+                padding: '7px 18px',
                 fontSize: '12px',
                 fontWeight: 600,
                 display: 'inline-flex',
@@ -297,7 +313,7 @@ export default function Navbar({
                 gap: '6px',
                 boxShadow: '0 1px 3px rgba(185, 28, 28, 0.25)',
                 cursor: 'pointer',
-                transition: 'background-color 0.15s'
+                transition: 'all 0.15s ease'
               }}
             >
               <LogIn size={13} />
@@ -308,13 +324,13 @@ export default function Navbar({
           <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: '8px' }} ref={userMenuRef}>
             <button 
               style={{
-                background: 'rgba(22, 22, 26, 0.06)',
-                border: '1px solid rgba(22, 22, 26, 0.12)',
-                color: '#16161A',
-                borderRadius: '10px',
+                background: '#EFECE5',
+                border: '1px solid #D6D0C4',
+                color: '#44403C',
+                borderRadius: '9999px',
                 padding: '6px 12px',
                 fontSize: '12px',
-                fontWeight: 600,
+                fontWeight: 500,
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
@@ -338,27 +354,39 @@ export default function Navbar({
 
             <button 
               style={{
-                background: 'rgba(22, 22, 26, 0.06)',
-                border: '1px solid rgba(22, 22, 26, 0.12)',
+                background: '#FAF8F5',
+                border: '1px solid #D1CBBF',
                 color: '#16161A',
-                borderRadius: '10px',
-                padding: '6px 12px',
+                borderRadius: '9999px',
+                padding: '4px 12px 4px 6px',
                 fontSize: '12px',
                 fontWeight: 600,
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px',
-                cursor: 'pointer'
+                gap: '8px',
+                cursor: 'pointer',
+                boxShadow: '0 1px 2px rgba(22, 22, 26, 0.05)'
               }}
               onClick={() => setUserDropdownOpen(!userDropdownOpen)}
               title="Account & Subscription Menu"
             >
-              {user?.role === 'admin' ? (
-                <ShieldCheck size={13} color="#D97706" />
-              ) : (
-                <Crown size={13} color="#D97706" />
-              )}
-              <span>{user.name.split(' ')[0]}</span>
+              <div 
+                style={{
+                  width: '26px',
+                  height: '26px',
+                  borderRadius: '50%',
+                  background: '#991B1B',
+                  color: '#FFFFFF',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '11px',
+                  fontWeight: 700
+                }}
+              >
+                {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
+              </div>
+              <span>{user.name ? user.name.split(' ')[0] : 'Account'}</span>
               <ChevronDown size={12} style={{ transition: 'transform 0.2s', transform: userDropdownOpen ? 'rotate(180deg)' : 'none' }} />
             </button>
 

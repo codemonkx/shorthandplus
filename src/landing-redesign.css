@@ -222,9 +222,9 @@
 .sp-hero-section {
   position: relative;
   width: 100%;
-  background-color: #16161A !important;
-  color: #F5F3EE !important;
-  border-bottom: 1px solid #27272A !important;
+  background-color: #ECE8E0 !important;
+  color: #16161A !important;
+  border-bottom: none !important;
 }
 
 .sp-hero-container {
@@ -279,14 +279,14 @@
   background-color: var(--sp-border-slate);
 }
 
-/* Hero H1: text-4xl lg:text-[3.5rem] font-extrabold tracking-[-0.03em] leading-[1.06] text-[#F5F3EE] */
+/* Hero H1: text-4xl lg:text-[3.5rem] font-extrabold tracking-[-0.03em] leading-[1.06] text-[#16161A] */
 .sp-hero-h1 {
   font-family: var(--sp-font-sans);
   font-size: 2.5rem;
   font-weight: 800;
   line-height: 1.06;
   letter-spacing: -0.03em;
-  color: #F5F3EE !important;
+  color: #16161A !important;
   margin: 0 0 1.25rem;
 }
 
@@ -296,12 +296,12 @@
   }
 }
 
-/* Emphasized Serif Accent: font-serif italic font-normal text-[#F87171] tracking-normal text-[1.08em] */
+/* Emphasized Serif Accent: font-serif italic font-normal text-[#991B1B] tracking-normal text-[1.08em] */
 .sp-hero-serif-accent {
   font-family: var(--sp-font-serif);
   font-weight: 400;
   font-style: italic;
-  color: #F87171 !important;
+  color: #991B1B !important;
   letter-spacing: normal;
   font-size: 1.08em;
   text-decoration: none;
@@ -310,11 +310,11 @@
 .sp-hero-subheadline {
   max-width: 580px;
   margin: 0 0 2rem;
-  color: #D4D4D8 !important;
+  color: #44403C !important;
 }
 
 .sp-hero-subheadline strong {
-  color: #FFFFFF !important;
+  color: #16161A !important;
   font-weight: 600;
 }
 
@@ -4032,6 +4032,16 @@
 }
 @media (max-width: 767px) {
   .sp-nav-center-links {
+    display: none !important;
+  }
+}
+
+.sp-nav-brand-meta {
+  display: flex !important;
+  align-items: center;
+}
+@media (max-width: 1023px) {
+  .sp-nav-brand-meta {
     display: none !important;
   }
 }

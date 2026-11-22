@@ -99,27 +99,41 @@ export default function LandingPage({
     <div className="sp-landing-root">
       
       {/* =========================================================================
-          SECTION 1: EDITORIAL SPLIT HERO + EXAM TRUST STRIP (DEEP CHARCOAL)
+          SECTION 1: EDITORIAL SPLIT HERO (WARM PARCHMENT)
           ========================================================================= */}
       <section 
         className="sp-hero-section"
         style={{
-          backgroundColor: '#16161A',
-          color: '#F5F3EE',
-          borderBottom: '1px solid #27272A',
+          backgroundColor: '#ECE8E0',
+          color: '#16161A',
           width: '100%',
           paddingTop: '128px',
-          paddingBottom: '80px',
-          position: 'relative'
+          paddingBottom: '72px',
+          position: 'relative',
+          overflow: 'hidden'
         }}
       >
+        {/* Subtle warm stone dot/grid pattern */}
+        <div 
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundImage: 'radial-gradient(#C8C2B6 1.2px, transparent 1.2px)',
+            backgroundSize: '24px 24px',
+            opacity: 0.35,
+            pointerEvents: 'none'
+          }} 
+        />
+
         <div 
           className="sp-hero-container"
           style={{
             maxWidth: '1280px',
             margin: '0 auto',
             paddingLeft: '24px',
-            paddingRight: '24px'
+            paddingRight: '24px',
+            position: 'relative',
+            zIndex: 1
           }}
         >
           <div 
@@ -150,14 +164,15 @@ export default function LandingPage({
                   fontWeight: 600,
                   textTransform: 'uppercase',
                   letterSpacing: '0.16em',
-                  color: '#A1A1AA',
+                  color: '#57534E',
                   marginBottom: '16px',
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
                   flexWrap: 'wrap'
                 }}
               >
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
                 <span>EST. 2012</span>
                 <span>&middot;</span>
                 <span>GAYA COLLEGE MORE</span>
@@ -168,31 +183,31 @@ export default function LandingPage({
               {/* H1 */}
               <h1 
                 style={{
-                  color: '#F5F3EE',
+                  color: '#16161A',
                   fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                   fontWeight: 800,
-                  fontSize: 'clamp(2.25rem, 4vw, 3.4rem)',
+                  fontSize: 'clamp(2.25rem, 4vw, 3.45rem)',
                   lineHeight: 1.08,
                   letterSpacing: '-0.03em',
                   margin: '0 0 20px 0'
                 }}
               >
                 The Gold Standard in{' '}
-                <span style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontStyle: 'italic', fontWeight: 400, color: '#F87171' }}>Shorthand</span>{' '}
+                <span style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontStyle: 'italic', fontWeight: 400, color: '#991B1B' }}>Shorthand</span>{' '}
                 &amp; Typing for Govt. Exams
               </h1>
 
               {/* Subheadline */}
               <p 
                 style={{
-                  color: '#D4D4D8',
+                  color: '#44403C',
                   fontSize: '16px',
                   lineHeight: 1.6,
                   maxWidth: '580px',
                   margin: '0 0 28px 0'
                 }}
               >
-                Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong style={{ color: '#FFFFFF', fontWeight: 600 }}>Shadab Sir</strong> with automated SSC error evaluation.
+                Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong style={{ color: '#16161A', fontWeight: 700 }}>Shadab Sir</strong> with automated SSC error evaluation.
               </p>
 
               {/* Horizontal CTA Row */}
@@ -201,15 +216,14 @@ export default function LandingPage({
                   display: 'flex',
                   flexWrap: 'wrap',
                   alignItems: 'center',
-                  gap: '12px',
-                  marginTop: '28px'
+                  gap: '12px'
                 }}
               >
                 <button
                   type="button"
                   onClick={handleStartTests}
                   style={{
-                    background: '#B91C1C',
+                    background: '#991B1B',
                     color: '#FFFFFF',
                     padding: '12px 22px',
                     borderRadius: '10px',
@@ -221,9 +235,11 @@ export default function LandingPage({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
-                    transition: 'background-color 0.15s'
+                    boxShadow: '0 1px 3px rgba(153, 27, 27, 0.25)',
+                    transition: 'background-color 0.15s ease'
                   }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#7F1D1D'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#991B1B'}
                 >
                   <span>Start Audio Dictation</span>
                   <ArrowRight size={16} />
@@ -233,9 +249,9 @@ export default function LandingPage({
                   type="button"
                   onClick={handleExploreCourses}
                   style={{
-                    background: 'rgba(255, 255, 255, 0.06)',
-                    border: '1px solid rgba(255, 255, 255, 0.22)',
-                    color: '#F5F3EE',
+                    background: '#F7F5F0',
+                    border: '1px solid #C8C2B6',
+                    color: '#16161A',
                     padding: '12px 22px',
                     borderRadius: '10px',
                     fontWeight: 600,
@@ -245,8 +261,11 @@ export default function LandingPage({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    transition: 'background-color 0.15s'
+                    boxShadow: '0 1px 2px rgba(22, 22, 26, 0.05)',
+                    transition: 'background-color 0.15s ease'
                   }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FAF8F5'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F7F5F0'}
                 >
                   <span>Explore Courses</span>
                 </button>
@@ -257,30 +276,42 @@ export default function LandingPage({
                   style={{
                     background: 'none',
                     border: 'none',
-                    color: '#D4D4D8',
+                    color: '#44403C',
                     fontSize: '14px',
                     fontWeight: 500,
                     whiteSpace: 'nowrap',
                     cursor: 'pointer',
                     padding: '8px 4px',
-                    transition: 'color 0.15s'
+                    transition: 'color 0.15s ease'
                   }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#991B1B'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#44403C'}
                 >
                   Book 3 Free Demos &rarr;
                 </button>
               </div>
 
               {/* Pricing & Timing Reassurance micro-line */}
-              <p 
+              <div 
                 style={{
-                  marginTop: '18px',
-                  fontSize: '12px',
-                  color: '#A1A1AA',
-                  fontWeight: 500
+                  marginTop: '20px',
+                  paddingTop: '16px',
+                  borderTop: '1px solid #D6D0C4',
+                  width: '100%',
+                  maxWidth: '580px'
                 }}
               >
-                Online passes from &#8377;30 &middot; Offline &amp; Live Google Meet batches &middot; 3 Free Demo Classes
-              </p>
+                <p 
+                  style={{
+                    margin: 0,
+                    fontSize: '12px',
+                    color: '#57534E',
+                    fontWeight: 500
+                  }}
+                >
+                  Online passes from &#8377;30 &middot; Offline &amp; Live Google Meet batches &middot; 3 Free Demo Classes
+                </p>
+              </div>
             </div>
 
             {/* Right Column (lg:col-span-6) */}
@@ -299,10 +330,11 @@ export default function LandingPage({
                   width: '100%',
                   borderRadius: '16px',
                   overflow: 'hidden',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  boxShadow: '0 24px 60px rgba(0, 0, 0, 0.45)',
-                  background: '#1A1A20',
-                  position: 'relative'
+                  border: '1px solid #D1CBBF',
+                  boxShadow: '0 24px 56px rgba(22, 22, 26, 0.10)',
+                  background: '#F7F5F0',
+                  padding: '10px',
+                  boxSizing: 'border-box'
                 }}
               >
                 <img 
@@ -312,94 +344,92 @@ export default function LandingPage({
                     width: '100%',
                     aspectRatio: '4 / 3',
                     objectFit: 'cover',
+                    borderRadius: '10px',
                     display: 'block'
                   }}
                 />
                 <div 
                   style={{
-                    background: '#1E1E24',
-                    padding: '12px 16px',
-                    color: '#E4E4E7',
-                    fontSize: '12px',
+                    padding: '10px 14px 4px 14px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    borderTop: '1px solid rgba(255,255,255,0.08)'
+                    fontSize: '12px'
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#F87171', display: 'inline-block', flexShrink: 0 }} />
-                    <span style={{ fontWeight: 600 }}>SSC &amp; High Court Exam Standard</span>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
+                    <span style={{ fontWeight: 600, color: '#16161A' }}>SSC &amp; High Court Exam Standard</span>
                   </div>
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#A1A1AA' }}>50&ndash;140 WPM</span>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#991B1B', fontWeight: 600, fontSize: '11px', letterSpacing: '0.04em' }}>50&ndash;140 WPM &middot; GAYA</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Step 3: Exam Authority Strip (Directly Below Hero) */}
+      {/* Step 3: Exam Authority Strip (Directly Below Hero, Seamless Transition) */}
+      <div 
+        style={{
+          background: '#E4DFD5',
+          borderTop: '1px solid #D1CBBF',
+          borderBottom: '1px solid #D1CBBF',
+          padding: '16px 0',
+          width: '100%',
+          margin: 0
+        }}
+      >
         <div 
           style={{
-            background: '#E4DFD5',
-            borderTop: '1px solid #D1CBBF',
-            borderBottom: '1px solid #D1CBBF',
-            padding: '16px 0',
-            width: '100%',
-            marginTop: '64px'
+            maxWidth: '1280px',
+            margin: '0 auto',
+            paddingLeft: '24px',
+            paddingRight: '24px',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '16px'
           }}
         >
+          <span 
+            style={{
+              fontSize: '11px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.14em',
+              color: '#57534E',
+              fontWeight: 600,
+              whiteSpace: 'nowrap'
+            }}
+          >
+            PREPARING ASPIRANTS FOR
+          </span>
           <div 
             style={{
-              maxWidth: '1280px',
-              margin: '0 auto',
-              paddingLeft: '24px',
-              paddingRight: '24px',
               display: 'flex',
               flexWrap: 'wrap',
               alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '16px'
+              gap: '24px',
+              color: '#16161A',
+              fontSize: '13px',
+              fontWeight: 600
             }}
           >
-            <span 
-              style={{
-                fontSize: '11px',
-                textTransform: 'uppercase',
-                letterSpacing: '0.14em',
-                color: '#52525B',
-                fontWeight: 600,
-                whiteSpace: 'nowrap'
-              }}
-            >
-              PREPARING ASPIRANTS FOR
-            </span>
-            <div 
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                alignItems: 'center',
-                gap: '24px',
-                color: '#16161A',
-                fontSize: '13px',
-                fontWeight: 600
-              }}
-            >
-              <span>SSC Stenographer</span>
-              <span style={{ color: '#A8A294' }}>&middot;</span>
-              <span>Patna High Court</span>
-              <span style={{ color: '#A8A294' }}>&middot;</span>
-              <span>Civil Court</span>
-              <span style={{ color: '#A8A294' }}>&middot;</span>
-              <span>EPFO</span>
-              <span style={{ color: '#A8A294' }}>&middot;</span>
-              <span>DRDO</span>
-              <span style={{ color: '#A8A294' }}>&middot;</span>
-              <span>BSSC</span>
-            </div>
+            <span>SSC Stenographer</span>
+            <span style={{ color: '#A8A294' }}>&middot;</span>
+            <span>Patna High Court</span>
+            <span style={{ color: '#A8A294' }}>&middot;</span>
+            <span>Civil Court</span>
+            <span style={{ color: '#A8A294' }}>&middot;</span>
+            <span>EPFO</span>
+            <span style={{ color: '#A8A294' }}>&middot;</span>
+            <span>DRDO</span>
+            <span style={{ color: '#A8A294' }}>&middot;</span>
+            <span>BSSC</span>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* =========================================================================
           SECTION 2: INTERACTIVE EXAM ENGINE SHOWCASE (THE CENTERPIECE)
