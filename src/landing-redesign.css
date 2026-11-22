@@ -3743,4 +3743,205 @@
   background-color: #F1F5F9 !important;
 }
 
+/* ==========================================================================
+   HOMEPAGE POLISH & CONVERSION FIXES (HERO, STRIP, TABS, MENTOR, CLOSING CTA)
+   ========================================================================== */
+
+/* Hero Pricing & Timing Reassurance Line */
+.sp-hero-reassurance-line {
+  font-family: var(--sp-font-sans) !important;
+  font-size: 0.75rem !important; /* 12px / text-xs */
+  font-weight: 500 !important;
+  color: #475569 !important; /* text-slate-600 */
+  margin: 1rem 0 0 0 !important;
+  line-height: 1.5 !important;
+}
+
+/* Balanced Exam Trust Strip */
+.sp-exam-strip {
+  width: 100% !important;
+  background-color: var(--sp-bg-canvas) !important;
+  border-top: 1px solid var(--sp-border-subtle) !important;
+  border-bottom: 1px solid var(--sp-border-subtle) !important;
+  padding: 1.15rem 0 !important;
+}
+
+.sp-exam-strip-inner {
+  max-width: 80rem !important;
+  margin: 0 auto !important;
+  padding: 0 1.5rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+@media (min-width: 768px) {
+  .sp-exam-strip-inner {
+    flex-direction: row !important;
+  }
+}
+
+.sp-exam-strip-label {
+  font-family: var(--sp-font-sans) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.16em !important;
+  color: #475569 !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+.sp-exam-strip-list {
+  flex: 1 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.5rem 1.5rem !important;
+  font-family: var(--sp-font-sans) !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: var(--sp-text-ink) !important;
+  width: 100% !important;
+}
+
+@media (min-width: 768px) {
+  .sp-exam-strip-list {
+    padding-left: 2.5rem !important;
+    justify-content: space-between !important;
+  }
+}
+
+/* Interactive Tabs Header Row */
+.sp-engine-tab-title-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.5rem !important;
+  width: 100% !important;
+}
+
+/* Eyebrows legibility */
+.sp-section-eyebrow {
+  color: #475569 !important; /* text-slate-600 */
+}
+
+/* Timeline step numbers contrast */
+.sp-timeline-num {
+  color: #94A3B8 !important; /* text-slate-400 font-bold */
+}
+
+/* Mid-page banner features strip */
+.sp-live-features-strip {
+  color: #CBD5E1 !important; /* text-slate-300 */
+}
+
+.sp-live-feat-item {
+  color: #CBD5E1 !important; /* text-slate-300 */
+}
+
+/* Section 8: Final High-Impact Conversion Band */
+.sp-closing-cta-section {
+  background-color: #0F172A !important;
+  padding: 4.5rem 1.5rem !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.sp-closing-cta-container {
+  max-width: 48rem !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.sp-closing-cta-h2 {
+  font-family: var(--sp-font-sans) !important;
+  font-size: clamp(1.875rem, 3.5vw, 2.5rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.025em !important;
+  color: #FFFFFF !important;
+  margin: 0 0 0.75rem !important;
+  line-height: 1.2 !important;
+}
+
+.sp-closing-cta-sub {
+  font-family: var(--sp-font-sans) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  color: #CBD5E1 !important;
+  margin: 0 0 2rem !important;
+  max-width: 38rem !important;
+}
+
+.sp-closing-cta-buttons {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.75rem !important;
+}
+
+.sp-btn-white-solid {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  background-color: #FFFFFF !important;
+  color: #020617 !important;
+  border: 1px solid #FFFFFF !important;
+  border-radius: 8px !important;
+  padding: 0.85rem 1.5rem !important;
+  font-family: var(--sp-font-sans) !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+.sp-btn-white-solid:hover {
+  background-color: #F1F5F9 !important;
+  border-color: #F1F5F9 !important;
+}
+
+.sp-btn-dark-outline {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  background-color: transparent !important;
+  color: #FFFFFF !important;
+  border: 1px solid #475569 !important;
+  border-radius: 8px !important;
+  padding: 0.85rem 1.5rem !important;
+  font-family: var(--sp-font-sans) !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.sp-btn-dark-outline:hover {
+  background-color: #1E293B !important;
+  border-color: #64748B !important;
+}
+
+/* Floating Contact Dock Anchor */
+.floating-contact-dock {
+  position: fixed !important;
+  bottom: 1.5rem !important;
+  right: 1.5rem !important;
+  z-index: 40 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  gap: 0.625rem !important;
+}
+
+
 

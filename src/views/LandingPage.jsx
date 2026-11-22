@@ -157,6 +157,11 @@ export default function LandingPage({
                 </button>
               </div>
 
+              {/* Pricing & Timing Reassurance micro-line */}
+              <p className="sp-hero-reassurance-line">
+                Online passes from &#8377;30 &middot; Offline &amp; Live Google Meet batches &middot; 3 Free Demo Classes
+              </p>
+
             </div>
 
             {/* Right Column (Hero Visual Showcase) */}
@@ -177,11 +182,11 @@ export default function LandingPage({
           </div>
         </div>
 
-        {/* Flush Exam Authority Strip */}
+        {/* Flush Exam Authority Strip - Balanced Full-Width Flex Row */}
         <div className="sp-exam-strip">
-          <div className="sp-exam-strip-inner">
-            <span className="sp-exam-strip-label">PREPARING ASPIRANTS FOR</span>
-            <div className="sp-exam-strip-list">
+          <div className="sp-exam-strip-inner max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <span className="sp-exam-strip-label whitespace-nowrap">PREPARING ASPIRANTS FOR</span>
+            <div className="sp-exam-strip-list flex-1 flex flex-wrap items-center justify-between md:justify-end lg:justify-between gap-x-6 gap-y-2 md:pl-12">
               <span>SSC Stenographer</span>
               <span className="sp-strip-bullet">&middot;</span>
               <span>Patna High Court</span>
@@ -206,7 +211,9 @@ export default function LandingPage({
           
           {/* Header (Left-aligned, max-w-2xl) */}
           <div className="sp-engine-header">
-            <span className="sp-section-eyebrow">THE SHORTHAND PLUS PLATFORM</span>
+            <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">
+              THE SHORTHAND PLUS PLATFORM
+            </span>
             <h2 className="sp-section-h2">
               Built like the actual exam hall, down to every keystroke.
             </h2>
@@ -218,12 +225,12 @@ export default function LandingPage({
           {/* 2-Column Interactive Split */}
           <div className="sp-engine-grid">
             
-            {/* Left Column: 3 Clickable Accordion/Tab Items */}
+            {/* Left Column: 3 Clickable Accordion/Tab Items (Collapse Inactive Tabs) */}
             <div className="sp-engine-tabs">
               
               {/* Tab 0 */}
               <div 
-                className={`sp-engine-tab-card ${activeEngineTab === 0 ? 'active' : ''}`}
+                className={`sp-engine-tab-card ${activeEngineTab === 0 ? 'active' : 'inactive'}`}
                 onClick={() => setActiveEngineTab(0)}
                 role="button"
                 tabIndex={0}
@@ -231,18 +238,29 @@ export default function LandingPage({
                 <div className="sp-engine-tab-head">
                   <span className="sp-engine-tab-num">01</span>
                   <div className="sp-engine-tab-title-wrap">
-                    <h3 className="sp-engine-tab-title">Calibrated Audio Dictation</h3>
-                    <span className="sp-engine-tab-tag">50–140 WPM Standard</span>
+                    <div className="sp-engine-tab-title-row">
+                      <h3 className="sp-engine-tab-title">Calibrated Audio Dictation</h3>
+                      {activeEngineTab === 0 ? (
+                        <ChevronUp size={16} className="text-slate-700 shrink-0" />
+                      ) : (
+                        <ChevronDown size={16} className="text-slate-400 shrink-0" />
+                      )}
+                    </div>
+                    {activeEngineTab === 0 && (
+                      <span className="sp-engine-tab-tag">50–140 WPM Standard</span>
+                    )}
                   </div>
                 </div>
-                <p className="sp-engine-tab-desc">
-                  Practice 50–140 WPM Pitman &amp; High Court legal dictations with exam-accurate pacing, single-play lock, and mandatory 5-minute reading clock.
-                </p>
+                {activeEngineTab === 0 && (
+                  <p className="sp-engine-tab-desc">
+                    Practice 50–140 WPM Pitman &amp; High Court legal dictations with exam-accurate pacing, single-play lock, and mandatory 5-minute reading clock.
+                  </p>
+                )}
               </div>
 
               {/* Tab 1 */}
               <div 
-                className={`sp-engine-tab-card ${activeEngineTab === 1 ? 'active' : ''}`}
+                className={`sp-engine-tab-card ${activeEngineTab === 1 ? 'active' : 'inactive'}`}
                 onClick={() => setActiveEngineTab(1)}
                 role="button"
                 tabIndex={0}
@@ -250,18 +268,29 @@ export default function LandingPage({
                 <div className="sp-engine-tab-head">
                   <span className="sp-engine-tab-num">02</span>
                   <div className="sp-engine-tab-title-wrap">
-                    <h3 className="sp-engine-tab-title">Bilingual Typing Studio</h3>
-                    <span className="sp-engine-tab-tag">Kruti Dev &amp; Mangal</span>
+                    <div className="sp-engine-tab-title-row">
+                      <h3 className="sp-engine-tab-title">Bilingual Typing Studio</h3>
+                      {activeEngineTab === 1 ? (
+                        <ChevronUp size={16} className="text-slate-700 shrink-0" />
+                      ) : (
+                        <ChevronDown size={16} className="text-slate-400 shrink-0" />
+                      )}
+                    </div>
+                    {activeEngineTab === 1 && (
+                      <span className="sp-engine-tab-tag">Kruti Dev &amp; Mangal</span>
+                    )}
                   </div>
                 </div>
-                <p className="sp-engine-tab-desc">
-                  Dedicated English QWERTY, Hindi Kruti Dev 010, and Mangal Inscript typing drills with strict backspace-lock simulation and live gross/net WPM.
-                </p>
+                {activeEngineTab === 1 && (
+                  <p className="sp-engine-tab-desc">
+                    Dedicated English QWERTY, Hindi Kruti Dev 010, and Mangal Inscript typing drills with strict backspace-lock simulation and live gross/net WPM.
+                  </p>
+                )}
               </div>
 
               {/* Tab 2 */}
               <div 
-                className={`sp-engine-tab-card ${activeEngineTab === 2 ? 'active' : ''}`}
+                className={`sp-engine-tab-card ${activeEngineTab === 2 ? 'active' : 'inactive'}`}
                 onClick={() => setActiveEngineTab(2)}
                 role="button"
                 tabIndex={0}
@@ -269,13 +298,24 @@ export default function LandingPage({
                 <div className="sp-engine-tab-head">
                   <span className="sp-engine-tab-num">03</span>
                   <div className="sp-engine-tab-title-wrap">
-                    <h3 className="sp-engine-tab-title">Automated SSC Error Evaluation</h3>
-                    <span className="sp-engine-tab-tag">Full &amp; Half Error Scoring</span>
+                    <div className="sp-engine-tab-title-row">
+                      <h3 className="sp-engine-tab-title">Automated SSC Error Evaluation</h3>
+                      {activeEngineTab === 2 ? (
+                        <ChevronUp size={16} className="text-slate-700 shrink-0" />
+                      ) : (
+                        <ChevronDown size={16} className="text-slate-400 shrink-0" />
+                      )}
+                    </div>
+                    {activeEngineTab === 2 && (
+                      <span className="sp-engine-tab-tag">Full &amp; Half Error Scoring</span>
+                    )}
                   </div>
                 </div>
-                <p className="sp-engine-tab-desc">
-                  Instant word-by-word diff checking full vs. half mistakes against official SSC and High Court cutoffs with exact percentage qualification criteria.
-                </p>
+                {activeEngineTab === 2 && (
+                  <p className="sp-engine-tab-desc">
+                    Instant word-by-word diff checking full vs. half mistakes against official SSC and High Court cutoffs with exact percentage qualification criteria.
+                  </p>
+                )}
               </div>
 
             </div>
@@ -336,113 +376,106 @@ export default function LandingPage({
                         onClick={() => setIsPlayingAudioPreview(!isPlayingAudioPreview)}
                         title="Toggle Audio Simulation"
                       >
-                        {isPlayingAudioPreview ? <Pause size={18} /> : <Play size={18} style={{ marginLeft: '2px' }} />}
+                        {isPlayingAudioPreview ? <Pause size={18} fill="#FFFFFF" /> : <Play size={18} fill="#FFFFFF" />}
                       </button>
 
-                      <div className="sp-waveform-bars">
-                        {[40, 65, 30, 85, 95, 60, 45, 100, 75, 50, 90, 65, 40, 80, 55, 35, 70, 90, 60, 30].map((h, idx) => (
+                      <div className="sp-audio-waveform-bars">
+                        {[40, 65, 30, 85, 95, 60, 45, 90, 100, 75, 40, 80, 60, 95, 50, 85, 30, 70, 90, 45].map((height, i) => (
                           <span 
-                            key={idx} 
-                            className={`sp-wave-bar ${isPlayingAudioPreview && idx < 12 ? 'active' : ''}`}
-                            style={{ height: `${h}%` }}
+                            key={i} 
+                            className={`sp-wave-bar ${isPlayingAudioPreview && i < 12 ? 'active' : ''}`}
+                            style={{ height: `${height}%` }}
                           />
                         ))}
                       </div>
 
-                      <div className="sp-audio-timer tabular-nums">
-                        {isPlayingAudioPreview ? "01:24" : "05:00"}
-                      </div>
+                      <span className="sp-audio-timer-readout font-mono tabular-nums">
+                        {isPlayingAudioPreview ? "02:14 / 05:00" : "00:00 / 05:00"}
+                      </span>
                     </div>
 
                     <div className="sp-preview-footer-note">
                       <span>Strict Single-Play Protocol: Audio plays once without rewind or pause.</span>
                       <button 
                         type="button" 
-                        className="sp-preview-cta-link"
+                        className="sp-preview-cta-link whitespace-nowrap inline-flex items-center gap-1.5"
                         onClick={handleStartTests}
                       >
-                        Launch Dictation Vault &rarr;
+                        <span>Open Full Dictation Lab &rarr;</span>
                       </button>
                     </div>
                   </div>
                 )}
 
-                {/* TAB 1 PREVIEW: Bilingual Typing Studio */}
+                {/* TAB 1 PREVIEW: Bilingual Typing Lab Simulator */}
                 {activeEngineTab === 1 && (
                   <div className="sp-preview-card">
                     <div className="sp-preview-badge-row">
                       <span className="sp-preview-status-pill">
-                        <span className="sp-live-dot" /> BACKSPACE LOCKED
+                        <span className="sp-live-dot" /> TYPING BENCHMARK
                       </span>
-                      <span className="sp-preview-meta-tag">Exam Layout: Kruti Dev 010</span>
-                    </div>
-
-                    {/* Font & Layout Switcher */}
-                    <div className="sp-font-toggle-row">
-                      <span className="sp-font-tab">English QWERTY</span>
-                      <span className="sp-font-tab active">Hindi Kruti Dev 010</span>
-                      <span className="sp-font-tab">Mangal Inscript</span>
-                    </div>
-
-                    {/* Real-time stats row */}
-                    <div className="sp-preview-stats-bar">
-                      <div className="sp-stat-item">
-                        <span className="sp-stat-label">GROSS SPEED</span>
-                        <span className="sp-stat-val tabular-nums">46 WPM</span>
-                      </div>
-                      <div className="sp-stat-item">
-                        <span className="sp-stat-label">NET SPEED</span>
-                        <span className="sp-stat-val tabular-nums">42 WPM</span>
-                      </div>
-                      <div className="sp-stat-item">
-                        <span className="sp-stat-label">ACCURACY</span>
-                        <span className="sp-stat-val tabular-nums text-emerald">97.8%</span>
-                      </div>
-                      <div className="sp-stat-item">
-                        <span className="sp-stat-label">TIME LEFT</span>
-                        <span className="sp-stat-val tabular-nums">08:45</span>
+                      <div className="sp-font-tabs">
+                        <span className="sp-font-tab active">Kruti Dev 010</span>
+                        <span className="sp-font-tab">Mangal Inscript</span>
+                        <span className="sp-font-tab">English QWERTY</span>
                       </div>
                     </div>
 
-                    {/* Live Editor Preview Snippet */}
-                    <div className="sp-typing-passage-box">
-                      <span className="sp-typed-text">
-                        अभ्यर्थियों को सूचित किया जाता है कि पटना उच्च न्यायालय आशुलिपिक परीक्षा के लिए गति एवं शुद्धता सर्वोपरि
-                      </span>
-                      <span className="sp-typing-cursor" />
-                      <span className="sp-untyped-text">
-                        {' '}है। निर्धारित समय सीमा के भीतर कंप्यूटर टंकण पूर्ण करना अनिवार्य होगा।
-                      </span>
+                    {/* Live Exam Telemetry HUD */}
+                    <div className="sp-typing-telemetry-hud">
+                      <div className="sp-telemetry-item">
+                        <span className="sp-telemetry-label">GROSS SPEED</span>
+                        <span className="sp-telemetry-val tabular-nums font-mono">48.2 <span className="sp-unit">WPM</span></span>
+                      </div>
+                      <div className="sp-telemetry-item">
+                        <span className="sp-telemetry-label">NET ACCURACY</span>
+                        <span className="sp-telemetry-val tabular-nums font-mono text-emerald">98.4%</span>
+                      </div>
+                      <div className="sp-telemetry-item">
+                        <span className="sp-telemetry-label">BACKSPACE LOCK</span>
+                        <span className="sp-telemetry-val text-crimson font-mono font-bold">ENFORCED</span>
+                      </div>
+                      <div className="sp-telemetry-item">
+                        <span className="sp-telemetry-label">TIME REMAINING</span>
+                        <span className="sp-telemetry-val tabular-nums font-mono">07:45</span>
+                      </div>
+                    </div>
+
+                    {/* Simulated Text Transcription Input Box */}
+                    <div className="sp-simulated-typing-box">
+                      <p className="sp-simulated-text font-hindi">
+                        न्यायालय के आदेशानुसार उक्त याचिका पर सुनवाई करते हुए न्यायाधीश महोदय ने स्पष्ट किया कि...
+                      </p>
+                      <div className="sp-typing-cursor-line">
+                        <span className="sp-typed-text font-hindi">न्यायालय के आदेशानुसार उक्त</span>
+                        <span className="sp-blinking-caret" />
+                      </div>
                     </div>
 
                     <div className="sp-preview-footer-note">
                       <span>Strict Backspace Lock: Eliminates bad editing habits during live preparation.</span>
                       <button 
                         type="button" 
-                        className="sp-preview-cta-link"
+                        className="sp-preview-cta-link whitespace-nowrap inline-flex items-center gap-1.5"
                         onClick={() => setCurrentTab && setCurrentTab('typing-studio')}
                       >
-                        Enter Typing Studio &rarr;
+                        <span>Launch Typing Engine &rarr;</span>
                       </button>
                     </div>
                   </div>
                 )}
 
-                {/* TAB 2 PREVIEW: Automated SSC Error Evaluation */}
+                {/* TAB 2 PREVIEW: Automated SSC Error Evaluation Diff */}
                 {activeEngineTab === 2 && (
                   <div className="sp-preview-card">
                     <div className="sp-preview-badge-row">
-                      <span className="sp-preview-status-pill qualified">
-                        <CheckCircle size={14} /> QUALIFIED &middot; SSC GRADE C
+                      <span className="sp-preview-status-pill">
+                        <span className="sp-live-dot" /> FORENSIC AUDIT
                       </span>
-                      <span className="sp-preview-meta-tag">Cutoff Allowed: 7.0%</span>
+                      <span className="sp-preview-meta-tag font-mono">SSC Grade C &middot; 100 WPM</span>
                     </div>
 
-                    <h4 className="sp-preview-title">
-                      LCS Forensic Word-by-Word Error Breakdown
-                    </h4>
-
-                    {/* Diff Highlighting Display */}
+                    {/* Diff Inspection Passage */}
                     <div className="sp-diff-passage-box">
                       <p className="sp-diff-text">
                         The proceedings of the{' '}
@@ -473,19 +506,19 @@ export default function LandingPage({
                     <div className="sp-diff-score-grid">
                       <div className="sp-diff-score-cell">
                         <span className="sp-diff-label">FULL MISTAKES</span>
-                        <span className="sp-diff-value tabular-nums">1 (Omission)</span>
+                        <span className="sp-diff-value tabular-nums font-mono">1 (Omission)</span>
                       </div>
                       <div className="sp-diff-score-cell">
                         <span className="sp-diff-label">HALF MISTAKES</span>
-                        <span className="sp-diff-value tabular-nums">1 (Spelling)</span>
+                        <span className="sp-diff-value tabular-nums font-mono">1 (Spelling)</span>
                       </div>
                       <div className="sp-diff-score-cell">
                         <span className="sp-diff-label">TOTAL ERROR RATE</span>
-                        <span className="sp-diff-value tabular-nums text-emerald">1.5%</span>
+                        <span className="sp-diff-value tabular-nums font-mono text-emerald">1.5%</span>
                       </div>
                       <div className="sp-diff-score-cell">
                         <span className="sp-diff-label">NET ACCURACY</span>
-                        <span className="sp-diff-value tabular-nums font-bold">98.5%</span>
+                        <span className="sp-diff-value tabular-nums font-mono font-bold">98.5%</span>
                       </div>
                     </div>
 
@@ -493,10 +526,10 @@ export default function LandingPage({
                       <span>Full SSC Standard: Certified evaluation matching official Staff Selection Commission rules.</span>
                       <button 
                         type="button" 
-                        className="sp-preview-cta-link"
+                        className="sp-preview-cta-link whitespace-nowrap inline-flex items-center gap-1.5"
                         onClick={handleStartTests}
                       >
-                        Try Full Mock Exam &rarr;
+                        <span>Try Full Mock Exam &rarr;</span>
                       </button>
                     </div>
                   </div>
@@ -518,7 +551,9 @@ export default function LandingPage({
           
           <div className="sp-timeline-head-row">
             <div>
-              <span className="sp-section-eyebrow">PEDAGOGICAL ROADMAP</span>
+              <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">
+                PEDAGOGICAL ROADMAP
+              </span>
               <h2 className="sp-section-h2" style={{ textAlign: 'left', margin: 0 }}>
                 From First Outline to Final Selection.
               </h2>
@@ -537,7 +572,7 @@ export default function LandingPage({
             
             {/* Step 1 */}
             <div className="sp-timeline-col">
-              <span className="sp-timeline-num">01</span>
+              <span className="sp-timeline-num text-slate-400 font-bold">01</span>
               <h3 className="sp-timeline-title">Listen &amp; Write Shorthand</h3>
               <p className="sp-timeline-desc">
                 Take calibrated live or studio dictations in your physical stenography notebook at <strong>60 to 140 WPM</strong>. Master light/dark stroke discrimination and phraseography without hesitations.
@@ -546,7 +581,7 @@ export default function LandingPage({
 
             {/* Step 2 */}
             <div className="sp-timeline-col">
-              <span className="sp-timeline-num">02</span>
+              <span className="sp-timeline-num text-slate-400 font-bold">02</span>
               <h3 className="sp-timeline-title">Transcribe Under Exam Clock</h3>
               <p className="sp-timeline-desc">
                 Review outlines during the 5-minute reading clock, then transcribe in <strong>English, Kruti Dev 010, or Mangal</strong> under strict official exam-hall timing and backspace-lock rules.
@@ -555,7 +590,7 @@ export default function LandingPage({
 
             {/* Step 3 */}
             <div className="sp-timeline-col">
-              <span className="sp-timeline-num">03</span>
+              <span className="sp-timeline-num text-slate-400 font-bold">03</span>
               <h3 className="sp-timeline-title">Fix Every Single Mistake</h3>
               <p className="sp-timeline-desc">
                 Receive automated full and half-mistake percentage reports instantly, combined with daily <strong>handwritten outline review</strong> by Shadab Sir to eliminate recurring stroke angle flaws.
@@ -576,7 +611,9 @@ export default function LandingPage({
             
             {/* Left Column: Editorial Narrative & Mentor Legacy */}
             <div className="sp-mentor-narrative">
-              <span className="sp-section-eyebrow">GAYA SHORTHAND CLASSES &middot; EST. 2012</span>
+              <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">
+                GAYA SHORTHAND CLASSES &middot; EST. 2012
+              </span>
               <h2 className="sp-section-h2" style={{ textAlign: 'left' }}>
                 12+ Years of Discipline. Guided Directly by Shadab Sir.
               </h2>
@@ -618,55 +655,41 @@ export default function LandingPage({
               </div>
             </div>
 
-            {/* Right Column: 4 Core Pillars Credential Card */}
-            <div className="sp-mentor-pillars-card">
-              <div className="sp-pillars-card-head">
-                <h3 className="sp-pillars-heading">Institutional Principles</h3>
-                <span className="sp-pillars-tag">CORE PILLARS</span>
+            {/* Right Column: Mentor & Academy Visual Card */}
+            <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
+              {/* Top Visual Frame */}
+              <div className="aspect-[4/3] bg-slate-100 relative overflow-hidden">
+                {/* TODO: Replace src with real portrait photo of Shadab Sir or Gaya classroom */}
+                <img 
+                  src="/assets/institution-hero.jpg" 
+                  alt="Shadab Sir - Gaya Shorthand Classes Classroom &amp; Mentor" 
+                  className="w-full h-full object-cover object-top"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+                />
+                <div className="absolute bottom-0 inset-x-0 bg-slate-900/90 text-white px-5 py-3 text-xs flex items-center justify-between backdrop-blur-xs">
+                  <span className="font-semibold text-white">Shadab Sir &middot; Founder &amp; Chief Instructor</span>
+                  <span className="text-slate-300 font-mono text-[11px]">Est. 2012 &middot; Gaya</span>
+                </div>
               </div>
 
-              <div className="sp-pillars-list">
-                
-                <div className="sp-pillar-item">
-                  <div className="sp-pillar-header">
-                    <CheckCircle2 size={18} className="sp-pillar-icon" />
-                    <h4 className="sp-pillar-title">Personal Outline Checking</h4>
-                  </div>
-                  <p className="sp-pillar-desc">
-                    Daily physical review of shorthand notebooks by Shadab Sir to correct stroke angles, proportion, and phraseography before bad habits take root.
-                  </p>
+              {/* Compact 4-Point Summary Underneath */}
+              <div className="p-5 divide-y divide-slate-100">
+                <div className="py-2.5 text-sm font-medium text-slate-800 flex items-center gap-2.5">
+                  <Check size={16} className="text-[#B91C1C] shrink-0" />
+                  <span>Personal Pitman Outline Checking</span>
                 </div>
-
-                <div className="sp-pillar-item">
-                  <div className="sp-pillar-header">
-                    <CheckCircle2 size={18} className="sp-pillar-icon" />
-                    <h4 className="sp-pillar-title">Bilingual Typing Mastery</h4>
-                  </div>
-                  <p className="sp-pillar-desc">
-                    Comprehensive dual-stream training across English Pitman and Hindi Shorthand with both Kruti Dev 010 and Mangal Inscript typing labs.
-                  </p>
+                <div className="py-2.5 text-sm font-medium text-slate-800 flex items-center gap-2.5">
+                  <Check size={16} className="text-[#B91C1C] shrink-0" />
+                  <span>Hindi Kruti Dev 010 &amp; Mangal Inscript Mastery</span>
                 </div>
-
-                <div className="sp-pillar-item">
-                  <div className="sp-pillar-header">
-                    <CheckCircle2 size={18} className="sp-pillar-icon" />
-                    <h4 className="sp-pillar-title">Daily Legal &amp; Parliamentary Dictations</h4>
-                  </div>
-                  <p className="sp-pillar-desc">
-                    High Court judgments, civil petitions, FIR vocabulary, and Kailash Chandra volumes calibrated to exact official recruitment speeds.
-                  </p>
+                <div className="py-2.5 text-sm font-medium text-slate-800 flex items-center gap-2.5">
+                  <Check size={16} className="text-[#B91C1C] shrink-0" />
+                  <span>Daily High Court &amp; Parliamentary Dictations</span>
                 </div>
-
-                <div className="sp-pillar-item">
-                  <div className="sp-pillar-header">
-                    <CheckCircle2 size={18} className="sp-pillar-icon" />
-                    <h4 className="sp-pillar-title">Transparent Coaching with 3 Free Demo Classes</h4>
-                  </div>
-                  <p className="sp-pillar-desc">
-                    Experience our classroom instruction, typing lab computers, and dictation methodology completely free before paying any admission fee.
-                  </p>
+                <div className="py-2.5 text-sm font-medium text-slate-800 flex items-center gap-2.5">
+                  <Check size={16} className="text-[#B91C1C] shrink-0" />
+                  <span>3 Free Demo Classes Before Enrollment</span>
                 </div>
-
               </div>
             </div>
 
@@ -697,7 +720,7 @@ export default function LandingPage({
                 Daily Google Meet dictations, live digital whiteboard outline checking, and real-time doubt resolution with <strong>Shadab Sir</strong>.
               </p>
 
-              <div className="sp-live-features-strip">
+              <div className="sp-live-features-strip text-slate-300">
                 <span className="sp-live-feat-item">Google Meet Live</span>
                 <span className="sp-live-feat-divider">&middot;</span>
                 <span className="sp-live-feat-item">Whiteboard Outline Review</span>
@@ -734,7 +757,9 @@ export default function LandingPage({
         <div className="sp-container">
           
           <div className="sp-voices-header">
-            <span className="sp-section-eyebrow">STUDENT OUTCOMES</span>
+            <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">
+              STUDENT OUTCOMES
+            </span>
             <h2 className="sp-section-h2">
               Trusted by Serious Aspirants.
             </h2>
@@ -746,56 +771,89 @@ export default function LandingPage({
           <div className="sp-voices-grid">
             
             {/* Review 1 */}
-            <div className="sp-voice-card">
+            <div className="sp-voice-card bg-white border border-slate-200 rounded-xl p-6 shadow-xs flex flex-col justify-between">
               <div>
-                <div className="sp-voice-stars">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={15} fill="#B91C1C" color="#B91C1C" />
-                  ))}
+                {/* Top Proof Row */}
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-900">
+                    SSC Steno Grade C
+                  </span>
+                  <span className="text-xs font-semibold text-[#B91C1C] tabular-nums">
+                    100 WPM &middot; 97.4% Acc
+                  </span>
                 </div>
-                <p className="sp-voice-quote">
+
+                <p className="text-sm text-slate-700 leading-relaxed mb-6">
                   &ldquo;Shadab Sir's daily dictation practice and 5-minute reading room made all the difference in my SSC skill test. Individual notebook checking helped fix my stroke angles completely.&rdquo;
                 </p>
               </div>
-              <div className="sp-voice-author-block">
-                <div className="sp-voice-author-name">Anjali Verma</div>
-                <div className="sp-voice-author-tag">SSC STENOGRAPHER GRADE C &middot; 100 WPM</div>
+
+              <div className="flex items-center gap-3 pt-2">
+                <div className="w-8 h-8 rounded-full bg-slate-900 text-white text-xs font-semibold flex items-center justify-center shrink-0">
+                  AV
+                </div>
+                <div>
+                  <div className="font-bold text-slate-900 text-sm">Anjali Verma</div>
+                  <div className="text-xs text-slate-500">Selected 2023 &middot; Central Secretariat</div>
+                </div>
               </div>
             </div>
 
             {/* Review 2 */}
-            <div className="sp-voice-card">
+            <div className="sp-voice-card bg-white border border-slate-200 rounded-xl p-6 shadow-xs flex flex-col justify-between">
               <div>
-                <div className="sp-voice-stars">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={15} fill="#B91C1C" color="#B91C1C" />
-                  ))}
+                {/* Top Proof Row */}
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-900">
+                    Patna High Court PA
+                  </span>
+                  <span className="text-xs font-semibold text-[#B91C1C] tabular-nums">
+                    100 WPM &middot; 98.2% Acc
+                  </span>
                 </div>
-                <p className="sp-voice-quote">
+
+                <p className="text-sm text-slate-700 leading-relaxed mb-6">
                   &ldquo;The strict backspace lock simulation and legal judgment audio series mirrored the exact Patna High Court exam software. Reached 100 WPM with zero guesswork.&rdquo;
                 </p>
               </div>
-              <div className="sp-voice-author-block">
-                <div className="sp-voice-author-name">Rakesh Kumar</div>
-                <div className="sp-voice-author-tag">PATNA HIGH COURT PA &middot; 98% ACCURACY</div>
+
+              <div className="flex items-center gap-3 pt-2">
+                <div className="w-8 h-8 rounded-full bg-slate-900 text-white text-xs font-semibold flex items-center justify-center shrink-0">
+                  RK
+                </div>
+                <div>
+                  <div className="font-bold text-slate-900 text-sm">Rakesh Kumar</div>
+                  <div className="text-xs text-slate-500">Qualified 2022 &middot; Patna High Court Bench</div>
+                </div>
               </div>
             </div>
 
             {/* Review 3 */}
-            <div className="sp-voice-card">
+            <div className="sp-voice-card bg-white border border-slate-200 rounded-xl p-6 shadow-xs flex flex-col justify-between">
               <div>
-                <div className="sp-voice-stars">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={15} fill="#B91C1C" color="#B91C1C" />
-                  ))}
+                {/* Top Proof Row */}
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-900">
+                    Civil Court Steno
+                  </span>
+                  <span className="text-xs font-semibold text-[#B91C1C] tabular-nums">
+                    80 WPM &middot; 96.8% Acc
+                  </span>
                 </div>
-                <p className="sp-voice-quote">
+
+                <p className="text-sm text-slate-700 leading-relaxed mb-6">
                   &ldquo;Best shorthand institute in Gaya. The dual font support (Kruti Dev 010 and Mangal) in their computer lab is unmatched for judicial exam aspirants.&rdquo;
                 </p>
               </div>
-              <div className="sp-voice-author-block">
-                <div className="sp-voice-author-name">Md. Tariq</div>
-                <div className="sp-voice-author-tag">BIHAR CIVIL COURT STENOGRAPHER</div>
+
+              <div className="flex items-center gap-3 pt-2">
+                <div className="w-8 h-8 rounded-full bg-slate-900 text-white text-xs font-semibold flex items-center justify-center shrink-0">
+                  MT
+                </div>
+                <div>
+                  <div className="font-bold text-slate-900 text-sm">Md. Tariq</div>
+                  <div className="text-xs text-slate-500">Selected 2023 &middot; District Court Gaya</div>
+                </div>
               </div>
             </div>
 
@@ -805,7 +863,7 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 7: COMPACT CENTER DETAILS + FAQ SPLIT & TIGHT CLOSING BAND
+          SECTION 7: COMPACT CENTER DETAILS + FAQ SPLIT
           ========================================================================= */}
       <section className="sp-center-faq-section">
         <div className="sp-container">
@@ -814,7 +872,9 @@ export default function LandingPage({
             
             {/* Left Column: Center Location & Helplines */}
             <div className="sp-center-card">
-              <span className="sp-section-eyebrow">VISIT OUR CENTER</span>
+              <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">
+                VISIT OUR CENTER
+              </span>
               <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
                 Gaya Coaching Center &amp; Helplines
               </h2>
@@ -855,22 +915,24 @@ export default function LandingPage({
 
               </div>
 
+              {/* Secondary White Button (No Dark-on-Dark Stacking with Footer) */}
               <div className="sp-center-action-row">
                 <button
                   type="button"
-                  className="sp-btn-ink-primary"
-                  style={{ width: '100%', justifyContent: 'center' }}
+                  className="sp-btn-white-secondary"
+                  style={{ width: '100%', justifyContent: 'center', padding: '0.75rem 1.25rem', fontSize: '0.875rem', fontWeight: 600 }}
                   onClick={handleOpenDemo}
                 >
-                  <span>Book 3 Free Demos</span>
-                  <ArrowRight size={16} />
+                  <span>Book 3 Free Demos &rarr;</span>
                 </button>
               </div>
             </div>
 
             {/* Right Column: Interactive FAQ Accordion */}
             <div className="sp-faq-wrap">
-              <span className="sp-section-eyebrow">ADMISSIONS FAQ</span>
+              <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">
+                ADMISSIONS FAQ
+              </span>
               <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
                 Frequently Asked Questions
               </h2>
@@ -903,9 +965,36 @@ export default function LandingPage({
           </div>
 
         </div>
+      </section>
 
-
-
+      {/* =========================================================================
+          SECTION 8: FINAL HIGH-IMPACT CONVERSION BAND (bg-[#0F172A])
+          ========================================================================= */}
+      <section className="sp-closing-cta-section">
+        <div className="sp-closing-cta-container">
+          <h2 className="sp-closing-cta-h2">
+            Ready to Build Exam-Hall Speed?
+          </h2>
+          <p className="sp-closing-cta-sub">
+            Take a free calibrated audio dictation test online or visit our Gaya College More center for 3 free demo classes.
+          </p>
+          <div className="sp-closing-cta-buttons">
+            <button
+              type="button"
+              className="sp-btn-white-solid"
+              onClick={handleStartTests}
+            >
+              <span>Start Free Dictation Test &rarr;</span>
+            </button>
+            <button
+              type="button"
+              className="sp-btn-dark-outline"
+              onClick={handleExploreCourses}
+            >
+              <span>Explore All Courses</span>
+            </button>
+          </div>
+        </div>
       </section>
 
     </div>

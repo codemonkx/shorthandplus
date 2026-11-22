@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
-import { MessageCircle, Phone, X, Sparkles, FileText, ChevronUp } from 'lucide-react';
+import { MessageCircle, Phone, X } from 'lucide-react';
 
 export default function FloatingContactDock() {
   const [showCallMenu, setShowCallMenu] = useState(false);
 
   return (
     <aside 
-      className="floating-contact-dock" 
+      className="floating-contact-dock fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2.5" 
       aria-label="Quick Contact & Helpline Assistance"
       style={{
         position: 'fixed',
-        bottom: '24px',
-        right: '24px',
-        zIndex: 9999,
+        bottom: '1.5rem',
+        right: '1.5rem',
+        zIndex: 40,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-end',
-        gap: '8px',
-        fontFamily: 'Inter, system-ui, -apple-system, sans-serif'
+        gap: '0.625rem',
+        fontFamily: 'var(--sp-font-sans, "Plus Jakarta Sans", system-ui, sans-serif)'
       }}
     >
       {/* Call Menu Popover */}
@@ -26,16 +26,16 @@ export default function FloatingContactDock() {
           style={{
             background: '#FFFFFF',
             borderRadius: '14px',
-            boxShadow: '0 10px 30px rgba(17, 17, 17, 0.16), 0 2px 8px rgba(17, 17, 17, 0.06)',
+            boxShadow: '0 10px 30px rgba(15, 23, 42, 0.16), 0 2px 8px rgba(15, 23, 42, 0.06)',
             padding: '14px 16px',
-            border: '1.5px solid rgba(0, 0, 0, 0.08)',
+            border: '1px solid #E2E8F0',
             marginBottom: '4px',
             width: '270px',
             animation: 'fadeInUp 0.2s ease-out'
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <span style={{ fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#2563EB' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#B91C1C' }}>
               Institute Helplines
             </span>
             <button 
@@ -46,8 +46,8 @@ export default function FloatingContactDock() {
               <X size={15} />
             </button>
           </div>
-          <p style={{ fontSize: '0.82rem', color: '#64748B', margin: '0 0 10px', lineHeight: 1.35 }}>
-            Direct helpline for admissions & guidance:
+          <p style={{ fontSize: '0.8125rem', color: '#64748B', margin: '0 0 10px', lineHeight: 1.35 }}>
+            Direct helpline for admissions &amp; guidance:
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
             <a 
@@ -57,19 +57,19 @@ export default function FloatingContactDock() {
                 alignItems: 'center',
                 gap: '8px',
                 padding: '8px 10px',
-                background: '#EFF6FF',
-                border: '1px solid #BFDBFE',
+                background: '#F8FAFC',
+                border: '1px solid #E2E8F0',
                 borderRadius: '8px',
                 color: '#0F172A',
                 fontWeight: 700,
-                fontSize: '0.88rem',
+                fontSize: '0.875rem',
                 textDecoration: 'none'
               }}
             >
-              <Phone size={15} color="#2563EB" />
+              <Phone size={15} color="#B91C1C" />
               <div>
-                <span style={{ display: 'block', fontSize: '0.7rem', color: '#2563EB', fontWeight: 700 }}>Director (Shadab Sir)</span>
-                <span>+91 9204123453</span>
+                <span style={{ display: 'block', fontSize: '0.6875rem', color: '#64748B', fontWeight: 600 }}>Director (Shadab Sir)</span>
+                <span style={{ fontVariantNumeric: 'tabular-nums' }}>+91 9204123453</span>
               </div>
             </a>
             <a 
@@ -84,14 +84,14 @@ export default function FloatingContactDock() {
                 borderRadius: '8px',
                 color: '#0F172A',
                 fontWeight: 700,
-                fontSize: '0.88rem',
+                fontSize: '0.875rem',
                 textDecoration: 'none'
               }}
             >
               <Phone size={15} color="#0F172A" />
               <div>
-                <span style={{ display: 'block', fontSize: '0.7rem', color: '#64748B', fontWeight: 600 }}>Admissions Helpline</span>
-                <span>+91 7870377214</span>
+                <span style={{ display: 'block', fontSize: '0.6875rem', color: '#64748B', fontWeight: 600 }}>Admissions Desk</span>
+                <span style={{ fontVariantNumeric: 'tabular-nums' }}>+91 7870377214</span>
               </div>
             </a>
           </div>
@@ -112,7 +112,7 @@ export default function FloatingContactDock() {
             borderRadius: '50%',
             background: '#FFFFFF',
             color: '#0F172A',
-            border: '1.5px solid #E2E8F0',
+            border: '1px solid #CBD5E1',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -121,7 +121,7 @@ export default function FloatingContactDock() {
             transition: 'all 0.2s ease'
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'scale(1.08)';
+            e.currentTarget.style.transform = 'scale(1.06)';
             e.currentTarget.style.background = '#F8FAFC';
           }}
           onMouseLeave={(e) => {
@@ -129,7 +129,7 @@ export default function FloatingContactDock() {
             e.currentTarget.style.background = '#FFFFFF';
           }}
         >
-          <Phone size={20} />
+          <Phone size={19} />
         </button>
 
         {/* WhatsApp Floating Button */}
@@ -140,8 +140,8 @@ export default function FloatingContactDock() {
           aria-label="Chat on WhatsApp"
           title="Chat on WhatsApp (+91 9204123453)"
           style={{
-            width: '52px',
-            height: '52px',
+            width: '50px',
+            height: '50px',
             borderRadius: '50%',
             background: '#25D366',
             color: '#FFFFFF',
@@ -155,15 +155,15 @@ export default function FloatingContactDock() {
             position: 'relative'
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'scale(1.08)';
-            e.currentTarget.style.boxShadow = '0 6px 22px rgba(37, 211, 102, 0.5)';
+            e.currentTarget.style.transform = 'scale(1.06)';
+            e.currentTarget.style.boxShadow = '0 6px 22px rgba(37, 211, 102, 0.45)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
             e.currentTarget.style.boxShadow = '0 4px 18px rgba(37, 211, 102, 0.35)';
           }}
         >
-          <MessageCircle size={28} />
+          <MessageCircle size={26} />
           {/* Active online dot */}
           <span 
             style={{
@@ -183,4 +183,3 @@ export default function FloatingContactDock() {
     </aside>
   );
 }
-
