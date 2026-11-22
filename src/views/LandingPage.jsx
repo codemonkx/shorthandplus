@@ -518,7 +518,9 @@ export default function LandingPage({
                 tabIndex={0}
                 style={activeEngineTab === 0 ? {
                   background: '#FFFFFF',
-                  border: '1px solid #E8DFD3',
+                  borderTop: '1px solid #E8DFD3',
+                  borderRight: '1px solid #E8DFD3',
+                  borderBottom: '1px solid #E8DFD3',
                   borderLeft: '3px solid #991B1B',
                   borderRadius: '12px',
                   padding: '20px',
@@ -605,7 +607,9 @@ export default function LandingPage({
                 tabIndex={0}
                 style={activeEngineTab === 1 ? {
                   background: '#FFFFFF',
-                  border: '1px solid #E8DFD3',
+                  borderTop: '1px solid #E8DFD3',
+                  borderRight: '1px solid #E8DFD3',
+                  borderBottom: '1px solid #E8DFD3',
                   borderLeft: '3px solid #991B1B',
                   borderRadius: '12px',
                   padding: '20px',
@@ -692,7 +696,9 @@ export default function LandingPage({
                 tabIndex={0}
                 style={activeEngineTab === 2 ? {
                   background: '#FFFFFF',
-                  border: '1px solid #E8DFD3',
+                  borderTop: '1px solid #E8DFD3',
+                  borderRight: '1px solid #E8DFD3',
+                  borderBottom: '1px solid #E8DFD3',
                   borderLeft: '3px solid #991B1B',
                   borderRadius: '12px',
                   padding: '20px',
