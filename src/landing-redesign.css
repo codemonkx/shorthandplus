@@ -4157,6 +4157,58 @@
   display: none;
 }
 
+/* ==========================================================================
+   ABOUT PAGE (WARM PARCHMENT REDESIGN)
+   ========================================================================== */
+.sp-about-root,
+.about-page-wrapper {
+  background-color: #ECE8E0 !important;
+  min-height: 100vh !important;
+  color: #16161A !important;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.about-page-container {
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 0 !important;
+}
+
+@media (max-width: 1023px) {
+  .sp-about-col-left,
+  .sp-about-col-right {
+    grid-column: span 12 / span 12 !important;
+  }
+  .sp-about-visitus-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .sp-about-visitus-left,
+  .sp-about-visitus-right {
+    grid-column: span 12 / span 12 !important;
+  }
+  .sp-about-visitus-right {
+    border-left: none !important;
+    border-top: 1px solid #D6D0C4 !important;
+  }
+  .sp-about-highlights-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .sp-about-stat-bar {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .sp-about-highlights-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+
 
 
 

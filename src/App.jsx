@@ -807,13 +807,11 @@ export default function App() {
             )}
 
             {currentTab === 'about' && (
-              <div className="public-page-padded-wrapper">
-                <AboutAcademyView
-                  onOpenCheckout={() => handleOpenCheckoutWithPlan()}
-                  onOpenAdmission={() => setAdmissionModalOpen(true)}
-                  setCurrentTab={setCurrentTab}
-                />
-              </div>
+              <AboutAcademyView
+                onOpenCheckout={() => handleOpenCheckoutWithPlan()}
+                onOpenAdmission={() => setAdmissionModalOpen(true)}
+                setCurrentTab={setCurrentTab}
+              />
             )}
           </Suspense>
         </main>
