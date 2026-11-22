@@ -530,8 +530,16 @@
 }
 
 .sp-engine-tab-card.active {
-  border-left-color: var(--sp-crimson);
-  background-color: #FAFAFA;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-left: 3px solid #B91C1C !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04) !important;
+}
+
+.sp-engine-tab-card.inactive {
+  background-color: transparent !important;
+  border-left: 3px solid transparent !important;
 }
 
 .sp-engine-tab-head {
@@ -1253,14 +1261,16 @@
 
 .sp-live-banner-card {
   position: relative;
-  background-color: var(--sp-bg-ink);
-  border: 1px solid #1E293B;
+  background-color: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-left: 4px solid #B91C1C !important;
   border-radius: 16px;
   padding: 2.5rem 1.75rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   text-align: left;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
 }
 
 @media (min-width: 1024px) {
@@ -1268,7 +1278,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 3.5rem 3rem;
+    padding: 3rem 3rem;
   }
 }
 
@@ -1293,13 +1303,14 @@
 
 .sp-live-headline {
   margin: 0 0 0.85rem;
+  color: #0F172A !important;
 }
 
 .sp-live-serif-accent {
   font-family: var(--sp-font-serif);
   font-style: italic;
   font-weight: 400;
-  color: #CBD5E1;
+  color: #B91C1C !important;
   letter-spacing: normal;
   font-size: 1.05em;
   white-space: nowrap;
@@ -1307,10 +1318,11 @@
 
 .sp-live-body {
   margin: 0 0 1.25rem;
+  color: #475569 !important;
 }
 
 .sp-live-body strong {
-  color: #FFFFFF;
+  color: #0F172A !important;
 }
 
 .sp-live-features-strip {
@@ -1321,11 +1333,11 @@
   font-family: var(--sp-font-sans);
   font-size: 11px;
   font-weight: 600;
-  color: #94A3B8;
+  color: #64748B !important;
 }
 
 .sp-live-feat-divider {
-  color: #475569;
+  color: #CBD5E1 !important;
 }
 
 .sp-live-action-col {
@@ -1334,24 +1346,6 @@
   align-items: flex-start;
   gap: 0.65rem;
   flex-shrink: 0;
-}
-
-.sp-live-btn-white {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background-color: #FFFFFF;
-  color: var(--sp-bg-ink);
-  border: none;
-  border-radius: 8px;
-  padding: 0.85rem 1.6rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.sp-live-btn-white:hover {
-  background-color: #F1F5F9;
 }
 
 .sp-live-caption {
@@ -3836,16 +3830,17 @@
 
 /* Mid-page banner features strip */
 .sp-live-features-strip {
-  color: #CBD5E1 !important; /* text-slate-300 */
+  color: #64748B !important; /* text-slate-500 */
 }
 
 .sp-live-feat-item {
-  color: #CBD5E1 !important; /* text-slate-300 */
+  color: #64748B !important; /* text-slate-500 */
 }
 
-/* Section 8: Final High-Impact Conversion Band */
+/* Section 8: Refined Light Closing Conversion Band */
 .sp-closing-cta-section {
-  background-color: #0F172A !important;
+  background-color: #F4F6F8 !important;
+  border-top: 1px solid #E2E8F0 !important;
   padding: 4.5rem 1.5rem !important;
   text-align: center !important;
   width: 100% !important;
@@ -3864,7 +3859,7 @@
   font-size: clamp(1.875rem, 3.5vw, 2.5rem) !important;
   font-weight: 700 !important;
   letter-spacing: -0.025em !important;
-  color: #FFFFFF !important;
+  color: #0F172A !important;
   margin: 0 0 0.75rem !important;
   line-height: 1.2 !important;
 }
@@ -3873,7 +3868,7 @@
   font-family: var(--sp-font-sans) !important;
   font-size: 1rem !important;
   line-height: 1.6 !important;
-  color: #CBD5E1 !important;
+  color: #475569 !important;
   margin: 0 0 2rem !important;
   max-width: 38rem !important;
 }

@@ -698,34 +698,38 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 5: HIGH-CONTRAST LIVE ONLINE CLASSES BANNER (bg-white)
+          SECTION 5: REFINED LIGHT EDITORIAL LIVE ONLINE CLASSES BANNER
           ========================================================================= */}
       <section className="sp-live-banner-section">
         <div className="sp-container">
-          <div className="sp-live-banner-card">
+          <div className="sp-live-banner-card bg-[#F8FAFC] border border-slate-200 border-l-4 border-l-[#B91C1C] rounded-2xl p-8 md:p-12">
             
             {/* Left Content Column */}
             <div className="sp-live-content-col">
               <div className="sp-live-eyebrow">
-                <span className="sp-live-static-dot" />
-                <span>LIVE ONLINE INTERACTIVE BATCHES</span>
+                <span className="sp-live-static-dot" style={{ backgroundColor: '#B91C1C' }} />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">
+                  LIVE ONLINE INTERACTIVE BATCHES
+                </span>
               </div>
 
-              <h2 className="sp-live-headline">
+              <h2 className="sp-live-headline text-slate-900">
                 Can't Visit the Gaya Center?{' '}
-                <span className="sp-live-serif-accent whitespace-nowrap">Join Live Online Classes</span>
+                <span className="sp-live-serif-accent font-serif italic font-normal text-[#B91C1C] whitespace-nowrap">
+                  Join Live Online Classes
+                </span>
               </h2>
 
-              <p className="sp-live-body">
-                Daily Google Meet dictations, live digital whiteboard outline checking, and real-time doubt resolution with <strong>Shadab Sir</strong>.
+              <p className="sp-live-body text-slate-600">
+                Daily Google Meet dictations, live digital whiteboard outline checking, and real-time doubt resolution with <strong className="text-slate-900">Shadab Sir</strong>.
               </p>
 
-              <div className="sp-live-features-strip text-slate-300">
-                <span className="sp-live-feat-item">Google Meet Live</span>
-                <span className="sp-live-feat-divider">&middot;</span>
-                <span className="sp-live-feat-item">Whiteboard Outline Review</span>
-                <span className="sp-live-feat-divider">&middot;</span>
-                <span className="sp-live-feat-item">Direct Doubt Resolution</span>
+              <div className="sp-live-features-strip text-slate-500">
+                <span className="sp-live-feat-item text-slate-500">Google Meet Live</span>
+                <span className="sp-live-feat-divider text-slate-300">&middot;</span>
+                <span className="sp-live-feat-item text-slate-500">Whiteboard Outline Review</span>
+                <span className="sp-live-feat-divider text-slate-300">&middot;</span>
+                <span className="sp-live-feat-item text-slate-500">Direct Doubt Resolution</span>
               </div>
             </div>
 
@@ -733,7 +737,7 @@ export default function LandingPage({
             <div className="sp-live-action-col">
               <button
                 type="button"
-                className="sp-live-btn-white"
+                className="sp-btn-ink-primary bg-slate-900 text-white hover:bg-slate-800 px-6 py-3.5 rounded-lg text-sm font-semibold"
                 onClick={() => {
                   if (setCurrentTab) setCurrentTab('batches');
                 }}
@@ -741,7 +745,7 @@ export default function LandingPage({
                 <span>View Live Class Schedule</span>
                 <ArrowRight size={16} />
               </button>
-              <span className="sp-live-caption">
+              <span className="sp-live-caption text-slate-500 text-xs">
                 Morning &amp; evening batches available
               </span>
             </div>
@@ -968,27 +972,32 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 8: FINAL HIGH-IMPACT CONVERSION BAND (bg-[#0F172A])
+          SECTION 8: REFINED LIGHT CLOSING CONVERSION BAND (bg-[#F4F6F8])
           ========================================================================= */}
-      <section className="sp-closing-cta-section">
-        <div className="sp-closing-cta-container">
-          <h2 className="sp-closing-cta-h2">
-            Ready to Build Exam-Hall Speed?
+      <section className="sp-closing-cta-section bg-[#F4F6F8] border-t border-slate-200 py-16 lg:py-20 text-center px-6">
+        <div className="sp-closing-cta-container max-w-xl mx-auto">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 mb-3 block">
+            GET STARTED TODAY
+          </span>
+          <h2 className="sp-closing-cta-h2 text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
+            Ready to Build{' '}
+            <span className="font-serif italic font-normal text-[#B91C1C]">Exam-Hall</span>{' '}
+            Speed?
           </h2>
-          <p className="sp-closing-cta-sub">
+          <p className="sp-closing-cta-sub mt-3 text-base text-slate-600 max-w-xl mx-auto">
             Take a free calibrated audio dictation test online or visit our Gaya College More center for 3 free demo classes.
           </p>
-          <div className="sp-closing-cta-buttons">
+          <div className="sp-closing-cta-buttons mt-8 flex flex-wrap items-center justify-center gap-3">
             <button
               type="button"
-              className="sp-btn-white-solid"
+              className="sp-btn-ink-primary bg-slate-900 text-white hover:bg-slate-800 px-6 py-3.5 rounded-lg text-sm font-semibold"
               onClick={handleStartTests}
             >
               <span>Start Free Dictation Test &rarr;</span>
             </button>
             <button
               type="button"
-              className="sp-btn-dark-outline"
+              className="sp-btn-white-secondary bg-white border border-slate-300 text-slate-900 hover:bg-slate-50 px-6 py-3.5 rounded-lg text-sm font-semibold"
               onClick={handleExploreCourses}
             >
               <span>Explore All Courses</span>
