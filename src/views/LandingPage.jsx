@@ -101,7 +101,7 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 1: EDITORIAL SPLIT HERO + EXAM TRUST STRIP (DEEP CHARCOAL)
           ========================================================================= */}
-      <section className="sp-hero-section bg-[#16161A] text-[#F5F3EE] pt-14 pb-16 lg:pt-20 lg:pb-24 border-b border-[#27272A]">
+      <section className="sp-hero-section bg-[#16161A] text-[#F5F3EE] pt-28 pb-16 lg:pt-36 lg:pb-24 border-b border-[#27272A]">
         <div className="sp-hero-container">
           <div className="sp-hero-grid">
             
@@ -109,31 +109,31 @@ export default function LandingPage({
             <div className="sp-hero-left">
               
               {/* Clean inline trust row (no pills, no glow) */}
-              <div className="sp-hero-trust-row text-[#A1A1AA]">
-                <span className="sp-hero-trust-item text-[#A1A1AA]">Est. 2012 &middot; Gaya College More</span>
+              <div className="sp-hero-trust-row text-zinc-400">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-400">Est. 2012 &middot; Gaya College More</span>
                 <span className="sp-hero-trust-divider bg-[#3F3F46]" />
-                <span className="sp-hero-trust-item text-[#A1A1AA]">12+ Years Coaching</span>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-400">12+ Years Coaching</span>
                 <span className="sp-hero-trust-divider bg-[#3F3F46]" />
-                <span className="sp-hero-trust-item text-[#A1A1AA]">SSC &amp; High Court Standard</span>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-400">SSC &amp; High Court Standard</span>
               </div>
 
               {/* Bold H1 with editorial italic serif accent */}
-              <h1 className="sp-hero-h1 text-[#F5F3EE]">
+              <h1 className="mt-4 font-sans text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold tracking-[-0.03em] leading-[1.06] text-[#F5F3EE]">
                 The Gold Standard in{' '}
-                <span className="font-serif italic font-normal text-[#F87171] tracking-normal text-[1.08em] underline decoration-[#F87171]/40 underline-offset-8">Shorthand</span>{' '}
+                <span className="font-serif italic font-normal text-[#F87171] tracking-normal text-[1.08em]">Shorthand</span>{' '}
                 &amp; Typing for Govt. Exams
               </h1>
 
               {/* Concise 2-line subheadline */}
-              <p className="sp-hero-subheadline text-[#B4B4BE]">
-                Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong className="text-white">Shadab Sir</strong> with automated SSC error evaluation.
+              <p className="mt-5 text-base lg:text-lg text-zinc-300 leading-relaxed max-w-xl">
+                Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong className="text-white font-semibold">Shadab Sir</strong> with automated SSC error evaluation.
               </p>
 
               {/* Clean CTA row */}
-              <div className="sp-hero-cta-group">
+              <div className="mt-8 flex flex-wrap items-center gap-4">
                 <button
                   type="button"
-                  className="sp-btn-ink-primary bg-[#B91C1C] text-white hover:bg-[#991B1B] px-5 py-3 rounded-lg text-sm font-semibold transition-colors shadow-sm"
+                  className="bg-[#B91C1C] hover:bg-[#991B1B] text-white px-6 py-3.5 rounded-xl text-sm font-semibold shadow-sm inline-flex items-center gap-2 transition-colors cursor-pointer"
                   onClick={handleStartTests}
                 >
                   <span>Start Audio Dictation</span>
@@ -142,7 +142,7 @@ export default function LandingPage({
 
                 <button
                   type="button"
-                  className="sp-btn-white-secondary bg-transparent border border-[#3F3F46] text-[#F5F3EE] hover:bg-[#222228] px-5 py-3 rounded-lg text-sm font-semibold transition-colors"
+                  className="bg-white/5 hover:bg-white/10 border border-white/20 text-[#F5F3EE] px-6 py-3.5 rounded-xl text-sm font-semibold transition-colors cursor-pointer inline-flex items-center gap-2"
                   onClick={handleExploreCourses}
                 >
                   <span>Explore Courses</span>
@@ -150,7 +150,7 @@ export default function LandingPage({
 
                 <button
                   type="button"
-                  className="sp-hero-demo-link text-[#D4D4D8] hover:text-white transition-colors"
+                  className="text-sm font-medium text-zinc-300 hover:text-white px-2 py-2 transition-colors cursor-pointer"
                   onClick={handleOpenDemo}
                 >
                   Book 3 Free Demos &rarr;
@@ -158,7 +158,7 @@ export default function LandingPage({
               </div>
 
               {/* Pricing & Timing Reassurance micro-line */}
-              <p className="sp-hero-reassurance-line text-[#A1A1AA]">
+              <p className="mt-5 text-xs text-zinc-400 font-medium">
                 Online passes from &#8377;30 &middot; Offline &amp; Live Google Meet batches &middot; 3 Free Demo Classes
               </p>
 
@@ -166,15 +166,18 @@ export default function LandingPage({
 
             {/* Right Column (Hero Visual Showcase) */}
             <div className="sp-hero-right">
-              <div className="sp-hero-media-card border border-[#2E2E36] rounded-2xl overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.45)] bg-[#1A1A20]">
+              <div className="rounded-2xl border border-white/10 overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.45)] bg-[#1A1A20] relative w-full max-w-[540px]">
                 <img 
                   src="/assets/institution-hero.jpg" 
                   alt="Shorthand Plus Stenography Classroom &amp; Typing Lab" 
-                  className="sp-hero-img"
+                  className="w-full h-[380px] object-cover object-center block"
                 />
-                <div className="sp-hero-caption-bar bg-[#16161A]/95 text-[#D4D4D8] border-t border-[#2E2E36]">
-                  <div className="sp-caption-dot bg-[#F87171]" />
-                  <span className="sp-caption-text text-[#D4D4D8]">SSC &amp; High Court Exam Standard &middot; 50&ndash;140 WPM</span>
+                <div className="bg-[#16161A]/85 backdrop-blur-sm border-t border-white/10 px-4 py-3 flex items-center justify-between text-xs text-zinc-200">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#F87171] shrink-0" />
+                    <span className="font-medium text-zinc-200">SSC &amp; High Court Exam Standard</span>
+                  </div>
+                  <span className="font-mono text-zinc-400 tabular-nums">50&ndash;140 WPM</span>
                 </div>
               </div>
             </div>
@@ -183,21 +186,21 @@ export default function LandingPage({
         </div>
 
         {/* Flush Exam Authority Strip - Balanced Full-Width Flex Row */}
-        <div className="sp-exam-strip bg-[#1E1E24] border-y border-[#2E2E36]">
-          <div className="sp-exam-strip-inner max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <span className="sp-exam-strip-label whitespace-nowrap text-[#8E8E99] font-semibold text-xs tracking-wider">PREPARING ASPIRANTS FOR</span>
-            <div className="sp-exam-strip-list flex-1 flex flex-wrap items-center justify-between md:justify-end lg:justify-between gap-x-6 gap-y-2 md:pl-12 text-[#E4E4E7] font-semibold">
-              <span className="text-[#E4E4E7] font-semibold">SSC Stenographer</span>
-              <span className="sp-strip-bullet text-[#3F3F46]">&middot;</span>
-              <span className="text-[#E4E4E7] font-semibold">Patna High Court</span>
-              <span className="sp-strip-bullet text-[#3F3F46]">&middot;</span>
-              <span className="text-[#E4E4E7] font-semibold">Civil Court</span>
-              <span className="sp-strip-bullet text-[#3F3F46]">&middot;</span>
-              <span className="text-[#E4E4E7] font-semibold">EPFO</span>
-              <span className="sp-strip-bullet text-[#3F3F46]">&middot;</span>
-              <span className="text-[#E4E4E7] font-semibold">DRDO</span>
-              <span className="sp-strip-bullet text-[#3F3F46]">&middot;</span>
-              <span className="text-[#E4E4E7] font-semibold">BSSC</span>
+        <div className="bg-[#E4DFD5] border-y border-[#D1CBBF] py-4">
+          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <span className="text-[#16161A] font-bold text-xs tracking-wider uppercase whitespace-nowrap">PREPARING ASPIRANTS FOR</span>
+            <div className="flex-1 flex flex-wrap items-center justify-between md:justify-end lg:justify-between gap-x-6 gap-y-2 md:pl-12 text-[#16161A] font-semibold text-xs sm:text-sm">
+              <span>SSC Stenographer</span>
+              <span className="text-[#A8A294]">&middot;</span>
+              <span>Patna High Court</span>
+              <span className="text-[#A8A294]">&middot;</span>
+              <span>Civil Court</span>
+              <span className="text-[#A8A294]">&middot;</span>
+              <span>EPFO</span>
+              <span className="text-[#A8A294]">&middot;</span>
+              <span>DRDO</span>
+              <span className="text-[#A8A294]">&middot;</span>
+              <span>BSSC</span>
             </div>
           </div>
         </div>
@@ -225,34 +228,34 @@ export default function LandingPage({
           {/* 2-Column Interactive Split */}
           <div className="sp-engine-grid">
             
-            {/* Left Column: 3 Clickable Accordion/Tab Items (Collapse Inactive Tabs) */}
-            <div className="sp-engine-tabs">
+            {/* Left Column: 3 Clickable Accordion/Tab Items */}
+            <div className="flex flex-col gap-3">
               
               {/* Tab 0 */}
               <div 
-                className={`sp-engine-tab-card ${activeEngineTab === 0 ? 'active' : 'inactive'}`}
+                className={`${activeEngineTab === 0 ? 'bg-[#F7F5F0] border border-[#D1CBBF] border-l-[3px] border-l-[#991B1B] shadow-[0_4px_14px_rgba(22,22,26,0.04)]' : 'bg-transparent border border-transparent hover:bg-[#EAE5DC]/50'} rounded-xl p-5 cursor-pointer text-left transition-all`}
                 onClick={() => setActiveEngineTab(0)}
                 role="button"
                 tabIndex={0}
               >
-                <div className="sp-engine-tab-head">
-                  <span className="sp-engine-tab-num">01</span>
-                  <div className="sp-engine-tab-title-wrap">
-                    <div className="sp-engine-tab-title-row">
-                      <h3 className="sp-engine-tab-title">Calibrated Audio Dictation</h3>
+                <div className="flex items-start gap-4">
+                  <span className={`font-mono text-lg font-bold tabular-nums shrink-0 ${activeEngineTab === 0 ? 'text-[#991B1B]' : 'text-zinc-400'}`}>01</span>
+                  <div className="flex-1 flex flex-col gap-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className={`text-base font-bold transition-colors ${activeEngineTab === 0 ? 'text-[#16161A]' : 'text-zinc-700'}`}>Calibrated Audio Dictation</h3>
                       {activeEngineTab === 0 ? (
-                        <ChevronUp size={16} className="text-slate-700 shrink-0" />
+                        <ChevronUp size={16} className="text-[#991B1B] shrink-0" />
                       ) : (
-                        <ChevronDown size={16} className="text-slate-400 shrink-0" />
+                        <ChevronDown size={16} className="text-zinc-400 shrink-0" />
                       )}
                     </div>
                     {activeEngineTab === 0 && (
-                      <span className="sp-engine-tab-tag">50–140 WPM Standard</span>
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-[#991B1B]">50–140 WPM Standard</span>
                     )}
                   </div>
                 </div>
                 {activeEngineTab === 0 && (
-                  <p className="sp-engine-tab-desc">
+                  <p className="mt-3 text-sm text-zinc-600 leading-relaxed pl-8">
                     Practice 50–140 WPM Pitman &amp; High Court legal dictations with exam-accurate pacing, single-play lock, and mandatory 5-minute reading clock.
                   </p>
                 )}
@@ -260,29 +263,29 @@ export default function LandingPage({
 
               {/* Tab 1 */}
               <div 
-                className={`sp-engine-tab-card ${activeEngineTab === 1 ? 'active' : 'inactive'}`}
+                className={`${activeEngineTab === 1 ? 'bg-[#F7F5F0] border border-[#D1CBBF] border-l-[3px] border-l-[#991B1B] shadow-[0_4px_14px_rgba(22,22,26,0.04)]' : 'bg-transparent border border-transparent hover:bg-[#EAE5DC]/50'} rounded-xl p-5 cursor-pointer text-left transition-all`}
                 onClick={() => setActiveEngineTab(1)}
                 role="button"
                 tabIndex={0}
               >
-                <div className="sp-engine-tab-head">
-                  <span className="sp-engine-tab-num">02</span>
-                  <div className="sp-engine-tab-title-wrap">
-                    <div className="sp-engine-tab-title-row">
-                      <h3 className="sp-engine-tab-title">Bilingual Typing Studio</h3>
+                <div className="flex items-start gap-4">
+                  <span className={`font-mono text-lg font-bold tabular-nums shrink-0 ${activeEngineTab === 1 ? 'text-[#991B1B]' : 'text-zinc-400'}`}>02</span>
+                  <div className="flex-1 flex flex-col gap-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className={`text-base font-bold transition-colors ${activeEngineTab === 1 ? 'text-[#16161A]' : 'text-zinc-700'}`}>Bilingual Typing Studio</h3>
                       {activeEngineTab === 1 ? (
-                        <ChevronUp size={16} className="text-slate-700 shrink-0" />
+                        <ChevronUp size={16} className="text-[#991B1B] shrink-0" />
                       ) : (
-                        <ChevronDown size={16} className="text-slate-400 shrink-0" />
+                        <ChevronDown size={16} className="text-zinc-400 shrink-0" />
                       )}
                     </div>
                     {activeEngineTab === 1 && (
-                      <span className="sp-engine-tab-tag">Kruti Dev &amp; Mangal</span>
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-[#991B1B]">Kruti Dev &amp; Mangal</span>
                     )}
                   </div>
                 </div>
                 {activeEngineTab === 1 && (
-                  <p className="sp-engine-tab-desc">
+                  <p className="mt-3 text-sm text-zinc-600 leading-relaxed pl-8">
                     Dedicated English QWERTY, Hindi Kruti Dev 010, and Mangal Inscript typing drills with strict backspace-lock simulation and live gross/net WPM.
                   </p>
                 )}
@@ -290,29 +293,29 @@ export default function LandingPage({
 
               {/* Tab 2 */}
               <div 
-                className={`sp-engine-tab-card ${activeEngineTab === 2 ? 'active' : 'inactive'}`}
+                className={`${activeEngineTab === 2 ? 'bg-[#F7F5F0] border border-[#D1CBBF] border-l-[3px] border-l-[#991B1B] shadow-[0_4px_14px_rgba(22,22,26,0.04)]' : 'bg-transparent border border-transparent hover:bg-[#EAE5DC]/50'} rounded-xl p-5 cursor-pointer text-left transition-all`}
                 onClick={() => setActiveEngineTab(2)}
                 role="button"
                 tabIndex={0}
               >
-                <div className="sp-engine-tab-head">
-                  <span className="sp-engine-tab-num">03</span>
-                  <div className="sp-engine-tab-title-wrap">
-                    <div className="sp-engine-tab-title-row">
-                      <h3 className="sp-engine-tab-title">Automated SSC Error Evaluation</h3>
+                <div className="flex items-start gap-4">
+                  <span className={`font-mono text-lg font-bold tabular-nums shrink-0 ${activeEngineTab === 2 ? 'text-[#991B1B]' : 'text-zinc-400'}`}>03</span>
+                  <div className="flex-1 flex flex-col gap-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className={`text-base font-bold transition-colors ${activeEngineTab === 2 ? 'text-[#16161A]' : 'text-zinc-700'}`}>Automated SSC Error Evaluation</h3>
                       {activeEngineTab === 2 ? (
-                        <ChevronUp size={16} className="text-slate-700 shrink-0" />
+                        <ChevronUp size={16} className="text-[#991B1B] shrink-0" />
                       ) : (
-                        <ChevronDown size={16} className="text-slate-400 shrink-0" />
+                        <ChevronDown size={16} className="text-zinc-400 shrink-0" />
                       )}
                     </div>
                     {activeEngineTab === 2 && (
-                      <span className="sp-engine-tab-tag">Full &amp; Half Error Scoring</span>
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-[#991B1B]">Full &amp; Half Error Scoring</span>
                     )}
                   </div>
                 </div>
                 {activeEngineTab === 2 && (
-                  <p className="sp-engine-tab-desc">
+                  <p className="mt-3 text-sm text-zinc-600 leading-relaxed pl-8">
                     Instant word-by-word diff checking full vs. half mistakes against official SSC and High Court cutoffs with exact percentage qualification criteria.
                   </p>
                 )}
@@ -320,92 +323,94 @@ export default function LandingPage({
 
             </div>
 
-            {/* Right Column: Live Stylized Software UI Mockup */}
-            <div className="sp-engine-preview-outer bg-[#E2DDD3] border border-[#CEC8BA] rounded-2xl p-4 sm:p-5">
-              <div className="sp-engine-preview-window bg-[#F7F5F0] border border-[#CEC8BA] rounded-xl overflow-hidden shadow-[0_12px_32px_rgba(22,22,26,0.12)]">
-                
-                {/* Window Title Bar - Crisp Dark Charcoal Top Bar */}
-                <div className="sp-window-chrome bg-[#16161A] border-b border-[#27272A] px-4 py-2.5 flex items-center justify-between text-xs text-zinc-300">
-                  <div className="sp-chrome-dots flex items-center gap-1.5">
-                    <span className="sp-dot w-2.5 h-2.5 rounded-full bg-[#EF4444]" />
-                    <span className="sp-dot w-2.5 h-2.5 rounded-full bg-[#F59E0B]" />
-                    <span className="sp-dot w-2.5 h-2.5 rounded-full bg-[#10B981]" />
-                  </div>
-                  <div className="sp-chrome-title font-medium text-[#F5F3EE] flex items-center gap-2">
-                    <span className="text-[#A1A1AA] font-semibold tracking-wider text-[11px]">SHORTHAND PLUS &middot; EXAM ENGINE</span>
-                    <span className="text-[#52525B] hidden sm:inline">&middot;</span>
-                    <span className="text-[#E4E4E7] hidden sm:inline text-xs">
-                      {activeEngineTab === 0 && "Live Audio Dictation Lab"}
-                      {activeEngineTab === 1 && "Bilingual Typing Studio"}
-                      {activeEngineTab === 2 && "Forensic Error Audit Diff"}
-                    </span>
-                  </div>
-                  <div className="sp-chrome-badge bg-zinc-800/90 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono px-2 py-0.5 rounded font-bold uppercase tracking-wider">
-                    EXAM ACTIVE
-                  </div>
+            {/* Right Column: Live Stylized Software UI Mockup Card */}
+            <div className="bg-[#F7F5F0] border border-[#D1CBBF] rounded-2xl overflow-hidden shadow-[0_14px_36px_rgba(22,22,26,0.07)]">
+              
+              {/* Window Title Bar - Crisp Editorial macOS Bar */}
+              <div className="bg-[#EAE5DC] border-b border-[#D6D0C4] px-5 py-3 flex items-center justify-between text-xs">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#C4BEB2]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#C4BEB2]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#C4BEB2]" />
                 </div>
+                <div className="font-mono text-[11px] font-medium tracking-wider uppercase text-zinc-600 flex items-center gap-2">
+                  <span>SHORTHAND PLUS &middot; EXAM ENGINE</span>
+                  <span className="text-zinc-400 hidden sm:inline">&middot;</span>
+                  <span className="text-zinc-700 hidden sm:inline font-semibold">
+                    {activeEngineTab === 0 && "Live Audio Dictation Lab"}
+                    {activeEngineTab === 1 && "Bilingual Typing Studio"}
+                    {activeEngineTab === 2 && "Forensic Error Audit Diff"}
+                  </span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 text-[11px] font-mono font-semibold text-emerald-700 bg-emerald-500/10 border border-emerald-600/20 px-2.5 py-1 rounded-md">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                  <span>LIVE SIMULATION</span>
+                </div>
+              </div>
 
-                {/* Mockup Canvas */}
-                <div className="sp-window-canvas bg-[#F7F5F0]">
-                
+              {/* Mockup Canvas */}
+              <div className="p-6 sm:p-7 bg-[#F7F5F0]">
+              
                 {/* TAB 0 PREVIEW: Audio Dictation Player */}
                 {activeEngineTab === 0 && (
-                  <div className="sp-preview-card">
-                    <div className="sp-preview-badge-row">
-                      <span className="sp-preview-status-pill">
-                        <span className="sp-live-dot" /> LIVE DICTATION
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase text-[#991B1B]">
+                        <span className="w-2 h-2 rounded-full bg-[#991B1B]" /> LIVE DICTATION
                       </span>
-                      <span className="sp-preview-meta-tag">Track ID: PHC-LEGAL-104</span>
+                      <span className="font-mono text-xs text-zinc-500">Track ID: PHC-LEGAL-104</span>
                     </div>
 
-                    <h4 className="sp-preview-title">
-                      Patna High Court Legal Dictation &middot; 100 WPM
-                    </h4>
-                    <p className="sp-preview-sub">
-                      Case Law: Cr. Misc. Petitions &middot; Kailash Chandra Vol. 14 Calibration
-                    </p>
+                    <div>
+                      <h4 className="text-lg font-bold text-[#16161A]">
+                        Patna High Court Legal Dictation &middot; 100 WPM
+                      </h4>
+                      <p className="text-xs text-zinc-600 mt-1">
+                        Case Law: Cr. Misc. Petitions &middot; Kailash Chandra Vol. 14 Calibration
+                      </p>
+                    </div>
 
                     {/* Speed Selector */}
-                    <div className="sp-speed-selector-row">
-                      <span className="sp-selector-label">CALIBRATED SPEED:</span>
-                      <div className="sp-speed-pills">
-                        <span className="sp-speed-pill">80 WPM</span>
-                        <span className="sp-speed-pill active">100 WPM</span>
-                        <span className="sp-speed-pill">120 WPM</span>
+                    <div className="flex items-center gap-3 py-1">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">CALIBRATED SPEED:</span>
+                      <div className="flex items-center gap-2">
+                        <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-white border border-[#DED8CC] text-zinc-700">80 WPM</span>
+                        <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-[#16161A] text-white">100 WPM</span>
+                        <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-white border border-[#DED8CC] text-zinc-700">120 WPM</span>
                       </div>
                     </div>
 
                     {/* Minimalist Waveform Visualization */}
-                    <div className="sp-audio-player-box">
+                    <div className="bg-white/80 border border-[#DED8CC] rounded-xl p-4 flex items-center gap-4">
                       <button 
                         type="button"
-                        className="sp-audio-play-btn"
+                        className="w-11 h-11 rounded-full bg-[#16161A] hover:bg-[#991B1B] text-white flex items-center justify-center transition-colors cursor-pointer shrink-0"
                         onClick={() => setIsPlayingAudioPreview(!isPlayingAudioPreview)}
                         title="Toggle Audio Simulation"
                       >
                         {isPlayingAudioPreview ? <Pause size={18} fill="#FFFFFF" /> : <Play size={18} fill="#FFFFFF" />}
                       </button>
 
-                      <div className="sp-audio-waveform-bars">
+                      <div className="flex-1 h-9 flex items-center gap-1">
                         {[40, 65, 30, 85, 95, 60, 45, 90, 100, 75, 40, 80, 60, 95, 50, 85, 30, 70, 90, 45].map((height, i) => (
                           <span 
                             key={i} 
-                            className={`sp-wave-bar ${isPlayingAudioPreview && i < 12 ? 'active' : ''}`}
+                            className={`flex-1 rounded-sm transition-colors ${isPlayingAudioPreview && i < 12 ? 'bg-[#991B1B]' : 'bg-[#DED8CC]'}`}
                             style={{ height: `${height}%` }}
                           />
                         ))}
                       </div>
 
-                      <span className="sp-audio-timer-readout font-mono tabular-nums">
+                      <span className="font-mono text-xs font-semibold text-zinc-700 tabular-nums shrink-0">
                         {isPlayingAudioPreview ? "02:14 / 05:00" : "00:00 / 05:00"}
                       </span>
                     </div>
 
-                    <div className="sp-preview-footer-note">
-                      <span>Strict Single-Play Protocol: Audio plays once without rewind or pause.</span>
+                    <div className="mt-2 pt-4 border-t border-[#DED8CC] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <span className="text-xs text-zinc-600">Strict Single-Play Protocol: Audio plays once without rewind or pause.</span>
                       <button 
                         type="button" 
-                        className="sp-preview-cta-link whitespace-nowrap inline-flex items-center gap-1.5"
+                        className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold text-[#16161A] hover:text-[#991B1B] transition-colors cursor-pointer"
                         onClick={handleStartTests}
                       >
                         <span>Open Full Dictation Lab &rarr;</span>
@@ -416,54 +421,54 @@ export default function LandingPage({
 
                 {/* TAB 1 PREVIEW: Bilingual Typing Lab Simulator */}
                 {activeEngineTab === 1 && (
-                  <div className="sp-preview-card">
-                    <div className="sp-preview-badge-row">
-                      <span className="sp-preview-status-pill">
-                        <span className="sp-live-dot" /> TYPING BENCHMARK
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase text-[#991B1B]">
+                        <span className="w-2 h-2 rounded-full bg-[#991B1B]" /> TYPING BENCHMARK
                       </span>
-                      <div className="sp-font-tabs">
-                        <span className="sp-font-tab active">Kruti Dev 010</span>
-                        <span className="sp-font-tab">Mangal Inscript</span>
-                        <span className="sp-font-tab">English QWERTY</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-[#16161A] text-white">Kruti Dev 010</span>
+                        <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-white border border-[#DED8CC] text-zinc-600">Mangal Inscript</span>
+                        <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-white border border-[#DED8CC] text-zinc-600">English QWERTY</span>
                       </div>
                     </div>
 
                     {/* Live Exam Telemetry HUD */}
-                    <div className="sp-typing-telemetry-hud">
-                      <div className="sp-telemetry-item">
-                        <span className="sp-telemetry-label">GROSS SPEED</span>
-                        <span className="sp-telemetry-val tabular-nums font-mono">48.2 <span className="sp-unit">WPM</span></span>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 border border-[#DED8CC] bg-[#F1EDE5] rounded-xl divide-y sm:divide-y-0 sm:divide-x divide-[#DED8CC] my-1">
+                      <div className="p-3 sm:p-4 flex flex-col gap-1">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">GROSS SPEED</span>
+                        <span className="text-base font-mono font-bold text-[#16161A] tabular-nums">48.2 <span className="text-xs text-zinc-500 font-normal">WPM</span></span>
                       </div>
-                      <div className="sp-telemetry-item">
-                        <span className="sp-telemetry-label">NET ACCURACY</span>
-                        <span className="sp-telemetry-val tabular-nums font-mono text-emerald">98.4%</span>
+                      <div className="p-3 sm:p-4 flex flex-col gap-1">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">NET ACCURACY</span>
+                        <span className="text-base font-mono font-bold text-emerald-700 tabular-nums">98.4%</span>
                       </div>
-                      <div className="sp-telemetry-item">
-                        <span className="sp-telemetry-label">BACKSPACE LOCK</span>
-                        <span className="sp-telemetry-val text-crimson font-mono font-bold">ENFORCED</span>
+                      <div className="p-3 sm:p-4 flex flex-col gap-1">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">BACKSPACE LOCK</span>
+                        <span className="text-base font-mono font-bold text-[#991B1B]">ENFORCED</span>
                       </div>
-                      <div className="sp-telemetry-item">
-                        <span className="sp-telemetry-label">TIME REMAINING</span>
-                        <span className="sp-telemetry-val tabular-nums font-mono">07:45</span>
+                      <div className="p-3 sm:p-4 flex flex-col gap-1">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">TIME REMAINING</span>
+                        <span className="text-base font-mono font-bold text-[#16161A] tabular-nums">07:45</span>
                       </div>
                     </div>
 
                     {/* Simulated Text Transcription Input Box */}
-                    <div className="sp-simulated-typing-box">
-                      <p className="sp-simulated-text font-hindi">
+                    <div className="bg-white/80 border border-[#DED8CC] rounded-xl p-4 font-sans text-sm leading-relaxed">
+                      <p className="font-hindi text-zinc-500">
                         न्यायालय के आदेशानुसार उक्त याचिका पर सुनवाई करते हुए न्यायाधीश महोदय ने स्पष्ट किया कि...
                       </p>
-                      <div className="sp-typing-cursor-line">
-                        <span className="sp-typed-text font-hindi">न्यायालय के आदेशानुसार उक्त</span>
-                        <span className="sp-blinking-caret" />
+                      <div className="mt-2 pt-2 border-t border-slate-100 flex items-center">
+                        <span className="font-hindi text-[#16161A] font-semibold">न्यायालय के आदेशानुसार उक्त</span>
+                        <span className="inline-block w-0.5 h-4 bg-[#991B1B] ml-0.5 animate-pulse" />
                       </div>
                     </div>
 
-                    <div className="sp-preview-footer-note">
-                      <span>Strict Backspace Lock: Eliminates bad editing habits during live preparation.</span>
+                    <div className="mt-2 pt-4 border-t border-[#DED8CC] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <span className="text-xs text-zinc-600">Strict Backspace Lock: Eliminates bad editing habits during live preparation.</span>
                       <button 
                         type="button" 
-                        className="sp-preview-cta-link whitespace-nowrap inline-flex items-center gap-1.5"
+                        className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold text-[#16161A] hover:text-[#991B1B] transition-colors cursor-pointer"
                         onClick={() => setCurrentTab && setCurrentTab('typing-studio')}
                       >
                         <span>Launch Typing Engine &rarr;</span>
@@ -474,23 +479,23 @@ export default function LandingPage({
 
                 {/* TAB 2 PREVIEW: Automated SSC Error Evaluation Diff */}
                 {activeEngineTab === 2 && (
-                  <div className="sp-preview-card">
-                    <div className="sp-preview-badge-row">
-                      <span className="sp-preview-status-pill">
-                        <span className="sp-live-dot" /> FORENSIC AUDIT
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase text-emerald-700">
+                        <span className="w-2 h-2 rounded-full bg-emerald-600" /> FORENSIC AUDIT
                       </span>
-                      <span className="sp-preview-meta-tag font-mono">SSC Grade C &middot; 100 WPM</span>
+                      <span className="font-mono text-xs text-zinc-500">SSC Grade C &middot; 100 WPM</span>
                     </div>
 
                     {/* Diff Inspection Passage */}
-                    <div className="sp-diff-passage-box">
-                      <p className="sp-diff-text">
+                    <div className="bg-white/80 border border-[#DED8CC] rounded-xl p-4 font-sans text-sm leading-relaxed">
+                      <p className="text-zinc-800 leading-relaxed m-0">
                         The proceedings of the{' '}
-                        <del className="sp-diff-omission" title="Full Mistake: Word Omitted">
+                        <del className="bg-rose-100 text-rose-800 line-through px-1.5 py-0.5 rounded font-semibold" title="Full Mistake: Word Omitted">
                           honorable
                         </del>{' '}
                         court were adjourned today after hearing the{' '}
-                        <span className="sp-diff-half-mistake" title="Half Mistake: Spelling typo">
+                        <span className="border-b-2 border-amber-500 bg-amber-100 text-amber-900 px-1 py-0.5 rounded-sm font-semibold" title="Half Mistake: Spelling typo">
                           parlimentary
                         </span>{' '}
                         arguments presented in the constitutional writ petition without any unnecessary delay.
@@ -498,42 +503,42 @@ export default function LandingPage({
                     </div>
 
                     {/* Legend */}
-                    <div className="sp-diff-legend-row">
-                      <div className="sp-legend-item">
-                        <span className="sp-legend-box sp-legend-red" />
+                    <div className="flex flex-wrap items-center gap-4 text-xs text-zinc-600">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-3 h-3 rounded-sm bg-rose-400" />
                         <span>Full Mistake (Omission / Addition) &middot; -1.0</span>
                       </div>
-                      <div className="sp-legend-item">
-                        <span className="sp-legend-box sp-legend-amber" />
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-3 h-3 rounded-sm bg-amber-400" />
                         <span>Half Mistake (Spelling / Case) &middot; -0.5</span>
                       </div>
                     </div>
 
-                    {/* Score Summary Metrics */}
-                    <div className="sp-diff-score-grid">
-                      <div className="sp-diff-score-cell">
-                        <span className="sp-diff-label">FULL MISTAKES</span>
-                        <span className="sp-diff-value tabular-nums font-mono">1 (Omission)</span>
+                    {/* Score Summary Metrics: 4-Column Telemetry Strip */}
+                    <div className="grid grid-cols-2 sm:grid-cols-4 border border-[#DED8CC] bg-[#F1EDE5] rounded-xl divide-y sm:divide-y-0 sm:divide-x divide-[#DED8CC] my-1">
+                      <div className="p-3 sm:p-4 flex flex-col gap-1">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">FULL MISTAKES</span>
+                        <span className="text-base font-mono font-bold text-[#16161A] tabular-nums">1 (Omission)</span>
                       </div>
-                      <div className="sp-diff-score-cell">
-                        <span className="sp-diff-label">HALF MISTAKES</span>
-                        <span className="sp-diff-value tabular-nums font-mono">1 (Spelling)</span>
+                      <div className="p-3 sm:p-4 flex flex-col gap-1">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">HALF MISTAKES</span>
+                        <span className="text-base font-mono font-bold text-[#16161A] tabular-nums">1 (Spelling)</span>
                       </div>
-                      <div className="sp-diff-score-cell">
-                        <span className="sp-diff-label">TOTAL ERROR RATE</span>
-                        <span className="sp-diff-value tabular-nums font-mono text-emerald">1.5%</span>
+                      <div className="p-3 sm:p-4 flex flex-col gap-1">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">TOTAL ERROR RATE</span>
+                        <span className="text-base font-mono font-bold text-emerald-700 tabular-nums">1.5%</span>
                       </div>
-                      <div className="sp-diff-score-cell">
-                        <span className="sp-diff-label">NET ACCURACY</span>
-                        <span className="sp-diff-value tabular-nums font-mono font-bold">98.5%</span>
+                      <div className="p-3 sm:p-4 flex flex-col gap-1">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500">NET ACCURACY</span>
+                        <span className="text-base font-mono font-bold text-[#16161A] tabular-nums">98.5%</span>
                       </div>
                     </div>
 
-                    <div className="sp-preview-footer-note">
-                      <span>Full SSC Standard: Certified evaluation matching official Staff Selection Commission rules.</span>
+                    <div className="mt-2 pt-4 border-t border-[#DED8CC] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <span className="text-xs text-zinc-600">Full SSC Standard: Certified evaluation matching official Staff Selection Commission rules.</span>
                       <button 
                         type="button" 
-                        className="sp-preview-cta-link whitespace-nowrap inline-flex items-center gap-1.5"
+                        className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold text-[#16161A] hover:text-[#991B1B] transition-colors cursor-pointer"
                         onClick={handleStartTests}
                       >
                         <span>Try Full Mock Exam &rarr;</span>
@@ -543,7 +548,6 @@ export default function LandingPage({
                 )}
 
               </div>
-            </div>
             </div>
 
           </div>

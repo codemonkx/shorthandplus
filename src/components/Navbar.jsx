@@ -130,206 +130,162 @@ export default function Navbar({
   };
 
   return (
-    <header className={`shorthand-navbar-root ${scrolled ? 'is-scrolled' : ''}`}>
-      <div className="shorthand-nav-container">
-        
-        {/* Brand: Big S Logo + 'Shorthand Plus' */}
-        <div className="shorthand-brand-group" onClick={() => handleNavClick('landing')} title="Shorthand Plus (Gaya Shorthand Classes)">
-          <div className="brand-logo-s-wrap">
-            <img 
-              src="/assets/logo-big-s.png" 
-              alt="Steno Plus Big S Logo" 
-              className="brand-logo-s-img"
-            />
-          </div>
-          <span className="brand-name-text">Shorthand Plus</span>
-        </div>
-
-        {/* Center Navigation Links: Home, Courses, Classes, Tests, About with Animated Sliding Pill */}
-        <nav className="shorthand-nav-links" ref={navContainerRef}>
-          {/* Animated Moving Pill Indicator */}
-          <span 
-            className={`nav-sliding-pill ${hasMounted ? 'is-animated' : ''}`}
-            style={{
-              transform: `translate3d(${indicatorStyle.left}px, ${indicatorStyle.top}px, 0)`,
-              width: `${indicatorStyle.width}px`,
-              height: `${indicatorStyle.height}px`,
-              opacity: indicatorStyle.opacity,
-            }}
-            aria-hidden="true"
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] max-w-6xl bg-[#16161A]/90 backdrop-blur-md border border-white/10 rounded-2xl px-4 sm:px-5 h-16 flex items-center justify-between shadow-[0_12px_36px_rgba(0,0,0,0.28)] transition-all">
+      {/* Brand: Big S Logo + 'SHORTHAND PLUS' */}
+      <div className="flex items-center gap-2.5 cursor-pointer shrink-0" onClick={() => handleNavClick('landing')} title="Shorthand Plus (Gaya Shorthand Classes)">
+        <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center flex-shrink-0">
+          <img 
+            src="/assets/logo-big-s.png" 
+            alt="Shorthand Plus" 
+            className="w-8 h-8 object-contain block"
           />
+        </div>
+        <span className="text-[#F5F3EE] font-bold tracking-tight text-sm uppercase">SHORTHAND PLUS</span>
+      </div>
 
-          {navItems.map((item) => {
-            const active = isNavActive(item.id);
-            return (
-              <button
-                key={item.id}
-                ref={(el) => { navItemRefs.current[item.id] = el; }}
-                onClick={() => handleNavClick(item.id)}
-                className={`nav-pill-item ${active ? 'active-pill' : 'inactive-link'}`}
-              >
-                {item.label}
-              </button>
-            );
-          })}
-        </nav>
+      {/* Center Navigation Links: Home, Courses, Classes, About */}
+      <nav className="hidden md:flex items-center gap-1.5">
+        {navItems.map((item) => {
+          const active = isNavActive(item.id);
+          return (
+            <button
+              key={item.id}
+              onClick={() => handleNavClick(item.id)}
+              className={active 
+                ? "bg-white/10 text-white font-semibold px-3.5 py-1.5 rounded-lg text-sm transition-colors cursor-pointer" 
+                : "text-zinc-400 hover:text-white text-sm font-medium px-3.5 py-1.5 rounded-lg transition-colors cursor-pointer"
+              }
+            >
+              {item.label}
+            </button>
+          );
+        })}
+      </nav>
 
-        {/* Right Section: Student Login / User Dropdown */}
-        <div className="shorthand-nav-actions" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-          {/* Student Login Panel or Logged In User State */}
-          {!user ? (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <button 
-                type="button"
-                onClick={() => onOpenAdmission ? onOpenAdmission() : handleNavClick('courses')}
-                title="Book 3 Free Demo Classes"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                  padding: '0.45rem 0.95rem',
-                  borderRadius: '8px',
-                  background: '#222228',
-                  color: '#F5F3EE',
-                  border: '1px solid #32323A',
-                  fontSize: '0.84rem',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  transition: 'all 0.15s ease'
-                }}
-              >
-                <Sparkles size={14} color="#F87171" />
-                <span>Free Demo</span>
-              </button>
+      {/* Right Section: Student Login / User Controls */}
+      <div className="flex items-center gap-2">
+        {!user ? (
+          <>
+            <button 
+              type="button"
+              onClick={() => onOpenAdmission ? onOpenAdmission() : handleNavClick('courses')}
+              title="Book 3 Free Demo Classes"
+              className="bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-200 rounded-xl px-3 py-1.5 text-xs font-medium inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+            >
+              <Sparkles size={13} className="text-[#F87171]" />
+              <span>Free Demo</span>
+            </button>
 
-              <button 
-                type="button"
-                className="btn-pill-portal"
-                onClick={() => onOpenAuth ? onOpenAuth('student') : handleNavClick('dashboard')}
-                title="Student Login Panel"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.45rem',
-                  padding: '0.42rem 1.05rem',
-                  borderRadius: '8px',
-                  background: '#B91C1C',
-                  color: '#FFFFFF',
-                  fontSize: '0.86rem',
-                  fontWeight: 600,
-                  border: '1px solid #B91C1C',
-                  cursor: 'pointer',
-                  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.25)',
-                  transition: 'all 0.15s ease'
-                }}
-              >
-                <LogIn size={14} />
-                <span>Student Login</span>
-              </button>
-            </div>
-          ) : (
-            <div className="logged-user-actions" ref={userMenuRef} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <button 
-                className="btn-pill-portal"
-                onClick={() => handleNavClick(user?.role === 'admin' ? 'admin' : 'dashboard')}
-                title={user?.role === 'admin' ? "Go to Director Admin Console" : "Go to Candidate Practice Dashboard"}
-              >
-                {user?.role === 'admin' ? (
-                  <>
-                    <ShieldCheck size={14} className="text-amber-400" />
-                    <span>Admin</span>
-                  </>
-                ) : (
-                  <>
-                    <LayoutDashboard size={14} />
-                    <span>Dashboard</span>
-                  </>
-                )}
-              </button>
+            <button 
+              type="button"
+              onClick={() => onOpenAuth ? onOpenAuth('student') : handleNavClick('dashboard')}
+              title="Student Login Panel"
+              className="bg-[#B91C1C] hover:bg-[#991B1B] text-white px-3.5 py-1.5 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5 shadow-sm transition-colors cursor-pointer"
+            >
+              <LogIn size={13} />
+              <span>Student Login</span>
+            </button>
+          </>
+        ) : (
+          <div className="relative flex items-center gap-2" ref={userMenuRef}>
+            <button 
+              className="bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-200 rounded-xl px-3 py-1.5 text-xs font-medium inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+              onClick={() => handleNavClick(user?.role === 'admin' ? 'admin' : 'dashboard')}
+              title={user?.role === 'admin' ? "Go to Director Admin Console" : "Go to Candidate Practice Dashboard"}
+            >
+              {user?.role === 'admin' ? (
+                <>
+                  <ShieldCheck size={13} className="text-amber-400" />
+                  <span>Admin</span>
+                </>
+              ) : (
+                <>
+                  <LayoutDashboard size={13} className="text-zinc-300" />
+                  <span>Dashboard</span>
+                </>
+              )}
+            </button>
 
-              <div 
-                className="user-pill-tag"
-                onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                title="Account & Subscription Menu"
-              >
-                {user?.role === 'admin' ? (
-                  <ShieldCheck size={14} className="text-amber-500" />
-                ) : (
-                  <Crown size={14} className="text-amber" />
-                )}
-                <span>{user.name.split(' ')[0]}</span>
-                <ChevronDown size={13} className={`transition-transform duration-200 ${userDropdownOpen ? 'rotate-180' : ''}`} />
-              </div>
+            <button 
+              className="bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-200 rounded-xl px-3 py-1.5 text-xs font-medium inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+              onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+              title="Account & Subscription Menu"
+            >
+              {user?.role === 'admin' ? (
+                <ShieldCheck size={13} className="text-amber-400" />
+              ) : (
+                <Crown size={13} className="text-amber-400" />
+              )}
+              <span>{user.name.split(' ')[0]}</span>
+              <ChevronDown size={12} className={`transition-transform duration-200 ${userDropdownOpen ? 'rotate-180' : ''}`} />
+            </button>
 
-              {/* User Dropdown Popover */}
-              {userDropdownOpen && (
-                <div className="navbar-user-dropdown-card">
-                  <div className="nav-dropdown-header">
-                    <strong className="user-dropdown-name">{user.name}</strong>
-                    <span className="user-dropdown-email">{user.email}</span>
-                    <div className="user-dropdown-badge-row">
-                      <span className="badge badge-blue">
-                        {user.role === 'admin' ? 'Faculty Admin' : `Roll: ${user.rollNo}`}
-                      </span>
-                      <span className="badge badge-emerald">
-                        {user.role === 'admin' ? 'Director Console' : (user.subscription?.isMonthlySubscription ? 'Monthly Pro' : 'Pro Active')}
-                      </span>
-                    </div>
+            {/* User Dropdown Popover (Soft Ivory #F7F5F0) */}
+            {userDropdownOpen && (
+              <div className="absolute right-0 top-full mt-2 w-64 bg-[#F7F5F0] text-[#16161A] border border-[#D6D0C4] rounded-2xl shadow-xl p-3 z-50">
+                <div className="px-3 py-2 border-b border-[#D6D0C4]/60">
+                  <strong className="block text-sm font-bold text-[#16161A] leading-tight">{user.name}</strong>
+                  <span className="block text-xs text-zinc-500 truncate mt-0.5">{user.email}</span>
+                  <div className="flex items-center gap-2 mt-2">
+                    <span className="text-[10px] font-semibold bg-[#EAE5DC] text-zinc-700 px-2 py-0.5 rounded">
+                      {user.role === 'admin' ? 'Faculty Admin' : `Roll: ${user.rollNo}`}
+                    </span>
+                    <span className="text-[10px] font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">
+                      {user.role === 'admin' ? 'Director Console' : (user.subscription?.isMonthlySubscription ? 'Monthly Pro' : 'Pro Active')}
+                    </span>
                   </div>
+                </div>
 
-                  <div className="nav-dropdown-divider" />
-
-                  <div className="nav-dropdown-links-list">
-                    <button 
-                      className="nav-dropdown-link-btn"
-                      onClick={() => handleNavClick('dashboard')}
-                    >
-                      <LayoutDashboard size={15} className="text-royal-blue" />
-                      <span>Candidate Dashboard</span>
-                    </button>
-
-                    <button 
-                      className="nav-dropdown-link-btn"
-                      onClick={() => handleNavClick('online-classes')}
-                    >
-                      <Video size={15} className="text-rose-600" />
-                      <span>Live Google Meet Class</span>
-                    </button>
-
-                    <button 
-                      className="nav-dropdown-link-btn"
-                      onClick={() => handleNavClick('tests')}
-                    >
-                      <Headphones size={15} className="text-royal-blue" />
-                      <span>Audio Dictation Vault</span>
-                    </button>
-
-                    <button 
-                      className="nav-dropdown-link-btn"
-                      onClick={() => {
-                        setUserDropdownOpen(false);
-                        if (onOpenCheckout) onOpenCheckout();
-                      }}
-                    >
-                      <CreditCard size={15} className="text-emerald" />
-                      <span>Monthly Subscription Passes</span>
-                    </button>
-
-                    {user?.role === 'admin' && (
-                      <button 
-                        className="nav-dropdown-link-btn"
-                        onClick={() => handleNavClick('admin')}
-                      >
-                        <ShieldCheck size={15} className="text-royal-blue" />
-                        <span>Director Admin Console</span>
-                      </button>
-                    )}
-                  </div>
-
-                  <div className="nav-dropdown-divider" />
+                <div className="py-1">
+                  <button 
+                    className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-zinc-700 hover:bg-[#EAE5DC] flex items-center gap-2 transition-colors cursor-pointer"
+                    onClick={() => handleNavClick('dashboard')}
+                  >
+                    <LayoutDashboard size={14} className="text-zinc-600" />
+                    <span>Candidate Dashboard</span>
+                  </button>
 
                   <button 
-                    className="nav-dropdown-signout-btn"
+                    className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-zinc-700 hover:bg-[#EAE5DC] flex items-center gap-2 transition-colors cursor-pointer"
+                    onClick={() => handleNavClick('online-classes')}
+                  >
+                    <Video size={14} className="text-rose-600" />
+                    <span>Live Google Meet Class</span>
+                  </button>
+
+                  <button 
+                    className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-zinc-700 hover:bg-[#EAE5DC] flex items-center gap-2 transition-colors cursor-pointer"
+                    onClick={() => handleNavClick('tests')}
+                  >
+                    <Headphones size={14} className="text-zinc-600" />
+                    <span>Audio Dictation Vault</span>
+                  </button>
+
+                  <button 
+                    className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-zinc-700 hover:bg-[#EAE5DC] flex items-center gap-2 transition-colors cursor-pointer"
+                    onClick={() => {
+                      setUserDropdownOpen(false);
+                      if (onOpenCheckout) onOpenCheckout();
+                    }}
+                  >
+                    <CreditCard size={14} className="text-emerald-700" />
+                    <span>Monthly Subscription Passes</span>
+                  </button>
+
+                  {user?.role === 'admin' && (
+                    <button 
+                      className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-zinc-700 hover:bg-[#EAE5DC] flex items-center gap-2 transition-colors cursor-pointer"
+                      onClick={() => handleNavClick('admin')}
+                    >
+                      <ShieldCheck size={14} className="text-amber-600" />
+                      <span>Director Admin Console</span>
+                    </button>
+                  )}
+                </div>
+
+                <div className="pt-1 border-t border-[#D6D0C4]/60">
+                  <button 
+                    className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-rose-700 hover:bg-rose-50 flex items-center gap-2 transition-colors cursor-pointer"
                     onClick={() => {
                       setUserDropdownOpen(false);
                       if (onLogout) onLogout();
@@ -339,94 +295,66 @@ export default function Navbar({
                     <span>Sign Out</span>
                   </button>
                 </div>
-              )}
-            </div>
-          )}
+              </div>
+            )}
+          </div>
+        )}
 
-          {/* Mobile Menu Hamburger */}
-          <button 
-            className="mobile-menu-burger"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-
+        {/* Mobile Menu Hamburger */}
+        <button 
+          className="md:hidden text-zinc-300 hover:text-white p-1.5 transition-colors cursor-pointer"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="shorthand-mobile-drawer">
-          <div className="mobile-drawer-inner">
-            {navItems.map((item) => (
+        <div className="absolute top-full left-0 right-0 mt-2 bg-[#16161A]/95 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-2xl flex flex-col gap-2 md:hidden">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => handleNavClick(item.id)}
+              className={`text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer ${isNavActive(item.id) ? 'bg-white/10 text-white font-semibold' : 'text-zinc-400 hover:text-white'}`}
+            >
+              {item.label}
+            </button>
+          ))}
+
+          {user?.role === 'admin' && (
+            <button
+              onClick={() => handleNavClick('admin')}
+              className={`text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer ${currentTab === 'admin' ? 'bg-white/10 text-white font-semibold' : 'text-zinc-400 hover:text-white'}`}
+            >
+              <ShieldCheck size={14} className="text-amber-400 inline mr-2" />
+              <span>Admin Console</span>
+            </button>
+          )}
+
+          {!user && (
+            <div className="pt-3 mt-1 border-t border-white/10 flex flex-col gap-2">
               <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`mobile-nav-link-row ${isNavActive(item.id) ? 'active' : ''}`}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenAdmission) onOpenAdmission();
+                }}
+                className="w-full py-2.5 px-4 rounded-xl text-xs font-medium bg-white/5 border border-white/10 text-zinc-200 text-center cursor-pointer"
               >
-                {item.label}
+                Free Demo
               </button>
-            ))}
-
-            {user?.role === 'admin' && (
               <button
-                onClick={() => handleNavClick('admin')}
-                className={`mobile-nav-link-row ${currentTab === 'admin' ? 'active' : ''}`}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenAuth) onOpenAuth('student');
+                }}
+                className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold bg-[#B91C1C] text-white text-center cursor-pointer"
               >
-                <ShieldCheck size={16} className="text-royal-blue inline mr-2" />
-                <span>Admin Console</span>
+                Student Login
               </button>
-            )}
-
-            {!user && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px', paddingTop: '12px', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    if (onOpenAuth) onOpenAuth('student');
-                  }}
-                  className="btn-pill-portal w-full"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '6px',
-                    padding: '10px'
-                  }}
-                >
-                  <LogIn size={15} />
-                  <span>Student Login</span>
-                </button>
-              </div>
-            )}
-
-            {user ? (
-              <div className="mobile-drawer-user-section">
-                <div className="mobile-user-info-box">
-                  <strong>{user.name}</strong>
-                  <span className="text-xs text-muted block">Roll: {user.rollNo}</span>
-                </div>
-                <button 
-                  className="btn-pill-portal w-full"
-                  onClick={() => handleNavClick('dashboard')}
-                >
-                  <LayoutDashboard size={15} />
-                  <span>Open Dashboard</span>
-                </button>
-                <button 
-                  className="btn-pill-login w-full mt-2 text-rose"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    if (onLogout) onLogout();
-                  }}
-                >
-                  <LogOut size={14} className="inline mr-1" />
-                  <span>Sign Out</span>
-                </button>
-              </div>
-            ) : null}
-          </div>
+            </div>
+          )}
         </div>
       )}
     </header>

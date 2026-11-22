@@ -73,10 +73,10 @@ export default function Footer({ onOpenCheckout, setCurrentTab, onOpenLegal }) {
 
             <a 
               href="tel:+919204123453"
-              className="sp-footer-helpline-btn bg-[#B91C1C] text-white hover:bg-[#991B1B] px-4 py-2.5 rounded-lg text-xs font-semibold inline-flex items-center gap-2 transition-colors"
+              className="sp-footer-helpline-btn bg-[#B91C1C] hover:bg-[#991B1B] text-white px-4 py-2.5 rounded-lg text-xs font-semibold inline-flex items-center gap-2 transition-colors"
             >
               <Phone style={{ width: '14px', height: '14px', flexShrink: 0 }} className="text-white" />
-              <span>Call Helpline &middot; +91 9204123453</span>
+              <span>Call Helpline (+91 9204123453)</span>
             </a>
           </div>
 

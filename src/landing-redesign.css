@@ -279,44 +279,43 @@
   background-color: var(--sp-border-slate);
 }
 
-/* Hero H1: text-4xl lg:text-[3.35rem] font-extrabold tracking-[-0.03em] leading-[1.08] text-slate-900 */
+/* Hero H1: text-4xl lg:text-[3.5rem] font-extrabold tracking-[-0.03em] leading-[1.06] text-[#F5F3EE] */
 .sp-hero-h1 {
   font-family: var(--sp-font-sans);
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   font-weight: 800;
-  line-height: 1.08;
+  line-height: 1.06;
   letter-spacing: -0.03em;
-  color: var(--sp-text-ink);
+  color: #F5F3EE !important;
   margin: 0 0 1.25rem;
 }
 
 @media (min-width: 1024px) {
   .sp-hero-h1 {
-    font-size: 3.35rem;
+    font-size: 3.5rem;
   }
 }
 
-/* Emphasized Serif Accent: font-serif italic font-normal text-[#B91C1C] tracking-normal text-[1.08em] */
+/* Emphasized Serif Accent: font-serif italic font-normal text-[#F87171] tracking-normal text-[1.08em] */
 .sp-hero-serif-accent {
   font-family: var(--sp-font-serif);
   font-weight: 400;
   font-style: italic;
-  color: var(--sp-crimson);
+  color: #F87171 !important;
   letter-spacing: normal;
   font-size: 1.08em;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 6px;
+  text-decoration: none;
 }
 
 .sp-hero-subheadline {
   max-width: 580px;
   margin: 0 0 2rem;
+  color: #D4D4D8 !important;
 }
 
 .sp-hero-subheadline strong {
-  color: var(--sp-text-ink);
-  font-weight: 700;
+  color: #FFFFFF !important;
+  font-weight: 600;
 }
 
 /* Clean CTA Row */
@@ -578,11 +577,11 @@
 }
 
 .sp-engine-tab-card.active {
-  background-color: #F3F1EC !important;
-  border: 1px solid #E5E1D8 !important;
+  background-color: #F7F5F0 !important;
+  border: 1px solid #D1CBBF !important;
   border-left: 3px solid #991B1B !important;
-  border-radius: 8px !important;
-  box-shadow: 0 2px 8px rgba(24, 24, 27, 0.04) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 14px rgba(22, 22, 26, 0.04) !important;
 }
 
 .sp-engine-tab-card.inactive {
@@ -1834,8 +1833,8 @@
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.5rem !important;
-  background-color: #FFFFFF !important;
-  color: #09090B !important;
+  background-color: #B91C1C !important;
+  color: #FFFFFF !important;
   padding: 0.625rem 1rem !important;
   border-radius: 8px !important;
   font-family: var(--sp-font-sans) !important;
@@ -1849,8 +1848,8 @@
 }
 
 .sp-footer-helpline-btn:hover {
-  background-color: #E4E4E7 !important;
-  color: #09090B !important;
+  background-color: #991B1B !important;
+  color: #FFFFFF !important;
 }
 
 /* Headings */
