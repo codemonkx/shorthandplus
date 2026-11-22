@@ -19,11 +19,7 @@ import {
   FileText, 
   Zap, 
   Check,
-  CheckCircle,
-  Video,
-  Sparkles,
-  BookOpen,
-  Target
+  CheckCircle
 } from 'lucide-react';
 import '../landing-redesign.css';
 
@@ -100,10 +96,10 @@ export default function LandingPage({
   };
 
   return (
-    <div className="sp-landing-root" style={{ backgroundColor: '#FBF8F3', color: '#231418', overflowX: 'hidden' }}>
+    <div className="sp-landing-root">
       
       {/* =========================================================================
-          SECTION 1: AIRY EDITORIAL HERO (WARM CREAM #FBF8F3)
+          SECTION 1: EDITORIAL SPLIT HERO (WARM PARCHMENT)
           ========================================================================= */}
       <section 
         className="sp-hero-section"
@@ -111,7 +107,7 @@ export default function LandingPage({
           backgroundColor: '#FBF8F3',
           color: '#231418',
           width: '100%',
-          paddingTop: '120px',
+          paddingTop: '128px',
           paddingBottom: '72px',
           position: 'relative',
           overflow: 'hidden'
@@ -124,12 +120,13 @@ export default function LandingPage({
             inset: 0,
             backgroundImage: 'radial-gradient(#E2D8CC 1.2px, transparent 1.2px)',
             backgroundSize: '24px 24px',
-            opacity: 0.45,
+            opacity: 0.35,
             pointerEvents: 'none'
           }} 
         />
 
         <div 
+          className="sp-hero-container"
           style={{
             maxWidth: '1280px',
             margin: '0 auto',
@@ -140,6 +137,7 @@ export default function LandingPage({
           }}
         >
           <div 
+            className="sp-hero-grid-2col"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(12, 1fr)',
@@ -149,15 +147,15 @@ export default function LandingPage({
           >
             {/* Left Column (lg:col-span-6) */}
             <div 
+              className="sp-hero-col-left"
               style={{
-                gridColumn: 'span 12',
+                gridColumn: 'span 6 / span 6',
                 minWidth: 0,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
                 textAlign: 'left'
               }}
-              className="lg:!col-span-6"
             >
               {/* Eyebrow */}
               <div 
@@ -182,37 +180,37 @@ export default function LandingPage({
                 <span>12+ YEARS COACHING</span>
               </div>
 
-              {/* H1 in Instrument Serif */}
+              {/* H1 */}
               <h1 
                 style={{
                   color: '#231418',
-                  fontFamily: "'Instrument Serif', Georgia, serif",
-                  fontWeight: 400,
-                  fontSize: 'clamp(2.5rem, 5vw, 4.15rem)',
-                  lineHeight: 1.04,
-                  letterSpacing: '-0.02em',
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  fontWeight: 800,
+                  fontSize: 'clamp(2.25rem, 4vw, 3.45rem)',
+                  lineHeight: 1.08,
+                  letterSpacing: '-0.03em',
                   margin: '0 0 20px 0'
                 }}
               >
                 The Gold Standard in{' '}
-                <span style={{ fontStyle: 'italic', color: '#991B1B' }}>Shorthand</span>{' '}
-                &amp; Typing <span style={{ fontStyle: 'italic' }}>for Govt. Exams.</span>
+                <span style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontStyle: 'italic', fontWeight: 400, color: '#991B1B' }}>Shorthand</span>{' '}
+                &amp; Typing for Govt. Exams
               </h1>
 
-              {/* Subheadline in #594A4D */}
+              {/* Subheadline */}
               <p 
                 style={{
                   color: '#594A4D',
                   fontSize: '16px',
-                  lineHeight: 1.65,
-                  maxWidth: '560px',
+                  lineHeight: 1.6,
+                  maxWidth: '580px',
                   margin: '0 0 28px 0'
                 }}
               >
-                Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong style={{ color: '#231418', fontWeight: 600 }}>Shadab Sir</strong> with automated SSC error evaluation.
+                Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong style={{ color: '#231418', fontWeight: 700 }}>Shadab Sir</strong> with automated SSC error evaluation.
               </p>
 
-              {/* Soft Pill CTA Row */}
+              {/* Horizontal CTA Row */}
               <div 
                 style={{
                   display: 'flex',
@@ -225,10 +223,10 @@ export default function LandingPage({
                   type="button"
                   onClick={handleStartTests}
                   style={{
-                    background: '#231418',
-                    color: '#FAF6F0',
-                    padding: '13px 26px',
-                    borderRadius: '9999px',
+                    background: '#991B1B',
+                    color: '#FFFFFF',
+                    padding: '12px 22px',
+                    borderRadius: '10px',
                     fontWeight: 600,
                     fontSize: '14px',
                     whiteSpace: 'nowrap',
@@ -237,11 +235,11 @@ export default function LandingPage({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    boxShadow: '0 4px 14px rgba(35, 20, 24, 0.16)',
-                    transition: 'all 0.15s ease'
+                    boxShadow: '0 1px 3px rgba(153, 27, 27, 0.25)',
+                    transition: 'background-color 0.15s ease'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3A2228'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#231418'}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#7F1D1D'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#991B1B'}
                 >
                   <span>Start Audio Dictation</span>
                   <ArrowRight size={16} />
@@ -251,11 +249,11 @@ export default function LandingPage({
                   type="button"
                   onClick={handleExploreCourses}
                   style={{
-                    background: 'transparent',
-                    border: '1px solid #C9BCB0',
+                    background: '#FFFFFF',
+                    border: '1px solid #C8C2B6',
                     color: '#231418',
-                    padding: '13px 24px',
-                    borderRadius: '9999px',
+                    padding: '12px 22px',
+                    borderRadius: '10px',
                     fontWeight: 600,
                     fontSize: '14px',
                     whiteSpace: 'nowrap',
@@ -263,10 +261,11 @@ export default function LandingPage({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    transition: 'all 0.15s ease'
+                    boxShadow: '0 1px 2px rgba(22, 22, 26, 0.05)',
+                    transition: 'background-color 0.15s ease'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#EFE7DC'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FAF8F5'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F7F5F0'}
                 >
                   <span>Explore Courses</span>
                 </button>
@@ -282,76 +281,59 @@ export default function LandingPage({
                     fontWeight: 500,
                     whiteSpace: 'nowrap',
                     cursor: 'pointer',
-                    padding: '8px 6px',
+                    padding: '8px 4px',
                     transition: 'color 0.15s ease'
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.color = '#991B1B'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = '#594A4D'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#44403C'}
                 >
                   Book 3 Free Demos &rarr;
                 </button>
               </div>
 
-              {/* 3-Stat Proof Row Underneath */}
+              {/* Pricing & Timing Reassurance micro-line */}
               <div 
                 style={{
-                  marginTop: '28px',
-                  paddingTop: '20px',
-                  borderTop: '1px solid #E5DBD0',
+                  marginTop: '20px',
+                  paddingTop: '16px',
+                  borderTop: '1px solid #E8DFD3',
                   width: '100%',
-                  maxWidth: '560px',
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(3, 1fr)',
-                  gap: '16px'
+                  maxWidth: '580px'
                 }}
               >
-                <div>
-                  <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '28px', color: '#231418', lineHeight: 1.1 }}>
-                    12+ Yrs
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#8A7B7E', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: '4px' }}>
-                    Coaching Legacy
-                  </div>
-                </div>
-                <div>
-                  <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '28px', color: '#231418', lineHeight: 1.1 }}>
-                    2,700+
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#8A7B7E', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: '4px' }}>
-                    Aspirants Trained
-                  </div>
-                </div>
-                <div>
-                  <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '28px', color: '#231418', lineHeight: 1.1 }}>
-                    Est. 2012
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#8A7B7E', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: '4px' }}>
-                    Gaya Center
-                  </div>
-                </div>
+                <p 
+                  style={{
+                    margin: 0,
+                    fontSize: '12px',
+                    color: '#8A7B7E',
+                    fontWeight: 500
+                  }}
+                >
+                  Online passes from &#8377;30 &middot; Offline &amp; Live Google Meet batches &middot; 3 Free Demo Classes
+                </p>
               </div>
             </div>
 
-            {/* Right Column (lg:col-span-6) Architectural Arch Frame */}
+            {/* Right Column (lg:col-span-6) */}
             <div 
+              className="sp-hero-col-right"
               style={{
-                gridColumn: 'span 12',
+                gridColumn: 'span 6 / span 6',
                 minWidth: 0,
                 width: '100%',
                 display: 'flex',
                 justifyContent: 'center'
               }}
-              className="lg:!col-span-6"
             >
               <div 
                 style={{
                   width: '100%',
-                  borderRadius: '28px',
-                  position: 'relative',
-                  border: '1px solid #E5DBD0',
-                  boxShadow: '0 24px 56px rgba(35, 20, 24, 0.09)',
-                  background: '#EFE7DC',
-                  padding: '12px',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  border: '1px solid #E8DFD3',
+                  boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
+                  background: '#FFFFFF',
+                  padding: '10px',
                   boxSizing: 'border-box'
                 }}
               >
@@ -362,56 +344,24 @@ export default function LandingPage({
                     width: '100%',
                     aspectRatio: '4 / 3',
                     objectFit: 'cover',
-                    borderRadius: '20px',
+                    borderRadius: '10px',
                     display: 'block'
                   }}
                 />
-
-                {/* Floating pill badge bottom-left */}
                 <div 
                   style={{
-                    position: 'absolute',
-                    bottom: '24px',
-                    left: '24px',
-                    background: '#FFFFFF',
-                    border: '1px solid #E8DFD3',
-                    borderRadius: '9999px',
-                    padding: '8px 16px',
-                    boxShadow: '0 8px 24px rgba(35, 20, 24, 0.08)',
+                    padding: '10px 14px 4px 14px',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '8px',
-                    fontSize: '12px',
-                    fontWeight: 600,
-                    color: '#231418'
+                    justifyContent: 'space-between',
+                    fontSize: '12px'
                   }}
                 >
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#991B1B', display: 'inline-block' }} />
-                  <span>50–140 WPM &middot; 3 Free Demo Classes</span>
-                </div>
-
-                {/* Circular Seal top-right */}
-                <div 
-                  style={{
-                    position: 'absolute',
-                    top: '-16px',
-                    right: '-16px',
-                    width: '80px',
-                    height: '80px',
-                    borderRadius: '50%',
-                    background: '#231418',
-                    color: '#FAF6F0',
-                    border: '4px solid #FBF8F3',
-                    boxShadow: '0 10px 24px rgba(35, 20, 24, 0.25)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    textAlign: 'center'
-                  }}
-                >
-                  <span style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '18px', lineHeight: 1 }}>SSC</span>
-                  <span style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#CBBCC0', marginTop: '2px' }}>&amp; Courts</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
+                    <span style={{ fontWeight: 600, color: '#231418' }}>SSC &amp; High Court Exam Standard</span>
+                  </div>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#991B1B', fontWeight: 600, fontSize: '11px', letterSpacing: '0.04em' }}>50&ndash;140 WPM &middot; GAYA</span>
                 </div>
               </div>
             </div>
@@ -419,15 +369,13 @@ export default function LandingPage({
         </div>
       </section>
 
-      {/* =========================================================================
-          SECTION 2: THIN WARM-SAND EXAM TRUST STRIP (#EFE7DC)
-          ========================================================================= */}
+      {/* Step 3: Exam Authority Strip (Directly Below Hero, Seamless Transition) */}
       <div 
         style={{
           background: '#EFE7DC',
           borderTop: '1px solid #E3D9CC',
           borderBottom: '1px solid #E3D9CC',
-          padding: '14px 0',
+          padding: '16px 0',
           width: '100%',
           margin: 0
         }}
@@ -449,21 +397,21 @@ export default function LandingPage({
             style={{
               fontSize: '11px',
               textTransform: 'uppercase',
-              letterSpacing: '0.16em',
+              letterSpacing: '0.14em',
               color: '#8A7B7E',
               fontWeight: 600,
               whiteSpace: 'nowrap'
             }}
           >
-            TARGET GOVT. EXAMINATIONS
+            PREPARING ASPIRANTS FOR
           </span>
           <div 
             style={{
               display: 'flex',
               flexWrap: 'wrap',
               alignItems: 'center',
-              gap: '20px',
-              color: '#594A4D',
+              gap: '24px',
+              color: '#231418',
               fontSize: '13px',
               fontWeight: 600
             }}
@@ -472,25 +420,27 @@ export default function LandingPage({
             <span style={{ color: '#C9BCB0' }}>&middot;</span>
             <span>Patna High Court</span>
             <span style={{ color: '#C9BCB0' }}>&middot;</span>
-            <span>Civil Court PA</span>
+            <span>Civil Court</span>
             <span style={{ color: '#C9BCB0' }}>&middot;</span>
-            <span>EPFO &amp; DRDO</span>
+            <span>EPFO</span>
             <span style={{ color: '#C9BCB0' }}>&middot;</span>
-            <span>BSSC &amp; Parliament</span>
+            <span>DRDO</span>
+            <span style={{ color: '#C9BCB0' }}>&middot;</span>
+            <span>BSSC</span>
           </div>
         </div>
       </div>
 
       {/* =========================================================================
-          SECTION 3: INTERACTIVE EXAM ENGINE SHOWCASE + LIVE STUDIO HIGHLIGHT STRIP
+          SECTION 2: INTERACTIVE EXAM ENGINE SHOWCASE (THE CENTERPIECE)
           ========================================================================= */}
       <section 
         className="sp-engine-section"
         style={{
           background: '#FBF8F3',
-          padding: '88px 0',
+          padding: '80px 0',
           width: '100%',
-          borderTop: '1px solid #E5DBD0'
+          borderTop: '1px solid #E8DFD3'
         }}
       >
         <div 
@@ -501,39 +451,38 @@ export default function LandingPage({
             paddingRight: '24px'
           }}
         >
-          {/* Header */}
-          <div style={{ maxWidth: '680px', marginBottom: '44px', textAlign: 'left' }}>
+          {/* Header (Left-aligned, max-w-2xl) */}
+          <div style={{ maxWidth: '680px', marginBottom: '40px', textAlign: 'left' }}>
             <span 
               style={{
                 fontSize: '11px',
                 fontWeight: 600,
                 textTransform: 'uppercase',
                 letterSpacing: '0.16em',
-                color: '#991B1B',
-                marginBottom: '10px',
+                color: '#8A7B7E',
+                marginBottom: '8px',
                 display: 'block'
               }}
             >
-              EXAM SIMULATION SUITE
+              THE SHORTHAND PLUS PLATFORM
             </span>
             <h2 
               style={{
-                fontFamily: "'Instrument Serif', Georgia, serif",
-                fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
-                fontWeight: 400,
+                fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
+                fontWeight: 800,
                 color: '#231418',
                 lineHeight: 1.15,
-                letterSpacing: '-0.02em',
+                letterSpacing: '-0.025em',
                 margin: '0 0 12px 0'
               }}
             >
-              Built like the exam hall, <span style={{ fontStyle: 'italic' }}>down to every keystroke.</span>
+              Built like the actual exam hall, down to every keystroke.
             </h2>
             <p 
               style={{
                 fontSize: '15px',
-                color: '#594A4D',
-                lineHeight: 1.65,
+                color: '#8A7B7E',
+                lineHeight: 1.6,
                 margin: 0
               }}
             >
@@ -541,8 +490,9 @@ export default function LandingPage({
             </p>
           </div>
 
-          {/* 2-Column Interactive Split */}
+          {/* 2-Column Interactive Split (lg:grid-cols-12 gap-10 items-start) */}
           <div 
+            className="sp-engine-grid-2col"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(12, 1fr)',
@@ -550,16 +500,16 @@ export default function LandingPage({
               alignItems: 'start'
             }}
           >
-            {/* Left Column (5 cols — 3 Clickable Tabs) */}
+            {/* Left Column (lg:col-span-5 — 3 Clickable Tabs) */}
             <div 
+              className="sp-engine-col-tabs"
               style={{
-                gridColumn: 'span 12',
+                gridColumn: 'span 5 / span 5',
                 minWidth: 0,
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '12px'
               }}
-              className="lg:!col-span-5"
             >
               {/* Tab 0 */}
               <div 
@@ -568,18 +518,17 @@ export default function LandingPage({
                 tabIndex={0}
                 style={activeEngineTab === 0 ? {
                   background: '#FFFFFF',
-                  border: '1px solid #E5DBD0',
+                  border: '1px solid #E8DFD3',
                   borderLeft: '3px solid #991B1B',
-                  borderRadius: '16px',
+                  borderRadius: '12px',
                   padding: '20px',
-                  boxShadow: '0 6px 20px rgba(35, 20, 24, 0.05)',
+                  boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
                   cursor: 'pointer',
                   textAlign: 'left',
                   transition: 'all 0.2s'
                 } : {
                   padding: '18px 20px',
-                  border: '1px solid transparent',
-                  borderBottom: '1px solid #E5DBD0',
+                  borderBottom: '1px solid #E8DFD3',
                   cursor: 'pointer',
                   textAlign: 'left',
                   transition: 'all 0.2s',
@@ -592,7 +541,7 @@ export default function LandingPage({
                       fontFamily: "'JetBrains Mono', monospace",
                       fontSize: '18px',
                       fontWeight: 700,
-                      color: activeEngineTab === 0 ? '#991B1B' : '#8A7B7E',
+                      color: activeEngineTab === 0 ? '#991B1B' : '#78716C',
                       lineHeight: 1,
                       flexShrink: 0
                     }}
@@ -605,7 +554,7 @@ export default function LandingPage({
                         style={{
                           fontSize: '16px',
                           fontWeight: activeEngineTab === 0 ? 700 : 600,
-                          color: activeEngineTab === 0 ? '#231418' : '#594A4D',
+                          color: activeEngineTab === 0 ? '#16161A' : '#57534E',
                           margin: 0,
                           transition: 'color 0.2s'
                         }}
@@ -615,7 +564,7 @@ export default function LandingPage({
                       {activeEngineTab === 0 ? (
                         <ChevronUp size={16} color="#991B1B" style={{ flexShrink: 0 }} />
                       ) : (
-                        <ChevronDown size={16} color="#8A7B7E" style={{ flexShrink: 0 }} />
+                        <ChevronDown size={16} color="#78716C" style={{ flexShrink: 0 }} />
                       )}
                     </div>
                     {activeEngineTab === 0 && (
@@ -638,7 +587,7 @@ export default function LandingPage({
                     style={{
                       marginTop: '12px',
                       fontSize: '14px',
-                      color: '#594A4D',
+                      color: '#8A7B7E',
                       lineHeight: 1.6,
                       paddingLeft: '34px',
                       margin: '12px 0 0 0'
@@ -656,18 +605,17 @@ export default function LandingPage({
                 tabIndex={0}
                 style={activeEngineTab === 1 ? {
                   background: '#FFFFFF',
-                  border: '1px solid #E5DBD0',
+                  border: '1px solid #E8DFD3',
                   borderLeft: '3px solid #991B1B',
-                  borderRadius: '16px',
+                  borderRadius: '12px',
                   padding: '20px',
-                  boxShadow: '0 6px 20px rgba(35, 20, 24, 0.05)',
+                  boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
                   cursor: 'pointer',
                   textAlign: 'left',
                   transition: 'all 0.2s'
                 } : {
                   padding: '18px 20px',
-                  border: '1px solid transparent',
-                  borderBottom: '1px solid #E5DBD0',
+                  borderBottom: '1px solid #E8DFD3',
                   cursor: 'pointer',
                   textAlign: 'left',
                   transition: 'all 0.2s',
@@ -680,7 +628,7 @@ export default function LandingPage({
                       fontFamily: "'JetBrains Mono', monospace",
                       fontSize: '18px',
                       fontWeight: 700,
-                      color: activeEngineTab === 1 ? '#991B1B' : '#8A7B7E',
+                      color: activeEngineTab === 1 ? '#991B1B' : '#78716C',
                       lineHeight: 1,
                       flexShrink: 0
                     }}
@@ -693,7 +641,7 @@ export default function LandingPage({
                         style={{
                           fontSize: '16px',
                           fontWeight: activeEngineTab === 1 ? 700 : 600,
-                          color: activeEngineTab === 1 ? '#231418' : '#594A4D',
+                          color: activeEngineTab === 1 ? '#16161A' : '#57534E',
                           margin: 0,
                           transition: 'color 0.2s'
                         }}
@@ -703,7 +651,7 @@ export default function LandingPage({
                       {activeEngineTab === 1 ? (
                         <ChevronUp size={16} color="#991B1B" style={{ flexShrink: 0 }} />
                       ) : (
-                        <ChevronDown size={16} color="#8A7B7E" style={{ flexShrink: 0 }} />
+                        <ChevronDown size={16} color="#78716C" style={{ flexShrink: 0 }} />
                       )}
                     </div>
                     {activeEngineTab === 1 && (
@@ -726,7 +674,7 @@ export default function LandingPage({
                     style={{
                       marginTop: '12px',
                       fontSize: '14px',
-                      color: '#594A4D',
+                      color: '#8A7B7E',
                       lineHeight: 1.6,
                       paddingLeft: '34px',
                       margin: '12px 0 0 0'
@@ -744,18 +692,17 @@ export default function LandingPage({
                 tabIndex={0}
                 style={activeEngineTab === 2 ? {
                   background: '#FFFFFF',
-                  border: '1px solid #E5DBD0',
+                  border: '1px solid #E8DFD3',
                   borderLeft: '3px solid #991B1B',
-                  borderRadius: '16px',
+                  borderRadius: '12px',
                   padding: '20px',
-                  boxShadow: '0 6px 20px rgba(35, 20, 24, 0.05)',
+                  boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
                   cursor: 'pointer',
                   textAlign: 'left',
                   transition: 'all 0.2s'
                 } : {
                   padding: '18px 20px',
-                  border: '1px solid transparent',
-                  borderBottom: '1px solid #E5DBD0',
+                  borderBottom: '1px solid #E8DFD3',
                   cursor: 'pointer',
                   textAlign: 'left',
                   transition: 'all 0.2s',
@@ -768,7 +715,7 @@ export default function LandingPage({
                       fontFamily: "'JetBrains Mono', monospace",
                       fontSize: '18px',
                       fontWeight: 700,
-                      color: activeEngineTab === 2 ? '#991B1B' : '#8A7B7E',
+                      color: activeEngineTab === 2 ? '#991B1B' : '#78716C',
                       lineHeight: 1,
                       flexShrink: 0
                     }}
@@ -781,7 +728,7 @@ export default function LandingPage({
                         style={{
                           fontSize: '16px',
                           fontWeight: activeEngineTab === 2 ? 700 : 600,
-                          color: activeEngineTab === 2 ? '#231418' : '#594A4D',
+                          color: activeEngineTab === 2 ? '#16161A' : '#57534E',
                           margin: 0,
                           transition: 'color 0.2s'
                         }}
@@ -791,7 +738,7 @@ export default function LandingPage({
                       {activeEngineTab === 2 ? (
                         <ChevronUp size={16} color="#991B1B" style={{ flexShrink: 0 }} />
                       ) : (
-                        <ChevronDown size={16} color="#8A7B7E" style={{ flexShrink: 0 }} />
+                        <ChevronDown size={16} color="#78716C" style={{ flexShrink: 0 }} />
                       )}
                     </div>
                     {activeEngineTab === 2 && (
@@ -814,7 +761,7 @@ export default function LandingPage({
                     style={{
                       marginTop: '12px',
                       fontSize: '14px',
-                      color: '#594A4D',
+                      color: '#8A7B7E',
                       lineHeight: 1.6,
                       paddingLeft: '34px',
                       margin: '12px 0 0 0'
@@ -826,30 +773,30 @@ export default function LandingPage({
               </div>
             </div>
 
-            {/* Right Column (7 cols — Software Mockup Window) */}
+            {/* Right Column (lg:col-span-7 — Restored Software Mockup Window) */}
             <div 
+              className="sp-engine-col-preview"
               style={{
-                gridColumn: 'span 12',
+                gridColumn: 'span 7 / span 7',
                 minWidth: 0,
                 width: '100%'
               }}
-              className="lg:!col-span-7"
             >
               <div 
                 style={{
                   background: '#FFFFFF',
-                  border: '1px solid #E5DBD0',
+                  border: '1px solid #E8DFD3',
                   borderRadius: '16px',
                   overflow: 'hidden',
-                  boxShadow: '0 14px 38px rgba(35, 20, 24, 0.06)',
+                  boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
                   width: '100%'
                 }}
               >
-                {/* Subtle Top Toolbar Header */}
+                {/* Subtle Top Toolbar */}
                 <div 
                   style={{
                     background: '#F4EFE7',
-                    borderBottom: '1px solid #E5DBD0',
+                    borderBottom: '1px solid #E8DFD3',
                     padding: '12px 20px',
                     display: 'flex',
                     alignItems: 'center',
@@ -858,9 +805,9 @@ export default function LandingPage({
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#CBBCC0', display: 'inline-block' }} />
-                      <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#CBBCC0', display: 'inline-block' }} />
-                      <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#CBBCC0', display: 'inline-block' }} />
+                      <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#C4BEB2', display: 'inline-block' }} />
+                      <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#C4BEB2', display: 'inline-block' }} />
+                      <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#C4BEB2', display: 'inline-block' }} />
                     </div>
                     <span 
                       style={{
@@ -869,7 +816,7 @@ export default function LandingPage({
                         fontWeight: 600,
                         letterSpacing: '0.08em',
                         textTransform: 'uppercase',
-                        color: '#594A4D',
+                        color: '#8A7B7E',
                         marginLeft: '8px'
                       }}
                     >
@@ -897,7 +844,7 @@ export default function LandingPage({
                   </div>
                 </div>
 
-                {/* Mockup Body */}
+                {/* Mockup Body (padding: 24px) */}
                 <div style={{ padding: '24px', background: '#FFFFFF' }}>
                   
                   {/* Tab 0 Preview */}
@@ -914,7 +861,7 @@ export default function LandingPage({
                       <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: '14px 0 4px 0' }}>
                         Patna High Court Legal Dictation &middot; 100 WPM
                       </h4>
-                      <p style={{ fontSize: '13px', color: '#594A4D', margin: '0 0 16px 0' }}>
+                      <p style={{ fontSize: '13px', color: '#8A7B7E', margin: '0 0 16px 0' }}>
                         Case Law: Cr. Misc. Petitions &middot; Kailash Chandra Vol. 14 Calibration
                       </p>
 
@@ -922,17 +869,17 @@ export default function LandingPage({
                       <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '12px 0' }}>
                         <span style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A7B7E' }}>CALIBRATED SPEED:</span>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FBF8F3', border: '1px solid #E5DBD0', color: '#594A4D' }}>80 WPM</span>
-                          <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#231418', color: '#FAF6F0' }}>100 WPM</span>
-                          <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FBF8F3', border: '1px solid #E5DBD0', color: '#594A4D' }}>120 WPM</span>
+                          <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #E8DFD3', color: '#8A7B7E' }}>80 WPM</span>
+                          <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#231418', color: '#FFFFFF' }}>100 WPM</span>
+                          <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #E8DFD3', color: '#8A7B7E' }}>120 WPM</span>
                         </div>
                       </div>
 
-                      {/* Waveform Player */}
+                      {/* Waveform Player inside bordered panel */}
                       <div 
                         style={{
                           background: '#FBF8F3',
-                          border: '1px solid #E5DBD0',
+                          border: '1px solid #E8DFD3',
                           borderRadius: '12px',
                           padding: '16px',
                           margin: '16px 0',
@@ -970,7 +917,7 @@ export default function LandingPage({
                                 flex: 1,
                                 height: `${height}%`,
                                 borderRadius: '2px',
-                                background: isPlayingAudioPreview && i < 12 ? '#991B1B' : '#E5DBD0',
+                                background: isPlayingAudioPreview && i < 12 ? '#991B1B' : '#DED8CC',
                                 transition: 'background-color 0.2s'
                               }}
                             />
@@ -987,7 +934,7 @@ export default function LandingPage({
                         style={{
                           marginTop: '20px',
                           paddingTop: '16px',
-                          borderTop: '1px solid #E5DBD0',
+                          borderTop: '1px solid #E8DFD3',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
@@ -995,7 +942,7 @@ export default function LandingPage({
                           flexWrap: 'wrap'
                         }}
                       >
-                        <span style={{ fontSize: '12px', color: '#594A4D' }}>Strict Single-Play Protocol: Audio plays once without rewind or pause.</span>
+                        <span style={{ fontSize: '12px', color: '#8A7B7E' }}>Strict Single-Play Protocol: Audio plays once without rewind or pause.</span>
                         <button
                           type="button"
                           onClick={handleStartTests}
@@ -1028,14 +975,15 @@ export default function LandingPage({
                           TYPING BENCHMARK
                         </span>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#231418', color: '#FAF6F0' }}>Kruti Dev 010</span>
-                          <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FBF8F3', border: '1px solid #E5DBD0', color: '#594A4D' }}>Mangal Inscript</span>
-                          <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FBF8F3', border: '1px solid #E5DBD0', color: '#594A4D' }}>English QWERTY</span>
+                          <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#231418', color: '#FFFFFF' }}>Kruti Dev 010</span>
+                          <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #E8DFD3', color: '#8A7B7E' }}>Mangal Inscript</span>
+                          <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #E8DFD3', color: '#8A7B7E' }}>English QWERTY</span>
                         </div>
                       </div>
 
                       {/* 4 Metrics in clean 4-column HUD grid */}
                       <div 
+                        className="sp-telemetry-4col"
                         style={{
                           display: 'grid',
                           gridTemplateColumns: 'repeat(4, 1fr)',
@@ -1043,31 +991,31 @@ export default function LandingPage({
                           margin: '16px 0'
                         }}
                       >
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '12px', padding: '14px' }}>
+                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
                           <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>GROSS SPEED</span>
                           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#231418' }}>48.2 <span style={{ fontSize: '12px', color: '#8A7B7E', fontWeight: 500 }}>WPM</span></span>
                         </div>
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '12px', padding: '14px' }}>
+                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
                           <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>NET ACCURACY</span>
                           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#047857' }}>98.4%</span>
                         </div>
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '12px', padding: '14px' }}>
+                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
                           <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>BACKSPACE LOCK</span>
                           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#991B1B' }}>ENFORCED</span>
                         </div>
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '12px', padding: '14px' }}>
+                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
                           <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>TIME REMAINING</span>
                           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#231418' }}>07:45</span>
                         </div>
                       </div>
 
                       {/* Simulated Text Transcription Input Box */}
-                      <div style={{ background: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '10px', padding: '16px', fontSize: '15px', margin: '16px 0', lineHeight: 1.7 }}>
-                        <p style={{ color: '#8A7B7E', margin: '0 0 8px 0' }}>
+                      <div style={{ background: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '10px', padding: '16px', fontSize: '15px', margin: '16px 0', lineHeight: 1.7 }}>
+                        <p className="font-hindi" style={{ color: '#8A7B7E', margin: '0 0 8px 0' }}>
                           न्यायालय के आदेशानुसार उक्त याचिका पर सुनवाई करते हुए न्यायाधीश महोदय ने स्पष्ट किया कि...
                         </p>
                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                          <span style={{ color: '#231418', fontWeight: 600 }}>न्यायालय के आदेशानुसार उक्त</span>
+                          <span className="font-hindi" style={{ color: '#231418', fontWeight: 600 }}>न्यायालय के आदेशानुसार उक्त</span>
                           <span style={{ display: 'inline-block', width: '2px', height: '1.2em', background: '#991B1B', marginLeft: '3px' }} />
                         </div>
                       </div>
@@ -1077,7 +1025,7 @@ export default function LandingPage({
                         style={{
                           marginTop: '20px',
                           paddingTop: '16px',
-                          borderTop: '1px solid #E5DBD0',
+                          borderTop: '1px solid #E8DFD3',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
@@ -1085,7 +1033,7 @@ export default function LandingPage({
                           flexWrap: 'wrap'
                         }}
                       >
-                        <span style={{ fontSize: '12px', color: '#594A4D' }}>Strict Backspace Lock: Eliminates bad editing habits during live preparation.</span>
+                        <span style={{ fontSize: '12px', color: '#8A7B7E' }}>Strict Backspace Lock: Eliminates bad editing habits during live preparation.</span>
                         <button
                           type="button"
                           onClick={() => setCurrentTab && setCurrentTab('typing-studio')}
@@ -1120,7 +1068,36 @@ export default function LandingPage({
                         <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12px', color: '#8A7B7E' }}>SSC Grade C &middot; 100 WPM</span>
                       </div>
 
+                      {/* Diff Inspection Passage inside bordered panel */}
+                      <div style={{ background: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '16px', margin: '16px 0', fontSize: '14px', lineHeight: 1.7 }}>
+                        <p style={{ color: '#231418', margin: 0 }}>
+                          The proceedings of the{' '}
+                          <del style={{ background: '#FEE2E2', color: '#B91C1C', textDecoration: 'line-through', padding: '2px 6px', borderRadius: '4px', fontWeight: 600 }} title="Full Mistake: Word Omitted">
+                            honorable
+                          </del>{' '}
+                          court were adjourned today after hearing the{' '}
+                          <span style={{ borderBottom: '2px solid #F59E0B', background: '#FEF3C7', color: '#B45309', padding: '1px 5px', borderRadius: '2px', fontWeight: 600 }} title="Half Mistake: Spelling typo">
+                            parlimentary
+                          </span>{' '}
+                          arguments presented in the constitutional writ petition without any unnecessary delay.
+                        </p>
+                      </div>
+
+                      {/* Legend */}
+                      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '16px', fontSize: '12px', color: '#8A7B7E', margin: '12px 0' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#F87171', display: 'inline-block' }} />
+                          <span>Full Mistake (Omission / Addition) &middot; -1.0</span>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#FBBF24', display: 'inline-block' }} />
+                          <span>Half Mistake (Spelling / Case) &middot; -0.5</span>
+                        </div>
+                      </div>
+
+                      {/* Score Summary Metrics: 4-Column Grid inside bordered panels */}
                       <div 
+                        className="sp-telemetry-4col"
                         style={{
                           display: 'grid',
                           gridTemplateColumns: 'repeat(4, 1fr)',
@@ -1128,19 +1105,19 @@ export default function LandingPage({
                           margin: '16px 0'
                         }}
                       >
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '12px', padding: '14px' }}>
+                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
                           <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>FULL MISTAKES</span>
                           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#231418' }}>1 (Omission)</span>
                         </div>
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '12px', padding: '14px' }}>
+                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
                           <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>HALF MISTAKES</span>
                           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#231418' }}>1 (Spelling)</span>
                         </div>
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '12px', padding: '14px' }}>
+                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
                           <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>TOTAL ERROR RATE</span>
                           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#047857' }}>1.5%</span>
                         </div>
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '12px', padding: '14px' }}>
+                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
                           <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>NET ACCURACY</span>
                           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#231418' }}>98.5%</span>
                         </div>
@@ -1151,7 +1128,7 @@ export default function LandingPage({
                         style={{
                           marginTop: '20px',
                           paddingTop: '16px',
-                          borderTop: '1px solid #E5DBD0',
+                          borderTop: '1px solid #E8DFD3',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
@@ -1159,7 +1136,7 @@ export default function LandingPage({
                           flexWrap: 'wrap'
                         }}
                       >
-                        <span style={{ fontSize: '12px', color: '#594A4D' }}>Full SSC Standard: Certified evaluation matching official Staff Selection Commission rules.</span>
+                        <span style={{ fontSize: '12px', color: '#8A7B7E' }}>Full SSC Standard: Certified evaluation matching official Staff Selection Commission rules.</span>
                         <button 
                           type="button" 
                           onClick={handleStartTests}
@@ -1189,1054 +1166,421 @@ export default function LandingPage({
 
           </div>
 
-          {/* Full-Width Dark Highlight Strip (Live Google Meet Studio) */}
-          <div 
-            style={{
-              marginTop: '48px',
-              background: 'linear-gradient(135deg, #231418 0%, #2E1A1F 50%, #3B2127 100%)',
-              color: '#FAF6F0',
-              borderRadius: '20px',
-              padding: '32px 40px',
-              boxShadow: '0 16px 40px rgba(35, 20, 24, 0.16)',
-              border: '1px solid #442830',
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '24px'
-            }}
-          >
-            <div style={{ maxWidth: '640px' }}>
-              <span 
-                style={{
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.16em',
-                  color: '#E5B8BE',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  marginBottom: '8px'
-                }}
-              >
-                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#F87171', display: 'inline-block' }} />
-                LIVE GOOGLE MEET STUDIO
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 3: HOW PREPARATION WORKS (MINIMAL HORIZONTAL TIMELINE)
+          ========================================================================= */}
+      <section className="sp-timeline-section bg-[#EFE7DC] border-t border-[#E3D9CC]">
+        <div className="sp-container">
+          
+          <div className="sp-timeline-head-row">
+            <div>
+              <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
+                PEDAGOGICAL ROADMAP
               </span>
-              <h3 
-                style={{
-                  fontFamily: "'Instrument Serif', Georgia, serif",
-                  fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
-                  fontWeight: 400,
-                  color: '#FAF6F0',
-                  margin: '0 0 8px 0',
-                  lineHeight: 1.2
-                }}
-              >
-                Can't Visit the Gaya Center? <span style={{ fontStyle: 'italic' }}>Join Live Online Classes.</span>
-              </h3>
-              <p style={{ margin: 0, fontSize: '14px', color: '#CBBCC0', lineHeight: 1.5 }}>
-                Daily Google Meet dictations, live digital whiteboard outline checking, and real-time doubt resolution directly with Shadab Sir.
+              <h2 className="sp-section-h2" style={{ textAlign: 'left', margin: 0 }}>
+                From First Outline to Final Selection.
+              </h2>
+            </div>
+            <button
+              type="button"
+              className="sp-timeline-all-courses-link"
+              onClick={handleExploreCourses}
+            >
+              <span>View All Courses</span>
+              <ArrowRight size={15} />
+            </button>
+          </div>
+
+          <div className="sp-timeline-grid">
+            
+            {/* Step 1 */}
+            <div className="sp-timeline-col border-t-2 border-[#E8DFD3]">
+              <span className="sp-timeline-num text-[#8A7B7E] font-bold">01</span>
+              <h3 className="sp-timeline-title">Listen &amp; Write Shorthand</h3>
+              <p className="sp-timeline-desc">
+                Take calibrated live or studio dictations in your physical stenography notebook at <strong>60 to 140 WPM</strong>. Master light/dark stroke discrimination and phraseography without hesitations.
               </p>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '8px' }}>
-              <span style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '17px', color: '#E5B8BE' }}>
-                Online passes from ₹30
-              </span>
-              <button
-                type="button"
-                onClick={() => setCurrentTab && setCurrentTab('classes')}
-                style={{
-                  background: '#FAF6F0',
-                  color: '#231418',
-                  borderRadius: '9999px',
-                  padding: '12px 24px',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  boxShadow: '0 4px 14px rgba(0,0,0,0.2)',
-                  transition: 'background-color 0.15s ease'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FFFFFF'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FAF6F0'}
-              >
-                <span>View Live Schedule</span>
-                <ArrowRight size={15} />
-              </button>
+            {/* Step 2 */}
+            <div className="sp-timeline-col border-t-2 border-[#E8DFD3]">
+              <span className="sp-timeline-num text-[#8A7B7E] font-bold">02</span>
+              <h3 className="sp-timeline-title">Transcribe Under Exam Clock</h3>
+              <p className="sp-timeline-desc">
+                Review outlines during the 5-minute reading clock, then transcribe in <strong>English, Kruti Dev 010, or Mangal</strong> under strict official exam-hall timing and backspace-lock rules.
+              </p>
             </div>
+
+            {/* Step 3 */}
+            <div className="sp-timeline-col border-t-2 border-[#E8DFD3]">
+              <span className="sp-timeline-num text-[#8A7B7E] font-bold">03</span>
+              <h3 className="sp-timeline-title">Fix Every Single Mistake</h3>
+              <p className="sp-timeline-desc">
+                Receive automated full and half-mistake percentage reports instantly, combined with daily <strong>handwritten outline review</strong> by Shadab Sir to eliminate recurring stroke angle flaws.
+              </p>
+            </div>
+
           </div>
 
         </div>
       </section>
 
       {/* =========================================================================
-          SECTION 4: WARM-SAND FEATURE SPLIT — TRAINING METHOD (#EFE7DC)
+          SECTION 4: LEGACY & MENTOR EDITORIAL SPLIT (WARM PARCHMENT CANVAS)
           ========================================================================= */}
-      <section 
-        style={{
-          background: '#EFE7DC',
-          padding: '88px 0',
-          width: '100%',
-          borderTop: '1px solid #DFD4C6'
-        }}
-      >
-        <div 
-          style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            paddingLeft: '24px',
-            paddingRight: '24px'
-          }}
-        >
-          <div 
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(12, 1fr)',
-              gap: '48px',
-              alignItems: 'center'
-            }}
-          >
-            {/* Left Column (5 cols) */}
-            <div 
-              style={{
-                gridColumn: 'span 12',
-                minWidth: 0,
-                textAlign: 'left'
-              }}
-              className="lg:!col-span-5"
-            >
-              <span 
-                style={{
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.16em',
-                  color: '#991B1B',
-                  marginBottom: '10px',
-                  display: 'block'
-                }}
-              >
-                STRUCTURED PROGRESSION
+      <section className="sp-mentor-section bg-[#FBF8F3] border-t border-[#E8DFD3]">
+        <div className="sp-container">
+          <div className="sp-mentor-grid">
+            
+            {/* Left Column: Editorial Narrative & Mentor Legacy */}
+            <div className="sp-mentor-narrative">
+              <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
+                GAYA SHORTHAND CLASSES &middot; EST. 2012
               </span>
-              <h2 
-                style={{
-                  fontFamily: "'Instrument Serif', Georgia, serif",
-                  fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
-                  fontWeight: 400,
-                  color: '#231418',
-                  lineHeight: 1.15,
-                  letterSpacing: '-0.02em',
-                  margin: '0 0 16px 0'
-                }}
-              >
-                Training that actually <span style={{ fontStyle: 'italic' }}>reaches exam speed.</span>
+              <h2 className="sp-section-h2" style={{ textAlign: 'left' }}>
+                12+ Years of Discipline. Guided Directly by Shadab Sir.
               </h2>
-              <p style={{ fontSize: '15px', color: '#594A4D', lineHeight: 1.65, margin: '0 0 16px 0' }}>
-                We believe that while automated software is indispensable for measuring transcription speed, true shorthand accuracy demands rigorous, traditional stroke discipline.
-              </p>
-              <p style={{ fontSize: '15px', color: '#594A4D', lineHeight: 1.65, margin: '0 0 24px 0' }}>
-                Every single curve angle, light and dark stroke distinction, and grammalogue contraction is inspected daily by Shadab Sir so flawed shorthand habits never enter the examination hall.
-              </p>
               
-              <div 
-                style={{
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  border: '1px solid #DFD4C6',
-                  boxShadow: '0 12px 32px rgba(35, 20, 24, 0.06)'
-                }}
-              >
+              <div className="sp-mentor-text-block">
+                <p>
+                  Founded at Gaya College More in 2012, <strong>Gaya Shorthand Classes</strong> has established itself as Bihar's premier preparatory academy for government stenography aspirants. Over 1,200 candidates have qualified for Central &amp; State services under direct personal mentorship.
+                </p>
+                <p>
+                  We believe that while automated software is indispensable for measuring speed, true shorthand mastery demands traditional stroke discipline. Every single outline, curve angle, and grammalogue contraction is inspected daily so bad habits never carry into the examination hall.
+                </p>
+              </div>
+
+              {/* Flush Stat Strip */}
+              <div className="sp-mentor-stats-strip">
+                <div className="sp-stat-box">
+                  <div className="sp-stat-number tabular-nums">12+ Yrs</div>
+                  <div className="sp-stat-caption">Coaching Legacy</div>
+                </div>
+                <div className="sp-stat-box">
+                  <div className="sp-stat-number tabular-nums">50&ndash;140</div>
+                  <div className="sp-stat-caption">WPM Training Range</div>
+                </div>
+                <div className="sp-stat-box">
+                  <div className="sp-stat-number">Offline + Live</div>
+                  <div className="sp-stat-caption">Gaya &amp; Google Meet</div>
+                </div>
+              </div>
+
+              <div style={{ marginTop: '2rem' }}>
+                <button
+                  type="button"
+                  className="sp-mentor-story-link"
+                  onClick={() => setCurrentTab && setCurrentTab('about')}
+                >
+                  <span>Read Our Story &amp; Methodology</span>
+                  <ArrowRight size={15} />
+                </button>
+              </div>
+            </div>
+
+            {/* Right Column: Mentor & Academy Visual Card (Soft Ivory #F7F5F0) */}
+            <div className="bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(35,20,24,0.04)]">
+              {/* Top Visual Frame */}
+              <div className="aspect-[4/3] bg-[#E2DDD3] relative overflow-hidden">
                 <img 
-                  src="/assets/court-feature.jpg" 
-                  alt="Court Transcription Practice"
-                  style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
+                  src="/assets/institution-hero.jpg" 
+                  alt="Shadab Sir - Gaya Shorthand Classes Classroom &amp; Mentor" 
+                  className="w-full h-full object-cover object-top"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
                 />
+                <div className="absolute bottom-0 inset-x-0 bg-slate-900/90 text-white px-5 py-3 text-xs flex items-center justify-between backdrop-blur-xs">
+                  <span className="font-semibold text-white">Shadab Sir &middot; Founder &amp; Chief Instructor</span>
+                  <span className="text-slate-300 font-mono text-[11px]">Est. 2012 &middot; Gaya</span>
+                </div>
+              </div>
+
+              {/* Compact 4-Point Summary Underneath */}
+              <div className="p-5 divide-y divide-[#D6D0C4]/60">
+                <div className="py-2.5 text-sm font-medium text-[#231418] flex items-center gap-2.5">
+                  <Check size={16} className="text-[#B91C1C] shrink-0" />
+                  <span>Personal Pitman Outline Checking</span>
+                </div>
+                <div className="py-2.5 text-sm font-medium text-[#231418] flex items-center gap-2.5">
+                  <Check size={16} className="text-[#B91C1C] shrink-0" />
+                  <span>Hindi Kruti Dev 010 &amp; Mangal Inscript Mastery</span>
+                </div>
+                <div className="py-2.5 text-sm font-medium text-[#231418] flex items-center gap-2.5">
+                  <Check size={16} className="text-[#B91C1C] shrink-0" />
+                  <span>Daily High Court &amp; Parliamentary Dictations</span>
+                </div>
+                <div className="py-2.5 text-sm font-medium text-[#231418] flex items-center gap-2.5">
+                  <Check size={16} className="text-[#B91C1C] shrink-0" />
+                  <span>3 Free Demo Classes Before Enrollment</span>
+                </div>
               </div>
             </div>
 
-            {/* Right Column (7 cols — 4 Crisp White Horizontal Cards) */}
-            <div 
-              style={{
-                gridColumn: 'span 12',
-                minWidth: 0,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px'
-              }}
-              className="lg:!col-span-7"
-            >
-              {/* Card 1 */}
-              <div 
-                style={{
-                  background: '#FFFFFF',
-                  borderRadius: '16px',
-                  padding: '22px 24px',
-                  border: '1px solid #E8DFD3',
-                  boxShadow: '0 4px 16px rgba(35, 20, 24, 0.04)',
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '18px'
-                }}
-              >
-                <div 
-                  style={{
-                    width: '42px',
-                    height: '42px',
-                    borderRadius: '50%',
-                    background: '#EFE7DC',
-                    color: '#991B1B',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0
-                  }}
-                >
-                  <Headphones size={20} />
-                </div>
-                <div>
-                  <h4 style={{ fontSize: '16px', fontWeight: 700, color: '#231418', margin: '0 0 4px 0' }}>
-                    01 &middot; Learn &amp; Write Pitman Shorthand
-                  </h4>
-                  <p style={{ fontSize: '14px', color: '#594A4D', lineHeight: 1.55, margin: 0 }}>
-                    Master foundational consonants, vowels, and phraseography, followed by 50–140 WPM speed development on editorial and legal passages.
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 2 */}
-              <div 
-                style={{
-                  background: '#FFFFFF',
-                  borderRadius: '16px',
-                  padding: '22px 24px',
-                  border: '1px solid #E8DFD3',
-                  boxShadow: '0 4px 16px rgba(35, 20, 24, 0.04)',
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '18px'
-                }}
-              >
-                <div 
-                  style={{
-                    width: '42px',
-                    height: '42px',
-                    borderRadius: '50%',
-                    background: '#EFE7DC',
-                    color: '#991B1B',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0
-                  }}
-                >
-                  <Keyboard size={20} />
-                </div>
-                <div>
-                  <h4 style={{ fontSize: '16px', fontWeight: 700, color: '#231418', margin: '0 0 4px 0' }}>
-                    02 &middot; Transcribe on Exam-Grade Keyboards
-                  </h4>
-                  <p style={{ fontSize: '14px', color: '#594A4D', lineHeight: 1.55, margin: 0 }}>
-                    Dedicated typing drills for Hindi Kruti Dev 010, Mangal Inscript, and English QWERTY with official backspace-lock enforcement.
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div 
-                style={{
-                  background: '#FFFFFF',
-                  borderRadius: '16px',
-                  padding: '22px 24px',
-                  border: '1px solid #E8DFD3',
-                  boxShadow: '0 4px 16px rgba(35, 20, 24, 0.04)',
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '18px'
-                }}
-              >
-                <div 
-                  style={{
-                    width: '42px',
-                    height: '42px',
-                    borderRadius: '50%',
-                    background: '#EFE7DC',
-                    color: '#991B1B',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0
-                  }}
-                >
-                  <ShieldCheck size={20} />
-                </div>
-                <div>
-                  <h4 style={{ fontSize: '16px', fontWeight: 700, color: '#231418', margin: '0 0 4px 0' }}>
-                    03 &middot; Pass SSC &amp; Court Error Audits
-                  </h4>
-                  <p style={{ fontSize: '14px', color: '#594A4D', lineHeight: 1.55, margin: 0 }}>
-                    Get instant computer audits calculating exact full and half mistakes according to official commission notification formulas.
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 4 */}
-              <div 
-                style={{
-                  background: '#FFFFFF',
-                  borderRadius: '16px',
-                  padding: '22px 24px',
-                  border: '1px solid #E8DFD3',
-                  boxShadow: '0 4px 16px rgba(35, 20, 24, 0.04)',
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '18px'
-                }}
-              >
-                <div 
-                  style={{
-                    width: '42px',
-                    height: '42px',
-                    borderRadius: '50%',
-                    background: '#EFE7DC',
-                    color: '#991B1B',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0
-                  }}
-                >
-                  <Award size={20} />
-                </div>
-                <div>
-                  <h4 style={{ fontSize: '16px', fontWeight: 700, color: '#231418', margin: '0 0 4px 0' }}>
-                    04 &middot; Personal Daily Outline Checking
-                  </h4>
-                  <p style={{ fontSize: '14px', color: '#594A4D', lineHeight: 1.55, margin: 0 }}>
-                    Every shorthand candidate receives individual notebook checking and stroke diagnosis directly by Shadab Sir in person or live video.
-                  </p>
-                </div>
-              </div>
-
-            </div>
           </div>
         </div>
       </section>
 
       {/* =========================================================================
-          SECTION 5: DATA + HUMAN PROOF (#FBF8F3)
+          SECTION 5: REFINED LIGHT EDITORIAL LIVE ONLINE CLASSES BANNER
           ========================================================================= */}
-      <section 
-        style={{
-          background: '#FBF8F3',
-          padding: '88px 0',
-          width: '100%',
-          borderTop: '1px solid #E5DBD0'
-        }}
-      >
-        <div 
-          style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            paddingLeft: '24px',
-            paddingRight: '24px'
-          }}
-        >
-          {/* Header */}
-          <div style={{ maxWidth: '640px', marginBottom: '40px', textAlign: 'left' }}>
-            <span 
-              style={{
-                fontSize: '11px',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.16em',
-                color: '#991B1B',
-                marginBottom: '10px',
-                display: 'block'
-              }}
-            >
-              PROVEN TRACK RECORD
-            </span>
-            <h2 
-              style={{
-                fontFamily: "'Instrument Serif', Georgia, serif",
-                fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
-                fontWeight: 400,
-                color: '#231418',
-                lineHeight: 1.15,
-                letterSpacing: '-0.02em',
-                margin: '0 0 10px 0'
-              }}
-            >
-              Numbers your scorecard <span style={{ fontStyle: 'italic' }}>will agree with.</span>
-            </h2>
-          </div>
+      <section className="sp-live-banner-section bg-[#FBF8F3] border-t border-[#E8DFD3]">
+        <div className="sp-container">
+          <div className="sp-live-banner-card bg-[#FFFFFF] border border-[#E8DFD3] border-l-4 border-l-[#991B1B] rounded-2xl p-8 md:p-12">
+            
+            {/* Left Content Column */}
+            <div className="sp-live-content-col">
+              <div className="sp-live-eyebrow">
+                <span className="sp-live-static-dot" style={{ backgroundColor: '#991B1B' }} />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
+                  LIVE ONLINE INTERACTIVE BATCHES
+                </span>
+              </div>
 
-          {/* 4 Crisp White Stat Tiles */}
-          <div 
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '20px',
-              marginBottom: '48px'
-            }}
-          >
-            <div 
-              style={{
-                background: '#FFFFFF',
-                borderRadius: '16px',
-                padding: '24px',
-                border: '1px solid #E8DFD3',
-                boxShadow: '0 4px 16px rgba(35, 20, 24, 0.04)'
-              }}
-            >
-              <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '42px', color: '#231418', lineHeight: 1, marginBottom: '8px' }}>
-                98.4%
-              </div>
-              <div style={{ fontSize: '12px', fontWeight: 600, color: '#8A7B7E', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                Transcription Accuracy
-              </div>
-              <p style={{ fontSize: '13px', color: '#594A4D', marginTop: '6px', margin: '6px 0 0 0' }}>
-                Average qualification rate of regular batch students in SSC skill tests.
-              </p>
-            </div>
-
-            <div 
-              style={{
-                background: '#FFFFFF',
-                borderRadius: '16px',
-                padding: '24px',
-                border: '1px solid #E8DFD3',
-                boxShadow: '0 4px 16px rgba(35, 20, 24, 0.04)'
-              }}
-            >
-              <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '42px', color: '#231418', lineHeight: 1, marginBottom: '8px' }}>
-                140
-              </div>
-              <div style={{ fontSize: '12px', fontWeight: 600, color: '#8A7B7E', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                Top WPM Speed Achieved
-              </div>
-              <p style={{ fontSize: '13px', color: '#594A4D', marginTop: '6px', margin: '6px 0 0 0' }}>
-                Parliamentary and High Court reporter level transcription speed.
-              </p>
-            </div>
-
-            <div 
-              style={{
-                background: '#FFFFFF',
-                borderRadius: '16px',
-                padding: '24px',
-                border: '1px solid #E8DFD3',
-                boxShadow: '0 4px 16px rgba(35, 20, 24, 0.04)'
-              }}
-            >
-              <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '42px', color: '#231418', lineHeight: 1, marginBottom: '8px' }}>
-                10,000+
-              </div>
-              <div style={{ fontSize: '12px', fontWeight: 600, color: '#8A7B7E', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                Audio Dictations Evaluated
-              </div>
-              <p style={{ fontSize: '13px', color: '#594A4D', marginTop: '6px', margin: '6px 0 0 0' }}>
-                Official KC, progressive, and legal judgment files checked since 2012.
-              </p>
-            </div>
-
-            <div 
-              style={{
-                background: '#FFFFFF',
-                borderRadius: '16px',
-                padding: '24px',
-                border: '1px solid #E8DFD3',
-                boxShadow: '0 4px 16px rgba(35, 20, 24, 0.04)'
-              }}
-            >
-              <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '42px', color: '#231418', lineHeight: 1, marginBottom: '8px' }}>
-                3 Days
-              </div>
-              <div style={{ fontSize: '12px', fontWeight: 600, color: '#8A7B7E', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                Free Demo Classes
-              </div>
-              <p style={{ fontSize: '13px', color: '#594A4D', marginTop: '6px', margin: '6px 0 0 0' }}>
-                Full classroom, lab, and notebook checking trial with zero fee upfront.
-              </p>
-            </div>
-          </div>
-
-          {/* Feature Testimonial Pair (5 cols / 7 cols) */}
-          <div 
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(12, 1fr)',
-              gap: '36px',
-              alignItems: 'center',
-              background: '#FFFFFF',
-              borderRadius: '24px',
-              padding: '36px',
-              border: '1px solid #E8DFD3',
-              boxShadow: '0 6px 24px rgba(35, 20, 24, 0.04)'
-            }}
-          >
-            <div 
-              style={{
-                gridColumn: 'span 12',
-                borderRadius: '18px',
-                overflow: 'hidden',
-                border: '1px solid #E5DBD0'
-              }}
-              className="lg:!col-span-5"
-            >
-              <img 
-                src="/assets/institution-hero.jpg" 
-                alt="Selected Student Batch"
-                style={{ width: '100%', height: '260px', objectFit: 'cover', display: 'block' }}
-              />
-              <div style={{ padding: '10px 14px', background: '#FBF8F3', fontSize: '11px', fontWeight: 600, color: '#8A7B7E', textTransform: 'uppercase', letterSpacing: '0.12em', display: 'flex', justifyContent: 'space-between' }}>
-                <span>SSC Grade C &amp; D Batch</span>
-                <span style={{ color: '#991B1B' }}>Selected Qualifiers</span>
-              </div>
-            </div>
-
-            <div 
-              style={{
-                gridColumn: 'span 12',
-                textAlign: 'left'
-              }}
-              className="lg:!col-span-7"
-            >
-              <div style={{ display: 'flex', gap: '4px', marginBottom: '14px' }}>
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={17} fill="#F59E0B" color="#F59E0B" />
-                ))}
-              </div>
-              <blockquote 
-                style={{
-                  fontFamily: "'Instrument Serif', Georgia, serif",
-                  fontStyle: 'italic',
-                  fontSize: 'clamp(1.35rem, 2.2vw, 1.85rem)',
-                  color: '#231418',
-                  lineHeight: 1.3,
-                  margin: '0 0 16px 0'
-                }}
-              >
-                &ldquo;My transcription errors dropped under 2% in six weeks. The daily individual notebook evaluation made all the difference.&rdquo;
-              </blockquote>
-              <p style={{ fontSize: '14px', color: '#594A4D', lineHeight: 1.6, margin: '0 0 16px 0' }}>
-                Shadab Sir pointed out exact stroke distortions in my Pitman outlines that I had been repeating for months elsewhere. The backspace lock in the typing lab also stopped me from hesitating at the keyboard.
-              </p>
-              <div>
-                <strong style={{ fontSize: '14px', color: '#231418', display: 'block' }}>Rajesh Kumar</strong>
-                <span style={{ fontSize: '12px', color: '#8A7B7E' }}>Selected &middot; Personal Assistant (PA), Patna High Court</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SECTION 6: FULL-BLEED DARK BRAND STORY BAND — SHADAB SIR (#231418)
-          ========================================================================= */}
-      <section 
-        style={{
-          background: '#231418',
-          color: '#FAF6F0',
-          padding: '96px 0',
-          width: '100%',
-          borderTop: '1px solid #3A2329'
-        }}
-      >
-        <div 
-          style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            paddingLeft: '24px',
-            paddingRight: '24px'
-          }}
-        >
-          <div 
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(12, 1fr)',
-              gap: '48px',
-              alignItems: 'start'
-            }}
-          >
-            {/* Left Column (5 cols) */}
-            <div 
-              style={{
-                gridColumn: 'span 12',
-                textAlign: 'left'
-              }}
-              className="lg:!col-span-5"
-            >
-              <span 
-                style={{
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.16em',
-                  color: '#C9A3A8',
-                  marginBottom: '12px',
-                  display: 'block'
-                }}
-              >
-                OUR STORY &middot; GUIDED BY SHADAB SIR
-              </span>
-              <h2 
-                style={{
-                  fontFamily: "'Instrument Serif', Georgia, serif",
-                  fontSize: 'clamp(2.25rem, 3.8vw, 3.25rem)',
-                  fontWeight: 400,
-                  color: '#FAF6F0',
-                  lineHeight: 1.1,
-                  letterSpacing: '-0.02em',
-                  margin: '0 0 24px 0'
-                }}
-              >
-                Twelve years of discipline, <span style={{ fontStyle: 'italic', color: '#E5B8BE' }}>built for govt. selections.</span>
+              <h2 className="sp-live-headline text-[#231418]">
+                Can't Visit the Gaya Center?{' '}
+                <span className="sp-live-serif-accent font-serif italic font-normal text-[#991B1B] whitespace-nowrap">
+                  Join Live Online Classes
+                </span>
               </h2>
 
-              <button
-                type="button"
-                onClick={() => setCurrentTab && setCurrentTab('about')}
-                style={{
-                  background: 'transparent',
-                  border: '1px solid #52373E',
-                  color: '#FAF6F0',
-                  borderRadius: '9999px',
-                  padding: '12px 24px',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  transition: 'all 0.15s ease'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#321C22'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-              >
-                <span>Read Full Methodology</span>
-                <ArrowRight size={15} />
-              </button>
-            </div>
-
-            {/* Right Column (7 cols) Narrative & Milestone Grid */}
-            <div 
-              style={{
-                gridColumn: 'span 12',
-                textAlign: 'left'
-              }}
-              className="lg:!col-span-7"
-            >
-              <p style={{ fontSize: '15px', color: '#D6C7CA', lineHeight: 1.7, margin: '0 0 16px 0' }}>
-                Founded at Gaya College More in 2012, Gaya Shorthand Classes began with a single mission: to provide candidates with genuine, uncompromised stenography guidance matching the exact grading standards of the Staff Selection Commission and High Courts.
-              </p>
-              <p style={{ fontSize: '15px', color: '#D6C7CA', lineHeight: 1.7, margin: '0 0 32px 0' }}>
-                Over the past decade, more than 2,700 students have trained under Shadab Sir's direct eye. By combining traditional Pitman stroke checking with modern automated evaluation software and daily live Google Meet broadcasts, we offer an uncompromising pathway to state and central government employment.
+              <p className="sp-live-body text-[#594A4D]">
+                Daily Google Meet dictations, live digital whiteboard outline checking, and real-time doubt resolution with <strong className="text-[#231418]">Shadab Sir</strong>.
               </p>
 
-              {/* 2x2 Hairline Milestone Grid */}
-              <div 
-                style={{
-                  paddingTop: '28px',
-                  borderTop: '1px solid #3D252B',
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  gap: '24px'
-                }}
-              >
-                <div>
-                  <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '32px', color: '#FAF6F0', lineHeight: 1 }}>
-                    2012
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#A89397', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: '6px' }}>
-                    Founded at Gaya College More
-                  </div>
-                </div>
-                <div>
-                  <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '32px', color: '#FAF6F0', lineHeight: 1 }}>
-                    50–140 WPM
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#A89397', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: '6px' }}>
-                    Speed Range Mastered
-                  </div>
-                </div>
-                <div>
-                  <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '32px', color: '#FAF6F0', lineHeight: 1 }}>
-                    Offline + Live
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#A89397', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: '6px' }}>
-                    Hybrid Classroom Model
-                  </div>
-                </div>
-                <div>
-                  <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '32px', color: '#FAF6F0', lineHeight: 1 }}>
-                    2,700+
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#A89397', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: '6px' }}>
-                    Aspirants Trained
-                  </div>
-                </div>
+              <div className="sp-live-features-strip text-[#8A7B7E]">
+                <span className="sp-live-feat-item text-zinc-700 font-medium">Google Meet Live</span>
+                <span className="sp-live-feat-divider text-stone-300">&middot;</span>
+                <span className="sp-live-feat-item text-zinc-700 font-medium">Whiteboard Outline Review</span>
+                <span className="sp-live-feat-divider text-stone-300">&middot;</span>
+                <span className="sp-live-feat-item text-zinc-700 font-medium">Direct Doubt Resolution</span>
               </div>
             </div>
+
+            {/* Right Action Block */}
+            <div className="sp-live-action-col">
+              <button
+                type="button"
+                className="sp-btn-crimson bg-[#991B1B] text-white hover:bg-[#7F1D1D] px-6 py-3.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2 shadow-sm"
+                onClick={() => {
+                  if (setCurrentTab) setCurrentTab('batches');
+                }}
+              >
+                <span>View Live Class Schedule</span>
+                <ArrowRight size={16} />
+              </button>
+              <span className="sp-live-caption text-[#8A7B7E] text-xs">
+                Morning &amp; evening batches available
+              </span>
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* =========================================================================
-          SECTION 7: STUDENT REVIEWS ROW (#FBF8F3)
+          SECTION 6: ASPIRANT VOICES (EDITORIAL TESTIMONIALS)
           ========================================================================= */}
-      <section 
-        style={{
-          background: '#FBF8F3',
-          padding: '88px 0',
-          width: '100%',
-          borderTop: '1px solid #E5DBD0'
-        }}
-      >
-        <div 
-          style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            paddingLeft: '24px',
-            paddingRight: '24px'
-          }}
-        >
-          {/* Header */}
-          <div style={{ maxWidth: '640px', marginBottom: '40px', textAlign: 'left' }}>
-            <span 
-              style={{
-                fontSize: '11px',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.16em',
-                color: '#991B1B',
-                marginBottom: '10px',
-                display: 'block'
-              }}
-            >
-              VERIFIED ASPIRANTS
+      <section className="sp-voices-section bg-[#EFE7DC] border-t border-[#E3D9CC]">
+        <div className="sp-container">
+          
+          <div className="sp-voices-header">
+            <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
+              STUDENT OUTCOMES
             </span>
-            <h2 
-              style={{
-                fontFamily: "'Instrument Serif', Georgia, serif",
-                fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
-                fontWeight: 400,
-                color: '#231418',
-                lineHeight: 1.15,
-                letterSpacing: '-0.02em',
-                margin: 0
-              }}
-            >
-              2,700+ aspirants <span style={{ fontStyle: 'italic' }}>and counting.</span>
+            <h2 className="sp-section-h2">
+              Trusted by Serious Aspirants.
             </h2>
+            <p className="sp-section-sub">
+              Verified experiences from candidates who built their shorthand speed and cleared recruitment skill tests:
+            </p>
           </div>
 
-          {/* 3 Review Cards Grid */}
-          <div 
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '24px'
-            }}
-          >
+          <div className="sp-voices-grid">
+            
             {/* Review 1 */}
-            <div 
-              style={{
-                background: '#FFFFFF',
-                borderRadius: '16px',
-                padding: '24px',
-                border: '1px solid #E8DFD3',
-                boxShadow: '0 4px 16px rgba(35, 20, 24, 0.03)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                textAlign: 'left'
-              }}
-            >
+            <div className="sp-voice-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-xl p-6 shadow-[0_4px_20px_rgba(35,20,24,0.04)] flex flex-col justify-between">
               <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', paddingBottom: '12px', borderBottom: '1px solid #EFE7DC' }}>
-                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#231418', textTransform: 'uppercase', letterSpacing: '0.08em' }}>SSC Steno Grade C</span>
-                  <span style={{ fontSize: '11px', fontWeight: 600, color: '#991B1B' }}>100 WPM &middot; 97.4% Acc</span>
+                {/* Top Proof Row */}
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E8DFD3]">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#231418]">
+                    SSC Steno Grade C
+                  </span>
+                  <span className="text-xs font-semibold text-[#991B1B] tabular-nums">
+                    100 WPM &middot; 97.4% Acc
+                  </span>
                 </div>
-                <div style={{ display: 'flex', gap: '3px', marginBottom: '12px' }}>
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={14} fill="#F59E0B" color="#F59E0B" />
-                  ))}
-                </div>
-                <p style={{ fontSize: '14px', color: '#594A4D', lineHeight: 1.6, margin: '0 0 18px 0' }}>
+
+                <p className="text-sm text-[#594A4D] leading-relaxed mb-6">
                   &ldquo;Shadab Sir's daily dictation practice and 5-minute reading room made all the difference in my SSC skill test. Individual notebook checking helped fix my stroke angles completely.&rdquo;
                 </p>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#231418', color: '#FAF6F0', fontSize: '11px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+
+              <div className="flex items-center gap-3 pt-2">
+                <div className="w-8 h-8 rounded-full bg-slate-900 text-white text-xs font-semibold flex items-center justify-center shrink-0">
                   AV
                 </div>
                 <div>
-                  <div style={{ fontSize: '13px', fontWeight: 700, color: '#231418' }}>Anjali Verma</div>
-                  <div style={{ fontSize: '11px', color: '#8A7B7E' }}>Selected 2023 &middot; Central Secretariat</div>
+                  <div className="font-bold text-[#231418] text-sm">Anjali Verma</div>
+                  <div className="text-xs text-[#8A7B7E]">Selected 2023 &middot; Central Secretariat</div>
                 </div>
               </div>
             </div>
 
             {/* Review 2 */}
-            <div 
-              style={{
-                background: '#FFFFFF',
-                borderRadius: '16px',
-                padding: '24px',
-                border: '1px solid #E8DFD3',
-                boxShadow: '0 4px 16px rgba(35, 20, 24, 0.03)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                textAlign: 'left'
-              }}
-            >
+            <div className="sp-voice-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-xl p-6 shadow-[0_4px_20px_rgba(35,20,24,0.04)] flex flex-col justify-between">
               <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', paddingBottom: '12px', borderBottom: '1px solid #EFE7DC' }}>
-                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#231418', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Patna High Court PA</span>
-                  <span style={{ fontSize: '11px', fontWeight: 600, color: '#991B1B' }}>100 WPM &middot; 98.2% Acc</span>
+                {/* Top Proof Row */}
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E8DFD3]">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#231418]">
+                    Patna High Court PA
+                  </span>
+                  <span className="text-xs font-semibold text-[#991B1B] tabular-nums">
+                    100 WPM &middot; 98.2% Acc
+                  </span>
                 </div>
-                <div style={{ display: 'flex', gap: '3px', marginBottom: '12px' }}>
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={14} fill="#F59E0B" color="#F59E0B" />
-                  ))}
-                </div>
-                <p style={{ fontSize: '14px', color: '#594A4D', lineHeight: 1.6, margin: '0 0 18px 0' }}>
+
+                <p className="text-sm text-[#594A4D] leading-relaxed mb-6">
                   &ldquo;The strict backspace lock simulation and legal judgment audio series mirrored the exact Patna High Court exam software. Reached 100 WPM with zero guesswork.&rdquo;
                 </p>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#231418', color: '#FAF6F0', fontSize: '11px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+
+              <div className="flex items-center gap-3 pt-2">
+                <div className="w-8 h-8 rounded-full bg-slate-900 text-white text-xs font-semibold flex items-center justify-center shrink-0">
                   RK
                 </div>
                 <div>
-                  <div style={{ fontSize: '13px', fontWeight: 700, color: '#231418' }}>Rakesh Kumar</div>
-                  <div style={{ fontSize: '11px', color: '#8A7B7E' }}>Qualified 2022 &middot; Patna High Court Bench</div>
+                  <div className="font-bold text-[#231418] text-sm">Rakesh Kumar</div>
+                  <div className="text-xs text-[#8A7B7E]">Qualified 2022 &middot; Patna High Court Bench</div>
                 </div>
               </div>
             </div>
 
             {/* Review 3 */}
-            <div 
-              style={{
-                background: '#FFFFFF',
-                borderRadius: '16px',
-                padding: '24px',
-                border: '1px solid #E8DFD3',
-                boxShadow: '0 4px 16px rgba(35, 20, 24, 0.03)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                textAlign: 'left'
-              }}
-            >
+            <div className="sp-voice-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-xl p-6 shadow-[0_4px_20px_rgba(35,20,24,0.04)] flex flex-col justify-between">
               <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', paddingBottom: '12px', borderBottom: '1px solid #EFE7DC' }}>
-                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#231418', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Civil Court Steno</span>
-                  <span style={{ fontSize: '11px', fontWeight: 600, color: '#991B1B' }}>80 WPM &middot; 96.8% Acc</span>
+                {/* Top Proof Row */}
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E8DFD3]">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#231418]">
+                    Civil Court Steno
+                  </span>
+                  <span className="text-xs font-semibold text-[#991B1B] tabular-nums">
+                    80 WPM &middot; 96.8% Acc
+                  </span>
                 </div>
-                <div style={{ display: 'flex', gap: '3px', marginBottom: '12px' }}>
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={14} fill="#F59E0B" color="#F59E0B" />
-                  ))}
-                </div>
-                <p style={{ fontSize: '14px', color: '#594A4D', lineHeight: 1.6, margin: '0 0 18px 0' }}>
-                  &ldquo;Joined from out of town through live Google Meet batches. The digital whiteboard outline review is just like sitting right in front of Sir in the classroom.&rdquo;
+
+                <p className="text-sm text-[#594A4D] leading-relaxed mb-6">
+                  &ldquo;Best shorthand institute in Gaya. The dual font support (Kruti Dev 010 and Mangal) in their computer lab is unmatched for judicial exam aspirants.&rdquo;
                 </p>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#231418', color: '#FAF6F0', fontSize: '11px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  PS
+
+              <div className="flex items-center gap-3 pt-2">
+                <div className="w-8 h-8 rounded-full bg-slate-900 text-white text-xs font-semibold flex items-center justify-center shrink-0">
+                  MT
                 </div>
                 <div>
-                  <div style={{ fontSize: '13px', fontWeight: 700, color: '#231418' }}>Priya Sharma</div>
-                  <div style={{ fontSize: '11px', color: '#8A7B7E' }}>Online Candidate &middot; Civil Court Qualifier</div>
+                  <div className="font-bold text-[#231418] text-sm">Md. Tariq</div>
+                  <div className="text-xs text-[#8A7B7E]">Selected 2023 &middot; District Court Gaya</div>
                 </div>
               </div>
             </div>
+
           </div>
+
         </div>
       </section>
 
       {/* =========================================================================
-          SECTION 8: WARM-SAND OPEN FAQ & GAYA CENTER SPLIT (#EFE7DC)
+          SECTION 7: COMPACT CENTER DETAILS + FAQ SPLIT
           ========================================================================= */}
-      <section 
-        style={{
-          background: '#EFE7DC',
-          padding: '88px 0',
-          width: '100%',
-          borderTop: '1px solid #DFD4C6'
-        }}
-      >
-        <div 
-          style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            paddingLeft: '24px',
-            paddingRight: '24px'
-          }}
-        >
-          <div 
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(12, 1fr)',
-              gap: '48px',
-              alignItems: 'start'
-            }}
-          >
-            {/* Left Column (5 cols) Gaya Center Card */}
-            <div 
-              style={{
-                gridColumn: 'span 12',
-                textAlign: 'left'
-              }}
-              className="lg:!col-span-5"
-            >
-              <span 
-                style={{
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.16em',
-                  color: '#991B1B',
-                  marginBottom: '10px',
-                  display: 'block'
-                }}
-              >
-                FAQ &amp; GAYA CENTER
+      <section className="sp-center-faq-section bg-[#EFE7DC] border-t border-[#E3D9CC]">
+        <div className="sp-container">
+          
+          <div className="sp-center-faq-grid">
+            
+            {/* Left Column: Center Location & Helplines (Soft Ivory #F7F5F0) */}
+            <div className="sp-center-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl">
+              <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
+                VISIT OUR CENTER
               </span>
-              <h2 
-                style={{
-                  fontFamily: "'Instrument Serif', Georgia, serif",
-                  fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
-                  fontWeight: 400,
-                  color: '#231418',
-                  lineHeight: 1.15,
-                  letterSpacing: '-0.02em',
-                  margin: '0 0 24px 0'
-                }}
-              >
-                Questions, <span style={{ fontStyle: 'italic' }}>answered.</span>
+              <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
+                Gaya Coaching Center &amp; Helplines
               </h2>
 
-              <div 
-                style={{
-                  background: '#FBF8F3',
-                  borderRadius: '16px',
-                  padding: '24px',
-                  border: '1px solid #DFD4C6',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '16px',
-                  boxShadow: '0 4px 16px rgba(35, 20, 24, 0.03)'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                  <MapPin size={18} color="#991B1B" style={{ flexShrink: 0, marginTop: '2px' }} />
+              <div className="sp-center-info-list">
+                
+                <div className="sp-center-info-row">
+                  <MapPin size={20} className="sp-center-info-icon" />
                   <div>
-                    <div style={{ fontSize: '11px', fontWeight: 600, color: '#8A7B7E', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Center Location</div>
-                    <div style={{ fontSize: '14px', color: '#231418', fontWeight: 600, marginTop: '2px' }}>
-                      Gaya College More, Opposite Cyber Thana, Gayaji, Bihar
-                    </div>
+                    <h4 className="sp-info-label">Address:</h4>
+                    <p className="sp-info-text">
+                      <strong>Gaya Shorthand Classes</strong><br />
+                      Gaya College More, Opposite Cyber Thana, Gaya, Bihar &ndash; 823001
+                    </p>
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                  <Clock size={18} color="#991B1B" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <div className="sp-center-info-row">
+                  <Clock size={19} className="sp-center-info-icon" />
                   <div>
-                    <div style={{ fontSize: '11px', fontWeight: 600, color: '#8A7B7E', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Laboratory Timings</div>
-                    <div style={{ fontSize: '14px', color: '#231418', fontWeight: 600, marginTop: '2px' }}>
-                      6:00 AM – 11:00 AM &amp; 3:00 PM – 8:00 PM (Mon–Sat)
-                    </div>
+                    <h4 className="sp-info-label">Batch &amp; Lab Timings:</h4>
+                    <p className="sp-info-text">
+                      6:00 AM &ndash; 11:00 AM &amp; 2:00 PM &ndash; 8:00 PM (Monday to Saturday)
+                    </p>
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                  <Phone size={18} color="#991B1B" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <div className="sp-center-info-row">
+                  <Phone size={19} className="sp-center-info-icon" />
                   <div>
-                    <div style={{ fontSize: '11px', fontWeight: 600, color: '#8A7B7E', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Helpline &amp; Inquiries</div>
-                    <div style={{ fontSize: '14px', color: '#231418', fontWeight: 600, marginTop: '2px' }}>
-                      Director (Shadab Sir): +91 9204123453<br />
-                      Admissions: +91 7870377214
-                    </div>
+                    <h4 className="sp-info-label">Helplines &amp; Inquiries:</h4>
+                    <p className="sp-info-text">
+                      Director (Shadab Sir): <a href="tel:9204123453">+91 9204123453</a><br />
+                      Admissions Desk: <a href="tel:7870377214">+91 7870377214</a>
+                    </p>
                   </div>
                 </div>
 
+              </div>
+
+              {/* Secondary Button */}
+              <div className="sp-center-action-row">
                 <button
                   type="button"
+                  className="sp-btn-white-secondary bg-[#FFFFFF] border border-[#E8DFD3] text-[#231418] hover:bg-[#FAF8F5]"
+                  style={{ width: '100%', justifyContent: 'center', padding: '0.75rem 1.25rem', fontSize: '0.875rem', fontWeight: 600 }}
                   onClick={handleOpenDemo}
-                  style={{
-                    background: '#231418',
-                    color: '#FAF6F0',
-                    borderRadius: '9999px',
-                    padding: '11px 20px',
-                    fontSize: '13px',
-                    fontWeight: 600,
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '6px',
-                    marginTop: '8px',
-                    transition: 'all 0.15s ease'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3A2228'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#231418'}
                 >
                   <span>Book 3 Free Demos &rarr;</span>
                 </button>
               </div>
             </div>
 
-            {/* Right Column (7 cols) Interactive Accordion */}
-            <div 
-              style={{
-                gridColumn: 'span 12',
-                textAlign: 'left'
-              }}
-              className="lg:!col-span-7"
-            >
-              <div style={{ borderTop: '1px solid #DDD1C2', borderBottom: '1px solid #DDD1C2' }}>
+            {/* Right Column: Interactive FAQ Accordion */}
+            <div className="sp-faq-wrap">
+              <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
+                ADMISSIONS FAQ
+              </span>
+              <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
+                Frequently Asked Questions
+              </h2>
+
+              <div className="sp-faq-accordion">
                 {TOP_FAQS.map((faq) => {
                   const isOpen = activeFaq === faq.id;
                   return (
-                    <div key={faq.id} style={{ borderBottom: '1px solid #DDD1C2' }}>
+                    <div key={faq.id} className="sp-faq-item">
                       <button
                         type="button"
+                        className="sp-faq-btn"
                         onClick={() => setActiveFaq(isOpen ? null : faq.id)}
-                        style={{
-                          width: '100%',
-                          textAlign: 'left',
-                          padding: '20px 0',
-                          background: 'none',
-                          border: 'none',
-                          cursor: 'pointer',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                          gap: '16px'
-                        }}
                       >
-                        <span style={{ fontSize: '16px', fontWeight: 700, color: '#231418' }}>
-                          {faq.q}
-                        </span>
-                        {isOpen ? (
-                          <ChevronUp size={18} color="#991B1B" style={{ flexShrink: 0 }} />
-                        ) : (
-                          <ChevronDown size={18} color="#8A7B7E" style={{ flexShrink: 0 }} />
-                        )}
+                        <span className="sp-faq-question-text">{faq.q}</span>
+                        {isOpen ? <ChevronUp size={18} color="#0F172A" /> : <ChevronDown size={18} color="#94A3B8" />}
                       </button>
                       {isOpen && (
-                        <div style={{ paddingBottom: '20px', fontSize: '14px', color: '#594A4D', lineHeight: 1.65 }}>
+                        <div className="sp-faq-body">
                           {faq.a}
                         </div>
                       )}
@@ -2244,115 +1588,47 @@ export default function LandingPage({
                   );
                 })}
               </div>
+
             </div>
+
           </div>
+
         </div>
       </section>
 
       {/* =========================================================================
-          SECTION 9: SOFT WARM-GLOW PRE-FOOTER CTA (#FBF8F3)
+          SECTION 8: CONTAINED EDITORIAL CLOSING CONVERSION CARD (WARM PARCHMENT CANVAS)
           ========================================================================= */}
-      <section 
-        style={{
-          background: '#FBF8F3',
-          position: 'relative',
-          overflow: 'hidden',
-          padding: '96px 24px',
-          textAlign: 'center',
-          borderTop: '1px solid #E5DBD0'
-        }}
-      >
-        {/* Radial Terracotta Warm Glow */}
-        <div 
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'radial-gradient(ellipse 65% 60% at 50% 50%, rgba(217, 160, 145, 0.22) 0%, rgba(251, 248, 243, 0) 75%)',
-            pointerEvents: 'none'
-          }}
-        />
-
-        <div style={{ maxWidth: '720px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <span 
-            style={{
-              fontSize: '11px',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.16em',
-              color: '#991B1B',
-              marginBottom: '12px',
-              display: 'block'
-            }}
-          >
-            3 FREE DEMO CLASSES &middot; NO COMMITMENT
-          </span>
-
-          <h2 
-            style={{
-              fontFamily: "'Instrument Serif', Georgia, serif",
-              fontSize: 'clamp(2.5rem, 4.5vw, 3.75rem)',
-              fontWeight: 400,
-              color: '#231418',
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              margin: '0 0 16px 0'
-            }}
-          >
-            Ready to build <span style={{ fontStyle: 'italic' }}>exam-hall speed?</span>
-          </h2>
-
-          <p style={{ fontSize: '16px', color: '#594A4D', lineHeight: 1.6, maxWidth: '540px', margin: '0 auto 32px auto' }}>
-            Take a free calibrated audio dictation test online or visit our Gaya College More center for 3 free trial classes.
-          </p>
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '14px' }}>
-            <button
-              type="button"
-              onClick={handleStartTests}
-              style={{
-                background: '#231418',
-                color: '#FAF6F0',
-                padding: '14px 28px',
-                borderRadius: '9999px',
-                fontSize: '14px',
-                fontWeight: 600,
-                border: 'none',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                boxShadow: '0 6px 20px rgba(35, 20, 24, 0.16)',
-                transition: 'all 0.15s ease'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3A2228'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#231418'}
-            >
-              <span>Start Free Dictation Test &rarr;</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={handleExploreCourses}
-              style={{
-                background: '#FFFFFF',
-                border: '1px solid #DDD1C2',
-                color: '#231418',
-                padding: '14px 28px',
-                borderRadius: '9999px',
-                fontSize: '14px',
-                fontWeight: 600,
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                boxShadow: '0 2px 6px rgba(35, 20, 24, 0.04)',
-                transition: 'all 0.15s ease'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#EFE7DC'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FFFFFF'}
-            >
-              <span>Explore All Courses</span>
-            </button>
+      <section className="sp-closing-cta-section bg-[#FBF8F3] border-t border-[#E8DFD3] pb-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="sp-closing-cta-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl py-14 px-6 text-center max-w-5xl mx-auto">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8A7B7E] mb-3 block">
+              GET STARTED TODAY
+            </span>
+            <h2 className="sp-closing-cta-h2 text-3xl lg:text-4xl font-bold tracking-tight text-[#231418]">
+              Ready to Build{' '}
+              <span className="font-serif italic font-normal text-[#991B1B]">Exam-Hall</span>{' '}
+              Speed?
+            </h2>
+            <p className="sp-closing-cta-sub mt-3 text-base text-[#594A4D] max-w-xl mx-auto">
+              Take a free calibrated audio dictation test online or visit our Gaya College More center for 3 free demo classes.
+            </p>
+            <div className="sp-closing-cta-buttons mt-8 flex flex-wrap items-center justify-center gap-3">
+              <button
+                type="button"
+                className="sp-btn-ink-primary bg-[#231418] text-[#F5F3EE] hover:bg-[#3A2228] px-6 py-3.5 rounded-lg text-sm font-semibold transition-colors"
+                onClick={handleStartTests}
+              >
+                <span>Start Free Dictation Test &rarr;</span>
+              </button>
+              <button
+                type="button"
+                className="sp-btn-white-secondary bg-transparent border border-[#DDD1C2] text-[#231418] hover:bg-[#EFE7DC] px-6 py-3.5 rounded-lg text-sm font-semibold transition-colors"
+                onClick={handleExploreCourses}
+              >
+                <span>Explore All Courses</span>
+              </button>
+            </div>
           </div>
         </div>
       </section>
