@@ -658,7 +658,7 @@ export default function LandingPage({
             {/* Right Column: Mentor & Academy Visual Card */}
             <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
               {/* Top Visual Frame */}
-              <div className="aspect-[4/3] bg-slate-100 relative overflow-hidden">
+              <div className="aspect-[4/3] bg-slate-50 relative overflow-hidden">
                 {/* TODO: Replace src with real portrait photo of Shadab Sir or Gaya classroom */}
                 <img 
                   src="/assets/institution-hero.jpg" 
@@ -673,7 +673,7 @@ export default function LandingPage({
               </div>
 
               {/* Compact 4-Point Summary Underneath */}
-              <div className="p-5 divide-y divide-slate-100">
+              <div className="p-5 divide-y divide-slate-200/60">
                 <div className="py-2.5 text-sm font-medium text-slate-800 flex items-center gap-2.5">
                   <Check size={16} className="text-[#B91C1C] shrink-0" />
                   <span>Personal Pitman Outline Checking</span>
@@ -775,10 +775,10 @@ export default function LandingPage({
           <div className="sp-voices-grid">
             
             {/* Review 1 */}
-            <div className="sp-voice-card bg-white border border-slate-200 rounded-xl p-6 shadow-xs flex flex-col justify-between">
+            <div className="sp-voice-card bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-xs flex flex-col justify-between">
               <div>
                 {/* Top Proof Row */}
-                <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-200/80">
                   <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-900">
                     SSC Steno Grade C
                   </span>
@@ -804,10 +804,10 @@ export default function LandingPage({
             </div>
 
             {/* Review 2 */}
-            <div className="sp-voice-card bg-white border border-slate-200 rounded-xl p-6 shadow-xs flex flex-col justify-between">
+            <div className="sp-voice-card bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-xs flex flex-col justify-between">
               <div>
                 {/* Top Proof Row */}
-                <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-200/80">
                   <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-900">
                     Patna High Court PA
                   </span>
@@ -833,10 +833,10 @@ export default function LandingPage({
             </div>
 
             {/* Review 3 */}
-            <div className="sp-voice-card bg-white border border-slate-200 rounded-xl p-6 shadow-xs flex flex-col justify-between">
+            <div className="sp-voice-card bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-xs flex flex-col justify-between">
               <div>
                 {/* Top Proof Row */}
-                <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-200/80">
                   <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-900">
                     Civil Court Steno
                   </span>
@@ -972,36 +972,38 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 8: REFINED LIGHT CLOSING CONVERSION BAND (bg-[#F4F6F8])
+          SECTION 8: CONTAINED EDITORIAL CLOSING CONVERSION CARD (bg-slate-50)
           ========================================================================= */}
-      <section className="sp-closing-cta-section bg-[#F4F6F8] border-t border-slate-200 py-16 lg:py-20 text-center px-6">
-        <div className="sp-closing-cta-container max-w-xl mx-auto">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 mb-3 block">
-            GET STARTED TODAY
-          </span>
-          <h2 className="sp-closing-cta-h2 text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
-            Ready to Build{' '}
-            <span className="font-serif italic font-normal text-[#B91C1C]">Exam-Hall</span>{' '}
-            Speed?
-          </h2>
-          <p className="sp-closing-cta-sub mt-3 text-base text-slate-600 max-w-xl mx-auto">
-            Take a free calibrated audio dictation test online or visit our Gaya College More center for 3 free demo classes.
-          </p>
-          <div className="sp-closing-cta-buttons mt-8 flex flex-wrap items-center justify-center gap-3">
-            <button
-              type="button"
-              className="sp-btn-ink-primary bg-slate-900 text-white hover:bg-slate-800 px-6 py-3.5 rounded-lg text-sm font-semibold"
-              onClick={handleStartTests}
-            >
-              <span>Start Free Dictation Test &rarr;</span>
-            </button>
-            <button
-              type="button"
-              className="sp-btn-white-secondary bg-white border border-slate-300 text-slate-900 hover:bg-slate-50 px-6 py-3.5 rounded-lg text-sm font-semibold"
-              onClick={handleExploreCourses}
-            >
-              <span>Explore All Courses</span>
-            </button>
+      <section className="sp-closing-cta-section bg-white pb-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="sp-closing-cta-card bg-slate-50 border border-slate-200 rounded-2xl py-14 px-6 text-center max-w-5xl mx-auto">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 mb-3 block">
+              GET STARTED TODAY
+            </span>
+            <h2 className="sp-closing-cta-h2 text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
+              Ready to Build{' '}
+              <span className="font-serif italic font-normal text-[#B91C1C]">Exam-Hall</span>{' '}
+              Speed?
+            </h2>
+            <p className="sp-closing-cta-sub mt-3 text-base text-slate-600 max-w-xl mx-auto">
+              Take a free calibrated audio dictation test online or visit our Gaya College More center for 3 free demo classes.
+            </p>
+            <div className="sp-closing-cta-buttons mt-8 flex flex-wrap items-center justify-center gap-3">
+              <button
+                type="button"
+                className="sp-btn-ink-primary bg-slate-900 text-white hover:bg-slate-800 px-6 py-3.5 rounded-lg text-sm font-semibold"
+                onClick={handleStartTests}
+              >
+                <span>Start Free Dictation Test &rarr;</span>
+              </button>
+              <button
+                type="button"
+                className="sp-btn-white-secondary bg-white border border-slate-300 text-slate-900 hover:bg-slate-50 px-6 py-3.5 rounded-lg text-sm font-semibold"
+                onClick={handleExploreCourses}
+              >
+                <span>Explore All Courses</span>
+              </button>
+            </div>
           </div>
         </div>
       </section>

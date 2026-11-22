@@ -15,7 +15,7 @@
   --sp-font-mono: 'JetBrains Mono', monospace;
 
   /* Surfaces */
-  --sp-bg-canvas: #FAFAFA;
+  --sp-bg-canvas: #F8FAFC;
   --sp-bg-white: #FFFFFF;
   --sp-bg-ink: #0F172A;
   
@@ -433,7 +433,7 @@
 /* Flush Exam Authority Strip */
 .sp-exam-strip {
   width: 100%;
-  background-color: var(--sp-bg-canvas);
+  background-color: #F8FAFC !important;
   border-top: 1px solid var(--sp-border-subtle);
   border-bottom: 1px solid var(--sp-border-subtle);
   padding: 1.15rem 0;
@@ -478,8 +478,9 @@
 
 .sp-engine-section {
   padding: 5rem 0;
-  background-color: var(--sp-bg-white);
-  border-bottom: 1px solid var(--sp-border-subtle);
+  background-color: #FFFFFF !important;
+  border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
+  border-bottom: none !important;
 }
 
 @media (min-width: 1024px) {
@@ -526,7 +527,7 @@
 }
 
 .sp-engine-tab-card:hover {
-  background-color: #FAFAFA;
+  background-color: #F8FAFC;
 }
 
 .sp-engine-tab-card.active {
@@ -587,7 +588,7 @@
 
 /* Right: Software UI Mockup Window */
 .sp-engine-preview-window {
-  background-color: var(--sp-bg-canvas);
+  background-color: #F8FAFC !important;
   border: 1px solid var(--sp-border-subtle);
   border-radius: 16px;
   overflow: hidden;
@@ -595,7 +596,7 @@
 }
 
 .sp-window-chrome {
-  background-color: #F1F5F9;
+  background-color: #F8FAFC !important;
   border-bottom: 1px solid var(--sp-border-subtle);
   padding: 0.75rem 1.25rem;
   display: flex;
@@ -1004,9 +1005,9 @@
 
 .sp-timeline-section {
   padding: 5rem 0;
-  background-color: var(--sp-bg-canvas);
-  border-top: 1px solid var(--sp-border-subtle);
-  border-bottom: 1px solid var(--sp-border-subtle);
+  background-color: #FFFFFF !important;
+  border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
+  border-bottom: none !important;
 }
 
 @media (min-width: 1024px) {
@@ -1103,8 +1104,9 @@
 
 .sp-mentor-section {
   padding: 5rem 0;
-  background-color: var(--sp-bg-white);
-  border-bottom: 1px solid var(--sp-border-subtle);
+  background-color: #FFFFFF !important;
+  border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
+  border-bottom: none !important;
 }
 
 @media (min-width: 1024px) {
@@ -1256,7 +1258,8 @@
 
 .sp-live-banner-section {
   padding: 4.5rem 0;
-  background-color: var(--sp-bg-white);
+  background-color: #FFFFFF !important;
+  border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
 }
 
 .sp-live-banner-card {
@@ -1360,9 +1363,9 @@
 
 .sp-voices-section {
   padding: 5rem 0;
-  background-color: var(--sp-bg-canvas);
-  border-top: 1px solid var(--sp-border-subtle);
-  border-bottom: 1px solid var(--sp-border-subtle);
+  background-color: #FFFFFF !important;
+  border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
+  border-bottom: none !important;
 }
 
 @media (min-width: 1024px) {
@@ -1391,8 +1394,8 @@
 }
 
 .sp-voice-card {
-  background-color: #FFFFFF;
-  border: 1px solid var(--sp-border-subtle);
+  background-color: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: 12px;
   padding: 1.75rem;
   display: flex;
@@ -1427,7 +1430,8 @@
 
 .sp-center-faq-section {
   padding-top: 5rem;
-  background-color: var(--sp-bg-white);
+  background-color: #FFFFFF !important;
+  border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
 }
 
 @media (min-width: 1024px) {
@@ -1452,8 +1456,8 @@
 
 /* Left: Center Card */
 .sp-center-card {
-  background-color: var(--sp-bg-canvas);
-  border: 1px solid var(--sp-border-subtle);
+  background-color: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: 16px;
   padding: 2.25rem 2rem;
   text-align: left;
@@ -1614,7 +1618,7 @@
    GLOBAL REDESIGNED FOOTER (12-COLUMN EDITORIAL GRID)
    ========================================================================== */
 .sp-footer {
-  background-color: #FAFAFA !important;
+  background-color: #F8FAFC !important;
   border-top: 1px solid #E2E8F0 !important;
   color: #475569 !important;
   font-family: var(--sp-font-sans) !important;
@@ -3837,13 +3841,22 @@
   color: #64748B !important; /* text-slate-500 */
 }
 
-/* Section 8: Refined Light Closing Conversion Band */
+/* Section 8: Contained Editorial Closing Conversion Card (bg-white outer canvas) */
 .sp-closing-cta-section {
-  background-color: #F4F6F8 !important;
-  border-top: 1px solid #E2E8F0 !important;
-  padding: 4.5rem 1.5rem !important;
-  text-align: center !important;
+  background-color: #FFFFFF !important;
+  border-top: none !important;
+  padding: 1.5rem 0 5rem 0 !important;
   width: 100% !important;
+}
+
+.sp-closing-cta-card {
+  background-color: #F8FAFC !important; /* bg-slate-50 */
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  padding: 3.5rem 1.5rem !important;
+  text-align: center !important;
+  max-width: 64rem !important; /* max-w-5xl */
+  margin: 0 auto !important;
 }
 
 .sp-closing-cta-container {
