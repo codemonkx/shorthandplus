@@ -140,18 +140,18 @@ export default function Navbar({
         maxWidth: '1180px',
         height: '64px',
         zIndex: 50,
-        background: scrolled ? 'rgba(247, 245, 240, 0.96)' : 'rgba(247, 245, 240, 0.88)',
+        background: scrolled ? 'rgba(251, 248, 243, 0.96)' : 'rgba(251, 248, 243, 0.90)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        border: '1px solid #D1CBBF',
+        border: '1px solid #E5DBD0',
         borderRadius: '9999px',
         padding: '0 16px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         boxShadow: scrolled 
-          ? '0 14px 38px rgba(22, 22, 26, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.85)' 
-          : '0 10px 32px rgba(22, 22, 26, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.85)',
+          ? '0 12px 32px rgba(35, 20, 24, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.90)' 
+          : '0 8px 24px rgba(35, 20, 24, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.90)',
         transition: 'all 0.3s ease',
         boxSizing: 'border-box'
       }}
@@ -181,7 +181,7 @@ export default function Navbar({
         />
         <span 
           style={{
-            color: '#16161A',
+            color: '#231418',
             fontWeight: 800,
             fontSize: '14px',
             letterSpacing: '-0.02em',
@@ -192,8 +192,8 @@ export default function Navbar({
           SHORTHAND PLUS
         </span>
         <div className="sp-nav-brand-meta">
-          <span style={{ width: '1px', height: '14px', background: '#D1CBBF', margin: '0 10px' }} />
-          <span style={{ fontSize: '10px', fontWeight: 600, color: '#6B665C', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+          <span style={{ width: '1px', height: '14px', background: '#E5DBD0', margin: '0 10px' }} />
+          <span style={{ fontSize: '10px', fontWeight: 600, color: '#8A7B7E', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
             GAYA &middot; EST. 2012
           </span>
         </div>
@@ -203,8 +203,8 @@ export default function Navbar({
       <nav 
         className="sp-nav-center-links"
         style={{
-          background: 'rgba(231, 226, 216, 0.85)',
-          border: '1px solid #D6D0C4',
+          background: 'rgba(239, 231, 220, 0.85)',
+          border: '1px solid #E5DBD0',
           padding: '4px',
           borderRadius: '9999px',
           display: 'flex',
@@ -219,22 +219,22 @@ export default function Navbar({
               key={item.id}
               onClick={() => handleNavClick(item.id)}
               style={active ? {
-                background: '#FAF8F5',
-                color: '#16161A',
+                background: '#FFFFFF',
+                color: '#231418',
                 fontWeight: 600,
                 fontSize: '12px',
                 padding: '6px 16px',
                 borderRadius: '9999px',
                 border: 'none',
                 cursor: 'pointer',
-                boxShadow: '0 1px 3px rgba(22, 22, 26, 0.08)',
+                boxShadow: '0 1px 3px rgba(35, 20, 24, 0.08)',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
                 transition: 'all 0.15s ease'
               } : {
                 background: 'transparent',
-                color: '#57534E',
+                color: '#594A4D',
                 fontWeight: 500,
                 fontSize: '12px',
                 padding: '6px 16px',
@@ -278,9 +278,9 @@ export default function Navbar({
               onClick={() => onOpenAdmission ? onOpenAdmission() : handleNavClick('courses')}
               title="Book 3 Free Demo Classes"
               style={{
-                background: '#EFECE5',
-                border: '1px solid #D6D0C4',
-                color: '#16161A',
+                background: '#FFFFFF',
+                border: '1px solid #E5DBD0',
+                color: '#231418',
                 borderRadius: '9999px',
                 padding: '6px 14px',
                 fontSize: '12px',
@@ -301,8 +301,8 @@ export default function Navbar({
               onClick={() => onOpenAuth ? onOpenAuth('student') : handleNavClick('dashboard')}
               title="Student Login Panel"
               style={{
-                background: '#B91C1C',
-                color: '#FFFFFF',
+                background: '#231418',
+                color: '#FAF6F0',
                 border: 'none',
                 borderRadius: '9999px',
                 padding: '7px 18px',
@@ -311,7 +311,7 @@ export default function Navbar({
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
-                boxShadow: '0 1px 3px rgba(185, 28, 28, 0.25)',
+                boxShadow: '0 2px 6px rgba(35, 20, 24, 0.25)',
                 cursor: 'pointer',
                 transition: 'all 0.15s ease'
               }}
@@ -324,9 +324,9 @@ export default function Navbar({
           <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: '8px' }} ref={userMenuRef}>
             <button 
               style={{
-                background: '#EFECE5',
-                border: '1px solid #D6D0C4',
-                color: '#44403C',
+                background: '#FFFFFF',
+                border: '1px solid #E5DBD0',
+                color: '#594A4D',
                 borderRadius: '9999px',
                 padding: '6px 12px',
                 fontSize: '12px',
@@ -346,7 +346,7 @@ export default function Navbar({
                 </>
               ) : (
                 <>
-                  <LayoutDashboard size={13} color="#57534E" />
+                  <LayoutDashboard size={13} color="#594A4D" />
                   <span>Dashboard</span>
                 </>
               )}
@@ -354,9 +354,9 @@ export default function Navbar({
 
             <button 
               style={{
-                background: '#FAF8F5',
-                border: '1px solid #D1CBBF',
-                color: '#16161A',
+                background: '#FFFFFF',
+                border: '1px solid #E5DBD0',
+                color: '#231418',
                 borderRadius: '9999px',
                 padding: '4px 12px 4px 6px',
                 fontSize: '12px',
@@ -365,7 +365,7 @@ export default function Navbar({
                 alignItems: 'center',
                 gap: '8px',
                 cursor: 'pointer',
-                boxShadow: '0 1px 2px rgba(22, 22, 26, 0.05)'
+                boxShadow: '0 1px 2px rgba(35, 20, 24, 0.05)'
               }}
               onClick={() => setUserDropdownOpen(!userDropdownOpen)}
               title="Account & Subscription Menu"
@@ -375,8 +375,8 @@ export default function Navbar({
                   width: '26px',
                   height: '26px',
                   borderRadius: '50%',
-                  background: '#991B1B',
-                  color: '#FFFFFF',
+                  background: '#231418',
+                  color: '#FAF6F0',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -390,7 +390,7 @@ export default function Navbar({
               <ChevronDown size={12} style={{ transition: 'transform 0.2s', transform: userDropdownOpen ? 'rotate(180deg)' : 'none' }} />
             </button>
 
-            {/* User Dropdown Popover (Soft Ivory #F7F5F0) */}
+            {/* User Dropdown Popover */}
             {userDropdownOpen && (
               <div 
                 style={{
@@ -398,21 +398,21 @@ export default function Navbar({
                   right: 0,
                   top: 'calc(100% + 8px)',
                   width: '256px',
-                  background: '#F7F5F0',
-                  color: '#16161A',
-                  border: '1px solid #D6D0C4',
-                  borderRadius: '14px',
-                  boxShadow: '0 12px 32px rgba(0, 0, 0, 0.2)',
+                  background: '#FFFFFF',
+                  color: '#231418',
+                  border: '1px solid #E5DBD0',
+                  borderRadius: '16px',
+                  boxShadow: '0 12px 32px rgba(35, 20, 24, 0.12)',
                   padding: '12px',
                   zIndex: 60,
                   boxSizing: 'border-box'
                 }}
               >
-                <div style={{ padding: '8px 12px', borderBottom: '1px solid rgba(214, 208, 196, 0.6)' }}>
-                  <strong style={{ display: 'block', fontSize: '14px', fontWeight: 700, color: '#16161A', lineHeight: 1.2 }}>{user.name}</strong>
-                  <span style={{ display: 'block', fontSize: '12px', color: '#78716C', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginTop: '2px' }}>{user.email}</span>
+                <div style={{ padding: '8px 12px', borderBottom: '1px solid #EFE7DC' }}>
+                  <strong style={{ display: 'block', fontSize: '14px', fontWeight: 700, color: '#231418', lineHeight: 1.2 }}>{user.name}</strong>
+                  <span style={{ display: 'block', fontSize: '12px', color: '#8A7B7E', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginTop: '2px' }}>{user.email}</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '8px' }}>
-                    <span style={{ fontSize: '10px', fontWeight: 600, background: '#EAE5DC', color: '#57534E', padding: '2px 6px', borderRadius: '4px' }}>
+                    <span style={{ fontSize: '10px', fontWeight: 600, background: '#EFE7DC', color: '#594A4D', padding: '2px 6px', borderRadius: '4px' }}>
                       {user.role === 'admin' ? 'Faculty Admin' : `Roll: ${user.rollNo}`}
                     </span>
                     <span style={{ fontSize: '10px', fontWeight: 600, background: 'rgba(5, 150, 105, 0.1)', color: '#047857', padding: '2px 6px', borderRadius: '4px' }}>
@@ -423,31 +423,31 @@ export default function Navbar({
 
                 <div style={{ padding: '4px 0' }}>
                   <button 
-                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#44403C', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
                     onClick={() => handleNavClick('dashboard')}
                   >
-                    <LayoutDashboard size={14} color="#78716C" />
+                    <LayoutDashboard size={14} color="#8A7B7E" />
                     <span>Candidate Dashboard</span>
                   </button>
 
                   <button 
-                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#44403C', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
                     onClick={() => handleNavClick('online-classes')}
                   >
-                    <Video size={14} color="#E11D48" />
+                    <Video size={14} color="#991B1B" />
                     <span>Live Google Meet Class</span>
                   </button>
 
                   <button 
-                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#44403C', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
                     onClick={() => handleNavClick('tests')}
                   >
-                    <Headphones size={14} color="#78716C" />
+                    <Headphones size={14} color="#8A7B7E" />
                     <span>Audio Dictation Vault</span>
                   </button>
 
                   <button 
-                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#44403C', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
                     onClick={() => {
                       setUserDropdownOpen(false);
                       if (onOpenCheckout) onOpenCheckout();
@@ -459,7 +459,7 @@ export default function Navbar({
 
                   {user?.role === 'admin' && (
                     <button 
-                      style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#44403C', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+                      style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
                       onClick={() => handleNavClick('admin')}
                     >
                       <ShieldCheck size={14} color="#D97706" />
@@ -468,9 +468,9 @@ export default function Navbar({
                   )}
                 </div>
 
-                <div style={{ paddingTop: '4px', borderTop: '1px solid rgba(214, 208, 196, 0.6)' }}>
+                <div style={{ paddingTop: '4px', borderTop: '1px solid #EFE7DC' }}>
                   <button 
-                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#BE123C', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#991B1B', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
                     onClick={() => {
                       setUserDropdownOpen(false);
                       if (onLogout) onLogout();
@@ -491,7 +491,7 @@ export default function Navbar({
           style={{
             background: 'none',
             border: 'none',
-            color: '#16161A',
+            color: '#231418',
             padding: '6px',
             cursor: 'pointer',
             alignItems: 'center',
@@ -512,16 +512,16 @@ export default function Navbar({
             top: 'calc(100% + 8px)',
             left: 0,
             right: 0,
-            background: 'rgba(247, 245, 240, 0.98)',
+            background: 'rgba(251, 248, 243, 0.98)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
-            border: '1px solid #D6D0C4',
-            borderRadius: '16px',
+            border: '1px solid #E5DBD0',
+            borderRadius: '20px',
             padding: '16px',
             display: 'flex',
             flexDirection: 'column',
             gap: '8px',
-            boxShadow: '0 16px 40px rgba(0,0,0,0.18)',
+            boxShadow: '0 16px 40px rgba(35, 20, 24, 0.14)',
             boxSizing: 'border-box'
           }}
         >
@@ -532,20 +532,20 @@ export default function Navbar({
               style={isNavActive(item.id) ? {
                 textAlign: 'left',
                 padding: '10px 16px',
-                borderRadius: '10px',
+                borderRadius: '9999px',
                 fontSize: '14px',
                 fontWeight: 600,
-                color: '#FFFFFF',
-                background: '#16161A',
+                color: '#FAF6F0',
+                background: '#231418',
                 border: 'none',
                 cursor: 'pointer'
               } : {
                 textAlign: 'left',
                 padding: '10px 16px',
-                borderRadius: '10px',
+                borderRadius: '9999px',
                 fontSize: '14px',
                 fontWeight: 500,
-                color: '#57534E',
+                color: '#594A4D',
                 background: 'transparent',
                 border: 'none',
                 cursor: 'pointer'
@@ -561,11 +561,11 @@ export default function Navbar({
               style={{
                 textAlign: 'left',
                 padding: '10px 16px',
-                borderRadius: '10px',
+                borderRadius: '9999px',
                 fontSize: '14px',
                 fontWeight: 600,
                 color: '#D97706',
-                background: 'rgba(22, 22, 26, 0.06)',
+                background: 'rgba(35, 20, 24, 0.04)',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'flex',
@@ -579,7 +579,7 @@ export default function Navbar({
           )}
 
           {!user && (
-            <div style={{ paddingTop: '12px', marginTop: '4px', borderTop: '1px solid rgba(214, 208, 196, 0.6)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ paddingTop: '12px', marginTop: '4px', borderTop: '1px solid #E5DBD0', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
@@ -588,12 +588,12 @@ export default function Navbar({
                 style={{
                   width: '100%',
                   padding: '10px 16px',
-                  borderRadius: '10px',
+                  borderRadius: '9999px',
                   fontSize: '12px',
                   fontWeight: 600,
-                  background: 'rgba(22, 22, 26, 0.06)',
-                  border: '1px solid rgba(22, 22, 26, 0.12)',
-                  color: '#16161A',
+                  background: '#FFFFFF',
+                  border: '1px solid #E5DBD0',
+                  color: '#231418',
                   textAlign: 'center',
                   cursor: 'pointer'
                 }}
@@ -608,11 +608,11 @@ export default function Navbar({
                 style={{
                   width: '100%',
                   padding: '10px 16px',
-                  borderRadius: '10px',
+                  borderRadius: '9999px',
                   fontSize: '12px',
                   fontWeight: 600,
-                  background: '#B91C1C',
-                  color: '#FFFFFF',
+                  background: '#231418',
+                  color: '#FAF6F0',
                   border: 'none',
                   textAlign: 'center',
                   cursor: 'pointer'

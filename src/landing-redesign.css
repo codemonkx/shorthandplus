@@ -7,26 +7,43 @@
    - Numbers & Stats: Plus Jakarta Sans with tabular-nums
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
   --sp-font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --sp-font-serif: 'Instrument Serif', Georgia, serif;
   --sp-font-mono: 'JetBrains Mono', monospace;
 
+  /* Locked Warm Editorial Luxury Tokens */
+  --bg-cream: #FBF8F3;
+  --bg-sand: #EFE7DC;
+  --surface-white: #FFFFFF;
+  --surface-dark: #231418;
+  --accent-crimson: #991B1B;
+  --accent-crimson-hover: #7F1D1D;
+  --text-primary: #231418;
+  --text-body: #594A4D;
+  --text-muted: #8A7B7E;
+  --text-on-dark: #FAF6F0;
+  --text-on-dark-muted: #CBBCC0;
+  --border-cream: #E5DBD0;
+  --border-sand: #DFD4C6;
+  --border-white: #E8DFD3;
+  --border-dark: #3D252B;
+
   /* Surfaces - Custom High-Contrast Editorial System */
-  --sp-bg-canvas: #ECE8E0;
+  --sp-bg-canvas: #FBF8F3;
   --sp-bg-white: #FFFFFF;
-  --sp-bg-ivory: #F7F5F0;
-  --sp-bg-ink: #16161A;
-  --sp-bg-stone: #ECE8E0;
-  --sp-bg-charcoal: #16161A;
+  --sp-bg-ivory: #FBF8F3;
+  --sp-bg-ink: #231418;
+  --sp-bg-stone: #EFE7DC;
+  --sp-bg-charcoal: #231418;
   
   /* Text */
-  --sp-text-ink: #16161A;
-  --sp-text-slate: #57534E;
-  --sp-text-muted: #78716C;
-  --sp-text-light: #A8A29E;
+  --sp-text-ink: #231418;
+  --sp-text-slate: #594A4D;
+  --sp-text-muted: #8A7B7E;
+  --sp-text-light: #CBBCC0;
   
   /* Accent */
   --sp-crimson: #991B1B;
@@ -36,17 +53,17 @@
   --sp-emerald: #059669;
   
   /* Borders */
-  --sp-border-subtle: #D6D0C4;
-  --sp-border-slate: #D6D0C4;
-  --sp-border-stone: #D6D0C4;
-  --sp-border-charcoal: #27272A;
+  --sp-border-subtle: #E8DFD3;
+  --sp-border-slate: #DFD4C6;
+  --sp-border-stone: #E5DBD0;
+  --sp-border-charcoal: #3D252B;
 }
 
 /* Base Wrapper */
 .sp-landing-root {
   font-family: var(--sp-font-sans);
-  background-color: #ECE8E0 !important;
-  color: #16161A !important;
+  background-color: #FBF8F3 !important;
+  color: #231418 !important;
   overflow-x: hidden;
   width: 100%;
   margin: 0;
@@ -1689,9 +1706,9 @@
    GLOBAL REDESIGNED FOOTER (GROUNDING RICH CHARCOAL ANCHOR)
    ========================================================================== */
 .sp-footer {
-  background-color: #16161A !important;
-  border-top: 1px solid #27272A !important;
-  color: #A1A1AA !important;
+  background-color: #231418 !important;
+  border-top: 1px solid #3A2329 !important;
+  color: #CBBCC0 !important;
   font-family: var(--sp-font-sans) !important;
   width: 100% !important;
   box-sizing: border-box !important;
@@ -1807,7 +1824,7 @@
   font-size: 0.875rem !important;
   font-weight: 700 !important;
   letter-spacing: -0.02em !important;
-  color: #FFFFFF !important;
+  color: #FAF6F0 !important;
   line-height: 1.15 !important;
 }
 
@@ -1816,7 +1833,7 @@
   font-family: var(--sp-font-sans) !important;
   font-size: 11px !important;
   font-weight: 500 !important;
-  color: #A1A1AA !important;
+  color: #CBBCC0 !important;
   margin-top: 0.25rem !important;
 }
 
@@ -1824,7 +1841,7 @@
   font-family: var(--sp-font-sans) !important;
   font-size: 0.875rem !important;
   line-height: 1.625 !important;
-  color: #A1A1AA !important;
+  color: #CBBCC0 !important;
   max-width: 20rem !important;
   margin: 1rem 0 0 !important;
 }
@@ -1833,10 +1850,10 @@
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.5rem !important;
-  background-color: #B91C1C !important;
+  background-color: #991B1B !important;
   color: #FFFFFF !important;
-  padding: 0.625rem 1rem !important;
-  border-radius: 8px !important;
+  padding: 0.625rem 1.25rem !important;
+  border-radius: 9999px !important;
   font-family: var(--sp-font-sans) !important;
   font-size: 0.75rem !important;
   font-weight: 600 !important;
@@ -1844,11 +1861,11 @@
   margin-top: 1.5rem !important;
   transition: background-color 0.2s ease !important;
   width: fit-content !important;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 2px 8px rgba(153, 27, 27, 0.35) !important;
 }
 
 .sp-footer-helpline-btn:hover {
-  background-color: #991B1B !important;
+  background-color: #B91C1C !important;
   color: #FFFFFF !important;
 }
 
@@ -1859,7 +1876,7 @@
   font-weight: 600 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.16em !important;
-  color: #FFFFFF !important;
+  color: #FAF6F0 !important;
   margin: 0 0 1rem !important;
 }
 
@@ -1886,7 +1903,7 @@
   margin: 0 !important;
   font-family: var(--sp-font-sans) !important;
   font-size: 0.875rem !important;
-  color: #A1A1AA !important;
+  color: #B8A5AA !important;
   cursor: pointer !important;
   text-align: left !important;
   line-height: 1.5 !important;
@@ -1895,7 +1912,7 @@
 }
 
 .sp-footer-link-btn:hover {
-  color: #FFFFFF !important;
+  color: #FAF6F0 !important;
 }
 
 /* Contact List */
@@ -1914,7 +1931,7 @@
   gap: 0.625rem !important;
   font-family: var(--sp-font-sans) !important;
   font-size: 0.875rem !important;
-  color: #A1A1AA !important;
+  color: #CBBCC0 !important;
   line-height: 1.5 !important;
   list-style: none !important;
   padding: 0 !important;
@@ -1926,22 +1943,22 @@
   height: 1rem !important;
   flex-shrink: 0 !important;
   margin-top: 0.15rem !important;
-  color: #71717A !important;
+  color: #A89397 !important;
 }
 
 .sp-footer-email-link {
-  color: #A1A1AA !important;
+  color: #CBBCC0 !important;
   text-decoration: none !important;
   transition: color 0.15s ease !important;
 }
 
 .sp-footer-email-link:hover {
-  color: #FFFFFF !important;
+  color: #FAF6F0 !important;
 }
 
 /* Bottom Bar */
 .sp-footer-bottom {
-  border-top: 1px solid #27272A !important;
+  border-top: 1px solid #3A2329 !important;
   padding-top: 1.5rem !important;
   display: flex !important;
   flex-direction: row !important;
@@ -1950,7 +1967,7 @@
   gap: 1rem !important;
   font-family: var(--sp-font-sans) !important;
   font-size: 0.75rem !important;
-  color: #71717A !important;
+  color: #A89397 !important;
   flex-wrap: wrap !important;
 }
 
@@ -1965,7 +1982,7 @@
 .sp-footer-copyright {
   margin: 0 !important;
   font-size: 0.75rem !important;
-  color: #71717A !important;
+  color: #A89397 !important;
   line-height: 1.5 !important;
 }
 
@@ -1983,13 +2000,13 @@
   margin: 0 !important;
   font-family: var(--sp-font-sans) !important;
   font-size: 0.75rem !important;
-  color: #A1A1AA !important;
+  color: #CBBCC0 !important;
   cursor: pointer !important;
   transition: color 0.15s ease !important;
 }
 
 .sp-footer-legal-btn:hover {
-  color: #FFFFFF !important;
+  color: #FAF6F0 !important;
 }
 
 .sp-footer-divider {

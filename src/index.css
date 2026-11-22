@@ -7,7 +7,7 @@
    - Typography & Structure: #0F172A (Deep Slate Ink)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @font-face {
   font-family: 'Kruti Dev';
@@ -25,6 +25,23 @@
 
   --font-display: var(--font-sans);
   --font-body: var(--font-sans);
+
+  /* Locked Warm Editorial Luxury Tokens */
+  --bg-cream: #FBF8F3;
+  --bg-sand: #EFE7DC;
+  --surface-white: #FFFFFF;
+  --surface-dark: #231418;
+  --accent-crimson: #991B1B;
+  --accent-crimson-hover: #7F1D1D;
+  --text-primary: #231418;
+  --text-body: #594A4D;
+  --text-muted: #8A7B7E;
+  --text-on-dark: #FAF6F0;
+  --text-on-dark-muted: #CBBCC0;
+  --border-cream: #E5DBD0;
+  --border-sand: #DFD4C6;
+  --border-white: #E8DFD3;
+  --border-dark: #3D252B;
 
   /* Apple News+ 3-Color Palette */
   --bg-app: #F5F5F7;
