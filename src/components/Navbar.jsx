@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   GraduationCap, 
   Menu, 
@@ -16,6 +17,7 @@ import {
   Keyboard,
   FileText
 } from 'lucide-react';
+import { TRANSITION_EASE } from './MotionPrimitives';
 
 export default function Navbar({ 
   currentTab, 
@@ -30,18 +32,6 @@ export default function Navbar({
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const userMenuRef = useRef(null);
-
-  // Sliding Nav Indicator State & Refs
-  const navContainerRef = useRef(null);
-  const navItemRefs = useRef({});
-  const [hasMounted, setHasMounted] = useState(false);
-  const [indicatorStyle, setIndicatorStyle] = useState({
-    left: 0,
-    top: 0,
-    width: 0,
-    height: 0,
-    opacity: 0,
-  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,64 +68,22 @@ export default function Navbar({
     return currentTab === id;
   };
 
-  const updateIndicator = (overrideId) => {
-    const targetId = overrideId || navItems.find((item) => isNavActive(item.id))?.id;
-    if (targetId && navItemRefs.current[targetId] && navContainerRef.current) {
-      const activeEl = navItemRefs.current[targetId];
-      const containerEl = navContainerRef.current;
-      
-      const activeRect = activeEl.getBoundingClientRect();
-      const containerRect = containerEl.getBoundingClientRect();
-
-      setIndicatorStyle({
-        left: activeRect.left - containerRect.left,
-        top: activeRect.top - containerRect.top,
-        width: activeRect.width,
-        height: activeRect.height,
-        opacity: 1,
-      });
-    } else if (!targetId) {
-      setIndicatorStyle((prev) => ({ ...prev, opacity: 0 }));
-    }
-  };
-
-  useEffect(() => {
-    updateIndicator();
-    
-    // Enable animation after initial positioning so it doesn't fly in on page load
-    const timer = setTimeout(() => {
-      updateIndicator();
-      setHasMounted(true);
-    }, 40);
-
-    const handleResize = () => updateIndicator();
-    window.addEventListener('resize', handleResize);
-
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(() => updateIndicator());
-    }
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [currentTab]);
-
   const handleNavClick = (id) => {
     setMobileMenuOpen(false);
     setUserDropdownOpen(false);
-    updateIndicator(id);
     setCurrentTab(id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <header 
+    <motion.header 
+      initial={{ x: '-50%', y: -24, opacity: 0 }}
+      animate={{ x: '-50%', y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: TRANSITION_EASE }}
       style={{
         position: 'fixed',
         top: '16px',
         left: '50%',
-        transform: 'translateX(-50%)',
         width: 'calc(100% - 1.5rem)',
         maxWidth: '1180px',
         height: '64px',
@@ -152,12 +100,14 @@ export default function Navbar({
         boxShadow: scrolled 
           ? '0 12px 32px rgba(35, 20, 24, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.90)' 
           : '0 8px 24px rgba(35, 20, 24, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.90)',
-        transition: 'all 0.3s ease',
+        transition: 'background 0.3s ease, box-shadow 0.3s ease',
         boxSizing: 'border-box'
       }}
     >
       {/* Zone 1: Brand Lockup (Left) */}
-      <div 
+      <motion.div 
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
         onClick={() => handleNavClick('landing')} 
         title="Shorthand Plus (Gaya Shorthand Classes)"
         style={{
@@ -197,7 +147,7 @@ export default function Navbar({
             GAYA &middot; EST. 2012
           </span>
         </div>
-      </div>
+      </motion.div>
 
       {/* Zone 2: Navigation Pill Track (Center) */}
       <nav 
@@ -209,7 +159,8 @@ export default function Navbar({
           borderRadius: '9999px',
           display: 'flex',
           alignItems: 'center',
-          gap: '2px'
+          gap: '2px',
+          position: 'relative'
         }}
       >
         {navItems.map((item) => {
@@ -218,45 +169,60 @@ export default function Navbar({
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              style={active ? {
-                background: '#FFFFFF',
-                color: '#231418',
-                fontWeight: 600,
-                fontSize: '12px',
-                padding: '6px 16px',
-                borderRadius: '9999px',
-                border: 'none',
-                cursor: 'pointer',
-                boxShadow: '0 1px 3px rgba(35, 20, 24, 0.08)',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                transition: 'all 0.15s ease'
-              } : {
+              style={{
+                position: 'relative',
                 background: 'transparent',
-                color: '#594A4D',
-                fontWeight: 500,
+                color: active ? '#231418' : '#594A4D',
+                fontWeight: active ? 600 : 500,
                 fontSize: '12px',
                 padding: '6px 16px',
                 borderRadius: '9999px',
                 border: 'none',
                 cursor: 'pointer',
-                transition: 'all 0.15s ease'
+                transition: 'color 0.15s ease'
               }}
             >
               {active && (
-                <span 
+                <motion.div
+                  layoutId="nav-active-pill"
                   style={{
-                    width: '5px',
-                    height: '5px',
-                    borderRadius: '50%',
-                    background: '#991B1B',
-                    display: 'inline-block',
-                    flexShrink: 0
+                    position: 'absolute',
+                    inset: 0,
+                    background: '#FFFFFF',
+                    borderRadius: '9999px',
+                    boxShadow: '0 1px 4px rgba(35, 20, 24, 0.08)',
+                    zIndex: 1
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 380,
+                    damping: 30
                   }}
                 />
               )}
-              <span>{item.label}</span>
+              <span 
+                style={{ 
+                  position: 'relative', 
+                  zIndex: 2, 
+                  display: 'inline-flex', 
+                  alignItems: 'center', 
+                  gap: '6px' 
+                }}
+              >
+                {active && (
+                  <span 
+                    style={{
+                      width: '5px',
+                      height: '5px',
+                      borderRadius: '50%',
+                      background: '#991B1B',
+                      display: 'inline-block',
+                      flexShrink: 0
+                    }}
+                  />
+                )}
+                <span>{item.label}</span>
+              </span>
             </button>
           );
         })}
@@ -273,7 +239,9 @@ export default function Navbar({
       >
         {!user ? (
           <>
-            <button 
+            <motion.button 
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               type="button"
               onClick={() => onOpenAdmission ? onOpenAdmission() : handleNavClick('courses')}
               title="Book 3 Free Demo Classes"
@@ -289,14 +257,16 @@ export default function Navbar({
                 alignItems: 'center',
                 gap: '6px',
                 cursor: 'pointer',
-                transition: 'all 0.15s ease'
+                boxShadow: '0 1px 2px rgba(35, 20, 24, 0.04)'
               }}
             >
               <Sparkles size={13} style={{ color: '#991B1B' }} />
               <span>Free Demo</span>
-            </button>
+            </motion.button>
 
-            <button 
+            <motion.button 
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               type="button"
               onClick={() => onOpenAuth ? onOpenAuth('student') : handleNavClick('dashboard')}
               title="Student Login Panel"
@@ -312,17 +282,18 @@ export default function Navbar({
                 alignItems: 'center',
                 gap: '6px',
                 boxShadow: '0 2px 6px rgba(35, 20, 24, 0.25)',
-                cursor: 'pointer',
-                transition: 'all 0.15s ease'
+                cursor: 'pointer'
               }}
             >
               <LogIn size={13} />
               <span>Student Login</span>
-            </button>
+            </motion.button>
           </>
         ) : (
           <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: '8px' }} ref={userMenuRef}>
-            <button 
+            <motion.button 
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               style={{
                 background: '#FFFFFF',
                 border: '1px solid #E5DBD0',
@@ -350,9 +321,11 @@ export default function Navbar({
                   <span>Dashboard</span>
                 </>
               )}
-            </button>
+            </motion.button>
 
-            <button 
+            <motion.button 
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               style={{
                 background: '#FFFFFF',
                 border: '1px solid #E5DBD0',
@@ -388,100 +361,106 @@ export default function Navbar({
               </div>
               <span>{user.name ? user.name.split(' ')[0] : 'Account'}</span>
               <ChevronDown size={12} style={{ transition: 'transform 0.2s', transform: userDropdownOpen ? 'rotate(180deg)' : 'none' }} />
-            </button>
+            </motion.button>
 
             {/* User Dropdown Popover */}
-            {userDropdownOpen && (
-              <div 
-                style={{
-                  position: 'absolute',
-                  right: 0,
-                  top: 'calc(100% + 8px)',
-                  width: '256px',
-                  background: '#FFFFFF',
-                  color: '#231418',
-                  border: '1px solid #E5DBD0',
-                  borderRadius: '16px',
-                  boxShadow: '0 12px 32px rgba(35, 20, 24, 0.12)',
-                  padding: '12px',
-                  zIndex: 60,
-                  boxSizing: 'border-box'
-                }}
-              >
-                <div style={{ padding: '8px 12px', borderBottom: '1px solid #EFE7DC' }}>
-                  <strong style={{ display: 'block', fontSize: '14px', fontWeight: 700, color: '#231418', lineHeight: 1.2 }}>{user.name}</strong>
-                  <span style={{ display: 'block', fontSize: '12px', color: '#8A7B7E', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginTop: '2px' }}>{user.email}</span>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '8px' }}>
-                    <span style={{ fontSize: '10px', fontWeight: 600, background: '#EFE7DC', color: '#594A4D', padding: '2px 6px', borderRadius: '4px' }}>
-                      {user.role === 'admin' ? 'Faculty Admin' : `Roll: ${user.rollNo}`}
-                    </span>
-                    <span style={{ fontSize: '10px', fontWeight: 600, background: 'rgba(5, 150, 105, 0.1)', color: '#047857', padding: '2px 6px', borderRadius: '4px' }}>
-                      {user.role === 'admin' ? 'Director Console' : (user.subscription?.isMonthlySubscription ? 'Monthly Pro' : 'Pro Active')}
-                    </span>
+            <AnimatePresence>
+              {userDropdownOpen && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                  transition={{ duration: 0.18, ease: TRANSITION_EASE }}
+                  style={{
+                    position: 'absolute',
+                    right: 0,
+                    top: 'calc(100% + 8px)',
+                    width: '256px',
+                    background: '#FFFFFF',
+                    color: '#231418',
+                    border: '1px solid #E5DBD0',
+                    borderRadius: '16px',
+                    boxShadow: '0 12px 32px rgba(35, 20, 24, 0.12)',
+                    padding: '12px',
+                    zIndex: 60,
+                    boxSizing: 'border-box'
+                  }}
+                >
+                  <div style={{ padding: '8px 12px', borderBottom: '1px solid #EFE7DC' }}>
+                    <strong style={{ display: 'block', fontSize: '14px', fontWeight: 700, color: '#231418', lineHeight: 1.2 }}>{user.name}</strong>
+                    <span style={{ display: 'block', fontSize: '12px', color: '#8A7B7E', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginTop: '2px' }}>{user.email}</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '8px' }}>
+                      <span style={{ fontSize: '10px', fontWeight: 600, background: '#EFE7DC', color: '#594A4D', padding: '2px 6px', borderRadius: '4px' }}>
+                        {user.role === 'admin' ? 'Faculty Admin' : `Roll: ${user.rollNo}`}
+                      </span>
+                      <span style={{ fontSize: '10px', fontWeight: 600, background: 'rgba(5, 150, 105, 0.1)', color: '#047857', padding: '2px 6px', borderRadius: '4px' }}>
+                        {user.role === 'admin' ? 'Director Console' : (user.subscription?.isMonthlySubscription ? 'Monthly Pro' : 'Pro Active')}
+                      </span>
+                    </div>
                   </div>
-                </div>
 
-                <div style={{ padding: '4px 0' }}>
-                  <button 
-                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
-                    onClick={() => handleNavClick('dashboard')}
-                  >
-                    <LayoutDashboard size={14} color="#8A7B7E" />
-                    <span>Candidate Dashboard</span>
-                  </button>
-
-                  <button 
-                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
-                    onClick={() => handleNavClick('online-classes')}
-                  >
-                    <Video size={14} color="#991B1B" />
-                    <span>Live Google Meet Class</span>
-                  </button>
-
-                  <button 
-                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
-                    onClick={() => handleNavClick('tests')}
-                  >
-                    <Headphones size={14} color="#8A7B7E" />
-                    <span>Audio Dictation Vault</span>
-                  </button>
-
-                  <button 
-                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
-                    onClick={() => {
-                      setUserDropdownOpen(false);
-                      if (onOpenCheckout) onOpenCheckout();
-                    }}
-                  >
-                    <CreditCard size={14} color="#047857" />
-                    <span>Monthly Subscription Passes</span>
-                  </button>
-
-                  {user?.role === 'admin' && (
+                  <div style={{ padding: '4px 0' }}>
                     <button 
                       style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
-                      onClick={() => handleNavClick('admin')}
+                      onClick={() => handleNavClick('dashboard')}
                     >
-                      <ShieldCheck size={14} color="#D97706" />
-                      <span>Director Admin Console</span>
+                      <LayoutDashboard size={14} color="#8A7B7E" />
+                      <span>Candidate Dashboard</span>
                     </button>
-                  )}
-                </div>
 
-                <div style={{ paddingTop: '4px', borderTop: '1px solid #EFE7DC' }}>
-                  <button 
-                    style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#991B1B', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
-                    onClick={() => {
-                      setUserDropdownOpen(false);
-                      if (onLogout) onLogout();
-                    }}
-                  >
-                    <LogOut size={14} />
-                    <span>Sign Out</span>
-                  </button>
-                </div>
-              </div>
-            )}
+                    <button 
+                      style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+                      onClick={() => handleNavClick('online-classes')}
+                    >
+                      <Video size={14} color="#991B1B" />
+                      <span>Live Google Meet Class</span>
+                    </button>
+
+                    <button 
+                      style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+                      onClick={() => handleNavClick('tests')}
+                    >
+                      <Headphones size={14} color="#8A7B7E" />
+                      <span>Audio Dictation Vault</span>
+                    </button>
+
+                    <button 
+                      style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+                      onClick={() => {
+                        setUserDropdownOpen(false);
+                        if (onOpenCheckout) onOpenCheckout();
+                      }}
+                    >
+                      <CreditCard size={14} color="#047857" />
+                      <span>Monthly Subscription Passes</span>
+                    </button>
+
+                    {user?.role === 'admin' && (
+                      <button 
+                        style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+                        onClick={() => handleNavClick('admin')}
+                      >
+                        <ShieldCheck size={14} color="#D97706" />
+                        <span>Director Admin Console</span>
+                      </button>
+                    )}
+                  </div>
+
+                  <div style={{ paddingTop: '4px', borderTop: '1px solid #EFE7DC' }}>
+                    <button 
+                      style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 500, color: '#991B1B', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+                      onClick={() => {
+                        setUserDropdownOpen(false);
+                        if (onLogout) onLogout();
+                      }}
+                    >
+                      <LogOut size={14} />
+                      <span>Sign Out</span>
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         )}
 
@@ -505,125 +484,131 @@ export default function Navbar({
       </div>
 
       {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div 
-          style={{
-            position: 'absolute',
-            top: 'calc(100% + 8px)',
-            left: 0,
-            right: 0,
-            background: 'rgba(251, 248, 243, 0.98)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            border: '1px solid #E5DBD0',
-            borderRadius: '20px',
-            padding: '16px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '8px',
-            boxShadow: '0 16px 40px rgba(35, 20, 24, 0.14)',
-            boxSizing: 'border-box'
-          }}
-        >
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => handleNavClick(item.id)}
-              style={isNavActive(item.id) ? {
-                textAlign: 'left',
-                padding: '10px 16px',
-                borderRadius: '9999px',
-                fontSize: '14px',
-                fontWeight: 600,
-                color: '#FAF6F0',
-                background: '#231418',
-                border: 'none',
-                cursor: 'pointer'
-              } : {
-                textAlign: 'left',
-                padding: '10px 16px',
-                borderRadius: '9999px',
-                fontSize: '14px',
-                fontWeight: 500,
-                color: '#594A4D',
-                background: 'transparent',
-                border: 'none',
-                cursor: 'pointer'
-              }}
-            >
-              {item.label}
-            </button>
-          ))}
-
-          {user?.role === 'admin' && (
-            <button
-              onClick={() => handleNavClick('admin')}
-              style={{
-                textAlign: 'left',
-                padding: '10px 16px',
-                borderRadius: '9999px',
-                fontSize: '14px',
-                fontWeight: 600,
-                color: '#D97706',
-                background: 'rgba(35, 20, 24, 0.04)',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}
-            >
-              <ShieldCheck size={14} color="#D97706" />
-              <span>Admin Console</span>
-            </button>
-          )}
-
-          {!user && (
-            <div style={{ paddingTop: '12px', marginTop: '4px', borderTop: '1px solid #E5DBD0', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.2, ease: TRANSITION_EASE }}
+            style={{
+              position: 'absolute',
+              top: 'calc(100% + 8px)',
+              left: 0,
+              right: 0,
+              background: 'rgba(251, 248, 243, 0.98)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              border: '1px solid #E5DBD0',
+              borderRadius: '20px',
+              padding: '16px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '8px',
+              boxShadow: '0 16px 40px rgba(35, 20, 24, 0.14)',
+              boxSizing: 'border-box'
+            }}
+          >
+            {navItems.map((item) => (
               <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  if (onOpenAdmission) onOpenAdmission();
-                }}
-                style={{
-                  width: '100%',
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
+                style={isNavActive(item.id) ? {
+                  textAlign: 'left',
                   padding: '10px 16px',
                   borderRadius: '9999px',
-                  fontSize: '12px',
+                  fontSize: '14px',
                   fontWeight: 600,
-                  background: '#FFFFFF',
-                  border: '1px solid #E5DBD0',
-                  color: '#231418',
-                  textAlign: 'center',
-                  cursor: 'pointer'
-                }}
-              >
-                Free Demo
-              </button>
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  if (onOpenAuth) onOpenAuth('student');
-                }}
-                style={{
-                  width: '100%',
-                  padding: '10px 16px',
-                  borderRadius: '9999px',
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  background: '#231418',
                   color: '#FAF6F0',
+                  background: '#231418',
                   border: 'none',
-                  textAlign: 'center',
+                  cursor: 'pointer'
+                } : {
+                  textAlign: 'left',
+                  padding: '10px 16px',
+                  borderRadius: '9999px',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  color: '#594A4D',
+                  background: 'transparent',
+                  border: 'none',
                   cursor: 'pointer'
                 }}
               >
-                Student Login
+                {item.label}
               </button>
-            </div>
-          )}
-        </div>
-      )}
-    </header>
+            ))}
+
+            {user?.role === 'admin' && (
+              <button
+                onClick={() => handleNavClick('admin')}
+                style={{
+                  textAlign: 'left',
+                  padding: '10px 16px',
+                  borderRadius: '9999px',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  color: '#D97706',
+                  background: 'rgba(35, 20, 24, 0.04)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}
+              >
+                <ShieldCheck size={14} color="#D97706" />
+                <span>Admin Console</span>
+              </button>
+            )}
+
+            {!user && (
+              <div style={{ paddingTop: '12px', marginTop: '4px', borderTop: '1px solid #E5DBD0', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onOpenAdmission) onOpenAdmission();
+                  }}
+                  style={{
+                    width: '100%',
+                    padding: '10px 16px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    background: '#FFFFFF',
+                    border: '1px solid #E5DBD0',
+                    color: '#231418',
+                    textAlign: 'center',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Free Demo
+                </button>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onOpenAuth) onOpenAuth('student');
+                  }}
+                  style={{
+                    width: '100%',
+                    padding: '10px 16px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    background: '#231418',
+                    color: '#FAF6F0',
+                    border: 'none',
+                    textAlign: 'center',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Student Login
+                </button>
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }

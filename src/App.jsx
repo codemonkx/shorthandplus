@@ -10,6 +10,8 @@ import FloatingContactDock from './components/FloatingContactDock';
 import ProfileSettingsModal from './components/ProfileSettingsModal';
 import LegalPolicyModal from './components/LegalPolicyModal';
 import LandingPage from './views/LandingPage';
+import { ScrollProgressBar } from './components/MotionPrimitives';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Lazy-loaded heavy views and exam engines for high-performance code splitting
 const DictationRoom = lazy(() => import('./components/DictationRoom'));
@@ -761,6 +763,7 @@ export default function App() {
   if (publicTabs.includes(currentTab)) {
     return (
       <div className="public-website-shell">
+        <ScrollProgressBar />
         <Navbar
           currentTab={currentTab}
           setCurrentTab={setCurrentTab}
@@ -772,47 +775,57 @@ export default function App() {
         />
         <main className="public-main-content">
           <Suspense fallback={<LoadingFallback />}>
-            {currentTab === 'landing' && (
-              <LandingPage
-                onStartFullTest={handleStartStenoTest}
-                onOpenAuth={() => handleOpenAuth('student')}
-                onLoginSuccess={handleLoginSuccess}
-                onOpenCheckout={() => handleOpenCheckoutWithPlan()}
-                onSelectPlan={handleOpenCheckoutWithPlan}
-                onOpenAdmission={() => setAdmissionModalOpen(true)}
-                setCurrentTab={setCurrentTab}
-              />
-            )}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentTab}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {currentTab === 'landing' && (
+                  <LandingPage
+                    onStartFullTest={handleStartStenoTest}
+                    onOpenAuth={() => handleOpenAuth('student')}
+                    onLoginSuccess={handleLoginSuccess}
+                    onOpenCheckout={() => handleOpenCheckoutWithPlan()}
+                    onSelectPlan={handleOpenCheckoutWithPlan}
+                    onOpenAdmission={() => setAdmissionModalOpen(true)}
+                    setCurrentTab={setCurrentTab}
+                  />
+                )}
 
-            {currentTab === 'courses' && (
-              <CoursesPage
-                courses={academyCourses}
-                onSelectPlan={handleOpenCheckoutWithPlan}
-                onOpenCheckout={(plan) => handleOpenCheckoutWithPlan(plan)}
-                onOpenAdmission={() => setAdmissionModalOpen(true)}
-                setCurrentTab={setCurrentTab}
-              />
-            )}
+                {currentTab === 'courses' && (
+                  <CoursesPage
+                    courses={academyCourses}
+                    onSelectPlan={handleOpenCheckoutWithPlan}
+                    onOpenCheckout={(plan) => handleOpenCheckoutWithPlan(plan)}
+                    onOpenAdmission={() => setAdmissionModalOpen(true)}
+                    setCurrentTab={setCurrentTab}
+                  />
+                )}
 
-            {currentTab === 'classes' && (
-              <ClassesPage
-                onOpenCheckout={() => handleOpenCheckoutWithPlan()}
-                setCurrentTab={setCurrentTab}
-                onlineClasses={onlineClasses}
-                onSelectClass={(classId) => {
-                  setSelectedOnlineClassId(classId);
-                  setCurrentTab('online-classes');
-                }}
-              />
-            )}
+                {currentTab === 'classes' && (
+                  <ClassesPage
+                    onOpenCheckout={() => handleOpenCheckoutWithPlan()}
+                    setCurrentTab={setCurrentTab}
+                    onlineClasses={onlineClasses}
+                    onSelectClass={(classId) => {
+                      setSelectedOnlineClassId(classId);
+                      setCurrentTab('online-classes');
+                    }}
+                  />
+                )}
 
-            {currentTab === 'about' && (
-              <AboutAcademyView
-                onOpenCheckout={() => handleOpenCheckoutWithPlan()}
-                onOpenAdmission={() => setAdmissionModalOpen(true)}
-                setCurrentTab={setCurrentTab}
-              />
-            )}
+                {currentTab === 'about' && (
+                  <AboutAcademyView
+                    onOpenCheckout={() => handleOpenCheckoutWithPlan()}
+                    onOpenAdmission={() => setAdmissionModalOpen(true)}
+                    setCurrentTab={setCurrentTab}
+                  />
+                )}
+              </motion.div>
+            </AnimatePresence>
           </Suspense>
         </main>
         <Footer 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Play, 
   Pause,
@@ -21,7 +22,20 @@ import {
   Check,
   CheckCircle
 } from 'lucide-react';
+import { FadeUp, StaggerContainer, StaggerItem, AnimatedCounter, TRANSITION_EASE } from '../components/MotionPrimitives';
 import '../landing-redesign.css';
+
+const TRUST_EXAMS = [
+  'SSC Stenographer Grade C & D',
+  'Patna High Court PA',
+  'Civil Court Stenographer',
+  'EPFO Personal Assistant',
+  'DRDO Admin & Allied',
+  'BSSC Stenographer',
+  'Parliament Reporter',
+  'Supreme Court SPA',
+  'Allahabad High Court'
+];
 
 const TOP_FAQS = [
   {
@@ -99,7 +113,7 @@ export default function LandingPage({
     <div className="sp-landing-root">
       
       {/* =========================================================================
-          SECTION 1: EDITORIAL SPLIT HERO (WARM PARCHMENT)
+          SECTION 1: EDITORIAL SPLIT HERO (WARM CREAM #FBF8F3)
           ========================================================================= */}
       <section 
         className="sp-hero-section"
@@ -107,8 +121,8 @@ export default function LandingPage({
           backgroundColor: '#FBF8F3',
           color: '#231418',
           width: '100%',
-          paddingTop: '128px',
-          paddingBottom: '72px',
+          paddingTop: '104px',
+          paddingBottom: '48px',
           position: 'relative',
           overflow: 'hidden'
         }}
@@ -141,7 +155,7 @@ export default function LandingPage({
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(12, 1fr)',
-              gap: '48px',
+              gap: '40px',
               alignItems: 'center'
             }}
           >
@@ -158,60 +172,112 @@ export default function LandingPage({
               }}
             >
               {/* Eyebrow */}
-              <div 
+              <motion.div 
+                initial={{ opacity: 0.85, y: 6 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.3, ease: TRANSITION_EASE }}
                 style={{
                   fontSize: '11px',
                   fontWeight: 600,
                   textTransform: 'uppercase',
                   letterSpacing: '0.16em',
                   color: '#8A7B7E',
-                  marginBottom: '16px',
+                  marginBottom: '14px',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
                   flexWrap: 'wrap'
                 }}
               >
-                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
+                <span className="sp-live-pulse-dot" style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
                 <span>EST. 2012</span>
                 <span>&middot;</span>
                 <span>GAYA COLLEGE MORE</span>
                 <span>&middot;</span>
                 <span>12+ YEARS COACHING</span>
-              </div>
+              </motion.div>
 
               {/* H1 */}
-              <h1 
-                style={{
-                  color: '#231418',
-                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontWeight: 800,
-                  fontSize: 'clamp(2.25rem, 4vw, 3.45rem)',
-                  lineHeight: 1.08,
-                  letterSpacing: '-0.03em',
-                  margin: '0 0 20px 0'
-                }}
+              <motion.div 
+                initial={{ opacity: 0.85, y: 6 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.3, ease: TRANSITION_EASE }}
               >
-                The Gold Standard in{' '}
-                <span style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontStyle: 'italic', fontWeight: 400, color: '#991B1B' }}>Shorthand</span>{' '}
-                &amp; Typing for Govt. Exams
-              </h1>
+                <h1 
+                  style={{
+                    color: '#231418',
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                    fontWeight: 800,
+                    fontSize: 'clamp(2.25rem, 4vw, 3.45rem)',
+                    lineHeight: 1.08,
+                    letterSpacing: '-0.03em',
+                    margin: '0 0 18px 0'
+                  }}
+                >
+                  The Gold Standard in{' '}
+                  <span 
+                    style={{ 
+                      fontFamily: "'Instrument Serif', Georgia, serif", 
+                      fontStyle: 'italic', 
+                      fontWeight: 400, 
+                      color: '#991B1B',
+                      position: 'relative',
+                      display: 'inline-block'
+                    }}
+                  >
+                    Shorthand
+                    <svg 
+                      style={{
+                        position: 'absolute',
+                        left: 0,
+                        bottom: '-4px',
+                        width: '100%',
+                        height: '6px',
+                        overflow: 'visible',
+                        pointerEvents: 'none'
+                      }}
+                      viewBox="0 0 120 8" 
+                      fill="none"
+                    >
+                      <motion.path 
+                        d="M2 6C35 2 85 2 118 5" 
+                        stroke="#991B1B" 
+                        strokeWidth="2.5" 
+                        strokeLinecap="round" 
+                        initial={{ pathLength: 0, opacity: 0 }} 
+                        animate={{ pathLength: 1, opacity: 0.85 }} 
+                        transition={{ duration: 0.8, delay: 0.35, ease: TRANSITION_EASE }} 
+                      />
+                    </svg>
+                  </span>{' '}
+                  &amp; Typing for Govt. Exams
+                </h1>
+              </motion.div>
 
               {/* Subheadline */}
-              <p 
-                style={{
-                  color: '#594A4D',
-                  fontSize: '16px',
-                  lineHeight: 1.6,
-                  maxWidth: '580px',
-                  margin: '0 0 28px 0'
-                }}
+              <motion.div 
+                initial={{ opacity: 0.85, y: 6 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.3, ease: TRANSITION_EASE }}
               >
-                Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong style={{ color: '#231418', fontWeight: 700 }}>Shadab Sir</strong> with automated SSC error evaluation.
-              </p>
+                <p 
+                  style={{
+                    color: '#594A4D',
+                    fontSize: '16px',
+                    lineHeight: 1.6,
+                    maxWidth: '580px',
+                    margin: '0 0 24px 0'
+                  }}
+                >
+                  Master Pitman Shorthand (50–140 WPM), Hindi Kruti Dev &amp; Mangal typing, and legal dictations—guided by <strong style={{ color: '#231418', fontWeight: 700 }}>Shadab Sir</strong> with automated SSC error evaluation.
+                </p>
+              </motion.div>
 
               {/* Horizontal CTA Row */}
-              <div 
+              <motion.div 
+                initial={{ opacity: 0.85, y: 6 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.3, ease: TRANSITION_EASE }}
                 style={{
                   display: 'flex',
                   flexWrap: 'wrap',
@@ -219,9 +285,13 @@ export default function LandingPage({
                   gap: '12px'
                 }}
               >
-                <button
+                <motion.button
                   type="button"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.15 }}
                   onClick={handleStartTests}
+                  className="group"
                   style={{
                     background: '#991B1B',
                     color: '#FFFFFF',
@@ -235,18 +305,21 @@ export default function LandingPage({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    boxShadow: '0 1px 3px rgba(153, 27, 27, 0.25)',
+                    boxShadow: '0 2px 8px rgba(153, 27, 27, 0.25)',
                     transition: 'background-color 0.15s ease'
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#7F1D1D'}
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#991B1B'}
                 >
                   <span>Start Audio Dictation</span>
-                  <ArrowRight size={16} />
-                </button>
+                  <ArrowRight size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
+                </motion.button>
 
-                <button
+                <motion.button
                   type="button"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.15 }}
                   onClick={handleExploreCourses}
                   style={{
                     background: '#FFFFFF',
@@ -261,17 +334,20 @@ export default function LandingPage({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    boxShadow: '0 1px 2px rgba(22, 22, 26, 0.05)',
+                    boxShadow: '0 1px 3px rgba(22, 22, 26, 0.05)',
                     transition: 'background-color 0.15s ease'
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FAF8F5'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F7F5F0'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FFFFFF'}
                 >
                   <span>Explore Courses</span>
-                </button>
+                </motion.button>
 
-                <button
+                <motion.button
                   type="button"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.15 }}
                   onClick={handleOpenDemo}
                   style={{
                     background: 'none',
@@ -285,17 +361,20 @@ export default function LandingPage({
                     transition: 'color 0.15s ease'
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.color = '#991B1B'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = '#44403C'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#594A4D'}
                 >
                   Book 3 Free Demos &rarr;
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
 
               {/* Pricing & Timing Reassurance micro-line */}
-              <div 
+              <motion.div 
+                initial={{ opacity: 0.85, y: 6 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.3, ease: TRANSITION_EASE }}
                 style={{
-                  marginTop: '20px',
-                  paddingTop: '16px',
+                  marginTop: '18px',
+                  paddingTop: '14px',
                   borderTop: '1px solid #E8DFD3',
                   width: '100%',
                   maxWidth: '580px'
@@ -311,7 +390,7 @@ export default function LandingPage({
                 >
                   Online passes from &#8377;30 &middot; Offline &amp; Live Google Meet batches &middot; 3 Free Demo Classes
                 </p>
-              </div>
+              </motion.div>
             </div>
 
             {/* Right Column (lg:col-span-6) */}
@@ -325,7 +404,10 @@ export default function LandingPage({
                 justifyContent: 'center'
               }}
             >
-              <div 
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.96, y: 16 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.65, ease: TRANSITION_EASE }}
                 style={{
                   width: '100%',
                   borderRadius: '16px',
@@ -337,17 +419,21 @@ export default function LandingPage({
                   boxSizing: 'border-box'
                 }}
               >
-                <img 
-                  src="/assets/institution-hero.jpg" 
-                  alt="Shorthand Plus Stenography Classroom &amp; Typing Lab" 
-                  style={{
-                    width: '100%',
-                    aspectRatio: '4 / 3',
-                    objectFit: 'cover',
-                    borderRadius: '10px',
-                    display: 'block'
-                  }}
-                />
+                <div style={{ overflow: 'hidden', borderRadius: '10px' }}>
+                  <img 
+                    src="/assets/institution-hero.jpg" 
+                    alt="Shorthand Plus Stenography Classroom &amp; Typing Lab" 
+                    style={{
+                      width: '100%',
+                      aspectRatio: '4 / 3',
+                      objectFit: 'cover',
+                      display: 'block',
+                      transition: 'transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
+                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                  />
+                </div>
                 <div 
                   style={{
                     padding: '10px 14px 4px 14px',
@@ -363,21 +449,22 @@ export default function LandingPage({
                   </div>
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#991B1B', fontWeight: 600, fontSize: '11px', letterSpacing: '0.04em' }}>50&ndash;140 WPM &middot; GAYA</span>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Step 3: Exam Authority Strip (Directly Below Hero, Seamless Transition) */}
+      {/* Step 3: Exam Authority Strip (Continuous Seamless Marquee) */}
       <div 
         style={{
           background: '#EFE7DC',
           borderTop: '1px solid #E3D9CC',
           borderBottom: '1px solid #E3D9CC',
-          padding: '16px 0',
+          padding: '12px 0',
           width: '100%',
-          margin: 0
+          margin: 0,
+          overflow: 'hidden'
         }}
       >
         <div 
@@ -387,10 +474,8 @@ export default function LandingPage({
             paddingLeft: '24px',
             paddingRight: '24px',
             display: 'flex',
-            flexWrap: 'wrap',
             alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '16px'
+            gap: '24px'
           }}
         >
           <span 
@@ -399,34 +484,42 @@ export default function LandingPage({
               textTransform: 'uppercase',
               letterSpacing: '0.14em',
               color: '#8A7B7E',
-              fontWeight: 600,
-              whiteSpace: 'nowrap'
-            }}
-          >
-            PREPARING ASPIRANTS FOR
-          </span>
-          <div 
-            style={{
+              fontWeight: 700,
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
               display: 'flex',
-              flexWrap: 'wrap',
               alignItems: 'center',
-              gap: '24px',
-              color: '#231418',
-              fontSize: '13px',
-              fontWeight: 600
+              gap: '6px'
             }}
           >
-            <span>SSC Stenographer</span>
-            <span style={{ color: '#C9BCB0' }}>&middot;</span>
-            <span>Patna High Court</span>
-            <span style={{ color: '#C9BCB0' }}>&middot;</span>
-            <span>Civil Court</span>
-            <span style={{ color: '#C9BCB0' }}>&middot;</span>
-            <span>EPFO</span>
-            <span style={{ color: '#C9BCB0' }}>&middot;</span>
-            <span>DRDO</span>
-            <span style={{ color: '#C9BCB0' }}>&middot;</span>
-            <span>BSSC</span>
+            <span>PREPARING FOR:</span>
+          </span>
+
+          <div className="sp-marquee-wrapper" style={{ flex: 1, minWidth: 0 }}>
+            <div className="sp-marquee-track">
+              {/* Set 1 */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '28px', paddingRight: '28px' }}>
+                {TRUST_EXAMS.map((exam, idx) => (
+                  <React.Fragment key={`e1-${idx}`}>
+                    <span style={{ color: '#231418', fontSize: '13px', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                      {exam}
+                    </span>
+                    <span style={{ color: '#C9BCB0' }}>&middot;</span>
+                  </React.Fragment>
+                ))}
+              </div>
+              {/* Set 2 (for continuous seamless loop) */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '28px', paddingRight: '28px' }}>
+                {TRUST_EXAMS.map((exam, idx) => (
+                  <React.Fragment key={`e2-${idx}`}>
+                    <span style={{ color: '#231418', fontSize: '13px', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                      {exam}
+                    </span>
+                    <span style={{ color: '#C9BCB0' }}>&middot;</span>
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -438,7 +531,7 @@ export default function LandingPage({
         className="sp-engine-section"
         style={{
           background: '#FBF8F3',
-          padding: '80px 0',
+          padding: '56px 0',
           width: '100%',
           borderTop: '1px solid #E8DFD3'
         }}
@@ -452,43 +545,45 @@ export default function LandingPage({
           }}
         >
           {/* Header (Left-aligned, max-w-2xl) */}
-          <div style={{ maxWidth: '680px', marginBottom: '40px', textAlign: 'left' }}>
-            <span 
-              style={{
-                fontSize: '11px',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.16em',
-                color: '#8A7B7E',
-                marginBottom: '8px',
-                display: 'block'
-              }}
-            >
-              THE SHORTHAND PLUS PLATFORM
-            </span>
-            <h2 
-              style={{
-                fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
-                fontWeight: 800,
-                color: '#231418',
-                lineHeight: 1.15,
-                letterSpacing: '-0.025em',
-                margin: '0 0 12px 0'
-              }}
-            >
-              Built like the actual exam hall, down to every keystroke.
-            </h2>
-            <p 
-              style={{
-                fontSize: '15px',
-                color: '#8A7B7E',
-                lineHeight: 1.6,
-                margin: 0
-              }}
-            >
-              Experience the dual-stage examination simulation trusted by Bihar's top stenography qualifiers:
-            </p>
-          </div>
+          <FadeUp>
+            <div style={{ maxWidth: '680px', marginBottom: '32px', textAlign: 'left' }}>
+              <span 
+                style={{
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.16em',
+                  color: '#8A7B7E',
+                  marginBottom: '8px',
+                  display: 'block'
+                }}
+              >
+                THE SHORTHAND PLUS PLATFORM
+              </span>
+              <h2 
+                style={{
+                  fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
+                  fontWeight: 800,
+                  color: '#231418',
+                  lineHeight: 1.15,
+                  letterSpacing: '-0.025em',
+                  margin: '0 0 10px 0'
+                }}
+              >
+                Built like the actual exam hall, down to every keystroke.
+              </h2>
+              <p 
+                style={{
+                  fontSize: '15px',
+                  color: '#8A7B7E',
+                  lineHeight: 1.6,
+                  margin: 0
+                }}
+              >
+                Experience the dual-stage examination simulation trusted by Bihar's top stenography qualifiers:
+              </p>
+            </div>
+          </FadeUp>
 
           {/* 2-Column Interactive Split (lg:grid-cols-12 gap-10 items-start) */}
           <div 
@@ -496,7 +591,7 @@ export default function LandingPage({
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(12, 1fr)',
-              gap: '40px',
+              gap: '36px',
               alignItems: 'start'
             }}
           >
@@ -508,7 +603,7 @@ export default function LandingPage({
                 minWidth: 0,
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '12px'
+                gap: '10px'
               }}
             >
               {/* Tab 0 */}
@@ -523,13 +618,13 @@ export default function LandingPage({
                   borderBottom: '1px solid #E8DFD3',
                   borderLeft: '3px solid #991B1B',
                   borderRadius: '12px',
-                  padding: '20px',
+                  padding: '18px 20px',
                   boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
                   cursor: 'pointer',
                   textAlign: 'left',
                   transition: 'all 0.2s'
                 } : {
-                  padding: '18px 20px',
+                  padding: '16px 20px',
                   borderBottom: '1px solid #E8DFD3',
                   cursor: 'pointer',
                   textAlign: 'left',
@@ -612,13 +707,13 @@ export default function LandingPage({
                   borderBottom: '1px solid #E8DFD3',
                   borderLeft: '3px solid #991B1B',
                   borderRadius: '12px',
-                  padding: '20px',
+                  padding: '18px 20px',
                   boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
                   cursor: 'pointer',
                   textAlign: 'left',
                   transition: 'all 0.2s'
                 } : {
-                  padding: '18px 20px',
+                  padding: '16px 20px',
                   borderBottom: '1px solid #E8DFD3',
                   cursor: 'pointer',
                   textAlign: 'left',
@@ -701,13 +796,13 @@ export default function LandingPage({
                   borderBottom: '1px solid #E8DFD3',
                   borderLeft: '3px solid #991B1B',
                   borderRadius: '12px',
-                  padding: '20px',
+                  padding: '18px 20px',
                   boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
                   cursor: 'pointer',
                   textAlign: 'left',
                   transition: 'all 0.2s'
                 } : {
-                  padding: '18px 20px',
+                  padding: '16px 20px',
                   borderBottom: '1px solid #E8DFD3',
                   cursor: 'pointer',
                   textAlign: 'left',
@@ -788,7 +883,11 @@ export default function LandingPage({
                 width: '100%'
               }}
             >
-              <div 
+              <motion.div 
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, ease: TRANSITION_EASE }}
                 style={{
                   background: '#FFFFFF',
                   border: '1px solid #E8DFD3',
@@ -845,329 +944,350 @@ export default function LandingPage({
                       padding: '3px 8px'
                     }}
                   >
-                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#059669', display: 'inline-block' }} />
+                    <span className="sp-live-pulse-dot" style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#059669', display: 'inline-block' }} />
                     <span>EXAM ACTIVE</span>
                   </div>
                 </div>
 
                 {/* Mockup Body (padding: 24px) */}
                 <div style={{ padding: '24px', background: '#FFFFFF' }}>
-                  
-                  {/* Tab 0 Preview */}
-                  {activeEngineTab === 0 && (
-                    <div>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
-                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#991B1B' }}>
-                          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#991B1B', display: 'inline-block' }} />
-                          LIVE DICTATION
-                        </span>
-                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12px', color: '#8A7B7E' }}>Track ID: PHC-LEGAL-104</span>
-                      </div>
-
-                      <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: '14px 0 4px 0' }}>
-                        Patna High Court Legal Dictation &middot; 100 WPM
-                      </h4>
-                      <p style={{ fontSize: '13px', color: '#8A7B7E', margin: '0 0 16px 0' }}>
-                        Case Law: Cr. Misc. Petitions &middot; Kailash Chandra Vol. 14 Calibration
-                      </p>
-
-                      {/* Speed Selector */}
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '12px 0' }}>
-                        <span style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A7B7E' }}>CALIBRATED SPEED:</span>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #E8DFD3', color: '#8A7B7E' }}>80 WPM</span>
-                          <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#231418', color: '#FFFFFF' }}>100 WPM</span>
-                          <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #E8DFD3', color: '#8A7B7E' }}>120 WPM</span>
-                        </div>
-                      </div>
-
-                      {/* Waveform Player inside bordered panel */}
-                      <div 
-                        style={{
-                          background: '#FBF8F3',
-                          border: '1px solid #E8DFD3',
-                          borderRadius: '12px',
-                          padding: '16px',
-                          margin: '16px 0',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '16px'
-                        }}
+                  <AnimatePresence mode="wait">
+                    {/* Tab 0 Preview */}
+                    {activeEngineTab === 0 && (
+                      <motion.div
+                        key="tab-0"
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.2, ease: TRANSITION_EASE }}
                       >
-                        <button
-                          type="button"
-                          onClick={() => setIsPlayingAudioPreview(!isPlayingAudioPreview)}
-                          title="Toggle Audio Simulation"
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#991B1B' }}>
+                            <span className="sp-live-pulse-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#991B1B', display: 'inline-block' }} />
+                            LIVE DICTATION
+                          </span>
+                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12px', color: '#8A7B7E' }}>Track ID: PHC-LEGAL-104</span>
+                        </div>
+
+                        <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: '14px 0 4px 0' }}>
+                          Patna High Court Legal Dictation &middot; 100 WPM
+                        </h4>
+                        <p style={{ fontSize: '13px', color: '#8A7B7E', margin: '0 0 16px 0' }}>
+                          Case Law: Cr. Misc. Petitions &middot; Kailash Chandra Vol. 14 Calibration
+                        </p>
+
+                        {/* Speed Selector */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '12px 0' }}>
+                          <span style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A7B7E' }}>CALIBRATED SPEED:</span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #E8DFD3', color: '#8A7B7E' }}>80 WPM</span>
+                            <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#231418', color: '#FFFFFF' }}>100 WPM</span>
+                            <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #E8DFD3', color: '#8A7B7E' }}>120 WPM</span>
+                          </div>
+                        </div>
+
+                        {/* Waveform Player inside bordered panel */}
+                        <div 
                           style={{
-                            width: '44px',
-                            height: '44px',
-                            borderRadius: '50%',
-                            background: '#231418',
-                            border: 'none',
-                            color: '#FFFFFF',
-                            cursor: 'pointer',
+                            background: '#FBF8F3',
+                            border: '1px solid #E8DFD3',
+                            borderRadius: '12px',
+                            padding: '16px',
+                            margin: '16px 0',
                             display: 'flex',
                             alignItems: 'center',
-                            justifyContent: 'center',
-                            flexShrink: 0
+                            gap: '16px'
                           }}
                         >
-                          {isPlayingAudioPreview ? <Pause size={18} fill="#FFFFFF" /> : <Play size={18} fill="#FFFFFF" />}
-                        </button>
+                          <motion.button
+                            type="button"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setIsPlayingAudioPreview(!isPlayingAudioPreview)}
+                            title="Toggle Audio Simulation"
+                            style={{
+                              width: '44px',
+                              height: '44px',
+                              borderRadius: '50%',
+                              background: '#231418',
+                              border: 'none',
+                              color: '#FFFFFF',
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              flexShrink: 0,
+                              boxShadow: '0 2px 8px rgba(35, 20, 24, 0.15)'
+                            }}
+                          >
+                            {isPlayingAudioPreview ? <Pause size={18} fill="#FFFFFF" /> : <Play size={18} fill="#FFFFFF" />}
+                          </motion.button>
 
-                        <div style={{ flex: 1, height: '36px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                          {[40, 65, 30, 85, 95, 60, 45, 90, 100, 75, 40, 80, 60, 95, 50, 85, 30, 70, 90, 45].map((height, i) => (
-                            <span 
-                              key={i} 
-                              style={{
-                                flex: 1,
-                                height: `${height}%`,
-                                borderRadius: '2px',
-                                background: isPlayingAudioPreview && i < 12 ? '#991B1B' : '#DED8CC',
-                                transition: 'background-color 0.2s'
-                              }}
-                            />
-                          ))}
+                          <div style={{ flex: 1, height: '36px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            {[40, 65, 30, 85, 95, 60, 45, 90, 100, 75, 40, 80, 60, 95, 50, 85, 30, 70, 90, 45].map((height, i) => (
+                              <span 
+                                key={i} 
+                                style={{
+                                  flex: 1,
+                                  height: isPlayingAudioPreview ? `${Math.min(100, Math.max(25, (height + ((i % 4) * 12) * (i % 2 === 0 ? 1 : -0.5))))}%` : `${height}%`,
+                                  borderRadius: '2px',
+                                  background: isPlayingAudioPreview && i < 14 ? '#991B1B' : '#DED8CC',
+                                  transition: 'height 0.25s ease, background-color 0.2s ease'
+                                }}
+                              />
+                            ))}
+                          </div>
+
+                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '13px', fontWeight: 600, color: '#231418', flexShrink: 0 }}>
+                            {isPlayingAudioPreview ? "02:14 / 05:00" : "00:00 / 05:00"}
+                          </span>
                         </div>
 
-                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '13px', fontWeight: 600, color: '#231418', flexShrink: 0 }}>
-                          {isPlayingAudioPreview ? "02:14 / 05:00" : "00:00 / 05:00"}
-                        </span>
-                      </div>
-
-                      {/* Bottom Footer Row */}
-                      <div 
-                        style={{
-                          marginTop: '20px',
-                          paddingTop: '16px',
-                          borderTop: '1px solid #E8DFD3',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                          gap: '16px',
-                          flexWrap: 'wrap'
-                        }}
-                      >
-                        <span style={{ fontSize: '12px', color: '#8A7B7E' }}>Strict Single-Play Protocol: Audio plays once without rewind or pause.</span>
-                        <button
-                          type="button"
-                          onClick={handleStartTests}
+                        {/* Bottom Footer Row */}
+                        <div 
                           style={{
-                            whiteSpace: 'nowrap',
-                            flexShrink: 0,
-                            background: 'none',
-                            border: 'none',
-                            color: '#231418',
-                            fontWeight: 600,
-                            fontSize: '13px',
-                            cursor: 'pointer',
-                            display: 'inline-flex',
+                            marginTop: '20px',
+                            paddingTop: '16px',
+                            borderTop: '1px solid #E8DFD3',
+                            display: 'flex',
                             alignItems: 'center',
-                            gap: '6px'
+                            justifyContent: 'space-between',
+                            gap: '16px',
+                            flexWrap: 'wrap'
                           }}
                         >
-                          <span>Open Full Dictation Lab &rarr;</span>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Tab 1 Preview (Bilingual Typing Studio) */}
-                  {activeEngineTab === 1 && (
-                    <div>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
-                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#991B1B' }}>
-                          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#991B1B', display: 'inline-block' }} />
-                          TYPING BENCHMARK
-                        </span>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#231418', color: '#FFFFFF' }}>Kruti Dev 010</span>
-                          <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #E8DFD3', color: '#8A7B7E' }}>Mangal Inscript</span>
-                          <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #E8DFD3', color: '#8A7B7E' }}>English QWERTY</span>
+                          <span style={{ fontSize: '12px', color: '#8A7B7E' }}>Strict Single-Play Protocol: Audio plays once without rewind or pause.</span>
+                          <button
+                            type="button"
+                            onClick={handleStartTests}
+                            style={{
+                              whiteSpace: 'nowrap',
+                              flexShrink: 0,
+                              background: 'none',
+                              border: 'none',
+                              color: '#231418',
+                              fontWeight: 600,
+                              fontSize: '13px',
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '6px'
+                            }}
+                          >
+                            <span>Open Full Dictation Lab &rarr;</span>
+                          </button>
                         </div>
-                      </div>
+                      </motion.div>
+                    )}
 
-                      {/* 4 Metrics in clean 4-column HUD grid */}
-                      <div 
-                        className="sp-telemetry-4col"
-                        style={{
-                          display: 'grid',
-                          gridTemplateColumns: 'repeat(4, 1fr)',
-                          gap: '12px',
-                          margin: '16px 0'
-                        }}
+                    {/* Tab 1 Preview (Bilingual Typing Studio) */}
+                    {activeEngineTab === 1 && (
+                      <motion.div
+                        key="tab-1"
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.2, ease: TRANSITION_EASE }}
                       >
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
-                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>GROSS SPEED</span>
-                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#231418' }}>48.2 <span style={{ fontSize: '12px', color: '#8A7B7E', fontWeight: 500 }}>WPM</span></span>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#991B1B' }}>
+                            <span className="sp-live-pulse-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#991B1B', display: 'inline-block' }} />
+                            TYPING BENCHMARK
+                          </span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#231418', color: '#FFFFFF' }}>Kruti Dev 010</span>
+                            <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #E8DFD3', color: '#8A7B7E' }}>Mangal Inscript</span>
+                            <span style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, background: '#FFFFFF', border: '1px solid #E8DFD3', color: '#8A7B7E' }}>English QWERTY</span>
+                          </div>
                         </div>
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
-                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>NET ACCURACY</span>
-                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#047857' }}>98.4%</span>
-                        </div>
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
-                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>BACKSPACE LOCK</span>
-                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#991B1B' }}>ENFORCED</span>
-                        </div>
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
-                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>TIME REMAINING</span>
-                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#231418' }}>07:45</span>
-                        </div>
-                      </div>
 
-                      {/* Simulated Text Transcription Input Box */}
-                      <div style={{ background: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '10px', padding: '16px', fontSize: '15px', margin: '16px 0', lineHeight: 1.7 }}>
-                        <p className="font-hindi" style={{ color: '#8A7B7E', margin: '0 0 8px 0' }}>
-                          न्यायालय के आदेशानुसार उक्त याचिका पर सुनवाई करते हुए न्यायाधीश महोदय ने स्पष्ट किया कि...
-                        </p>
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                          <span className="font-hindi" style={{ color: '#231418', fontWeight: 600 }}>न्यायालय के आदेशानुसार उक्त</span>
-                          <span style={{ display: 'inline-block', width: '2px', height: '1.2em', background: '#991B1B', marginLeft: '3px' }} />
-                        </div>
-                      </div>
-
-                      {/* Bottom Footer Row */}
-                      <div 
-                        style={{
-                          marginTop: '20px',
-                          paddingTop: '16px',
-                          borderTop: '1px solid #E8DFD3',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                          gap: '16px',
-                          flexWrap: 'wrap'
-                        }}
-                      >
-                        <span style={{ fontSize: '12px', color: '#8A7B7E' }}>Strict Backspace Lock: Eliminates bad editing habits during live preparation.</span>
-                        <button
-                          type="button"
-                          onClick={() => setCurrentTab && setCurrentTab('typing-studio')}
+                        {/* 4 Metrics in clean 4-column HUD grid */}
+                        <div 
+                          className="sp-telemetry-4col"
                           style={{
-                            whiteSpace: 'nowrap',
-                            flexShrink: 0,
-                            background: 'none',
-                            border: 'none',
-                            color: '#231418',
-                            fontWeight: 600,
-                            fontSize: '13px',
-                            cursor: 'pointer',
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '6px'
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(4, 1fr)',
+                            gap: '12px',
+                            margin: '16px 0'
                           }}
                         >
-                          <span>Launch Typing Engine &rarr;</span>
-                        </button>
-                      </div>
-                    </div>
-                  )}
+                          <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
+                            <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>GROSS SPEED</span>
+                            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#231418' }}>48.2 <span style={{ fontSize: '12px', color: '#8A7B7E', fontWeight: 500 }}>WPM</span></span>
+                          </div>
+                          <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
+                            <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>NET ACCURACY</span>
+                            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#047857' }}>98.4%</span>
+                          </div>
+                          <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
+                            <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>BACKSPACE LOCK</span>
+                            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#991B1B' }}>ENFORCED</span>
+                          </div>
+                          <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
+                            <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>TIME REMAINING</span>
+                            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 700, color: '#231418' }}>07:45</span>
+                          </div>
+                        </div>
 
-                  {/* Tab 2 Preview (Automated SSC Error Evaluation Diff) */}
-                  {activeEngineTab === 2 && (
-                    <div>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
-                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#047857' }}>
-                          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#059669', display: 'inline-block' }} />
-                          FORENSIC AUDIT
-                        </span>
-                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12px', color: '#8A7B7E' }}>SSC Grade C &middot; 100 WPM</span>
-                      </div>
+                        {/* Simulated Text Transcription Input Box */}
+                        <div style={{ background: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '10px', padding: '16px', fontSize: '15px', margin: '16px 0', lineHeight: 1.7 }}>
+                          <p className="font-hindi" style={{ color: '#8A7B7E', margin: '0 0 8px 0' }}>
+                            न्यायालय के आदेशानुसार उक्त याचिका पर सुनवाई करते हुए न्यायाधीश महोदय ने स्पष्ट किया कि...
+                          </p>
+                          <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <span className="font-hindi" style={{ color: '#231418', fontWeight: 600 }}>न्यायालय के आदेशानुसार उक्त</span>
+                            <span className="sp-blinking-caret" style={{ display: 'inline-block', width: '2px', height: '1.2em', background: '#991B1B', marginLeft: '3px' }} />
+                          </div>
+                        </div>
 
-                      {/* Diff Inspection Passage inside bordered panel */}
-                      <div style={{ background: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '16px', margin: '16px 0', fontSize: '14px', lineHeight: 1.7 }}>
-                        <p style={{ color: '#231418', margin: 0 }}>
-                          The proceedings of the{' '}
-                          <del style={{ background: '#FEE2E2', color: '#B91C1C', textDecoration: 'line-through', padding: '2px 6px', borderRadius: '4px', fontWeight: 600 }} title="Full Mistake: Word Omitted">
-                            honorable
-                          </del>{' '}
-                          court were adjourned today after hearing the{' '}
-                          <span style={{ borderBottom: '2px solid #F59E0B', background: '#FEF3C7', color: '#B45309', padding: '1px 5px', borderRadius: '2px', fontWeight: 600 }} title="Half Mistake: Spelling typo">
-                            parlimentary
-                          </span>{' '}
-                          arguments presented in the constitutional writ petition without any unnecessary delay.
-                        </p>
-                      </div>
-
-                      {/* Legend */}
-                      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '16px', fontSize: '12px', color: '#8A7B7E', margin: '12px 0' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#F87171', display: 'inline-block' }} />
-                          <span>Full Mistake (Omission / Addition) &middot; -1.0</span>
-                        </div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#FBBF24', display: 'inline-block' }} />
-                          <span>Half Mistake (Spelling / Case) &middot; -0.5</span>
-                        </div>
-                      </div>
-
-                      {/* Score Summary Metrics: 4-Column Grid inside bordered panels */}
-                      <div 
-                        className="sp-telemetry-4col"
-                        style={{
-                          display: 'grid',
-                          gridTemplateColumns: 'repeat(4, 1fr)',
-                          gap: '12px',
-                          margin: '16px 0'
-                        }}
-                      >
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
-                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>FULL MISTAKES</span>
-                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#231418' }}>1 (Omission)</span>
-                        </div>
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
-                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>HALF MISTAKES</span>
-                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#231418' }}>1 (Spelling)</span>
-                        </div>
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
-                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>TOTAL ERROR RATE</span>
-                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#047857' }}>1.5%</span>
-                        </div>
-                        <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
-                          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>NET ACCURACY</span>
-                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#231418' }}>98.5%</span>
-                        </div>
-                      </div>
-
-                      {/* Bottom Footer Row */}
-                      <div 
-                        style={{
-                          marginTop: '20px',
-                          paddingTop: '16px',
-                          borderTop: '1px solid #E8DFD3',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                          gap: '16px',
-                          flexWrap: 'wrap'
-                        }}
-                      >
-                        <span style={{ fontSize: '12px', color: '#8A7B7E' }}>Full SSC Standard: Certified evaluation matching official Staff Selection Commission rules.</span>
-                        <button 
-                          type="button" 
-                          onClick={handleStartTests}
+                        {/* Bottom Footer Row */}
+                        <div 
                           style={{
-                            whiteSpace: 'nowrap',
-                            flexShrink: 0,
-                            background: 'none',
-                            border: 'none',
-                            color: '#231418',
-                            fontWeight: 600,
-                            fontSize: '13px',
-                            cursor: 'pointer',
-                            display: 'inline-flex',
+                            marginTop: '20px',
+                            paddingTop: '16px',
+                            borderTop: '1px solid #E8DFD3',
+                            display: 'flex',
                             alignItems: 'center',
-                            gap: '6px'
+                            justifyContent: 'space-between',
+                            gap: '16px',
+                            flexWrap: 'wrap'
                           }}
                         >
-                          <span>Try Full Mock Exam &rarr;</span>
-                        </button>
-                      </div>
-                    </div>
-                  )}
+                          <span style={{ fontSize: '12px', color: '#8A7B7E' }}>Strict Backspace Lock: Eliminates bad editing habits during live preparation.</span>
+                          <button
+                            type="button"
+                            onClick={() => setCurrentTab && setCurrentTab('typing-studio')}
+                            style={{
+                              whiteSpace: 'nowrap',
+                              flexShrink: 0,
+                              background: 'none',
+                              border: 'none',
+                              color: '#231418',
+                              fontWeight: 600,
+                              fontSize: '13px',
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '6px'
+                            }}
+                          >
+                            <span>Launch Typing Engine &rarr;</span>
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
 
+                    {/* Tab 2 Preview (Automated SSC Error Evaluation Diff) */}
+                    {activeEngineTab === 2 && (
+                      <motion.div
+                        key="tab-2"
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.2, ease: TRANSITION_EASE }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#047857' }}>
+                            <span className="sp-live-pulse-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#059669', display: 'inline-block' }} />
+                            FORENSIC AUDIT
+                          </span>
+                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12px', color: '#8A7B7E' }}>SSC Grade C &middot; 100 WPM</span>
+                        </div>
+
+                        {/* Diff Inspection Passage inside bordered panel */}
+                        <div style={{ background: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '16px', margin: '16px 0', fontSize: '14px', lineHeight: 1.7 }}>
+                          <p style={{ color: '#231418', margin: 0 }}>
+                            The proceedings of the{' '}
+                            <del style={{ background: '#FEE2E2', color: '#B91C1C', textDecoration: 'line-through', padding: '2px 6px', borderRadius: '4px', fontWeight: 600 }} title="Full Mistake: Word Omitted">
+                              honorable
+                            </del>{' '}
+                            court were adjourned today after hearing the{' '}
+                            <span style={{ borderBottom: '2px solid #F59E0B', background: '#FEF3C7', color: '#B45309', padding: '1px 5px', borderRadius: '2px', fontWeight: 600 }} title="Half Mistake: Spelling typo">
+                              parlimentary
+                            </span>{' '}
+                            arguments presented in the constitutional writ petition without any unnecessary delay.
+                          </p>
+                        </div>
+
+                        {/* Legend */}
+                        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '16px', fontSize: '12px', color: '#8A7B7E', margin: '12px 0' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#F87171', display: 'inline-block' }} />
+                            <span>Full Mistake (Omission / Addition) &middot; -1.0</span>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#FBBF24', display: 'inline-block' }} />
+                            <span>Half Mistake (Spelling / Case) &middot; -0.5</span>
+                          </div>
+                        </div>
+
+                        {/* Score Summary Metrics: 4-Column Grid inside bordered panels */}
+                        <div 
+                          className="sp-telemetry-4col"
+                          style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(4, 1fr)',
+                            gap: '12px',
+                            margin: '16px 0'
+                          }}
+                        >
+                          <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
+                            <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>FULL MISTAKES</span>
+                            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#231418' }}>1 (Omission)</span>
+                          </div>
+                          <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
+                            <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>HALF MISTAKES</span>
+                            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#231418' }}>1 (Spelling)</span>
+                          </div>
+                          <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
+                            <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>TOTAL ERROR RATE</span>
+                            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#047857' }}>1.5%</span>
+                          </div>
+                          <div style={{ background: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '12px', padding: '14px' }}>
+                            <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', marginBottom: '4px', display: 'block' }}>NET ACCURACY</span>
+                            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '17px', fontWeight: 700, color: '#231418' }}>98.5%</span>
+                          </div>
+                        </div>
+
+                        {/* Bottom Footer Row */}
+                        <div 
+                          style={{
+                            marginTop: '20px',
+                            paddingTop: '16px',
+                            borderTop: '1px solid #E8DFD3',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            gap: '16px',
+                            flexWrap: 'wrap'
+                          }}
+                        >
+                          <span style={{ fontSize: '12px', color: '#8A7B7E' }}>Full SSC Standard: Certified evaluation matching official Staff Selection Commission rules.</span>
+                          <button 
+                            type="button" 
+                            onClick={handleStartTests}
+                            style={{
+                              whiteSpace: 'nowrap',
+                              flexShrink: 0,
+                              background: 'none',
+                              border: 'none',
+                              color: '#231418',
+                              fontWeight: 600,
+                              fontSize: '13px',
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '6px'
+                            }}
+                          >
+                            <span>Try Full Mock Exam &rarr;</span>
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
           </div>
@@ -1181,53 +1301,88 @@ export default function LandingPage({
       <section className="sp-timeline-section bg-[#EFE7DC] border-t border-[#E3D9CC]">
         <div className="sp-container">
           
-          <div className="sp-timeline-head-row">
-            <div>
-              <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
-                PEDAGOGICAL ROADMAP
-              </span>
-              <h2 className="sp-section-h2" style={{ textAlign: 'left', margin: 0 }}>
-                From First Outline to Final Selection.
-              </h2>
+          <FadeUp>
+            <div className="sp-timeline-head-row">
+              <div>
+                <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
+                  PEDAGOGICAL ROADMAP
+                </span>
+                <h2 className="sp-section-h2" style={{ textAlign: 'left', margin: 0 }}>
+                  From First Outline to Final Selection.
+                </h2>
+              </div>
+              <button
+                type="button"
+                className="sp-timeline-all-courses-link group"
+                onClick={handleExploreCourses}
+              >
+                <span>View All Courses</span>
+                <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
+              </button>
             </div>
-            <button
-              type="button"
-              className="sp-timeline-all-courses-link"
-              onClick={handleExploreCourses}
-            >
-              <span>View All Courses</span>
-              <ArrowRight size={15} />
-            </button>
-          </div>
+          </FadeUp>
+
+          {/* Animated Connecting Rule */}
+          <motion.div 
+            initial={{ scaleX: 0 }} 
+            whileInView={{ scaleX: 1 }} 
+            viewport={{ once: true, amount: 0.2 }} 
+            transition={{ duration: 0.8, ease: TRANSITION_EASE }} 
+            style={{ 
+              transformOrigin: '0% 50%', 
+              height: '2px', 
+              background: '#DFD4C6', 
+              width: '100%', 
+              marginBottom: '1.25rem' 
+            }} 
+          />
 
           <div className="sp-timeline-grid">
             
             {/* Step 1 */}
-            <div className="sp-timeline-col border-t-2 border-[#E8DFD3]">
-              <span className="sp-timeline-num text-[#8A7B7E] font-bold">01</span>
-              <h3 className="sp-timeline-title">Listen &amp; Write Shorthand</h3>
-              <p className="sp-timeline-desc">
-                Take calibrated live or studio dictations in your physical stenography notebook at <strong>60 to 140 WPM</strong>. Master light/dark stroke discrimination and phraseography without hesitations.
-              </p>
-            </div>
+            <FadeUp delay={0}>
+              <motion.div 
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="sp-timeline-col border-t-2 border-[#E8DFD3]"
+              >
+                <span className="sp-timeline-num text-[#8A7B7E] font-bold">01</span>
+                <h3 className="sp-timeline-title">Listen &amp; Write Shorthand</h3>
+                <p className="sp-timeline-desc">
+                  Take calibrated live or studio dictations in your physical stenography notebook at <strong>60 to 140 WPM</strong>. Master light/dark stroke discrimination and phraseography without hesitations.
+                </p>
+              </motion.div>
+            </FadeUp>
 
             {/* Step 2 */}
-            <div className="sp-timeline-col border-t-2 border-[#E8DFD3]">
-              <span className="sp-timeline-num text-[#8A7B7E] font-bold">02</span>
-              <h3 className="sp-timeline-title">Transcribe Under Exam Clock</h3>
-              <p className="sp-timeline-desc">
-                Review outlines during the 5-minute reading clock, then transcribe in <strong>English, Kruti Dev 010, or Mangal</strong> under strict official exam-hall timing and backspace-lock rules.
-              </p>
-            </div>
+            <FadeUp delay={0.08}>
+              <motion.div 
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="sp-timeline-col border-t-2 border-[#E8DFD3]"
+              >
+                <span className="sp-timeline-num text-[#8A7B7E] font-bold">02</span>
+                <h3 className="sp-timeline-title">Transcribe Under Exam Clock</h3>
+                <p className="sp-timeline-desc">
+                  Review outlines during the 5-minute reading clock, then transcribe in <strong>English, Kruti Dev 010, or Mangal</strong> under strict official exam-hall timing and backspace-lock rules.
+                </p>
+              </motion.div>
+            </FadeUp>
 
             {/* Step 3 */}
-            <div className="sp-timeline-col border-t-2 border-[#E8DFD3]">
-              <span className="sp-timeline-num text-[#8A7B7E] font-bold">03</span>
-              <h3 className="sp-timeline-title">Fix Every Single Mistake</h3>
-              <p className="sp-timeline-desc">
-                Receive automated full and half-mistake percentage reports instantly, combined with daily <strong>handwritten outline review</strong> by Shadab Sir to eliminate recurring stroke angle flaws.
-              </p>
-            </div>
+            <FadeUp delay={0.16}>
+              <motion.div 
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="sp-timeline-col border-t-2 border-[#E8DFD3]"
+              >
+                <span className="sp-timeline-num text-[#8A7B7E] font-bold">03</span>
+                <h3 className="sp-timeline-title">Fix Every Single Mistake</h3>
+                <p className="sp-timeline-desc">
+                  Receive automated full and half-mistake percentage reports instantly, combined with daily <strong>handwritten outline review</strong> by Shadab Sir to eliminate recurring stroke angle flaws.
+                </p>
+              </motion.div>
+            </FadeUp>
 
           </div>
 
@@ -1235,66 +1390,74 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 4: LEGACY & MENTOR EDITORIAL SPLIT (WARM PARCHMENT CANVAS)
+          SECTION 4: LEGACY & MENTOR EDITORIAL SPLIT (WARM CREAM #FBF8F3)
           ========================================================================= */}
       <section className="sp-mentor-section bg-[#FBF8F3] border-t border-[#E8DFD3]">
         <div className="sp-container">
           <div className="sp-mentor-grid">
             
             {/* Left Column: Editorial Narrative & Mentor Legacy */}
-            <div className="sp-mentor-narrative">
-              <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
-                GAYA SHORTHAND CLASSES &middot; EST. 2012
-              </span>
-              <h2 className="sp-section-h2" style={{ textAlign: 'left' }}>
-                12+ Years of Discipline. Guided Directly by Shadab Sir.
-              </h2>
-              
-              <div className="sp-mentor-text-block">
-                <p>
-                  Founded at Gaya College More in 2012, <strong>Gaya Shorthand Classes</strong> has established itself as Bihar's premier preparatory academy for government stenography aspirants. Over 1,200 candidates have qualified for Central &amp; State services under direct personal mentorship.
-                </p>
-                <p>
-                  We believe that while automated software is indispensable for measuring speed, true shorthand mastery demands traditional stroke discipline. Every single outline, curve angle, and grammalogue contraction is inspected daily so bad habits never carry into the examination hall.
-                </p>
-              </div>
-
-              {/* Flush Stat Strip */}
-              <div className="sp-mentor-stats-strip">
-                <div className="sp-stat-box">
-                  <div className="sp-stat-number tabular-nums">12+ Yrs</div>
-                  <div className="sp-stat-caption">Coaching Legacy</div>
+            <FadeUp>
+              <div className="sp-mentor-narrative">
+                <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
+                  GAYA SHORTHAND CLASSES &middot; EST. 2012
+                </span>
+                <h2 className="sp-section-h2" style={{ textAlign: 'left' }}>
+                  12+ Years of Discipline. Guided Directly by Shadab Sir.
+                </h2>
+                
+                <div className="sp-mentor-text-block">
+                  <p>
+                    Founded at Gaya College More in 2012, <strong>Gaya Shorthand Classes</strong> has established itself as Bihar's premier preparatory academy for government stenography aspirants. Over 1,200 candidates have qualified for Central &amp; State services under direct personal mentorship.
+                  </p>
+                  <p>
+                    We believe that while automated software is indispensable for measuring speed, true shorthand mastery demands traditional stroke discipline. Every single outline, curve angle, and grammalogue contraction is inspected daily so bad habits never carry into the examination hall.
+                  </p>
                 </div>
-                <div className="sp-stat-box">
-                  <div className="sp-stat-number tabular-nums">50&ndash;140</div>
-                  <div className="sp-stat-caption">WPM Training Range</div>
+
+                {/* Flush Stat Strip */}
+                <div className="sp-mentor-stats-strip">
+                  <div className="sp-stat-box">
+                    <div className="sp-stat-number tabular-nums">12+ Yrs</div>
+                    <div className="sp-stat-caption">Coaching Legacy</div>
+                  </div>
+                  <div className="sp-stat-box">
+                    <div className="sp-stat-number tabular-nums">50&ndash;140</div>
+                    <div className="sp-stat-caption">WPM Training Range</div>
+                  </div>
+                  <div className="sp-stat-box">
+                    <div className="sp-stat-number">Offline + Live</div>
+                    <div className="sp-stat-caption">Gaya &amp; Google Meet</div>
+                  </div>
                 </div>
-                <div className="sp-stat-box">
-                  <div className="sp-stat-number">Offline + Live</div>
-                  <div className="sp-stat-caption">Gaya &amp; Google Meet</div>
+
+                <div style={{ marginTop: '1.75rem' }}>
+                  <button
+                    type="button"
+                    className="sp-mentor-story-link group"
+                    onClick={() => setCurrentTab && setCurrentTab('about')}
+                  >
+                    <span>Read Our Story &amp; Methodology</span>
+                    <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
+                  </button>
                 </div>
               </div>
+            </FadeUp>
 
-              <div style={{ marginTop: '2rem' }}>
-                <button
-                  type="button"
-                  className="sp-mentor-story-link"
-                  onClick={() => setCurrentTab && setCurrentTab('about')}
-                >
-                  <span>Read Our Story &amp; Methodology</span>
-                  <ArrowRight size={15} />
-                </button>
-              </div>
-            </div>
-
-            {/* Right Column: Mentor & Academy Visual Card (Soft Ivory #F7F5F0) */}
-            <div className="bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(35,20,24,0.04)]">
+            {/* Right Column: Mentor & Academy Visual Card */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, ease: TRANSITION_EASE }}
+              className="bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(35,20,24,0.04)]"
+            >
               {/* Top Visual Frame */}
               <div className="aspect-[4/3] bg-[#E2DDD3] relative overflow-hidden">
                 <img 
                   src="/assets/institution-hero.jpg" 
                   alt="Shadab Sir - Gaya Shorthand Classes Classroom &amp; Mentor" 
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-[1.03]"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-slate-900/90 text-white px-5 py-3 text-xs flex items-center justify-between backdrop-blur-xs">
@@ -1322,7 +1485,7 @@ export default function LandingPage({
                   <span>3 Free Demo Classes Before Enrollment</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>
@@ -1333,12 +1496,19 @@ export default function LandingPage({
           ========================================================================= */}
       <section className="sp-live-banner-section bg-[#FBF8F3] border-t border-[#E8DFD3]">
         <div className="sp-container">
-          <div className="sp-live-banner-card bg-[#FFFFFF] border border-[#E8DFD3] border-l-4 border-l-[#991B1B] rounded-2xl p-8 md:p-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, ease: TRANSITION_EASE }}
+            whileHover={{ y: -3 }}
+            className="sp-live-banner-card bg-[#FFFFFF] border border-[#E8DFD3] border-l-4 border-l-[#991B1B] rounded-2xl p-6 md:p-10 shadow-[0_4px_20px_rgba(35,20,24,0.04)]"
+          >
             
             {/* Left Content Column */}
             <div className="sp-live-content-col">
               <div className="sp-live-eyebrow">
-                <span className="sp-live-static-dot" style={{ backgroundColor: '#991B1B' }} />
+                <span className="sp-live-pulse-dot" style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#991B1B', display: 'inline-block' }} />
                 <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
                   LIVE ONLINE INTERACTIVE BATCHES
                 </span>
@@ -1366,22 +1536,24 @@ export default function LandingPage({
 
             {/* Right Action Block */}
             <div className="sp-live-action-col">
-              <button
+              <motion.button
                 type="button"
-                className="sp-btn-crimson bg-[#991B1B] text-white hover:bg-[#7F1D1D] px-6 py-3.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2 shadow-sm"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="sp-btn-crimson group bg-[#991B1B] text-white hover:bg-[#7F1D1D] px-6 py-3.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2 shadow-sm"
                 onClick={() => {
                   if (setCurrentTab) setCurrentTab('batches');
                 }}
               >
                 <span>View Live Class Schedule</span>
-                <ArrowRight size={16} />
-              </button>
+                <ArrowRight size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
+              </motion.button>
               <span className="sp-live-caption text-[#8A7B7E] text-xs">
                 Morning &amp; evening batches available
               </span>
             </div>
 
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -1391,106 +1563,126 @@ export default function LandingPage({
       <section className="sp-voices-section bg-[#EFE7DC] border-t border-[#E3D9CC]">
         <div className="sp-container">
           
-          <div className="sp-voices-header">
-            <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
-              STUDENT OUTCOMES
-            </span>
-            <h2 className="sp-section-h2">
-              Trusted by Serious Aspirants.
-            </h2>
-            <p className="sp-section-sub">
-              Verified experiences from candidates who built their shorthand speed and cleared recruitment skill tests:
-            </p>
-          </div>
+          <FadeUp>
+            <div className="sp-voices-header">
+              <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
+                STUDENT OUTCOMES
+              </span>
+              <h2 className="sp-section-h2">
+                Trusted by Serious Aspirants.
+              </h2>
+              <p className="sp-section-sub">
+                Verified experiences from candidates who built their shorthand speed and cleared recruitment skill tests:
+              </p>
+            </div>
+          </FadeUp>
 
           <div className="sp-voices-grid">
             
             {/* Review 1 */}
-            <div className="sp-voice-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-xl p-6 shadow-[0_4px_20px_rgba(35,20,24,0.04)] flex flex-col justify-between">
-              <div>
-                {/* Top Proof Row */}
-                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E8DFD3]">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#231418]">
-                    SSC Steno Grade C
-                  </span>
-                  <span className="text-xs font-semibold text-[#991B1B] tabular-nums">
-                    100 WPM &middot; 97.4% Acc
-                  </span>
-                </div>
-
-                <p className="text-sm text-[#594A4D] leading-relaxed mb-6">
-                  &ldquo;Shadab Sir's daily dictation practice and 5-minute reading room made all the difference in my SSC skill test. Individual notebook checking helped fix my stroke angles completely.&rdquo;
-                </p>
-              </div>
-
-              <div className="flex items-center gap-3 pt-2">
-                <div className="w-8 h-8 rounded-full bg-slate-900 text-white text-xs font-semibold flex items-center justify-center shrink-0">
-                  AV
-                </div>
+            <FadeUp delay={0}>
+              <motion.div 
+                whileHover={{ y: -5, boxShadow: '0 12px 30px rgba(35, 20, 24, 0.08)' }}
+                transition={{ duration: 0.2 }}
+                className="sp-voice-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-xl p-6 shadow-[0_4px_20px_rgba(35,20,24,0.04)] flex flex-col justify-between h-full"
+              >
                 <div>
-                  <div className="font-bold text-[#231418] text-sm">Anjali Verma</div>
-                  <div className="text-xs text-[#8A7B7E]">Selected 2023 &middot; Central Secretariat</div>
+                  {/* Top Proof Row */}
+                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E8DFD3]">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#231418]">
+                      SSC Steno Grade C
+                    </span>
+                    <span className="text-xs font-semibold text-[#991B1B] tabular-nums">
+                      100 WPM &middot; 97.4% Acc
+                    </span>
+                  </div>
+
+                  <p className="text-sm text-[#594A4D] leading-relaxed mb-6">
+                    &ldquo;Shadab Sir's daily dictation practice and 5-minute reading room made all the difference in my SSC skill test. Individual notebook checking helped fix my stroke angles completely.&rdquo;
+                  </p>
                 </div>
-              </div>
-            </div>
+
+                <div className="flex items-center gap-3 pt-2">
+                  <div className="w-8 h-8 rounded-full bg-slate-900 text-white text-xs font-semibold flex items-center justify-center shrink-0">
+                    AV
+                  </div>
+                  <div>
+                    <div className="font-bold text-[#231418] text-sm">Anjali Verma</div>
+                    <div className="text-xs text-[#8A7B7E]">Selected 2023 &middot; Central Secretariat</div>
+                  </div>
+                </div>
+              </motion.div>
+            </FadeUp>
 
             {/* Review 2 */}
-            <div className="sp-voice-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-xl p-6 shadow-[0_4px_20px_rgba(35,20,24,0.04)] flex flex-col justify-between">
-              <div>
-                {/* Top Proof Row */}
-                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E8DFD3]">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#231418]">
-                    Patna High Court PA
-                  </span>
-                  <span className="text-xs font-semibold text-[#991B1B] tabular-nums">
-                    100 WPM &middot; 98.2% Acc
-                  </span>
-                </div>
-
-                <p className="text-sm text-[#594A4D] leading-relaxed mb-6">
-                  &ldquo;The strict backspace lock simulation and legal judgment audio series mirrored the exact Patna High Court exam software. Reached 100 WPM with zero guesswork.&rdquo;
-                </p>
-              </div>
-
-              <div className="flex items-center gap-3 pt-2">
-                <div className="w-8 h-8 rounded-full bg-slate-900 text-white text-xs font-semibold flex items-center justify-center shrink-0">
-                  RK
-                </div>
+            <FadeUp delay={0.08}>
+              <motion.div 
+                whileHover={{ y: -5, boxShadow: '0 12px 30px rgba(35, 20, 24, 0.08)' }}
+                transition={{ duration: 0.2 }}
+                className="sp-voice-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-xl p-6 shadow-[0_4px_20px_rgba(35,20,24,0.04)] flex flex-col justify-between h-full"
+              >
                 <div>
-                  <div className="font-bold text-[#231418] text-sm">Rakesh Kumar</div>
-                  <div className="text-xs text-[#8A7B7E]">Qualified 2022 &middot; Patna High Court Bench</div>
+                  {/* Top Proof Row */}
+                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E8DFD3]">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#231418]">
+                      Patna High Court PA
+                    </span>
+                    <span className="text-xs font-semibold text-[#991B1B] tabular-nums">
+                      100 WPM &middot; 98.2% Acc
+                    </span>
+                  </div>
+
+                  <p className="text-sm text-[#594A4D] leading-relaxed mb-6">
+                    &ldquo;The strict backspace lock simulation and legal judgment audio series mirrored the exact Patna High Court exam software. Reached 100 WPM with zero guesswork.&rdquo;
+                  </p>
                 </div>
-              </div>
-            </div>
+
+                <div className="flex items-center gap-3 pt-2">
+                  <div className="w-8 h-8 rounded-full bg-slate-900 text-white text-xs font-semibold flex items-center justify-center shrink-0">
+                    RK
+                  </div>
+                  <div>
+                    <div className="font-bold text-[#231418] text-sm">Rakesh Kumar</div>
+                    <div className="text-xs text-[#8A7B7E]">Qualified 2022 &middot; Patna High Court Bench</div>
+                  </div>
+                </div>
+              </motion.div>
+            </FadeUp>
 
             {/* Review 3 */}
-            <div className="sp-voice-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-xl p-6 shadow-[0_4px_20px_rgba(35,20,24,0.04)] flex flex-col justify-between">
-              <div>
-                {/* Top Proof Row */}
-                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E8DFD3]">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#231418]">
-                    Civil Court Steno
-                  </span>
-                  <span className="text-xs font-semibold text-[#991B1B] tabular-nums">
-                    80 WPM &middot; 96.8% Acc
-                  </span>
-                </div>
-
-                <p className="text-sm text-[#594A4D] leading-relaxed mb-6">
-                  &ldquo;Best shorthand institute in Gaya. The dual font support (Kruti Dev 010 and Mangal) in their computer lab is unmatched for judicial exam aspirants.&rdquo;
-                </p>
-              </div>
-
-              <div className="flex items-center gap-3 pt-2">
-                <div className="w-8 h-8 rounded-full bg-slate-900 text-white text-xs font-semibold flex items-center justify-center shrink-0">
-                  MT
-                </div>
+            <FadeUp delay={0.16}>
+              <motion.div 
+                whileHover={{ y: -5, boxShadow: '0 12px 30px rgba(35, 20, 24, 0.08)' }}
+                transition={{ duration: 0.2 }}
+                className="sp-voice-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-xl p-6 shadow-[0_4px_20px_rgba(35,20,24,0.04)] flex flex-col justify-between h-full"
+              >
                 <div>
-                  <div className="font-bold text-[#231418] text-sm">Md. Tariq</div>
-                  <div className="text-xs text-[#8A7B7E]">Selected 2023 &middot; District Court Gaya</div>
+                  {/* Top Proof Row */}
+                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E8DFD3]">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#231418]">
+                      Civil Court Steno
+                    </span>
+                    <span className="text-xs font-semibold text-[#991B1B] tabular-nums">
+                      80 WPM &middot; 96.8% Acc
+                    </span>
+                  </div>
+
+                  <p className="text-sm text-[#594A4D] leading-relaxed mb-6">
+                    &ldquo;Best shorthand institute in Gaya. The dual font support (Kruti Dev 010 and Mangal) in their computer lab is unmatched for judicial exam aspirants.&rdquo;
+                  </p>
                 </div>
-              </div>
-            </div>
+
+                <div className="flex items-center gap-3 pt-2">
+                  <div className="w-8 h-8 rounded-full bg-slate-900 text-white text-xs font-semibold flex items-center justify-center shrink-0">
+                    MT
+                  </div>
+                  <div>
+                    <div className="font-bold text-[#231418] text-sm">Md. Tariq</div>
+                    <div className="text-xs text-[#8A7B7E]">Selected 2023 &middot; District Court Gaya</div>
+                  </div>
+                </div>
+              </motion.div>
+            </FadeUp>
 
           </div>
 
@@ -1506,96 +1698,118 @@ export default function LandingPage({
           <div className="sp-center-faq-grid">
             
             {/* Left Column: Center Location & Helplines (Soft Ivory #F7F5F0) */}
-            <div className="sp-center-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl">
-              <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
-                VISIT OUR CENTER
-              </span>
-              <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
-                Gaya Coaching Center &amp; Helplines
-              </h2>
+            <FadeUp>
+              <div className="sp-center-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl">
+                <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
+                  VISIT OUR CENTER
+                </span>
+                <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
+                  Gaya Coaching Center &amp; Helplines
+                </h2>
 
-              <div className="sp-center-info-list">
-                
-                <div className="sp-center-info-row">
-                  <MapPin size={20} className="sp-center-info-icon" />
-                  <div>
-                    <h4 className="sp-info-label">Address:</h4>
-                    <p className="sp-info-text">
-                      <strong>Gaya Shorthand Classes</strong><br />
-                      Gaya College More, Opposite Cyber Thana, Gaya, Bihar &ndash; 823001
-                    </p>
+                <div className="sp-center-info-list">
+                  
+                  <div className="sp-center-info-row">
+                    <MapPin size={20} className="sp-center-info-icon" />
+                    <div>
+                      <h4 className="sp-info-label">Address:</h4>
+                      <p className="sp-info-text">
+                        <strong>Gaya Shorthand Classes</strong><br />
+                        Gaya College More, Opposite Cyber Thana, Gaya, Bihar &ndash; 823001
+                      </p>
+                    </div>
                   </div>
+
+                  <div className="sp-center-info-row">
+                    <Clock size={19} className="sp-center-info-icon" />
+                    <div>
+                      <h4 className="sp-info-label">Batch &amp; Lab Timings:</h4>
+                      <p className="sp-info-text">
+                        6:00 AM &ndash; 11:00 AM &amp; 2:00 PM &ndash; 8:00 PM (Monday to Saturday)
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="sp-center-info-row">
+                    <Phone size={19} className="sp-center-info-icon" />
+                    <div>
+                      <h4 className="sp-info-label">Helplines &amp; Inquiries:</h4>
+                      <p className="sp-info-text">
+                        Director (Shadab Sir): <a href="tel:9204123453">+91 9204123453</a><br />
+                        Admissions Desk: <a href="tel:7870377214">+91 7870377214</a>
+                      </p>
+                    </div>
+                  </div>
+
                 </div>
 
-                <div className="sp-center-info-row">
-                  <Clock size={19} className="sp-center-info-icon" />
-                  <div>
-                    <h4 className="sp-info-label">Batch &amp; Lab Timings:</h4>
-                    <p className="sp-info-text">
-                      6:00 AM &ndash; 11:00 AM &amp; 2:00 PM &ndash; 8:00 PM (Monday to Saturday)
-                    </p>
-                  </div>
+                {/* Secondary Button */}
+                <div className="sp-center-action-row">
+                  <motion.button
+                    type="button"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="sp-btn-white-secondary bg-[#FFFFFF] border border-[#E8DFD3] text-[#231418] hover:bg-[#FAF8F5]"
+                    style={{ width: '100%', justifyContent: 'center', padding: '0.75rem 1.25rem', fontSize: '0.875rem', fontWeight: 600 }}
+                    onClick={handleOpenDemo}
+                  >
+                    <span>Book 3 Free Demos &rarr;</span>
+                  </motion.button>
                 </div>
-
-                <div className="sp-center-info-row">
-                  <Phone size={19} className="sp-center-info-icon" />
-                  <div>
-                    <h4 className="sp-info-label">Helplines &amp; Inquiries:</h4>
-                    <p className="sp-info-text">
-                      Director (Shadab Sir): <a href="tel:9204123453">+91 9204123453</a><br />
-                      Admissions Desk: <a href="tel:7870377214">+91 7870377214</a>
-                    </p>
-                  </div>
-                </div>
-
               </div>
-
-              {/* Secondary Button */}
-              <div className="sp-center-action-row">
-                <button
-                  type="button"
-                  className="sp-btn-white-secondary bg-[#FFFFFF] border border-[#E8DFD3] text-[#231418] hover:bg-[#FAF8F5]"
-                  style={{ width: '100%', justifyContent: 'center', padding: '0.75rem 1.25rem', fontSize: '0.875rem', fontWeight: 600 }}
-                  onClick={handleOpenDemo}
-                >
-                  <span>Book 3 Free Demos &rarr;</span>
-                </button>
-              </div>
-            </div>
+            </FadeUp>
 
             {/* Right Column: Interactive FAQ Accordion */}
-            <div className="sp-faq-wrap">
-              <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
-                ADMISSIONS FAQ
-              </span>
-              <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
-                Frequently Asked Questions
-              </h2>
+            <FadeUp>
+              <div className="sp-faq-wrap">
+                <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
+                  ADMISSIONS FAQ
+                </span>
+                <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
+                  Frequently Asked Questions
+                </h2>
 
-              <div className="sp-faq-accordion">
-                {TOP_FAQS.map((faq) => {
-                  const isOpen = activeFaq === faq.id;
-                  return (
-                    <div key={faq.id} className="sp-faq-item">
-                      <button
-                        type="button"
-                        className="sp-faq-btn"
-                        onClick={() => setActiveFaq(isOpen ? null : faq.id)}
-                      >
-                        <span className="sp-faq-question-text">{faq.q}</span>
-                        {isOpen ? <ChevronUp size={18} color="#0F172A" /> : <ChevronDown size={18} color="#94A3B8" />}
-                      </button>
-                      {isOpen && (
-                        <div className="sp-faq-body">
-                          {faq.a}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+                <div className="sp-faq-accordion">
+                  {TOP_FAQS.map((faq) => {
+                    const isOpen = activeFaq === faq.id;
+                    return (
+                      <div key={faq.id} className="sp-faq-item">
+                        <button
+                          type="button"
+                          className="sp-faq-btn"
+                          onClick={() => setActiveFaq(isOpen ? null : faq.id)}
+                        >
+                          <span className="sp-faq-question-text">{faq.q}</span>
+                          <motion.div
+                            animate={{ rotate: isOpen ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                          >
+                            <ChevronDown size={18} color={isOpen ? "#991B1B" : "#8A7B7E"} />
+                          </motion.div>
+                        </button>
+                        <AnimatePresence>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.25, ease: TRANSITION_EASE }}
+                              style={{ overflow: 'hidden' }}
+                            >
+                              <div className="sp-faq-body" style={{ paddingTop: '0.5rem' }}>
+                                {faq.a}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </div>
+
               </div>
-
-            </div>
+            </FadeUp>
 
           </div>
 
@@ -1603,11 +1817,17 @@ export default function LandingPage({
       </section>
 
       {/* =========================================================================
-          SECTION 8: CONTAINED EDITORIAL CLOSING CONVERSION CARD (WARM PARCHMENT CANVAS)
+          SECTION 8: CONTAINED EDITORIAL CLOSING CONVERSION CARD (WARM CREAM #FBF8F3 CANVAS)
           ========================================================================= */}
-      <section className="sp-closing-cta-section bg-[#FBF8F3] border-t border-[#E8DFD3] pb-20">
+      <section className="sp-closing-cta-section bg-[#FBF8F3] border-t border-[#E8DFD3] pb-16">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="sp-closing-cta-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl py-14 px-6 text-center max-w-5xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, ease: TRANSITION_EASE }}
+            className="sp-closing-cta-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl py-12 px-6 text-center max-w-5xl mx-auto"
+          >
             <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8A7B7E] mb-3 block">
               GET STARTED TODAY
             </span>
@@ -1620,22 +1840,26 @@ export default function LandingPage({
               Take a free calibrated audio dictation test online or visit our Gaya College More center for 3 free demo classes.
             </p>
             <div className="sp-closing-cta-buttons mt-8 flex flex-wrap items-center justify-center gap-3">
-              <button
+              <motion.button
                 type="button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 className="sp-btn-ink-primary bg-[#231418] text-[#F5F3EE] hover:bg-[#3A2228] px-6 py-3.5 rounded-lg text-sm font-semibold transition-colors"
                 onClick={handleStartTests}
               >
                 <span>Start Free Dictation Test &rarr;</span>
-              </button>
-              <button
+              </motion.button>
+              <motion.button
                 type="button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 className="sp-btn-white-secondary bg-transparent border border-[#DDD1C2] text-[#231418] hover:bg-[#EFE7DC] px-6 py-3.5 rounded-lg text-sm font-semibold transition-colors"
                 onClick={handleExploreCourses}
               >
                 <span>Explore All Courses</span>
-              </button>
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
