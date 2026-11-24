@@ -2070,46 +2070,223 @@ export default function AdminPortalView({
         
         {/* KPI Summary Cards: Total Students, Total Audio Tests, Total Typing Tests */}
         <div className="admin-kpi-grid">
-          <div className="saas-card admin-kpi-card">
-            <div className="kpi-icon-wrap" style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: '#EFE7DC', color: '#991B1B', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <div 
+            className="saas-card admin-kpi-card bg-white border border-[#E8DFD3] rounded-2xl px-5 py-4 flex items-center gap-4 shadow-[0_4px_16px_rgba(35,20,24,0.03)]"
+            style={{
+              backgroundColor: '#FFFFFF',
+              border: '1px solid #E8DFD3',
+              borderRadius: '16px',
+              padding: '16px 20px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '16px',
+              boxShadow: '0 4px 16px rgba(35, 20, 24, 0.03)',
+              boxSizing: 'border-box'
+            }}
+          >
+            <div 
+              className="kpi-icon-wrap w-11 h-11 rounded-full bg-[#EFE7DC] text-[#991B1B] flex items-center justify-center shrink-0"
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '50%',
+                backgroundColor: '#EFE7DC',
+                color: '#991B1B',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}
+            >
               <Users size={20} color="#991B1B" />
             </div>
-            <div className="kpi-info-col">
-              <span className="kpi-label-text">Total Students</span>
-              <div className="kpi-val-number font-serif" style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '2rem', fontWeight: 400, color: '#231418', lineHeight: 1 }}>
+            <div className="kpi-info-col" style={{ display: 'flex', flexDirection: 'column' }}>
+              <span 
+                className="kpi-label-text font-sans text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8A7B7E]"
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  fontSize: '10px',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.14em',
+                  color: '#8A7B7E'
+                }}
+              >
+                Total Students
+              </span>
+              <div 
+                className="kpi-val-number font-sans font-bold text-2xl sm:text-[1.75rem] tracking-[-0.02em] leading-none text-[#231418] tabular-nums mt-1"
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  fontSize: 'clamp(1.5rem, 2vw, 1.75rem)',
+                  fontWeight: 700,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1,
+                  color: '#231418',
+                  fontVariantNumeric: 'tabular-nums',
+                  marginTop: '4px'
+                }}
+              >
                 {backendStats?.totalStudents ?? students.length}
               </div>
-              <span className="kpi-trend" style={{ color: '#1F6B48', fontWeight: 600 }}>
+              <span 
+                className="kpi-trend font-sans text-xs font-medium text-[#1F6B48] mt-1.5"
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: '#1F6B48',
+                  marginTop: '6px'
+                }}
+              >
                 {backendStats?.activeSubscriptions ?? students.filter(s => s.status === 'Active' || s.status === 'active').length} Active Enrolled
               </span>
             </div>
           </div>
 
-          <div className="saas-card admin-kpi-card">
-            <div className="kpi-icon-wrap" style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: '#EFE7DC', color: '#991B1B', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <div 
+            className="saas-card admin-kpi-card bg-white border border-[#E8DFD3] rounded-2xl px-5 py-4 flex items-center gap-4 shadow-[0_4px_16px_rgba(35,20,24,0.03)]"
+            style={{
+              backgroundColor: '#FFFFFF',
+              border: '1px solid #E8DFD3',
+              borderRadius: '16px',
+              padding: '16px 20px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '16px',
+              boxShadow: '0 4px 16px rgba(35, 20, 24, 0.03)',
+              boxSizing: 'border-box'
+            }}
+          >
+            <div 
+              className="kpi-icon-wrap w-11 h-11 rounded-full bg-[#EFE7DC] text-[#991B1B] flex items-center justify-center shrink-0"
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '50%',
+                backgroundColor: '#EFE7DC',
+                color: '#991B1B',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}
+            >
               <Headphones size={20} color="#991B1B" />
             </div>
-            <div className="kpi-info-col">
-              <span className="kpi-label-text">Total Audio Tests</span>
-              <div className="kpi-val-number font-serif" style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '2rem', fontWeight: 400, color: '#231418', lineHeight: 1 }}>
+            <div className="kpi-info-col" style={{ display: 'flex', flexDirection: 'column' }}>
+              <span 
+                className="kpi-label-text font-sans text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8A7B7E]"
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  fontSize: '10px',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.14em',
+                  color: '#8A7B7E'
+                }}
+              >
+                Total Audio Tests
+              </span>
+              <div 
+                className="kpi-val-number font-sans font-bold text-2xl sm:text-[1.75rem] tracking-[-0.02em] leading-none text-[#231418] tabular-nums mt-1"
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  fontSize: 'clamp(1.5rem, 2vw, 1.75rem)',
+                  fontWeight: 700,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1,
+                  color: '#231418',
+                  fontVariantNumeric: 'tabular-nums',
+                  marginTop: '4px'
+                }}
+              >
                 {backendStats?.totalAudioTests ?? tests.length} Tests
               </div>
-              <span className="kpi-trend" style={{ color: '#594A4D', fontWeight: 500 }}>
+              <span 
+                className="kpi-trend font-sans text-xs font-medium text-[#594A4D] mt-1.5"
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: '#594A4D',
+                  marginTop: '6px'
+                }}
+              >
                 {tests.map(t => t.speed || t.speed_str).filter(Boolean).slice(0, 3).join(', ') || '80, 100 WPM'} Active Audio
               </span>
             </div>
           </div>
 
-          <div className="saas-card admin-kpi-card">
-            <div className="kpi-icon-wrap" style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: '#EFE7DC', color: '#991B1B', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <div 
+            className="saas-card admin-kpi-card bg-white border border-[#E8DFD3] rounded-2xl px-5 py-4 flex items-center gap-4 shadow-[0_4px_16px_rgba(35,20,24,0.03)]"
+            style={{
+              backgroundColor: '#FFFFFF',
+              border: '1px solid #E8DFD3',
+              borderRadius: '16px',
+              padding: '16px 20px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '16px',
+              boxShadow: '0 4px 16px rgba(35, 20, 24, 0.03)',
+              boxSizing: 'border-box'
+            }}
+          >
+            <div 
+              className="kpi-icon-wrap w-11 h-11 rounded-full bg-[#EFE7DC] text-[#991B1B] flex items-center justify-center shrink-0"
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '50%',
+                backgroundColor: '#EFE7DC',
+                color: '#991B1B',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}
+            >
               <Keyboard size={20} color="#991B1B" />
             </div>
-            <div className="kpi-info-col">
-              <span className="kpi-label-text">Total Typing Tests</span>
-              <div className="kpi-val-number font-serif" style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '2rem', fontWeight: 400, color: '#231418', lineHeight: 1 }}>
+            <div className="kpi-info-col" style={{ display: 'flex', flexDirection: 'column' }}>
+              <span 
+                className="kpi-label-text font-sans text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8A7B7E]"
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  fontSize: '10px',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.14em',
+                  color: '#8A7B7E'
+                }}
+              >
+                Total Typing Tests
+              </span>
+              <div 
+                className="kpi-val-number font-sans font-bold text-2xl sm:text-[1.75rem] tracking-[-0.02em] leading-none text-[#231418] tabular-nums mt-1"
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  fontSize: 'clamp(1.5rem, 2vw, 1.75rem)',
+                  fontWeight: 700,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1,
+                  color: '#231418',
+                  fontVariantNumeric: 'tabular-nums',
+                  marginTop: '4px'
+                }}
+              >
                 {backendStats?.totalTypingTests ?? typingTests.length} Tests
               </div>
-              <span className="kpi-trend" style={{ color: '#594A4D', fontWeight: 500 }}>
+              <span 
+                className="kpi-trend font-sans text-xs font-medium text-[#594A4D] mt-1.5"
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: '#594A4D',
+                  marginTop: '6px'
+                }}
+              >
                 {typingTests.map(t => (t.language && t.language.includes('Hindi')) ? 'Hindi' : 'English').filter((v, i, a) => a.indexOf(v) === i).join(' & ')} Practice Sets
               </span>
             </div>
