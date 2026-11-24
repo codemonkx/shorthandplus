@@ -1860,160 +1860,149 @@ export default function AdminPortalView({
   return (
     <div className="admin-portal-wrapper">
       
-      {/* Top Admin Navigation Header — Executive Deep Burgundy-Espresso (#231418) Command Bar */}
-      <header 
-        className="sticky top-0 z-30 bg-[#231418] text-[#FAF6F0] border-b border-[#3A2329] shadow-[0_8px_28px_rgba(35,20,24,0.14)] w-full"
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 30,
-          backgroundColor: '#231418',
-          color: '#FAF6F0',
-          borderBottom: '1px solid #3A2329',
-          boxShadow: '0 8px 28px rgba(35, 20, 24, 0.14)',
-          width: '100%'
-        }}
-      >
-        <div 
-          className="max-w-7xl mx-auto px-6 py-3.5 flex flex-wrap items-center justify-between gap-4"
+      {/* Top Admin Navigation Header — Clean Warm Cream Floating Bar */}
+      <div className="sticky top-3 z-30 max-w-7xl mx-auto px-6 mb-5 w-full box-border" style={{ position: 'sticky', top: '12px', zIndex: 30, maxWidth: '1280px', margin: '0 auto 20px', padding: '0 24px', width: '100%', boxSizing: 'border-box' }}>
+        <header 
+          className="h-14 bg-[#FFFFFF]/95 backdrop-blur-md border border-[#E5DBD0] rounded-full px-4 sm:px-5 flex items-center justify-between gap-4 shadow-[0_6px_24px_rgba(35,20,24,0.06)] w-full"
           style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            padding: '14px 24px',
+            height: '56px',
+            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            border: '1px solid #E5DBD0',
+            borderRadius: '9999px',
+            padding: '0 20px',
             display: 'flex',
-            flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'space-between',
             gap: '16px',
-            boxSizing: 'border-box'
+            boxShadow: '0 6px 24px rgba(35, 20, 24, 0.06)',
+            boxSizing: 'border-box',
+            width: '100%'
           }}
         >
-          {/* Left Brand & Identity Block */}
-          <div className="flex items-center gap-3.5 min-w-0" style={{ display: 'flex', alignItems: 'center', gap: '14px', minWidth: 0 }}>
+          {/* Left Brand & Role (Single Crisp Line) */}
+          <div className="flex items-center gap-3 min-w-0" style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0 }}>
             <img 
               src="/assets/logo-big-s.png" 
               alt="Shorthand Plus" 
-              className="w-9 h-9 object-contain shrink-0 rounded-lg"
+              className="w-7 h-7 object-contain shrink-0"
               style={{
-                width: '36px',
-                height: '36px',
+                width: '28px',
+                height: '28px',
                 objectFit: 'contain',
-                flexShrink: 0,
-                borderRadius: '8px'
+                flexShrink: 0
               }}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}
             />
-            <div style={{ minWidth: 0 }}>
-              <div className="flex flex-wrap items-center gap-2.5" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px' }}>
-                <span 
-                  className="font-serif font-normal text-2xl sm:text-[1.65rem] leading-none tracking-[-0.015em] text-[#FAF6F0]"
-                  style={{ 
-                    fontFamily: "'Instrument Serif', Georgia, serif", 
-                    fontSize: 'clamp(1.4rem, 2vw, 1.65rem)', 
-                    fontWeight: 400, 
-                    color: '#FAF6F0', 
-                    letterSpacing: '-0.015em',
-                    lineHeight: 1
-                  }}
-                >
-                  Director <span className="italic text-[#E5B8BE]" style={{ fontStyle: 'italic', color: '#E5B8BE' }}>Administration</span> Console
-                </span>
-                <span 
-                  className="bg-[#3A2228] border border-[#5A363F] text-[#E5B8BE] text-[10px] font-semibold uppercase tracking-[0.14em] px-2.5 py-0.5 rounded-full inline-flex items-center"
-                  style={{
-                    backgroundColor: '#3A2228',
-                    border: '1px solid #5A363F',
-                    color: '#E5B8BE',
-                    fontSize: '10px',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.14em',
-                    padding: '2px 10px',
-                    borderRadius: '9999px',
-                    display: 'inline-flex',
-                    alignItems: 'center'
-                  }}
-                >
-                  Super Admin
-                </span>
-              </div>
-              <div 
-                className="mt-1 flex flex-wrap items-center gap-2 text-xs text-[#A89397]"
-                style={{
-                  marginTop: '4px',
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  gap: '8px',
-                  fontSize: '12px',
-                  color: '#A89397'
-                }}
-              >
-                <span>Gaya Shorthand Classes · Unified Management</span>
-                <span style={{ color: '#5A363F' }}>•</span>
-                <span className="inline-flex items-center gap-1.5" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#86EFAC', fontWeight: 500 }}>
-                  <span 
-                    style={{ 
-                      width: '6px', 
-                      height: '6px', 
-                      borderRadius: '50%', 
-                      backgroundColor: '#6EE7B7', 
-                      display: 'inline-block',
-                      boxShadow: '0 0 0 2px rgba(110, 231, 183, 0.25)'
-                    }} 
-                  />
-                  <span>Clearance Active</span>
-                </span>
-              </div>
-            </div>
+            <span 
+              className="text-sm font-bold tracking-tight text-[#231418] whitespace-nowrap font-sans"
+              style={{
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                fontSize: '14px',
+                fontWeight: 700,
+                letterSpacing: '-0.01em',
+                color: '#231418',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              SHORTHAND PLUS
+            </span>
+
+            <span className="hidden sm:block h-4 w-px bg-[#E0D5C7]" style={{ height: '16px', width: '1px', backgroundColor: '#E0D5C7', flexShrink: 0 }} />
+
+            <span 
+              className="hidden sm:inline text-xs font-medium text-[#594A4D] whitespace-nowrap font-sans"
+              style={{
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                fontSize: '12px',
+                fontWeight: 500,
+                color: '#594A4D',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              Director Console
+            </span>
+
+            <span 
+              className="hidden md:inline-flex items-center gap-1.5 bg-[#EFE7DC] text-[#594A4D] text-[10px] font-semibold uppercase tracking-[0.12em] px-2.5 py-0.5 rounded-full"
+              style={{
+                backgroundColor: '#EFE7DC',
+                color: '#594A4D',
+                fontSize: '10px',
+                fontWeight: 600,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                padding: '2px 10px',
+                borderRadius: '9999px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+            >
+              <span 
+                style={{ 
+                  width: '5px', 
+                  height: '5px', 
+                  borderRadius: '50%', 
+                  backgroundColor: '#1F6B48', 
+                  display: 'inline-block',
+                  flexShrink: 0
+                }} 
+              />
+              <span>Super Admin</span>
+            </span>
           </div>
 
-          {/* Right Action Controls */}
-          <div className="flex items-center gap-2.5 shrink-0" style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+          {/* Right Action Controls (Clean, Compact & Aligned) */}
+          <div className="flex items-center gap-2 shrink-0" style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
             {/* 1. View Site Link */}
             <a 
               href="/"
-              className="bg-white/5 hover:bg-white/10 border border-[#4A2E35] text-[#D6C7CA] hover:text-[#FAF6F0] px-4 py-2 rounded-full text-xs font-medium transition-colors inline-flex items-center gap-1.5"
+              className="text-xs font-medium text-[#594A4D] hover:text-[#231418] px-3 py-1.5 rounded-full hover:bg-[#EFE7DC]/70 transition-colors inline-flex items-center gap-1.5 whitespace-nowrap font-sans"
               style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid #4A2E35',
-                color: '#D6C7CA',
-                padding: '8px 16px',
-                borderRadius: '9999px',
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                 fontSize: '12px',
                 fontWeight: 500,
+                color: '#594A4D',
+                padding: '6px 12px',
+                borderRadius: '9999px',
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
+                whiteSpace: 'nowrap',
                 transition: 'all 0.15s ease'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                e.currentTarget.style.color = '#FAF6F0';
+                e.currentTarget.style.backgroundColor = 'rgba(239, 231, 220, 0.7)';
+                e.currentTarget.style.color = '#231418';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                e.currentTarget.style.color = '#D6C7CA';
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = '#594A4D';
               }}
               title="Return to Public Website"
             >
-              <ArrowLeft size={13} />
-              <span>← View Site</span>
+              <ArrowLeft size={14} />
+              <span>View Site</span>
             </a>
 
-            {/* 2. Lock Console */}
+            <span className="h-4 w-px bg-[#E5DBD0]" style={{ height: '16px', width: '1px', backgroundColor: '#E5DBD0', flexShrink: 0 }} />
+
+            {/* 2. Lock Button */}
             <button 
               type="button"
-              className="bg-white/5 hover:bg-white/10 border border-[#4A2E35] text-[#FAF6F0] px-4 py-2 rounded-full text-xs font-semibold transition-colors inline-flex items-center gap-1.5"
+              className="bg-[#FBF8F3] hover:bg-[#EFE7DC] border border-[#E0D5C7] text-[#231418] px-3.5 py-1.5 rounded-full text-xs font-semibold transition-colors inline-flex items-center gap-1.5 whitespace-nowrap font-sans"
               onClick={handleLockConsole}
               style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid #4A2E35',
-                color: '#FAF6F0',
-                padding: '8px 16px',
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                backgroundColor: '#FBF8F3',
+                border: '1px solid #E0D5C7',
+                color: '#231418',
+                padding: '6px 14px',
                 borderRadius: '9999px',
                 fontSize: '12px',
                 fontWeight: 600,
@@ -2021,31 +2010,33 @@ export default function AdminPortalView({
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
+                whiteSpace: 'nowrap',
                 transition: 'all 0.15s ease'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                e.currentTarget.style.backgroundColor = '#EFE7DC';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                e.currentTarget.style.backgroundColor = '#FBF8F3';
               }}
               title="Lock Console & Clear Clearance Session"
             >
               <Lock size={13} />
-              <span>Lock Console</span>
+              <span>Lock</span>
             </button>
 
-            {/* 3. Sign Out */}
+            {/* 3. Sign Out Button */}
             {onLogout && (
               <button 
                 type="button"
-                className="bg-[#991B1B] hover:bg-[#B91C1C] text-white px-4 py-2 rounded-full text-xs font-semibold shadow-[0_4px_14px_rgba(153,27,27,0.35)] transition-colors inline-flex items-center gap-1.5"
+                className="bg-[#231418] hover:bg-[#991B1B] text-[#FAF6F0] px-4 py-1.5 rounded-full text-xs font-semibold transition-colors inline-flex items-center gap-1.5 whitespace-nowrap font-sans"
                 onClick={onLogout}
                 style={{
-                  backgroundColor: '#991B1B',
-                  border: 'none',
-                  color: '#FFFFFF',
-                  padding: '8px 16px',
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  backgroundColor: '#231418',
+                  border: '1px solid #231418',
+                  color: '#FAF6F0',
+                  padding: '6px 16px',
                   borderRadius: '9999px',
                   fontSize: '12px',
                   fontWeight: 600,
@@ -2053,14 +2044,16 @@ export default function AdminPortalView({
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '6px',
-                  boxShadow: '0 4px 14px rgba(153, 27, 27, 0.35)',
+                  whiteSpace: 'nowrap',
                   transition: 'all 0.15s ease'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#B91C1C';
+                  e.currentTarget.style.backgroundColor = '#991B1B';
+                  e.currentTarget.style.borderColor = '#991B1B';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#991B1B';
+                  e.currentTarget.style.backgroundColor = '#231418';
+                  e.currentTarget.style.borderColor = '#231418';
                 }}
                 title="Sign Out to Homepage"
               >
@@ -2069,8 +2062,8 @@ export default function AdminPortalView({
               </button>
             )}
           </div>
-        </div>
-      </header>
+        </header>
+      </div>
 
       {/* Main Admin Body */}
       <div className="admin-body-container">
