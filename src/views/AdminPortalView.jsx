@@ -3830,11 +3830,11 @@ export default function AdminPortalView({
               </div>
             )}
 
-            {/* 3. Single-Layer Schedule Table Card */}
+            {/* 3. Single-Layer Schedule Card (Horizontal Broadcast Agenda) */}
             <div style={{ marginTop: '20px', backgroundColor: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 6px 24px rgba(35, 20, 24, 0.04)' }}>
 
               {/* Top Filter & Search Toolbar */}
-              <div style={{ padding: '14px 20px', backgroundColor: '#FAF7F2', borderBottom: '1px solid #EDE5DA', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+              <div style={{ padding: '14px 22px', backgroundColor: '#FAF7F2', borderBottom: '1px solid #EDE5DA', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
                 {/* Left Status Pills */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px' }}>
                   <button
@@ -3928,237 +3928,211 @@ export default function AdminPortalView({
                 </div>
               </div>
 
-              {/* Schedule Table */}
-              <div style={{ overflowX: 'auto', width: '100%' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-                  <thead>
-                    <tr style={{ backgroundColor: '#F5EFE6', borderBottom: '1px solid #E5DBD0' }}>
-                      <th style={{ width: '140px', padding: '12px 18px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', whiteSpace: 'nowrap' }}>
-                        TIME & STATUS
-                      </th>
-                      <th style={{ minWidth: '280px', padding: '12px 18px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', whiteSpace: 'normal' }}>
-                        BATCH & DICTATION TOPIC
-                      </th>
-                      <th style={{ width: '215px', padding: '12px 18px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E' }}>
-                        SPEED & ROOM
-                      </th>
-                      <th style={{ width: '175px', padding: '12px 18px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', whiteSpace: 'nowrap' }}>
-                        MEET CODE
-                      </th>
-                      <th style={{ width: '245px', minWidth: '245px', padding: '12px 18px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', textAlign: 'right', whiteSpace: 'nowrap' }}>
-                        ACTIONS
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody style={{ divideY: '1px solid #EDE5DA' }}>
-                    {filteredOnlineClasses.length === 0 ? (
-                      <tr>
-                        <td colSpan={5} style={{ padding: '32px 20px', textAlign: 'center', fontSize: '12px', color: '#8A7B7E' }}>
-                          No classes found matching the selected filter or search query.
-                        </td>
-                      </tr>
-                    ) : (
-                      filteredOnlineClasses.map((item) => {
-                        const isLive = item.isLive || item.status === 'live';
-                        const isCompleted = item.status === 'completed';
-                        const isCancelled = item.status === 'cancelled';
-                        const meetCode = item.meetCode || item.zoomMeetingId || 'stenoplus-live';
+              {/* Horizontal Agenda List */}
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                {filteredOnlineClasses.length === 0 ? (
+                  <div style={{ padding: '36px 22px', textAlign: 'center', fontSize: '12.5px', color: '#8A7B7E' }}>
+                    No classes found matching the selected filter or search query.
+                  </div>
+                ) : (
+                  filteredOnlineClasses.map((item, index) => {
+                    const isLive = item.isLive || item.status === 'live';
+                    const isCompleted = item.status === 'completed';
+                    const isCancelled = item.status === 'cancelled';
+                    const isLast = index === filteredOnlineClasses.length - 1;
+                    const meetCode = item.meetCode || item.zoomMeetingId || 'stenoplus-live';
 
-                        // Format time string cleanly without duplicate (60m)
-                        const baseTime = item.time || item.startTime || '8:30 AM';
-                        const displayTime = (baseTime.includes('(') || !item.durationMins)
-                          ? baseTime
-                          : `${baseTime} (${item.durationMins}m)`;
+                    // Format time string cleanly without duplicate (60m)
+                    const baseTime = item.time || item.startTime || '8:30 AM';
+                    const displayTime = (baseTime.includes('(') || !item.durationMins)
+                      ? baseTime
+                      : `${baseTime} (${item.durationMins}m)`;
 
-                        return (
-                          <tr
-                            key={item.id}
-                            style={{ borderBottom: '1px solid #EDE5DA', backgroundColor: isLive ? '#FFFDFB' : '#FFFFFF' }}
-                          >
-                            {/* Col 1: TIME & STATUS */}
-                            <td style={{ width: '140px', padding: '14px 18px', verticalAlign: 'middle', whiteSpace: 'nowrap' }}>
-                              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12px', fontWeight: 700, color: '#231418', whiteSpace: 'nowrap' }}>
-                                {displayTime}
-                              </div>
-                              <div style={{ marginTop: '5px' }}>
-                                {isLive ? (
-                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 9px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2' }}>
-                                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
-                                    <span>LIVE ON-AIR</span>
-                                  </span>
-                                ) : isCompleted ? (
-                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 9px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#EFE7DC', color: '#594A4D', border: '1px solid #E0D5C7' }}>
-                                    <span>COMPLETED</span>
-                                  </span>
-                                ) : isCancelled ? (
-                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 9px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2' }}>
-                                    <span>CANCELLED</span>
-                                  </span>
-                                ) : (
-                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 9px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FDF5E7', color: '#9A5B13', border: '1px solid #EFDAB6' }}>
-                                    <span>SCHEDULED</span>
-                                  </span>
-                                )}
-                              </div>
-                            </td>
-
-                            {/* Col 2: BATCH & DICTATION TOPIC */}
-                            <td style={{ minWidth: '280px', padding: '14px 18px', verticalAlign: 'middle' }}>
-                              <div style={{ fontSize: '13.5px', fontWeight: 700, color: '#231418', lineHeight: 1.35, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                                {item.title}
-                              </div>
-                              <div style={{ fontSize: '12px', color: '#594A4D', marginTop: '3px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={item.todayTopic}>
-                                {item.todayTopic || 'General Speed Dictation & Outline Feedback'}
-                              </div>
-                            </td>
-
-                            {/* Col 3: SPEED & ROOM */}
-                            <td style={{ width: '215px', padding: '14px 18px', verticalAlign: 'middle' }}>
-                              <span style={{ display: 'inline-block', backgroundColor: '#EFE7DC', color: '#231418', borderRadius: '9999px', padding: '3px 10px', fontSize: '11px', fontWeight: 600, whiteSpace: 'nowrap' }}>
-                                {item.speed || '80 WPM Standard'}
+                    return (
+                      <div
+                        key={item.id}
+                        style={{
+                          padding: '18px 22px',
+                          borderBottom: isLast ? 'none' : '1px solid #EDE5DA',
+                          backgroundColor: isLive ? '#FFFDFB' : '#FFFFFF',
+                          display: 'flex',
+                          flexWrap: 'wrap',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: '20px'
+                        }}
+                      >
+                        {/* Zone 1: Left Time & Status Rail */}
+                        <div style={{ width: '135px', flexShrink: 0 }}>
+                          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12.5px', fontWeight: 700, color: '#231418', whiteSpace: 'nowrap' }}>
+                            {displayTime}
+                          </div>
+                          <div style={{ marginTop: '6px' }}>
+                            {isLive ? (
+                              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2' }}>
+                                <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
+                                <span>LIVE ON-AIR</span>
                               </span>
-                              <div style={{ fontSize: '11px', color: '#8A7B7E', marginTop: '4px', lineHeight: 1.3 }}>
-                                {item.roomNo || 'Studio Live'} · {item.attendees || 1} learners
-                              </div>
-                            </td>
+                            ) : isCompleted ? (
+                              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#EFE7DC', color: '#594A4D', border: '1px solid #E0D5C7' }}>
+                                <span>COMPLETED</span>
+                              </span>
+                            ) : isCancelled ? (
+                              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2' }}>
+                                <span>CANCELLED</span>
+                              </span>
+                            ) : (
+                              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FDF5E7', color: '#9A5B13', border: '1px solid #EFDAB6' }}>
+                                <span>SCHEDULED</span>
+                              </span>
+                            )}
+                          </div>
+                        </div>
 
-                            {/* Col 4: MEET CODE */}
-                            <td style={{ width: '175px', padding: '14px 18px', verticalAlign: 'middle', whiteSpace: 'nowrap' }}>
-                              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '9999px', padding: '4px 12px', whiteSpace: 'nowrap' }}>
-                                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11.5px', fontWeight: 600, color: '#231418', userSelect: 'all' }}>
-                                  {meetCode}
-                                </span>
-                                <button
-                                  type="button"
-                                  style={{ background: 'transparent', border: 'none', color: '#8A7B7E', cursor: 'pointer', padding: '2px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
-                                  onClick={() => {
-                                    navigator.clipboard?.writeText(meetCode).catch(() => {});
-                                    setCopiedClassId(`code-${item.id}`);
-                                    setTimeout(() => setCopiedClassId(null), 2000);
-                                  }}
-                                  title="Copy Meet Code"
-                                >
-                                  {copiedClassId === `code-${item.id}` ? (
-                                    <Check size={12} color="#1F6B48" />
-                                  ) : (
-                                    <Copy size={12} />
-                                  )}
-                                </button>
-                              </div>
-                            </td>
+                        {/* Zone 2: Spacious Center Batch & Metadata Block */}
+                        <div style={{ flex: '1 1 360px', minWidth: 0 }}>
+                          <div style={{ fontSize: '14.5px', fontWeight: 700, color: '#231418', lineHeight: 1.35 }}>
+                            {item.title}
+                          </div>
+                          <div style={{ fontSize: '12.5px', color: '#594A4D', marginTop: '3px', lineHeight: 1.4 }} title={item.todayTopic}>
+                            {item.todayTopic || 'General Speed Dictation & Outline Feedback'}
+                          </div>
 
-                            {/* Col 5: ACTIONS */}
-                            <td style={{ width: '245px', minWidth: '245px', padding: '14px 18px', verticalAlign: 'middle', textAlign: 'right', whiteSpace: 'nowrap' }}>
-                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '6px', whiteSpace: 'nowrap' }}>
-                                {isLive ? (
-                                  <>
-                                    <button
-                                      type="button"
-                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#991B1B', color: '#FFFFFF', borderRadius: '9999px', padding: '6px 12px', fontSize: '11.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
-                                      onClick={() => {
-                                        const targetUrl = item.meetUrl || item.googleMeetUrl || (item.meetCode ? `https://meet.google.com/${item.meetCode}` : 'https://meet.google.com/new');
-                                        window.open(targetUrl, '_blank');
-                                      }}
-                                      title="Enter Google Meet as Host"
-                                    >
-                                      <Video size={13} color="#FFFFFF" />
-                                      <span>Conduct Live</span>
-                                      <ExternalLink size={11} color="#FFFFFF" />
-                                    </button>
+                          {/* Inline Metadata Strip */}
+                          <div style={{ marginTop: '10px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px' }}>
+                            <span style={{ backgroundColor: '#EFE7DC', color: '#231418', borderRadius: '9999px', padding: '3px 10px', fontSize: '11px', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                              {item.speed || '80 WPM Standard'}
+                            </span>
+                            <span style={{ fontSize: '11.5px', color: '#8A7B7E', whiteSpace: 'nowrap' }}>
+                              {item.roomNo || 'Studio Live'} · {item.attendees || 1} learners
+                            </span>
+                            <div
+                              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '9999px', padding: '2px 10px', fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', fontWeight: 600, color: '#231418', cursor: 'pointer', whiteSpace: 'nowrap' }}
+                              onClick={() => {
+                                navigator.clipboard?.writeText(meetCode).catch(() => {});
+                                setCopiedClassId(`code-${item.id}`);
+                                setTimeout(() => setCopiedClassId(null), 2000);
+                              }}
+                              title="Click to copy Meet Code"
+                            >
+                              <span>{meetCode}</span>
+                              {copiedClassId === `code-${item.id}` ? (
+                                <Check size={11} color="#1F6B48" />
+                              ) : (
+                                <Copy size={11} color="#8A7B7E" />
+                              )}
+                            </div>
+                          </div>
+                        </div>
 
-                                    <button
-                                      type="button"
-                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '6px 12px', fontSize: '11.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
-                                      onClick={() => handleCompleteClassAction(item.id)}
-                                      title="Finish and complete this session"
-                                    >
-                                      <CheckCircle2 size={12} color="#1F6B48" />
-                                      <span>Complete</span>
-                                    </button>
+                        {/* Zone 3: Right-Aligned Action Pills */}
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '8px', flexShrink: 0, whiteSpace: 'nowrap' }}>
+                          {isLive ? (
+                            <>
+                              <button
+                                type="button"
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#991B1B', color: '#FFFFFF', borderRadius: '9999px', padding: '7px 15px', fontSize: '12px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                onClick={() => {
+                                  const targetUrl = item.meetUrl || item.googleMeetUrl || (item.meetCode ? `https://meet.google.com/${item.meetCode}` : 'https://meet.google.com/new');
+                                  window.open(targetUrl, '_blank');
+                                }}
+                                title="Enter Google Meet as Host"
+                              >
+                                <Video size={13} color="#FFFFFF" />
+                                <span>Conduct Live</span>
+                                <ExternalLink size={11} color="#FFFFFF" />
+                              </button>
 
-                                    <button
-                                      type="button"
-                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '6px 10px', fontSize: '11.5px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
-                                      onClick={() => {
-                                        setCancelModalClass(item);
-                                        setCancelReasonText('');
-                                      }}
-                                      title="Cancel class"
-                                    >
-                                      <span>Cancel</span>
-                                    </button>
-                                  </>
-                                ) : isCompleted ? (
-                                  <button
-                                    type="button"
-                                    style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#FFFFFF', color: '#594A4D', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '6px 12px', fontSize: '11.5px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
-                                    onClick={() => setEditingClass({ ...item })}
-                                    title="Edit class record"
-                                  >
-                                    <Edit3 size={12} />
-                                    <span>Edit Record</span>
-                                  </button>
-                                ) : isCancelled ? (
-                                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                                    <span style={{ fontSize: '12px', color: '#8A7B7E', fontStyle: 'italic' }}>
-                                      Cancelled
-                                    </span>
-                                    <button
-                                      type="button"
-                                      style={{ background: 'transparent', border: 'none', color: '#8A7B7E', cursor: 'pointer', padding: '4px', borderRadius: '9999px' }}
-                                      onClick={() => {
-                                        if (confirm(`Delete cancelled class "${item.title}"?`)) {
-                                          if (onDeleteOnlineClass) onDeleteOnlineClass(item.id);
-                                        }
-                                      }}
-                                      title="Delete Class"
-                                    >
-                                      <Trash2 size={13} />
-                                    </button>
-                                  </div>
-                                ) : (
-                                  <>
-                                    <button
-                                      type="button"
-                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '6px 12px', fontSize: '11.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
-                                      onClick={() => handleStartClassAction(item)}
-                                      title="Start session and open Google Meet"
-                                    >
-                                      <Play size={11} fill="currentColor" />
-                                      <span>Start Class</span>
-                                    </button>
+                              <button
+                                type="button"
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '7px 14px', fontSize: '12px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                onClick={() => handleCompleteClassAction(item.id)}
+                                title="Finish and complete this session"
+                              >
+                                <CheckCircle2 size={12} color="#1F6B48" />
+                                <span>Complete</span>
+                              </button>
 
-                                    <button
-                                      type="button"
-                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '6px 12px', fontSize: '11.5px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
-                                      onClick={() => setEditingClass({ ...item })}
-                                      title="Edit schedule or details"
-                                    >
-                                      <Edit3 size={12} />
-                                      <span>Edit</span>
-                                    </button>
+                              <button
+                                type="button"
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '7px 13px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                onClick={() => {
+                                  setCancelModalClass(item);
+                                  setCancelReasonText('');
+                                }}
+                                title="Cancel class"
+                              >
+                                <span>Cancel</span>
+                              </button>
+                            </>
+                          ) : isCompleted ? (
+                            <button
+                              type="button"
+                              style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#FFFFFF', color: '#594A4D', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '7px 15px', fontSize: '12px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                              onClick={() => setEditingClass({ ...item })}
+                              title="Edit class record"
+                            >
+                              <Edit3 size={12} />
+                              <span>Edit Record</span>
+                            </button>
+                          ) : isCancelled ? (
+                            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                              <span style={{ fontSize: '12px', color: '#8A7B7E', fontStyle: 'italic' }}>
+                                Cancelled
+                              </span>
+                              <button
+                                type="button"
+                                style={{ background: 'transparent', border: 'none', color: '#8A7B7E', cursor: 'pointer', padding: '4px', borderRadius: '9999px' }}
+                                onClick={() => {
+                                  if (confirm(`Delete cancelled class "${item.title}"?`)) {
+                                    if (onDeleteOnlineClass) onDeleteOnlineClass(item.id);
+                                  }
+                                }}
+                                title="Delete Class"
+                              >
+                                <Trash2 size={13} />
+                              </button>
+                            </div>
+                          ) : (
+                            <>
+                              <button
+                                type="button"
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '7px 15px', fontSize: '12px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                onClick={() => handleStartClassAction(item)}
+                                title="Start session and open Google Meet"
+                              >
+                                <Play size={11} fill="currentColor" />
+                                <span>Start Class</span>
+                              </button>
 
-                                    <button
-                                      type="button"
-                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '6px 10px', fontSize: '11.5px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
-                                      onClick={() => {
-                                        setCancelModalClass(item);
-                                        setCancelReasonText('');
-                                      }}
-                                      title="Cancel class"
-                                    >
-                                      <span>Cancel</span>
-                                    </button>
-                                  </>
-                                )}
-                              </div>
-                            </td>
-                          </tr>
-                        );
-                      })
-                    )}
-                  </tbody>
-                </table>
+                              <button
+                                type="button"
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '7px 14px', fontSize: '12px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                onClick={() => setEditingClass({ ...item })}
+                                title="Edit schedule or details"
+                              >
+                                <Edit3 size={12} />
+                                <span>Edit</span>
+                              </button>
+
+                              <button
+                                type="button"
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '7px 13px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                onClick={() => {
+                                  setCancelModalClass(item);
+                                  setCancelReasonText('');
+                                }}
+                                title="Cancel class"
+                              >
+                                <span>Cancel</span>
+                              </button>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })
+                )}
               </div>
             </div>
 
