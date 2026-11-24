@@ -3702,187 +3702,235 @@ export default function AdminPortalView({
 
         {/* TAB 5: Live Online Classes & Google Meet Studio Management */}
         {activeTab === 'classes' && (
-          <div className="saas-card admin-content-card">
+          <div className="saas-card admin-content-card bg-white border border-[#E8DFD3] rounded-2xl shadow-[0_4px_18px_rgba(35,20,24,0.03)] p-6" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '16px', padding: '24px', boxShadow: '0 4px 18px rgba(35, 20, 24, 0.03)' }}>
             
-            {/* 1. Executive Studio Header Command Bar */}
-            <div style={{
-              background: '#FFFFFF',
-              border: '1px solid rgba(0,0,0,0.08)',
-              borderRadius: '16px',
-              padding: '1.25rem 1.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '1.25rem',
-              flexWrap: 'wrap',
-              marginBottom: '1.25rem',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.02)'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem', flex: 1, minWidth: '320px' }}>
-                <div style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '12px',
-                  background: onlineClasses.some(c => c.isLive) ? 'linear-gradient(135deg, #E11D48, #BE123C)' : 'linear-gradient(135deg, #0F172A, #334155)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative',
-                  flexShrink: 0,
-                  boxShadow: onlineClasses.some(c => c.isLive) ? '0 4px 14px rgba(225, 29, 72, 0.25)' : '0 4px 14px rgba(15, 23, 42, 0.15)'
-                }}>
-                  <Radio size={22} color="#FFFFFF" />
+            {/* 1. Executive Studio Header Command Bar Card */}
+            <div 
+              className="bg-white border border-[#E8DFD3] rounded-2xl p-6"
+              style={{
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #E8DFD3',
+                borderRadius: '16px',
+                padding: '20px 24px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '20px',
+                flexWrap: 'wrap',
+                marginBottom: '20px',
+                boxShadow: '0 2px 8px rgba(35, 20, 24, 0.02)'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: 1, minWidth: '320px' }}>
+                <div 
+                  className="w-12 h-12 rounded-full bg-[#FCEEEE] border border-[#EED2D2] text-[#991B1B] flex items-center justify-center shrink-0"
+                  style={{
+                    width: '48px',
+                    height: '48px',
+                    borderRadius: '50%',
+                    backgroundColor: '#FCEEEE',
+                    border: '1px solid #EED2D2',
+                    color: '#991B1B',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    position: 'relative',
+                    flexShrink: 0
+                  }}
+                >
+                  <Radio size={22} color="#991B1B" />
                   {onlineClasses.some(c => c.isLive) && (
-                    <span style={{
-                      position: 'absolute',
-                      top: '-3px',
-                      right: '-3px',
-                      width: '12px',
-                      height: '12px',
-                      background: '#10B981',
-                      border: '2px solid #FFFFFF',
-                      borderRadius: '50%'
-                    }} />
+                    <span 
+                      style={{
+                        position: 'absolute',
+                        top: '1px',
+                        right: '1px',
+                        width: '10px',
+                        height: '10px',
+                        backgroundColor: '#991B1B',
+                        border: '2px solid #FFFFFF',
+                        borderRadius: '50%'
+                      }} 
+                    />
                   )}
                 </div>
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', margin: 0, lineHeight: 1.25 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                    <h3 
+                      className="font-serif font-normal text-2xl sm:text-[1.75rem] text-[#231418] leading-tight"
+                      style={{ 
+                        fontFamily: "'Instrument Serif', Georgia, serif", 
+                        fontSize: 'clamp(1.4rem, 2.2vw, 1.75rem)', 
+                        fontWeight: 400, 
+                        color: '#231418', 
+                        letterSpacing: '-0.015em', 
+                        margin: 0, 
+                        lineHeight: 1.15 
+                      }}
+                    >
                       Live Online Google Meet Batches & Dictation Studio
                     </h3>
                     {onlineClasses.some(c => c.isLive) ? (
-                      <span style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        padding: '3px 10px',
-                        borderRadius: '999px',
-                        background: 'rgba(239, 68, 68, 0.08)',
-                        border: '1px solid rgba(239, 68, 68, 0.2)',
-                        color: '#DC2626',
-                        fontSize: '0.72rem',
-                        fontWeight: 800,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.04em'
-                      }}>
-                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#DC2626' }} />
+                      <span 
+                        className="bg-[#FCEEEE] text-[#991B1B] border border-[#EED2D2] rounded-full px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          padding: '3px 12px',
+                          borderRadius: '9999px',
+                          backgroundColor: '#FCEEEE',
+                          border: '1px solid #EED2D2',
+                          color: '#991B1B',
+                          fontSize: '10px',
+                          fontWeight: 700,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.08em'
+                        }}
+                      >
+                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
                         <span>{onlineClasses.filter(c => c.isLive).length} Class Live On-Air</span>
                       </span>
                     ) : (
-                      <span style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '5px',
-                        padding: '3px 10px',
-                        borderRadius: '999px',
-                        background: '#F1F5F9',
-                        border: '1px solid rgba(0,0,0,0.06)',
-                        color: '#64748B',
-                        fontSize: '0.72rem',
-                        fontWeight: 700
-                      }}>
-                        <Clock size={11} />
+                      <span 
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '5px',
+                          padding: '3px 12px',
+                          borderRadius: '9999px',
+                          backgroundColor: '#FBF8F3',
+                          border: '1px solid #E5DBD0',
+                          color: '#594A4D',
+                          fontSize: '11px',
+                          fontWeight: 600
+                        }}
+                      >
+                        <Clock size={11} color="#594A4D" />
                         <span>All Studios Standby</span>
                       </span>
                     )}
                   </div>
-                  <p style={{ fontSize: '0.82rem', color: '#64748B', margin: '0.25rem 0 0', lineHeight: 1.45, maxWidth: '680px' }}>
+                  <p style={{ fontSize: '0.84rem', color: '#594A4D', margin: '6px 0 0', lineHeight: 1.5, maxWidth: '680px' }}>
                     Schedule, broadcast, and orchestrate real-time Google Meet video classrooms. Any class marked "Live" is instantly pushed to candidate portals with 1-click joining.
                   </p>
                 </div>
               </div>
 
-              {/* Studio Action Suite */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
+              {/* Studio Action Suite — 3 rounded-full pills */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
                 <button 
                   type="button"
+                  className="bg-[#FDF5E7] hover:bg-[#F9EBC8] border border-[#EFDAB6] text-[#9A5B13] px-4 py-2 rounded-full text-xs font-semibold transition-colors"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.5rem',
-                    height: '40px',
-                    padding: '0 1.1rem',
-                    borderRadius: '10px',
-                    fontSize: '0.82rem',
-                    fontWeight: 700,
+                    gap: '6px',
+                    height: '38px',
+                    padding: '0 16px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    fontWeight: 600,
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
-                    background: isBroadcastingNotice ? '#FEF3C7' : '#FFFFFF',
-                    border: isBroadcastingNotice ? '1px solid #F59E0B' : '1px solid rgba(217, 119, 6, 0.3)',
-                    color: '#B45309'
+                    backgroundColor: isBroadcastingNotice ? '#F9EBC8' : '#FDF5E7',
+                    border: '1px solid #EFDAB6',
+                    color: '#9A5B13'
                   }}
                   onClick={() => setIsBroadcastingNotice(!isBroadcastingNotice)}
                   title="Broadcast a live announcement ticker to all student dashboards"
                 >
-                  <Megaphone size={14} className="text-amber-600" />
+                  <Megaphone size={14} color="#9A5B13" />
                   <span>{isBroadcastingNotice ? 'Close Notice Form' : 'Broadcast Notice'}</span>
                 </button>
 
                 <button 
                   type="button"
+                  className="bg-[#FCEEEE] hover:bg-[#991B1B] border border-[#EED2D2] text-[#991B1B] hover:text-white px-4 py-2 rounded-full text-xs font-semibold transition-colors"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.5rem',
-                    height: '40px',
-                    padding: '0 1.1rem',
-                    borderRadius: '10px',
-                    fontSize: '0.82rem',
-                    fontWeight: 700,
+                    gap: '6px',
+                    height: '38px',
+                    padding: '0 16px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    fontWeight: 600,
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
-                    background: '#FFFFFF',
-                    border: '1px solid rgba(225, 29, 72, 0.3)',
-                    color: '#E11D48'
+                    backgroundColor: '#FCEEEE',
+                    border: '1px solid #EED2D2',
+                    color: '#991B1B'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#991B1B';
+                    e.currentTarget.style.color = '#FFFFFF';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#FCEEEE';
+                    e.currentTarget.style.color = '#991B1B';
                   }}
                   onClick={handleQuickStartLive}
                   title="Instantly launch an impromptu live broadcast on Google Meet"
                 >
-                  <Zap size={14} className="fill-rose-500 text-rose-500" />
+                  <Zap size={14} color="currentColor" />
                   <span>Instant Live Class</span>
                 </button>
 
                 <button 
                   type="button"
+                  className="bg-[#231418] hover:bg-[#3A2228] text-[#FAF6F0] px-5 py-2 rounded-full text-xs font-semibold transition-colors"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.5rem',
-                    height: '40px',
-                    padding: '0 1.25rem',
-                    borderRadius: '10px',
-                    fontSize: '0.82rem',
-                    fontWeight: 700,
+                    gap: '6px',
+                    height: '38px',
+                    padding: '0 20px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    fontWeight: 600,
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
-                    background: '#0F172A',
-                    border: '1px solid #0F172A',
-                    color: '#FFFFFF',
-                    boxShadow: '0 2px 8px rgba(15, 23, 42, 0.18)'
+                    backgroundColor: '#231418',
+                    border: '1px solid #231418',
+                    color: '#FAF6F0',
+                    boxShadow: '0 2px 8px rgba(35, 20, 24, 0.15)'
                   }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3A2228'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#231418'}
                   onClick={() => {
                     loadClassTemplate('ssc80');
                     setNewClassModalOpen(true);
                   }}
                   title="Schedule and configure a new Google Meet class batch"
                 >
-                  <Plus size={15} />
-                  <span>Schedule Live Online Class</span>
+                  <Plus size={15} color="#FAF6F0" />
+                  <span>+ Schedule Live Online Class</span>
                 </button>
               </div>
             </div>
 
             {/* Broadcast Live Notice Composer (Expandable) */}
             {isBroadcastingNotice && (
-              <form onSubmit={handlePostNotice} style={{ background: '#FFFBEB', border: '1px solid #FCD34D', borderRadius: '14px', padding: '1.25rem', marginTop: '1rem', marginBottom: '1.25rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.85rem' }}>
+              <form 
+                onSubmit={handlePostNotice} 
+                style={{ 
+                  backgroundColor: '#FDF5E7', 
+                  border: '1px solid #EFDAB6', 
+                  borderRadius: '16px', 
+                  padding: '20px', 
+                  marginTop: '16px', 
+                  marginBottom: '20px' 
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Megaphone size={16} className="text-amber-600" />
-                    <span style={{ fontWeight: 800, fontSize: '0.88rem', color: '#92400E' }}>Broadcast Instant Alert to All Online Candidates</span>
+                    <Megaphone size={16} color="#9A5B13" />
+                    <span style={{ fontWeight: 700, fontSize: '0.9rem', color: '#9A5B13' }}>Broadcast Instant Alert to All Online Candidates</span>
                   </div>
                   <button 
                     type="button" 
-                    style={{ background: 'transparent', border: 'none', color: '#B45309', cursor: 'pointer', padding: '4px' }}
+                    style={{ background: 'transparent', border: 'none', color: '#9A5B13', cursor: 'pointer', padding: '4px' }}
                     onClick={() => setIsBroadcastingNotice(false)}
                   >
                     <X size={16} />
@@ -3891,18 +3939,56 @@ export default function AdminPortalView({
                 <div>
                   <input 
                     type="text" 
-                    style={{ width: '100%', background: '#FFFFFF', border: '1px solid #F59E0B', borderRadius: '8px', padding: '0.65rem 1rem', fontSize: '0.85rem', color: '#0F172A', boxSizing: 'border-box' }}
+                    style={{ 
+                      width: '100%', 
+                      backgroundColor: '#FFFFFF', 
+                      border: '1px solid #EFDAB6', 
+                      borderRadius: '9999px', 
+                      padding: '10px 18px', 
+                      fontSize: '0.85rem', 
+                      color: '#231418', 
+                      boxSizing: 'border-box',
+                      outline: 'none'
+                    }}
                     placeholder="e.g. 📢 Attention Aspirants: SSC 80 WPM Parliamentary dictation begins in 5 mins. Keep shorthand pads ready!"
                     value={broadcastNoticeText}
                     onChange={(e) => setBroadcastNoticeText(e.target.value)}
                     required
                   />
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '0.75rem' }}>
-                    <button type="submit" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#D97706', border: '1px solid #D97706', color: '#FFFFFF', padding: '0.45rem 1rem', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '12px' }}>
+                    <button 
+                      type="submit" 
+                      style={{ 
+                        display: 'inline-flex', 
+                        alignItems: 'center', 
+                        gap: '6px', 
+                        backgroundColor: '#231418', 
+                        border: '1px solid #231418', 
+                        color: '#FAF6F0', 
+                        padding: '8px 18px', 
+                        borderRadius: '9999px', 
+                        fontSize: '12px', 
+                        fontWeight: 600, 
+                        cursor: 'pointer' 
+                      }}
+                    >
                       <Send size={13} />
                       <span>Publish Banner to Students</span>
                     </button>
-                    <button type="button" style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.1)', color: '#475569', padding: '0.45rem 0.85rem', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }} onClick={() => setIsBroadcastingNotice(false)}>
+                    <button 
+                      type="button" 
+                      style={{ 
+                        backgroundColor: '#FFFFFF', 
+                        border: '1px solid #DFD4C6', 
+                        color: '#594A4D', 
+                        padding: '8px 16px', 
+                        borderRadius: '9999px', 
+                        fontSize: '12px', 
+                        fontWeight: 600, 
+                        cursor: 'pointer' 
+                      }} 
+                      onClick={() => setIsBroadcastingNotice(false)}
+                    >
                       Cancel
                     </button>
                   </div>
@@ -3910,55 +3996,63 @@ export default function AdminPortalView({
               </form>
             )}
 
-            {/* Active Live Notice Banner Display (if set) */}
+            {/* 2. Active Live Notice Banner Display */}
             {activeBroadcastNotice && (
-              <div style={{
-                background: '#FEF2F2',
-                border: '1px solid rgba(239, 68, 68, 0.25)',
-                borderRadius: '12px',
-                padding: '0.85rem 1.25rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: '1rem',
-                marginTop: '1rem',
-                marginBottom: '1.25rem',
-                flexWrap: 'wrap'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: 1, minWidth: '280px' }}>
-                  <span style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '5px',
-                    padding: '3px 8px',
-                    borderRadius: '6px',
-                    background: '#DC2626',
-                    color: '#FFFFFF',
-                    fontSize: '0.7rem',
-                    fontWeight: 800,
-                    letterSpacing: '0.5px'
-                  }}>
-                    <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#FFFFFF' }} />
+              <div 
+                className="bg-[#FCEEEE] border border-[#EED2D2] rounded-2xl px-4 py-3"
+                style={{
+                  backgroundColor: '#FCEEEE',
+                  border: '1px solid #EED2D2',
+                  borderRadius: '16px',
+                  padding: '12px 18px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '16px',
+                  marginTop: '16px',
+                  marginBottom: '20px',
+                  flexWrap: 'wrap'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1, minWidth: '280px' }}>
+                  <span 
+                    className="bg-[#991B1B] text-white rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                      padding: '4px 10px',
+                      borderRadius: '9999px',
+                      backgroundColor: '#991B1B',
+                      color: '#FFFFFF',
+                      fontSize: '10px',
+                      fontWeight: 700,
+                      letterSpacing: '0.08em'
+                    }}
+                  >
+                    <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#FFFFFF' }} />
                     <span>STUDENT ALERT ACTIVE</span>
                   </span>
-                  <p style={{ margin: 0, fontSize: '0.85rem', color: '#991B1B', fontWeight: 600, lineHeight: 1.4 }}>
+                  <p style={{ margin: 0, fontSize: '0.85rem', color: '#231418', fontWeight: 500, lineHeight: 1.4 }}>
                     {activeBroadcastNotice}
                   </p>
                 </div>
                 <button 
                   type="button" 
+                  className="bg-white hover:bg-[#FBF8F3] border border-[#E5DBD0] text-[#594A4D] hover:text-[#231418] rounded-full px-3.5 py-1 text-xs font-semibold"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '5px',
-                    background: '#FFFFFF',
-                    border: '1px solid rgba(239, 68, 68, 0.3)',
-                    color: '#DC2626',
-                    padding: '0.4rem 0.85rem',
-                    borderRadius: '8px',
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    cursor: 'pointer'
+                    backgroundColor: '#FFFFFF',
+                    border: '1px solid #E5DBD0',
+                    color: '#594A4D',
+                    padding: '6px 14px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    transition: 'all 0.15s ease'
                   }}
                   onClick={handleClearNotice}
                   title="Clear notice banner for students"
@@ -3969,216 +4063,244 @@ export default function AdminPortalView({
               </div>
             )}
 
-            {/* 4 Executive KPI Studio Telemetry Cards */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
-              gap: '1rem',
-              marginTop: '1.25rem',
-              marginBottom: '1.25rem'
-            }}>
+            {/* 3. 4 Mini Stat Cards (Unified in Crisp White with Warm Sand badges) */}
+            <div 
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                gap: '16px',
+                marginTop: '16px',
+                marginBottom: '20px'
+              }}
+            >
               {/* Card 1: Live Broadcasts */}
-              <div style={{
-                background: '#FFFFFF',
-                border: onlineClasses.some(c => c.isLive) ? '1px solid rgba(225, 29, 72, 0.3)' : '1px solid rgba(0,0,0,0.07)',
-                borderRadius: '14px',
-                padding: '1.15rem 1.25rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '1rem',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.02)'
-              }}>
-                <div style={{
-                  width: '44px',
-                  height: '44px',
-                  borderRadius: '10px',
+              <div 
+                className="bg-white border border-[#E8DFD3] rounded-2xl p-4 flex items-center gap-3.5 shadow-[0_4px_16px_rgba(35,20,24,0.03)]"
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: onlineClasses.some(c => c.isLive) ? '1px solid #EED2D2' : '1px solid #E8DFD3',
+                  borderRadius: '16px',
+                  padding: '16px 20px',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'rgba(225, 29, 72, 0.08)',
-                  color: '#E11D48',
-                  border: '1px solid rgba(225, 29, 72, 0.15)',
-                  flexShrink: 0
-                }}>
-                  <Radio size={18} />
+                  gap: '14px',
+                  boxShadow: '0 4px 16px rgba(35, 20, 24, 0.03)'
+                }}
+              >
+                <div 
+                  className="w-10 h-10 rounded-full bg-[#EFE7DC] text-[#991B1B] flex items-center justify-center shrink-0"
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#EFE7DC',
+                    color: '#991B1B',
+                    flexShrink: 0
+                  }}
+                >
+                  <Radio size={18} color="#991B1B" />
                 </div>
                 <div>
-                  <span style={{ display: 'block', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B', fontWeight: 700 }}>
+                  <span style={{ display: 'block', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', fontWeight: 600 }}>
                     Live Broadcasts
                   </span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', margin: '2px 0' }}>
-                    <strong style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                    <strong className="font-sans font-bold text-xl text-[#231418] tabular-nums" style={{ fontSize: '1.25rem', fontWeight: 700, color: '#231418', lineHeight: 1.2 }}>
                       {onlineClasses.filter(c => c.isLive).length} On-Air
                     </strong>
                     {onlineClasses.some(c => c.isLive) && (
-                      <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#EF4444' }} />
+                      <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
                     )}
                   </div>
-                  <span style={{ fontSize: '0.72rem', fontWeight: 600, color: onlineClasses.some(c => c.isLive) ? '#DC2626' : '#64748B' }}>
+                  <span style={{ fontSize: '11px', fontWeight: 600, color: onlineClasses.some(c => c.isLive) ? '#991B1B' : '#594A4D' }}>
                     {onlineClasses.some(c => c.isLive) ? 'Pulsing live call active' : 'All studios on standby'}
                   </span>
                 </div>
               </div>
 
               {/* Card 2: Total Batches */}
-              <div style={{
-                background: '#FFFFFF',
-                border: '1px solid rgba(0,0,0,0.07)',
-                borderRadius: '14px',
-                padding: '1.15rem 1.25rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '1rem',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.02)'
-              }}>
-                <div style={{
-                  width: '44px',
-                  height: '44px',
-                  borderRadius: '10px',
+              <div 
+                className="bg-white border border-[#E8DFD3] rounded-2xl p-4 flex items-center gap-3.5 shadow-[0_4px_16px_rgba(35,20,24,0.03)]"
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #E8DFD3',
+                  borderRadius: '16px',
+                  padding: '16px 20px',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'rgba(245, 158, 11, 0.08)',
-                  color: '#D97706',
-                  border: '1px solid rgba(245, 158, 11, 0.2)',
-                  flexShrink: 0
-                }}>
-                  <Calendar size={18} />
+                  gap: '14px',
+                  boxShadow: '0 4px 16px rgba(35, 20, 24, 0.03)'
+                }}
+              >
+                <div 
+                  className="w-10 h-10 rounded-full bg-[#EFE7DC] text-[#991B1B] flex items-center justify-center shrink-0"
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#EFE7DC',
+                    color: '#991B1B',
+                    flexShrink: 0
+                  }}
+                >
+                  <Calendar size={18} color="#991B1B" />
                 </div>
                 <div>
-                  <span style={{ display: 'block', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B', fontWeight: 700 }}>
+                  <span style={{ display: 'block', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', fontWeight: 600 }}>
                     Total Batches
                   </span>
                   <div style={{ margin: '2px 0' }}>
-                    <strong style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                    <strong className="font-sans font-bold text-xl text-[#231418] tabular-nums" style={{ fontSize: '1.25rem', fontWeight: 700, color: '#231418', lineHeight: 1.2 }}>
                       {onlineClasses.length} Scheduled
                     </strong>
                   </div>
-                  <span style={{ fontSize: '0.72rem', fontWeight: 600, color: '#64748B' }}>
+                  <span style={{ fontSize: '11px', fontWeight: 500, color: '#594A4D' }}>
                     Covering 6:00 AM – 7:30 PM
                   </span>
                 </div>
               </div>
 
               {/* Card 3: Enrolled Students */}
-              <div style={{
-                background: '#FFFFFF',
-                border: '1px solid rgba(0,0,0,0.07)',
-                borderRadius: '14px',
-                padding: '1.15rem 1.25rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '1rem',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.02)'
-              }}>
-                <div style={{
-                  width: '44px',
-                  height: '44px',
-                  borderRadius: '10px',
+              <div 
+                className="bg-white border border-[#E8DFD3] rounded-2xl p-4 flex items-center gap-3.5 shadow-[0_4px_16px_rgba(35,20,24,0.03)]"
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #E8DFD3',
+                  borderRadius: '16px',
+                  padding: '16px 20px',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'rgba(16, 185, 129, 0.08)',
-                  color: '#059669',
-                  border: '1px solid rgba(16, 185, 129, 0.2)',
-                  flexShrink: 0
-                }}>
-                  <Users size={18} />
+                  gap: '14px',
+                  boxShadow: '0 4px 16px rgba(35, 20, 24, 0.03)'
+                }}
+              >
+                <div 
+                  className="w-10 h-10 rounded-full bg-[#EFE7DC] text-[#991B1B] flex items-center justify-center shrink-0"
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#EFE7DC',
+                    color: '#991B1B',
+                    flexShrink: 0
+                  }}
+                >
+                  <Users size={18} color="#991B1B" />
                 </div>
                 <div>
-                  <span style={{ display: 'block', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B', fontWeight: 700 }}>
+                  <span style={{ display: 'block', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', fontWeight: 600 }}>
                     Enrolled Students
                   </span>
                   <div style={{ margin: '2px 0' }}>
-                    <strong style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                    <strong className="font-sans font-bold text-xl text-[#231418] tabular-nums" style={{ fontSize: '1.25rem', fontWeight: 700, color: '#231418', lineHeight: 1.2 }}>
                       {onlineClasses.reduce((acc, c) => acc + (c.attendees || 1), 0)} Aspirants
                     </strong>
                   </div>
-                  <span style={{ fontSize: '0.72rem', fontWeight: 600, color: '#059669' }}>
+                  <span style={{ fontSize: '11px', fontWeight: 600, color: '#1F6B48' }}>
                     Active online learners
                   </span>
                 </div>
               </div>
 
               {/* Card 4: Student Sync Engine */}
-              <div style={{
-                background: '#FFFFFF',
-                border: '1px solid rgba(0,0,0,0.07)',
-                borderRadius: '14px',
-                padding: '1.15rem 1.25rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '1rem',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.02)'
-              }}>
-                <div style={{
-                  width: '44px',
-                  height: '44px',
-                  borderRadius: '10px',
+              <div 
+                className="bg-white border border-[#E8DFD3] rounded-2xl p-4 flex items-center gap-3.5 shadow-[0_4px_16px_rgba(35,20,24,0.03)]"
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #E8DFD3',
+                  borderRadius: '16px',
+                  padding: '16px 20px',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'rgba(147, 51, 234, 0.08)',
-                  color: '#7C3AED',
-                  border: '1px solid rgba(147, 51, 234, 0.2)',
-                  flexShrink: 0
-                }}>
-                  <ShieldCheck size={18} />
+                  gap: '14px',
+                  boxShadow: '0 4px 16px rgba(35, 20, 24, 0.03)'
+                }}
+              >
+                <div 
+                  className="w-10 h-10 rounded-full bg-[#EFE7DC] text-[#991B1B] flex items-center justify-center shrink-0"
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#EFE7DC',
+                    color: '#991B1B',
+                    flexShrink: 0
+                  }}
+                >
+                  <ShieldCheck size={18} color="#991B1B" />
                 </div>
                 <div>
-                  <span style={{ display: 'block', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B', fontWeight: 700 }}>
+                  <span style={{ display: 'block', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8A7B7E', fontWeight: 600 }}>
                     Student Sync Engine
                   </span>
                   <div style={{ margin: '2px 0' }}>
-                    <strong style={{ fontSize: '1.35rem', fontWeight: 800, color: '#059669', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                    <strong className="font-sans font-bold text-xl text-[#1F6B48] tabular-nums" style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1F6B48', lineHeight: 1.2 }}>
                       ✓ 100% Active
                     </strong>
                   </div>
-                  <span style={{ fontSize: '0.72rem', fontWeight: 600, color: '#64748B' }}>
+                  <span style={{ fontSize: '11px', fontWeight: 500, color: '#594A4D' }}>
                     Instant push to candidate app
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Filter Pills, Search Bar & View Mode Switcher */}
-            <div style={{
-              background: '#F8FAFC',
-              border: '1px solid rgba(0,0,0,0.06)',
-              borderRadius: '14px',
-              padding: '0.65rem 0.85rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap',
-              gap: '0.75rem',
-              marginBottom: '1.25rem'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+            {/* 4. Filter & View Switcher Bar */}
+            <div 
+              className="bg-white border border-[#E8DFD3] rounded-2xl px-4 py-3"
+              style={{
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #E8DFD3',
+                borderRadius: '16px',
+                padding: '12px 18px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '12px',
+                marginBottom: '20px'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                 <button 
                   type="button" 
+                  className={classFilterStatus === 'all' ? 'bg-[#231418] text-[#FAF6F0] rounded-full px-3.5 py-1.5 text-xs font-semibold' : 'bg-[#FBF8F3] hover:bg-[#EFE7DC] border border-[#E5DBD0] text-[#594A4D] rounded-full px-3.5 py-1.5 text-xs font-medium'}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '6px',
-                    padding: '5px 12px',
-                    borderRadius: '8px',
-                    fontSize: '0.78rem',
-                    fontWeight: 700,
+                    padding: '6px 14px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    fontWeight: 600,
                     cursor: 'pointer',
-                    border: '1px solid transparent',
-                    background: classFilterStatus === 'all' ? '#0F172A' : '#FFFFFF',
-                    color: classFilterStatus === 'all' ? '#FFFFFF' : '#475569',
-                    boxShadow: classFilterStatus === 'all' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
+                    border: classFilterStatus === 'all' ? '1px solid #231418' : '1px solid #E5DBD0',
+                    backgroundColor: classFilterStatus === 'all' ? '#231418' : '#FBF8F3',
+                    color: classFilterStatus === 'all' ? '#FAF6F0' : '#594A4D',
+                    transition: 'all 0.15s ease'
                   }}
                   onClick={() => setClassFilterStatus('all')}
                 >
                   <span>All Classes</span>
                   <span style={{
                     padding: '1px 6px',
-                    borderRadius: '999px',
-                    fontSize: '0.7rem',
-                    background: classFilterStatus === 'all' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.06)'
+                    borderRadius: '9999px',
+                    fontSize: '10px',
+                    backgroundColor: classFilterStatus === 'all' ? 'rgba(250,246,240,0.2)' : '#EDE5DA',
+                    color: classFilterStatus === 'all' ? '#FAF6F0' : '#594A4D'
                   }}>
                     {onlineClasses.length}
                   </span>
@@ -4189,25 +4311,26 @@ export default function AdminPortalView({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '6px',
-                    padding: '5px 12px',
-                    borderRadius: '8px',
-                    fontSize: '0.78rem',
-                    fontWeight: 700,
+                    padding: '6px 14px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    fontWeight: 600,
                     cursor: 'pointer',
-                    border: '1px solid transparent',
-                    background: classFilterStatus === 'live' ? '#DC2626' : '#FFFFFF',
-                    color: classFilterStatus === 'live' ? '#FFFFFF' : '#475569',
-                    boxShadow: classFilterStatus === 'live' ? '0 1px 3px rgba(220,38,38,0.2)' : 'none'
+                    border: classFilterStatus === 'live' ? '1px solid #991B1B' : '1px solid #E5DBD0',
+                    backgroundColor: classFilterStatus === 'live' ? '#991B1B' : '#FBF8F3',
+                    color: classFilterStatus === 'live' ? '#FFFFFF' : '#594A4D',
+                    transition: 'all 0.15s ease'
                   }}
                   onClick={() => setClassFilterStatus('live')}
                 >
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: classFilterStatus === 'live' ? '#FFFFFF' : '#DC2626', animation: 'beaconPulse 1.2s infinite' }} />
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: classFilterStatus === 'live' ? '#FFFFFF' : '#991B1B' }} />
                   <span>Live Now</span>
                   <span style={{
                     padding: '1px 6px',
-                    borderRadius: '999px',
-                    fontSize: '0.7rem',
-                    background: classFilterStatus === 'live' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.06)'
+                    borderRadius: '9999px',
+                    fontSize: '10px',
+                    backgroundColor: classFilterStatus === 'live' ? 'rgba(255,255,255,0.2)' : '#EDE5DA',
+                    color: classFilterStatus === 'live' ? '#FFFFFF' : '#594A4D'
                   }}>
                     {onlineClasses.filter(c => c.status === 'live' || c.isLive).length}
                   </span>
@@ -4218,15 +4341,15 @@ export default function AdminPortalView({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '6px',
-                    padding: '5px 12px',
-                    borderRadius: '8px',
-                    fontSize: '0.78rem',
-                    fontWeight: 700,
+                    padding: '6px 14px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    fontWeight: 600,
                     cursor: 'pointer',
-                    border: '1px solid transparent',
-                    background: classFilterStatus === 'upcoming' ? '#0F172A' : '#FFFFFF',
-                    color: classFilterStatus === 'upcoming' ? '#FFFFFF' : '#475569',
-                    boxShadow: classFilterStatus === 'upcoming' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
+                    border: classFilterStatus === 'upcoming' ? '1px solid #231418' : '1px solid #E5DBD0',
+                    backgroundColor: classFilterStatus === 'upcoming' ? '#231418' : '#FBF8F3',
+                    color: classFilterStatus === 'upcoming' ? '#FAF6F0' : '#594A4D',
+                    transition: 'all 0.15s ease'
                   }}
                   onClick={() => setClassFilterStatus('upcoming')}
                 >
@@ -4234,9 +4357,10 @@ export default function AdminPortalView({
                   <span>Upcoming</span>
                   <span style={{
                     padding: '1px 6px',
-                    borderRadius: '999px',
-                    fontSize: '0.7rem',
-                    background: classFilterStatus === 'upcoming' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.06)'
+                    borderRadius: '9999px',
+                    fontSize: '10px',
+                    backgroundColor: classFilterStatus === 'upcoming' ? 'rgba(250,246,240,0.2)' : '#EDE5DA',
+                    color: classFilterStatus === 'upcoming' ? '#FAF6F0' : '#594A4D'
                   }}>
                     {onlineClasses.filter(c => c.status === 'upcoming' || (!c.isLive && c.status !== 'completed' && c.status !== 'cancelled')).length}
                   </span>
@@ -4247,15 +4371,15 @@ export default function AdminPortalView({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '6px',
-                    padding: '5px 12px',
-                    borderRadius: '8px',
-                    fontSize: '0.78rem',
-                    fontWeight: 700,
+                    padding: '6px 14px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    fontWeight: 600,
                     cursor: 'pointer',
-                    border: '1px solid transparent',
-                    background: classFilterStatus === 'completed' ? '#0F172A' : '#FFFFFF',
-                    color: classFilterStatus === 'completed' ? '#FFFFFF' : '#475569',
-                    boxShadow: classFilterStatus === 'completed' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
+                    border: classFilterStatus === 'completed' ? '1px solid #231418' : '1px solid #E5DBD0',
+                    backgroundColor: classFilterStatus === 'completed' ? '#231418' : '#FBF8F3',
+                    color: classFilterStatus === 'completed' ? '#FAF6F0' : '#594A4D',
+                    transition: 'all 0.15s ease'
                   }}
                   onClick={() => setClassFilterStatus('completed')}
                 >
@@ -4263,9 +4387,10 @@ export default function AdminPortalView({
                   <span>Completed</span>
                   <span style={{
                     padding: '1px 6px',
-                    borderRadius: '999px',
-                    fontSize: '0.7rem',
-                    background: classFilterStatus === 'completed' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.06)'
+                    borderRadius: '9999px',
+                    fontSize: '10px',
+                    backgroundColor: classFilterStatus === 'completed' ? 'rgba(250,246,240,0.2)' : '#EDE5DA',
+                    color: classFilterStatus === 'completed' ? '#FAF6F0' : '#594A4D'
                   }}>
                     {onlineClasses.filter(c => c.status === 'completed').length}
                   </span>
@@ -4276,15 +4401,15 @@ export default function AdminPortalView({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '6px',
-                    padding: '5px 12px',
-                    borderRadius: '8px',
-                    fontSize: '0.78rem',
-                    fontWeight: 700,
+                    padding: '6px 14px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    fontWeight: 600,
                     cursor: 'pointer',
-                    border: '1px solid transparent',
-                    background: classFilterStatus === 'cancelled' ? '#0F172A' : '#FFFFFF',
-                    color: classFilterStatus === 'cancelled' ? '#FFFFFF' : '#475569',
-                    boxShadow: classFilterStatus === 'cancelled' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
+                    border: classFilterStatus === 'cancelled' ? '1px solid #231418' : '1px solid #E5DBD0',
+                    backgroundColor: classFilterStatus === 'cancelled' ? '#231418' : '#FBF8F3',
+                    color: classFilterStatus === 'cancelled' ? '#FAF6F0' : '#594A4D',
+                    transition: 'all 0.15s ease'
                   }}
                   onClick={() => setClassFilterStatus('cancelled')}
                 >
@@ -4292,58 +4417,72 @@ export default function AdminPortalView({
                   <span>Cancelled</span>
                   <span style={{
                     padding: '1px 6px',
-                    borderRadius: '999px',
-                    fontSize: '0.7rem',
-                    background: classFilterStatus === 'cancelled' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.06)'
+                    borderRadius: '9999px',
+                    fontSize: '10px',
+                    backgroundColor: classFilterStatus === 'cancelled' ? 'rgba(250,246,240,0.2)' : '#EDE5DA',
+                    color: classFilterStatus === 'cancelled' ? '#FAF6F0' : '#594A4D'
                   }}>
                     {onlineClasses.filter(c => c.status === 'cancelled').length}
                   </span>
                 </button>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
                 {/* Search Box */}
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(0,0,0,0.1)',
-                  borderRadius: '8px',
-                  padding: '4px 10px',
-                  width: '260px'
-                }}>
-                  <Search size={14} className="text-muted" />
+                <div 
+                  className="rounded-full bg-[#FBF8F3] border border-[#DFD4C6] px-4 py-1.5 text-xs text-[#231418]"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    backgroundColor: '#FBF8F3',
+                    border: '1px solid #DFD4C6',
+                    borderRadius: '9999px',
+                    padding: '6px 14px',
+                    width: '260px'
+                  }}
+                >
+                  <Search size={14} color="#8A7B7E" />
                   <input 
                     type="text" 
                     placeholder="Search batch, instructor, room..."
                     value={classSearchQuery}
                     onChange={(e) => setClassSearchQuery(e.target.value)}
-                    style={{ border: 'none', background: 'transparent', outline: 'none', fontSize: '0.8rem', width: '100%' }}
+                    style={{ border: 'none', background: 'transparent', outline: 'none', fontSize: '12px', width: '100%', color: '#231418' }}
                   />
                   {classSearchQuery && (
-                    <button type="button" onClick={() => setClassSearchQuery('')} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                    <button type="button" onClick={() => setClassSearchQuery('')} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, color: '#8A7B7E' }}>
                       <X size={12} />
                     </button>
                   )}
                 </div>
 
-                {/* View Mode Toggle: Grid vs Timetable */}
-                <div style={{ display: 'flex', background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '8px', padding: '2px' }}>
+                {/* View Mode Toggle: Grid vs Timetable on Recessed #EFE7DC pill track */}
+                <div 
+                  style={{ 
+                    display: 'flex', 
+                    backgroundColor: '#EFE7DC', 
+                    border: '1px solid #E0D5C7', 
+                    borderRadius: '9999px', 
+                    padding: '3px',
+                    gap: '2px'
+                  }}
+                >
                   <button 
                     type="button" 
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '4px',
-                      padding: '4px 10px',
-                      borderRadius: '6px',
-                      fontSize: '0.75rem',
-                      fontWeight: 700,
+                      padding: '5px 12px',
+                      borderRadius: '9999px',
+                      fontSize: '11px',
+                      fontWeight: 600,
                       cursor: 'pointer',
                       border: 'none',
-                      background: classViewMode === 'grid' ? '#0F172A' : 'transparent',
-                      color: classViewMode === 'grid' ? '#FFFFFF' : '#64748B'
+                      backgroundColor: classViewMode === 'grid' ? '#231418' : 'transparent',
+                      color: classViewMode === 'grid' ? '#FAF6F0' : '#594A4D',
+                      transition: 'all 0.15s ease'
                     }}
                     onClick={() => setClassViewMode('grid')}
                     title="Grid Card View"
@@ -4357,14 +4496,15 @@ export default function AdminPortalView({
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '4px',
-                      padding: '4px 10px',
-                      borderRadius: '6px',
-                      fontSize: '0.75rem',
-                      fontWeight: 700,
+                      padding: '5px 12px',
+                      borderRadius: '9999px',
+                      fontSize: '11px',
+                      fontWeight: 600,
                       cursor: 'pointer',
                       border: 'none',
-                      background: classViewMode === 'timetable' ? '#0F172A' : 'transparent',
-                      color: classViewMode === 'timetable' ? '#FFFFFF' : '#64748B'
+                      backgroundColor: classViewMode === 'timetable' ? '#231418' : 'transparent',
+                      color: classViewMode === 'timetable' ? '#FAF6F0' : '#594A4D',
+                      transition: 'all 0.15s ease'
                     }}
                     onClick={() => setClassViewMode('timetable')}
                     title="Daily Timetable Table View"
@@ -4376,252 +4516,272 @@ export default function AdminPortalView({
               </div>
             </div>
 
-            {/* VIEW A: Class Cards Grid */}
+            {/* 5. VIEW A: Class Cards Grid */}
             {classViewMode === 'grid' && (
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
-                gap: '1.25rem',
-                marginTop: '1.25rem'
-              }}>
+              <div 
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
+                  gap: '20px',
+                  marginTop: '20px'
+                }}
+              >
                 {filteredOnlineClasses.map((item) => (
-                  <div key={item.id} style={{
-                    background: '#FFFFFF',
-                    border: item.isLive ? '1.5px solid rgba(225, 29, 72, 0.4)' : '1px solid rgba(0,0,0,0.08)',
-                    borderRadius: '16px',
-                    padding: '1.35rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    boxShadow: item.isLive ? '0 4px 20px rgba(225, 29, 72, 0.08)' : '0 2px 6px rgba(0,0,0,0.02)',
-                    transition: 'all 0.15s ease'
-                  }}>
+                  <div 
+                    key={item.id} 
+                    style={{
+                      backgroundColor: '#FFFFFF',
+                      border: item.isLive ? '1px solid #DFD3C5' : '1px solid #E8DFD3',
+                      borderTop: item.isLive ? '4px solid #991B1B' : '1px solid #E8DFD3',
+                      borderRadius: '16px',
+                      padding: '20px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      boxShadow: item.isLive ? '0 10px 28px rgba(35, 20, 24, 0.06)' : '0 4px 16px rgba(35, 20, 24, 0.03)',
+                      transition: 'all 0.15s ease'
+                    }}
+                  >
                     {/* Top Status & Tools Bar */}
                     <div>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
                         <div>
                           {item.isLive ? (
-                            <span style={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '6px',
-                              padding: '3px 10px',
-                              borderRadius: '999px',
-                              background: 'rgba(225, 29, 72, 0.08)',
-                              border: '1px solid rgba(225, 29, 72, 0.25)',
-                              color: '#E11D48',
-                              fontSize: '0.7rem',
-                              fontWeight: 800,
-                              textTransform: 'uppercase',
-                              letterSpacing: '0.04em'
-                            }}>
-                              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#E11D48' }} />
+                            <span 
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '6px',
+                                padding: '4px 10px',
+                                borderRadius: '9999px',
+                                backgroundColor: '#FCEEEE',
+                                border: '1px solid #EED2D2',
+                                color: '#991B1B',
+                                fontSize: '10px',
+                                fontWeight: 700,
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.06em'
+                              }}
+                            >
+                              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
                               <span>LIVE NOW ON GOOGLE MEET</span>
                             </span>
-                          ) : item.badgeClass === 'badge-replay' ? (
-                            <span style={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '5px',
-                              padding: '3px 10px',
-                              borderRadius: '999px',
-                              background: 'rgba(100, 116, 139, 0.08)',
-                              border: '1px solid rgba(0,0,0,0.06)',
-                              color: '#475569',
-                              fontSize: '0.7rem',
-                              fontWeight: 700
-                            }}>
-                              <span>RECORDED ARCHIVE</span>
+                          ) : item.status === 'completed' || item.badgeClass === 'badge-replay' ? (
+                            <span 
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '5px',
+                                padding: '4px 10px',
+                                borderRadius: '9999px',
+                                backgroundColor: '#EFE7DC',
+                                border: '1px solid #E0D5C7',
+                                color: '#594A4D',
+                                fontSize: '10px',
+                                fontWeight: 600,
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.06em'
+                              }}
+                            >
+                              <span>COMPLETED</span>
                             </span>
                           ) : (
-                            <span style={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '5px',
-                              padding: '3px 10px',
-                              borderRadius: '999px',
-                              background: '#F1F5F9',
-                              border: '1px solid rgba(0,0,0,0.06)',
-                              color: '#0F172A',
-                              fontSize: '0.7rem',
-                              fontWeight: 700
-                            }}>
-                              <Clock size={11} />
+                            <span 
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '5px',
+                                padding: '4px 10px',
+                                borderRadius: '9999px',
+                                backgroundColor: '#FBF8F3',
+                                border: '1px solid #E5DBD0',
+                                color: '#231418',
+                                fontSize: '10px',
+                                fontWeight: 600,
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.06em'
+                              }}
+                            >
+                              <Clock size={11} color="#594A4D" />
                               <span>SCHEDULED</span>
                             </span>
                           )}
                         </div>
 
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                           <button 
                             type="button"
                             style={{
-                              background: '#F8FAFC',
-                              border: '1px solid rgba(0,0,0,0.08)',
-                              borderRadius: '6px',
-                              padding: '5px 7px',
+                              backgroundColor: '#FBF8F3',
+                              border: '1px solid #E5DBD0',
+                              borderRadius: '9999px',
+                              padding: '6px 8px',
                               cursor: 'pointer',
-                              color: '#475569',
+                              color: '#594A4D',
                               display: 'flex',
                               alignItems: 'center',
-                              justifyContent: 'center'
+                              justifyContent: 'center',
+                              transition: 'all 0.15s ease'
                             }}
                             onClick={() => handleCopyClassInvite(item)}
                             title="Copy Full Google Meet Invite text"
                           >
-                            {copiedClassId === item.id ? <Check size={13} className="text-emerald-600" /> : <Copy size={13} />}
+                            {copiedClassId === item.id ? <Check size={13} color="#1F6B48" /> : <Copy size={13} />}
                           </button>
+
                           <button 
                             type="button"
                             style={{
-                              background: '#F8FAFC',
-                              border: '1px solid rgba(0,0,0,0.08)',
-                              borderRadius: '6px',
-                              padding: '5px 7px',
+                              backgroundColor: '#FBF8F3',
+                              border: '1px solid #E5DBD0',
+                              borderRadius: '9999px',
+                              padding: '6px 8px',
                               cursor: 'pointer',
-                              color: '#475569',
+                              color: '#594A4D',
                               display: 'flex',
                               alignItems: 'center',
-                              justifyContent: 'center'
+                              justifyContent: 'center',
+                              transition: 'all 0.15s ease'
                             }}
                             onClick={() => setEditingClass({ ...item })}
-                            title="Edit this class details"
+                            title="Edit Class Details"
                           >
                             <Edit3 size={13} />
                           </button>
-                          <button 
-                            type="button"
-                            style={{
-                              background: '#FEF2F2',
-                              border: '1px solid rgba(220, 38, 38, 0.2)',
-                              borderRadius: '6px',
-                              padding: '5px 7px',
-                              cursor: 'pointer',
-                              color: '#DC2626',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center'
-                            }}
-                            onClick={() => {
-                              if (confirm(`Delete online class "${item.title}"?`)) {
-                                if (onDeleteOnlineClass) onDeleteOnlineClass(item.id);
-                              }
-                            }}
-                            title="Delete this class"
-                          >
-                            <Trash2 size={13} />
-                          </button>
                         </div>
                       </div>
 
-                      {/* Card Title & Meta Badges */}
-                      <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0F172A', lineHeight: 1.35, margin: '0 0 0.65rem' }}>
-                        {item.title}
-                      </h4>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap', marginBottom: '0.85rem' }}>
-                        <span style={{ background: '#F1F5F9', color: '#334155', padding: '3px 8px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 700 }}>
-                          {item.shift}
+                      {/* Speed & Shift Metadata Tags — Warm Editorial Pills */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
+                        <span 
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            backgroundColor: '#EFE7DC',
+                            color: '#231418',
+                            borderRadius: '9999px',
+                            padding: '2px 10px',
+                            fontSize: '11px',
+                            fontWeight: 600
+                          }}
+                        >
+                          {item.shift || 'Regular Shift'}
                         </span>
-                        <span style={{ background: 'rgba(37, 99, 235, 0.08)', color: '#2563EB', padding: '3px 8px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 800 }}>
-                          {item.speed}
-                        </span>
-                        <span style={{ background: '#F8FAFC', border: '1px solid rgba(0,0,0,0.06)', color: '#64748B', padding: '3px 8px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 600 }}>
-                          {item.roomNo}
+                        <span 
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            backgroundColor: '#FDF5E7',
+                            color: '#9A5B13',
+                            border: '1px solid #EFDAB6',
+                            borderRadius: '9999px',
+                            padding: '2px 10px',
+                            fontSize: '11px',
+                            fontWeight: 600
+                          }}
+                        >
+                          {item.speed || '80 WPM Standard'}
                         </span>
                       </div>
 
-                      {/* Faculty & Schedule Timing Bar */}
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '10px',
-                        padding: '8px 10px',
-                        background: '#F8FAFC',
-                        borderRadius: '10px',
-                        border: '1px solid rgba(0,0,0,0.05)',
-                        marginBottom: '0.85rem'
-                      }}>
-                        <div style={{
-                          width: '32px',
-                          height: '32px',
-                          borderRadius: '50%',
-                          background: '#0F172A',
-                          color: '#FFFFFF',
+                      {/* Class Title */}
+                      <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#231418', margin: '0 0 12px', lineHeight: 1.35 }}>
+                        {item.title}
+                      </h4>
+
+                      {/* Instructor & Shift Info Box */}
+                      <div 
+                        style={{
                           display: 'flex',
                           alignItems: 'center',
-                          justifyContent: 'center',
-                          fontWeight: 800,
-                          fontSize: '0.75rem',
-                          flexShrink: 0
-                        }}>
+                          gap: '10px',
+                          padding: '10px 12px',
+                          backgroundColor: '#FBF8F3',
+                          borderRadius: '12px',
+                          border: '1px solid #E8DFD3',
+                          marginBottom: '12px'
+                        }}
+                      >
+                        <div 
+                          style={{
+                            width: '32px',
+                            height: '32px',
+                            borderRadius: '50%',
+                            backgroundColor: '#231418',
+                            color: '#FAF6F0',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontWeight: 700,
+                            fontSize: '12px',
+                            flexShrink: 0
+                          }}
+                        >
                           {(item.instructor || 'Shadab Sir').split(' ').map(n => n[0]).join('').slice(0, 2) || 'SS'}
                         </div>
                         <div style={{ flex: 1, minWidth: 0 }}>
-                          <span style={{ display: 'block', fontWeight: 700, fontSize: '0.82rem', color: '#0F172A' }}>
+                          <span style={{ display: 'block', fontWeight: 600, fontSize: '13px', color: '#231418' }}>
                             {item.instructor || 'Shadab Sir'}
                           </span>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.72rem', color: '#64748B' }}>
-                            <span><Clock size={10} className="inline mr-1 text-slate-400" />{item.time || item.startTime || '8:30 AM'}</span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: '#594A4D' }}>
+                            <span><Clock size={10} className="inline mr-1 text-[#8A7B7E]" />{item.time || item.startTime || '8:30 AM'}</span>
                             <span>•</span>
-                            <span style={{ fontWeight: 600, color: '#334155' }}>{item.attendees || 1} Aspirants</span>
+                            <span style={{ fontWeight: 600, color: '#231418' }}>{item.attendees || 1} Aspirants</span>
                           </div>
                         </div>
                       </div>
 
-                      {/* Google Meet Details Strip */}
-                      <div style={{
-                        background: '#F8FAFC',
-                        border: '1px solid rgba(0,0,0,0.06)',
-                        borderRadius: '10px',
-                        padding: '8px 12px',
-                        display: 'grid',
-                        gridTemplateColumns: '1.4fr 1fr auto',
-                        gap: '8px',
-                        alignItems: 'center',
-                        marginBottom: '0.85rem'
-                      }}>
-                        <div>
-                          <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B' }}>Meet Code</span>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <strong style={{ fontSize: '0.78rem', color: '#0F172A', fontFamily: 'monospace' }}>{item.meetCode || item.zoomMeetingId || 'stenoplus-live'}</strong>
-                            <button 
-                              type="button" 
-                              style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px', color: '#64748B' }}
-                              onClick={() => {
-                                navigator.clipboard?.writeText(item.meetCode || item.zoomMeetingId || 'stenoplus-live').catch(() => {});
-                                setCopiedClassId(`id-${item.id}`);
-                                setTimeout(() => setCopiedClassId(null), 2000);
-                              }}
-                              title="Copy Meeting Code"
-                            >
-                              {copiedClassId === `id-${item.id}` ? <Check size={11} className="text-emerald-600" /> : <Copy size={11} />}
-                            </button>
+                      {/* Google Meet Details Strip — Fixed Cramped Meet Code */}
+                      <div 
+                        style={{
+                          backgroundColor: '#FBF8F3',
+                          border: '1px solid #E8DFD3',
+                          borderRadius: '12px',
+                          padding: '12px 14px',
+                          marginBottom: '12px'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
+                          <div style={{ minWidth: 0 }}>
+                            <span style={{ display: 'block', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A7B7E', fontWeight: 600 }}>MEET CODE</span>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}>
+                              <strong className="font-mono text-xs font-bold text-[#231418] whitespace-nowrap" style={{ fontSize: '12px', color: '#231418', whiteSpace: 'nowrap' }}>
+                                {item.meetCode || item.zoomMeetingId || 'stenoplus-live'}
+                              </strong>
+                              <button 
+                                type="button" 
+                                style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px', color: '#8A7B7E' }}
+                                onClick={() => {
+                                  navigator.clipboard?.writeText(item.meetCode || item.zoomMeetingId || 'stenoplus-live').catch(() => {});
+                                  setCopiedClassId(`id-${item.id}`);
+                                  setTimeout(() => setCopiedClassId(null), 2000);
+                                }}
+                                title="Copy Meeting Code"
+                              >
+                                {copiedClassId === `id-${item.id}` ? <Check size={12} color="#1F6B48" /> : <Copy size={12} />}
+                              </button>
+                            </div>
                           </div>
-                        </div>
 
-                        <div>
-                          <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748B' }}>Host Account</span>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <strong style={{ fontSize: '0.74rem', color: '#0f766e', fontFamily: 'monospace' }}>stenoplus.in@gmail.com</strong>
-                          </div>
-                        </div>
-
-                        <div>
                           <a 
                             href={item.meetUrl || item.googleMeetUrl || (item.meetCode ? `https://meet.google.com/${item.meetCode}` : 'https://meet.google.com/new')}
                             target="_blank" 
                             rel="noreferrer" 
+                            className="bg-[#231418] hover:bg-[#3A2228] text-white px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap inline-flex items-center gap-1.5"
                             style={{
                               display: 'inline-flex',
                               alignItems: 'center',
                               gap: '4px',
-                              background: '#0F172A',
-                              color: '#FFFFFF',
-                              padding: '5px 10px',
-                              borderRadius: '6px',
-                              fontSize: '0.74rem',
-                              fontWeight: 700,
-                              textDecoration: 'none'
+                              backgroundColor: '#231418',
+                              color: '#FAF6F0',
+                              padding: '6px 14px',
+                              borderRadius: '9999px',
+                              fontSize: '11px',
+                              fontWeight: 600,
+                              textDecoration: 'none',
+                              whiteSpace: 'nowrap',
+                              transition: 'all 0.15s ease'
                             }}
                             title="Join Google Meet as Teacher Host (stenoplus.in@gmail.com)"
                           >
@@ -4629,37 +4789,45 @@ export default function AdminPortalView({
                             <ExternalLink size={11} />
                           </a>
                         </div>
+
+                        {/* Subtle hairline sub-row for host account */}
+                        <div style={{ marginTop: '8px', paddingTop: '8px', borderTop: '1px solid #EDE5DA', fontSize: '11px', color: '#8A7B7E' }} className="truncate">
+                          HOST ACCOUNT · <span style={{ fontFamily: 'monospace', color: '#594A4D' }}>stenoplus.in@gmail.com</span>
+                        </div>
                       </div>
 
                       {/* Topic Box */}
-                      <div style={{
-                        background: '#FFFFFF',
-                        border: '1px solid rgba(0,0,0,0.06)',
-                        borderRadius: '10px',
-                        padding: '8px 12px',
-                        marginBottom: '1rem'
-                      }}>
-                        <span style={{ display: 'block', fontSize: '0.65rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#94A3B8', marginBottom: '2px' }}>
+                      <div 
+                        style={{
+                          backgroundColor: '#FFFFFF',
+                          border: '1px solid #E8DFD3',
+                          borderRadius: '12px',
+                          padding: '10px 12px',
+                          marginBottom: '14px'
+                        }}
+                      >
+                        <span style={{ display: 'block', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A7B7E', marginBottom: '2px' }}>
                           TODAY'S DICTATION TOPIC
                         </span>
-                        <strong style={{ display: 'block', fontSize: '0.82rem', color: '#0F172A', lineHeight: 1.35 }}>
+                        <strong style={{ display: 'block', fontSize: '12px', color: '#231418', lineHeight: 1.35 }}>
                           {item.todayTopic}
                         </strong>
                         {item.passageSnippet && (
-                          <p style={{ margin: '4px 0 0', fontSize: '0.72rem', color: '#64748B', fontStyle: 'italic', lineHeight: 1.35 }}>
+                          <p style={{ margin: '4px 0 0', fontSize: '11px', color: '#594A4D', fontStyle: 'italic', lineHeight: 1.35 }}>
                             "{item.passageSnippet.slice(0, 95)}..."
                           </p>
                         )}
                       </div>
                     </div>
 
-                    {/* Action Buttons Bar */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', paddingTop: '10px', borderTop: '1px solid rgba(0,0,0,0.06)', flexWrap: 'wrap' }}>
+                    {/* Action Buttons Bar — All rounded-full pills */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', paddingTop: '12px', borderTop: '1px solid #EDE5DA', flexWrap: 'wrap' }}>
                       {/* Upcoming Class Actions */}
                       {(!item.isLive && item.status !== 'completed' && item.status !== 'cancelled') && (
                         <>
                           <button 
                             type="button"
+                            className="bg-[#231418] hover:bg-[#3A2228] text-white px-4 py-2 rounded-full text-xs font-semibold transition-colors flex-1 justify-center inline-flex items-center gap-1.5 whitespace-nowrap"
                             style={{
                               flex: 1,
                               minWidth: '120px',
@@ -4667,38 +4835,40 @@ export default function AdminPortalView({
                               alignItems: 'center',
                               justifyContent: 'center',
                               gap: '6px',
-                              padding: '8px 12px',
-                              borderRadius: '8px',
-                              fontSize: '0.8rem',
-                              fontWeight: 700,
+                              padding: '8px 16px',
+                              borderRadius: '9999px',
+                              fontSize: '12px',
+                              fontWeight: 600,
                               cursor: 'pointer',
-                              background: '#0F766E',
-                              border: '1px solid #0D9488',
-                              color: '#FFFFFF',
-                              boxShadow: '0 2px 6px rgba(15, 118, 110, 0.25)'
+                              backgroundColor: '#231418',
+                              border: '1px solid #231418',
+                              color: '#FAF6F0',
+                              transition: 'all 0.15s ease'
                             }}
                             onClick={() => handleStartClassAction(item)}
                             title="Start class session & open Google Meet as Host"
                           >
-                            <Play size={14} fill="currentColor" />
+                            <Play size={13} fill="currentColor" />
                             <span>Start Class</span>
                           </button>
 
                           <button 
                             type="button"
+                            className="bg-[#FBF8F3] hover:bg-[#EFE7DC] border border-[#DFD4C6] text-[#231418] px-3.5 py-2 rounded-full text-xs font-semibold whitespace-nowrap"
                             style={{
                               display: 'inline-flex',
                               alignItems: 'center',
                               justifyContent: 'center',
                               gap: '4px',
-                              padding: '8px 10px',
-                              borderRadius: '8px',
-                              fontSize: '0.78rem',
+                              padding: '8px 14px',
+                              borderRadius: '9999px',
+                              fontSize: '12px',
                               fontWeight: 600,
                               cursor: 'pointer',
-                              background: '#FFFFFF',
-                              border: '1px solid #CBD5E1',
-                              color: '#334155'
+                              backgroundColor: '#FBF8F3',
+                              border: '1px solid #DFD4C6',
+                              color: '#231418',
+                              transition: 'all 0.15s ease'
                             }}
                             onClick={() => setEditingClass({ ...item })}
                             title="Edit schedule, title, or Google Meet link"
@@ -4709,19 +4879,29 @@ export default function AdminPortalView({
 
                           <button 
                             type="button"
+                            className="bg-[#FCEEEE] hover:bg-[#991B1B] text-[#991B1B] hover:text-white border border-[#EED2D2] px-3.5 py-2 rounded-full text-xs font-semibold whitespace-nowrap"
                             style={{
                               display: 'inline-flex',
                               alignItems: 'center',
                               justifyContent: 'center',
                               gap: '4px',
-                              padding: '8px 10px',
-                              borderRadius: '8px',
-                              fontSize: '0.78rem',
+                              padding: '8px 14px',
+                              borderRadius: '9999px',
+                              fontSize: '12px',
                               fontWeight: 600,
                               cursor: 'pointer',
-                              background: '#FEF2F2',
-                              border: '1px solid #FCA5A5',
-                              color: '#DC2626'
+                              backgroundColor: '#FCEEEE',
+                              border: '1px solid #EED2D2',
+                              color: '#991B1B',
+                              transition: 'all 0.15s ease'
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = '#991B1B';
+                              e.currentTarget.style.color = '#FFFFFF';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor = '#FCEEEE';
+                              e.currentTarget.style.color = '#991B1B';
                             }}
                             onClick={() => {
                               setCancelModalClass(item);
@@ -4740,6 +4920,7 @@ export default function AdminPortalView({
                         <>
                           <button 
                             type="button"
+                            className="bg-[#991B1B] hover:bg-[#7F1D1D] text-white px-4 py-2 rounded-full text-xs font-semibold transition-colors flex-1 justify-center inline-flex items-center gap-1.5 whitespace-nowrap"
                             style={{
                               flex: 1,
                               minWidth: '130px',
@@ -4747,14 +4928,15 @@ export default function AdminPortalView({
                               alignItems: 'center',
                               justifyContent: 'center',
                               gap: '6px',
-                              padding: '8px 12px',
-                              borderRadius: '8px',
-                              fontSize: '0.8rem',
-                              fontWeight: 700,
+                              padding: '8px 16px',
+                              borderRadius: '9999px',
+                              fontSize: '12px',
+                              fontWeight: 600,
                               cursor: 'pointer',
-                              background: '#0F766E',
-                              border: '1px solid #0D9488',
-                              color: '#FFFFFF'
+                              backgroundColor: '#991B1B',
+                              border: '1px solid #991B1B',
+                              color: '#FFFFFF',
+                              transition: 'all 0.15s ease'
                             }}
                             onClick={() => {
                               const targetUrl = item.meetUrl || item.googleMeetUrl || (item.meetCode ? 'https://meet.google.com/' + item.meetCode : 'https://meet.google.com/new');
@@ -4769,42 +4951,54 @@ export default function AdminPortalView({
 
                           <button 
                             type="button"
+                            className="bg-[#231418] hover:bg-[#3A2228] text-[#FAF6F0] px-3.5 py-2 rounded-full text-xs font-semibold whitespace-nowrap"
                             style={{
                               display: 'inline-flex',
                               alignItems: 'center',
                               justifyContent: 'center',
                               gap: '4px',
-                              padding: '8px 12px',
-                              borderRadius: '8px',
-                              fontSize: '0.78rem',
-                              fontWeight: 700,
+                              padding: '8px 14px',
+                              borderRadius: '9999px',
+                              fontSize: '12px',
+                              fontWeight: 600,
                               cursor: 'pointer',
-                              background: '#1E293B',
-                              border: '1px solid #0F172A',
-                              color: '#FFFFFF'
+                              backgroundColor: '#231418',
+                              border: '1px solid #231418',
+                              color: '#FAF6F0',
+                              transition: 'all 0.15s ease'
                             }}
                             onClick={() => handleCompleteClassAction(item.id)}
                             title="Finish and mark class as completed"
                           >
-                            <CheckCircle2 size={13} className="text-emerald-400" />
+                            <CheckCircle2 size={13} color="#1F6B48" />
                             <span>Complete Class</span>
                           </button>
 
                           <button 
                             type="button"
+                            className="bg-[#FCEEEE] hover:bg-[#991B1B] text-[#991B1B] hover:text-white border border-[#EED2D2] px-3.5 py-2 rounded-full text-xs font-semibold whitespace-nowrap"
                             style={{
                               display: 'inline-flex',
                               alignItems: 'center',
                               justifyContent: 'center',
                               gap: '4px',
-                              padding: '8px 10px',
-                              borderRadius: '8px',
-                              fontSize: '0.78rem',
+                              padding: '8px 14px',
+                              borderRadius: '9999px',
+                              fontSize: '12px',
                               fontWeight: 600,
                               cursor: 'pointer',
-                              background: '#FEF2F2',
-                              border: '1px solid #FCA5A5',
-                              color: '#DC2626'
+                              backgroundColor: '#FCEEEE',
+                              border: '1px solid #EED2D2',
+                              color: '#991B1B',
+                              transition: 'all 0.15s ease'
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = '#991B1B';
+                              e.currentTarget.style.color = '#FFFFFF';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor = '#FCEEEE';
+                              e.currentTarget.style.color = '#991B1B';
                             }}
                             onClick={() => {
                               setCancelModalClass(item);
@@ -4821,24 +5015,26 @@ export default function AdminPortalView({
                       {/* Completed Class Actions */}
                       {item.status === 'completed' && (
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '8px' }}>
-                          <span style={{ fontSize: '0.78rem', color: '#166534', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                            <CheckCircle2 size={13} />
+                          <span style={{ fontSize: '12px', color: '#1F6B48', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                            <CheckCircle2 size={13} color="#1F6B48" />
                             <span>Class Finished & Archived</span>
                           </span>
                           <button 
                             type="button"
+                            className="bg-[#FBF8F3] hover:bg-[#EFE7DC] border border-[#DFD4C6] text-[#231418] px-3.5 py-2 rounded-full text-xs font-semibold whitespace-nowrap"
                             style={{
                               display: 'inline-flex',
                               alignItems: 'center',
                               gap: '4px',
-                              padding: '6px 10px',
-                              borderRadius: '6px',
-                              fontSize: '0.76rem',
+                              padding: '6px 14px',
+                              borderRadius: '9999px',
+                              fontSize: '12px',
                               fontWeight: 600,
                               cursor: 'pointer',
-                              background: '#FFFFFF',
-                              border: '1px solid #CBD5E1',
-                              color: '#475569'
+                              backgroundColor: '#FBF8F3',
+                              border: '1px solid #DFD4C6',
+                              color: '#231418',
+                              transition: 'all 0.15s ease'
                             }}
                             onClick={() => setEditingClass({ ...item })}
                           >
@@ -4851,23 +5047,25 @@ export default function AdminPortalView({
                       {/* Cancelled Class Actions */}
                       {item.status === 'cancelled' && (
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '8px', flexWrap: 'wrap' }}>
-                          <span style={{ fontSize: '0.75rem', color: '#991B1B', fontWeight: 600 }}>
+                          <span style={{ fontSize: '12px', color: '#991B1B', fontWeight: 600 }}>
                             Cancelled: {item.cancelledReason || 'By teacher'}
                           </span>
                           <button 
                             type="button"
+                            className="bg-[#FBF8F3] hover:bg-[#EFE7DC] border border-[#DFD4C6] text-[#231418] px-3.5 py-2 rounded-full text-xs font-semibold whitespace-nowrap"
                             style={{
                               display: 'inline-flex',
                               alignItems: 'center',
                               gap: '4px',
-                              padding: '6px 10px',
-                              borderRadius: '6px',
-                              fontSize: '0.76rem',
+                              padding: '6px 14px',
+                              borderRadius: '9999px',
+                              fontSize: '12px',
                               fontWeight: 600,
                               cursor: 'pointer',
-                              background: '#FFFFFF',
-                              border: '1px solid #CBD5E1',
-                              color: '#475569'
+                              backgroundColor: '#FBF8F3',
+                              border: '1px solid #DFD4C6',
+                              color: '#231418',
+                              transition: 'all 0.15s ease'
                             }}
                             onClick={() => setEditingClass({ ...item, status: 'upcoming' })}
                           >
@@ -4884,79 +5082,89 @@ export default function AdminPortalView({
 
             {/* VIEW B: Timetable Schedule Matrix View */}
             {classViewMode === 'timetable' && (
-              <div className="admin-timetable-table-wrap mt-3">
-                <table className="admin-data-table">
+              <div className="admin-timetable-table-wrap mt-3 table-responsive" style={{ border: '1px solid #E8DFD3', borderRadius: '14px', overflow: 'hidden' }}>
+                <table className="corporate-table admin-data-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
                   <thead>
-                    <tr>
-                      <th>Shift & Timing</th>
-                      <th>Batch Title & Speed</th>
-                      <th>Dictation Topic</th>
-                      <th>Meeting Credentials</th>
-                      <th>Faculty & Studio</th>
-                      <th>Live Status</th>
-                      <th style={{ textAlign: 'right' }}>Actions</th>
+                    <tr style={{ backgroundColor: '#F5EFE6', borderBottom: '1px solid #E5DBD0' }}>
+                      <th style={{ padding: '12px 14px', color: '#8A7B7E', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600 }}>Shift & Timing</th>
+                      <th style={{ padding: '12px 14px', color: '#8A7B7E', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600 }}>Batch Title & Speed</th>
+                      <th style={{ padding: '12px 14px', color: '#8A7B7E', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600 }}>Dictation Topic</th>
+                      <th style={{ padding: '12px 14px', color: '#8A7B7E', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600 }}>Meeting Credentials</th>
+                      <th style={{ padding: '12px 14px', color: '#8A7B7E', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600 }}>Faculty & Studio</th>
+                      <th style={{ padding: '12px 14px', color: '#8A7B7E', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600 }}>Live Status</th>
+                      <th style={{ padding: '12px 14px', color: '#8A7B7E', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600, textAlign: 'right' }}>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {filteredOnlineClasses.map((item) => (
-                      <tr key={item.id} className={item.isLive ? 'row-live-highlight' : ''}>
-                        <td>
-                          <div className="timetable-shift-col">
-                            <strong>{item.shift || 'General Shift'}</strong>
-                            <span className="text-xs text-muted font-mono">{item.time || item.startTime || '8:30 AM'}</span>
+                      <tr key={`tt-${item.id}`} style={{ borderBottom: '1px solid #EDE5DA', backgroundColor: '#FFFFFF' }}>
+                        <td style={{ padding: '12px 14px' }}>
+                          <span style={{ display: 'inline-block', backgroundColor: '#EFE7DC', color: '#231418', borderRadius: '9999px', padding: '2px 8px', fontSize: '11px', fontWeight: 600 }}>
+                            {item.shift || 'General'}
+                          </span>
+                          <div style={{ marginTop: '4px', fontSize: '12px', fontWeight: 600, color: '#231418' }}>
+                            {item.time || item.startTime || '8:30 AM'}
                           </div>
                         </td>
-                        <td>
-                          <div className="timetable-title-col">
-                            <span className="font-bold text-slate-800 text-sm">{item.title || 'Live Class Session'}</span>
-                            <span className="badge-speed-pill font-mono">{item.speed || '80 WPM Standard'}</span>
+                        <td style={{ padding: '12px 14px' }}>
+                          <div style={{ fontSize: '13px', fontWeight: 600, color: '#231418' }}>
+                            {item.title}
+                          </div>
+                          <span style={{ display: 'inline-block', marginTop: '4px', backgroundColor: '#FDF5E7', color: '#9A5B13', border: '1px solid #EFDAB6', borderRadius: '9999px', padding: '1px 8px', fontSize: '11px', fontWeight: 600 }}>
+                            {item.speed}
+                          </span>
+                        </td>
+                        <td style={{ padding: '12px 14px', maxWidth: '220px' }}>
+                          <div style={{ fontSize: '12px', color: '#231418', fontWeight: 500 }} className="truncate">
+                            {item.todayTopic}
                           </div>
                         </td>
-                        <td>
-                          <span className="text-xs text-slate-700">{item.todayTopic || 'Live Speed Dictation Session'}</span>
-                        </td>
-                        <td>
-                          <div className="font-mono text-xs">
-                            <div>Code: <strong style={{ color: '#0f766e' }}>{item.meetCode || 'stenoplus-live'}</strong></div>
-                            <div className="text-muted" style={{ fontSize: '0.7rem' }}>stenoplus.in@gmail.com</div>
+                        <td style={{ padding: '12px 14px' }}>
+                          <div className="font-mono text-xs font-bold text-[#231418]" style={{ fontSize: '12px', color: '#231418' }}>
+                            {item.meetCode || item.zoomMeetingId || 'stenoplus-live'}
                           </div>
+                          <div style={{ fontSize: '10px', color: '#8A7B7E' }}>stenoplus.in@gmail.com</div>
                         </td>
-                        <td>
-                          <div className="text-xs">
-                            <strong className="text-slate-800">{item.instructor || 'Shadab Sir'}</strong>
-                            <div className="text-muted">{item.roomNo || 'Google Meet Room #01'}</div>
+                        <td style={{ padding: '12px 14px' }}>
+                          <div style={{ fontSize: '12px', fontWeight: 600, color: '#231418' }}>
+                            {item.instructor || 'Shadab Sir'}
                           </div>
+                          <div style={{ fontSize: '11px', color: '#594A4D' }}>{item.attendees || 1} Aspirants</div>
                         </td>
-                        <td>
-                          {item.isLive || item.status === 'live' ? (
-                            <span className="card-status-pill badge-live">
-                              <span className="live-dot-mini" />
-                              LIVE NOW
-                            </span>
-                          ) : item.status === 'completed' ? (
-                            <span className="card-status-pill badge-completed" style={{ background: '#DCFCE7', color: '#166534' }}>
-                              Completed
-                            </span>
-                          ) : item.status === 'cancelled' ? (
-                            <span className="card-status-pill badge-cancelled" style={{ background: '#FEE2E2', color: '#991B1B' }}>
-                              Cancelled
+                        <td style={{ padding: '12px 14px' }}>
+                          {item.isLive ? (
+                            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FCEEEE', border: '1px solid #EED2D2', color: '#991B1B', borderRadius: '9999px', padding: '2px 8px', fontSize: '10px', fontWeight: 700 }}>
+                              <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
+                              <span>LIVE NOW</span>
                             </span>
                           ) : (
-                            <span className="card-status-pill badge-upcoming">
-                              Upcoming
+                            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FBF8F3', border: '1px solid #E5DBD0', color: '#594A4D', borderRadius: '9999px', padding: '2px 8px', fontSize: '10px', fontWeight: 600 }}>
+                              <span>{item.status?.toUpperCase() || 'SCHEDULED'}</span>
                             </span>
                           )}
                         </td>
-                        <td style={{ textAlign: 'right' }}>
-                          <div className="flex items-center justify-end gap-1">
+                        <td style={{ textAlign: 'right', padding: '12px 14px' }}>
+                          <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'flex-end', gap: '6px' }}>
                             {(!item.isLive && item.status !== 'completed' && item.status !== 'cancelled') && (
                               <button 
                                 type="button"
-                                className="btn-tbl-action tbl-start"
+                                style={{
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  gap: '4px',
+                                  backgroundColor: '#231418',
+                                  border: '1px solid #231418',
+                                  color: '#FAF6F0',
+                                  padding: '5px 12px',
+                                  borderRadius: '9999px',
+                                  fontSize: '11px',
+                                  fontWeight: 600,
+                                  cursor: 'pointer'
+                                }}
                                 onClick={() => handleStartClassAction(item)}
                                 title="Start Class on Google Meet"
                               >
-                                <Play size={12} fill="currentColor" />
+                                <Play size={11} fill="currentColor" />
                                 <span>Start</span>
                               </button>
                             )}
@@ -4967,19 +5175,43 @@ export default function AdminPortalView({
                                   href={item.meetUrl || `https://meet.google.com/${item.meetCode}`}
                                   target="_blank"
                                   rel="noreferrer"
-                                  className="btn-tbl-action tbl-enter"
+                                  style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '4px',
+                                    backgroundColor: '#991B1B',
+                                    border: '1px solid #991B1B',
+                                    color: '#FFFFFF',
+                                    padding: '5px 12px',
+                                    borderRadius: '9999px',
+                                    fontSize: '11px',
+                                    fontWeight: 600,
+                                    textDecoration: 'none'
+                                  }}
                                   title="Enter Google Meet call as Host"
                                 >
-                                  <Video size={12} />
+                                  <Video size={11} />
                                   <span>Meet</span>
                                 </a>
                                 <button 
                                   type="button"
-                                  className="btn-tbl-action tbl-stop"
+                                  style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '4px',
+                                    backgroundColor: '#231418',
+                                    border: '1px solid #231418',
+                                    color: '#FAF6F0',
+                                    padding: '5px 12px',
+                                    borderRadius: '9999px',
+                                    fontSize: '11px',
+                                    fontWeight: 600,
+                                    cursor: 'pointer'
+                                  }}
                                   onClick={() => handleCompleteClassAction(item.id)}
                                   title="Complete this session"
                                 >
-                                  <CheckCircle2 size={12} />
+                                  <CheckCircle2 size={11} color="#1F6B48" />
                                   <span>Complete</span>
                                 </button>
                               </>
@@ -4987,7 +5219,14 @@ export default function AdminPortalView({
 
                             <button 
                               type="button" 
-                              className="btn-tbl-action"
+                              style={{
+                                backgroundColor: '#FBF8F3',
+                                border: '1px solid #DFD4C6',
+                                color: '#594A4D',
+                                padding: '5px 8px',
+                                borderRadius: '9999px',
+                                cursor: 'pointer'
+                              }}
                               onClick={() => setEditingClass({ ...item })}
                               title="Edit Class"
                             >
@@ -4997,7 +5236,14 @@ export default function AdminPortalView({
                             {item.status !== 'cancelled' && (
                               <button 
                                 type="button" 
-                                className="btn-tbl-action text-amber-600"
+                                style={{
+                                  backgroundColor: '#FCEEEE',
+                                  border: '1px solid #EED2D2',
+                                  color: '#991B1B',
+                                  padding: '5px 8px',
+                                  borderRadius: '9999px',
+                                  cursor: 'pointer'
+                                }}
                                 onClick={() => {
                                   setCancelModalClass(item);
                                   setCancelReasonText('');
@@ -5010,7 +5256,14 @@ export default function AdminPortalView({
 
                             <button 
                               type="button" 
-                              className="btn-tbl-action text-rose-600"
+                              style={{
+                                backgroundColor: '#FFFFFF',
+                                border: '1px solid #E5DBD0',
+                                color: '#8A7B7E',
+                                padding: '5px 8px',
+                                borderRadius: '9999px',
+                                cursor: 'pointer'
+                              }}
                               onClick={() => {
                                 if (confirm(`Delete online class "${item.title}"?`)) {
                                   if (onDeleteOnlineClass) onDeleteOnlineClass(item.id);
@@ -6172,7 +6425,7 @@ export default function AdminPortalView({
               <div className="modal-header">
                 <div>
                   <div className="modal-title-with-badge">
-                    <span className="badge badge-purple" style={{ background: '#FFFFFF', color: '#0F172A', borderColor: 'rgba(0, 0, 0, 0.08)' }}>
+                    <span className="badge-template-tag" style={{ background: '#FFFFFF', color: '#0F172A', borderColor: 'rgba(0, 0, 0, 0.08)' }}>
                       <Video size={13} />
                       <span>Live Classroom Studio</span>
                     </span>
@@ -6831,7 +7084,7 @@ export default function AdminPortalView({
               <button 
                 type="button" 
                 className="btn" 
-                style={{ background: '#DC2626', color: '#FFFFFF', fontWeight: 700 }}
+                style={{ backgroundColor: '#991B1B', color: '#FFFFFF', borderRadius: '9999px', padding: '8px 18px', fontSize: '12px', fontWeight: 600, border: 'none', cursor: 'pointer' }}
                 onClick={handleConfirmCancelClass}
               >
                 Confirm Cancellation
