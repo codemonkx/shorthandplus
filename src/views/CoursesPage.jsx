@@ -935,12 +935,16 @@ export default function CoursesPage({
           SECTION 1: HERO SECTION WITH DECORATIVE PITMAN STROKES & 2x2 GOAL GRID
           ========================================================================= */}
       <section 
-        className="relative overflow-hidden bg-[#FBF8F3] pt-28 pb-12 lg:pt-32 lg:pb-14 border-b border-[#E5DBD0]"
+        className="relative overflow-hidden bg-[#FBF8F3] border-b border-[#E5DBD0] sp-courses-hero-padding"
         style={{
           position: 'relative',
           overflow: 'hidden',
           backgroundColor: '#FBF8F3',
-          borderBottom: '1px solid #E5DBD0'
+          borderBottom: '1px solid #E5DBD0',
+          paddingTop: '128px',
+          paddingBottom: '56px',
+          width: '100%',
+          boxSizing: 'border-box'
         }}
       >
         {/* Subtle decorative Pitman shorthand line-art background */}
@@ -983,53 +987,99 @@ export default function CoursesPage({
           </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="sp-courses-hero-2col grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div 
+          className="sp-courses-container relative z-10"
+          style={{
+            width: '100%',
+            maxWidth: '1280px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            paddingLeft: '24px',
+            paddingRight: '24px',
+            position: 'relative',
+            zIndex: 10,
+            boxSizing: 'border-box'
+          }}
+        >
+          <div className="sp-courses-hero-2col">
             
             {/* Left Column (lg:col-span-7 min-w-0) */}
-            <div className="sp-courses-hero-col-left lg:col-span-7 min-w-0">
+            <div className="sp-courses-hero-col-left" style={{ minWidth: 0 }}>
               <FadeUp>
-                <div className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8A7B7E] mb-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B] inline-block shrink-0" />
+                <div 
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.18em',
+                    color: '#8A7B7E',
+                    marginBottom: '12px'
+                  }}
+                >
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
                   <span>ACADEMY CURRICULUM &middot; GAYA CENTER &amp; LIVE ONLINE</span>
                 </div>
 
                 <h1 
-                  className="font-serif font-normal text-4xl sm:text-5xl lg:text-[3.65rem] leading-[1.05] tracking-[-0.02em] text-[#231418] mt-3 mb-4"
                   style={{
                     fontFamily: "'Instrument Serif', Georgia, serif",
                     fontSize: 'clamp(2.35rem, 4vw, 3.65rem)',
                     fontWeight: 400,
                     lineHeight: 1.05,
                     letterSpacing: '-0.02em',
-                    color: '#231418'
+                    color: '#231418',
+                    marginTop: '12px',
+                    marginBottom: '16px'
                   }}
                 >
                   Stenography Courses &amp; <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>Examination</span> Programs
                 </h1>
 
-                <p className="text-base text-[#594A4D] leading-relaxed max-w-[580px] mb-6">
+                <p 
+                  style={{
+                    fontSize: '16px',
+                    color: '#594A4D',
+                    lineHeight: 1.6,
+                    maxWidth: '580px',
+                    marginBottom: '24px'
+                  }}
+                >
                   From absolute zero in Pitman Shorthand to cracking High Court &amp; SSC Stenographer skill tests at 50–140 WPM. Guided by <strong style={{ color: '#231418', fontWeight: 600 }}>Shadab Sir (12+ Years Experience)</strong> with real-time dictations and automated error calculation.
                 </p>
 
-                <div className="border-t border-[#E5DBD0] pt-5 flex flex-wrap items-center gap-x-5 gap-y-3 text-xs text-[#594A4D] font-medium">
-                  <div className="inline-flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B]" />
-                    <span className="text-[#231418] font-semibold">15+ Structured Programs</span>
+                <div 
+                  style={{
+                    borderTop: '1px solid #E5DBD0',
+                    paddingTop: '20px',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    alignItems: 'center',
+                    gap: '16px',
+                    fontSize: '12px',
+                    color: '#594A4D',
+                    fontWeight: 500
+                  }}
+                >
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
+                    <span style={{ color: '#231418', fontWeight: 600 }}>15+ Structured Programs</span>
                   </div>
-                  <span className="text-[#D8CCBE]">&middot;</span>
-                  <div className="inline-flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B]" />
+                  <span style={{ color: '#D8CCBE' }}>&middot;</span>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
                     <span>50–140 WPM Speed Range</span>
                   </div>
-                  <span className="text-[#D8CCBE]">&middot;</span>
-                  <div className="inline-flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B]" />
+                  <span style={{ color: '#D8CCBE' }}>&middot;</span>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
                     <span>Offline &amp; Live Google Meet</span>
                   </div>
-                  <span className="text-[#D8CCBE]">&middot;</span>
-                  <div className="inline-flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B]" />
+                  <span style={{ color: '#D8CCBE' }}>&middot;</span>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
                     <span>3 Free Demo Classes</span>
                   </div>
                 </div>
@@ -1037,38 +1087,80 @@ export default function CoursesPage({
             </div>
 
             {/* Right Column (lg:col-span-5 min-w-0 — Symmetrical 2x2 Goal Grid) */}
-            <div className="sp-courses-hero-col-right lg:col-span-5 min-w-0">
+            <div className="sp-courses-hero-col-right" style={{ minWidth: 0 }}>
               <FadeUp delay={0.1}>
-                <div className="bg-white border border-[#E8DFD3] rounded-2xl p-6 shadow-[0_12px_32px_rgba(35,20,24,0.05)]">
-                  <div className="mb-4">
-                    <h3 className="text-[15px] font-bold text-[#231418] mb-1">
+                <div 
+                  style={{
+                    backgroundColor: '#FFFFFF',
+                    border: '1px solid #E8DFD3',
+                    borderRadius: '16px',
+                    padding: '24px',
+                    boxShadow: '0 12px 32px rgba(35, 20, 24, 0.05)',
+                    boxSizing: 'border-box'
+                  }}
+                >
+                  <div style={{ marginBottom: '16px' }}>
+                    <h3 
+                      style={{
+                        fontSize: '15px',
+                        fontWeight: 700,
+                        color: '#231418',
+                        margin: '0 0 4px 0'
+                      }}
+                    >
                       Not sure which batch fits?
                     </h3>
-                    <p className="text-xs text-[#8A7B7E]">
+                    <p 
+                      style={{
+                        fontSize: '12px',
+                        color: '#8A7B7E',
+                        margin: 0
+                      }}
+                    >
                       Select your exam goal to filter matching programs below:
                     </p>
                   </div>
 
                   {/* STRICT 2x2 GRID */}
                   <div 
-                    className="grid grid-cols-2 gap-3"
+                    className="sp-courses-2x2-grid"
                     style={{
                       display: 'grid',
                       gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-                      gap: '12px'
+                      gap: '12px',
+                      marginTop: '16px'
                     }}
                   >
                     {/* Goal 1: Beginner */}
                     <button
                       type="button"
                       onClick={() => handleSelectFilter('pitman')}
-                      className="bg-[#FBF8F3] hover:bg-[#EFE7DC] border border-[#E5DBD0] hover:border-[#991B1B]/40 rounded-xl p-3.5 text-left transition-all flex flex-col gap-1 cursor-pointer"
+                      style={{
+                        backgroundColor: '#FBF8F3',
+                        border: '1px solid #E5DBD0',
+                        borderRadius: '12px',
+                        padding: '14px',
+                        textAlign: 'left',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '4px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#EFE7DC';
+                        e.currentTarget.style.borderColor = 'rgba(153, 27, 27, 0.4)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = '#FBF8F3';
+                        e.currentTarget.style.borderColor = '#E5DBD0';
+                      }}
                     >
-                      <span className="text-xs font-bold text-[#231418] flex items-center justify-between">
+                      <span style={{ fontSize: '12px', fontWeight: 700, color: '#231418', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <span>Beginner (0 WPM)</span>
-                        <ArrowRight size={12} className="text-[#991B1B]" />
+                        <ArrowRight size={12} style={{ color: '#991B1B' }} />
                       </span>
-                      <span className="text-[11px] text-[#594A4D]">
+                      <span style={{ fontSize: '11px', color: '#8A7B7E' }}>
                         Learn Pitman from Zero
                       </span>
                     </button>
@@ -1077,13 +1169,32 @@ export default function CoursesPage({
                     <button
                       type="button"
                       onClick={() => handleSelectFilter('ssc')}
-                      className="bg-[#FBF8F3] hover:bg-[#EFE7DC] border border-[#E5DBD0] hover:border-[#991B1B]/40 rounded-xl p-3.5 text-left transition-all flex flex-col gap-1 cursor-pointer"
+                      style={{
+                        backgroundColor: '#FBF8F3',
+                        border: '1px solid #E5DBD0',
+                        borderRadius: '12px',
+                        padding: '14px',
+                        textAlign: 'left',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '4px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#EFE7DC';
+                        e.currentTarget.style.borderColor = 'rgba(153, 27, 27, 0.4)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = '#FBF8F3';
+                        e.currentTarget.style.borderColor = '#E5DBD0';
+                      }}
                     >
-                      <span className="text-xs font-bold text-[#231418] flex items-center justify-between">
+                      <span style={{ fontSize: '12px', fontWeight: 700, color: '#231418', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <span>SSC Steno (80–100)</span>
-                        <ArrowRight size={12} className="text-[#991B1B]" />
+                        <ArrowRight size={12} style={{ color: '#991B1B' }} />
                       </span>
-                      <span className="text-[11px] text-[#594A4D]">
+                      <span style={{ fontSize: '11px', color: '#8A7B7E' }}>
                         Grade C &amp; D Speed Batch
                       </span>
                     </button>
@@ -1092,13 +1203,32 @@ export default function CoursesPage({
                     <button
                       type="button"
                       onClick={() => handleSelectFilter('court')}
-                      className="bg-[#FBF8F3] hover:bg-[#EFE7DC] border border-[#E5DBD0] hover:border-[#991B1B]/40 rounded-xl p-3.5 text-left transition-all flex flex-col gap-1 cursor-pointer"
+                      style={{
+                        backgroundColor: '#FBF8F3',
+                        border: '1px solid #E5DBD0',
+                        borderRadius: '12px',
+                        padding: '14px',
+                        textAlign: 'left',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '4px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#EFE7DC';
+                        e.currentTarget.style.borderColor = 'rgba(153, 27, 27, 0.4)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = '#FBF8F3';
+                        e.currentTarget.style.borderColor = '#E5DBD0';
+                      }}
                     >
-                      <span className="text-xs font-bold text-[#231418] flex items-center justify-between">
+                      <span style={{ fontSize: '12px', fontWeight: 700, color: '#231418', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <span>High Court Legal</span>
-                        <ArrowRight size={12} className="text-[#991B1B]" />
+                        <ArrowRight size={12} style={{ color: '#991B1B' }} />
                       </span>
-                      <span className="text-[11px] text-[#594A4D]">
+                      <span style={{ fontSize: '11px', color: '#8A7B7E' }}>
                         Judicial Dictations
                       </span>
                     </button>
@@ -1107,13 +1237,32 @@ export default function CoursesPage({
                     <button
                       type="button"
                       onClick={() => handleSelectFilter('typing')}
-                      className="bg-[#FBF8F3] hover:bg-[#EFE7DC] border border-[#E5DBD0] hover:border-[#991B1B]/40 rounded-xl p-3.5 text-left transition-all flex flex-col gap-1 cursor-pointer"
+                      style={{
+                        backgroundColor: '#FBF8F3',
+                        border: '1px solid #E5DBD0',
+                        borderRadius: '12px',
+                        padding: '14px',
+                        textAlign: 'left',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '4px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#EFE7DC';
+                        e.currentTarget.style.borderColor = 'rgba(153, 27, 27, 0.4)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = '#FBF8F3';
+                        e.currentTarget.style.borderColor = '#E5DBD0';
+                      }}
                     >
-                      <span className="text-xs font-bold text-[#231418] flex items-center justify-between">
+                      <span style={{ fontSize: '12px', fontWeight: 700, color: '#231418', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <span>Typing &amp; Diplomas</span>
-                        <ArrowRight size={12} className="text-[#991B1B]" />
+                        <ArrowRight size={12} style={{ color: '#991B1B' }} />
                       </span>
-                      <span className="text-[11px] text-[#594A4D]">
+                      <span style={{ fontSize: '11px', color: '#8A7B7E' }}>
                         Hindi/English &amp; ADCA
                       </span>
                     </button>
@@ -1130,7 +1279,7 @@ export default function CoursesPage({
           SECTION 2: SINGLE-ROW WARM SAND FILTER & SEARCH TOOLBAR
           ========================================================================= */}
       <div 
-        className="sticky top-[72px] lg:top-[76px] z-30 bg-[#EFE7DC]/95 backdrop-blur-md border-b border-[#E0D5C7] py-3.5 w-full"
+        className="sticky top-[72px] lg:top-[76px] z-30 bg-[#EFE7DC]/95 backdrop-blur-md border-b border-[#E0D5C7] w-full"
         style={{
           position: 'sticky',
           top: '76px',
@@ -1139,21 +1288,33 @@ export default function CoursesPage({
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
           borderBottom: '1px solid #E0D5C7',
-          padding: '12px 24px',
+          padding: '12px 0',
           width: '100%',
           boxSizing: 'border-box'
         }}
       >
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+        <div 
+          className="sp-courses-container sp-courses-toolbar-desktop"
+          style={{
+            width: '100%',
+            maxWidth: '1280px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            paddingLeft: '24px',
+            paddingRight: '24px',
+            boxSizing: 'border-box'
+          }}
+        >
           {/* Category Tabs: Horizontal Single Row */}
           <div 
-            className="flex items-center gap-1.5 overflow-x-auto no-scrollbar min-w-0 py-0.5"
             style={{
               display: 'flex',
               alignItems: 'center',
               gap: '6px',
               overflowX: 'auto',
-              scrollbarWidth: 'none'
+              scrollbarWidth: 'none',
+              flex: '1 1 auto',
+              minWidth: 0
             }}
             role="tablist"
           >
@@ -1166,10 +1327,6 @@ export default function CoursesPage({
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => handleSelectFilter(tab.id)}
-                  className={isActive 
-                    ? "bg-white text-[#231418] border border-[#E0D5C7] rounded-full px-3.5 py-1.5 text-xs font-semibold shadow-xs inline-flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
-                    : "text-[#594A4D] hover:text-[#231418] px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap bg-transparent border border-transparent transition-colors cursor-pointer"
-                  }
                   style={isActive ? {
                     backgroundColor: '#FFFFFF',
                     color: '#231418',
@@ -1192,16 +1349,19 @@ export default function CoursesPage({
                     borderRadius: '9999px',
                     padding: '6px 14px',
                     fontSize: '12px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
                     whiteSpace: 'nowrap',
                     cursor: 'pointer'
                   }}
                 >
                   {isActive && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B] inline-block shrink-0" style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
+                    <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
                   )}
                   <span>{tab.label}</span>
                   {tab.count !== undefined && (
-                    <span className="text-[11px] text-[#8A7B7E] tabular-nums" style={{ fontSize: '11px', color: '#8A7B7E' }}>
+                    <span style={{ fontSize: '11px', color: '#8A7B7E' }}>
                       ({tab.count})
                     </span>
                   )}
@@ -1210,27 +1370,56 @@ export default function CoursesPage({
             })}
           </div>
 
-          {/* Right Toolbar: Counter + Compact Search Pill */}
-          <div className="flex items-center gap-3 shrink-0">
-            <span className="text-[11px] font-medium text-[#6E5E61] whitespace-nowrap">
+          {/* Right Toolbar: Counter + Compact Fixed Search Pill */}
+          <div 
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              flexShrink: 0
+            }}
+          >
+            <span 
+              style={{
+                fontSize: '12px',
+                color: '#6E5E61',
+                whiteSpace: 'nowrap'
+              }}
+            >
               Showing {filteredCourses.length} {filteredCourses.length === 1 ? 'program' : 'programs'}
             </span>
             
-            <div className="relative w-full sm:w-56 lg:w-60">
-              <Search size={13} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8A7B7E] pointer-events-none" />
+            <div 
+              style={{
+                position: 'relative',
+                width: '240px',
+                height: '38px',
+                flexShrink: 0
+              }}
+            >
+              <Search 
+                size={13} 
+                style={{
+                  position: 'absolute',
+                  left: '14px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: '#8A7B7E',
+                  pointerEvents: 'none'
+                }} 
+              />
               <input 
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search High Court, Pitman..."
-                className="h-9 w-full rounded-full bg-white border border-[#DCD0C2] pl-9 pr-7 text-xs text-[#231418] placeholder:text-[#8A7B7E] focus:outline-none focus:border-[#991B1B] transition-colors"
                 style={{
-                  width: '100%',
-                  height: '36px',
+                  width: '240px',
+                  height: '38px',
                   paddingLeft: '34px',
                   paddingRight: '28px',
                   fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontSize: '12px',
+                  fontSize: '13px',
                   backgroundColor: '#FFFFFF',
                   border: '1px solid #DCD0C2',
                   borderRadius: '9999px',
@@ -1243,7 +1432,18 @@ export default function CoursesPage({
                 <button 
                   type="button" 
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8A7B7E] hover:text-[#231418] text-sm cursor-pointer"
+                  style={{
+                    position: 'absolute',
+                    right: '10px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'transparent',
+                    border: 'none',
+                    color: '#8A7B7E',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    padding: '2px'
+                  }}
                   title="Clear search"
                 >
                   &times;
@@ -1264,24 +1464,56 @@ export default function CoursesPage({
         style={{
           backgroundColor: '#FBF8F3',
           padding: '64px 0',
-          width: '100%'
+          width: '100%',
+          boxSizing: 'border-box'
         }}
       >
-        <div className="max-w-7xl mx-auto px-6">
+        <div 
+          className="sp-courses-container"
+          style={{
+            width: '100%',
+            maxWidth: '1280px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            paddingLeft: '24px',
+            paddingRight: '24px',
+            boxSizing: 'border-box'
+          }}
+        >
 
           {/* Empty Search Results State */}
           {filteredCourses.length === 0 && (
-            <div className="bg-white border border-[#E8DFD3] rounded-2xl p-12 text-center max-w-lg mx-auto shadow-[0_4px_20px_rgba(35,20,24,0.04)]">
-              <h3 className="text-lg font-bold text-[#231418] mb-2">
+            <div 
+              style={{
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #E8DFD3',
+                borderRadius: '16px',
+                padding: '48px 24px',
+                textAlign: 'center',
+                maxWidth: '520px',
+                margin: '0 auto',
+                boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)'
+              }}
+            >
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: '0 0 8px 0' }}>
                 No programs found
               </h3>
-              <p className="text-xs text-[#594A4D] mb-5 leading-relaxed">
+              <p style={{ fontSize: '13px', color: '#594A4D', margin: '0 0 20px 0', lineHeight: 1.55 }}>
                 No course matches "{searchQuery}". Try searching for terms like "High Court", "Pitman", "Typing", or "ADCA".
               </p>
               <button
                 type="button"
                 onClick={() => { setSearchQuery(''); setFilterCategory('all'); }}
-                className="bg-[#991B1B] hover:bg-[#7F1D1D] text-white px-5 py-2.5 rounded-full text-xs font-semibold cursor-pointer transition-colors"
+                style={{
+                  backgroundColor: '#991B1B',
+                  color: '#FFFFFF',
+                  border: 'none',
+                  padding: '10px 22px',
+                  borderRadius: '9999px',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  cursor: 'pointer'
+                }}
               >
                 Reset Search &amp; Filters
               </button>
@@ -1293,19 +1525,29 @@ export default function CoursesPage({
             <>
               {/* Part A: Flagship Programs Spotlight (Top 3 Courses) */}
               <FadeUp>
-                <div className="mb-6">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8A7B7E] block mb-1.5">
+                <div style={{ marginBottom: '24px' }}>
+                  <span 
+                    style={{
+                      fontSize: '11px',
+                      fontWeight: 600,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.18em',
+                      color: '#8A7B7E',
+                      display: 'block',
+                      marginBottom: '6px'
+                    }}
+                  >
                     CORE ACADEMY PROGRAMS
                   </span>
                   <h2 
-                    className="font-serif font-normal text-3xl sm:text-4xl text-[#231418]"
                     style={{
                       fontFamily: "'Instrument Serif', Georgia, serif",
                       fontSize: 'clamp(1.875rem, 3.2vw, 2.65rem)',
                       fontWeight: 400,
                       lineHeight: 1.1,
                       letterSpacing: '-0.015em',
-                      color: '#231418'
+                      color: '#231418',
+                      margin: 0
                     }}
                   >
                     Flagship <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>program spotlight.</span>
@@ -1315,7 +1557,6 @@ export default function CoursesPage({
 
               {/* Top 3 Balanced Flagship Row */}
               <div 
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                 style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
@@ -1330,85 +1571,131 @@ export default function CoursesPage({
               </div>
 
               {/* Part B: Complete Coaching & Diploma Directory (Remaining Programs) */}
-              <div className="mt-14">
+              <div style={{ marginTop: '56px' }}>
                 <FadeUp>
-                  <div className="flex flex-wrap items-end justify-between gap-3 mb-5">
+                  <div 
+                    style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      alignItems: 'flex-end',
+                      justifyContent: 'space-between',
+                      gap: '12px',
+                      marginBottom: '20px'
+                    }}
+                  >
                     <div>
-                      <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8A7B7E] block mb-1.5">
+                      <span 
+                        style={{
+                          fontSize: '11px',
+                          fontWeight: 600,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.18em',
+                          color: '#8A7B7E',
+                          display: 'block',
+                          marginBottom: '6px'
+                        }}
+                      >
                         SPECIALIZED TRACKS &amp; DIPLOMAS
                       </span>
                       <h2 
-                        className="font-serif font-normal text-3xl sm:text-4xl text-[#231418]"
                         style={{
                           fontFamily: "'Instrument Serif', Georgia, serif",
                           fontSize: 'clamp(1.875rem, 3.2vw, 2.65rem)',
                           fontWeight: 400,
                           lineHeight: 1.1,
                           letterSpacing: '-0.015em',
-                          color: '#231418'
+                          color: '#231418',
+                          margin: 0
                         }}
                       >
                         Judicial benches, central govt &amp; <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>computer diplomas.</span>
                       </h2>
                     </div>
-                    <span className="text-xs text-[#8A7B7E] font-medium">
+                    <span style={{ fontSize: '12px', color: '#8A7B7E', fontWeight: 500 }}>
                       Click any row to view full syllabus &darr;
                     </span>
                   </div>
                 </FadeUp>
 
-                {/* Directory Table Container */}
+                {/* Directory Table Outer Card Container */}
                 <FadeUp delay={0.08}>
-                  <div className="bg-white border border-[#E8DFD3] rounded-2xl divide-y divide-[#EDE5DA] overflow-hidden shadow-[0_4px_20px_rgba(35,20,24,0.04)]">
-                    {specializedCourses.map((course) => {
+                  <div 
+                    style={{
+                      backgroundColor: '#FFFFFF',
+                      border: '1px solid #E8DFD3',
+                      borderRadius: '16px',
+                      overflow: 'hidden',
+                      boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
+                      marginTop: '24px'
+                    }}
+                  >
+                    {specializedCourses.map((course, cIdx) => {
                       const isSyllabusOpen = !!expandedSyllabus[course.id];
+                      const isLast = cIdx === specializedCourses.length - 1;
                       return (
-                        <div key={course.id} className="transition-colors">
+                        <div 
+                          key={course.id} 
+                          style={{
+                            borderBottom: isLast && !isSyllabusOpen ? 'none' : '1px solid #EDE5DA',
+                            transition: 'background-color 0.15s ease'
+                          }}
+                        >
                           {/* Main Interactive Row */}
                           <div 
                             onClick={() => toggleSyllabus(course.id)}
-                            className="p-5 sm:p-6 flex flex-wrap items-center justify-between gap-4 cursor-pointer hover:bg-[#FAF7F2] transition-colors"
+                            style={{
+                              padding: '20px 24px',
+                              display: 'flex',
+                              flexWrap: 'wrap',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
+                              gap: '16px',
+                              cursor: 'pointer',
+                              transition: 'background-color 0.15s ease'
+                            }}
+                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FAF7F2'}
+                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                           >
                             {/* Left: Info */}
-                            <div className="flex-[5_1_280px] min-w-0">
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#991B1B]">
+                            <div style={{ flex: '1 1 320px', minWidth: 0 }}>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                                <span style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#991B1B' }}>
                                   {course.category}
                                 </span>
                                 {course.badge && (
-                                  <span className="text-[10px] font-semibold text-[#594A4D] bg-[#EFE7DC] border border-[#E0D5C7] px-2 py-0.5 rounded-full">
+                                  <span style={{ fontSize: '10px', fontWeight: 600, color: '#594A4D', backgroundColor: '#EFE7DC', border: '1px solid #E0D5C7', padding: '2px 8px', borderRadius: '9999px' }}>
                                     {course.badge}
                                   </span>
                                 )}
                               </div>
-                              <h3 className="text-base font-bold text-[#231418] mb-1">
+                              <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#231418', margin: '0 0 4px 0' }}>
                                 {course.title}
                               </h3>
-                              <p className="text-xs text-[#594A4D] leading-relaxed">
+                              <p style={{ fontSize: '13px', color: '#594A4D', lineHeight: 1.5, margin: 0 }}>
                                 {course.description}
                               </p>
                             </div>
 
-                            {/* Center: Specs */}
-                            <div className="flex-[3_1_180px] flex items-center gap-2 flex-wrap">
-                              <span className="text-[11px] font-semibold text-[#594A4D] bg-[#EFE7DC] border border-[#E0D5C7] px-2.5 py-1 rounded-full tabular-nums">
+                            {/* Middle Badges */}
+                            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px' }}>
+                              <span style={{ backgroundColor: '#EFE7DC', color: '#594A4D', borderRadius: '9999px', padding: '4px 12px', fontSize: '11px', fontWeight: 500, whiteSpace: 'nowrap' }}>
                                 {course.speedTarget}
                               </span>
-                              <span className="text-[11px] font-medium text-[#6E5E61] bg-[#FAF7F2] border border-[#EDE5DA] px-2.5 py-1 rounded-full">
+                              <span style={{ backgroundColor: '#EFE7DC', color: '#594A4D', borderRadius: '9999px', padding: '4px 12px', fontSize: '11px', fontWeight: 500, whiteSpace: 'nowrap' }}>
                                 {course.duration}
                               </span>
                             </div>
 
-                            {/* Right: Fee + Actions */}
+                            {/* Right Price & Actions */}
                             <div 
-                              className="flex-[4_1_240px] flex items-center justify-end gap-3.5"
+                              style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}
                               onClick={(e) => e.stopPropagation()}
                             >
-                              <div className="text-right">
-                                <span className="font-sans font-bold text-[#231418] tabular-nums text-base block">
+                              <div style={{ textAlign: 'right', minWidth: '110px' }}>
+                                <span style={{ fontWeight: 700, fontSize: '16px', color: '#231418', display: 'block', fontVariantNumeric: 'tabular-nums' }}>
                                   {course.fee}
                                 </span>
-                                <span className="text-[10px] text-[#8A7B7E] block">
+                                <span style={{ fontSize: '11px', color: '#8A7B7E', display: 'block' }}>
                                   {course.feeType || 'Official Curriculum'}
                                 </span>
                               </div>
@@ -1416,16 +1703,38 @@ export default function CoursesPage({
                               <button
                                 type="button"
                                 onClick={() => toggleSyllabus(course.id)}
-                                className="rounded-full border border-[#E0D5C7] text-xs font-semibold text-[#594A4D] hover:text-[#231418] px-3.5 py-1.5 inline-flex items-center gap-1 cursor-pointer transition-colors"
+                                style={{
+                                  backgroundColor: '#FBF8F3',
+                                  border: '1px solid #E0D5C7',
+                                  borderRadius: '9999px',
+                                  padding: '8px 14px',
+                                  fontSize: '12px',
+                                  fontWeight: 500,
+                                  color: '#231418',
+                                  whiteSpace: 'nowrap',
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  gap: '4px',
+                                  cursor: 'pointer'
+                                }}
                               >
-                                <span>{isSyllabusOpen ? 'Hide' : 'View Syllabus'}</span>
-                                {isSyllabusOpen ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                                <span>{isSyllabusOpen ? 'Hide Syllabus ▴' : 'View Syllabus ▾'}</span>
                               </button>
 
                               <button
                                 type="button"
                                 onClick={() => handleEnroll(course)}
-                                className="rounded-full bg-[#231418] hover:bg-[#3A2228] text-[#FAF6F0] px-4 py-2 text-xs font-semibold cursor-pointer transition-colors"
+                                style={{
+                                  backgroundColor: '#231418',
+                                  color: '#FAF6F0',
+                                  borderRadius: '9999px',
+                                  padding: '8px 18px',
+                                  fontSize: '12px',
+                                  fontWeight: 600,
+                                  whiteSpace: 'nowrap',
+                                  border: 'none',
+                                  cursor: 'pointer'
+                                }}
                               >
                                 <span>Enroll Now</span>
                               </button>
@@ -1434,20 +1743,47 @@ export default function CoursesPage({
 
                           {/* Inline Expandable Syllabus Drawer */}
                           {isSyllabusOpen && (
-                            <div className="bg-[#FAF7F2] border-t border-[#EDE5DA] p-5 sm:p-6">
-                              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs text-[#594A4D] mb-4">
+                            <div 
+                              style={{
+                                backgroundColor: '#FAF7F2',
+                                borderTop: '1px solid #EDE5DA',
+                                padding: '20px 24px'
+                              }}
+                            >
+                              <div 
+                                style={{
+                                  display: 'grid',
+                                  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                                  gap: '12px',
+                                  fontSize: '12px',
+                                  color: '#594A4D',
+                                  marginBottom: '16px'
+                                }}
+                              >
                                 {course.syllabus.map((topic, i) => (
-                                  <div key={i} className="flex items-start gap-2 leading-relaxed">
-                                    <span className="text-[#991B1B] font-bold">&bull;</span>
+                                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', lineHeight: 1.5 }}>
+                                    <span style={{ color: '#991B1B', fontWeight: 700 }}>&bull;</span>
                                     <span>{topic}</span>
                                   </div>
                                 ))}
                               </div>
-                              <div className="flex justify-end pt-3 border-t border-[#EDE5DA]">
+                              <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '12px', borderTop: '1px solid #EDE5DA' }}>
                                 <button
                                   type="button"
                                   onClick={() => handleEnroll(course)}
-                                  className="bg-[#991B1B] hover:bg-[#7F1D1D] text-white px-5 py-2 rounded-full text-xs font-semibold cursor-pointer transition-colors inline-flex items-center gap-1.5"
+                                  style={{
+                                    backgroundColor: '#991B1B',
+                                    color: '#FFFFFF',
+                                    border: 'none',
+                                    padding: '8px 20px',
+                                    borderRadius: '9999px',
+                                    fontSize: '12px',
+                                    fontWeight: 600,
+                                    cursor: 'pointer',
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '6px'
+                                  }}
                                 >
                                   <span>Enroll in This Batch</span>
                                   <ArrowRight size={13} />
@@ -1467,7 +1803,6 @@ export default function CoursesPage({
           {/* Layout Mode 2: Unified Filtered/Searched Grid */}
           {!isDefaultAllView && filteredCourses.length > 0 && (
             <div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
@@ -1496,47 +1831,82 @@ export default function CoursesPage({
           borderTop: '1px solid #E0D5C7',
           borderBottom: '1px solid #E0D5C7',
           padding: '64px 0',
-          width: '100%'
+          width: '100%',
+          boxSizing: 'border-box'
         }}
       >
-        <div className="max-w-7xl mx-auto px-6">
+        <div 
+          className="sp-courses-container"
+          style={{
+            width: '100%',
+            maxWidth: '1280px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            paddingLeft: '24px',
+            paddingRight: '24px',
+            boxSizing: 'border-box'
+          }}
+        >
           {/* Header Row */}
           <FadeUp>
-            <div className="flex flex-wrap items-end justify-between gap-5 mb-9">
+            <div 
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'flex-end',
+                justifyContent: 'space-between',
+                gap: '20px',
+                marginBottom: '36px'
+              }}
+            >
               <div>
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8A7B7E] block mb-1.5">
+                <span 
+                  style={{
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.18em',
+                    color: '#8A7B7E',
+                    display: 'block',
+                    marginBottom: '6px'
+                  }}
+                >
                   SELF-PACED EXAM ENGINE
                 </span>
                 <h2 
-                  className="font-serif font-normal text-3xl sm:text-4xl text-[#231418]"
                   style={{
                     fontFamily: "'Instrument Serif', Georgia, serif",
                     fontSize: 'clamp(1.875rem, 3.2vw, 2.65rem)',
                     fontWeight: 400,
                     lineHeight: 1.1,
                     letterSpacing: '-0.015em',
-                    color: '#231418'
+                    color: '#231418',
+                    margin: 0
                   }}
                 >
                   Practice passes &amp; <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>test series.</span>
                 </h2>
-                <p className="text-sm text-[#594A4D] max-w-xl mt-1.5">
+                <p style={{ fontSize: '14px', color: '#594A4D', maxWidth: '580px', margin: '6px 0 0 0' }}>
                   Instant activation with UPI &amp; QR code. Practice anytime with real exam reading rooms and automated error calculation.
                 </p>
               </div>
 
               {/* Segmented Duration / Court Tracks Toggle */}
               <div 
-                className="bg-[#E5DACB] border border-[#D8CBB9] p-1 rounded-full inline-flex items-center gap-1"
+                style={{
+                  backgroundColor: '#E5DACB',
+                  border: '1px solid #D8CBB9',
+                  padding: '4px',
+                  borderRadius: '9999px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
                 role="tablist"
               >
                 <button
                   type="button"
                   onClick={() => setPassFilter('unlimited')}
-                  className={passFilter === 'unlimited'
-                    ? "bg-white text-[#231418] rounded-full shadow-xs px-4 py-1.5 text-xs font-semibold border-none cursor-pointer"
-                    : "text-[#594A4D] hover:text-[#231418] rounded-full px-4 py-1.5 text-xs font-medium border-none bg-transparent cursor-pointer transition-colors"
-                  }
                   style={passFilter === 'unlimited' ? {
                     backgroundColor: '#FFFFFF',
                     color: '#231418',
@@ -1563,10 +1933,6 @@ export default function CoursesPage({
                 <button
                   type="button"
                   onClick={() => setPassFilter('special')}
-                  className={passFilter === 'special'
-                    ? "bg-white text-[#231418] rounded-full shadow-xs px-4 py-1.5 text-xs font-semibold border-none cursor-pointer"
-                    : "text-[#594A4D] hover:text-[#231418] rounded-full px-4 py-1.5 text-xs font-medium border-none bg-transparent cursor-pointer transition-colors"
-                  }
                   style={passFilter === 'special' ? {
                     backgroundColor: '#FFFFFF',
                     color: '#231418',
@@ -1597,7 +1963,6 @@ export default function CoursesPage({
           {/* Row 1: Core Unlimited Duration Passes (4 Columns) */}
           {passFilter === 'unlimited' && (
             <div 
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
@@ -1609,10 +1974,6 @@ export default function CoursesPage({
                 return (
                   <FadeUp key={plan.id} delay={idx * 0.06}>
                     <div 
-                      className={isFeatured
-                        ? "bg-white border border-[#DFD3C5] border-t-4 border-t-[#991B1B] rounded-2xl p-6 shadow-[0_14px_34px_rgba(35,20,24,0.08)] flex flex-col justify-between h-full"
-                        : "bg-white border border-[#E8DFD3] rounded-2xl p-6 shadow-[0_4px_18px_rgba(35,20,24,0.04)] flex flex-col justify-between h-full"
-                      }
                       style={isFeatured ? {
                         backgroundColor: '#FFFFFF',
                         border: '1px solid #DFD3C5',
@@ -1623,7 +1984,8 @@ export default function CoursesPage({
                         flexDirection: 'column',
                         justifyContent: 'space-between',
                         boxShadow: '0 14px 34px rgba(35, 20, 24, 0.08)',
-                        height: '100%'
+                        height: '100%',
+                        boxSizing: 'border-box'
                       } : {
                         backgroundColor: '#FFFFFF',
                         border: '1px solid #E8DFD3',
@@ -1633,52 +1995,56 @@ export default function CoursesPage({
                         flexDirection: 'column',
                         justifyContent: 'space-between',
                         boxShadow: '0 4px 18px rgba(35, 20, 24, 0.04)',
-                        height: '100%'
+                        height: '100%',
+                        boxSizing: 'border-box'
                       }}
                     >
                       <div>
                         {/* Top Micro-Badge */}
-                        <div className="flex items-center justify-between mb-3.5">
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
                           <span 
-                            className="text-[10px] font-bold uppercase tracking-wider"
                             style={{
+                              fontSize: '10px',
+                              fontWeight: 700,
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.12em',
                               color: isFeatured ? '#991B1B' : '#8A7B7E'
                             }}
                           >
                             {isFeatured ? 'MOST POPULAR' : (plan.seriesTitle || 'SKILL PASS')}
                           </span>
                           {plan.badge && !isFeatured && (
-                            <span className="text-[10px] font-semibold bg-[#EFE7DC] border border-[#E0D5C7] text-[#594A4D] px-2 py-0.5 rounded-full">
+                            <span style={{ fontSize: '10px', fontWeight: 600, backgroundColor: '#EFE7DC', border: '1px solid #E0D5C7', color: '#594A4D', padding: '2px 8px', borderRadius: '9999px' }}>
                               {plan.badge}
                             </span>
                           )}
                         </div>
 
-                        <h3 className="text-lg font-bold text-[#231418] mb-1.5">
+                        <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: '0 0 6px 0' }}>
                           {plan.name}
                         </h3>
-                        <p className="text-xs text-[#594A4D] mb-4 leading-relaxed">
+                        <p style={{ fontSize: '12px', color: '#594A4D', margin: '0 0 16px 0', lineHeight: 1.5 }}>
                           {plan.description}
                         </p>
                         
-                        <div className="flex items-baseline gap-1.5 mb-5">
+                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', margin: '0 0 20px 0' }}>
                           {plan.originalPrice && (
-                            <span className="text-sm text-[#8A7B7E] line-through font-sans tabular-nums">
+                            <span style={{ fontSize: '14px', color: '#8A7B7E', textDecoration: 'line-through', fontVariantNumeric: 'tabular-nums' }}>
                               ₹{plan.originalPrice}
                             </span>
                           )}
-                          <span className="font-sans font-extrabold text-3xl text-[#231418] tabular-nums">
+                          <span style={{ fontSize: '28px', fontWeight: 800, color: '#231418', fontVariantNumeric: 'tabular-nums' }}>
                             ₹{plan.price}
                           </span>
-                          <span className="text-xs text-[#8A7B7E]">
+                          <span style={{ fontSize: '12px', color: '#8A7B7E' }}>
                             / {plan.duration}
                           </span>
                         </div>
 
-                        <ul className="space-y-2.5 pt-4 mb-6 border-t border-[#EDE5DA]">
+                        <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px 0', borderTop: '1px solid #EDE5DA', paddingTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                           {plan.features.map((feat, i) => (
-                            <li key={i} className="flex items-start gap-2 text-xs text-[#594A4D] leading-relaxed">
-                              <Check size={14} className={isFeatured ? "text-[#991B1B] mt-0.5 shrink-0" : "text-[#8A7B7E] mt-0.5 shrink-0"} />
+                            <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '12px', color: '#594A4D', lineHeight: 1.45 }}>
+                              <Check size={14} style={{ color: isFeatured ? '#991B1B' : '#8A7B7E', marginTop: '2px', flexShrink: 0 }} />
                               <span>{feat}</span>
                             </li>
                           ))}
@@ -1692,10 +2058,6 @@ export default function CoursesPage({
                             if (onSelectPlan) onSelectPlan(plan.id);
                             if (onOpenCheckout) onOpenCheckout(plan.id);
                           }}
-                          className={isFeatured
-                            ? "w-full bg-[#991B1B] hover:bg-[#7F1D1D] text-white py-3 rounded-full text-xs font-semibold shadow-[0_4px_14px_rgba(153,27,27,0.20)] cursor-pointer transition-colors"
-                            : "w-full bg-[#FBF8F3] hover:bg-[#231418] hover:text-[#FAF6F0] border border-[#DCD0C2] text-[#231418] py-3 rounded-full text-xs font-semibold cursor-pointer transition-colors"
-                          }
                           style={isFeatured ? {
                             width: '100%',
                             backgroundColor: '#991B1B',
@@ -1705,7 +2067,8 @@ export default function CoursesPage({
                             borderRadius: '9999px',
                             fontSize: '12px',
                             fontWeight: 600,
-                            cursor: 'pointer'
+                            cursor: 'pointer',
+                            boxShadow: '0 4px 14px rgba(153, 27, 27, 0.20)'
                           } : {
                             width: '100%',
                             backgroundColor: '#FBF8F3',
@@ -1731,7 +2094,6 @@ export default function CoursesPage({
           {/* Row 2: Court & Pitman Targeted Tracks (3 Columns) */}
           {passFilter === 'special' && (
             <div 
-              className="grid grid-cols-1 md:grid-cols-3 gap-6"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
@@ -1742,7 +2104,6 @@ export default function CoursesPage({
                 return (
                   <FadeUp key={plan.id} delay={idx * 0.08}>
                     <div 
-                      className="bg-white border border-[#E8DFD3] rounded-2xl p-6 shadow-[0_4px_18px_rgba(35,20,24,0.04)] flex flex-col justify-between h-full"
                       style={{
                         backgroundColor: '#FFFFFF',
                         border: '1px solid #E8DFD3',
@@ -1752,46 +2113,47 @@ export default function CoursesPage({
                         flexDirection: 'column',
                         justifyContent: 'space-between',
                         boxShadow: '0 4px 18px rgba(35, 20, 24, 0.04)',
-                        height: '100%'
+                        height: '100%',
+                        boxSizing: 'border-box'
                       }}
                     >
                       <div>
-                        <div className="flex items-center justify-between mb-3.5">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#991B1B]">
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
+                          <span style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#991B1B' }}>
                             TARGETED TRACK
                           </span>
                           {plan.badge && (
-                            <span className="text-[10px] font-semibold bg-[#EFE7DC] border border-[#E0D5C7] text-[#594A4D] px-2 py-0.5 rounded-full">
+                            <span style={{ fontSize: '10px', fontWeight: 600, backgroundColor: '#EFE7DC', border: '1px solid #E0D5C7', color: '#594A4D', padding: '2px 8px', borderRadius: '9999px' }}>
                               {plan.badge}
                             </span>
                           )}
                         </div>
 
-                        <h3 className="text-lg font-bold text-[#231418] mb-1.5">
+                        <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: '0 0 6px 0' }}>
                           {plan.name}
                         </h3>
-                        <p className="text-xs text-[#594A4D] mb-4 leading-relaxed">
+                        <p style={{ fontSize: '12px', color: '#594A4D', margin: '0 0 16px 0', lineHeight: 1.5 }}>
                           {plan.description}
                         </p>
                         
-                        <div className="flex items-baseline gap-1.5 mb-5">
+                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', margin: '0 0 20px 0' }}>
                           {plan.originalPrice && (
-                            <span className="text-sm text-[#8A7B7E] line-through font-sans tabular-nums">
+                            <span style={{ fontSize: '14px', color: '#8A7B7E', textDecoration: 'line-through', fontVariantNumeric: 'tabular-nums' }}>
                               ₹{plan.originalPrice}
                             </span>
                           )}
-                          <span className="font-sans font-extrabold text-3xl text-[#231418] tabular-nums">
+                          <span style={{ fontSize: '28px', fontWeight: 800, color: '#231418', fontVariantNumeric: 'tabular-nums' }}>
                             ₹{plan.price}
                           </span>
-                          <span className="text-xs text-[#8A7B7E]">
+                          <span style={{ fontSize: '12px', color: '#8A7B7E' }}>
                             / {plan.duration}
                           </span>
                         </div>
 
-                        <ul className="space-y-2.5 pt-4 mb-6 border-t border-[#EDE5DA]">
+                        <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px 0', borderTop: '1px solid #EDE5DA', paddingTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                           {plan.features.map((feat, i) => (
-                            <li key={i} className="flex items-start gap-2 text-xs text-[#594A4D] leading-relaxed">
-                              <Check size={14} className="text-[#8A7B7E] mt-0.5 shrink-0" />
+                            <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '12px', color: '#594A4D', lineHeight: 1.45 }}>
+                              <Check size={14} style={{ color: '#8A7B7E', marginTop: '2px', flexShrink: 0 }} />
                               <span>{feat}</span>
                             </li>
                           ))}
@@ -1805,7 +2167,6 @@ export default function CoursesPage({
                             if (onSelectPlan) onSelectPlan(plan.id);
                             if (onOpenCheckout) onOpenCheckout(plan.id);
                           }}
-                          className="w-full bg-[#FBF8F3] hover:bg-[#231418] hover:text-[#FAF6F0] border border-[#DCD0C2] text-[#231418] py-3 rounded-full text-xs font-semibold cursor-pointer transition-colors"
                           style={{
                             width: '100%',
                             backgroundColor: '#FBF8F3',
@@ -1839,52 +2200,103 @@ export default function CoursesPage({
         style={{
           backgroundColor: '#FBF8F3',
           padding: '64px 0',
-          width: '100%'
+          width: '100%',
+          boxSizing: 'border-box'
         }}
       >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="sp-courses-spread-12col grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div 
+          className="sp-courses-container"
+          style={{
+            width: '100%',
+            maxWidth: '1280px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            paddingLeft: '24px',
+            paddingRight: '24px',
+            boxSizing: 'border-box'
+          }}
+        >
+          <div className="sp-courses-spread-12col">
             
             {/* Left Column (lg:col-span-5): Target Recruitment Coverage */}
-            <div className="sp-courses-spread-left lg:col-span-5 min-w-0">
+            <div className="sp-courses-spread-left" style={{ minWidth: 0 }}>
               <FadeUp>
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8A7B7E] block mb-1.5">
+                <span 
+                  style={{
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.18em',
+                    color: '#8A7B7E',
+                    display: 'block',
+                    marginBottom: '6px'
+                  }}
+                >
                   RECRUITMENT COVERAGE
                 </span>
                 <h2 
-                  className="font-serif font-normal text-3xl lg:text-[2.2rem] leading-tight text-[#231418] mb-2.5"
                   style={{
                     fontFamily: "'Instrument Serif', Georgia, serif",
                     fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)',
                     fontWeight: 400,
                     lineHeight: 1.15,
                     letterSpacing: '-0.015em',
-                    color: '#231418'
+                    color: '#231418',
+                    marginBottom: '10px'
                   }}
                 >
                   National &amp; state <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>govt. examinations.</span>
                 </h2>
-                <p className="text-xs sm:text-[13px] text-[#594A4D] leading-relaxed mb-6">
+                <p style={{ fontSize: '13px', color: '#594A4D', lineHeight: 1.55, marginBottom: '24px' }}>
                   Specialized speed batches calibrated for official notification criteria, vocabulary benches, and exam-hall backspace-lock rules.
                 </p>
 
                 {/* Clean hairline directory card */}
-                <div className="bg-white border border-[#E8DFD3] rounded-2xl divide-y divide-[#EDE5DA] shadow-[0_4px_18px_rgba(35,20,24,0.03)] overflow-hidden">
-                  {TARGET_EXAMINATIONS.map((exam) => {
+                <div 
+                  style={{
+                    backgroundColor: '#FFFFFF',
+                    border: '1px solid #E8DFD3',
+                    borderRadius: '16px',
+                    overflow: 'hidden',
+                    boxShadow: '0 4px 18px rgba(35, 20, 24, 0.03)',
+                    marginTop: '24px'
+                  }}
+                >
+                  {TARGET_EXAMINATIONS.map((exam, idx) => {
+                    const isLast = idx === TARGET_EXAMINATIONS.length - 1;
                     return (
                       <div 
                         key={exam.id}
-                        className="p-3.5 px-4 flex items-center justify-between gap-3 hover:bg-[#FAF7F2] transition-colors"
+                        style={{
+                          padding: '14px 20px',
+                          borderBottom: isLast ? 'none' : '1px solid #EDE5DA',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: '12px',
+                          transition: 'background-color 0.15s ease'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FAF7F2'}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                       >
                         <div>
-                          <div className="text-[13px] font-bold text-[#231418]">
+                          <div style={{ fontSize: '14px', fontWeight: 600, color: '#231418' }}>
                             {exam.title}
                           </div>
-                          <div className="text-[11px] text-[#8A7B7E] mt-0.5">
+                          <div style={{ fontSize: '11px', color: '#8A7B7E', marginTop: '2px' }}>
                             {exam.category}
                           </div>
                         </div>
-                        <span className="text-[11px] font-mono font-semibold text-[#991B1B] tabular-nums shrink-0">
+                        <span 
+                          style={{
+                            fontFamily: "'JetBrains Mono', monospace",
+                            fontSize: '12px',
+                            fontWeight: 600,
+                            color: '#991B1B',
+                            whiteSpace: 'nowrap',
+                            flexShrink: 0
+                          }}
+                        >
                           {exam.speed}
                         </span>
                       </div>
@@ -1895,31 +2307,40 @@ export default function CoursesPage({
             </div>
 
             {/* Right Column (lg:col-span-7): 8-Stage Teaching Methodology */}
-            <div className="sp-courses-spread-right lg:col-span-7 min-w-0">
+            <div className="sp-courses-spread-right" style={{ minWidth: 0 }}>
               <FadeUp delay={0.08}>
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8A7B7E] block mb-1.5">
+                <span 
+                  style={{
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.18em',
+                    color: '#8A7B7E',
+                    display: 'block',
+                    marginBottom: '6px'
+                  }}
+                >
                   PROVEN PEDAGOGY
                 </span>
                 <h2 
-                  className="font-serif font-normal text-3xl lg:text-[2.2rem] leading-tight text-[#231418] mb-2.5"
                   style={{
                     fontFamily: "'Instrument Serif', Georgia, serif",
                     fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)',
                     fontWeight: 400,
                     lineHeight: 1.15,
                     letterSpacing: '-0.015em',
-                    color: '#231418'
+                    color: '#231418',
+                    marginBottom: '10px'
                   }}
                 >
                   8-Stage teaching <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>methodology</span> (शिक्षण पद्धति)
                 </h2>
-                <p className="text-xs sm:text-[13px] text-[#594A4D] leading-relaxed mb-7">
+                <p style={{ fontSize: '13px', color: '#594A4D', lineHeight: 1.55, marginBottom: '28px' }}>
                   Guided by <strong style={{ color: '#231418', fontWeight: 600 }}>Shadab Sir (12+ Years Experience)</strong> to systematically build accuracy and audio transcription speed from 50 to 140 WPM.
                 </p>
 
                 {/* 2-column numbered editorial grid on continuous Warm Cream */}
                 <div 
-                  className="grid grid-cols-1 sm:grid-cols-2 gap-6"
                   style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
@@ -1931,14 +2352,14 @@ export default function CoursesPage({
                     return (
                       <div 
                         key={m.step || idx}
-                        className="border-t border-[#E0D5C7] pt-4 flex flex-col"
                         style={{
                           borderTop: '1px solid #E0D5C7',
-                          paddingTop: '16px'
+                          paddingTop: '16px',
+                          display: 'flex',
+                          flexDirection: 'column'
                         }}
                       >
                         <div 
-                          className="font-serif text-2xl text-[#8A7B7E]"
                           style={{
                             fontFamily: "'Instrument Serif', Georgia, serif",
                             fontSize: '1.5rem',
@@ -1949,13 +2370,13 @@ export default function CoursesPage({
                         >
                           {stepNum}
                         </div>
-                        <div className="text-[15px] font-bold text-[#231418] mt-1.5 mb-0.5">
+                        <div style={{ fontSize: '15px', fontWeight: 700, color: '#231418', marginTop: '6px', marginBottom: '2px' }}>
                           {m.title}
                         </div>
-                        <div className="text-xs font-medium text-[#78716C] mb-1.5">
+                        <div style={{ fontSize: '12px', fontWeight: 500, color: '#78716C', marginBottom: '6px' }}>
                           {m.hindi}
                         </div>
-                        <p className="text-xs text-[#594A4D] leading-relaxed m-0">
+                        <p style={{ fontSize: '12px', color: '#594A4D', lineHeight: 1.5, margin: 0 }}>
                           {m.desc}
                         </p>
                       </div>
@@ -1973,14 +2394,16 @@ export default function CoursesPage({
           SECTION 6: OPEN WARM-GLOW PRE-FOOTER CTA (WARM CREAM #FBF8F3 CANVAS)
           ========================================================================= */}
       <section 
-        className="relative overflow-hidden bg-[#FBF8F3] border-t border-[#E5DBD0] py-16 lg:py-20 text-center px-6"
+        className="relative overflow-hidden bg-[#FBF8F3] border-t border-[#E5DBD0] text-center"
         style={{
           position: 'relative',
           overflow: 'hidden',
           backgroundColor: '#FBF8F3',
           borderTop: '1px solid #E5DBD0',
           padding: '4.5rem 1.5rem',
-          textAlign: 'center'
+          textAlign: 'center',
+          width: '100%',
+          boxSizing: 'border-box'
         }}
       >
         {/* Subtle warm radial glow behind content */}
@@ -1992,34 +2415,63 @@ export default function CoursesPage({
             background: 'radial-gradient(ellipse 65% 65% at 50% 50%, rgba(196, 132, 120, 0.16) 0%, rgba(251, 248, 243, 0) 75%)' 
           }} 
         />
-        <div className="relative z-10 max-w-2xl mx-auto">
+        <div 
+          className="sp-courses-container"
+          style={{
+            position: 'relative',
+            zIndex: 10,
+            maxWidth: '680px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            boxSizing: 'border-box'
+          }}
+        >
           <FadeUp>
-            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#991B1B] block mb-3">
+            <span 
+              style={{
+                fontSize: '11px',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.18em',
+                color: '#991B1B',
+                display: 'block',
+                marginBottom: '12px'
+              }}
+            >
               FREE DEMO &amp; COUNSELING
             </span>
             <h2 
-              className="font-serif font-normal text-4xl sm:text-5xl text-[#231418] leading-tight mb-3"
               style={{
                 fontFamily: "'Instrument Serif', Georgia, serif",
                 fontSize: 'clamp(2.25rem, 4.2vw, 3.25rem)',
                 fontWeight: 400,
                 lineHeight: 1.12,
                 letterSpacing: '-0.02em',
-                color: '#231418'
+                color: '#231418',
+                marginBottom: '12px'
               }}
             >
               Not sure which course or <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>speed batch</span> is right for you?
             </h2>
-            <p className="text-sm sm:text-base text-[#594A4D] max-w-xl mx-auto mb-7 leading-relaxed">
+            <p 
+              style={{
+                fontSize: '15px',
+                color: '#594A4D',
+                maxWidth: '560px',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                marginBottom: '28px',
+                lineHeight: 1.6
+              }}
+            >
               Speak directly with senior instructors or Head Faculty <strong style={{ color: '#231418', fontWeight: 600 }}>Shadab Sir (12+ Years Experience)</strong> for a personalized skill assessment.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
               <button 
                 type="button"
                 onClick={() => {
                   if (onOpenAdmission) onOpenAdmission();
                 }}
-                className="bg-[#991B1B] hover:bg-[#7F1D1D] text-white px-7 py-3.5 rounded-full text-xs sm:text-sm font-semibold shadow-[0_8px_20px_rgba(153,27,27,0.20)] cursor-pointer transition-colors"
                 style={{
                   backgroundColor: '#991B1B',
                   color: '#FFFFFF',
@@ -2037,7 +2489,6 @@ export default function CoursesPage({
               </button>
               <a 
                 href="tel:+919204123453"
-                className="bg-white hover:bg-[#EFE7DC] border border-[#D8CCBE] text-[#231418] px-7 py-3.5 rounded-full text-xs sm:text-sm font-semibold tabular-nums inline-flex items-center gap-2 cursor-pointer transition-colors"
                 style={{
                   backgroundColor: '#FFFFFF',
                   border: '1px solid #D8CCBE',
@@ -2047,10 +2498,14 @@ export default function CoursesPage({
                   fontSize: '13.5px',
                   fontWeight: 600,
                   textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  cursor: 'pointer',
                   transition: 'background-color 0.2s ease'
                 }}
               >
-                <Phone size={14} className="text-[#991B1B] shrink-0" />
+                <Phone size={14} style={{ color: '#991B1B', flexShrink: 0 }} />
                 <span>Call +91 9204123453</span>
               </a>
             </div>

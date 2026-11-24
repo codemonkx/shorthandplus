@@ -4304,6 +4304,56 @@
   }
 }
 
+/* Reusable Container & Utility Classes for Courses */
+.sp-courses-container {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
+}
+
+.sp-courses-hero-padding {
+  padding-top: 128px !important;
+  padding-bottom: 56px !important;
+}
+@media (max-width: 768px) {
+  .sp-courses-hero-padding {
+    padding-top: 104px !important;
+    padding-bottom: 40px !important;
+  }
+}
+
+.sp-courses-2x2-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  margin-top: 16px !important;
+}
+@media (max-width: 480px) {
+  .sp-courses-2x2-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.sp-courses-toolbar-desktop {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  flex-wrap: nowrap !important;
+}
+@media (max-width: 1023px) {
+  .sp-courses-toolbar-desktop {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    flex-wrap: wrap !important;
+  }
+}
+
 /* ==========================================================================
    CLASSES PAGE (WARM PARCHMENT REDESIGN)
    ========================================================================== */
