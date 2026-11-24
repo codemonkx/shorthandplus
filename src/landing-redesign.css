@@ -4388,13 +4388,13 @@
 }
 
 /* ==========================================================================
-   ABOUT PAGE (WARM PARCHMENT REDESIGN)
+   ABOUT PAGE (WARM EDITORIAL REDESIGN)
    ========================================================================== */
 .sp-about-root,
 .about-page-wrapper {
-  background-color: #ECE8E0 !important;
+  background-color: #FBF8F3 !important;
   min-height: 100vh !important;
-  color: #16161A !important;
+  color: #231418 !important;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
   padding: 0 !important;
   margin: 0 !important;
@@ -4496,3 +4496,598 @@
 
 
 
+
+/* ==========================================================================
+   WARM EDITORIAL EXECUTIVE CONSOLE REDESIGN (/admin)
+   Tokens:
+   - Canvas: #FBF8F3
+   - Cards & Tables: #FFFFFF (border: #E8DFD3, shadow: 0 4px 20px rgba(35,20,24,0.04))
+   - Recessed Toolbars & Tab Docks: #EFE7DC (border: #E0D5C7)
+   - Primary Ink & Dark Controls: #231418 (hover #3A2228)
+   - Secondary Text: #594A4D
+   - Muted Labels & Dividers: #8A7B7E / #EDE5DA
+   - Crimson Accent: #991B1B (hover #7F1D1D)
+   - Muted Semantics: Sage #1F6B48 on #EBF5EF, Amber #9A5B13 on #FDF5E7, Rose #991B1B on #FCEEEE
+   ========================================================================== */
+
+.admin-portal-wrapper {
+  background-color: #FBF8F3 !important;
+  min-height: 100vh !important;
+  color: #231418 !important;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+}
+
+/* Header Strip */
+.admin-header-strip {
+  background-color: rgba(251, 248, 243, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid #E5DBD0 !important;
+  box-shadow: 0 1px 4px rgba(35, 20, 24, 0.03) !important;
+}
+
+.admin-header-container {
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 0.85rem 1.5rem !important;
+}
+
+.admin-badge-squircle {
+  background: #231418 !important;
+  color: #FAF6F0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(35, 20, 24, 0.12) !important;
+}
+
+.admin-brand-title {
+  color: #231418 !important;
+}
+
+.badge-admin-role {
+  background: #231418 !important;
+  color: #FAF6F0 !important;
+  border: 1px solid #231418 !important;
+  border-radius: 9999px !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  padding: 0.15rem 0.6rem !important;
+}
+
+.badge-admin-role svg {
+  color: #FAF6F0 !important;
+}
+
+.admin-brand-sub-row {
+  color: #8A7B7E !important;
+  font-size: 12px !important;
+}
+
+.admin-dot-divider {
+  color: #D8CCBE !important;
+}
+
+.admin-status-live {
+  color: #1F6B48 !important;
+  font-weight: 600 !important;
+}
+
+.admin-live-pulse-dot {
+  background-color: #1F6B48 !important;
+  box-shadow: 0 0 0 2px rgba(31, 107, 72, 0.25) !important;
+}
+
+/* Header Buttons */
+.admin-toolbar-btn.admin-btn-neutral {
+  background: #FFFFFF !important;
+  border: 1px solid #D8CCBE !important;
+  color: #231418 !important;
+  border-radius: 9999px !important;
+  padding: 0.45rem 1rem !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  transition: all 0.15s ease !important;
+}
+
+.admin-toolbar-btn.admin-btn-neutral:hover {
+  background: #EFE7DC !important;
+  border-color: #CBBCAE !important;
+  color: #231418 !important;
+}
+
+.admin-toolbar-btn.admin-btn-signout {
+  background: #FCEEEE !important;
+  border: 1px solid #EED2D2 !important;
+  color: #991B1B !important;
+  border-radius: 9999px !important;
+  padding: 0.45rem 1rem !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  transition: all 0.15s ease !important;
+}
+
+.admin-toolbar-btn.admin-btn-signout:hover {
+  background: #991B1B !important;
+  border-color: #991B1B !important;
+  color: #FFFFFF !important;
+}
+
+/* Admin Body Container */
+.admin-body-container {
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 1.5rem 1.5rem 3.5rem !important;
+}
+
+/* KPI Cards */
+.admin-kpi-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E8DFD3 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 18px rgba(35, 20, 24, 0.03) !important;
+  padding: 1.25rem 1.35rem !important;
+}
+
+.admin-kpi-card:hover {
+  border-color: #D4C6B6 !important;
+  box-shadow: 0 8px 24px rgba(35, 20, 24, 0.06) !important;
+}
+
+.kpi-label-text {
+  color: #8A7B7E !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+}
+
+/* 6-Tab Workspace Switcher */
+.admin-tabs-nav-bar {
+  background: #EFE7DC !important;
+  border: 1px solid #E0D5C7 !important;
+  border-radius: 16px !important;
+  padding: 0.35rem !important;
+  gap: 0.3rem !important;
+}
+
+.admin-nav-tab {
+  border-radius: 12px !important;
+  padding: 0.5rem 0.95rem !important;
+  font-size: 12px !important;
+  color: #594A4D !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  transition: all 0.15s ease !important;
+}
+
+.admin-nav-tab:hover {
+  background: rgba(251, 248, 243, 0.7) !important;
+  color: #231418 !important;
+}
+
+.admin-nav-tab.active {
+  background: #FFFFFF !important;
+  color: #231418 !important;
+  font-weight: 600 !important;
+  border: 1px solid #E0D5C7 !important;
+  box-shadow: 0 2px 8px rgba(35, 20, 24, 0.05) !important;
+}
+
+.admin-tab-count-pill {
+  font-size: 10px !important;
+  padding: 0.15rem 0.5rem !important;
+  border-radius: 9999px !important;
+  background: #E3D8C9 !important;
+  color: #594A4D !important;
+}
+
+.admin-nav-tab.active .admin-tab-count-pill {
+  background: #991B1B !important;
+  color: #FFFFFF !important;
+}
+
+/* Candidate Content Card */
+.admin-content-card,
+.saas-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E8DFD3 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 28px rgba(35, 20, 24, 0.04) !important;
+}
+
+.table-header-control-row {
+  border-bottom: 1px solid #EDE5DA !important;
+  padding-bottom: 1rem !important;
+}
+
+.admin-search-box {
+  background: #FBF8F3 !important;
+  border: 1px solid #DFD4C6 !important;
+  border-radius: 9999px !important;
+  padding: 0.45rem 1rem !important;
+}
+
+.admin-search-box input {
+  color: #231418 !important;
+  font-size: 12px !important;
+}
+
+.admin-search-box input::placeholder {
+  color: #8A7B7E !important;
+}
+
+/* Status Chips Bar */
+.admin-status-chips-bar {
+  background: #FAF7F2 !important;
+  border-bottom: 1px solid #EDE5DA !important;
+  padding: 0.85rem 1rem !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.status-chip-btn {
+  background: #FFFFFF !important;
+  border: 1px solid #E5DBD0 !important;
+  color: #594A4D !important;
+  border-radius: 9999px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  padding: 0.35rem 0.85rem !important;
+  transition: all 0.15s ease !important;
+}
+
+.status-chip-btn:hover {
+  background: #EFE7DC !important;
+  border-color: #D8CCBE !important;
+  color: #231418 !important;
+}
+
+.status-chip-btn.active,
+.status-chip-btn.chip-active-state.active,
+.status-chip-btn.chip-expiring-state.active,
+.status-chip-btn.chip-expired-state.active {
+  background: #231418 !important;
+  border-color: #231418 !important;
+  color: #FAF6F0 !important;
+}
+
+.status-chip-btn .chip-count {
+  background: #EDE5DA !important;
+  color: #594A4D !important;
+  font-size: 10px !important;
+  border-radius: 9999px !important;
+}
+
+.status-chip-btn.active .chip-count,
+.status-chip-btn.chip-active-state.active .chip-count,
+.status-chip-btn.chip-expiring-state.active .chip-count,
+.status-chip-btn.chip-expired-state.active .chip-count {
+  background: rgba(250, 246, 240, 0.2) !important;
+  color: #FAF6F0 !important;
+}
+
+.filter-result-pill {
+  color: #8A7B7E !important;
+  font-size: 11px !important;
+}
+
+.filter-result-pill strong {
+  color: #231418 !important;
+}
+
+/* Table Design */
+.corporate-table,
+.admin-data-table {
+  background: #FFFFFF !important;
+}
+
+.corporate-table thead tr,
+.admin-data-table thead tr {
+  background: #F5EFE6 !important;
+}
+
+.corporate-table thead th,
+.admin-data-table thead th,
+.admin-data-table th {
+  background: #F5EFE6 !important;
+  border-bottom: 1px solid #E5DBD0 !important;
+  color: #8A7B7E !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+.corporate-table tbody tr,
+.admin-data-table tbody tr {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #EDE5DA !important;
+  transition: background-color 0.15s ease !important;
+}
+
+.corporate-table tbody tr:hover,
+.admin-data-table tbody tr:hover {
+  background: #FAF7F2 !important;
+}
+
+.corporate-table tbody td,
+.admin-data-table tbody td,
+.admin-data-table td {
+  border-bottom: 1px solid #EDE5DA !important;
+  color: #231418 !important;
+}
+
+.admin-avatar-bubble {
+  background: #231418 !important;
+  color: #FAF6F0 !important;
+  border-radius: 50% !important;
+}
+
+.admin-user-fullname {
+  color: #231418 !important;
+  font-weight: 600 !important;
+}
+
+.admin-user-email-text {
+  color: #8A7B7E !important;
+}
+
+.admin-roll-capsule {
+  background: #FBF8F3 !important;
+  border: 1px solid #DFD4C6 !important;
+  color: #231418 !important;
+  border-radius: 9999px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+.admin-exam-capsule {
+  background: #FAF6F0 !important;
+  border: 1px solid #E5DBD0 !important;
+  color: #594A4D !important;
+  border-radius: 9999px !important;
+}
+
+/* Pass Plan Chips */
+.admin-pass-chip {
+  border-radius: 9999px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+}
+
+.admin-pass-chip.pass-annual,
+.admin-pass-chip.pass-scholar,
+.admin-pass-chip.pass-monthly,
+.admin-pass-chip.pass-sprint {
+  background: #FDF5E7 !important;
+  color: #9A5B13 !important;
+  border: 1px solid #EFDAB6 !important;
+}
+
+.admin-pass-chip.pass-annual svg,
+.admin-pass-chip.pass-scholar svg,
+.admin-pass-chip.pass-monthly svg,
+.admin-pass-chip.pass-sprint svg {
+  color: #9A5B13 !important;
+}
+
+.admin-pass-chip.pass-default {
+  background: #F4EFE7 !important;
+  color: #6E5E61 !important;
+  border: 1px solid #E5DBD0 !important;
+}
+
+/* Validity & Progress */
+.validity-days-badge.badge-good {
+  background: #EBF5EF !important;
+  color: #1F6B48 !important;
+  border: 1px solid #CBE3D4 !important;
+}
+
+.validity-days-badge.badge-warning {
+  background: #FDF5E7 !important;
+  color: #9A5B13 !important;
+  border: 1px solid #EFDAB6 !important;
+}
+
+.validity-days-badge.badge-urgent,
+.validity-days-badge.badge-expired {
+  background: #FCEEEE !important;
+  color: #991B1B !important;
+  border: 1px solid #EED2D2 !important;
+}
+
+.admin-validity-track {
+  background: #EFE7DC !important;
+}
+
+.admin-validity-progress.prog-green {
+  background: #1F6B48 !important;
+}
+
+.admin-validity-progress.prog-amber {
+  background: #9A5B13 !important;
+}
+
+.admin-validity-progress.prog-red {
+  background: #991B1B !important;
+}
+
+/* Speed & Accuracy */
+.speed-main-val {
+  color: #231418 !important;
+}
+
+.accuracy-subval {
+  color: #1F6B48 !important;
+  font-weight: 600 !important;
+}
+
+/* Status Indicator */
+.admin-status-indicator.is-active {
+  background: #EBF5EF !important;
+  color: #1F6B48 !important;
+  border: 1px solid #CBE3D4 !important;
+  border-radius: 9999px !important;
+}
+
+.admin-status-indicator.is-active .pulse-dot {
+  background: #1F6B48 !important;
+  box-shadow: 0 0 0 2px rgba(31, 107, 72, 0.25) !important;
+}
+
+.admin-status-indicator.is-inactive {
+  background: #FCEEEE !important;
+  color: #991B1B !important;
+  border: 1px solid #EED2D2 !important;
+  border-radius: 9999px !important;
+}
+
+.admin-status-indicator.is-inactive .pulse-dot {
+  background: #991B1B !important;
+  box-shadow: 0 0 0 2px rgba(153, 27, 27, 0.25) !important;
+}
+
+/* Action Buttons */
+.admin-btn-action {
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
+  font-size: 11px !important;
+  transition: all 0.15s ease !important;
+}
+
+.admin-btn-action.btn-extend {
+  background: #F4EFE7 !important;
+  border: 1px solid #E5DBD0 !important;
+  color: #594A4D !important;
+}
+
+.admin-btn-action.btn-extend:hover {
+  background: #231418 !important;
+  border-color: #231418 !important;
+  color: #FAF6F0 !important;
+}
+
+.admin-btn-action.btn-suspend {
+  background: #FCEEEE !important;
+  border: 1px solid #EED2D2 !important;
+  color: #991B1B !important;
+}
+
+.admin-btn-action.btn-suspend:hover {
+  background: #991B1B !important;
+  border-color: #991B1B !important;
+  color: #FFFFFF !important;
+}
+
+.admin-btn-action.btn-activate {
+  background: #EBF5EF !important;
+  border: 1px solid #CBE3D4 !important;
+  color: #1F6B48 !important;
+}
+
+.admin-btn-action.btn-activate:hover {
+  background: #1F6B48 !important;
+  border-color: #1F6B48 !important;
+  color: #FFFFFF !important;
+}
+
+.admin-btn-action.btn-delete {
+  background: #FFFFFF !important;
+  border: 1px solid #DFD4C6 !important;
+  color: #8A7B7E !important;
+  border-radius: 9999px !important;
+}
+
+.admin-btn-action.btn-delete:hover {
+  background: #FCEEEE !important;
+  border-color: #EED2D2 !important;
+  color: #991B1B !important;
+}
+
+/* Admin Lock Screen */
+.admin-lock-screen,
+.admin-lock-screen-wrapper {
+  background-color: #FBF8F3 !important;
+}
+
+.admin-lock-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E8DFD3 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 16px 40px rgba(35, 20, 24, 0.08) !important;
+}
+
+.admin-lock-shield-badge {
+  background: #231418 !important;
+  color: #FAF6F0 !important;
+}
+
+/* Modals & Dialogs across all 6 Tabs */
+.modal-overlay,
+.modal-backdrop,
+.auth-modal-backdrop,
+.checkout-modal-backdrop {
+  background: rgba(35, 20, 24, 0.5) !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+.modal-content-card,
+.modal-card,
+.auth-card-body,
+.checkout-modal-wrapper,
+.checkout-card-body,
+.google-account-chooser-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E8DFD3 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 50px rgba(35, 20, 24, 0.12) !important;
+  color: #231418 !important;
+}
+
+.btn-primary,
+.admin-btn-primary {
+  background: #231418 !important;
+  color: #FAF6F0 !important;
+  border: 1px solid #231418 !important;
+  border-radius: 9999px !important;
+  transition: all 0.15s ease !important;
+}
+
+.btn-primary:hover,
+.admin-btn-primary:hover {
+  background: #3A2228 !important;
+  border-color: #3A2228 !important;
+  color: #FFFFFF !important;
+}
+
+.btn-secondary,
+.admin-btn-secondary {
+  background: #FFFFFF !important;
+  color: #231418 !important;
+  border: 1px solid #DFD4C6 !important;
+  border-radius: 9999px !important;
+  transition: all 0.15s ease !important;
+}
+
+.btn-secondary:hover,
+.admin-btn-secondary:hover {
+  background: #EFE7DC !important;
+  border-color: #D4C6B6 !important;
+  color: #231418 !important;
+}
+
+/* Classes & Diplomas Grid Cards */
+.admin-class-card,
+.admin-course-item-card,
+.admin-notice-item-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E8DFD3 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 18px rgba(35, 20, 24, 0.03) !important;
+}
+
+.admin-class-card:hover,
+.admin-course-item-card:hover,
+.admin-notice-item-card:hover {
+  border-color: #D4C6B6 !important;
+  box-shadow: 0 8px 26px rgba(35, 20, 24, 0.06) !important;
+}

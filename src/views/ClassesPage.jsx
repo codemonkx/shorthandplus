@@ -22,6 +22,8 @@ import {
   Zap,
   Calendar
 } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { FadeUp, StaggerContainer, StaggerItem, TRANSITION_EASE } from '../components/MotionPrimitives';
 import { ANNOUNCEMENTS } from '../data/mockData';
 import '../landing-redesign.css';
 
@@ -238,10 +240,10 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
     <div 
       className="sp-classes-root classes-page-root" 
       style={{ 
-        backgroundColor: '#ECE8E0', 
+        backgroundColor: '#FBF8F3', 
         minHeight: '100vh', 
         width: '100%',
-        color: '#16161A',
+        color: '#231418',
         fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif"
       }}
     >
@@ -249,67 +251,121 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
       {/* =========================================================================
           1. EDITORIAL HERO HEADER (LEFT-ALIGNED WITH NAVBAR CLEARANCE)
           ========================================================================= */}
-      <div 
-        style={{ 
-          maxWidth: '1280px', 
-          margin: '0 auto', 
-          padding: '112px 24px 32px',
-          textAlign: 'left'
+      <section 
+        className="relative overflow-hidden bg-[#FBF8F3] border-b border-[#E5DBD0]"
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundColor: '#FBF8F3',
+          borderBottom: '1px solid #E5DBD0',
+          paddingTop: '128px',
+          paddingBottom: '48px',
+          width: '100%',
+          boxSizing: 'border-box'
         }}
       >
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#991B1B', display: 'inline-block' }} />
-          <span style={{
-            fontFamily: "'JetBrains Mono', 'SF Mono', monospace",
-            fontSize: '0.75rem',
-            fontWeight: 700,
-            textTransform: 'uppercase',
-            letterSpacing: '0.14em',
-            color: '#57534E'
-          }}>
-            Offline Gaya Center &amp; Live Google Meet Broadcast
-          </span>
+        {/* Subtle decorative Pitman shorthand line-art background */}
+        <div 
+          style={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: 0,
+            overflow: 'hidden',
+            pointerEvents: 'none',
+            userSelect: 'none'
+          }}
+        >
+          <svg 
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              opacity: 0.05,
+              pointerEvents: 'none'
+            }}
+            viewBox="0 0 1440 800" 
+            fill="none" 
+            preserveAspectRatio="xMidYMid slice" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line x1="880" y1="120" x2="1400" y2="120" stroke="#231418" strokeWidth="1" strokeDasharray="3 6" />
+            <line x1="880" y1="160" x2="1400" y2="160" stroke="#231418" strokeWidth="1" strokeDasharray="3 6" />
+            <path d="M1020 110 L1020 160 M1020 160 L1040 175" stroke="#231418" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M1080 115 C1105 130 1115 150 1095 160" stroke="#231418" strokeWidth="2" strokeLinecap="round" />
+            <path d="M1150 120 C1140 125 1145 135 1155 132 L1185 160" stroke="#231418" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="1240" cy="135" r="7" stroke="#231418" strokeWidth="2" />
+            <path d="M1247 135 L1285 158" stroke="#231418" strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="40" y1="680" x2="520" y2="680" stroke="#231418" strokeWidth="3 6" />
+            <path d="M40 680 C65 700 75 715 60 720" stroke="#231418" strokeWidth="2.4" strokeLinecap="round" />
+            <path d="M105 680 L135 725 L160 725" stroke="#231418" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="215" cy="695" r="7" stroke="#231418" strokeWidth="2" />
+            <path d="M222 695 L255 720" stroke="#231418" strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
         </div>
 
-        <h1 
+        <div 
+          className="sp-courses-container relative z-10"
           style={{ 
-            fontSize: 'clamp(2rem, 3.2vw, 2.85rem)', 
-            fontWeight: 800, 
-            color: '#16161A', 
-            letterSpacing: '-0.025em', 
-            margin: '0 0 16px',
-            lineHeight: 1.18
+            maxWidth: '1280px', 
+            margin: '0 auto', 
+            paddingLeft: '24px',
+            paddingRight: '24px',
+            textAlign: 'left',
+            boxSizing: 'border-box'
           }}
         >
-          Classroom Batches, Timetable &amp;{' '}
-          <span style={{ 
-            fontFamily: "'Instrument Serif', Georgia, serif", 
-            fontStyle: 'italic', 
-            fontWeight: 400, 
-            color: '#991B1B', 
-            fontSize: '1.08em' 
-          }}>
-            Live Dictations
-          </span>
-        </h1>
+          <FadeUp>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#991B1B', display: 'inline-block' }} />
+              <span style={{
+                fontFamily: "'JetBrains Mono', 'SF Mono', monospace",
+                fontSize: '11px',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.18em',
+                color: '#8A7B7E'
+              }}>
+                Offline Gaya Center &amp; Live Google Meet Broadcast
+              </span>
+            </div>
 
-        <p 
-          style={{ 
-            fontSize: '1.05rem', 
-            color: '#44403C', 
-            lineHeight: 1.65, 
-            maxWidth: '820px', 
-            margin: 0 
-          }}
-        >
-          Attend daily in-person classes at our Gaya academy or access live broadcast Google Meet dictations from anywhere. Daily batches guided by{' '}
-          <strong style={{ color: '#16161A', fontWeight: 700 }}>Shadab Sir (12 Years Experience)</strong>{' '}
-          spanning{' '}
-          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, color: '#16161A' }}>
-            6:00 AM to 8:00 PM
-          </span>.
-        </p>
-      </div>
+            <h1 
+              style={{ 
+                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontSize: 'clamp(2.35rem, 4vw, 3.65rem)',
+                fontWeight: 400, 
+                color: '#231418', 
+                letterSpacing: '-0.02em', 
+                margin: '8px 0 16px',
+                lineHeight: 1.05
+              }}
+            >
+              Classroom Batches, Timetable &amp;{' '}
+              <span style={{ 
+                fontStyle: 'italic', 
+                color: '#991B1B'
+              }}>
+                Live Dictations.
+              </span>
+            </h1>
+
+            <p 
+              style={{ 
+                fontSize: '16px', 
+                color: '#594A4D', 
+                lineHeight: 1.6, 
+                maxWidth: '820px', 
+                margin: 0 
+              }}
+            >
+              Attend daily in-person classes at our Gaya academy or access live broadcast Google Meet dictations from anywhere. Daily batches guided by{' '}
+              <strong style={{ color: '#231418', fontWeight: 600 }}>Shadab Sir (12+ Years Experience)</strong>{' '}
+              spanning <span style={{ whiteSpace: 'nowrap', fontFamily: "'JetBrains Mono', monospace", fontWeight: 600, color: '#231418' }}>6:00 AM – 8:00 PM</span>.
+            </p>
+          </FadeUp>
+        </div>
+      </section>
 
       {/* =========================================================================
           2. RECESSED FULL-WIDTH TAB DOCK (SINGLE HORIZONTAL ROW)
@@ -317,27 +373,31 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
       <div 
         style={{
           width: '100%',
-          background: '#E4DFD5',
-          borderTop: '1px solid #D1CBBF',
-          borderBottom: '1px solid #D1CBBF',
-          padding: '10px 0',
+          backgroundColor: 'rgba(239, 231, 220, 0.95)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          borderBottom: '1px solid #E0D5C7',
+          padding: '12px 0',
           position: 'sticky',
-          top: 0,
+          top: '76px',
           zIndex: 30,
-          backdropFilter: 'blur(8px)'
+          boxSizing: 'border-box'
         }}
       >
         <div 
-          className="sp-classes-tab-dock"
+          className="sp-courses-container"
           style={{
             maxWidth: '1280px',
             margin: '0 auto',
-            padding: '0 24px',
+            paddingLeft: '24px',
+            paddingRight: '24px',
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
             overflowX: 'auto',
-            whiteSpace: 'nowrap'
+            whiteSpace: 'nowrap',
+            boxSizing: 'border-box',
+            scrollbarWidth: 'none'
           }}
         >
           {[
@@ -355,46 +415,61 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                style={{
+                style={active ? {
+                  backgroundColor: '#FFFFFF',
+                  color: '#231418',
+                  fontWeight: 600,
+                  border: '1px solid #E0D5C7',
+                  borderRadius: '9999px',
+                  padding: '7px 16px',
+                  fontSize: '12px',
+                  boxShadow: '0 1px 3px rgba(35, 20, 24, 0.06)',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '7px',
-                  padding: '8px 16px',
-                  borderRadius: '9999px',
-                  fontSize: '0.84rem',
-                  fontWeight: active ? 700 : 600,
-                  border: '1px solid',
-                  borderColor: active ? '#D1CBBF' : 'transparent',
-                  background: active ? '#F7F5F0' : 'transparent',
-                  color: active ? '#16161A' : '#57534E',
+                  gap: '6px',
+                  whiteSpace: 'nowrap',
                   cursor: 'pointer',
-                  transition: 'all 0.15s ease',
-                  boxShadow: active ? '0 2px 6px rgba(22, 22, 26, 0.06)' : 'none',
                   flexShrink: 0
+                } : {
+                  background: 'transparent',
+                  color: '#594A4D',
+                  fontWeight: 500,
+                  border: '1px solid transparent',
+                  borderRadius: '9999px',
+                  padding: '7px 16px',
+                  fontSize: '12px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  whiteSpace: 'nowrap',
+                  cursor: 'pointer',
+                  flexShrink: 0,
+                  transition: 'all 0.15s ease'
                 }}
                 onMouseEnter={(e) => {
                   if (!active) {
-                    e.currentTarget.style.color = '#16161A';
-                    e.currentTarget.style.background = '#ECE8E0';
+                    e.currentTarget.style.color = '#231418';
+                    e.currentTarget.style.backgroundColor = 'rgba(251, 248, 243, 0.7)';
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (!active) {
-                    e.currentTarget.style.color = '#57534E';
-                    e.currentTarget.style.background = 'transparent';
+                    e.currentTarget.style.color = '#594A4D';
+                    e.currentTarget.style.backgroundColor = 'transparent';
                   }
                 }}
               >
                 {tab.hasDot && (
                   <span style={{
-                    width: '6px',
-                    height: '6px',
+                    width: '5px',
+                    height: '5px',
                     borderRadius: '50%',
-                    background: '#991B1B',
-                    display: 'inline-block'
+                    backgroundColor: '#991B1B',
+                    display: 'inline-block',
+                    flexShrink: 0
                   }} />
                 )}
-                {IconComponent && <IconComponent size={13} color={active ? '#991B1B' : '#57534E'} />}
+                {IconComponent && <IconComponent size={13} style={{ color: active ? '#991B1B' : '#8A7B7E' }} />}
                 <span>{tab.label}</span>
               </button>
             );
@@ -405,564 +480,661 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
       {/* =========================================================================
           3. MAIN TAB CONTENT CONTAINER
           ========================================================================= */}
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '36px 24px 48px' }}>
+      <div 
+        style={{ 
+          maxWidth: '1280px', 
+          margin: '0 auto', 
+          padding: activeTab === 'online-live' ? '36px 0 0' : '36px 24px 48px',
+          boxSizing: 'border-box'
+        }}
+      >
 
         {/* ---------------------------------------------------------------------
             TAB 0: LIVE ONLINE GOOGLE MEET STUDIO
             --------------------------------------------------------------------- */}
         {activeTab === 'online-live' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
             
-            {/* Split Hero Card: Left Broadcast + Right Whiteboard Frame */}
+            {/* Top Container: Broadcast Card + Capabilities */}
             <div 
+              className="sp-courses-container"
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-                gap: '24px',
-                alignItems: 'stretch'
+                maxWidth: '1280px',
+                margin: '0 auto',
+                paddingLeft: '24px',
+                paddingRight: '24px',
+                boxSizing: 'border-box',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '32px'
               }}
             >
-              {/* Left Broadcast Card */}
-              <div 
-                style={{
-                  background: '#F7F5F0',
-                  border: '1px solid #D1CBBF',
-                  borderLeft: '4px solid #991B1B',
-                  borderRadius: '20px',
-                  padding: '32px',
-                  boxShadow: '0 4px 20px rgba(22, 22, 26, 0.04)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  gap: '20px'
-                }}
-              >
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '14px' }}>
-                    <span 
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        background: '#FAF0F0',
-                        border: '1px solid #F5C6C6',
-                        color: '#991B1B',
-                        padding: '4px 10px',
-                        borderRadius: '9999px',
-                        fontSize: '0.72rem',
-                        fontWeight: 700,
-                        fontFamily: "'JetBrains Mono', monospace"
-                      }}
-                    >
-                      <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#991B1B', display: 'inline-block' }} />
-                      <span>{activeClass?.isLive ? 'LIVE BROADCAST ACTIVE' : (activeClass?.tag || 'UPCOMING BROADCAST')}</span>
-                    </span>
-                    <span 
-                      style={{
-                        background: '#EFECE5',
-                        border: '1px solid #D6D0C4',
-                        color: '#57534E',
-                        padding: '4px 10px',
-                        borderRadius: '9999px',
-                        fontSize: '0.72rem',
-                        fontWeight: 600,
-                        fontFamily: "'JetBrains Mono', monospace"
-                      }}
-                    >
-                      {activeClass?.roomNo?.replace(/Zoom Room/g, 'Google Meet Room') || 'Google Meet Room #01 • Studio Live'}
-                    </span>
-                    <span 
-                      style={{
-                        color: '#57534E',
-                        fontSize: '0.75rem',
-                        fontFamily: "'JetBrains Mono', monospace",
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '4px'
-                      }}
-                    >
-                      <Users size={12} color="#57534E" />
-                      <span>{activeClass ? (activeClass.attendees || 1) : 142} Active Candidates</span>
-                    </span>
-                  </div>
-
-                  <h2 
-                    style={{ 
-                      fontSize: 'clamp(1.3rem, 2.2vw, 1.65rem)', 
-                      fontWeight: 800, 
-                      color: '#16161A', 
-                      lineHeight: 1.3, 
-                      margin: '0 0 10px' 
-                    }}
-                  >
-                    {activeClass?.title || 'SSC Stenographer Grade C & D — 80 WPM Live Speed Dictation & Transcription Lab'}
-                  </h2>
-
-                  <p style={{ fontSize: '0.92rem', color: '#44403C', lineHeight: 1.65, margin: 0 }}>
-                    Conducted by <strong style={{ color: '#16161A' }}>{activeClass?.instructor || 'Shadab Sir'}</strong> ({activeClass?.instructorRole || '12 Years Experience'}). {activeClass?.description || 'Real-time 5-minute parliamentary dictation, synchronized digital shorthand whiteboard with interactive student drawing, live audio player with 0.8x-1.3x pacing, and immediate transcription grading.'}
-                  </p>
-                </div>
-
-                {/* Google Meet Credentials Box */}
+              {/* Split Hero Card: Left Broadcast + Right Whiteboard Frame */}
+              <FadeUp>
                 <div 
+                  className="sp-courses-hero-2col"
                   style={{
-                    background: '#EFECE5',
-                    border: '1px solid #DFD9CD',
-                    borderRadius: '12px',
-                    padding: '12px 16px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    flexWrap: 'wrap'
+                    backgroundColor: '#FFFFFF',
+                    border: '1px solid #E8DFD3',
+                    borderRadius: '16px',
+                    padding: '32px',
+                    boxShadow: '0 10px 30px rgba(35, 20, 24, 0.05)',
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(12, 1fr)',
+                    gap: '32px',
+                    alignItems: 'stretch',
+                    boxSizing: 'border-box'
                   }}
                 >
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#F7F5F0', border: '1px solid #D1CBBF', padding: '6px 12px', borderRadius: '8px', fontSize: '0.84rem' }}>
-                    <span style={{ color: '#57534E', fontWeight: 600 }}>Meet Code:</span>
-                    <strong style={{ fontFamily: "'JetBrains Mono', monospace", color: '#16161A' }}>
-                      {activeClass?.meetCode || activeClass?.zoomMeetingId || 'gsc-steno-live'}
-                    </strong>
-                    <button 
-                      type="button" 
-                      onClick={handleCopyId}
-                      title="Copy Meeting Code"
-                      style={{ 
-                        border: '1px solid #D1CBBF', 
-                        background: '#E4DFD5', 
-                        color: '#16161A',
-                        padding: '2px 8px', 
-                        borderRadius: '4px', 
-                        cursor: 'pointer', 
-                        fontSize: '0.72rem', 
-                        fontWeight: 700, 
-                        display: 'inline-flex', 
-                        alignItems: 'center', 
-                        gap: '4px' 
-                      }}
-                    >
-                      {copiedId ? <Check size={11} color="#991B1B" /> : <Copy size={11} />}
-                      <span>{copiedId ? 'Copied' : 'Copy'}</span>
-                    </button>
-                  </div>
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#F7F5F0', border: '1px solid #D1CBBF', padding: '6px 12px', borderRadius: '8px', fontSize: '0.84rem' }}>
-                    <span style={{ color: '#57534E', fontWeight: 600 }}>Platform:</span>
-                    <strong style={{ color: '#16161A', fontWeight: 700 }}>Google Meet</strong>
-                  </div>
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#F7F5F0', border: '1px solid #D1CBBF', padding: '6px 12px', borderRadius: '8px', fontSize: '0.84rem' }}>
-                    <span style={{ color: '#57534E', fontWeight: 600 }}>Schedule:</span>
-                    <span style={{ color: '#16161A', fontWeight: 600, fontFamily: "'JetBrains Mono', monospace" }}>{activeClass?.time || '8:30 AM – 10:30 AM (Daily)'}</span>
-                  </div>
-                </div>
-
-                {/* Primary Action Buttons */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-                  <button 
-                    type="button"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      background: '#991B1B',
-                      color: '#FFFFFF',
-                      border: 'none',
-                      borderRadius: '10px',
-                      padding: '12px 22px',
-                      fontSize: '0.9rem',
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      boxShadow: '0 2px 8px rgba(153, 27, 27, 0.25)',
-                      transition: 'background 0.15s ease'
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = '#7F1D1D'}
-                    onMouseLeave={(e) => e.currentTarget.style.background = '#991B1B'}
-                    onClick={() => {
-                      if (onSelectClass && activeClass) {
-                        onSelectClass(activeClass.id);
-                      } else {
-                        setCurrentTab('online-classes');
-                      }
-                    }}
-                  >
-                    <Video size={16} />
-                    <span>Enter Live Meet Studio (In-Browser)</span>
-                    <ArrowRight size={15} />
-                  </button>
-
-                  <a 
-                    href={activeClass?.meetUrl || activeClass?.googleMeetUrl || (activeClass?.zoomDirectUrl?.includes('meet.google') ? activeClass.zoomDirectUrl : 'https://meet.google.com/gsc-steno-live')}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      background: '#EFECE5',
-                      color: '#16161A',
-                      border: '1px solid #D1CBBF',
-                      borderRadius: '10px',
-                      padding: '12px 20px',
-                      fontSize: '0.9rem',
-                      fontWeight: 700,
-                      textDecoration: 'none',
-                      transition: 'background 0.15s ease'
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = '#E4DFD5'}
-                    onMouseLeave={(e) => e.currentTarget.style.background = '#EFECE5'}
-                  >
-                    <ExternalLink size={15} />
-                    <span>Launch in Google Meet</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Right Preview Card / Whiteboard Teaser */}
-              <div 
-                style={{
-                  background: '#EFECE5',
-                  border: '1px solid #D1CBBF',
-                  borderRadius: '20px',
-                  padding: '24px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  boxShadow: '0 4px 20px rgba(22, 22, 26, 0.04)'
-                }}
-              >
-                <div>
+                  {/* Left Broadcast Card (lg:col-span-7) */}
                   <div 
+                    className="sp-courses-hero-col-left"
                     style={{
-                      background: '#E4DFD5',
-                      border: '1px solid #D1CBBF',
-                      borderRadius: '10px 10px 0 0',
-                      padding: '10px 14px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      fontSize: '0.75rem',
-                      fontWeight: 700,
-                      fontFamily: "'JetBrains Mono', monospace",
-                      color: '#57534E'
-                    }}
-                  >
-                    <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#991B1B' }} />
-                    <span>STUDIO WHITEBOARD FEED • 1080P HD</span>
-                  </div>
-
-                  <div 
-                    style={{
-                      background: '#FAF8F5',
-                      border: '1px solid #D1CBBF',
-                      borderTop: 'none',
-                      borderRadius: '0 0 10px 10px',
-                      padding: '20px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '16px'
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{
-                        width: '40px',
-                        height: '40px',
-                        borderRadius: '10px',
-                        background: '#16161A',
-                        color: '#FFFFFF',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontWeight: 800,
-                        fontSize: '0.9rem'
-                      }}>
-                        SS
-                      </div>
-                      <div>
-                        <div style={{ fontWeight: 800, color: '#16161A', fontSize: '0.95rem' }}>Shadab Sir (Host)</div>
-                        <div style={{ fontSize: '0.78rem', color: '#57534E' }}>Faculty Director (12 Yrs Exp)</div>
-                      </div>
-                    </div>
-
-                    <div 
-                      style={{
-                        background: '#EFECE5',
-                        border: '1px solid #D6D0C4',
-                        borderRadius: '8px',
-                        padding: '14px',
-                        textAlign: 'center'
-                      }}
-                    >
-                      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1.25rem', letterSpacing: '4px', color: '#16161A', fontWeight: 700, marginBottom: '4px' }}>
-                        / — \ ) ⌒ ⌣ ⌢
-                      </div>
-                      <div style={{ fontSize: '0.78rem', fontStyle: 'italic', color: '#57534E' }}>
-                        "Parliamentary Motion on State Infrastructure..."
-                      </div>
-                    </div>
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', color: '#44403C' }}>
-                        <CheckCircle2 size={14} color="#991B1B" style={{ flexShrink: 0 }} />
-                        <span>Direct Google Meet Classroom Entrance &amp; 1-Click Access</span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', color: '#44403C' }}>
-                        <CheckCircle2 size={14} color="#991B1B" style={{ flexShrink: 0 }} />
-                        <span>Real 80-104 WPM Speed-Pitch Dictation Player</span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', color: '#44403C' }}>
-                        <CheckCircle2 size={14} color="#991B1B" style={{ flexShrink: 0 }} />
-                        <span>Post-Class Keyboard Transcription &amp; Instant Evaluation</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div style={{ marginTop: '20px' }}>
-                  <button 
-                    type="button"
-                    onClick={() => setCurrentTab('online-classes')}
-                    style={{ 
-                      width: '100%',
-                      padding: '12px 18px', 
-                      borderRadius: '10px', 
-                      background: '#16161A', 
-                      color: '#FFFFFF', 
-                      border: 'none',
-                      fontSize: '0.88rem',
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '8px',
-                      boxShadow: '0 2px 8px rgba(22, 22, 26, 0.15)',
-                      transition: 'background 0.15s ease'
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = '#27272A'}
-                    onMouseLeave={(e) => e.currentTarget.style.background = '#16161A'}
-                  >
-                    <span>Join Live Online Classroom</span>
-                    <ArrowRight size={14} />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Online Classes Features Trio */}
-            <div 
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                gap: '20px'
-              }}
-            >
-              {[
-                {
-                  num: '01',
-                  icon: Video,
-                  title: 'Dual-Mode Shorthand Whiteboard',
-                  desc: 'Watch teacher strokes live or switch to your own interactive HTML5 stylus canvas to trace outlines with fine pencil or heavy calligraphy pens.'
-                },
-                {
-                  num: '02',
-                  icon: Volume2,
-                  title: 'Speed-Controlled Dictation Engine',
-                  desc: 'Built-in audio player with 0.8x, 1.0x, 1.1x, 1.2x, and 1.3x multipliers. Practice at custom speeds without pitch distortion.'
-                },
-                {
-                  num: '03',
-                  icon: Keyboard,
-                  title: '1-Click Typing Test Handover',
-                  desc: 'Immediately transition from the live Google Meet dictation into the exam typing engine to transcribe your strokes with instant accuracy metrics.'
-                }
-              ].map((feat) => {
-                const IconComponent = feat.icon;
-                return (
-                  <div 
-                    key={feat.num}
-                    style={{
-                      background: '#F7F5F0',
-                      border: '1px solid #D1CBBF',
-                      borderRadius: '16px',
-                      padding: '24px',
-                      boxShadow: '0 2px 10px rgba(22, 22, 26, 0.03)',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '12px'
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <div style={{
-                        width: '42px',
-                        height: '42px',
-                        borderRadius: '10px',
-                        background: '#EFECE5',
-                        border: '1px solid #D1CBBF',
-                        color: '#57534E',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                      }}>
-                        <IconComponent size={20} />
-                      </div>
-                      <span style={{
-                        fontFamily: "'JetBrains Mono', monospace",
-                        fontSize: '0.8rem',
-                        fontWeight: 800,
-                        color: '#991B1B'
-                      }}>
-                        {feat.num}
-                      </span>
-                    </div>
-
-                    <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#16161A', margin: '4px 0 0', lineHeight: 1.35 }}>
-                      {feat.title}
-                    </h3>
-                    <p style={{ fontSize: '0.88rem', color: '#44403C', lineHeight: 1.6, margin: 0 }}>
-                      {feat.desc}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* All 4 Daily Google Meet Batches Schedule */}
-            <div 
-              style={{
-                background: '#F7F5F0',
-                border: '1px solid #D1CBBF',
-                borderRadius: '18px',
-                padding: '28px',
-                boxShadow: '0 4px 20px rgba(22, 22, 26, 0.03)'
-              }}
-            >
-              <div style={{ marginBottom: '20px' }}>
-                <span style={{ 
-                  fontFamily: "'JetBrains Mono', monospace", 
-                  fontSize: '0.74rem', 
-                  fontWeight: 700, 
-                  color: '#991B1B', 
-                  textTransform: 'uppercase', 
-                  letterSpacing: '0.1em' 
-                }}>
-                  Daily Broadcast Timetable
-                </span>
-                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#16161A', margin: '4px 0 6px' }}>
-                  All 4 Daily Online Google Meet Dictation Batches
-                </h3>
-                <p style={{ fontSize: '0.88rem', color: '#57534E', margin: 0 }}>
-                  All online sessions are recorded and available for replay 24/7 in the Candidate Portal.
-                </p>
-              </div>
-
-              <div 
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                  gap: '16px'
-                }}
-              >
-                {(onlineClasses && onlineClasses.length > 0 ? onlineClasses : [
-                  { id: 'class-theory-2', time: '6:00 AM – 8:00 AM', tag: 'Recording Ready', title: 'Basic Pitman Theory & New Strokes', speed: 'Beginners (0 - 60 WPM)', meetCode: 'gsc-theory-am', zoomMeetingId: 'gsc-theory-am' },
-                  { id: 'class-live-1', isLive: true, time: '8:30 AM – 10:30 AM', tag: '● Active Live', title: 'SSC Grade C & D 80 WPM Speed Lab', speed: '80 WPM Standard', meetCode: 'gsc-steno-live', zoomMeetingId: 'gsc-steno-live' },
-                  { id: 'class-judicial-3', time: '3:00 PM – 5:00 PM', tag: 'Starts 3:00 PM', title: 'High Court Judicial 100 WPM Bench', speed: '100 WPM Judicial', meetCode: 'gsc-court-pm', zoomMeetingId: 'gsc-court-pm' },
-                  { id: 'class-reporter-4', time: '5:30 PM – 7:30 PM', tag: 'Starts 5:30 PM', title: 'Assembly Reporter 120+ WPM Elite', speed: '120-140 WPM', meetCode: 'gsc-assembly-eve', zoomMeetingId: 'gsc-assembly-eve' }
-                ]).map((b) => (
-                  <div 
-                    key={b.id} 
-                    style={{
-                      background: b.isLive ? '#FAF8F5' : '#F7F5F0',
-                      border: b.isLive ? '1.5px solid #991B1B' : '1px solid #D1CBBF',
-                      borderTop: b.isLive ? '4px solid #991B1B' : '1px solid #D1CBBF',
-                      borderRadius: '14px',
-                      padding: '20px',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'space-between',
-                      gap: '14px',
-                      boxShadow: b.isLive ? '0 4px 16px rgba(153, 27, 27, 0.08)' : '0 1px 3px rgba(22, 22, 26, 0.03)'
+                      minWidth: 0
                     }}
                   >
                     <div>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '10px' }}>
-                        <span style={{
-                          background: b.isLive ? '#991B1B' : '#EFECE5',
-                          color: b.isLive ? '#FFFFFF' : '#16161A',
-                          border: b.isLive ? 'none' : '1px solid #D6D0C4',
-                          fontSize: '0.72rem',
-                          fontWeight: 700,
-                          padding: '3px 9px',
-                          borderRadius: '999px',
-                          fontFamily: "'JetBrains Mono', monospace"
-                        }}>
-                          {b.time}
+                      {/* Status Row */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '14px' }}>
+                        <span 
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            backgroundColor: '#FDF2F2',
+                            border: '1px solid #FBD5D5',
+                            color: '#991B1B',
+                            padding: '4px 12px',
+                            borderRadius: '9999px',
+                            fontSize: '11px',
+                            fontWeight: 700,
+                            fontFamily: "'JetBrains Mono', monospace",
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.14em'
+                          }}
+                        >
+                          <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#991B1B', display: 'inline-block' }} />
+                          <span>{activeClass?.isLive ? 'LIVE BROADCAST ACTIVE' : (activeClass?.tag || 'UPCOMING BROADCAST')}</span>
                         </span>
-                        <span style={{
-                          fontSize: '0.72rem',
-                          fontWeight: 700,
-                          color: b.isLive ? '#991B1B' : '#57534E',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '4px'
-                        }}>
-                          {b.isLive && <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#991B1B' }} />}
-                          {b.tag}
+                        <span 
+                          style={{
+                            backgroundColor: '#EFE7DC',
+                            border: '1px solid #E0D5C7',
+                            color: '#594A4D',
+                            padding: '4px 12px',
+                            borderRadius: '9999px',
+                            fontSize: '11px',
+                            fontWeight: 600,
+                            fontFamily: "'JetBrains Mono', monospace"
+                          }}
+                        >
+                          {activeClass?.roomNo?.replace(/Zoom Room/g, 'Google Meet Room') || 'Google Meet Room #01 (Studio Live)'}
+                        </span>
+                        <span 
+                          style={{
+                            color: '#8A7B7E',
+                            fontSize: '12px',
+                            fontFamily: "'JetBrains Mono', monospace",
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '4px'
+                          }}
+                        >
+                          <Users size={13} style={{ color: '#8A7B7E' }} />
+                          <span>{activeClass ? (activeClass.attendees || 1) : 142} Active Candidates</span>
                         </span>
                       </div>
 
-                      <h4 style={{ fontSize: '1rem', fontWeight: 800, color: '#16161A', margin: '0 0 8px', lineHeight: 1.35 }}>
-                        {b.title}
-                      </h4>
+                      <h2 
+                        style={{ 
+                          fontFamily: "'Instrument Serif', Georgia, serif",
+                          fontSize: 'clamp(1.75rem, 2.5vw, 2.25rem)', 
+                          fontWeight: 400, 
+                          color: '#231418', 
+                          lineHeight: 1.1, 
+                          margin: '12px 0 10px',
+                          letterSpacing: '-0.015em'
+                        }}
+                      >
+                        {activeClass?.title || 'SSC Stenographer Grade C & D — 80 WPM Live Speed Dictation & Transcription Lab'}
+                      </h2>
 
-                      <div style={{
-                        fontSize: '0.75rem',
-                        fontFamily: "'JetBrains Mono', monospace",
-                        color: b.isLive ? '#991B1B' : '#57534E',
-                        background: b.isLive ? '#FAF0F0' : '#EFECE5',
-                        border: '1px solid ' + (b.isLive ? '#F5C6C6' : '#DFD9CD'),
-                        padding: '4px 8px',
-                        borderRadius: '6px',
-                        display: 'inline-block'
-                      }}>
-                        {b.speed} • Meet: {b.meetCode || b.zoomMeetingId}
+                      <p style={{ fontSize: '14px', color: '#594A4D', lineHeight: 1.6, margin: 0 }}>
+                        Conducted by <strong style={{ color: '#231418', fontWeight: 600 }}>{activeClass?.instructor || 'Shadab Sir'}</strong> ({activeClass?.instructorRole || '12+ Years Experience'}). {activeClass?.description || 'Real-time 5-minute parliamentary dictation, synchronized digital shorthand whiteboard with interactive student drawing, live audio player with 0.8x-1.3x pacing, and immediate transcription grading.'}
+                      </p>
+                    </div>
+
+                    {/* Google Meet Credentials Box (Flush hairline metadata strip) */}
+                    <div 
+                      style={{
+                        margin: '20px 0',
+                        padding: '14px 0',
+                        borderTop: '1px solid #EDE5DA',
+                        borderBottom: '1px solid #EDE5DA',
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+                        gap: '16px'
+                      }}
+                    >
+                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '13px' }}>
+                        <span style={{ color: '#8A7B7E', fontWeight: 500 }}>Meet Code:</span>
+                        <strong style={{ fontFamily: "'JetBrains Mono', monospace", color: '#231418', fontWeight: 700 }}>
+                          {activeClass?.meetCode || activeClass?.zoomMeetingId || 'stenoplus-live'}
+                        </strong>
+                        <button 
+                          type="button" 
+                          onClick={handleCopyId}
+                          title="Copy Meeting Code"
+                          style={{ 
+                            border: '1px solid #E0D5C7', 
+                            backgroundColor: '#FBF8F3', 
+                            color: '#231418',
+                            padding: '3px 8px', 
+                            borderRadius: '9999px', 
+                            cursor: 'pointer', 
+                            fontSize: '11px', 
+                            fontWeight: 600, 
+                            display: 'inline-flex', 
+                            alignItems: 'center', 
+                            gap: '4px' 
+                          }}
+                        >
+                          {copiedId ? <Check size={11} style={{ color: '#991B1B' }} /> : <Copy size={11} />}
+                          <span>{copiedId ? 'Copied' : 'Copy'}</span>
+                        </button>
+                      </div>
+                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px' }}>
+                        <span style={{ color: '#8A7B7E', fontWeight: 500 }}>Platform:</span>
+                        <strong style={{ color: '#231418', fontWeight: 600 }}>Google Meet</strong>
+                      </div>
+                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px' }}>
+                        <span style={{ color: '#8A7B7E', fontWeight: 500 }}>Schedule:</span>
+                        <span style={{ color: '#231418', fontWeight: 600, fontFamily: "'JetBrains Mono', monospace" }}>
+                          {activeClass?.time || '8:30 AM (60m)'}
+                        </span>
                       </div>
                     </div>
 
-                    <button 
-                      onClick={() => {
-                        if (onSelectClass) {
-                          onSelectClass(b.id);
-                        } else {
-                          setCurrentTab('online-classes');
-                        }
-                      }}
-                      style={{
-                        width: '100%',
-                        padding: '10px 14px',
-                        borderRadius: '8px',
-                        fontSize: '0.84rem',
-                        fontWeight: 700,
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '6px',
-                        border: b.isLive ? 'none' : '1px solid #D1CBBF',
-                        background: b.isLive ? '#991B1B' : '#EFECE5',
-                        color: b.isLive ? '#FFFFFF' : '#16161A',
-                        boxShadow: b.isLive ? '0 2px 8px rgba(153, 27, 27, 0.25)' : 'none',
-                        transition: 'all 0.15s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = b.isLive ? '#7F1D1D' : '#E4DFD5';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = b.isLive ? '#991B1B' : '#EFECE5';
-                      }}
-                    >
-                      <span>{b.isLive ? 'Enter Live Classroom →' : 'View Session Details →'}</span>
-                    </button>
+                    {/* Primary Action Buttons (Side-by-side rounded-full pills) */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                      <button 
+                        type="button"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          backgroundColor: '#991B1B',
+                          color: '#FFFFFF',
+                          border: 'none',
+                          borderRadius: '9999px',
+                          padding: '12px 24px',
+                          fontSize: '13px',
+                          fontWeight: 600,
+                          cursor: 'pointer',
+                          boxShadow: '0 8px 20px rgba(153, 27, 27, 0.20)',
+                          whiteSpace: 'nowrap',
+                          transition: 'background-color 0.15s ease'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#7F1D1D'}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#991B1B'}
+                        onClick={() => {
+                          if (onSelectClass && activeClass) {
+                            onSelectClass(activeClass.id);
+                          } else {
+                            setCurrentTab('online-classes');
+                          }
+                        }}
+                      >
+                        <Video size={15} />
+                        <span>Enter Live Meet Studio (In-Browser) &rarr;</span>
+                      </button>
+
+                      <a 
+                        href={activeClass?.meetUrl || activeClass?.googleMeetUrl || (activeClass?.zoomDirectUrl?.includes('meet.google') ? activeClass.zoomDirectUrl : 'https://meet.google.com/gsc-steno-live')}
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          backgroundColor: '#FBF8F3',
+                          color: '#231418',
+                          border: '1px solid #D8CCBE',
+                          borderRadius: '9999px',
+                          padding: '12px 20px',
+                          fontSize: '13px',
+                          fontWeight: 600,
+                          textDecoration: 'none',
+                          whiteSpace: 'nowrap',
+                          transition: 'background-color 0.15s ease'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#EFE7DC'}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FBF8F3'}
+                      >
+                        <ExternalLink size={14} />
+                        <span>Launch in Google Meet</span>
+                      </a>
+                    </div>
                   </div>
-                ))}
+
+                  {/* Right Preview Card / Whiteboard Teaser (lg:col-span-5) */}
+                  <div 
+                    className="sp-courses-hero-col-right"
+                    style={{
+                      backgroundColor: '#FBF8F3',
+                      border: '1px solid #E8DFD3',
+                      borderRadius: '16px',
+                      padding: '24px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      boxSizing: 'border-box',
+                      minWidth: 0
+                    }}
+                  >
+                    <div>
+                      <div 
+                        style={{
+                          backgroundColor: '#EFE7DC',
+                          border: '1px solid #E0D5C7',
+                          borderRadius: '10px 10px 0 0',
+                          padding: '10px 14px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          fontSize: '11px',
+                          fontWeight: 700,
+                          fontFamily: "'JetBrains Mono', monospace",
+                          color: '#594A4D'
+                        }}
+                      >
+                        <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#059669' }} />
+                        <span>STUDIO WHITEBOARD FEED &middot; 1080P HD</span>
+                      </div>
+
+                      <div 
+                        style={{
+                          backgroundColor: '#FFFFFF',
+                          border: '1px solid #E8DFD3',
+                          borderTop: 'none',
+                          borderRadius: '0 0 10px 10px',
+                          padding: '20px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '16px'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                          <div style={{
+                            width: '40px',
+                            height: '40px',
+                            borderRadius: '10px',
+                            backgroundColor: '#231418',
+                            color: '#FFFFFF',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontWeight: 800,
+                            fontSize: '14px'
+                          }}>
+                            SS
+                          </div>
+                          <div>
+                            <div style={{ fontWeight: 700, color: '#231418', fontSize: '15px' }}>Shadab Sir (Host)</div>
+                            <div style={{ fontSize: '12px', color: '#8A7B7E' }}>Faculty Director (12+ Yrs Exp)</div>
+                          </div>
+                        </div>
+
+                        <div 
+                          style={{
+                            backgroundColor: '#FAF7F2',
+                            border: '1px solid #EDE5DA',
+                            borderRadius: '10px',
+                            padding: '14px',
+                            textAlign: 'center'
+                          }}
+                        >
+                          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1.25rem', letterSpacing: '4px', color: '#231418', fontWeight: 700, marginBottom: '4px' }}>
+                            / &mdash; \ ) ⌒ ⌣ ⌢
+                          </div>
+                          <div style={{ fontSize: '12px', fontStyle: 'italic', color: '#594A4D' }}>
+                            "Parliamentary Motion on State Infrastructure..."
+                          </div>
+                        </div>
+
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: '#594A4D' }}>
+                            <CheckCircle2 size={14} style={{ color: '#991B1B', flexShrink: 0 }} />
+                            <span>Direct Google Meet Classroom Entrance &amp; 1-Click Access</span>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: '#594A4D' }}>
+                            <CheckCircle2 size={14} style={{ color: '#991B1B', flexShrink: 0 }} />
+                            <span>Real 80-104 WPM Speed-Pitch Dictation Player</span>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: '#594A4D' }}>
+                            <CheckCircle2 size={14} style={{ color: '#991B1B', flexShrink: 0 }} />
+                            <span>Post-Class Keyboard Transcription &amp; Instant Evaluation</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style={{ marginTop: '20px' }}>
+                      <button 
+                        type="button"
+                        onClick={() => setCurrentTab('online-classes')}
+                        style={{ 
+                          width: '100%',
+                          padding: '12px 18px', 
+                          borderRadius: '9999px', 
+                          backgroundColor: '#231418', 
+                          color: '#FAF6F0', 
+                          border: 'none',
+                          fontSize: '13px',
+                          fontWeight: 600,
+                          cursor: 'pointer',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '8px',
+                          boxShadow: '0 2px 8px rgba(35, 20, 24, 0.15)',
+                          transition: 'background-color 0.15s ease'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3A2228'}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#231418'}
+                      >
+                        <span>Join Live Online Classroom &rarr;</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </FadeUp>
+
+              {/* Online Classes Features Trio (3 Studio Capability Cards) */}
+              <div 
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                  gap: '24px'
+                }}
+              >
+                {[
+                  {
+                    num: '01',
+                    icon: Video,
+                    title: 'Dual-Mode Shorthand Whiteboard',
+                    desc: 'Watch teacher strokes live or switch to your own interactive HTML5 stylus canvas to trace outlines with fine pencil or heavy calligraphy pens.'
+                  },
+                  {
+                    num: '02',
+                    icon: Volume2,
+                    title: 'Speed-Controlled Dictation Engine',
+                    desc: 'Built-in audio player with 0.8x, 1.0x, 1.1x, 1.2x, and 1.3x multipliers. Practice at custom speeds without pitch distortion.'
+                  },
+                  {
+                    num: '03',
+                    icon: Keyboard,
+                    title: '1-Click Typing Test Handover',
+                    desc: 'Immediately transition from the live Google Meet dictation into the exam typing engine to transcribe your strokes with instant accuracy metrics.'
+                  }
+                ].map((feat, idx) => {
+                  const IconComponent = feat.icon;
+                  return (
+                    <FadeUp key={feat.num} delay={idx * 0.08}>
+                      <div 
+                        style={{
+                          backgroundColor: '#FFFFFF',
+                          border: '1px solid #E8DFD3',
+                          borderRadius: '16px',
+                          padding: '24px',
+                          boxShadow: '0 4px 18px rgba(35, 20, 24, 0.03)',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '12px',
+                          height: '100%',
+                          boxSizing: 'border-box'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <div style={{
+                            width: '42px',
+                            height: '42px',
+                            borderRadius: '10px',
+                            backgroundColor: '#FBF8F3',
+                            border: '1px solid #E8DFD3',
+                            color: '#231418',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                          }}>
+                            <IconComponent size={20} />
+                          </div>
+                          <span style={{
+                            fontFamily: "'Instrument Serif', Georgia, serif",
+                            fontSize: '1.5rem',
+                            lineHeight: 1,
+                            color: '#8A7B7E',
+                            fontWeight: 400
+                          }}>
+                            {feat.num}
+                          </span>
+                        </div>
+
+                        <h3 style={{ fontSize: '17px', fontWeight: 700, color: '#231418', margin: '4px 0 0', lineHeight: 1.35 }}>
+                          {feat.title}
+                        </h3>
+                        <p style={{ fontSize: '13px', color: '#594A4D', lineHeight: 1.6, margin: 0 }}>
+                          {feat.desc}
+                        </p>
+                      </div>
+                    </FadeUp>
+                  );
+                })}
               </div>
             </div>
+
+            {/* All 4 Daily Google Meet Batches Schedule (Alternating Warm Sand Band) */}
+            <section 
+              style={{
+                width: '100%',
+                backgroundColor: '#EFE7DC',
+                borderTop: '1px solid #E0D5C7',
+                borderBottom: '1px solid #E0D5C7',
+                padding: '64px 0',
+                marginTop: '48px',
+                boxSizing: 'border-box'
+              }}
+            >
+              <div 
+                className="sp-courses-container"
+                style={{
+                  maxWidth: '1280px',
+                  margin: '0 auto',
+                  paddingLeft: '24px',
+                  paddingRight: '24px',
+                  boxSizing: 'border-box'
+                }}
+              >
+                <FadeUp>
+                  <div style={{ marginBottom: '28px' }}>
+                    <span style={{ 
+                      fontFamily: "'JetBrains Mono', monospace", 
+                      fontSize: '11px', 
+                      fontWeight: 600, 
+                      color: '#991B1B', 
+                      textTransform: 'uppercase', 
+                      letterSpacing: '0.18em',
+                      display: 'block',
+                      marginBottom: '6px'
+                    }}>
+                      DAILY BROADCAST TIMETABLE
+                    </span>
+                    <h2 
+                      style={{ 
+                        fontFamily: "'Instrument Serif', Georgia, serif",
+                        fontSize: 'clamp(1.875rem, 3.2vw, 2.65rem)', 
+                        fontWeight: 400, 
+                        color: '#231418', 
+                        margin: '0 0 6px',
+                        letterSpacing: '-0.015em'
+                      }}
+                    >
+                      All 4 daily online <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>Google Meet</span> dictation batches.
+                    </h2>
+                    <p style={{ fontSize: '14px', color: '#594A4D', margin: 0 }}>
+                      All online sessions are recorded and available for replay 24/7 in the Candidate Portal.
+                    </p>
+                  </div>
+                </FadeUp>
+
+                {/* 4-Column Desktop Grid */}
+                <div 
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                    gap: '20px'
+                  }}
+                >
+                  {(onlineClasses && onlineClasses.length > 0 ? onlineClasses : [
+                    { id: 'class-theory-2', time: '6:00 AM – 8:00 AM', tag: 'Recording Ready', title: 'Basic Pitman Theory & New Strokes', speed: 'Beginners (0 - 60 WPM)', meetCode: 'gsc-theory-am', zoomMeetingId: 'gsc-theory-am' },
+                    { id: 'class-live-1', isLive: true, time: '8:30 AM – 10:30 AM', tag: '● Active Live', title: 'SSC Grade C & D 80 WPM Speed Lab', speed: '80 WPM Standard', meetCode: 'gsc-steno-live', zoomMeetingId: 'gsc-steno-live' },
+                    { id: 'class-judicial-3', time: '3:00 PM – 5:00 PM', tag: 'Starts 3:00 PM', title: 'High Court Judicial 100 WPM Bench', speed: '100 WPM Judicial', meetCode: 'gsc-court-pm', zoomMeetingId: 'gsc-court-pm' },
+                    { id: 'class-reporter-4', time: '5:30 PM – 7:30 PM', tag: 'Starts 5:30 PM', title: 'Assembly Reporter 120+ WPM Elite', speed: '120-140 WPM', meetCode: 'gsc-assembly-eve', zoomMeetingId: 'gsc-assembly-eve' }
+                  ]).map((b, idx) => (
+                    <FadeUp key={b.id} delay={idx * 0.06}>
+                      <div 
+                        style={b.isLive ? {
+                          backgroundColor: '#FFFFFF',
+                          border: '1px solid #DFD3C5',
+                          borderTop: '4px solid #991B1B',
+                          borderRadius: '16px',
+                          padding: '20px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'space-between',
+                          gap: '14px',
+                          boxShadow: '0 12px 28px rgba(35, 20, 24, 0.07)',
+                          height: '100%',
+                          boxSizing: 'border-box'
+                        } : {
+                          backgroundColor: '#FFFFFF',
+                          border: '1px solid #E8DFD3',
+                          borderRadius: '16px',
+                          padding: '20px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'space-between',
+                          gap: '14px',
+                          boxShadow: '0 4px 16px rgba(35, 20, 24, 0.03)',
+                          height: '100%',
+                          boxSizing: 'border-box'
+                        }}
+                      >
+                        <div>
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '12px' }}>
+                            <span style={{
+                              color: '#231418',
+                              fontSize: '12px',
+                              fontWeight: 700,
+                              fontFamily: "'JetBrains Mono', monospace"
+                            }}>
+                              {b.time}
+                            </span>
+                            <span style={{
+                              fontSize: '11px',
+                              fontWeight: 700,
+                              color: b.isLive ? '#991B1B' : '#8A7B7E',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '4px',
+                              fontFamily: "'JetBrains Mono', monospace",
+                              textTransform: 'uppercase'
+                            }}>
+                              {b.isLive && <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#991B1B' }} />}
+                              {b.isLive ? 'LIVE NOW' : b.tag}
+                            </span>
+                          </div>
+
+                          <h4 style={{ fontSize: '15px', fontWeight: 700, color: '#231418', margin: '0 0 10px', lineHeight: 1.35 }}>
+                            {b.title}
+                          </h4>
+
+                          <div 
+                            style={{
+                              margin: '12px 0',
+                              padding: '10px 0',
+                              borderTop: '1px solid #EDE5DA',
+                              borderBottom: '1px solid #EDE5DA',
+                              fontSize: '11px',
+                              fontFamily: "'JetBrains Mono', monospace",
+                              color: '#594A4D'
+                            }}
+                          >
+                            <span style={{ color: '#991B1B', fontWeight: 600 }}>{b.speed}</span> &middot; Meet: {b.meetCode || b.zoomMeetingId}
+                          </div>
+                        </div>
+
+                        <button 
+                          type="button"
+                          onClick={() => {
+                            if (onSelectClass) {
+                              onSelectClass(b.id);
+                            } else {
+                              setCurrentTab('online-classes');
+                            }
+                          }}
+                          style={b.isLive ? {
+                            width: '100%',
+                            padding: '10px 16px',
+                            borderRadius: '9999px',
+                            fontSize: '12px',
+                            fontWeight: 600,
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '6px',
+                            border: 'none',
+                            backgroundColor: '#991B1B',
+                            color: '#FFFFFF',
+                            boxShadow: '0 2px 8px rgba(153, 27, 27, 0.25)',
+                            transition: 'all 0.15s ease'
+                          } : {
+                            width: '100%',
+                            padding: '10px 16px',
+                            borderRadius: '9999px',
+                            fontSize: '12px',
+                            fontWeight: 600,
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '6px',
+                            border: '1px solid #DCD0C2',
+                            backgroundColor: '#FBF8F3',
+                            color: '#231418',
+                            transition: 'all 0.15s ease'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = b.isLive ? '#7F1D1D' : '#231418';
+                            if (!b.isLive) e.currentTarget.style.color = '#FAF6F0';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = b.isLive ? '#991B1B' : '#FBF8F3';
+                            if (!b.isLive) e.currentTarget.style.color = '#231418';
+                          }}
+                        >
+                          <span>{b.isLive ? 'Enter Live Classroom →' : 'View Session Details →'}</span>
+                        </button>
+                      </div>
+                    </FadeUp>
+                  ))}
+                </div>
+              </div>
+            </section>
           </div>
         )}
 
@@ -970,187 +1142,202 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
             TAB 1: DAILY ACADEMY BATCHES
             --------------------------------------------------------------------- */}
         {activeTab === 'batches' && (
-          <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'left', marginBottom: '28px' }}>
-              <span style={{
-                display: 'inline-block',
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                color: '#991B1B',
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                marginBottom: '8px'
-              }}>
-                Classroom &amp; Online Schedule • Estd. 2012
-              </span>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)', fontWeight: 800, color: '#16161A', margin: '0 0 10px', letterSpacing: '-0.02em' }}>
-                Daily Classroom Batches at Gaya Center
-              </h2>
-              <p style={{ fontSize: '1rem', color: '#44403C', maxWidth: '760px', margin: 0, lineHeight: 1.6 }}>
-                Structured offline training batches from 6:00 AM to 8:00 PM with daily handwritten outline reviews, acoustic dictations, and 1 hour dedicated computer typing lab.
-              </p>
-            </div>
+          <div className="sp-courses-container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', boxSizing: 'border-box' }}>
+            <FadeUp>
+              <div style={{ textAlign: 'left', marginBottom: '28px' }}>
+                <span style={{
+                  display: 'inline-block',
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  color: '#991B1B',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.18em',
+                  marginBottom: '8px'
+                }}>
+                  CLASSROOM &amp; ONLINE SCHEDULE &middot; ESTD. 2012
+                </span>
+                <h2 
+                  style={{ 
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.875rem, 3vw, 2.65rem)', 
+                    fontWeight: 400, 
+                    color: '#231418', 
+                    margin: '0 0 10px', 
+                    letterSpacing: '-0.015em',
+                    lineHeight: 1.1
+                  }}
+                >
+                  Daily classroom batches at <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>Gaya Center.</span>
+                </h2>
+                <p style={{ fontSize: '15px', color: '#594A4D', maxWidth: '760px', margin: 0, lineHeight: 1.6 }}>
+                  Structured offline training batches from 6:00 AM to 8:00 PM with daily handwritten outline reviews, acoustic dictations, and 1 hour dedicated computer typing lab.
+                </p>
+              </div>
+            </FadeUp>
 
             <div 
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
                 gap: '24px'
               }}
             >
-              {DAILY_BATCHES.map((batch) => (
-                <div
-                  key={batch.id}
-                  style={{
-                    background: '#F7F5F0',
-                    border: '1px solid #D1CBBF',
-                    borderRadius: '18px',
-                    padding: '26px',
-                    boxShadow: '0 2px 12px rgba(22, 22, 26, 0.03)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    transition: 'all 0.2s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.borderColor = '#B5ADA0';
-                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(22, 22, 26, 0.08)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.borderColor = '#D1CBBF';
-                    e.currentTarget.style.boxShadow = '0 2px 12px rgba(22, 22, 26, 0.03)';
-                  }}
-                >
-                  <div>
-                    {/* Top Chips Row */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '14px' }}>
-                      <span style={{
-                        fontSize: '0.74rem',
-                        fontWeight: 700,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.04em',
-                        padding: '4px 10px',
-                        borderRadius: '6px',
-                        background: '#EFECE5',
-                        color: '#16161A',
-                        border: '1px solid #D6D0C4'
-                      }}>
-                        {batch.badge}
-                      </span>
-                      <span style={{
-                        fontSize: '0.74rem',
-                        fontWeight: 700,
-                        padding: '4px 10px',
-                        borderRadius: '9999px',
-                        background: '#EFECE5',
-                        color: '#57534E',
-                        border: '1px solid #D6D0C4'
-                      }}>
-                        {batch.seats}
-                      </span>
-                    </div>
-
-                    {/* Time & Shift Strip */}
-                    <div style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      background: '#EFECE5',
-                      border: '1px solid #D6D0C4',
-                      borderRadius: '8px',
-                      padding: '6px 12px',
-                      marginBottom: '14px',
-                      width: 'fit-content'
-                    }}>
-                      <Clock size={14} color="#991B1B" />
-                      <strong style={{ fontSize: '0.88rem', color: '#16161A', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>
-                        {batch.time}
-                      </strong>
-                      <span style={{ color: '#A8A29E' }}>•</span>
-                      <span style={{ fontSize: '0.78rem', fontWeight: 600, color: '#57534E' }}>
-                        {batch.shift}
-                      </span>
-                    </div>
-
-                    {/* Title & Desc */}
-                    <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#16161A', margin: '0 0 8px', lineHeight: 1.35 }}>
-                      {batch.title}
-                    </h3>
-                    <p style={{ fontSize: '0.88rem', color: '#44403C', lineHeight: 1.6, margin: '0 0 16px' }}>
-                      {batch.desc}
-                    </p>
-
-                    {/* Details Box */}
-                    <div style={{
-                      background: '#FAF8F5',
-                      border: '1px solid #DFD9CD',
-                      borderRadius: '12px',
-                      padding: '12px 14px',
+              {DAILY_BATCHES.map((batch, idx) => (
+                <FadeUp key={batch.id} delay={idx * 0.06}>
+                  <div
+                    style={{
+                      backgroundColor: '#FFFFFF',
+                      border: '1px solid #E8DFD3',
+                      borderRadius: '16px',
+                      padding: '26px',
+                      boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
                       display: 'flex',
                       flexDirection: 'column',
-                      gap: '8px',
-                      marginBottom: '20px'
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <Volume2 size={14} color="#57534E" />
-                          <span style={{ fontSize: '0.8rem', color: '#57534E', fontWeight: 600 }}>Target Speed:</span>
-                        </div>
-                        <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#16161A', background: '#EFECE5', border: '1px solid #D6D0C4', padding: '2px 8px', borderRadius: '4px', fontFamily: "'JetBrains Mono', monospace" }}>
-                          {batch.speed}
+                      justifyContent: 'space-between',
+                      height: '100%',
+                      boxSizing: 'border-box',
+                      transition: 'all 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.borderColor = '#D4C6B6';
+                      e.currentTarget.style.boxShadow = '0 10px 28px rgba(35, 20, 24, 0.08)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.borderColor = '#E8DFD3';
+                      e.currentTarget.style.boxShadow = '0 4px 20px rgba(35, 20, 24, 0.04)';
+                    }}
+                  >
+                    <div>
+                      {/* Top Chips Row */}
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '14px' }}>
+                        <span style={{
+                          fontSize: '11px',
+                          fontWeight: 700,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.08em',
+                          padding: '4px 10px',
+                          borderRadius: '9999px',
+                          backgroundColor: '#EFE7DC',
+                          color: '#991B1B',
+                          border: '1px solid #E0D5C7'
+                        }}>
+                          {batch.badge}
+                        </span>
+                        <span style={{
+                          fontSize: '11px',
+                          fontWeight: 600,
+                          padding: '4px 10px',
+                          borderRadius: '9999px',
+                          backgroundColor: '#FAF7F2',
+                          color: '#594A4D',
+                          border: '1px solid #EDE5DA'
+                        }}>
+                          {batch.seats}
                         </span>
                       </div>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <GraduationCap size={14} color="#57534E" />
-                          <span style={{ fontSize: '0.8rem', color: '#57534E', fontWeight: 600 }}>Lead Faculty:</span>
-                        </div>
-                        <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#16161A' }}>
-                          {batch.instructor}
+
+                      {/* Time & Shift Strip */}
+                      <div style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        backgroundColor: '#FAF7F2',
+                        border: '1px solid #EDE5DA',
+                        borderRadius: '9999px',
+                        padding: '6px 14px',
+                        marginBottom: '14px',
+                        width: 'fit-content'
+                      }}>
+                        <Clock size={14} style={{ color: '#991B1B' }} />
+                        <strong style={{ fontSize: '13px', color: '#231418', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>
+                          {batch.time}
+                        </strong>
+                        <span style={{ color: '#CBBCC0' }}>&middot;</span>
+                        <span style={{ fontSize: '12px', fontWeight: 500, color: '#594A4D' }}>
+                          {batch.shift}
                         </span>
                       </div>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <Building size={14} color="#57534E" />
-                          <span style={{ fontSize: '0.8rem', color: '#57534E', fontWeight: 600 }}>Training Mode:</span>
+
+                      {/* Title & Desc */}
+                      <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: '0 0 8px', lineHeight: 1.35 }}>
+                        {batch.title}
+                      </h3>
+                      <p style={{ fontSize: '13px', color: '#594A4D', lineHeight: 1.55, margin: '0 0 16px' }}>
+                        {batch.desc}
+                      </p>
+
+                      {/* Details Box */}
+                      <div style={{
+                        backgroundColor: '#FAF7F2',
+                        border: '1px solid #EDE5DA',
+                        borderRadius: '12px',
+                        padding: '12px 14px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '8px',
+                        marginBottom: '20px'
+                      }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <Volume2 size={14} style={{ color: '#8A7B7E' }} />
+                            <span style={{ fontSize: '12px', color: '#594A4D', fontWeight: 500 }}>Target Speed:</span>
+                          </div>
+                          <span style={{ fontSize: '12px', fontWeight: 700, color: '#991B1B', backgroundColor: '#FFFFFF', border: '1px solid #E0D5C7', padding: '2px 8px', borderRadius: '4px', fontFamily: "'JetBrains Mono', monospace" }}>
+                            {batch.speed}
+                          </span>
                         </div>
-                        <span style={{ fontSize: '0.82rem', color: '#44403C', fontWeight: 600 }}>
-                          {batch.mode}
-                        </span>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <GraduationCap size={14} style={{ color: '#8A7B7E' }} />
+                            <span style={{ fontSize: '12px', color: '#594A4D', fontWeight: 500 }}>Lead Faculty:</span>
+                          </div>
+                          <span style={{ fontSize: '12px', fontWeight: 600, color: '#231418' }}>
+                            {batch.instructor}
+                          </span>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <Building size={14} style={{ color: '#8A7B7E' }} />
+                            <span style={{ fontSize: '12px', color: '#594A4D', fontWeight: 500 }}>Training Mode:</span>
+                          </div>
+                          <span style={{ fontSize: '12px', color: '#594A4D', fontWeight: 500 }}>
+                            {batch.mode}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Card Action */}
-                  <a
-                    href="tel:+919204123453"
-                    style={{
-                      width: '100%',
-                      background: '#16161A',
-                      color: '#FFFFFF',
-                      border: 'none',
-                      borderRadius: '10px',
-                      padding: '12px',
-                      fontSize: '0.9rem',
-                      fontWeight: 700,
-                      textDecoration: 'none',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '8px',
-                      boxShadow: '0 2px 8px rgba(22, 22, 26, 0.15)',
-                      transition: 'background 0.15s ease'
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = '#27272A'}
-                    onMouseLeave={(e) => e.currentTarget.style.background = '#16161A'}
-                  >
-                    <Phone size={14} color="#FFFFFF" />
-                    <span>Inquire / Reserve Batch Seat</span>
-                  </a>
-                </div>
+                    {/* Card Action */}
+                    <a
+                      href="tel:+919204123453"
+                      style={{
+                        width: '100%',
+                        backgroundColor: '#231418',
+                        color: '#FAF6F0',
+                        border: 'none',
+                        borderRadius: '9999px',
+                        padding: '12px',
+                        fontSize: '13px',
+                        fontWeight: 600,
+                        textDecoration: 'none',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '8px',
+                        boxShadow: '0 2px 8px rgba(35, 20, 24, 0.15)',
+                        transition: 'background-color 0.15s ease'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3A2228'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#231418'}
+                    >
+                      <Phone size={14} style={{ color: '#FAF6F0' }} />
+                      <span>Inquire / Reserve Batch Seat</span>
+                    </a>
+                  </div>
+                </FadeUp>
               ))}
             </div>
           </div>
@@ -1160,155 +1347,169 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
             TAB 2: WEEKLY TIMETABLE
             --------------------------------------------------------------------- */}
         {activeTab === 'timetable' && (
-          <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'left', marginBottom: '28px' }}>
-              <span style={{
-                display: 'inline-block',
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                color: '#991B1B',
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                marginBottom: '8px'
-              }}>
-                Routine &amp; Lab Schedule • Monday to Saturday
-              </span>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)', fontWeight: 800, color: '#16161A', margin: '0 0 10px', letterSpacing: '-0.02em' }}>
-                Weekly Examination &amp; Dictation Routine
-              </h2>
-              <p style={{ fontSize: '1rem', color: '#44403C', maxWidth: '760px', margin: 0, lineHeight: 1.6 }}>
-                Monday to Saturday active training program at Gaya Shorthand Classes (Opposite Cyber Thana, Gaya).
-              </p>
-            </div>
-
-            <div 
-              style={{
-                background: '#F7F5F0',
-                border: '1px solid #D1CBBF',
-                borderRadius: '18px',
-                overflow: 'hidden',
-                boxShadow: '0 2px 12px rgba(22, 22, 26, 0.03)'
-              }}
-            >
-              <div style={{ overflowX: 'auto' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '780px' }}>
-                  <thead>
-                    <tr style={{ background: '#E4DFD5', borderBottom: '2px solid #D1CBBF' }}>
-                      <th style={{ padding: '14px 18px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#16161A' }}>Time Slot</th>
-                      <th style={{ padding: '14px 18px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#16161A' }}>Batch Category</th>
-                      <th style={{ padding: '14px 18px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#16161A' }}>Speed Benchmark</th>
-                      <th style={{ padding: '14px 18px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#16161A' }}>Classroom / Lab</th>
-                      <th style={{ padding: '14px 18px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#16161A' }}>Faculty Lead</th>
-                      <th style={{ padding: '14px 18px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#16161A' }}>Daily Focus</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      {
-                        time: '6:00 AM – 8:00 AM',
-                        batch: 'Basic Theory (Pitman)',
-                        speed: '0 – 60 WPM',
-                        isHighlight: false,
-                        hall: 'Hall A (Ground Floor)',
-                        faculty: 'Shadab Sir (Director)',
-                        focus: 'Vowels, Stroke Angles & Daily Homework Check'
-                      },
-                      {
-                        time: '8:30 AM – 10:30 AM',
-                        batch: 'SSC Steno Grade C & D',
-                        speed: '80 WPM',
-                        isHighlight: true,
-                        hall: 'Computer Lab 1 (50 PCs)',
-                        faculty: 'Shadab Sir & Lab Head',
-                        focus: 'Reading Room + Kruti Dev / Mangal Typing'
-                      },
-                      {
-                        time: '11:00 AM – 1:00 PM',
-                        batch: 'Computer Diplomas (DCA/ADCA)',
-                        speed: 'Typing Studio',
-                        isHighlight: false,
-                        hall: 'Computer Lab 2',
-                        faculty: 'Computer Faculty',
-                        focus: 'MS Office Suite, Tally Prime, Internet Operations'
-                      },
-                      {
-                        time: '3:00 PM – 5:00 PM',
-                        batch: 'High Court Judicial Bench',
-                        speed: '100 WPM',
-                        isHighlight: true,
-                        hall: 'Acoustic Dictation Hall',
-                        faculty: 'Shadab Sir',
-                        focus: 'Criminal Appeals, Bail Orders, Court Judgments'
-                      },
-                      {
-                        time: '5:30 PM – 7:30 PM',
-                        batch: 'Parliament / Assembly Master',
-                        speed: '120 WPM',
-                        isHighlight: true,
-                        hall: 'Audio Broadcast Room',
-                        faculty: 'Senior Master',
-                        focus: 'Fast Speed Pacing, Contractions & Transcriptions'
-                      }
-                    ].map((row, idx) => (
-                      <tr
-                        key={idx}
-                        style={{ borderBottom: idx === 4 ? 'none' : '1px solid #DFD9CD', transition: 'background 0.15s ease' }}
-                        onMouseEnter={(e) => e.currentTarget.style.background = '#EFECE5'}
-                        onMouseLeave={(e) => e.currentTarget.style.background = '#F7F5F0'}
-                      >
-                        <td style={{ padding: '14px 18px', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, color: '#16161A', fontSize: '0.85rem' }}>
-                          {row.time}
-                        </td>
-                        <td style={{ padding: '14px 18px', fontWeight: 800, color: '#16161A', fontSize: '0.88rem' }}>
-                          {row.batch}
-                        </td>
-                        <td style={{ padding: '14px 18px' }}>
-                          <span style={{
-                            display: 'inline-block',
-                            padding: '3px 9px',
-                            borderRadius: '9999px',
-                            fontSize: '0.75rem',
-                            fontWeight: 700,
-                            fontFamily: "'JetBrains Mono', monospace",
-                            background: row.isHighlight ? '#FAF0F0' : '#EFECE5',
-                            color: row.isHighlight ? '#991B1B' : '#57534E',
-                            border: `1px solid ${row.isHighlight ? '#F5C6C6' : '#D6D0C4'}`
-                          }}>
-                            {row.speed}
-                          </span>
-                        </td>
-                        <td style={{ padding: '14px 18px', color: '#57534E', fontSize: '0.84rem', fontWeight: 600 }}>
-                          {row.hall}
-                        </td>
-                        <td style={{ padding: '14px 18px', color: '#16161A', fontSize: '0.84rem', fontWeight: 700 }}>
-                          {row.faculty}
-                        </td>
-                        <td style={{ padding: '14px 18px', color: '#44403C', fontSize: '0.84rem', lineHeight: 1.5 }}>
-                          {row.focus}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+          <div className="sp-courses-container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', boxSizing: 'border-box' }}>
+            <FadeUp>
+              <div style={{ textAlign: 'left', marginBottom: '28px' }}>
+                <span style={{
+                  display: 'inline-block',
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  color: '#991B1B',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.18em',
+                  marginBottom: '8px'
+                }}>
+                  ROUTINE &amp; LAB SCHEDULE &middot; MONDAY TO SATURDAY
+                </span>
+                <h2 
+                  style={{ 
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.875rem, 3vw, 2.65rem)', 
+                    fontWeight: 400, 
+                    color: '#231418', 
+                    margin: '0 0 10px', 
+                    letterSpacing: '-0.015em',
+                    lineHeight: 1.1
+                  }}
+                >
+                  Weekly examination &amp; <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>dictation routine.</span>
+                </h2>
+                <p style={{ fontSize: '15px', color: '#594A4D', maxWidth: '760px', margin: 0, lineHeight: 1.6 }}>
+                  Monday to Saturday active training program at Gaya Shorthand Classes (Opposite Cyber Thana, Gaya).
+                </p>
               </div>
+            </FadeUp>
 
+            <FadeUp delay={0.08}>
               <div 
                 style={{
-                  background: '#EFECE5',
-                  borderTop: '1px solid #D1CBBF',
-                  padding: '12px 18px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  fontSize: '0.84rem',
-                  color: '#44403C'
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #E8DFD3',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)'
                 }}
               >
-                <Sparkles size={15} color="#991B1B" />
-                <span><strong style={{ color: '#16161A' }}>Sunday Special:</strong> Full-length 100-mark mock examinations held every Sunday 9:00 AM – 1:00 PM with software-evaluated accuracy scorecards.</span>
+                <div style={{ overflowX: 'auto' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '780px' }}>
+                    <thead>
+                      <tr style={{ backgroundColor: '#EFE7DC', borderBottom: '1px solid #E0D5C7' }}>
+                        <th style={{ padding: '14px 18px', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#231418' }}>Time Slot</th>
+                        <th style={{ padding: '14px 18px', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#231418' }}>Batch Category</th>
+                        <th style={{ padding: '14px 18px', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#231418' }}>Speed Benchmark</th>
+                        <th style={{ padding: '14px 18px', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#231418' }}>Classroom / Lab</th>
+                        <th style={{ padding: '14px 18px', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#231418' }}>Faculty Lead</th>
+                        <th style={{ padding: '14px 18px', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#231418' }}>Daily Focus</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        {
+                          time: '6:00 AM – 8:00 AM',
+                          batch: 'Basic Theory (Pitman)',
+                          speed: '0 – 60 WPM',
+                          isHighlight: false,
+                          hall: 'Hall A (Ground Floor)',
+                          faculty: 'Shadab Sir (Director)',
+                          focus: 'Vowels, Stroke Angles & Daily Homework Check'
+                        },
+                        {
+                          time: '8:30 AM – 10:30 AM',
+                          batch: 'SSC Steno Grade C & D',
+                          speed: '80 WPM',
+                          isHighlight: true,
+                          hall: 'Computer Lab 1 (50 PCs)',
+                          faculty: 'Shadab Sir & Lab Head',
+                          focus: 'Reading Room + Kruti Dev / Mangal Typing'
+                        },
+                        {
+                          time: '11:00 AM – 1:00 PM',
+                          batch: 'Computer Diplomas (DCA/ADCA)',
+                          speed: 'Typing Studio',
+                          isHighlight: false,
+                          hall: 'Computer Lab 2',
+                          faculty: 'Computer Faculty',
+                          focus: 'MS Office Suite, Tally Prime, Internet Operations'
+                        },
+                        {
+                          time: '3:00 PM – 5:00 PM',
+                          batch: 'High Court Judicial Bench',
+                          speed: '100 WPM',
+                          isHighlight: true,
+                          hall: 'Acoustic Dictation Hall',
+                          faculty: 'Shadab Sir',
+                          focus: 'Criminal Appeals, Bail Orders, Court Judgments'
+                        },
+                        {
+                          time: '5:30 PM – 7:30 PM',
+                          batch: 'Parliament / Assembly Master',
+                          speed: '120 WPM',
+                          isHighlight: true,
+                          hall: 'Audio Broadcast Room',
+                          faculty: 'Senior Master',
+                          focus: 'Fast Speed Pacing, Contractions & Transcriptions'
+                        }
+                      ].map((row, idx) => (
+                        <tr
+                          key={idx}
+                          style={{ borderBottom: idx === 4 ? 'none' : '1px solid #EDE5DA', transition: 'background-color 0.15s ease' }}
+                          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FAF7F2'}
+                          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                        >
+                          <td style={{ padding: '14px 18px', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, color: '#231418', fontSize: '13px' }}>
+                            {row.time}
+                          </td>
+                          <td style={{ padding: '14px 18px', fontWeight: 700, color: '#231418', fontSize: '14px' }}>
+                            {row.batch}
+                          </td>
+                          <td style={{ padding: '14px 18px' }}>
+                            <span style={{
+                              display: 'inline-block',
+                              padding: '3px 10px',
+                              borderRadius: '9999px',
+                              fontSize: '11px',
+                              fontWeight: 700,
+                              fontFamily: "'JetBrains Mono', monospace",
+                              backgroundColor: row.isHighlight ? '#EFE7DC' : '#FAF7F2',
+                              color: row.isHighlight ? '#991B1B' : '#594A4D',
+                              border: `1px solid ${row.isHighlight ? '#E0D5C7' : '#EDE5DA'}`
+                            }}>
+                              {row.speed}
+                            </span>
+                          </td>
+                          <td style={{ padding: '14px 18px', color: '#594A4D', fontSize: '13px', fontWeight: 500 }}>
+                            {row.hall}
+                          </td>
+                          <td style={{ padding: '14px 18px', color: '#231418', fontSize: '13px', fontWeight: 600 }}>
+                            {row.faculty}
+                          </td>
+                          <td style={{ padding: '14px 18px', color: '#594A4D', fontSize: '13px', lineHeight: 1.5 }}>
+                            {row.focus}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <div 
+                  style={{
+                    backgroundColor: '#FAF7F2',
+                    borderTop: '1px solid #EDE5DA',
+                    padding: '12px 18px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontSize: '13px',
+                    color: '#594A4D'
+                  }}
+                >
+                  <Sparkles size={15} style={{ color: '#991B1B', flexShrink: 0 }} />
+                  <span><strong style={{ color: '#231418', fontWeight: 600 }}>Sunday Special:</strong> Full-length 100-mark mock examinations held every Sunday 9:00 AM – 1:00 PM with software-evaluated accuracy scorecards.</span>
+                </div>
               </div>
-            </div>
+            </FadeUp>
           </div>
         )}
 
@@ -1316,27 +1517,39 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
             TAB 3: ACCREDITED COMPUTER DIPLOMAS
             --------------------------------------------------------------------- */}
         {activeTab === 'diplomas' && (
-          <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'left', marginBottom: '28px' }}>
-              <span style={{
-                display: 'inline-block',
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                color: '#991B1B',
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                marginBottom: '8px'
-              }}>
-                Government Recognized Certifications
-              </span>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)', fontWeight: 800, color: '#16161A', margin: '0 0 10px', letterSpacing: '-0.02em' }}>
-                Accredited Computer Diplomas &amp; Certificates
-              </h2>
-              <p style={{ fontSize: '1rem', color: '#44403C', maxWidth: '760px', margin: 0, lineHeight: 1.6 }}>
-                Recognized for all Central &amp; State Government recruitments, High Courts, Civil Courts, and BSSC verification.
-              </p>
-            </div>
+          <div className="sp-courses-container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', boxSizing: 'border-box' }}>
+            <FadeUp>
+              <div style={{ textAlign: 'left', marginBottom: '28px' }}>
+                <span style={{
+                  display: 'inline-block',
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  color: '#991B1B',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.18em',
+                  marginBottom: '8px'
+                }}>
+                  GOVERNMENT RECOGNIZED CERTIFICATIONS
+                </span>
+                <h2 
+                  style={{ 
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.875rem, 3vw, 2.65rem)', 
+                    fontWeight: 400, 
+                    color: '#231418', 
+                    margin: '0 0 10px', 
+                    letterSpacing: '-0.015em',
+                    lineHeight: 1.1
+                  }}
+                >
+                  Accredited computer <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>diplomas &amp; certificates.</span>
+                </h2>
+                <p style={{ fontSize: '15px', color: '#594A4D', maxWidth: '760px', margin: 0, lineHeight: 1.6 }}>
+                  Recognized for all Central &amp; State Government recruitments, High Courts, Civil Courts, and BSSC verification.
+                </p>
+              </div>
+            </FadeUp>
 
             <div 
               style={{
@@ -1346,264 +1559,276 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
               }}
             >
               {/* DCA Card */}
-              <div
-                style={{
-                  background: '#F7F5F0',
-                  border: '1px solid #D1CBBF',
-                  borderRadius: '18px',
-                  padding: '28px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  boxShadow: '0 2px 12px rgba(22, 22, 26, 0.03)',
-                  transition: 'all 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.borderColor = '#B5ADA0';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(22, 22, 26, 0.08)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderColor = '#D1CBBF';
-                  e.currentTarget.style.boxShadow = '0 2px 12px rgba(22, 22, 26, 0.03)';
-                }}
-              >
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
-                    <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: '#EFECE5', border: '1px solid #D1CBBF', color: '#57534E', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Award size={22} />
-                    </div>
-                    <span style={{ fontSize: '0.74rem', fontWeight: 700, padding: '4px 10px', borderRadius: '9999px', background: '#EFECE5', color: '#57534E', border: '1px solid #D6D0C4' }}>
-                      6 Months Course
-                    </span>
-                  </div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#16161A', margin: '0 0 8px', lineHeight: 1.35 }}>
-                    DCA (Diploma in Computer Applications)
-                  </h3>
-                  <p style={{ fontSize: '0.88rem', color: '#44403C', lineHeight: 1.6, margin: '0 0 18px' }}>
-                    Covers computer fundamentals, Windows OS, MS Office suite (Word, Excel, PowerPoint), and speed touch typing.
-                  </p>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '22px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.84rem', color: '#44403C' }}>
-                      <CheckCircle2 size={15} color="#991B1B" style={{ flexShrink: 0 }} />
-                      <span>Government recognized certificate</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.84rem', color: '#44403C' }}>
-                      <CheckCircle2 size={15} color="#991B1B" style={{ flexShrink: 0 }} />
-                      <span>Online QR code &amp; Roll verification</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.84rem', color: '#44403C' }}>
-                      <CheckCircle2 size={15} color="#991B1B" style={{ flexShrink: 0 }} />
-                      <span>Valid for Clerk &amp; Data Entry Operator posts</span>
-                    </div>
-                  </div>
-                </div>
-                <a
-                  href="tel:+919204123453"
+              <FadeUp delay={0.06}>
+                <div
                   style={{
-                    width: '100%',
-                    background: '#16161A',
-                    color: '#FFFFFF',
-                    border: 'none',
-                    borderRadius: '10px',
-                    padding: '12px',
-                    fontSize: '0.9rem',
-                    fontWeight: 700,
-                    textDecoration: 'none',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '8px',
-                    boxShadow: '0 2px 8px rgba(22, 22, 26, 0.15)',
-                    transition: 'background 0.15s ease'
+                    backgroundColor: '#FFFFFF',
+                    border: '1px solid #E8DFD3',
+                    borderRadius: '16px',
+                    padding: '28px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
+                    height: '100%',
+                    boxSizing: 'border-box',
+                    transition: 'all 0.2s ease'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = '#27272A'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = '#16161A'}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.borderColor = '#D4C6B6';
+                    e.currentTarget.style.boxShadow = '0 10px 28px rgba(35, 20, 24, 0.08)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.borderColor = '#E8DFD3';
+                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(35, 20, 24, 0.04)';
+                  }}
                 >
-                  <Phone size={14} color="#FFFFFF" />
-                  <span>Inquire for DCA Program</span>
-                </a>
-              </div>
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
+                      <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: '#FBF8F3', border: '1px solid #E8DFD3', color: '#231418', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Award size={22} />
+                      </div>
+                      <span style={{ fontSize: '11px', fontWeight: 600, padding: '4px 10px', borderRadius: '9999px', backgroundColor: '#EFE7DC', color: '#594A4D', border: '1px solid #E0D5C7' }}>
+                        6 Months Course
+                      </span>
+                    </div>
+                    <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: '0 0 8px', lineHeight: 1.35 }}>
+                      DCA (Diploma in Computer Applications)
+                    </h3>
+                    <p style={{ fontSize: '13px', color: '#594A4D', lineHeight: 1.55, margin: '0 0 18px' }}>
+                      Covers computer fundamentals, Windows OS, MS Office suite (Word, Excel, PowerPoint), and speed touch typing.
+                    </p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '22px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#594A4D' }}>
+                        <CheckCircle2 size={15} style={{ color: '#991B1B', flexShrink: 0 }} />
+                        <span>Government recognized certificate</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#594A4D' }}>
+                        <CheckCircle2 size={15} style={{ color: '#991B1B', flexShrink: 0 }} />
+                        <span>Online QR code &amp; Roll verification</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#594A4D' }}>
+                        <CheckCircle2 size={15} style={{ color: '#991B1B', flexShrink: 0 }} />
+                        <span>Valid for Clerk &amp; Data Entry Operator posts</span>
+                      </div>
+                    </div>
+                  </div>
+                  <a
+                    href="tel:+919204123453"
+                    style={{
+                      width: '100%',
+                      backgroundColor: '#231418',
+                      color: '#FAF6F0',
+                      border: 'none',
+                      borderRadius: '9999px',
+                      padding: '12px',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px',
+                      boxShadow: '0 2px 8px rgba(35, 20, 24, 0.15)',
+                      transition: 'background-color 0.15s ease'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3A2228'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#231418'}
+                  >
+                    <Phone size={14} style={{ color: '#FAF6F0' }} />
+                    <span>Inquire for DCA Program</span>
+                  </a>
+                </div>
+              </FadeUp>
 
-              {/* ADCA Card (Featured) */}
-              <div
-                style={{
-                  background: '#FAF8F5',
-                  border: '2px solid #991B1B',
-                  borderTop: '4px solid #991B1B',
-                  borderRadius: '18px',
-                  padding: '28px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  boxShadow: '0 8px 30px rgba(153, 27, 27, 0.08)',
-                  position: 'relative',
-                  transition: 'all 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 12px 36px rgba(153, 27, 27, 0.12)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 8px 30px rgba(153, 27, 27, 0.08)';
-                }}
-              >
-                <div style={{
-                  position: 'absolute',
-                  top: '-12px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  background: '#991B1B',
-                  color: '#FFFFFF',
-                  fontSize: '0.72rem',
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.06em',
-                  padding: '3px 14px',
-                  borderRadius: '9999px',
-                  boxShadow: '0 2px 8px rgba(153, 27, 27, 0.3)'
-                }}>
-                  ★ Most Preferred for Govt Jobs
-                </div>
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px', marginTop: '4px' }}>
-                    <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: '#FAF0F0', border: '1px solid #F5C6C6', color: '#991B1B', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <ShieldCheck size={22} />
-                    </div>
-                    <span style={{ fontSize: '0.74rem', fontWeight: 700, padding: '4px 10px', borderRadius: '9999px', background: '#FAF0F0', color: '#991B1B', border: '1px solid #F5C6C6' }}>
-                      1 Year (12 Months)
-                    </span>
-                  </div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#16161A', margin: '0 0 8px', lineHeight: 1.35 }}>
-                    ADCA (Advance Diploma in Computer Applications)
-                  </h3>
-                  <p style={{ fontSize: '0.88rem', color: '#44403C', lineHeight: 1.6, margin: '0 0 18px' }}>
-                    Advanced comprehensive diploma covering DCA syllabus plus Tally ERP, database management, and office automation.
-                  </p>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '22px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.84rem', color: '#44403C' }}>
-                      <CheckCircle2 size={15} color="#991B1B" style={{ flexShrink: 0 }} />
-                      <span>Mandatory qualification for multiple govt posts</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.84rem', color: '#44403C' }}>
-                      <CheckCircle2 size={15} color="#991B1B" style={{ flexShrink: 0 }} />
-                      <span>Hands-on practical lab training (50+ PCs)</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.84rem', color: '#44403C' }}>
-                      <CheckCircle2 size={15} color="#991B1B" style={{ flexShrink: 0 }} />
-                      <span>Official grade sheet &amp; verifiable diploma</span>
-                    </div>
-                  </div>
-                </div>
-                <a
-                  href="tel:+919204123453"
+              {/* ADCA Card (Featured with Crimson top accent) */}
+              <FadeUp delay={0.12}>
+                <div
                   style={{
-                    width: '100%',
-                    background: '#991B1B',
-                    color: '#FFFFFF',
-                    border: 'none',
-                    borderRadius: '10px',
-                    padding: '12px',
-                    fontSize: '0.9rem',
-                    fontWeight: 700,
-                    textDecoration: 'none',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '8px',
-                    boxShadow: '0 2px 8px rgba(153, 27, 27, 0.25)',
-                    transition: 'background 0.15s ease'
+                    backgroundColor: '#FFFFFF',
+                    border: '1px solid #DFD3C5',
+                    borderTop: '4px solid #991B1B',
+                    borderRadius: '16px',
+                    padding: '28px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    boxShadow: '0 12px 32px rgba(35, 20, 24, 0.07)',
+                    height: '100%',
+                    boxSizing: 'border-box',
+                    position: 'relative',
+                    transition: 'all 0.2s ease'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = '#7F1D1D'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = '#991B1B'}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 16px 36px rgba(35, 20, 24, 0.10)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 12px 32px rgba(35, 20, 24, 0.07)';
+                  }}
                 >
-                  <Phone size={14} color="#FFFFFF" />
-                  <span>Inquire for ADCA Program</span>
-                </a>
-              </div>
+                  <div style={{
+                    position: 'absolute',
+                    top: '-12px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    backgroundColor: '#991B1B',
+                    color: '#FFFFFF',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.06em',
+                    padding: '3px 14px',
+                    borderRadius: '9999px',
+                    boxShadow: '0 2px 8px rgba(153, 27, 27, 0.3)'
+                  }}>
+                    &star; Most Preferred for Govt Jobs
+                  </div>
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px', marginTop: '4px' }}>
+                      <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: '#FDF2F2', border: '1px solid #FBD5D5', color: '#991B1B', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <ShieldCheck size={22} />
+                      </div>
+                      <span style={{ fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '9999px', backgroundColor: '#EFE7DC', color: '#991B1B', border: '1px solid #E0D5C7' }}>
+                        1 Year (12 Months)
+                      </span>
+                    </div>
+                    <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: '0 0 8px', lineHeight: 1.35 }}>
+                      ADCA (Advance Diploma in Computer Applications)
+                    </h3>
+                    <p style={{ fontSize: '13px', color: '#594A4D', lineHeight: 1.55, margin: '0 0 18px' }}>
+                      Advanced comprehensive diploma covering DCA syllabus plus Tally ERP, database management, and office automation.
+                    </p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '22px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#594A4D' }}>
+                        <CheckCircle2 size={15} style={{ color: '#991B1B', flexShrink: 0 }} />
+                        <span>Mandatory qualification for multiple govt posts</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#594A4D' }}>
+                        <CheckCircle2 size={15} style={{ color: '#991B1B', flexShrink: 0 }} />
+                        <span>Hands-on practical lab training (50+ PCs)</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#594A4D' }}>
+                        <CheckCircle2 size={15} style={{ color: '#991B1B', flexShrink: 0 }} />
+                        <span>Official grade sheet &amp; verifiable diploma</span>
+                      </div>
+                    </div>
+                  </div>
+                  <a
+                    href="tel:+919204123453"
+                    style={{
+                      width: '100%',
+                      backgroundColor: '#991B1B',
+                      color: '#FFFFFF',
+                      border: 'none',
+                      borderRadius: '9999px',
+                      padding: '12px',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px',
+                      boxShadow: '0 4px 14px rgba(153, 27, 27, 0.20)',
+                      transition: 'background-color 0.15s ease'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#7F1D1D'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#991B1B'}
+                  >
+                    <Phone size={14} style={{ color: '#FFFFFF' }} />
+                    <span>Inquire for ADCA Program</span>
+                  </a>
+                </div>
+              </FadeUp>
 
               {/* Tally Prime Card */}
-              <div
-                style={{
-                  background: '#F7F5F0',
-                  border: '1px solid #D1CBBF',
-                  borderRadius: '18px',
-                  padding: '28px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  boxShadow: '0 2px 12px rgba(22, 22, 26, 0.03)',
-                  transition: 'all 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.borderColor = '#B5ADA0';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(22, 22, 26, 0.08)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderColor = '#D1CBBF';
-                  e.currentTarget.style.boxShadow = '0 2px 12px rgba(22, 22, 26, 0.03)';
-                }}
-              >
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
-                    <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: '#EFECE5', border: '1px solid #D1CBBF', color: '#57534E', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <GraduationCap size={22} />
-                    </div>
-                    <span style={{ fontSize: '0.74rem', fontWeight: 700, padding: '4px 10px', borderRadius: '9999px', background: '#EFECE5', color: '#57534E', border: '1px solid #D6D0C4' }}>
-                      3 Months Specialization
-                    </span>
-                  </div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#16161A', margin: '0 0 8px', lineHeight: 1.35 }}>
-                    Tally Prime with GST Certification
-                  </h3>
-                  <p style={{ fontSize: '0.88rem', color: '#44403C', lineHeight: 1.6, margin: '0 0 18px' }}>
-                    Professional financial accounting, inventory management, GST compliance, and billing voucher generation.
-                  </p>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '22px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.84rem', color: '#44403C' }}>
-                      <CheckCircle2 size={15} color="#991B1B" style={{ flexShrink: 0 }} />
-                      <span>Modern Tally Prime software version</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.84rem', color: '#44403C' }}>
-                      <CheckCircle2 size={15} color="#991B1B" style={{ flexShrink: 0 }} />
-                      <span>Real business balance sheet practice</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.84rem', color: '#44403C' }}>
-                      <CheckCircle2 size={15} color="#991B1B" style={{ flexShrink: 0 }} />
-                      <span>Secretariat &amp; accounting clerk ready</span>
-                    </div>
-                  </div>
-                </div>
-                <a
-                  href="tel:+919204123453"
+              <FadeUp delay={0.18}>
+                <div
                   style={{
-                    width: '100%',
-                    background: '#16161A',
-                    color: '#FFFFFF',
-                    border: 'none',
-                    borderRadius: '10px',
-                    padding: '12px',
-                    fontSize: '0.9rem',
-                    fontWeight: 700,
-                    textDecoration: 'none',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '8px',
-                    boxShadow: '0 2px 8px rgba(22, 22, 26, 0.15)',
-                    transition: 'background 0.15s ease'
+                    backgroundColor: '#FFFFFF',
+                    border: '1px solid #E8DFD3',
+                    borderRadius: '16px',
+                    padding: '28px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
+                    height: '100%',
+                    boxSizing: 'border-box',
+                    transition: 'all 0.2s ease'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = '#27272A'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = '#16161A'}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.borderColor = '#D4C6B6';
+                    e.currentTarget.style.boxShadow = '0 10px 28px rgba(35, 20, 24, 0.08)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.borderColor = '#E8DFD3';
+                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(35, 20, 24, 0.04)';
+                  }}
                 >
-                  <Phone size={14} color="#FFFFFF" />
-                  <span>Inquire for Tally Course</span>
-                </a>
-              </div>
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
+                      <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: '#FBF8F3', border: '1px solid #E8DFD3', color: '#231418', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <GraduationCap size={22} />
+                      </div>
+                      <span style={{ fontSize: '11px', fontWeight: 600, padding: '4px 10px', borderRadius: '9999px', backgroundColor: '#EFE7DC', color: '#594A4D', border: '1px solid #E0D5C7' }}>
+                        3 Months Specialization
+                      </span>
+                    </div>
+                    <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: '0 0 8px', lineHeight: 1.35 }}>
+                      Tally Prime with GST Certification
+                    </h3>
+                    <p style={{ fontSize: '13px', color: '#594A4D', lineHeight: 1.55, margin: '0 0 18px' }}>
+                      Professional financial accounting, inventory management, GST compliance, and billing voucher generation.
+                    </p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '22px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#594A4D' }}>
+                        <CheckCircle2 size={15} style={{ color: '#991B1B', flexShrink: 0 }} />
+                        <span>Modern Tally Prime software version</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#594A4D' }}>
+                        <CheckCircle2 size={15} style={{ color: '#991B1B', flexShrink: 0 }} />
+                        <span>Real business balance sheet practice</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#594A4D' }}>
+                        <CheckCircle2 size={15} style={{ color: '#991B1B', flexShrink: 0 }} />
+                        <span>Secretariat &amp; accounting clerk ready</span>
+                      </div>
+                    </div>
+                  </div>
+                  <a
+                    href="tel:+919204123453"
+                    style={{
+                      width: '100%',
+                      backgroundColor: '#231418',
+                      color: '#FAF6F0',
+                      border: 'none',
+                      borderRadius: '9999px',
+                      padding: '12px',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px',
+                      boxShadow: '0 2px 8px rgba(35, 20, 24, 0.15)',
+                      transition: 'background-color 0.15s ease'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3A2228'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#231418'}
+                  >
+                    <Phone size={14} style={{ color: '#FAF6F0' }} />
+                    <span>Inquire for Tally Course</span>
+                  </a>
+                </div>
+              </FadeUp>
             </div>
           </div>
         )}
@@ -1612,110 +1837,123 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
             TAB 4: RECRUITMENT NOTICES
             --------------------------------------------------------------------- */}
         {activeTab === 'notices' && (
-          <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'left', marginBottom: '28px' }}>
-              <span style={{
-                display: 'inline-block',
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                color: '#991B1B',
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                marginBottom: '8px'
-              }}>
-                Official Recruitment Bulletin • 2026
-              </span>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)', fontWeight: 800, color: '#16161A', margin: '0 0 10px', letterSpacing: '-0.02em' }}>
-                Upcoming Recruitment Notices &amp; Vacancies
-              </h2>
-              <p style={{ fontSize: '1rem', color: '#44403C', maxWidth: '760px', margin: 0, lineHeight: 1.6 }}>
-                Verified recruitment notifications and exam pattern guidelines for High Court, SSC, and state stenographer vacancies.
-              </p>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {ANNOUNCEMENTS.map((item) => (
-                <div
-                  key={item.id}
-                  style={{
-                    background: '#F7F5F0',
-                    border: '1px solid #D1CBBF',
-                    borderRadius: '18px',
-                    padding: '24px 28px',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    flexWrap: 'wrap',
-                    gap: '20px',
-                    boxShadow: '0 2px 10px rgba(22, 22, 26, 0.03)',
-                    transition: 'all 0.2s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.borderColor = '#B5ADA0';
-                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(22, 22, 26, 0.06)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.borderColor = '#D1CBBF';
-                    e.currentTarget.style.boxShadow = '0 2px 10px rgba(22, 22, 26, 0.03)';
+          <div className="sp-courses-container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', boxSizing: 'border-box' }}>
+            <FadeUp>
+              <div style={{ textAlign: 'left', marginBottom: '28px' }}>
+                <span style={{
+                  display: 'inline-block',
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  color: '#991B1B',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.18em',
+                  marginBottom: '8px'
+                }}>
+                  OFFICIAL RECRUITMENT BULLETIN &middot; 2026
+                </span>
+                <h2 
+                  style={{ 
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.875rem, 3vw, 2.65rem)', 
+                    fontWeight: 400, 
+                    color: '#231418', 
+                    margin: '0 0 10px', 
+                    letterSpacing: '-0.015em',
+                    lineHeight: 1.1
                   }}
                 >
-                  <div style={{ flex: '1 1 500px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px', flexWrap: 'wrap' }}>
-                      <span style={{
-                        fontSize: '0.74rem',
-                        fontWeight: 700,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.04em',
-                        padding: '4px 10px',
-                        borderRadius: '6px',
-                        background: '#EFECE5',
-                        color: '#16161A',
-                        border: '1px solid #D6D0C4'
-                      }}>
-                        {item.tag}
-                      </span>
-                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '0.8rem', color: '#57534E', fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>
-                        <Calendar size={13} />
-                        <span>{item.date}</span>
-                      </span>
+                  Upcoming recruitment notices &amp; <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>vacancies.</span>
+                </h2>
+                <p style={{ fontSize: '15px', color: '#594A4D', maxWidth: '760px', margin: 0, lineHeight: 1.6 }}>
+                  Verified recruitment notifications and exam pattern guidelines for High Court, SSC, and state stenographer vacancies.
+                </p>
+              </div>
+            </FadeUp>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {ANNOUNCEMENTS.map((item, idx) => (
+                <FadeUp key={item.id} delay={idx * 0.05}>
+                  <div
+                    style={{
+                      backgroundColor: '#FFFFFF',
+                      border: '1px solid #E8DFD3',
+                      borderRadius: '16px',
+                      padding: '24px 28px',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      flexWrap: 'wrap',
+                      gap: '20px',
+                      boxShadow: '0 4px 18px rgba(35, 20, 24, 0.03)',
+                      transition: 'all 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.borderColor = '#D4C6B6';
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(35, 20, 24, 0.06)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.borderColor = '#E8DFD3';
+                      e.currentTarget.style.boxShadow = '0 4px 18px rgba(35, 20, 24, 0.03)';
+                    }}
+                  >
+                    <div style={{ flex: '1 1 500px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px', flexWrap: 'wrap' }}>
+                        <span style={{
+                          fontSize: '11px',
+                          fontWeight: 700,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.08em',
+                          padding: '3px 10px',
+                          borderRadius: '9999px',
+                          backgroundColor: '#EFE7DC',
+                          color: '#991B1B',
+                          border: '1px solid #E0D5C7'
+                        }}>
+                          {item.tag}
+                        </span>
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '12px', color: '#8A7B7E', fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>
+                          <Calendar size={13} style={{ color: '#8A7B7E' }} />
+                          <span>{item.date}</span>
+                        </span>
+                      </div>
+                      <h3 style={{ fontSize: '17px', fontWeight: 700, color: '#231418', margin: '0 0 6px', lineHeight: 1.35 }}>
+                        {item.title}
+                      </h3>
+                      <p style={{ fontSize: '13.5px', color: '#594A4D', lineHeight: 1.55, margin: 0, maxWidth: '820px' }}>
+                        {item.description}
+                      </p>
                     </div>
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#16161A', margin: '0 0 6px', lineHeight: 1.35 }}>
-                      {item.title}
-                    </h3>
-                    <p style={{ fontSize: '0.9rem', color: '#44403C', lineHeight: 1.6, margin: 0, maxWidth: '820px' }}>
-                      {item.description}
-                    </p>
+                    <div style={{ flexShrink: 0 }}>
+                      <button
+                        type="button"
+                        onClick={() => setCurrentTab('courses')}
+                        style={{
+                          padding: '10px 20px',
+                          borderRadius: '9999px',
+                          backgroundColor: '#231418',
+                          color: '#FAF6F0',
+                          border: 'none',
+                          fontSize: '12.5px',
+                          fontWeight: 600,
+                          cursor: 'pointer',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          boxShadow: '0 2px 8px rgba(35, 20, 24, 0.15)',
+                          transition: 'background-color 0.15s ease'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3A2228'}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#231418'}
+                      >
+                        <span>Explore Preparation Courses</span>
+                        <ArrowRight size={13} />
+                      </button>
+                    </div>
                   </div>
-                  <div style={{ flexShrink: 0 }}>
-                    <button
-                      type="button"
-                      onClick={() => setCurrentTab('courses')}
-                      style={{
-                        padding: '12px 20px',
-                        borderRadius: '10px',
-                        background: '#16161A',
-                        color: '#FFFFFF',
-                        border: 'none',
-                        fontSize: '0.88rem',
-                        fontWeight: 700,
-                        cursor: 'pointer',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        boxShadow: '0 2px 8px rgba(22, 22, 26, 0.15)',
-                        transition: 'background 0.15s ease'
-                      }}
-                      onMouseEnter={(e) => e.currentTarget.style.background = '#27272A'}
-                      onMouseLeave={(e) => e.currentTarget.style.background = '#16161A'}
-                    >
-                      <span>Explore Preparation Courses</span>
-                      <ArrowRight size={14} />
-                    </button>
-                  </div>
-                </div>
+                </FadeUp>
               ))}
             </div>
           </div>
@@ -1725,103 +1963,126 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
             TAB 5: SHORTHAND OUTLINES & PHRASEOGRAPHY DICTIONARY
             --------------------------------------------------------------------- */}
         {activeTab === 'outlines' && (
-          <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'left', marginBottom: '28px' }}>
-              <span style={{
-                display: 'inline-block',
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                color: '#991B1B',
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                marginBottom: '8px'
-              }}>
-                Phraseography Vault • Pitman &amp; Hindi
-              </span>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)', fontWeight: 800, color: '#16161A', margin: '0 0 10px', letterSpacing: '-0.02em' }}>
-                Shorthand Outlines &amp; Legal Strokes Dictionary
-              </h2>
-              <p style={{ fontSize: '1rem', color: '#44403C', maxWidth: '760px', margin: 0, lineHeight: 1.6 }}>
-                Master standardized Pitman &amp; Hindi contractions, legal intersections, and high-frequency parliamentary speed phrases.
-              </p>
-            </div>
+          <div className="sp-courses-container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', boxSizing: 'border-box' }}>
+            <FadeUp>
+              <div style={{ textAlign: 'left', marginBottom: '28px' }}>
+                <span style={{
+                  display: 'inline-block',
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  color: '#991B1B',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.18em',
+                  marginBottom: '8px'
+                }}>
+                  PHRASEOGRAPHY VAULT &middot; PITMAN &amp; HINDI
+                </span>
+                <h2 
+                  style={{ 
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.875rem, 3vw, 2.65rem)', 
+                    fontWeight: 400, 
+                    color: '#231418', 
+                    margin: '0 0 10px', 
+                    letterSpacing: '-0.015em',
+                    lineHeight: 1.1
+                  }}
+                >
+                  Shorthand outlines &amp; <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>legal strokes dictionary.</span>
+                </h2>
+                <p style={{ fontSize: '15px', color: '#594A4D', maxWidth: '760px', margin: 0, lineHeight: 1.6 }}>
+                  Master standardized Pitman &amp; Hindi contractions, legal intersections, and high-frequency parliamentary speed phrases.
+                </p>
+              </div>
+            </FadeUp>
 
             {/* Search Bar & Category Filters */}
-            <div style={{ maxWidth: '820px', margin: '0 auto 28px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
-              <div style={{ position: 'relative', width: '100%' }}>
-                <Search size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#57534E' }} />
-                <input
-                  type="text"
-                  value={outlineSearch}
-                  onChange={(e) => setOutlineSearch(e.target.value)}
-                  placeholder="Search terminology, e.g. High Court, Parliament, Police, SLP, Affidavit..."
-                  style={{
-                    width: '100%',
-                    padding: '14px 44px 14px 48px',
-                    borderRadius: '12px',
-                    border: '1.5px solid #D1CBBF',
-                    background: '#F7F5F0',
-                    fontSize: '0.92rem',
-                    color: '#16161A',
-                    outline: 'none',
-                    boxShadow: '0 2px 6px rgba(22, 22, 26, 0.02)',
-                    transition: 'border-color 0.15s ease'
-                  }}
-                  onFocus={(e) => e.target.style.borderColor = '#16161A'}
-                  onBlur={(e) => e.target.style.borderColor = '#D1CBBF'}
-                />
-                {outlineSearch && (
-                  <button
-                    type="button"
-                    onClick={() => setOutlineSearch('')}
-                    style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: '#57534E', cursor: 'pointer', fontSize: '1rem', fontWeight: 700 }}
-                  >
-                    ✕
-                  </button>
-                )}
-              </div>
-
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center' }}>
-                {['All', 'Legal & Judicial', 'Parliamentary', 'Administrative & Govt'].map((cat) => {
-                  const active = outlineCategory === cat;
-                  return (
+            <FadeUp delay={0.05}>
+              <div style={{ maxWidth: '820px', margin: '0 auto 28px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                <div style={{ position: 'relative', width: '100%' }}>
+                  <Search size={16} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#8A7B7E' }} />
+                  <input
+                    type="text"
+                    value={outlineSearch}
+                    onChange={(e) => setOutlineSearch(e.target.value)}
+                    placeholder="Search terminology, e.g. High Court, Parliament, Police, SLP, Affidavit..."
+                    style={{
+                      width: '100%',
+                      padding: '12px 44px 12px 44px',
+                      borderRadius: '9999px',
+                      border: '1px solid #DCD0C2',
+                      backgroundColor: '#FFFFFF',
+                      fontSize: '13px',
+                      color: '#231418',
+                      outline: 'none',
+                      boxShadow: '0 1px 3px rgba(35, 20, 24, 0.04)',
+                      transition: 'border-color 0.15s ease',
+                      boxSizing: 'border-box'
+                    }}
+                    onFocus={(e) => e.target.style.borderColor = '#991B1B'}
+                    onBlur={(e) => e.target.style.borderColor = '#DCD0C2'}
+                  />
+                  {outlineSearch && (
                     <button
-                      key={cat}
                       type="button"
-                      onClick={() => setOutlineCategory(cat)}
-                      style={{
-                        padding: '6px 16px',
-                        borderRadius: '9999px',
-                        fontSize: '0.8rem',
-                        fontWeight: active ? 700 : 600,
-                        cursor: 'pointer',
-                        border: '1px solid',
-                        borderColor: active ? '#16161A' : '#D1CBBF',
-                        background: active ? '#16161A' : '#F7F5F0',
-                        color: active ? '#FFFFFF' : '#57534E',
-                        transition: 'all 0.15s ease',
-                        boxShadow: active ? '0 2px 8px rgba(22, 22, 26, 0.15)' : 'none'
-                      }}
-                      onMouseEnter={(e) => {
-                        if (!active) {
-                          e.currentTarget.style.color = '#16161A';
-                          e.currentTarget.style.background = '#EFECE5';
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        if (!active) {
-                          e.currentTarget.style.color = '#57534E';
-                          e.currentTarget.style.background = '#F7F5F0';
-                        }
-                      }}
+                      onClick={() => setOutlineSearch('')}
+                      style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: '#8A7B7E', cursor: 'pointer', fontSize: '1rem', fontWeight: 700 }}
                     >
-                      {cat}
+                      &times;
                     </button>
-                  );
-                })}
+                  )}
+                </div>
+
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center' }}>
+                  {['All', 'Legal & Judicial', 'Parliamentary', 'Administrative & Govt'].map((cat) => {
+                    const active = outlineCategory === cat;
+                    return (
+                      <button
+                        key={cat}
+                        type="button"
+                        onClick={() => setOutlineCategory(cat)}
+                        style={active ? {
+                          padding: '6px 16px',
+                          borderRadius: '9999px',
+                          fontSize: '12px',
+                          fontWeight: 600,
+                          cursor: 'pointer',
+                          border: '1px solid #E0D5C7',
+                          backgroundColor: '#FFFFFF',
+                          color: '#231418',
+                          boxShadow: '0 1px 3px rgba(35, 20, 24, 0.06)'
+                        } : {
+                          padding: '6px 16px',
+                          borderRadius: '9999px',
+                          fontSize: '12px',
+                          fontWeight: 500,
+                          cursor: 'pointer',
+                          border: '1px solid transparent',
+                          background: 'transparent',
+                          color: '#594A4D',
+                          transition: 'all 0.15s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          if (!active) {
+                            e.currentTarget.style.color = '#231418';
+                            e.currentTarget.style.backgroundColor = '#EFE7DC';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (!active) {
+                            e.currentTarget.style.color = '#594A4D';
+                            e.currentTarget.style.backgroundColor = 'transparent';
+                          }
+                        }}
+                      >
+                        {cat}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            </FadeUp>
 
             {/* Outlines Cards Grid */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '20px' }}>
@@ -1835,115 +2096,118 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
                     item.shorthandStroke.toLowerCase().includes(outlineSearch.toLowerCase());
                   return matchCat && matchSearch;
                 })
-                .map(item => (
-                  <div
-                    key={item.id}
-                    style={{
-                      background: '#F7F5F0',
-                      border: '1px solid #D1CBBF',
-                      borderRadius: '16px',
-                      padding: '22px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      boxShadow: '0 2px 10px rgba(22, 22, 26, 0.02)',
-                      transition: 'all 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                      e.currentTarget.style.borderColor = '#B5ADA0';
-                      e.currentTarget.style.boxShadow = '0 6px 18px rgba(22, 22, 26, 0.06)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.borderColor = '#D1CBBF';
-                      e.currentTarget.style.boxShadow = '0 2px 10px rgba(22, 22, 26, 0.02)';
-                    }}
-                  >
-                    <div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                        <span style={{ fontSize: '0.72rem', fontWeight: 700, padding: '3px 8px', borderRadius: '4px', background: '#EFECE5', color: '#57534E', textTransform: 'uppercase', border: '1px solid #D6D0C4' }}>
-                          {item.category}
-                        </span>
-                        <span style={{ fontSize: '0.74rem', fontWeight: 700, color: '#991B1B', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                          <Zap size={13} color="#991B1B" />
-                          <span>{item.speedTier}</span>
-                        </span>
-                      </div>
-
-                      <h4 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#16161A', margin: '0 0 4px', lineHeight: 1.3 }}>
-                        {item.term}
-                      </h4>
-                      <div style={{ fontSize: '0.86rem', color: '#57534E', fontWeight: 600, marginBottom: '14px' }}>
-                        {item.hindiEquivalent}
-                      </div>
-
-                      {/* Stroke Box */}
-                      <div style={{
-                        background: '#EFECE5',
-                        border: '1px solid #D6D0C4',
-                        borderRadius: '10px',
-                        padding: '12px 14px',
-                        marginBottom: '14px',
+                .map((item, idx) => (
+                  <FadeUp key={item.id} delay={idx * 0.04}>
+                    <div
+                      style={{
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid #E8DFD3',
+                        borderRadius: '16px',
+                        padding: '22px',
                         display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between'
-                      }}>
-                        <div>
-                          <div style={{ fontSize: '0.68rem', textTransform: 'uppercase', color: '#991B1B', fontWeight: 800, letterSpacing: '0.06em', marginBottom: '3px', fontFamily: "'JetBrains Mono', monospace" }}>
-                            OUTLINE FORMULA (PITMAN)
-                          </div>
-                          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, fontSize: '0.98rem', color: '#16161A', letterSpacing: '0.5px' }}>
-                            {item.shorthandStroke}
-                          </div>
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        boxShadow: '0 4px 18px rgba(35, 20, 24, 0.03)',
+                        height: '100%',
+                        boxSizing: 'border-box',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                        e.currentTarget.style.borderColor = '#D4C6B6';
+                        e.currentTarget.style.boxShadow = '0 8px 24px rgba(35, 20, 24, 0.06)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.borderColor = '#E8DFD3';
+                        e.currentTarget.style.boxShadow = '0 4px 18px rgba(35, 20, 24, 0.03)';
+                      }}
+                    >
+                      <div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                          <span style={{ fontSize: '11px', fontWeight: 600, padding: '2px 8px', borderRadius: '4px', backgroundColor: '#EFE7DC', color: '#594A4D', textTransform: 'uppercase', border: '1px solid #E0D5C7' }}>
+                            {item.category}
+                          </span>
+                          <span style={{ fontSize: '12px', fontWeight: 700, color: '#991B1B', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                            <Zap size={13} style={{ color: '#991B1B' }} />
+                            <span>{item.speedTier}</span>
+                          </span>
                         </div>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            navigator.clipboard?.writeText(item.shorthandStroke).catch(() => {});
-                            setCopiedOutlineId(item.id);
-                            setTimeout(() => setCopiedOutlineId(null), 1500);
-                          }}
-                          style={{
-                            background: copiedOutlineId === item.id ? '#FAF0F0' : '#F7F5F0',
-                            border: '1px solid',
-                            borderColor: copiedOutlineId === item.id ? '#F5C6C6' : '#D1CBBF',
-                            borderRadius: '6px',
-                            padding: '5px 10px',
-                            fontSize: '0.74rem',
-                            fontWeight: 700,
-                            color: copiedOutlineId === item.id ? '#991B1B' : '#16161A',
-                            cursor: 'pointer',
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '4px',
-                            transition: 'all 0.15s ease'
-                          }}
-                          title="Copy Stroke Formula"
-                        >
-                          {copiedOutlineId === item.id ? (
-                            <>
-                              <Check size={12} color="#991B1B" />
-                              <span>Copied</span>
-                            </>
-                          ) : (
-                            <>
-                              <Copy size={12} />
-                              <span>Copy</span>
-                            </>
-                          )}
-                        </button>
-                      </div>
 
-                      {/* Rule & Pacing Tip */}
-                      <div style={{ fontSize: '0.8rem', color: '#44403C', marginBottom: '8px', lineHeight: 1.45 }}>
-                        <strong style={{ color: '#16161A' }}>Rule:</strong> {item.ruleType} — {item.ruleDesc}
-                      </div>
-                      <div style={{ fontSize: '0.78rem', color: '#16161A', background: '#FAF8F5', border: '1px solid #DFD9CD', padding: '8px 10px', borderRadius: '6px', lineHeight: 1.4 }}>
-                        💡 <strong style={{ color: '#16161A' }}>Speed Tip:</strong> {item.speedTip}
+                        <h4 style={{ fontSize: '17px', fontWeight: 700, color: '#231418', margin: '0 0 4px', lineHeight: 1.3 }}>
+                          {item.term}
+                        </h4>
+                        <div style={{ fontSize: '13px', color: '#8A7B7E', fontWeight: 500, marginBottom: '14px' }}>
+                          {item.hindiEquivalent}
+                        </div>
+
+                        {/* Stroke Box */}
+                        <div style={{
+                          backgroundColor: '#FAF7F2',
+                          border: '1px solid #EDE5DA',
+                          borderRadius: '10px',
+                          padding: '12px 14px',
+                          marginBottom: '14px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between'
+                        }}>
+                          <div>
+                            <div style={{ fontSize: '10px', textTransform: 'uppercase', color: '#991B1B', fontWeight: 700, letterSpacing: '0.08em', marginBottom: '3px', fontFamily: "'JetBrains Mono', monospace" }}>
+                              OUTLINE FORMULA (PITMAN)
+                            </div>
+                            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, fontSize: '15px', color: '#231418', letterSpacing: '0.5px' }}>
+                              {item.shorthandStroke}
+                            </div>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              navigator.clipboard?.writeText(item.shorthandStroke).catch(() => {});
+                              setCopiedOutlineId(item.id);
+                              setTimeout(() => setCopiedOutlineId(null), 1500);
+                            }}
+                            style={{
+                              backgroundColor: copiedOutlineId === item.id ? '#FAF0F0' : '#FFFFFF',
+                              border: '1px solid',
+                              borderColor: copiedOutlineId === item.id ? '#F5C6C6' : '#E0D5C7',
+                              borderRadius: '9999px',
+                              padding: '5px 12px',
+                              fontSize: '11px',
+                              fontWeight: 600,
+                              color: copiedOutlineId === item.id ? '#991B1B' : '#231418',
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '4px',
+                              transition: 'all 0.15s ease'
+                            }}
+                            title="Copy Stroke Formula"
+                          >
+                            {copiedOutlineId === item.id ? (
+                              <>
+                                <Check size={12} style={{ color: '#991B1B' }} />
+                                <span>Copied</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy size={12} />
+                                <span>Copy</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
+
+                        {/* Rule & Pacing Tip */}
+                        <div style={{ fontSize: '12.5px', color: '#594A4D', marginBottom: '8px', lineHeight: 1.45 }}>
+                          <strong style={{ color: '#231418' }}>Rule:</strong> {item.ruleType} &mdash; {item.ruleDesc}
+                        </div>
+                        <div style={{ fontSize: '12px', color: '#231418', backgroundColor: '#FAF7F2', border: '1px solid #EDE5DA', padding: '8px 10px', borderRadius: '8px', lineHeight: 1.4 }}>
+                          💡 <strong style={{ color: '#231418' }}>Speed Tip:</strong> {item.speedTip}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </FadeUp>
                 ))}
             </div>
           </div>
@@ -1952,101 +2216,123 @@ export default function ClassesPage({ onOpenCheckout, setCurrentTab, onlineClass
       </div>
 
       {/* =========================================================================
-          4. CLOSING EDITORIAL OFFLINE CENTER CTA (WARM PARCHMENT CARD)
+          4. CLOSING EDITORIAL OFFLINE CENTER CTA (OPEN WARM-GLOW SECTION)
           ========================================================================= */}
-      <section style={{ maxWidth: 1280, margin: '24px auto 64px', padding: '0 24px' }}>
+      <section 
+        className="relative overflow-hidden bg-[#FBF8F3] border-t border-[#E5DBD0] text-center"
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundColor: '#FBF8F3',
+          borderTop: '1px solid #E5DBD0',
+          padding: '4.5rem 1.5rem',
+          textAlign: 'center',
+          width: '100%',
+          boxSizing: 'border-box'
+        }}
+      >
+        {/* Subtle warm radial glow behind content */}
         <div 
+          style={{ 
+            pointerEvents: 'none', 
+            position: 'absolute', 
+            inset: 0, 
+            background: 'radial-gradient(ellipse 65% 65% at 50% 50%, rgba(196, 132, 120, 0.16) 0%, rgba(251, 248, 243, 0) 75%)' 
+          }} 
+        />
+        <div 
+          className="sp-courses-container"
           style={{
-            background: '#F7F5F0',
-            border: '1px solid #D1CBBF',
-            borderLeft: '4px solid #991B1B',
-            borderRadius: '20px',
-            padding: '36px 32px',
-            boxShadow: '0 6px 24px rgba(22, 22, 26, 0.04)',
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '24px'
+            position: 'relative',
+            zIndex: 10,
+            maxWidth: '680px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            boxSizing: 'border-box'
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px', minWidth: '280px', flex: '1 1 420px' }}>
-            <div style={{
-              width: '54px',
-              height: '54px',
-              borderRadius: '14px',
-              background: '#EFECE5',
-              border: '1px solid #D1CBBF',
-              color: '#991B1B',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0
-            }}>
-              <Building size={26} />
-            </div>
-            <div>
-              <h4 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#16161A', margin: '0 0 6px', letterSpacing: '-0.015em' }}>
-                Join Offline Classroom at{' '}
-                <span style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontStyle: 'italic', fontWeight: 400, color: '#991B1B', fontSize: '1.08em' }}>
-                  Gaya Shorthand Classes
-                </span>
-              </h4>
-              <p style={{ fontSize: '0.92rem', color: '#57534E', margin: 0, lineHeight: 1.5 }}>
-                Gaya College More, Opposite Cyber Thana, Gayaji, Bihar • <strong style={{ color: '#16161A' }}>3 Free Demo Classes Available</strong>
-              </p>
-            </div>
-          </div>
-          
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-            <a 
-              href="tel:+919204123453"
+          <FadeUp>
+            <span 
               style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: '#EFECE5',
-                color: '#16161A',
-                border: '1px solid #D1CBBF',
-                padding: '12px 20px',
-                borderRadius: '10px',
-                fontSize: '0.9rem',
-                fontWeight: 700,
-                textDecoration: 'none',
-                transition: 'background 0.15s ease'
+                fontSize: '11px',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.18em',
+                color: '#991B1B',
+                display: 'block',
+                marginBottom: '12px'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.background = '#E4DFD5'}
-              onMouseLeave={(e) => e.currentTarget.style.background = '#EFECE5'}
             >
-              <Phone size={15} color="#16161A" />
-              <span>Call Helpline: 9204123453</span>
-            </a>
-
-            <button
-              type="button"
-              onClick={() => onOpenCheckout ? onOpenCheckout() : null}
+              GAYA OFFLINE CENTER &middot; 3 FREE DEMO CLASSES
+            </span>
+            <h2 
               style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: '#991B1B',
-                color: '#FFFFFF',
-                border: 'none',
-                padding: '12px 22px',
-                borderRadius: '10px',
-                fontSize: '0.9rem',
-                fontWeight: 700,
-                cursor: 'pointer',
-                boxShadow: '0 2px 8px rgba(153, 27, 27, 0.25)',
-                transition: 'background 0.15s ease'
+                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontSize: 'clamp(2.25rem, 4.2vw, 3.25rem)',
+                fontWeight: 400,
+                lineHeight: 1.12,
+                letterSpacing: '-0.02em',
+                color: '#231418',
+                marginBottom: '12px'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.background = '#7F1D1D'}
-              onMouseLeave={(e) => e.currentTarget.style.background = '#991B1B'}
             >
-              <Sparkles size={15} color="#FFFFFF" />
-              <span>Book 3 Free Demos</span>
-            </button>
-          </div>
+              Join offline classes at <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>Gaya Shorthand.</span>
+            </h2>
+            <p 
+              style={{
+                fontSize: '15px',
+                color: '#594A4D',
+                maxWidth: '560px',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                marginBottom: '28px',
+                lineHeight: 1.6
+              }}
+            >
+              Gaya College More, Opposite Cyber Thana, Gaya, Bihar &middot; Morning &amp; evening batches.
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+              <button 
+                type="button"
+                onClick={() => onOpenCheckout ? onOpenCheckout() : null}
+                style={{
+                  backgroundColor: '#991B1B',
+                  color: '#FFFFFF',
+                  padding: '14px 28px',
+                  borderRadius: '9999px',
+                  fontSize: '13.5px',
+                  fontWeight: 600,
+                  border: 'none',
+                  cursor: 'pointer',
+                  boxShadow: '0 8px 20px rgba(153, 27, 27, 0.20)',
+                  transition: 'background-color 0.2s ease'
+                }}
+              >
+                <span>Book 3 Free Demos &rarr;</span>
+              </button>
+              <a 
+                href="tel:+919204123453"
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #D8CCBE',
+                  color: '#231418',
+                  padding: '14px 28px',
+                  borderRadius: '9999px',
+                  fontSize: '13.5px',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.2s ease'
+                }}
+              >
+                <Phone size={14} style={{ color: '#991B1B', flexShrink: 0 }} />
+                <span>Call Helpline: 9204123453</span>
+              </a>
+            </div>
+          </FadeUp>
         </div>
       </section>
 

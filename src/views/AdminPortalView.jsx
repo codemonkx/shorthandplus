@@ -1860,54 +1860,214 @@ export default function AdminPortalView({
   return (
     <div className="admin-portal-wrapper">
       
-      {/* Top Admin Navigation Header */}
-      <header className="admin-header-strip">
-        <div className="admin-header-container">
-          <div className="admin-brand-cluster">
-            <div className="admin-badge-squircle">
-              <ShieldCheck size={22} color="#FFFFFF" strokeWidth={2.4} />
-            </div>
-            <div>
-              <div className="admin-brand-title">
-                <span>Director Administration Console</span>
-                <span className="badge-admin-role">
-                  <Crown size={11} className="text-amber-600" />
-                  <span>Super Admin</span>
+      {/* Top Admin Navigation Header — Executive Deep Burgundy-Espresso (#231418) Command Bar */}
+      <header 
+        className="sticky top-0 z-30 bg-[#231418] text-[#FAF6F0] border-b border-[#3A2329] shadow-[0_8px_28px_rgba(35,20,24,0.14)] w-full"
+        style={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 30,
+          backgroundColor: '#231418',
+          color: '#FAF6F0',
+          borderBottom: '1px solid #3A2329',
+          boxShadow: '0 8px 28px rgba(35, 20, 24, 0.14)',
+          width: '100%'
+        }}
+      >
+        <div 
+          className="max-w-7xl mx-auto px-6 py-3.5 flex flex-wrap items-center justify-between gap-4"
+          style={{
+            maxWidth: '1280px',
+            margin: '0 auto',
+            padding: '14px 24px',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '16px',
+            boxSizing: 'border-box'
+          }}
+        >
+          {/* Left Brand & Identity Block */}
+          <div className="flex items-center gap-3.5 min-w-0" style={{ display: 'flex', alignItems: 'center', gap: '14px', minWidth: 0 }}>
+            <img 
+              src="/assets/logo-big-s.png" 
+              alt="Shorthand Plus" 
+              className="w-9 h-9 object-contain shrink-0 rounded-lg"
+              style={{
+                width: '36px',
+                height: '36px',
+                objectFit: 'contain',
+                flexShrink: 0,
+                borderRadius: '8px'
+              }}
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+            <div style={{ minWidth: 0 }}>
+              <div className="flex flex-wrap items-center gap-2.5" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px' }}>
+                <span 
+                  className="font-serif font-normal text-2xl sm:text-[1.65rem] leading-none tracking-[-0.015em] text-[#FAF6F0]"
+                  style={{ 
+                    fontFamily: "'Instrument Serif', Georgia, serif", 
+                    fontSize: 'clamp(1.4rem, 2vw, 1.65rem)', 
+                    fontWeight: 400, 
+                    color: '#FAF6F0', 
+                    letterSpacing: '-0.015em',
+                    lineHeight: 1
+                  }}
+                >
+                  Director <span className="italic text-[#E5B8BE]" style={{ fontStyle: 'italic', color: '#E5B8BE' }}>Administration</span> Console
+                </span>
+                <span 
+                  className="bg-[#3A2228] border border-[#5A363F] text-[#E5B8BE] text-[10px] font-semibold uppercase tracking-[0.14em] px-2.5 py-0.5 rounded-full inline-flex items-center"
+                  style={{
+                    backgroundColor: '#3A2228',
+                    border: '1px solid #5A363F',
+                    color: '#E5B8BE',
+                    fontSize: '10px',
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.14em',
+                    padding: '2px 10px',
+                    borderRadius: '9999px',
+                    display: 'inline-flex',
+                    alignItems: 'center'
+                  }}
+                >
+                  Super Admin
                 </span>
               </div>
-              <div className="admin-brand-sub-row">
-                <span>Gaya Shorthand Classes • ShorthandPlus Unified Management</span>
-                <span className="admin-dot-divider">•</span>
-                <span className="admin-status-live">
-                  <span className="admin-live-pulse-dot" />
+              <div 
+                className="mt-1 flex flex-wrap items-center gap-2 text-xs text-[#A89397]"
+                style={{
+                  marginTop: '4px',
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  alignItems: 'center',
+                  gap: '8px',
+                  fontSize: '12px',
+                  color: '#A89397'
+                }}
+              >
+                <span>Gaya Shorthand Classes · Unified Management</span>
+                <span style={{ color: '#5A363F' }}>•</span>
+                <span className="inline-flex items-center gap-1.5" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#86EFAC', fontWeight: 500 }}>
+                  <span 
+                    style={{ 
+                      width: '6px', 
+                      height: '6px', 
+                      borderRadius: '50%', 
+                      backgroundColor: '#6EE7B7', 
+                      display: 'inline-block',
+                      boxShadow: '0 0 0 2px rgba(110, 231, 183, 0.25)'
+                    }} 
+                  />
                   <span>Clearance Active</span>
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="admin-header-actions">
-            {/* 1. Security & Session */}
-            <div className="admin-session-group">
+          {/* Right Action Controls */}
+          <div className="flex items-center gap-2.5 shrink-0" style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+            {/* 1. View Site Link */}
+            <a 
+              href="/"
+              className="bg-white/5 hover:bg-white/10 border border-[#4A2E35] text-[#D6C7CA] hover:text-[#FAF6F0] px-4 py-2 rounded-full text-xs font-medium transition-colors inline-flex items-center gap-1.5"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid #4A2E35',
+                color: '#D6C7CA',
+                padding: '8px 16px',
+                borderRadius: '9999px',
+                fontSize: '12px',
+                fontWeight: 500,
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                transition: 'all 0.15s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                e.currentTarget.style.color = '#FAF6F0';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                e.currentTarget.style.color = '#D6C7CA';
+              }}
+              title="Return to Public Website"
+            >
+              <ArrowLeft size={13} />
+              <span>← View Site</span>
+            </a>
+
+            {/* 2. Lock Console */}
+            <button 
+              type="button"
+              className="bg-white/5 hover:bg-white/10 border border-[#4A2E35] text-[#FAF6F0] px-4 py-2 rounded-full text-xs font-semibold transition-colors inline-flex items-center gap-1.5"
+              onClick={handleLockConsole}
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid #4A2E35',
+                color: '#FAF6F0',
+                padding: '8px 16px',
+                borderRadius: '9999px',
+                fontSize: '12px',
+                fontWeight: 600,
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                transition: 'all 0.15s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+              }}
+              title="Lock Console & Clear Clearance Session"
+            >
+              <Lock size={13} />
+              <span>Lock Console</span>
+            </button>
+
+            {/* 3. Sign Out */}
+            {onLogout && (
               <button 
-                className="admin-toolbar-btn admin-btn-neutral"
-                onClick={handleLockConsole}
-                title="Lock Console & Clear Clearance Session"
+                type="button"
+                className="bg-[#991B1B] hover:bg-[#B91C1C] text-white px-4 py-2 rounded-full text-xs font-semibold shadow-[0_4px_14px_rgba(153,27,27,0.35)] transition-colors inline-flex items-center gap-1.5"
+                onClick={onLogout}
+                style={{
+                  backgroundColor: '#991B1B',
+                  border: 'none',
+                  color: '#FFFFFF',
+                  padding: '8px 16px',
+                  borderRadius: '9999px',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  boxShadow: '0 4px 14px rgba(153, 27, 27, 0.35)',
+                  transition: 'all 0.15s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#B91C1C';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#991B1B';
+                }}
+                title="Sign Out to Homepage"
               >
-                <Lock size={13} />
-                <span>Lock Console</span>
+                <LogOut size={13} />
+                <span>Sign Out</span>
               </button>
-              {onLogout && (
-                <button 
-                  className="admin-toolbar-btn admin-btn-signout"
-                  onClick={onLogout}
-                  title="Sign Out to Homepage"
-                >
-                  <LogOut size={13} />
-                  <span>Sign Out</span>
-                </button>
-              )}
-            </div>
+            )}
           </div>
         </div>
       </header>
@@ -1918,39 +2078,45 @@ export default function AdminPortalView({
         {/* KPI Summary Cards: Total Students, Total Audio Tests, Total Typing Tests */}
         <div className="admin-kpi-grid">
           <div className="saas-card admin-kpi-card">
-            <div className="kpi-icon-wrap bg-stone-100">
-              <Users size={20} className="text-stone-800" />
+            <div className="kpi-icon-wrap" style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: '#EFE7DC', color: '#991B1B', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <Users size={20} color="#991B1B" />
             </div>
             <div className="kpi-info-col">
               <span className="kpi-label-text">Total Students</span>
-              <div className="kpi-val-number font-mono">{backendStats?.totalStudents ?? students.length}</div>
-              <span className="kpi-trend text-emerald font-mono">
+              <div className="kpi-val-number font-serif" style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '2rem', fontWeight: 400, color: '#231418', lineHeight: 1 }}>
+                {backendStats?.totalStudents ?? students.length}
+              </div>
+              <span className="kpi-trend" style={{ color: '#1F6B48', fontWeight: 600 }}>
                 {backendStats?.activeSubscriptions ?? students.filter(s => s.status === 'Active' || s.status === 'active').length} Active Enrolled
               </span>
             </div>
           </div>
 
           <div className="saas-card admin-kpi-card">
-            <div className="kpi-icon-wrap bg-amber-50">
-              <Headphones size={20} className="text-amber-700" />
+            <div className="kpi-icon-wrap" style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: '#EFE7DC', color: '#991B1B', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <Headphones size={20} color="#991B1B" />
             </div>
             <div className="kpi-info-col">
               <span className="kpi-label-text">Total Audio Tests</span>
-              <div className="kpi-val-number font-mono">{backendStats?.totalAudioTests ?? tests.length} Tests</div>
-              <span className="kpi-trend text-stone-700 font-mono">
+              <div className="kpi-val-number font-serif" style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '2rem', fontWeight: 400, color: '#231418', lineHeight: 1 }}>
+                {backendStats?.totalAudioTests ?? tests.length} Tests
+              </div>
+              <span className="kpi-trend" style={{ color: '#594A4D', fontWeight: 500 }}>
                 {tests.map(t => t.speed || t.speed_str).filter(Boolean).slice(0, 3).join(', ') || '80, 100 WPM'} Active Audio
               </span>
             </div>
           </div>
 
           <div className="saas-card admin-kpi-card">
-            <div className="kpi-icon-wrap bg-emerald-subtle">
-              <Keyboard size={20} className="text-emerald" />
+            <div className="kpi-icon-wrap" style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: '#EFE7DC', color: '#991B1B', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <Keyboard size={20} color="#991B1B" />
             </div>
             <div className="kpi-info-col">
               <span className="kpi-label-text">Total Typing Tests</span>
-              <div className="kpi-val-number font-mono">{backendStats?.totalTypingTests ?? typingTests.length} Tests</div>
-              <span className="kpi-trend text-emerald font-mono">
+              <div className="kpi-val-number font-serif" style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '2rem', fontWeight: 400, color: '#231418', lineHeight: 1 }}>
+                {backendStats?.totalTypingTests ?? typingTests.length} Tests
+              </div>
+              <span className="kpi-trend" style={{ color: '#594A4D', fontWeight: 500 }}>
                 {typingTests.map(t => (t.language && t.language.includes('Hindi')) ? 'Hindi' : 'English').filter((v, i, a) => a.indexOf(v) === i).join(' & ')} Practice Sets
               </span>
             </div>
@@ -2054,10 +2220,25 @@ export default function AdminPortalView({
                   href={api.admin.getResultsCsvUrl()}
                   download="shorthand_results_register.csv"
                   className="btn-add-candidate-glow"
-                  style={{ background: '#FFFFFF', color: '#18181b', border: '1px solid #e4e4e7', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                  style={{ 
+                    backgroundColor: '#231418', 
+                    color: '#FAF6F0', 
+                    border: '1px solid #231418', 
+                    borderRadius: '9999px',
+                    padding: '8px 18px',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    textDecoration: 'none', 
+                    display: 'inline-flex', 
+                    alignItems: 'center', 
+                    gap: '6px',
+                    transition: 'all 0.15s ease'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3A2228'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#231418'}
                   title="Download complete examination results register as CSV"
                 >
-                  <Download size={15} />
+                  <Download size={14} />
                   <span>Export Results (CSV)</span>
                 </a>
               </div>
@@ -2250,7 +2431,14 @@ export default function AdminPortalView({
                               className="admin-btn-action btn-extend"
                               onClick={() => extendStudentPlan(s.id)}
                               title="Extend validity +30 days (Saved to Database)"
-                              style={{ padding: '0.24rem 0.45rem', fontSize: '0.72rem' }}
+                              style={{ 
+                                padding: '0.28rem 0.65rem', 
+                                fontSize: '0.72rem', 
+                                borderRadius: '9999px',
+                                backgroundColor: '#F4EFE7',
+                                color: '#594A4D',
+                                border: '1px solid #E5DBD0'
+                              }}
                             >
                               <Clock size={11} />
                               <span>+30d</span>
@@ -2259,7 +2447,14 @@ export default function AdminPortalView({
                               className="admin-btn-action"
                               onClick={() => resetStudentPassword(s.id, s.name)}
                               title="Reset student password"
-                              style={{ background: '#FFFFFF', color: '#0F172A', border: '1px solid #E2E8F0', padding: '0.24rem 0.45rem', fontSize: '0.72rem' }}
+                              style={{ 
+                                backgroundColor: '#FFFFFF', 
+                                color: '#594A4D', 
+                                border: '1px solid #DFD4C6', 
+                                borderRadius: '9999px',
+                                padding: '0.28rem 0.65rem', 
+                                fontSize: '0.72rem' 
+                              }}
                             >
                               <Key size={11} />
                               <span>Reset</span>
@@ -2268,7 +2463,14 @@ export default function AdminPortalView({
                               className={`admin-btn-action ${s.status === 'Active' && s.daysRemaining > 0 ? 'btn-suspend' : 'btn-activate'}`}
                               onClick={() => toggleStudentStatus(s.id)}
                               title={s.status === 'Active' ? 'Suspend candidate account' : 'Activate candidate account'}
-                              style={{ padding: '0.24rem 0.45rem', fontSize: '0.72rem' }}
+                              style={{ 
+                                padding: '0.28rem 0.65rem', 
+                                fontSize: '0.72rem', 
+                                borderRadius: '9999px',
+                                backgroundColor: s.status === 'Active' && s.daysRemaining > 0 ? '#FCEEEE' : '#EBF5EF',
+                                color: s.status === 'Active' && s.daysRemaining > 0 ? '#991B1B' : '#1F6B48',
+                                border: `1px solid ${s.status === 'Active' && s.daysRemaining > 0 ? '#EED2D2' : '#CBE3D4'}`
+                              }}
                             >
                               {s.status === 'Active' && s.daysRemaining > 0 ? 'Suspend' : 'Activate'}
                             </button>
@@ -2277,6 +2479,7 @@ export default function AdminPortalView({
                               className="admin-btn-action btn-delete"
                               onClick={() => deleteStudent(s.id, s.name)}
                               title={`Permanently remove ${s.name} from portal`}
+                              style={{ borderRadius: '9999px' }}
                             >
                               <Trash2 size={11} />
                             </button>
@@ -2299,19 +2502,19 @@ export default function AdminPortalView({
                   justifyContent: 'space-between',
                   flexWrap: 'wrap',
                   gap: '1rem',
-                  padding: '0.9rem 1.15rem',
+                  padding: '1rem 1.25rem',
                   marginTop: '0.85rem',
-                  background: '#F8FAFC',
-                  borderRadius: '10px',
-                  border: '1px solid #E2E8F0'
+                  background: '#FAF7F2',
+                  borderRadius: '14px',
+                  border: '1px solid #EDE5DA'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '0.84rem', color: '#64748B' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '0.84rem', color: '#594A4D' }}>
                   <span>
-                    Showing <strong style={{ color: '#0F172A' }}>{candidateStartIndex + 1}–{candidateEndIndex}</strong> of <strong style={{ color: '#0F172A' }}>{filteredStudents.length}</strong> candidates
+                    Showing <strong style={{ color: '#231418' }}>{candidateStartIndex + 1}–{candidateEndIndex}</strong> of <strong style={{ color: '#231418' }}>{filteredStudents.length}</strong> candidates
                   </span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <span style={{ fontSize: '0.8rem' }}>Rows per page:</span>
+                    <span style={{ fontSize: '0.8rem', color: '#8A7B7E' }}>Rows per page:</span>
                     <select 
                       value={candidatePageSize}
                       onChange={(e) => {
@@ -2319,13 +2522,13 @@ export default function AdminPortalView({
                         setCandidatePage(1);
                       }}
                       style={{
-                        padding: '0.28rem 0.5rem',
-                        borderRadius: '6px',
-                        border: '1px solid #CBD5E1',
+                        padding: '0.3rem 0.65rem',
+                        borderRadius: '9999px',
+                        border: '1px solid #DFD4C6',
                         background: '#FFFFFF',
                         fontSize: '0.82rem',
                         fontWeight: 600,
-                        color: '#0F172A',
+                        color: '#231418',
                         cursor: 'pointer'
                       }}
                     >
@@ -2345,11 +2548,11 @@ export default function AdminPortalView({
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '4px',
-                      padding: '0.4rem 0.8rem',
-                      borderRadius: '6px',
-                      border: '1px solid #E2E8F0',
-                      background: candidatePage <= 1 ? '#F1F5F9' : '#FFFFFF',
-                      color: candidatePage <= 1 ? '#94A3B8' : '#0F172A',
+                      padding: '0.4rem 0.85rem',
+                      borderRadius: '9999px',
+                      border: '1px solid #E0D5C7',
+                      background: candidatePage <= 1 ? '#F4EFE7' : '#FFFFFF',
+                      color: candidatePage <= 1 ? '#8A7B7E' : '#231418',
                       fontSize: '0.82rem',
                       fontWeight: 600,
                       cursor: candidatePage <= 1 ? 'not-allowed' : 'pointer',
@@ -2372,7 +2575,7 @@ export default function AdminPortalView({
                       }, [])
                       .map((p, idx) => {
                         if (p === -1) {
-                          return <span key={`ellipsis-${idx}`} style={{ padding: '0 4px', color: '#94A3B8', fontSize: '0.82rem' }}>...</span>;
+                          return <span key={`ellipsis-${idx}`} style={{ padding: '0 4px', color: '#8A7B7E', fontSize: '0.82rem' }}>...</span>;
                         }
                         const isActive = p === candidatePage;
                         return (
@@ -2381,15 +2584,15 @@ export default function AdminPortalView({
                             type="button"
                             onClick={() => setCandidatePage(p)}
                             style={{
-                              minWidth: '30px',
-                              height: '30px',
+                              minWidth: '32px',
+                              height: '32px',
                               display: 'inline-flex',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              borderRadius: '6px',
-                              border: isActive ? '1px solid #0F172A' : '1px solid #E2E8F0',
-                              background: isActive ? '#0F172A' : '#FFFFFF',
-                              color: isActive ? '#FFFFFF' : '#0F172A',
+                              borderRadius: '9999px',
+                              border: isActive ? '1px solid #231418' : '1px solid #E0D5C7',
+                              background: isActive ? '#231418' : '#FFFFFF',
+                              color: isActive ? '#FAF6F0' : '#231418',
                               fontSize: '0.82rem',
                               fontWeight: isActive ? 700 : 500,
                               cursor: 'pointer',
@@ -2411,11 +2614,11 @@ export default function AdminPortalView({
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '4px',
-                      padding: '0.4rem 0.8rem',
-                      borderRadius: '6px',
-                      border: '1px solid #E2E8F0',
-                      background: candidatePage >= candidateTotalPages ? '#F1F5F9' : '#FFFFFF',
-                      color: candidatePage >= candidateTotalPages ? '#94A3B8' : '#0F172A',
+                      padding: '0.4rem 0.85rem',
+                      borderRadius: '9999px',
+                      border: '1px solid #E0D5C7',
+                      background: candidatePage >= candidateTotalPages ? '#F4EFE7' : '#FFFFFF',
+                      color: candidatePage >= candidateTotalPages ? '#8A7B7E' : '#231418',
                       fontSize: '0.82rem',
                       fontWeight: 600,
                       cursor: candidatePage >= candidateTotalPages ? 'not-allowed' : 'pointer',
