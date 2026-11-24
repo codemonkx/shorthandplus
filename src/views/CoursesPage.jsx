@@ -15,6 +15,8 @@ import {
   Sparkles,
   FileText
 } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { FadeUp, StaggerContainer, StaggerItem, TRANSITION_EASE } from '../components/MotionPrimitives';
 import { PRICING_PLANS, TARGET_EXAMINATIONS, TEACHING_METHODOLOGY } from '../data/mockData';
 import '../landing-redesign.css';
 
@@ -432,34 +434,35 @@ export default function CoursesPage({
     return (
       <div 
         key={course.id}
+        className="bg-white border border-[#E8DFD3] hover:border-[#D4C6B6] rounded-2xl overflow-hidden flex flex-col justify-between shadow-[0_4px_20px_rgba(35,20,24,0.04)] transition-all duration-200 hover:-translate-y-1"
         style={{
-          background: '#F7F5F0',
-          border: '1px solid #D1CBBF',
+          backgroundColor: '#FFFFFF',
+          border: '1px solid #E8DFD3',
           borderRadius: '16px',
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          boxShadow: '0 4px 16px rgba(22, 22, 26, 0.04)',
-          transition: 'all 0.2s ease',
-          boxSizing: 'border-box'
+          boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)'
         }}
       >
         <div>
           {/* Top Metadata Header */}
           <div 
+            className="bg-[#F5EFE6] border-b border-[#E8DFD3] px-6 py-3 flex items-center justify-between"
             style={{
-              background: '#EFECE5',
-              borderBottom: '1px solid #D6D0C4',
-              padding: '12px 20px',
+              backgroundColor: '#F5EFE6',
+              borderBottom: '1px solid #E8DFD3',
+              padding: '12px 24px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between'
             }}
           >
             <span 
+              className="text-[11px] font-bold uppercase tracking-wider text-[#991B1B]"
               style={{
-                fontSize: '10px',
+                fontSize: '11px',
                 fontWeight: 700,
                 textTransform: 'uppercase',
                 letterSpacing: '0.14em',
@@ -469,11 +472,12 @@ export default function CoursesPage({
               {numLabel}
             </span>
             <span 
+              className="font-mono text-xs font-semibold text-[#231418] tabular-nums"
               style={{
                 fontSize: '12px',
                 fontFamily: "'JetBrains Mono', monospace",
                 fontWeight: 600,
-                color: '#16161A',
+                color: '#231418',
                 fontVariantNumeric: 'tabular-nums'
               }}
             >
@@ -482,13 +486,13 @@ export default function CoursesPage({
           </div>
 
           {/* Body */}
-          <div style={{ padding: '24px 20px 20px', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ padding: '24px', display: 'flex', flexDirection: 'column' }}>
             <h3 
+              className="text-lg font-bold text-[#231418] mb-2 leading-snug"
               style={{
-                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                 fontSize: '18px',
                 fontWeight: 700,
-                color: '#16161A',
+                color: '#231418',
                 margin: '0 0 8px 0',
                 lineHeight: 1.3
               }}
@@ -496,9 +500,10 @@ export default function CoursesPage({
               {course.title}
             </h3>
             <p 
+              className="text-[13px] text-[#594A4D] leading-relaxed mb-4"
               style={{
                 fontSize: '13px',
-                color: '#44403C',
+                color: '#594A4D',
                 lineHeight: 1.55,
                 margin: '0 0 16px 0'
               }}
@@ -509,31 +514,31 @@ export default function CoursesPage({
             {/* Flush Specs Strip (Duration & Format) */}
             <div 
               style={{
-                borderTop: '1px solid #E2DDD3',
-                borderBottom: '1px solid #E2DDD3',
+                borderTop: '1px solid #EDE5DA',
+                borderBottom: '1px solid #EDE5DA',
                 padding: '12px 0',
                 margin: '0 0 16px 0',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '8px',
                 fontSize: '12px',
-                color: '#44403C'
+                color: '#594A4D'
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Clock size={14} style={{ color: '#57534E', flexShrink: 0 }} />
-                <span><strong style={{ color: '#16161A', fontWeight: 600 }}>Duration:</strong> {course.duration}</span>
+                <Clock size={14} style={{ color: '#8A7B7E', flexShrink: 0 }} />
+                <span><strong style={{ color: '#231418', fontWeight: 600 }}>Duration:</strong> {course.duration}</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <GraduationCap size={14} style={{ color: '#57534E', flexShrink: 0 }} />
-                <span><strong style={{ color: '#16161A', fontWeight: 600 }}>Format:</strong> {course.mode}</span>
+                <GraduationCap size={14} style={{ color: '#8A7B7E', flexShrink: 0 }} />
+                <span><strong style={{ color: '#231418', fontWeight: 600 }}>Format:</strong> {course.mode}</span>
               </div>
             </div>
 
             {/* Curriculum Highlights (Max 3) */}
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 16px 0', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {(course.highlights || course.syllabus.slice(0, 3)).slice(0, 3).map((item, idx) => (
-                <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '12px', color: '#44403C', lineHeight: 1.45 }}>
+                <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '12px', color: '#594A4D', lineHeight: 1.45 }}>
                   <Check size={14} style={{ color: '#991B1B', marginTop: '2px', flexShrink: 0 }} />
                   <span>{item}</span>
                 </li>
@@ -544,10 +549,11 @@ export default function CoursesPage({
             <button
               type="button"
               onClick={() => toggleSyllabus(course.id)}
+              className="text-xs font-semibold text-[#8A7B7E] hover:text-[#231418] inline-flex items-center gap-1 py-1 cursor-pointer transition-colors"
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: '#57534E',
+                color: '#8A7B7E',
                 fontSize: '12px',
                 fontWeight: 600,
                 cursor: 'pointer',
@@ -564,17 +570,18 @@ export default function CoursesPage({
 
             {isSyllabusOpen && (
               <div 
+                className="bg-[#FAF7F2] border border-[#E8DFD3] rounded-xl p-3.5 mt-3"
                 style={{
-                  background: '#EFECE5',
-                  border: '1px solid #D6D0C4',
-                  borderRadius: '10px',
+                  backgroundColor: '#FAF7F2',
+                  border: '1px solid #E8DFD3',
+                  borderRadius: '12px',
                   padding: '12px 14px',
                   marginTop: '12px'
                 }}
               >
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   {course.syllabus.map((s, idx) => (
-                    <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '6px', fontSize: '11px', color: '#44403C', lineHeight: 1.4 }}>
+                    <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '6px', fontSize: '11px', color: '#594A4D', lineHeight: 1.4 }}>
                       <span style={{ color: '#991B1B', fontWeight: 700 }}>&bull;</span>
                       <span>{s}</span>
                     </li>
@@ -587,10 +594,11 @@ export default function CoursesPage({
 
         {/* Card Footer */}
         <div 
+          className="bg-[#FAF7F2] border-t border-[#EDE5DA] px-6 py-4 flex items-center justify-between gap-3"
           style={{
-            background: '#F3F0E9',
-            borderTop: '1px solid #DFD9CD',
-            padding: '16px 20px',
+            backgroundColor: '#FAF7F2',
+            borderTop: '1px solid #EDE5DA',
+            padding: '16px 24px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -600,10 +608,11 @@ export default function CoursesPage({
           <div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
               <span 
+                className="font-sans font-bold text-xl text-[#231418] tabular-nums"
                 style={{
                   fontSize: '20px',
-                  fontWeight: 800,
-                  color: '#16161A',
+                  fontWeight: 700,
+                  color: '#231418',
                   fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                   fontVariantNumeric: 'tabular-nums'
                 }}
@@ -611,12 +620,12 @@ export default function CoursesPage({
                 {course.fee}
               </span>
               {course.originalFee && (
-                <span style={{ fontSize: '12px', color: '#78716C', textDecoration: 'line-through' }}>
+                <span className="text-xs text-[#8A7B7E] line-through font-sans tabular-nums" style={{ fontSize: '12px', color: '#8A7B7E', textDecoration: 'line-through' }}>
                   {course.originalFee}
                 </span>
               )}
             </div>
-            <span style={{ fontSize: '11px', color: '#57534E', display: 'block', marginTop: '2px' }}>
+            <span className="text-[11px] text-[#8A7B7E] block mt-0.5" style={{ fontSize: '11px', color: '#8A7B7E', display: 'block', marginTop: '2px' }}>
               {course.feeType || 'Official Curriculum'}
             </span>
           </div>
@@ -624,12 +633,13 @@ export default function CoursesPage({
           <button
             type="button"
             onClick={() => handleEnroll(course)}
+            className="bg-[#991B1B] hover:bg-[#7F1D1D] text-white px-5 py-2 rounded-full text-xs font-semibold shadow-[0_2px_8px_rgba(153,27,27,0.25)] flex items-center gap-1.5 cursor-pointer transition-colors"
             style={{
-              background: '#991B1B',
+              backgroundColor: '#991B1B',
               color: '#FFFFFF',
               border: 'none',
-              padding: '10px 18px',
-              borderRadius: '10px',
+              padding: '10px 20px',
+              borderRadius: '9999px',
               fontSize: '12px',
               fontWeight: 600,
               cursor: 'pointer',
@@ -637,11 +647,9 @@ export default function CoursesPage({
               alignItems: 'center',
               gap: '6px',
               whiteSpace: 'nowrap',
-              boxShadow: '0 2px 6px rgba(153, 27, 27, 0.25)',
+              boxShadow: '0 2px 8px rgba(153, 27, 27, 0.25)',
               transition: 'background-color 0.15s ease'
             }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#7F1D1D'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#991B1B'}
           >
             <span>Enroll Now</span>
             <ArrowRight size={13} />
@@ -658,46 +666,47 @@ export default function CoursesPage({
       return (
         <div 
           key={item.id}
+          className="bg-white border border-[#E8DFD3] rounded-2xl p-6 flex flex-col justify-between shadow-[0_4px_20px_rgba(35,20,24,0.04)]"
           style={{
-            background: '#F7F5F0',
-            border: '1px solid #D1CBBF',
+            backgroundColor: '#FFFFFF',
+            border: '1px solid #E8DFD3',
             borderRadius: '16px',
             padding: '24px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            boxShadow: '0 4px 16px rgba(22, 22, 26, 0.04)',
+            boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
             boxSizing: 'border-box'
           }}
         >
           <div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-              <span style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#991B1B' }}>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#991B1B]" style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#991B1B' }}>
                 ONLINE PASS
               </span>
               {item.badge && (
-                <span style={{ fontSize: '10px', fontWeight: 600, background: '#EAE5DC', border: '1px solid #D6D0C4', color: '#44403C', padding: '2px 8px', borderRadius: '4px' }}>
+                <span className="text-[10px] font-semibold bg-[#EFE7DC] border border-[#E0D5C7] text-[#594A4D] px-2 py-0.5 rounded-full" style={{ fontSize: '10px', fontWeight: 600, background: '#EFE7DC', border: '1px solid #E0D5C7', color: '#594A4D', padding: '2px 8px', borderRadius: '9999px' }}>
                   {item.badge}
                 </span>
               )}
             </div>
-            <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#16161A', margin: '0 0 6px 0' }}>
+            <h3 className="text-lg font-bold text-[#231418] mb-1.5" style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: '0 0 6px 0' }}>
               {item.name}
             </h3>
-            <p style={{ fontSize: '12px', color: '#44403C', margin: '0 0 16px 0', lineHeight: 1.5 }}>
+            <p className="text-xs text-[#594A4D] mb-4 leading-relaxed" style={{ fontSize: '12px', color: '#594A4D', margin: '0 0 16px 0', lineHeight: 1.5 }}>
               {item.description}
             </p>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', margin: '0 0 16px 0' }}>
-              <span style={{ fontSize: '24px', fontWeight: 800, color: '#16161A', fontVariantNumeric: 'tabular-nums' }}>
+              <span className="font-sans font-bold text-2xl text-[#231418] tabular-nums" style={{ fontSize: '24px', fontWeight: 700, color: '#231418', fontVariantNumeric: 'tabular-nums' }}>
                 ₹{item.price}
               </span>
-              <span style={{ fontSize: '12px', color: '#57534E' }}>
+              <span className="text-xs text-[#8A7B7E]" style={{ fontSize: '12px', color: '#8A7B7E' }}>
                 / {item.duration}
               </span>
             </div>
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 20px 0', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.features.map((f, i) => (
-                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '12px', color: '#44403C' }}>
+                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '12px', color: '#594A4D' }}>
                   <Check size={14} style={{ color: '#991B1B', marginTop: '2px', flexShrink: 0 }} />
                   <span>{f}</span>
                 </li>
@@ -710,13 +719,14 @@ export default function CoursesPage({
               if (onSelectPlan) onSelectPlan(item.id);
               if (onOpenCheckout) onOpenCheckout(item.id);
             }}
+            className="w-full bg-[#991B1B] hover:bg-[#7F1D1D] text-white py-2.5 rounded-full text-xs font-semibold shadow-[0_2px_8px_rgba(153,27,27,0.25)] cursor-pointer transition-colors"
             style={{
               width: '100%',
-              background: '#991B1B',
+              backgroundColor: '#991B1B',
               color: '#FFFFFF',
               border: 'none',
               padding: '12px',
-              borderRadius: '12px',
+              borderRadius: '9999px',
               fontSize: '13px',
               fontWeight: 600,
               cursor: 'pointer'
@@ -733,71 +743,73 @@ export default function CoursesPage({
     return (
       <div 
         key={item.id}
+        className="bg-white border border-[#E8DFD3] hover:border-[#D4C6B6] rounded-2xl overflow-hidden flex flex-col justify-between shadow-[0_4px_20px_rgba(35,20,24,0.04)] transition-all duration-200"
         style={{
-          background: '#F7F5F0',
-          border: '1px solid #D1CBBF',
+          backgroundColor: '#FFFFFF',
+          border: '1px solid #E8DFD3',
           borderRadius: '16px',
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          boxShadow: '0 4px 16px rgba(22, 22, 26, 0.04)',
+          boxShadow: '0 4px 20px rgba(35, 20, 24, 0.04)',
           boxSizing: 'border-box'
         }}
       >
         <div>
           <div 
+            className="bg-[#F5EFE6] border-b border-[#E8DFD3] px-6 py-3 flex items-center justify-between"
             style={{
-              background: '#EFECE5',
-              borderBottom: '1px solid #D6D0C4',
-              padding: '12px 20px',
+              backgroundColor: '#F5EFE6',
+              borderBottom: '1px solid #E8DFD3',
+              padding: '12px 24px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between'
             }}
           >
-            <span style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#991B1B' }}>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#991B1B]" style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#991B1B' }}>
               {item.category}
             </span>
-            <span style={{ fontSize: '12px', fontFamily: "'JetBrains Mono', monospace", fontWeight: 600, color: '#16161A', fontVariantNumeric: 'tabular-nums' }}>
+            <span className="font-mono text-xs font-semibold text-[#231418] tabular-nums" style={{ fontSize: '12px', fontFamily: "'JetBrains Mono', monospace", fontWeight: 600, color: '#231418', fontVariantNumeric: 'tabular-nums' }}>
               {item.speedTarget}
             </span>
           </div>
 
-          <div style={{ padding: '24px 20px 20px', display: 'flex', flexDirection: 'column' }}>
-            <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#16161A', margin: '0 0 8px 0', lineHeight: 1.3 }}>
+          <div style={{ padding: '24px', display: 'flex', flexDirection: 'column' }}>
+            <h3 className="text-lg font-bold text-[#231418] mb-2 leading-snug" style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: '0 0 8px 0', lineHeight: 1.3 }}>
               {item.title}
             </h3>
-            <p style={{ fontSize: '13px', color: '#44403C', lineHeight: 1.55, margin: '0 0 16px 0' }}>
+            <p className="text-[13px] text-[#594A4D] leading-relaxed mb-4" style={{ fontSize: '13px', color: '#594A4D', lineHeight: 1.55, margin: '0 0 16px 0' }}>
               {item.description}
             </p>
 
             <div 
               style={{
-                borderTop: '1px solid #E2DDD3',
-                borderBottom: '1px solid #E2DDD3',
+                borderTop: '1px solid #EDE5DA',
+                borderBottom: '1px solid #EDE5DA',
                 padding: '12px 0',
                 margin: '0 0 16px 0',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '8px',
                 fontSize: '12px',
-                color: '#44403C'
+                color: '#594A4D'
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Clock size={14} style={{ color: '#57534E', flexShrink: 0 }} />
-                <span><strong style={{ color: '#16161A', fontWeight: 600 }}>Duration:</strong> {item.duration}</span>
+                <Clock size={14} style={{ color: '#8A7B7E', flexShrink: 0 }} />
+                <span><strong style={{ color: '#231418', fontWeight: 600 }}>Duration:</strong> {item.duration}</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <GraduationCap size={14} style={{ color: '#57534E', flexShrink: 0 }} />
-                <span><strong style={{ color: '#16161A', fontWeight: 600 }}>Format:</strong> {item.mode}</span>
+                <GraduationCap size={14} style={{ color: '#8A7B7E', flexShrink: 0 }} />
+                <span><strong style={{ color: '#231418', fontWeight: 600 }}>Format:</strong> {item.mode}</span>
               </div>
             </div>
 
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 16px 0', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {(item.highlights || (item.syllabus || []).slice(0, 3)).slice(0, 3).map((h, idx) => (
-                <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '12px', color: '#44403C' }}>
+                <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '12px', color: '#594A4D' }}>
                   <Check size={14} style={{ color: '#991B1B', marginTop: '2px', flexShrink: 0 }} />
                   <span>{h}</span>
                 </li>
@@ -807,10 +819,11 @@ export default function CoursesPage({
             <button
               type="button"
               onClick={() => toggleSyllabus(item.id)}
+              className="text-xs font-semibold text-[#8A7B7E] hover:text-[#231418] inline-flex items-center gap-1 py-1 cursor-pointer transition-colors"
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: '#57534E',
+                color: '#8A7B7E',
                 fontSize: '12px',
                 fontWeight: 600,
                 cursor: 'pointer',
@@ -827,17 +840,18 @@ export default function CoursesPage({
 
             {isSyllabusOpen && item.syllabus && (
               <div 
+                className="bg-[#FAF7F2] border border-[#E8DFD3] rounded-xl p-3.5 mt-3"
                 style={{
-                  background: '#EFECE5',
-                  border: '1px solid #D6D0C4',
-                  borderRadius: '10px',
+                  backgroundColor: '#FAF7F2',
+                  border: '1px solid #E8DFD3',
+                  borderRadius: '12px',
                   padding: '12px 14px',
                   marginTop: '12px'
                 }}
               >
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   {item.syllabus.map((s, idx) => (
-                    <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '6px', fontSize: '11px', color: '#44403C', lineHeight: 1.4 }}>
+                    <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '6px', fontSize: '11px', color: '#594A4D', lineHeight: 1.4 }}>
                       <span style={{ color: '#991B1B', fontWeight: 700 }}>&bull;</span>
                       <span>{s}</span>
                     </li>
@@ -849,10 +863,11 @@ export default function CoursesPage({
         </div>
 
         <div 
+          className="bg-[#FAF7F2] border-t border-[#EDE5DA] px-6 py-4 flex items-center justify-between gap-3"
           style={{
-            background: '#F3F0E9',
-            borderTop: '1px solid #DFD9CD',
-            padding: '16px 20px',
+            backgroundColor: '#FAF7F2',
+            borderTop: '1px solid #EDE5DA',
+            padding: '16px 24px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -861,16 +876,16 @@ export default function CoursesPage({
         >
           <div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
-              <span style={{ fontSize: '20px', fontWeight: 800, color: '#16161A', fontVariantNumeric: 'tabular-nums' }}>
+              <span className="font-sans font-bold text-xl text-[#231418] tabular-nums" style={{ fontSize: '20px', fontWeight: 700, color: '#231418', fontVariantNumeric: 'tabular-nums' }}>
                 {item.fee}
               </span>
               {item.originalFee && (
-                <span style={{ fontSize: '12px', color: '#78716C', textDecoration: 'line-through' }}>
+                <span className="text-xs text-[#8A7B7E] line-through font-sans tabular-nums" style={{ fontSize: '12px', color: '#8A7B7E', textDecoration: 'line-through' }}>
                   {item.originalFee}
                 </span>
               )}
             </div>
-            <span style={{ fontSize: '11px', color: '#57534E', display: 'block', marginTop: '2px' }}>
+            <span className="text-[11px] text-[#8A7B7E] block mt-0.5" style={{ fontSize: '11px', color: '#8A7B7E', display: 'block', marginTop: '2px' }}>
               {item.feeType || 'Official Curriculum'}
             </span>
           </div>
@@ -878,12 +893,13 @@ export default function CoursesPage({
           <button
             type="button"
             onClick={() => handleEnroll(item)}
+            className="bg-[#991B1B] hover:bg-[#7F1D1D] text-white px-5 py-2 rounded-full text-xs font-semibold shadow-[0_2px_8px_rgba(153,27,27,0.25)] flex items-center gap-1.5 cursor-pointer transition-colors"
             style={{
-              background: '#991B1B',
+              backgroundColor: '#991B1B',
               color: '#FFFFFF',
               border: 'none',
-              padding: '10px 18px',
-              borderRadius: '10px',
+              padding: '10px 20px',
+              borderRadius: '9999px',
               fontSize: '12px',
               fontWeight: 600,
               cursor: 'pointer',
@@ -903,11 +919,11 @@ export default function CoursesPage({
 
   return (
     <div 
-      className="sp-courses-root"
+      className="sp-courses-root bg-[#FBF8F3] min-h-screen text-[#231418]"
       style={{
-        backgroundColor: '#ECE8E0',
+        backgroundColor: '#FBF8F3',
         minHeight: '100vh',
-        color: '#16161A',
+        color: '#231418',
         fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
         width: '100%',
         margin: 0,
@@ -916,285 +932,194 @@ export default function CoursesPage({
     >
       
       {/* =========================================================================
-          SECTION 1: SEAMLESS WARM PARCHMENT HERO + FIND YOUR TRACK PANEL
+          SECTION 1: HERO SECTION WITH DECORATIVE PITMAN STROKES & 2x2 GOAL GRID
           ========================================================================= */}
       <section 
+        className="relative overflow-hidden bg-[#FBF8F3] pt-28 pb-12 lg:pt-32 lg:pb-14 border-b border-[#E5DBD0]"
         style={{
-          backgroundColor: '#ECE8E0',
-          borderBottom: '1px solid #D6D0C4',
-          width: '100%',
-          paddingTop: '112px',
-          paddingBottom: '56px',
-          position: 'relative'
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundColor: '#FBF8F3',
+          borderBottom: '1px solid #E5DBD0'
         }}
       >
+        {/* Subtle decorative Pitman shorthand line-art background */}
         <div 
           style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            paddingLeft: '24px',
-            paddingRight: '24px'
+            position: 'absolute',
+            inset: 0,
+            zIndex: 0,
+            overflow: 'hidden',
+            pointerEvents: 'none',
+            userSelect: 'none'
           }}
         >
-          <div className="sp-courses-hero-2col">
+          <svg 
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              opacity: 0.05,
+              pointerEvents: 'none'
+            }}
+            viewBox="0 0 1440 800" 
+            fill="none" 
+            preserveAspectRatio="xMidYMid slice" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line x1="880" y1="120" x2="1400" y2="120" stroke="#231418" strokeWidth="1" strokeDasharray="3 6" />
+            <line x1="880" y1="160" x2="1400" y2="160" stroke="#231418" strokeWidth="1" strokeDasharray="3 6" />
+            <path d="M1020 110 L1020 160 M1020 160 L1040 175" stroke="#231418" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M1080 115 C1105 130 1115 150 1095 160" stroke="#231418" strokeWidth="2" strokeLinecap="round" />
+            <path d="M1150 120 C1140 125 1145 135 1155 132 L1185 160" stroke="#231418" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="1240" cy="135" r="7" stroke="#231418" strokeWidth="2" />
+            <path d="M1247 135 L1285 158" stroke="#231418" strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="40" y1="680" x2="520" y2="680" stroke="#231418" strokeWidth="3 6" />
+            <path d="M40 680 C65 700 75 715 60 720" stroke="#231418" strokeWidth="2.4" strokeLinecap="round" />
+            <path d="M105 680 L135 725 L160 725" stroke="#231418" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="215" cy="695" r="7" stroke="#231418" strokeWidth="2" />
+            <path d="M222 695 L255 720" stroke="#231418" strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="sp-courses-hero-2col grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            {/* Left Column: Headline & Credentials */}
-            <div className="sp-courses-hero-col-left">
-              {/* Eyebrow with tiny static 6px crimson dot */}
-              <div 
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.16em',
-                  color: '#57534E',
-                  marginBottom: '14px'
-                }}
-              >
-                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#991B1B', display: 'inline-block', flexShrink: 0 }} />
-                <span>ACADEMY CURRICULUM &middot; GAYA CENTER &amp; LIVE ONLINE</span>
-              </div>
-
-              {/* H1 */}
-              <h1 
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontSize: 'clamp(2.1rem, 3.8vw, 3.25rem)',
-                  fontWeight: 800,
-                  letterSpacing: '-0.03em',
-                  lineHeight: 1.08,
-                  color: '#16161A',
-                  margin: '0 0 16px 0'
-                }}
-              >
-                Stenography Courses &amp; <span style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontStyle: 'italic', fontWeight: 400, color: '#991B1B', fontSize: '1.08em', letterSpacing: 'normal' }}>Examination</span> Programs
-              </h1>
-
-              {/* Subheadline */}
-              <p 
-                style={{
-                  fontSize: '16px',
-                  lineHeight: 1.625,
-                  color: '#44403C',
-                  maxWidth: '580px',
-                  margin: '0 0 24px 0'
-                }}
-              >
-                From absolute zero in Pitman Shorthand to cracking High Court &amp; SSC Stenographer skill tests at 50–140 WPM. Guided by <strong style={{ color: '#16161A', fontWeight: 600 }}>Shadab Sir (12+ Years Experience)</strong> with real-time dictations and automated error calculation.
-              </p>
-
-              {/* Stat Bar */}
-              <div 
-                style={{
-                  borderTop: '1px solid #D6D0C4',
-                  paddingTop: '20px',
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  gap: '12px 20px',
-                  fontSize: '12px',
-                  fontWeight: 500,
-                  color: '#57534E'
-                }}
-              >
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#991B1B' }} />
-                  <span style={{ color: '#16161A', fontWeight: 600 }}>15+ Structured Programs</span>
-                </div>
-                <span style={{ color: '#B8B1A3' }}>&middot;</span>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#991B1B' }} />
-                  <span>50–140 WPM Speed Range</span>
-                </div>
-                <span style={{ color: '#B8B1A3' }}>&middot;</span>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#991B1B' }} />
-                  <span>Offline &amp; Live Google Meet</span>
-                </div>
-                <span style={{ color: '#B8B1A3' }}>&middot;</span>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#991B1B' }} />
-                  <span>3 Free Demo Classes</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: "Find Your Track" Quick-Selector Panel */}
-            <div className="sp-courses-hero-col-right">
-              <div 
-                style={{
-                  background: '#F7F5F0',
-                  border: '1px solid #D1CBBF',
-                  borderRadius: '16px',
-                  padding: '24px',
-                  boxShadow: '0 14px 34px rgba(22, 22, 26, 0.06)'
-                }}
-              >
-                <div style={{ marginBottom: '16px' }}>
-                  <h3 
-                    style={{
-                      fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                      fontSize: '15px',
-                      fontWeight: 700,
-                      color: '#16161A',
-                      margin: '0 0 4px 0',
-                      letterSpacing: '-0.015em'
-                    }}
-                  >
-                    Not sure which batch fits?
-                  </h3>
-                  <p style={{ fontSize: '12px', color: '#57534E', margin: 0 }}>
-                    Select your exam goal to filter matching programs below:
-                  </p>
+            {/* Left Column (lg:col-span-7 min-w-0) */}
+            <div className="sp-courses-hero-col-left lg:col-span-7 min-w-0">
+              <FadeUp>
+                <div className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8A7B7E] mb-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B] inline-block shrink-0" />
+                  <span>ACADEMY CURRICULUM &middot; GAYA CENTER &amp; LIVE ONLINE</span>
                 </div>
 
-                <div 
+                <h1 
+                  className="font-serif font-normal text-4xl sm:text-5xl lg:text-[3.65rem] leading-[1.05] tracking-[-0.02em] text-[#231418] mt-3 mb-4"
                   style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-                    gap: '10px'
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(2.35rem, 4vw, 3.65rem)',
+                    fontWeight: 400,
+                    lineHeight: 1.05,
+                    letterSpacing: '-0.02em',
+                    color: '#231418'
                   }}
                 >
-                  {/* Goal 1: Beginner */}
-                  <button
-                    type="button"
-                    onClick={() => handleSelectFilter('pitman')}
-                    style={{
-                      background: '#EFECE5',
-                      border: '1px solid #D6D0C4',
-                      padding: '12px 14px',
-                      borderRadius: '12px',
-                      textAlign: 'left',
-                      cursor: 'pointer',
-                      transition: 'all 0.15s ease',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '3px'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#E4DFD5';
-                      e.currentTarget.style.borderColor = 'rgba(153, 27, 27, 0.4)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = '#EFECE5';
-                      e.currentTarget.style.borderColor = '#D6D0C4';
-                    }}
-                  >
-                    <span style={{ fontSize: '12px', fontWeight: 700, color: '#16161A', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <span>Beginner (0 WPM)</span>
-                      <ArrowRight size={12} style={{ color: '#991B1B' }} />
-                    </span>
-                    <span style={{ fontSize: '11px', color: '#57534E' }}>
-                      Learn Pitman from Zero
-                    </span>
-                  </button>
+                  Stenography Courses &amp; <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>Examination</span> Programs
+                </h1>
 
-                  {/* Goal 2: SSC Steno */}
-                  <button
-                    type="button"
-                    onClick={() => handleSelectFilter('ssc')}
-                    style={{
-                      background: '#EFECE5',
-                      border: '1px solid #D6D0C4',
-                      padding: '12px 14px',
-                      borderRadius: '12px',
-                      textAlign: 'left',
-                      cursor: 'pointer',
-                      transition: 'all 0.15s ease',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '3px'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#E4DFD5';
-                      e.currentTarget.style.borderColor = 'rgba(153, 27, 27, 0.4)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = '#EFECE5';
-                      e.currentTarget.style.borderColor = '#D6D0C4';
-                    }}
-                  >
-                    <span style={{ fontSize: '12px', fontWeight: 700, color: '#16161A', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <span>SSC Steno (80–100)</span>
-                      <ArrowRight size={12} style={{ color: '#991B1B' }} />
-                    </span>
-                    <span style={{ fontSize: '11px', color: '#57534E' }}>
-                      Grade C &amp; D Speed Batch
-                    </span>
-                  </button>
+                <p className="text-base text-[#594A4D] leading-relaxed max-w-[580px] mb-6">
+                  From absolute zero in Pitman Shorthand to cracking High Court &amp; SSC Stenographer skill tests at 50–140 WPM. Guided by <strong style={{ color: '#231418', fontWeight: 600 }}>Shadab Sir (12+ Years Experience)</strong> with real-time dictations and automated error calculation.
+                </p>
 
-                  {/* Goal 3: High Court */}
-                  <button
-                    type="button"
-                    onClick={() => handleSelectFilter('court')}
-                    style={{
-                      background: '#EFECE5',
-                      border: '1px solid #D6D0C4',
-                      padding: '12px 14px',
-                      borderRadius: '12px',
-                      textAlign: 'left',
-                      cursor: 'pointer',
-                      transition: 'all 0.15s ease',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '3px'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#E4DFD5';
-                      e.currentTarget.style.borderColor = 'rgba(153, 27, 27, 0.4)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = '#EFECE5';
-                      e.currentTarget.style.borderColor = '#D6D0C4';
-                    }}
-                  >
-                    <span style={{ fontSize: '12px', fontWeight: 700, color: '#16161A', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <span>High Court Legal</span>
-                      <ArrowRight size={12} style={{ color: '#991B1B' }} />
-                    </span>
-                    <span style={{ fontSize: '11px', color: '#57534E' }}>
-                      Judicial Dictations
-                    </span>
-                  </button>
-
-                  {/* Goal 4: Typing & Diplomas */}
-                  <button
-                    type="button"
-                    onClick={() => handleSelectFilter('typing')}
-                    style={{
-                      background: '#EFECE5',
-                      border: '1px solid #D6D0C4',
-                      padding: '12px 14px',
-                      borderRadius: '12px',
-                      textAlign: 'left',
-                      cursor: 'pointer',
-                      transition: 'all 0.15s ease',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '3px'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#E4DFD5';
-                      e.currentTarget.style.borderColor = 'rgba(153, 27, 27, 0.4)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = '#EFECE5';
-                      e.currentTarget.style.borderColor = '#D6D0C4';
-                    }}
-                  >
-                    <span style={{ fontSize: '12px', fontWeight: 700, color: '#16161A', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <span>Typing &amp; Diplomas</span>
-                      <ArrowRight size={12} style={{ color: '#991B1B' }} />
-                    </span>
-                    <span style={{ fontSize: '11px', color: '#57534E' }}>
-                      Hindi/English &amp; ADCA
-                    </span>
-                  </button>
+                <div className="border-t border-[#E5DBD0] pt-5 flex flex-wrap items-center gap-x-5 gap-y-3 text-xs text-[#594A4D] font-medium">
+                  <div className="inline-flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B]" />
+                    <span className="text-[#231418] font-semibold">15+ Structured Programs</span>
+                  </div>
+                  <span className="text-[#D8CCBE]">&middot;</span>
+                  <div className="inline-flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B]" />
+                    <span>50–140 WPM Speed Range</span>
+                  </div>
+                  <span className="text-[#D8CCBE]">&middot;</span>
+                  <div className="inline-flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B]" />
+                    <span>Offline &amp; Live Google Meet</span>
+                  </div>
+                  <span className="text-[#D8CCBE]">&middot;</span>
+                  <div className="inline-flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B]" />
+                    <span>3 Free Demo Classes</span>
+                  </div>
                 </div>
-              </div>
+              </FadeUp>
+            </div>
+
+            {/* Right Column (lg:col-span-5 min-w-0 — Symmetrical 2x2 Goal Grid) */}
+            <div className="sp-courses-hero-col-right lg:col-span-5 min-w-0">
+              <FadeUp delay={0.1}>
+                <div className="bg-white border border-[#E8DFD3] rounded-2xl p-6 shadow-[0_12px_32px_rgba(35,20,24,0.05)]">
+                  <div className="mb-4">
+                    <h3 className="text-[15px] font-bold text-[#231418] mb-1">
+                      Not sure which batch fits?
+                    </h3>
+                    <p className="text-xs text-[#8A7B7E]">
+                      Select your exam goal to filter matching programs below:
+                    </p>
+                  </div>
+
+                  {/* STRICT 2x2 GRID */}
+                  <div 
+                    className="grid grid-cols-2 gap-3"
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                      gap: '12px'
+                    }}
+                  >
+                    {/* Goal 1: Beginner */}
+                    <button
+                      type="button"
+                      onClick={() => handleSelectFilter('pitman')}
+                      className="bg-[#FBF8F3] hover:bg-[#EFE7DC] border border-[#E5DBD0] hover:border-[#991B1B]/40 rounded-xl p-3.5 text-left transition-all flex flex-col gap-1 cursor-pointer"
+                    >
+                      <span className="text-xs font-bold text-[#231418] flex items-center justify-between">
+                        <span>Beginner (0 WPM)</span>
+                        <ArrowRight size={12} className="text-[#991B1B]" />
+                      </span>
+                      <span className="text-[11px] text-[#594A4D]">
+                        Learn Pitman from Zero
+                      </span>
+                    </button>
+
+                    {/* Goal 2: SSC Steno */}
+                    <button
+                      type="button"
+                      onClick={() => handleSelectFilter('ssc')}
+                      className="bg-[#FBF8F3] hover:bg-[#EFE7DC] border border-[#E5DBD0] hover:border-[#991B1B]/40 rounded-xl p-3.5 text-left transition-all flex flex-col gap-1 cursor-pointer"
+                    >
+                      <span className="text-xs font-bold text-[#231418] flex items-center justify-between">
+                        <span>SSC Steno (80–100)</span>
+                        <ArrowRight size={12} className="text-[#991B1B]" />
+                      </span>
+                      <span className="text-[11px] text-[#594A4D]">
+                        Grade C &amp; D Speed Batch
+                      </span>
+                    </button>
+
+                    {/* Goal 3: High Court */}
+                    <button
+                      type="button"
+                      onClick={() => handleSelectFilter('court')}
+                      className="bg-[#FBF8F3] hover:bg-[#EFE7DC] border border-[#E5DBD0] hover:border-[#991B1B]/40 rounded-xl p-3.5 text-left transition-all flex flex-col gap-1 cursor-pointer"
+                    >
+                      <span className="text-xs font-bold text-[#231418] flex items-center justify-between">
+                        <span>High Court Legal</span>
+                        <ArrowRight size={12} className="text-[#991B1B]" />
+                      </span>
+                      <span className="text-[11px] text-[#594A4D]">
+                        Judicial Dictations
+                      </span>
+                    </button>
+
+                    {/* Goal 4: Typing & Diplomas */}
+                    <button
+                      type="button"
+                      onClick={() => handleSelectFilter('typing')}
+                      className="bg-[#FBF8F3] hover:bg-[#EFE7DC] border border-[#E5DBD0] hover:border-[#991B1B]/40 rounded-xl p-3.5 text-left transition-all flex flex-col gap-1 cursor-pointer"
+                    >
+                      <span className="text-xs font-bold text-[#231418] flex items-center justify-between">
+                        <span>Typing &amp; Diplomas</span>
+                        <ArrowRight size={12} className="text-[#991B1B]" />
+                      </span>
+                      <span className="text-[11px] text-[#594A4D]">
+                        Hindi/English &amp; ADCA
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </FadeUp>
             </div>
 
           </div>
@@ -1202,42 +1127,33 @@ export default function CoursesPage({
       </section>
 
       {/* =========================================================================
-          SECTION 2: CLEAN SINGLE-ROW FILTER & SEARCH BAR
+          SECTION 2: SINGLE-ROW WARM SAND FILTER & SEARCH TOOLBAR
           ========================================================================= */}
       <div 
+        className="sticky top-[72px] lg:top-[76px] z-30 bg-[#EFE7DC]/95 backdrop-blur-md border-b border-[#E0D5C7] py-3.5 w-full"
         style={{
           position: 'sticky',
           top: '76px',
           zIndex: 30,
-          background: 'rgba(228, 223, 213, 0.95)',
+          backgroundColor: 'rgba(239, 231, 220, 0.95)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
-          borderBottom: '1px solid #D1CBBF',
-          padding: '10px 24px',
+          borderBottom: '1px solid #E0D5C7',
+          padding: '12px 24px',
           width: '100%',
           boxSizing: 'border-box'
         }}
       >
-        <div 
-          style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px'
-          }}
-        >
-          {/* Category Tabs: Floating pill look matching Navbar */}
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+          {/* Category Tabs: Horizontal Single Row */}
           <div 
+            className="flex items-center gap-1.5 overflow-x-auto no-scrollbar min-w-0 py-0.5"
             style={{
               display: 'flex',
               alignItems: 'center',
               gap: '6px',
               overflowX: 'auto',
-              scrollbarWidth: 'none',
-              padding: '2px 0'
+              scrollbarWidth: 'none'
             }}
             role="tablist"
           >
@@ -1250,15 +1166,19 @@ export default function CoursesPage({
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => handleSelectFilter(tab.id)}
+                  className={isActive 
+                    ? "bg-white text-[#231418] border border-[#E0D5C7] rounded-full px-3.5 py-1.5 text-xs font-semibold shadow-xs inline-flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
+                    : "text-[#594A4D] hover:text-[#231418] px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap bg-transparent border border-transparent transition-colors cursor-pointer"
+                  }
                   style={isActive ? {
-                    background: '#F7F5F0',
-                    color: '#16161A',
+                    backgroundColor: '#FFFFFF',
+                    color: '#231418',
                     fontWeight: 600,
-                    border: '1px solid #D1CBBF',
+                    border: '1px solid #E0D5C7',
                     borderRadius: '9999px',
                     padding: '6px 14px',
                     fontSize: '12px',
-                    boxShadow: '0 1px 3px rgba(22, 22, 26, 0.08)',
+                    boxShadow: '0 1px 3px rgba(35, 20, 24, 0.06)',
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '6px',
@@ -1266,38 +1186,22 @@ export default function CoursesPage({
                     cursor: 'pointer'
                   } : {
                     background: 'transparent',
-                    color: '#57534E',
+                    color: '#594A4D',
                     fontWeight: 500,
                     border: '1px solid transparent',
                     borderRadius: '9999px',
                     padding: '6px 14px',
                     fontSize: '12px',
                     whiteSpace: 'nowrap',
-                    cursor: 'pointer',
-                    transition: 'colors 0.15s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!isActive) e.currentTarget.style.color = '#16161A';
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isActive) e.currentTarget.style.color = '#57534E';
+                    cursor: 'pointer'
                   }}
                 >
                   {isActive && (
-                    <span 
-                      style={{
-                        width: '5px',
-                        height: '5px',
-                        borderRadius: '50%',
-                        background: '#991B1B',
-                        display: 'inline-block',
-                        flexShrink: 0
-                      }}
-                    />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B] inline-block shrink-0" style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
                   )}
                   <span>{tab.label}</span>
                   {tab.count !== undefined && (
-                    <span style={{ fontSize: '11px', color: '#78716C', fontVariantNumeric: 'tabular-nums' }}>
+                    <span className="text-[11px] text-[#8A7B7E] tabular-nums" style={{ fontSize: '11px', color: '#8A7B7E' }}>
                       ({tab.count})
                     </span>
                   )}
@@ -1306,60 +1210,40 @@ export default function CoursesPage({
             })}
           </div>
 
-          {/* Right Toolbar: Counter + Compact Search */}
-          <div 
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              flexShrink: 0
-            }}
-          >
-            <span style={{ fontSize: '11px', fontWeight: 500, color: '#57534E', whiteSpace: 'nowrap' }}>
+          {/* Right Toolbar: Counter + Compact Search Pill */}
+          <div className="flex items-center gap-3 shrink-0">
+            <span className="text-[11px] font-medium text-[#6E5E61] whitespace-nowrap">
               Showing {filteredCourses.length} {filteredCourses.length === 1 ? 'program' : 'programs'}
             </span>
             
-            <div style={{ position: 'relative', width: '220px' }}>
-              <Search size={13} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#78716C', pointerEvents: 'none' }} />
+            <div className="relative w-full sm:w-56 lg:w-60">
+              <Search size={13} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8A7B7E] pointer-events-none" />
               <input 
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search High Court, Pitman..."
+                className="h-9 w-full rounded-full bg-white border border-[#DCD0C2] pl-9 pr-7 text-xs text-[#231418] placeholder:text-[#8A7B7E] focus:outline-none focus:border-[#991B1B] transition-colors"
                 style={{
                   width: '100%',
-                  height: '34px',
-                  paddingLeft: '32px',
+                  height: '36px',
+                  paddingLeft: '34px',
                   paddingRight: '28px',
                   fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                   fontSize: '12px',
-                  backgroundColor: '#F7F5F0',
-                  border: '1px solid #D1CBBF',
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #DCD0C2',
                   borderRadius: '9999px',
-                  color: '#16161A',
+                  color: '#231418',
                   outline: 'none',
-                  boxSizing: 'border-box',
-                  transition: 'border-color 0.15s ease'
+                  boxSizing: 'border-box'
                 }}
-                onFocus={(e) => e.currentTarget.style.borderColor = '#991B1B'}
-                onBlur={(e) => e.currentTarget.style.borderColor = '#D1CBBF'}
               />
               {searchQuery && (
                 <button 
                   type="button" 
                   onClick={() => setSearchQuery('')}
-                  style={{
-                    position: 'absolute',
-                    right: '10px',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    background: 'none',
-                    border: 'none',
-                    color: '#78716C',
-                    cursor: 'pointer',
-                    fontSize: '14px',
-                    lineHeight: 1
-                  }}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8A7B7E] hover:text-[#231418] text-sm cursor-pointer"
                   title="Clear search"
                 >
                   &times;
@@ -1372,338 +1256,210 @@ export default function CoursesPage({
       </div>
 
       {/* =========================================================================
-          SECTION 3: DEDUPLICATED COACHING CATALOG (WARM PARCHMENT CANVAS)
+          SECTION 3: COACHING CATALOG (WARM CREAM #FBF8F3 CANVAS)
           ========================================================================= */}
       <section 
         id="academy-courses" 
+        className="bg-[#FBF8F3] py-14 lg:py-16"
         style={{
-          backgroundColor: '#ECE8E0',
+          backgroundColor: '#FBF8F3',
           padding: '64px 0',
           width: '100%'
         }}
       >
-        <div 
-          style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            paddingLeft: '24px',
-            paddingRight: '24px'
-          }}
-        >
+        <div className="max-w-7xl mx-auto px-6">
 
           {/* Empty Search Results State */}
           {filteredCourses.length === 0 && (
-            <div 
-              style={{
-                background: '#F7F5F0',
-                border: '1px solid #D1CBBF',
-                borderRadius: '16px',
-                padding: '48px 24px',
-                textAlign: 'center',
-                maxWidth: '560px',
-                margin: '0 auto'
-              }}
-            >
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#16161A', margin: '0 0 8px 0' }}>
+            <div className="bg-white border border-[#E8DFD3] rounded-2xl p-12 text-center max-w-lg mx-auto shadow-[0_4px_20px_rgba(35,20,24,0.04)]">
+              <h3 className="text-lg font-bold text-[#231418] mb-2">
                 No programs found
               </h3>
-              <p style={{ fontSize: '13px', color: '#57534E', margin: '0 0 20px 0', lineHeight: 1.5 }}>
+              <p className="text-xs text-[#594A4D] mb-5 leading-relaxed">
                 No course matches "{searchQuery}". Try searching for terms like "High Court", "Pitman", "Typing", or "ADCA".
               </p>
               <button
                 type="button"
                 onClick={() => { setSearchQuery(''); setFilterCategory('all'); }}
-                style={{
-                  background: '#991B1B',
-                  color: '#FFFFFF',
-                  border: 'none',
-                  padding: '10px 20px',
-                  borderRadius: '10px',
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  cursor: 'pointer'
-                }}
+                className="bg-[#991B1B] hover:bg-[#7F1D1D] text-white px-5 py-2.5 rounded-full text-xs font-semibold cursor-pointer transition-colors"
               >
                 Reset Search &amp; Filters
               </button>
             </div>
           )}
 
-          {/* Layout Mode 1: Bespoke Split ("All Programs" default with Top 3 Flagship Spotlight + Table Directory) */}
+          {/* Layout Mode 1: Bespoke Split ("All Programs" default with Top 3 Flagship Spotlight + Directory) */}
           {isDefaultAllView && (
             <>
               {/* Part A: Flagship Programs Spotlight (Top 3 Courses) */}
-              <div style={{ marginBottom: '24px' }}>
-                <span 
-                  style={{
-                    fontSize: '11px',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.16em',
-                    color: '#57534E',
-                    display: 'block',
-                    marginBottom: '6px'
-                  }}
-                >
-                  CORE ACADEMY PROGRAMS
-                </span>
-                <h2 
-                  style={{
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontSize: 'clamp(1.5rem, 2.5vw, 1.875rem)',
-                    fontWeight: 700,
-                    letterSpacing: '-0.025em',
-                    color: '#16161A',
-                    margin: 0
-                  }}
-                >
-                  Flagship Program Spotlight
-                </h2>
-              </div>
+              <FadeUp>
+                <div className="mb-6">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8A7B7E] block mb-1.5">
+                    CORE ACADEMY PROGRAMS
+                  </span>
+                  <h2 
+                    className="font-serif font-normal text-3xl sm:text-4xl text-[#231418]"
+                    style={{
+                      fontFamily: "'Instrument Serif', Georgia, serif",
+                      fontSize: 'clamp(1.875rem, 3.2vw, 2.65rem)',
+                      fontWeight: 400,
+                      lineHeight: 1.1,
+                      letterSpacing: '-0.015em',
+                      color: '#231418'
+                    }}
+                  >
+                    Flagship <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>program spotlight.</span>
+                  </h2>
+                </div>
+              </FadeUp>
 
               {/* Top 3 Balanced Flagship Row */}
               <div 
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                 style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
                   gap: '24px'
                 }}
               >
-                {flagshipCourses.map((course, idx) => renderFlagshipCard(course, idx))}
+                {flagshipCourses.map((course, idx) => (
+                  <FadeUp key={course.id} delay={idx * 0.08}>
+                    {renderFlagshipCard(course, idx)}
+                  </FadeUp>
+                ))}
               </div>
 
               {/* Part B: Complete Coaching & Diploma Directory (Remaining Programs) */}
-              <div style={{ marginTop: '72px' }}>
-                <div 
-                  style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    alignItems: 'flex-end',
-                    justifyContent: 'space-between',
-                    gap: '12px',
-                    marginBottom: '20px'
-                  }}
-                >
-                  <div>
-                    <span 
-                      style={{
-                        fontSize: '11px',
-                        fontWeight: 600,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.16em',
-                        color: '#57534E',
-                        display: 'block',
-                        marginBottom: '6px'
-                      }}
-                    >
-                      SPECIALIZED TRACKS &amp; DIPLOMAS
-                    </span>
-                    <h2 
-                      style={{
-                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                        fontSize: 'clamp(1.35rem, 2.2vw, 1.625rem)',
-                        fontWeight: 700,
-                        letterSpacing: '-0.025em',
-                        color: '#16161A',
-                        margin: 0
-                      }}
-                    >
-                      Judicial Benches, Central Govt Batches &amp; Computer Diplomas
-                    </h2>
-                  </div>
-                  <span style={{ fontSize: '12px', color: '#57534E', fontWeight: 500 }}>
-                    Click any row to view full syllabus &darr;
-                  </span>
-                </div>
-
-                {/* Directory Table Container */}
-                <div 
-                  style={{
-                    background: '#F7F5F0',
-                    border: '1px solid #D1CBBF',
-                    borderRadius: '16px',
-                    overflow: 'hidden',
-                    boxShadow: '0 6px 20px rgba(22, 22, 26, 0.04)'
-                  }}
-                >
-                  {specializedCourses.map((course, idx) => {
-                    const isSyllabusOpen = !!expandedSyllabus[course.id];
-                    const isLast = idx === specializedCourses.length - 1;
-                    return (
-                      <div 
-                        key={course.id}
+              <div className="mt-14">
+                <FadeUp>
+                  <div className="flex flex-wrap items-end justify-between gap-3 mb-5">
+                    <div>
+                      <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8A7B7E] block mb-1.5">
+                        SPECIALIZED TRACKS &amp; DIPLOMAS
+                      </span>
+                      <h2 
+                        className="font-serif font-normal text-3xl sm:text-4xl text-[#231418]"
                         style={{
-                          borderBottom: isLast && !isSyllabusOpen ? 'none' : '1px solid #DFD9CD'
+                          fontFamily: "'Instrument Serif', Georgia, serif",
+                          fontSize: 'clamp(1.875rem, 3.2vw, 2.65rem)',
+                          fontWeight: 400,
+                          lineHeight: 1.1,
+                          letterSpacing: '-0.015em',
+                          color: '#231418'
                         }}
                       >
-                        {/* Main Interactive Row */}
-                        <div 
-                          onClick={() => toggleSyllabus(course.id)}
-                          style={{
-                            padding: '18px 24px',
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            gap: '16px',
-                            cursor: 'pointer',
-                            transition: 'background-color 0.15s ease'
-                          }}
-                          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(239, 236, 229, 0.7)'}
-                          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-                        >
-                          {/* Left: Info */}
-                          <div style={{ flex: '5 1 280px', minWidth: 0 }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                              <span style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#991B1B' }}>
-                                {course.category}
-                              </span>
-                              {course.badge && (
-                                <span style={{ fontSize: '10px', fontWeight: 600, color: '#44403C', background: '#EAE5DC', border: '1px solid #D6D0C4', padding: '1px 6px', borderRadius: '4px' }}>
-                                  {course.badge}
+                        Judicial benches, central govt &amp; <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>computer diplomas.</span>
+                      </h2>
+                    </div>
+                    <span className="text-xs text-[#8A7B7E] font-medium">
+                      Click any row to view full syllabus &darr;
+                    </span>
+                  </div>
+                </FadeUp>
+
+                {/* Directory Table Container */}
+                <FadeUp delay={0.08}>
+                  <div className="bg-white border border-[#E8DFD3] rounded-2xl divide-y divide-[#EDE5DA] overflow-hidden shadow-[0_4px_20px_rgba(35,20,24,0.04)]">
+                    {specializedCourses.map((course) => {
+                      const isSyllabusOpen = !!expandedSyllabus[course.id];
+                      return (
+                        <div key={course.id} className="transition-colors">
+                          {/* Main Interactive Row */}
+                          <div 
+                            onClick={() => toggleSyllabus(course.id)}
+                            className="p-5 sm:p-6 flex flex-wrap items-center justify-between gap-4 cursor-pointer hover:bg-[#FAF7F2] transition-colors"
+                          >
+                            {/* Left: Info */}
+                            <div className="flex-[5_1_280px] min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#991B1B]">
+                                  {course.category}
                                 </span>
-                              )}
+                                {course.badge && (
+                                  <span className="text-[10px] font-semibold text-[#594A4D] bg-[#EFE7DC] border border-[#E0D5C7] px-2 py-0.5 rounded-full">
+                                    {course.badge}
+                                  </span>
+                                )}
+                              </div>
+                              <h3 className="text-base font-bold text-[#231418] mb-1">
+                                {course.title}
+                              </h3>
+                              <p className="text-xs text-[#594A4D] leading-relaxed">
+                                {course.description}
+                              </p>
                             </div>
-                            <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#16161A', margin: '0 0 4px 0' }}>
-                              {course.title}
-                            </h3>
-                            <p style={{ fontSize: '12px', color: '#44403C', lineHeight: 1.45, margin: 0 }}>
-                              {course.description}
-                            </p>
-                          </div>
 
-                          {/* Center: Specs */}
-                          <div style={{ flex: '3 1 180px', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                            <span style={{ fontSize: '11px', fontWeight: 600, color: '#44403C', background: '#EAE5DC', border: '1px solid #D6D0C4', padding: '3px 8px', borderRadius: '6px', fontVariantNumeric: 'tabular-nums' }}>
-                              {course.speedTarget}
-                            </span>
-                            <span style={{ fontSize: '11px', fontWeight: 500, color: '#57534E', background: '#EFECE5', border: '1px solid #D6D0C4', padding: '3px 8px', borderRadius: '6px' }}>
-                              {course.duration}
-                            </span>
-                          </div>
-
-                          {/* Right: Fee + Actions */}
-                          <div 
-                            style={{ flex: '4 1 240px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '14px' }}
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <div style={{ textAlign: 'right' }}>
-                              <span style={{ fontSize: '16px', fontWeight: 800, color: '#16161A', fontVariantNumeric: 'tabular-nums', display: 'block' }}>
-                                {course.fee}
+                            {/* Center: Specs */}
+                            <div className="flex-[3_1_180px] flex items-center gap-2 flex-wrap">
+                              <span className="text-[11px] font-semibold text-[#594A4D] bg-[#EFE7DC] border border-[#E0D5C7] px-2.5 py-1 rounded-full tabular-nums">
+                                {course.speedTarget}
                               </span>
-                              <span style={{ fontSize: '10px', color: '#57534E', display: 'block' }}>
-                                {course.feeType || 'Official Curriculum'}
+                              <span className="text-[11px] font-medium text-[#6E5E61] bg-[#FAF7F2] border border-[#EDE5DA] px-2.5 py-1 rounded-full">
+                                {course.duration}
                               </span>
                             </div>
 
-                            <button
-                              type="button"
-                              onClick={() => toggleSyllabus(course.id)}
-                              style={{
-                                fontSize: '12px',
-                                fontWeight: 600,
-                                color: '#57534E',
-                                background: 'transparent',
-                                border: '1px solid #D1CBBF',
-                                padding: '6px 12px',
-                                borderRadius: '8px',
-                                cursor: 'pointer',
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: '4px',
-                                whiteSpace: 'nowrap',
-                                transition: 'all 0.15s ease'
-                              }}
-                              onMouseEnter={(e) => {
-                                e.currentTarget.style.backgroundColor = '#EFECE5';
-                                e.currentTarget.style.color = '#16161A';
-                              }}
-                              onMouseLeave={(e) => {
-                                e.currentTarget.style.backgroundColor = 'transparent';
-                                e.currentTarget.style.color = '#57534E';
-                              }}
-                            >
-                              <span>{isSyllabusOpen ? 'Hide' : 'View Syllabus'}</span>
-                              {isSyllabusOpen ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
-                            </button>
-
-                            <button
-                              type="button"
-                              onClick={() => handleEnroll(course)}
-                              style={{
-                                fontSize: '12px',
-                                fontWeight: 600,
-                                background: '#16161A',
-                                color: '#F5F3EE',
-                                padding: '7px 14px',
-                                borderRadius: '8px',
-                                border: 'none',
-                                cursor: 'pointer',
-                                whiteSpace: 'nowrap',
-                                transition: 'background-color 0.15s ease'
-                              }}
-                              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#27272A'}
-                              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#16161A'}
-                            >
-                              <span>Enroll Now</span>
-                            </button>
-                          </div>
-                        </div>
-
-                        {/* Inline Expandable Syllabus Drawer */}
-                        {isSyllabusOpen && (
-                          <div 
-                            style={{
-                              background: 'rgba(239, 236, 229, 0.6)',
-                              borderTop: '1px solid #DFD9CD',
-                              padding: '20px 24px'
-                            }}
-                          >
+                            {/* Right: Fee + Actions */}
                             <div 
-                              style={{
-                                display: 'grid',
-                                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                                gap: '8px 24px',
-                                fontSize: '12px',
-                                color: '#44403C',
-                                marginBottom: '16px'
-                              }}
+                              className="flex-[4_1_240px] flex items-center justify-end gap-3.5"
+                              onClick={(e) => e.stopPropagation()}
                             >
-                              {course.syllabus.map((topic, i) => (
-                                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', lineHeight: 1.45 }}>
-                                  <span style={{ color: '#991B1B', fontWeight: 700 }}>&bull;</span>
-                                  <span>{topic}</span>
-                                </div>
-                              ))}
-                            </div>
-                            <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '12px', borderTop: '1px solid #D6D0C4' }}>
+                              <div className="text-right">
+                                <span className="font-sans font-bold text-[#231418] tabular-nums text-base block">
+                                  {course.fee}
+                                </span>
+                                <span className="text-[10px] text-[#8A7B7E] block">
+                                  {course.feeType || 'Official Curriculum'}
+                                </span>
+                              </div>
+
+                              <button
+                                type="button"
+                                onClick={() => toggleSyllabus(course.id)}
+                                className="rounded-full border border-[#E0D5C7] text-xs font-semibold text-[#594A4D] hover:text-[#231418] px-3.5 py-1.5 inline-flex items-center gap-1 cursor-pointer transition-colors"
+                              >
+                                <span>{isSyllabusOpen ? 'Hide' : 'View Syllabus'}</span>
+                                {isSyllabusOpen ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                              </button>
+
                               <button
                                 type="button"
                                 onClick={() => handleEnroll(course)}
-                                style={{
-                                  background: '#991B1B',
-                                  color: '#FFFFFF',
-                                  border: 'none',
-                                  padding: '8px 18px',
-                                  borderRadius: '8px',
-                                  fontSize: '12px',
-                                  fontWeight: 600,
-                                  cursor: 'pointer',
-                                  display: 'inline-flex',
-                                  alignItems: 'center',
-                                  gap: '6px'
-                                }}
+                                className="rounded-full bg-[#231418] hover:bg-[#3A2228] text-[#FAF6F0] px-4 py-2 text-xs font-semibold cursor-pointer transition-colors"
                               >
-                                <span>Enroll in This Batch</span>
-                                <ArrowRight size={13} />
+                                <span>Enroll Now</span>
                               </button>
                             </div>
                           </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
+
+                          {/* Inline Expandable Syllabus Drawer */}
+                          {isSyllabusOpen && (
+                            <div className="bg-[#FAF7F2] border-t border-[#EDE5DA] p-5 sm:p-6">
+                              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs text-[#594A4D] mb-4">
+                                {course.syllabus.map((topic, i) => (
+                                  <div key={i} className="flex items-start gap-2 leading-relaxed">
+                                    <span className="text-[#991B1B] font-bold">&bull;</span>
+                                    <span>{topic}</span>
+                                  </div>
+                                ))}
+                              </div>
+                              <div className="flex justify-end pt-3 border-t border-[#EDE5DA]">
+                                <button
+                                  type="button"
+                                  onClick={() => handleEnroll(course)}
+                                  className="bg-[#991B1B] hover:bg-[#7F1D1D] text-white px-5 py-2 rounded-full text-xs font-semibold cursor-pointer transition-colors inline-flex items-center gap-1.5"
+                                >
+                                  <span>Enroll in This Batch</span>
+                                  <ArrowRight size={13} />
+                                </button>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </FadeUp>
               </div>
             </>
           )}
@@ -1711,13 +1467,18 @@ export default function CoursesPage({
           {/* Layout Mode 2: Unified Filtered/Searched Grid */}
           {!isDefaultAllView && filteredCourses.length > 0 && (
             <div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
                 gap: '24px'
               }}
             >
-              {filteredCourses.map((course) => renderStandardCard(course))}
+              {filteredCourses.map((course, idx) => (
+                <FadeUp key={course.id} delay={idx * 0.05}>
+                  {renderStandardCard(course)}
+                </FadeUp>
+              ))}
             </div>
           )}
 
@@ -1725,287 +1486,243 @@ export default function CoursesPage({
       </section>
 
       {/* =========================================================================
-          SECTION 4: PRACTICE PASSES & TEST SERIES (WARM PARCHMENT CANVAS)
+          SECTION 4: PRACTICE PASSES & TEST SERIES (WARM SAND #EFE7DC CANVAS)
           ========================================================================= */}
       <section 
         id="test-passes" 
+        className="bg-[#EFE7DC] border-y border-[#E0D5C7] py-14 lg:py-16"
         style={{
-          backgroundColor: '#ECE8E0',
-          borderTop: '1px solid #D6D0C4',
-          padding: '80px 0',
+          backgroundColor: '#EFE7DC',
+          borderTop: '1px solid #E0D5C7',
+          borderBottom: '1px solid #E0D5C7',
+          padding: '64px 0',
           width: '100%'
         }}
       >
-        <div 
-          style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            paddingLeft: '24px',
-            paddingRight: '24px'
-          }}
-        >
+        <div className="max-w-7xl mx-auto px-6">
           {/* Header Row */}
-          <div 
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'flex-end',
-              justifyContent: 'space-between',
-              gap: '20px',
-              marginBottom: '36px'
-            }}
-          >
-            <div>
-              <span 
-                style={{
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.16em',
-                  color: '#57534E',
-                  display: 'block',
-                  marginBottom: '6px'
-                }}
-              >
-                SELF-PACED EXAM ENGINE
-              </span>
-              <h2 
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontSize: 'clamp(1.75rem, 3vw, 2.25rem)',
-                  fontWeight: 800,
-                  letterSpacing: '-0.025em',
-                  color: '#16161A',
-                  margin: '0 0 6px 0'
-                }}
-              >
-                Practice Passes &amp; Test Series
-              </h2>
-              <p style={{ fontSize: '14px', color: '#44403C', margin: 0, maxWidth: '560px' }}>
-                Instant activation with UPI &amp; QR code. Practice anytime with real exam reading rooms and automated error calculation.
-              </p>
-            </div>
+          <FadeUp>
+            <div className="flex flex-wrap items-end justify-between gap-5 mb-9">
+              <div>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8A7B7E] block mb-1.5">
+                  SELF-PACED EXAM ENGINE
+                </span>
+                <h2 
+                  className="font-serif font-normal text-3xl sm:text-4xl text-[#231418]"
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.875rem, 3.2vw, 2.65rem)',
+                    fontWeight: 400,
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.015em',
+                    color: '#231418'
+                  }}
+                >
+                  Practice passes &amp; <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>test series.</span>
+                </h2>
+                <p className="text-sm text-[#594A4D] max-w-xl mt-1.5">
+                  Instant activation with UPI &amp; QR code. Practice anytime with real exam reading rooms and automated error calculation.
+                </p>
+              </div>
 
-            {/* Recessed Warm Stone Segmented Toggle */}
-            <div 
-              style={{
-                background: '#E4DFD5',
-                border: '1px solid #D1CBBF',
-                padding: '4px',
-                borderRadius: '9999px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '4px'
-              }}
-              role="tablist"
-            >
-              <button
-                type="button"
-                onClick={() => setPassFilter('unlimited')}
-                style={passFilter === 'unlimited' ? {
-                  background: '#F7F5F0',
-                  color: '#16161A',
-                  fontWeight: 600,
-                  padding: '6px 16px',
-                  borderRadius: '9999px',
-                  fontSize: '12px',
-                  boxShadow: '0 1px 3px rgba(22, 22, 26, 0.08)',
-                  border: 'none',
-                  cursor: 'pointer'
-                } : {
-                  background: 'transparent',
-                  color: '#57534E',
-                  fontWeight: 500,
-                  padding: '6px 16px',
-                  borderRadius: '9999px',
-                  fontSize: '12px',
-                  border: 'none',
-                  cursor: 'pointer'
-                }}
+              {/* Segmented Duration / Court Tracks Toggle */}
+              <div 
+                className="bg-[#E5DACB] border border-[#D8CBB9] p-1 rounded-full inline-flex items-center gap-1"
+                role="tablist"
               >
-                Duration Passes (4)
-              </button>
-              <button
-                type="button"
-                onClick={() => setPassFilter('special')}
-                style={passFilter === 'special' ? {
-                  background: '#F7F5F0',
-                  color: '#16161A',
-                  fontWeight: 600,
-                  padding: '6px 16px',
-                  borderRadius: '9999px',
-                  fontSize: '12px',
-                  boxShadow: '0 1px 3px rgba(22, 22, 26, 0.08)',
-                  border: 'none',
-                  cursor: 'pointer'
-                } : {
-                  background: 'transparent',
-                  color: '#57534E',
-                  fontWeight: 500,
-                  padding: '6px 16px',
-                  borderRadius: '9999px',
-                  fontSize: '12px',
-                  border: 'none',
-                  cursor: 'pointer'
-                }}
-              >
-                Targeted Court &amp; Pitman Tracks (3)
-              </button>
+                <button
+                  type="button"
+                  onClick={() => setPassFilter('unlimited')}
+                  className={passFilter === 'unlimited'
+                    ? "bg-white text-[#231418] rounded-full shadow-xs px-4 py-1.5 text-xs font-semibold border-none cursor-pointer"
+                    : "text-[#594A4D] hover:text-[#231418] rounded-full px-4 py-1.5 text-xs font-medium border-none bg-transparent cursor-pointer transition-colors"
+                  }
+                  style={passFilter === 'unlimited' ? {
+                    backgroundColor: '#FFFFFF',
+                    color: '#231418',
+                    fontWeight: 600,
+                    padding: '6px 16px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    boxShadow: '0 1px 3px rgba(35, 20, 24, 0.08)',
+                    border: 'none',
+                    cursor: 'pointer'
+                  } : {
+                    background: 'transparent',
+                    color: '#594A4D',
+                    fontWeight: 500,
+                    padding: '6px 16px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    border: 'none',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Duration Passes (4)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPassFilter('special')}
+                  className={passFilter === 'special'
+                    ? "bg-white text-[#231418] rounded-full shadow-xs px-4 py-1.5 text-xs font-semibold border-none cursor-pointer"
+                    : "text-[#594A4D] hover:text-[#231418] rounded-full px-4 py-1.5 text-xs font-medium border-none bg-transparent cursor-pointer transition-colors"
+                  }
+                  style={passFilter === 'special' ? {
+                    backgroundColor: '#FFFFFF',
+                    color: '#231418',
+                    fontWeight: 600,
+                    padding: '6px 16px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    boxShadow: '0 1px 3px rgba(35, 20, 24, 0.08)',
+                    border: 'none',
+                    cursor: 'pointer'
+                  } : {
+                    background: 'transparent',
+                    color: '#594A4D',
+                    fontWeight: 500,
+                    padding: '6px 16px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    border: 'none',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Targeted Court &amp; Pitman Tracks (3)
+                </button>
+              </div>
             </div>
-          </div>
+          </FadeUp>
 
           {/* Row 1: Core Unlimited Duration Passes (4 Columns) */}
           {passFilter === 'unlimited' && (
             <div 
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
                 gap: '20px'
               }}
             >
-              {corePasses.map((plan) => {
+              {corePasses.map((plan, idx) => {
                 const isFeatured = plan.id === 'plan-1mo';
                 return (
-                  <div 
-                    key={plan.id}
-                    style={isFeatured ? {
-                      background: '#FAF8F5',
-                      border: '1px solid #C8C2B6',
-                      borderTop: '4px solid #991B1B',
-                      borderRadius: '16px',
-                      padding: '24px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      boxShadow: '0 14px 34px rgba(22, 22, 26, 0.08)',
-                      position: 'relative'
-                    } : {
-                      background: '#F7F5F0',
-                      border: '1px solid #D1CBBF',
-                      borderRadius: '16px',
-                      padding: '24px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      position: 'relative'
-                    }}
-                  >
-                    <div>
-                      {/* Top Micro-Badge */}
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
-                        <span 
-                          style={{
-                            fontSize: '10px',
-                            fontWeight: 700,
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.14em',
-                            color: isFeatured ? '#991B1B' : '#57534E'
+                  <FadeUp key={plan.id} delay={idx * 0.06}>
+                    <div 
+                      className={isFeatured
+                        ? "bg-white border border-[#DFD3C5] border-t-4 border-t-[#991B1B] rounded-2xl p-6 shadow-[0_14px_34px_rgba(35,20,24,0.08)] flex flex-col justify-between h-full"
+                        : "bg-white border border-[#E8DFD3] rounded-2xl p-6 shadow-[0_4px_18px_rgba(35,20,24,0.04)] flex flex-col justify-between h-full"
+                      }
+                      style={isFeatured ? {
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid #DFD3C5',
+                        borderTop: '4px solid #991B1B',
+                        borderRadius: '16px',
+                        padding: '24px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        boxShadow: '0 14px 34px rgba(35, 20, 24, 0.08)',
+                        height: '100%'
+                      } : {
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid #E8DFD3',
+                        borderRadius: '16px',
+                        padding: '24px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        boxShadow: '0 4px 18px rgba(35, 20, 24, 0.04)',
+                        height: '100%'
+                      }}
+                    >
+                      <div>
+                        {/* Top Micro-Badge */}
+                        <div className="flex items-center justify-between mb-3.5">
+                          <span 
+                            className="text-[10px] font-bold uppercase tracking-wider"
+                            style={{
+                              color: isFeatured ? '#991B1B' : '#8A7B7E'
+                            }}
+                          >
+                            {isFeatured ? 'MOST POPULAR' : (plan.seriesTitle || 'SKILL PASS')}
+                          </span>
+                          {plan.badge && !isFeatured && (
+                            <span className="text-[10px] font-semibold bg-[#EFE7DC] border border-[#E0D5C7] text-[#594A4D] px-2 py-0.5 rounded-full">
+                              {plan.badge}
+                            </span>
+                          )}
+                        </div>
+
+                        <h3 className="text-lg font-bold text-[#231418] mb-1.5">
+                          {plan.name}
+                        </h3>
+                        <p className="text-xs text-[#594A4D] mb-4 leading-relaxed">
+                          {plan.description}
+                        </p>
+                        
+                        <div className="flex items-baseline gap-1.5 mb-5">
+                          {plan.originalPrice && (
+                            <span className="text-sm text-[#8A7B7E] line-through font-sans tabular-nums">
+                              ₹{plan.originalPrice}
+                            </span>
+                          )}
+                          <span className="font-sans font-extrabold text-3xl text-[#231418] tabular-nums">
+                            ₹{plan.price}
+                          </span>
+                          <span className="text-xs text-[#8A7B7E]">
+                            / {plan.duration}
+                          </span>
+                        </div>
+
+                        <ul className="space-y-2.5 pt-4 mb-6 border-t border-[#EDE5DA]">
+                          {plan.features.map((feat, i) => (
+                            <li key={i} className="flex items-start gap-2 text-xs text-[#594A4D] leading-relaxed">
+                              <Check size={14} className={isFeatured ? "text-[#991B1B] mt-0.5 shrink-0" : "text-[#8A7B7E] mt-0.5 shrink-0"} />
+                              <span>{feat}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div>
+                        <button 
+                          type="button"
+                          onClick={() => {
+                            if (onSelectPlan) onSelectPlan(plan.id);
+                            if (onOpenCheckout) onOpenCheckout(plan.id);
+                          }}
+                          className={isFeatured
+                            ? "w-full bg-[#991B1B] hover:bg-[#7F1D1D] text-white py-3 rounded-full text-xs font-semibold shadow-[0_4px_14px_rgba(153,27,27,0.20)] cursor-pointer transition-colors"
+                            : "w-full bg-[#FBF8F3] hover:bg-[#231418] hover:text-[#FAF6F0] border border-[#DCD0C2] text-[#231418] py-3 rounded-full text-xs font-semibold cursor-pointer transition-colors"
+                          }
+                          style={isFeatured ? {
+                            width: '100%',
+                            backgroundColor: '#991B1B',
+                            color: '#FFFFFF',
+                            border: 'none',
+                            padding: '12px',
+                            borderRadius: '9999px',
+                            fontSize: '12px',
+                            fontWeight: 600,
+                            cursor: 'pointer'
+                          } : {
+                            width: '100%',
+                            backgroundColor: '#FBF8F3',
+                            border: '1px solid #DCD0C2',
+                            color: '#231418',
+                            padding: '12px',
+                            borderRadius: '9999px',
+                            fontSize: '12px',
+                            fontWeight: 600,
+                            cursor: 'pointer'
                           }}
                         >
-                          {isFeatured ? 'MOST POPULAR' : (plan.seriesTitle || 'SKILL PASS')}
-                        </span>
-                        {plan.badge && !isFeatured && (
-                          <span style={{ fontSize: '10px', fontWeight: 600, background: '#EAE5DC', border: '1px solid #D6D0C4', color: '#44403C', padding: '2px 8px', borderRadius: '4px' }}>
-                            {plan.badge}
-                          </span>
-                        )}
+                          <span>Activate with UPI (₹{plan.price})</span>
+                        </button>
                       </div>
-
-                      <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#16161A', margin: '0 0 6px 0' }}>
-                        {plan.name}
-                      </h3>
-                      <p style={{ fontSize: '12px', color: '#44403C', margin: '0 0 16px 0', lineHeight: 1.5 }}>
-                        {plan.description}
-                      </p>
-                      
-                      <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', margin: '0 0 20px 0' }}>
-                        {plan.originalPrice && (
-                          <span style={{ fontSize: '14px', color: '#78716C', textDecoration: 'line-through' }}>
-                            ₹{plan.originalPrice}
-                          </span>
-                        )}
-                        <span style={{ fontSize: '28px', fontWeight: 800, color: '#16161A', fontVariantNumeric: 'tabular-nums' }}>
-                          ₹{plan.price}
-                        </span>
-                        <span style={{ fontSize: '12px', color: '#57534E' }}>
-                          / {plan.duration}
-                        </span>
-                      </div>
-
-                      <ul 
-                        style={{
-                          listStyle: 'none',
-                          padding: '16px 0 0 0',
-                          margin: '0 0 24px 0',
-                          borderTop: '1px solid #DFD9CD',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '10px'
-                        }}
-                      >
-                        {plan.features.map((feat, i) => (
-                          <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '12px', color: '#44403C', lineHeight: 1.4 }}>
-                            <Check size={14} style={{ color: isFeatured ? '#991B1B' : '#57534E', marginTop: '2px', flexShrink: 0 }} />
-                            <span>{feat}</span>
-                          </li>
-                        ))}
-                      </ul>
                     </div>
-
-                    <div>
-                      <button 
-                        type="button"
-                        onClick={() => {
-                          if (onSelectPlan) onSelectPlan(plan.id);
-                          if (onOpenCheckout) onOpenCheckout(plan.id);
-                        }}
-                        style={isFeatured ? {
-                          width: '100%',
-                          background: '#991B1B',
-                          color: '#FFFFFF',
-                          border: 'none',
-                          padding: '12px',
-                          borderRadius: '12px',
-                          fontSize: '13px',
-                          fontWeight: 600,
-                          cursor: 'pointer',
-                          boxShadow: '0 4px 14px rgba(153, 27, 27, 0.20)',
-                          transition: 'background-color 0.15s ease'
-                        } : {
-                          width: '100%',
-                          background: '#EFECE5',
-                          border: '1px solid #D1CBBF',
-                          color: '#16161A',
-                          padding: '12px',
-                          borderRadius: '12px',
-                          fontSize: '13px',
-                          fontWeight: 600,
-                          cursor: 'pointer',
-                          transition: 'all 0.15s ease'
-                        }}
-                        onMouseEnter={(e) => {
-                          if (isFeatured) {
-                            e.currentTarget.style.backgroundColor = '#7F1D1D';
-                          } else {
-                            e.currentTarget.style.backgroundColor = '#16161A';
-                            e.currentTarget.style.color = '#F5F3EE';
-                            e.currentTarget.style.borderColor = '#16161A';
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          if (isFeatured) {
-                            e.currentTarget.style.backgroundColor = '#991B1B';
-                          } else {
-                            e.currentTarget.style.backgroundColor = '#EFECE5';
-                            e.currentTarget.style.color = '#16161A';
-                            e.currentTarget.style.borderColor = '#D1CBBF';
-                          }
-                        }}
-                      >
-                        <span>Activate with UPI (₹{plan.price})</span>
-                      </button>
-                    </div>
-                  </div>
+                  </FadeUp>
                 );
               })}
             </div>
@@ -2014,114 +1731,98 @@ export default function CoursesPage({
           {/* Row 2: Court & Pitman Targeted Tracks (3 Columns) */}
           {passFilter === 'special' && (
             <div 
+              className="grid grid-cols-1 md:grid-cols-3 gap-6"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
                 gap: '24px'
               }}
             >
-              {specializedPasses.map((plan) => {
+              {specializedPasses.map((plan, idx) => {
                 return (
-                  <div 
-                    key={plan.id}
-                    style={{
-                      background: '#F7F5F0',
-                      border: '1px solid #D1CBBF',
-                      borderRadius: '16px',
-                      padding: '24px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      position: 'relative'
-                    }}
-                  >
-                    <div>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
-                        <span style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#991B1B' }}>
-                          TARGETED TRACK
-                        </span>
-                        {plan.badge && (
-                          <span style={{ fontSize: '10px', fontWeight: 600, background: '#EAE5DC', border: '1px solid #D6D0C4', color: '#44403C', padding: '2px 8px', borderRadius: '4px' }}>
-                            {plan.badge}
+                  <FadeUp key={plan.id} delay={idx * 0.08}>
+                    <div 
+                      className="bg-white border border-[#E8DFD3] rounded-2xl p-6 shadow-[0_4px_18px_rgba(35,20,24,0.04)] flex flex-col justify-between h-full"
+                      style={{
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid #E8DFD3',
+                        borderRadius: '16px',
+                        padding: '24px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        boxShadow: '0 4px 18px rgba(35, 20, 24, 0.04)',
+                        height: '100%'
+                      }}
+                    >
+                      <div>
+                        <div className="flex items-center justify-between mb-3.5">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#991B1B]">
+                            TARGETED TRACK
                           </span>
-                        )}
+                          {plan.badge && (
+                            <span className="text-[10px] font-semibold bg-[#EFE7DC] border border-[#E0D5C7] text-[#594A4D] px-2 py-0.5 rounded-full">
+                              {plan.badge}
+                            </span>
+                          )}
+                        </div>
+
+                        <h3 className="text-lg font-bold text-[#231418] mb-1.5">
+                          {plan.name}
+                        </h3>
+                        <p className="text-xs text-[#594A4D] mb-4 leading-relaxed">
+                          {plan.description}
+                        </p>
+                        
+                        <div className="flex items-baseline gap-1.5 mb-5">
+                          {plan.originalPrice && (
+                            <span className="text-sm text-[#8A7B7E] line-through font-sans tabular-nums">
+                              ₹{plan.originalPrice}
+                            </span>
+                          )}
+                          <span className="font-sans font-extrabold text-3xl text-[#231418] tabular-nums">
+                            ₹{plan.price}
+                          </span>
+                          <span className="text-xs text-[#8A7B7E]">
+                            / {plan.duration}
+                          </span>
+                        </div>
+
+                        <ul className="space-y-2.5 pt-4 mb-6 border-t border-[#EDE5DA]">
+                          {plan.features.map((feat, i) => (
+                            <li key={i} className="flex items-start gap-2 text-xs text-[#594A4D] leading-relaxed">
+                              <Check size={14} className="text-[#8A7B7E] mt-0.5 shrink-0" />
+                              <span>{feat}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
 
-                      <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#16161A', margin: '0 0 6px 0' }}>
-                        {plan.name}
-                      </h3>
-                      <p style={{ fontSize: '12px', color: '#44403C', margin: '0 0 16px 0', lineHeight: 1.5 }}>
-                        {plan.description}
-                      </p>
-                      
-                      <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', margin: '0 0 20px 0' }}>
-                        {plan.originalPrice && (
-                          <span style={{ fontSize: '14px', color: '#78716C', textDecoration: 'line-through' }}>
-                            ₹{plan.originalPrice}
-                          </span>
-                        )}
-                        <span style={{ fontSize: '28px', fontWeight: 800, color: '#16161A', fontVariantNumeric: 'tabular-nums' }}>
-                          ₹{plan.price}
-                        </span>
-                        <span style={{ fontSize: '12px', color: '#57534E' }}>
-                          / {plan.duration}
-                        </span>
+                      <div>
+                        <button 
+                          type="button"
+                          onClick={() => {
+                            if (onSelectPlan) onSelectPlan(plan.id);
+                            if (onOpenCheckout) onOpenCheckout(plan.id);
+                          }}
+                          className="w-full bg-[#FBF8F3] hover:bg-[#231418] hover:text-[#FAF6F0] border border-[#DCD0C2] text-[#231418] py-3 rounded-full text-xs font-semibold cursor-pointer transition-colors"
+                          style={{
+                            width: '100%',
+                            backgroundColor: '#FBF8F3',
+                            border: '1px solid #DCD0C2',
+                            color: '#231418',
+                            padding: '12px',
+                            borderRadius: '9999px',
+                            fontSize: '12px',
+                            fontWeight: 600,
+                            cursor: 'pointer'
+                          }}
+                        >
+                          <span>Activate with UPI (₹{plan.price})</span>
+                        </button>
                       </div>
-
-                      <ul 
-                        style={{
-                          listStyle: 'none',
-                          padding: '16px 0 0 0',
-                          margin: '0 0 24px 0',
-                          borderTop: '1px solid #DFD9CD',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '10px'
-                        }}
-                      >
-                        {plan.features.map((feat, i) => (
-                          <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '12px', color: '#44403C', lineHeight: 1.4 }}>
-                            <Check size={14} style={{ color: '#57534E', marginTop: '2px', flexShrink: 0 }} />
-                            <span>{feat}</span>
-                          </li>
-                        ))}
-                      </ul>
                     </div>
-
-                    <div>
-                      <button 
-                        type="button"
-                        onClick={() => {
-                          if (onSelectPlan) onSelectPlan(plan.id);
-                          if (onOpenCheckout) onOpenCheckout(plan.id);
-                        }}
-                        style={{
-                          width: '100%',
-                          background: '#EFECE5',
-                          border: '1px solid #D1CBBF',
-                          color: '#16161A',
-                          padding: '12px',
-                          borderRadius: '12px',
-                          fontSize: '13px',
-                          fontWeight: 600,
-                          cursor: 'pointer',
-                          transition: 'all 0.15s ease'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = '#16161A';
-                          e.currentTarget.style.color = '#F5F3EE';
-                          e.currentTarget.style.borderColor = '#16161A';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = '#EFECE5';
-                          e.currentTarget.style.color = '#16161A';
-                          e.currentTarget.style.borderColor = '#D1CBBF';
-                        }}
-                      >
-                        <span>Activate with UPI (₹{plan.price})</span>
-                      </button>
-                    </div>
-                  </div>
+                  </FadeUp>
                 );
               })}
             </div>
@@ -2131,192 +1832,137 @@ export default function CoursesPage({
       </section>
 
       {/* =========================================================================
-          SECTION 5: UNIFIED EDITORIAL SPREAD — TARGET EXAMS & 8-STAGE METHODOLOGY
+          SECTION 5: TARGET EXAMS & 8-STAGE METHODOLOGY (WARM CREAM #FBF8F3 CANVAS)
           ========================================================================= */}
       <section 
+        className="bg-[#FBF8F3] py-14 lg:py-16"
         style={{
-          backgroundColor: '#ECE8E0',
-          borderTop: '1px solid #D6D0C4',
-          padding: '80px 0',
+          backgroundColor: '#FBF8F3',
+          padding: '64px 0',
           width: '100%'
         }}
       >
-        <div 
-          style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            paddingLeft: '24px',
-            paddingRight: '24px'
-          }}
-        >
-          <div className="sp-courses-spread-12col">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="sp-courses-spread-12col grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             
             {/* Left Column (lg:col-span-5): Target Recruitment Coverage */}
-            <div className="sp-courses-spread-left">
-              <span 
-                style={{
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.16em',
-                  color: '#57534E',
-                  display: 'block',
-                  marginBottom: '6px'
-                }}
-              >
-                RECRUITMENT COVERAGE
-              </span>
-              <h2 
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontSize: 'clamp(1.5rem, 2.5vw, 1.875rem)',
-                  fontWeight: 700,
-                  letterSpacing: '-0.025em',
-                  color: '#16161A',
-                  margin: '0 0 10px 0'
-                }}
-              >
-                National &amp; State Govt. Examinations.
-              </h2>
-              <p style={{ fontSize: '13px', color: '#44403C', lineHeight: 1.6, margin: '0 0 24px 0' }}>
-                Specialized speed batches calibrated for official notification criteria, vocabulary benches, and exam-hall backspace-lock rules.
-              </p>
+            <div className="sp-courses-spread-left lg:col-span-5 min-w-0">
+              <FadeUp>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8A7B7E] block mb-1.5">
+                  RECRUITMENT COVERAGE
+                </span>
+                <h2 
+                  className="font-serif font-normal text-3xl lg:text-[2.2rem] leading-tight text-[#231418] mb-2.5"
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)',
+                    fontWeight: 400,
+                    lineHeight: 1.15,
+                    letterSpacing: '-0.015em',
+                    color: '#231418'
+                  }}
+                >
+                  National &amp; state <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>govt. examinations.</span>
+                </h2>
+                <p className="text-xs sm:text-[13px] text-[#594A4D] leading-relaxed mb-6">
+                  Specialized speed batches calibrated for official notification criteria, vocabulary benches, and exam-hall backspace-lock rules.
+                </p>
 
-              {/* Clean hairline list */}
-              <div 
-                style={{
-                  background: '#F7F5F0',
-                  border: '1px solid #D1CBBF',
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  boxShadow: '0 4px 16px rgba(22, 22, 26, 0.04)'
-                }}
-              >
-                {TARGET_EXAMINATIONS.map((exam, idx) => {
-                  const isLast = idx === TARGET_EXAMINATIONS.length - 1;
-                  return (
-                    <div 
-                      key={exam.id}
-                      style={{
-                        padding: '14px 18px',
-                        borderBottom: isLast ? 'none' : '1px solid #DFD9CD',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        gap: '12px',
-                        transition: 'background-color 0.15s ease'
-                      }}
-                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#EFECE5'}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-                    >
-                      <div>
-                        <div style={{ fontSize: '13px', fontWeight: 600, color: '#16161A' }}>
-                          {exam.title}
-                        </div>
-                        <div style={{ fontSize: '11px', color: '#57534E', marginTop: '2px' }}>
-                          {exam.category}
-                        </div>
-                      </div>
-                      <span 
-                        style={{
-                          fontSize: '11px',
-                          fontFamily: "'JetBrains Mono', monospace",
-                          fontWeight: 600,
-                          color: '#991B1B',
-                          fontVariantNumeric: 'tabular-nums',
-                          flexShrink: 0
-                        }}
+                {/* Clean hairline directory card */}
+                <div className="bg-white border border-[#E8DFD3] rounded-2xl divide-y divide-[#EDE5DA] shadow-[0_4px_18px_rgba(35,20,24,0.03)] overflow-hidden">
+                  {TARGET_EXAMINATIONS.map((exam) => {
+                    return (
+                      <div 
+                        key={exam.id}
+                        className="p-3.5 px-4 flex items-center justify-between gap-3 hover:bg-[#FAF7F2] transition-colors"
                       >
-                        {exam.speed}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
+                        <div>
+                          <div className="text-[13px] font-bold text-[#231418]">
+                            {exam.title}
+                          </div>
+                          <div className="text-[11px] text-[#8A7B7E] mt-0.5">
+                            {exam.category}
+                          </div>
+                        </div>
+                        <span className="text-[11px] font-mono font-semibold text-[#991B1B] tabular-nums shrink-0">
+                          {exam.speed}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </FadeUp>
             </div>
 
             {/* Right Column (lg:col-span-7): 8-Stage Teaching Methodology */}
-            <div className="sp-courses-spread-right">
-              <span 
-                style={{
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.16em',
-                  color: '#57534E',
-                  display: 'block',
-                  marginBottom: '6px'
-                }}
-              >
-                PROVEN PEDAGOGY
-              </span>
-              <h2 
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontSize: 'clamp(1.5rem, 2.5vw, 1.875rem)',
-                  fontWeight: 700,
-                  letterSpacing: '-0.025em',
-                  color: '#16161A',
-                  margin: '0 0 10px 0'
-                }}
-              >
-                8-Stage Teaching Methodology (शिक्षण पद्धति)
-              </h2>
-              <p style={{ fontSize: '13px', color: '#44403C', lineHeight: 1.6, margin: '0 0 28px 0' }}>
-                Guided by <strong style={{ color: '#16161A', fontWeight: 600 }}>Shadab Sir (12+ Years Experience)</strong> to systematically build accuracy and audio transcription speed from 50 to 140 WPM.
-              </p>
+            <div className="sp-courses-spread-right lg:col-span-7 min-w-0">
+              <FadeUp delay={0.08}>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8A7B7E] block mb-1.5">
+                  PROVEN PEDAGOGY
+                </span>
+                <h2 
+                  className="font-serif font-normal text-3xl lg:text-[2.2rem] leading-tight text-[#231418] mb-2.5"
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)',
+                    fontWeight: 400,
+                    lineHeight: 1.15,
+                    letterSpacing: '-0.015em',
+                    color: '#231418'
+                  }}
+                >
+                  8-Stage teaching <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>methodology</span> (शिक्षण पद्धति)
+                </h2>
+                <p className="text-xs sm:text-[13px] text-[#594A4D] leading-relaxed mb-7">
+                  Guided by <strong style={{ color: '#231418', fontWeight: 600 }}>Shadab Sir (12+ Years Experience)</strong> to systematically build accuracy and audio transcription speed from 50 to 140 WPM.
+                </p>
 
-              {/* Crisp 2-column numbered editorial grid on continuous parchment */}
-              <div 
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                  gap: '28px 24px'
-                }}
-              >
-                {TEACHING_METHODOLOGY.map((m, idx) => {
-                  const stepNum = String(idx + 1).padStart(2, '0');
-                  return (
-                    <div 
-                      key={m.step || idx}
-                      style={{
-                        borderTop: '1px solid #C8C2B6',
-                        paddingTop: '16px',
-                        display: 'flex',
-                        flexDirection: 'column'
-                      }}
-                    >
+                {/* 2-column numbered editorial grid on continuous Warm Cream */}
+                <div 
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                    gap: '24px'
+                  }}
+                >
+                  {TEACHING_METHODOLOGY.map((m, idx) => {
+                    const stepNum = String(idx + 1).padStart(2, '0');
+                    return (
                       <div 
+                        key={m.step || idx}
+                        className="border-t border-[#E0D5C7] pt-4 flex flex-col"
                         style={{
-                          fontSize: '12px',
-                          fontFamily: "'JetBrains Mono', monospace",
-                          fontWeight: 700,
-                          color: '#8C8578',
-                          letterSpacing: '0.04em'
+                          borderTop: '1px solid #E0D5C7',
+                          paddingTop: '16px'
                         }}
                       >
-                        {stepNum}
+                        <div 
+                          className="font-serif text-2xl text-[#8A7B7E]"
+                          style={{
+                            fontFamily: "'Instrument Serif', Georgia, serif",
+                            fontSize: '1.5rem',
+                            lineHeight: 1,
+                            color: '#8A7B7E',
+                            fontWeight: 400
+                          }}
+                        >
+                          {stepNum}
+                        </div>
+                        <div className="text-[15px] font-bold text-[#231418] mt-1.5 mb-0.5">
+                          {m.title}
+                        </div>
+                        <div className="text-xs font-medium text-[#78716C] mb-1.5">
+                          {m.hindi}
+                        </div>
+                        <p className="text-xs text-[#594A4D] leading-relaxed m-0">
+                          {m.desc}
+                        </p>
                       </div>
-                      <div 
-                        style={{
-                          fontSize: '15px',
-                          fontWeight: 700,
-                          color: '#16161A',
-                          margin: '4px 0 2px 0'
-                        }}
-                      >
-                        {m.title}
-                      </div>
-                      <div style={{ fontSize: '12px', fontWeight: 500, color: '#78716C', marginBottom: '6px' }}>
-                        {m.hindi}
-                      </div>
-                      <p style={{ fontSize: '12px', color: '#44403C', lineHeight: 1.6, margin: 0 }}>
-                        {m.desc}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
+                    );
+                  })}
+                </div>
+              </FadeUp>
             </div>
 
           </div>
@@ -2324,128 +1970,91 @@ export default function CoursesPage({
       </section>
 
       {/* =========================================================================
-          SECTION 6: SOFT IVORY CLOSING CTA CARD
+          SECTION 6: OPEN WARM-GLOW PRE-FOOTER CTA (WARM CREAM #FBF8F3 CANVAS)
           ========================================================================= */}
       <section 
+        className="relative overflow-hidden bg-[#FBF8F3] border-t border-[#E5DBD0] py-16 lg:py-20 text-center px-6"
         style={{
-          backgroundColor: '#ECE8E0',
-          paddingBottom: '80px',
-          width: '100%'
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundColor: '#FBF8F3',
+          borderTop: '1px solid #E5DBD0',
+          padding: '4.5rem 1.5rem',
+          textAlign: 'center'
         }}
       >
+        {/* Subtle warm radial glow behind content */}
         <div 
-          style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            paddingLeft: '24px',
-            paddingRight: '24px'
-          }}
-        >
-          <div 
-            style={{
-              background: '#F7F5F0',
-              border: '1px solid #D1CBBF',
-              borderLeft: '4px solid #991B1B',
-              borderRadius: '16px',
-              padding: '36px 40px',
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '24px',
-              boxShadow: '0 8px 28px rgba(22, 22, 26, 0.05)'
-            }}
-          >
-            <div style={{ maxWidth: '620px' }}>
-              <span 
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.16em',
-                  color: '#57534E',
-                  display: 'block',
-                  marginBottom: '8px'
-                }}
-              >
-                FREE DEMO &amp; COUNSELING
-              </span>
-              <h2 
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontSize: 'clamp(1.5rem, 2.5vw, 1.875rem)',
-                  fontWeight: 700,
-                  color: '#16161A',
-                  margin: '0 0 8px 0',
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1.25
-                }}
-              >
-                Not sure which course or <span style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontStyle: 'italic', fontWeight: 400, color: '#991B1B' }}>speed batch</span> is right for you?
-              </h2>
-              <p 
-                style={{
-                  fontSize: '14px',
-                  color: '#44403C',
-                  margin: 0,
-                  lineHeight: 1.6
-                }}
-              >
-                Speak directly with senior instructors or Head Faculty <strong style={{ color: '#16161A', fontWeight: 600 }}>Shadab Sir (12+ Years Experience)</strong> for a personalized skill assessment.
-              </p>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+          style={{ 
+            pointerEvents: 'none', 
+            position: 'absolute', 
+            inset: 0, 
+            background: 'radial-gradient(ellipse 65% 65% at 50% 50%, rgba(196, 132, 120, 0.16) 0%, rgba(251, 248, 243, 0) 75%)' 
+          }} 
+        />
+        <div className="relative z-10 max-w-2xl mx-auto">
+          <FadeUp>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#991B1B] block mb-3">
+              FREE DEMO &amp; COUNSELING
+            </span>
+            <h2 
+              className="font-serif font-normal text-4xl sm:text-5xl text-[#231418] leading-tight mb-3"
+              style={{
+                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontSize: 'clamp(2.25rem, 4.2vw, 3.25rem)',
+                fontWeight: 400,
+                lineHeight: 1.12,
+                letterSpacing: '-0.02em',
+                color: '#231418'
+              }}
+            >
+              Not sure which course or <span className="italic text-[#991B1B]" style={{ fontStyle: 'italic', color: '#991B1B' }}>speed batch</span> is right for you?
+            </h2>
+            <p className="text-sm sm:text-base text-[#594A4D] max-w-xl mx-auto mb-7 leading-relaxed">
+              Speak directly with senior instructors or Head Faculty <strong style={{ color: '#231418', fontWeight: 600 }}>Shadab Sir (12+ Years Experience)</strong> for a personalized skill assessment.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
               <button 
                 type="button"
                 onClick={() => {
                   if (onOpenAdmission) onOpenAdmission();
                 }}
+                className="bg-[#991B1B] hover:bg-[#7F1D1D] text-white px-7 py-3.5 rounded-full text-xs sm:text-sm font-semibold shadow-[0_8px_20px_rgba(153,27,27,0.20)] cursor-pointer transition-colors"
                 style={{
-                  background: '#991B1B',
+                  backgroundColor: '#991B1B',
                   color: '#FFFFFF',
-                  padding: '14px 24px',
-                  borderRadius: '12px',
-                  fontSize: '14px',
+                  padding: '14px 28px',
+                  borderRadius: '9999px',
+                  fontSize: '13.5px',
                   fontWeight: 600,
                   border: 'none',
                   cursor: 'pointer',
-                  whiteSpace: 'nowrap',
-                  boxShadow: '0 6px 18px rgba(153, 27, 27, 0.20)',
-                  transition: 'background-color 0.15s ease'
+                  boxShadow: '0 8px 20px rgba(153, 27, 27, 0.20)',
+                  transition: 'background-color 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#7F1D1D'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#991B1B'}
               >
                 <span>Book 3 Free Demo Classes &rarr;</span>
               </button>
-
               <a 
                 href="tel:+919204123453"
+                className="bg-white hover:bg-[#EFE7DC] border border-[#D8CCBE] text-[#231418] px-7 py-3.5 rounded-full text-xs sm:text-sm font-semibold tabular-nums inline-flex items-center gap-2 cursor-pointer transition-colors"
                 style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  background: '#EFECE5',
-                  border: '1px solid #D6D0C4',
-                  color: '#16161A',
-                  padding: '14px 20px',
-                  borderRadius: '12px',
-                  fontSize: '13px',
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #D8CCBE',
+                  color: '#231418',
+                  padding: '14px 28px',
+                  borderRadius: '9999px',
+                  fontSize: '13.5px',
                   fontWeight: 600,
                   textDecoration: 'none',
-                  whiteSpace: 'nowrap',
-                  transition: 'background-color 0.15s ease'
+                  transition: 'background-color 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#E4DFD5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#EFECE5'}
               >
-                <Phone size={14} style={{ color: '#991B1B', flexShrink: 0 }} />
+                <Phone size={14} className="text-[#991B1B] shrink-0" />
                 <span>Call +91 9204123453</span>
               </a>
             </div>
-          </div>
+          </FadeUp>
         </div>
       </section>
 
