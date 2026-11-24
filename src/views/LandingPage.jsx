@@ -2201,22 +2201,34 @@ export default function LandingPage({
       {/* =========================================================================
           SECTION 7: COMPACT CENTER DETAILS + FAQ SPLIT
           ========================================================================= */}
-      <section className="sp-center-faq-section bg-[#EFE7DC] border-t border-[#E3D9CC]">
+      <section className="sp-center-faq-section bg-[#EFE7DC] border-t border-[#E3D9CC] py-16 lg:py-20">
         <div className="sp-container">
           
           <div className="sp-center-faq-grid">
             
             {/* Left Column: Center Location & Helplines (Soft Ivory #F7F5F0) */}
             <FadeUp>
-              <div className="sp-center-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl">
+              <div className="sp-center-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl p-7 lg:-mt-6 shadow-[0_4px_20px_rgba(35,20,24,0.04)]">
                 <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
                   VISIT OUR CENTER
                 </span>
-                <h2 className="sp-section-h2" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
+                <h2 
+                  className="sp-section-h2 font-serif font-normal text-3xl lg:text-[2.2rem] leading-[1.1] tracking-[-0.015em] text-[#231418]" 
+                  style={{ 
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: 'clamp(1.75rem, 2.5vw, 2.2rem)',
+                    fontWeight: 400,
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.015em',
+                    color: '#231418',
+                    textAlign: 'left', 
+                    marginBottom: '1.25rem' 
+                  }}
+                >
                   Gaya Coaching Center &amp; Helplines
                 </h2>
 
-                <div className="sp-center-info-list">
+                <div className="sp-center-info-list space-y-4">
                   
                   <div className="sp-center-info-row">
                     <MapPin size={20} className="sp-center-info-icon" />
@@ -2253,7 +2265,7 @@ export default function LandingPage({
                 </div>
 
                 {/* Secondary Button */}
-                <div className="sp-center-action-row">
+                <div className="sp-center-action-row mt-5 pt-5">
                   <motion.button
                     type="button"
                     whileHover={{ scale: 1.02 }}

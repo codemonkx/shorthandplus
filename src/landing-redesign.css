@@ -1673,14 +1673,14 @@
    ========================================================================== */
 
 .sp-center-faq-section {
-  padding-top: 3.5rem;
+  padding: 4rem 0 !important;
   background-color: #EFE7DC !important;
   border-top: 1px solid #E3D9CC !important;
 }
 
 @media (min-width: 1024px) {
   .sp-center-faq-section {
-    padding-top: 4rem;
+    padding: 5rem 0 !important;
   }
 }
 
@@ -1703,9 +1703,15 @@
   background-color: #FFFFFF !important;
   border: 1px solid #E8DFD3 !important;
   border-radius: 16px;
-  padding: 2.25rem 2rem;
+  padding: 1.75rem !important;
   text-align: left;
   box-shadow: 0 4px 20px rgba(35, 20, 24, 0.04) !important;
+}
+
+@media (min-width: 1024px) {
+  .sp-center-card {
+    margin-top: -1.5rem !important;
+  }
 }
 
 .sp-center-heading {
@@ -1715,8 +1721,8 @@
 .sp-center-info-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 1rem !important;
+  margin-bottom: 1.25rem !important;
 }
 
 .sp-center-info-row {
@@ -1747,7 +1753,8 @@
 
 .sp-center-action-row {
   border-top: 1px solid var(--sp-border-subtle);
-  padding-top: 1.5rem;
+  padding-top: 1.25rem !important;
+  margin-top: 1.25rem !important;
 }
 
 /* Right: Interactive FAQ Accordion */
