@@ -3702,52 +3702,52 @@ export default function AdminPortalView({
 
         {/* TAB 5: Live Online Classes & Google Meet Broadcast Schedule Console */}
         {activeTab === 'classes' && (
-          <div className="max-w-7xl mx-auto px-6 pb-12">
+          <div className="max-w-7xl mx-auto px-6 pb-12" style={{ maxWidth: '80rem', margin: '0 auto', paddingLeft: '1.5rem', paddingRight: '1.5rem', paddingBottom: '3rem' }}>
 
-            {/* 1. Clean Single-Row Action Header */}
-            <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-              {/* Left: Title & Quiet Host Metadata */}
-              <div className="flex flex-wrap items-center gap-3">
-                <h3 className="font-sans font-bold text-lg text-[#231418] m-0">
+            {/* 1. Single-Row Action Header */}
+            <div style={{ marginTop: '24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
+              {/* Left */}
+              <div>
+                <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: 0 }}>
                   Live Google Meet Schedule
                 </h3>
-                <span className="text-xs text-[#8A7B7E]">
+                <div style={{ fontSize: '12px', color: '#8A7B7E', marginTop: '2px' }}>
                   {onlineClasses.length} daily batches · Host: stenoplus.in@gmail.com
-                </span>
+                </div>
               </div>
 
-              {/* Right: Action Buttons */}
-              <div className="flex flex-wrap items-center gap-2.5">
+              {/* Right */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px' }}>
                 <button
                   type="button"
-                  className="bg-white hover:bg-[#EFE7DC] border border-[#DFD4C6] text-[#231418] px-4 py-2 rounded-full text-xs font-semibold transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '8px 16px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                   onClick={() => setIsBroadcastingNotice(!isBroadcastingNotice)}
                   title="Compose or edit instant student alert"
                 >
-                  <Megaphone size={13} className="text-[#9A5B13]" />
+                  <Megaphone size={13} color="#9A5B13" />
                   <span>{isBroadcastingNotice ? 'Close Notice Form' : 'Broadcast Notice'}</span>
                 </button>
 
                 <button
                   type="button"
-                  className="bg-[#FCEEEE] hover:bg-[#991B1B] border border-[#EED2D2] text-[#991B1B] hover:text-white px-4 py-2 rounded-full text-xs font-semibold transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '8px 16px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                   onClick={handleQuickStartLive}
                   title="Instantly launch an impromptu live broadcast on Google Meet"
                 >
-                  <Zap size={13} />
+                  <Zap size={13} color="#991B1B" />
                   <span>Instant Live</span>
                 </button>
 
                 <button
                   type="button"
-                  className="bg-[#231418] hover:bg-[#3A2228] text-[#FAF6F0] px-4 py-2 rounded-full text-xs font-semibold transition-colors inline-flex items-center gap-1.5 cursor-pointer shadow-sm"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#231418', color: '#FAF6F0', border: '1px solid #231418', borderRadius: '9999px', padding: '8px 18px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                   onClick={() => {
                     loadClassTemplate('ssc80');
                     setNewClassModalOpen(true);
                   }}
                   title="Schedule a new live class batch"
                 >
-                  <Plus size={14} />
+                  <Plus size={14} color="#FAF6F0" />
                   <span>+ Schedule Class</span>
                 </button>
               </div>
@@ -3757,18 +3757,18 @@ export default function AdminPortalView({
             {isBroadcastingNotice && (
               <form
                 onSubmit={handlePostNotice}
-                className="mt-4 bg-[#FDF5E7] border border-[#EFDAB6] rounded-2xl p-4 sm:p-5 transition-all"
+                style={{ marginTop: '16px', backgroundColor: '#FDF5E7', border: '1px solid #EFDAB6', borderRadius: '16px', padding: '16px 20px', transition: 'all 0.15s ease' }}
               >
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <Megaphone size={15} className="text-[#9A5B13]" />
-                    <span className="font-bold text-xs sm:text-sm text-[#9A5B13]">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Megaphone size={15} color="#9A5B13" />
+                    <span style={{ fontWeight: 700, fontSize: '13px', color: '#9A5B13' }}>
                       Broadcast Instant Notice to All Student Dashboards
                     </span>
                   </div>
                   <button
                     type="button"
-                    className="text-[#9A5B13] hover:text-[#231418] p-1 cursor-pointer bg-transparent border-0"
+                    style={{ background: 'transparent', border: 'none', color: '#9A5B13', cursor: 'pointer', padding: '4px' }}
                     onClick={() => setIsBroadcastingNotice(false)}
                   >
                     <X size={15} />
@@ -3777,27 +3777,27 @@ export default function AdminPortalView({
                 <div>
                   <input
                     type="text"
-                    className="w-full bg-white border border-[#EFDAB6] rounded-full px-4 py-2.5 text-xs sm:text-sm text-[#231418] placeholder:text-[#8A7B7E] outline-none focus:border-[#9A5B13]"
+                    style={{ width: '100%', backgroundColor: '#FFFFFF', border: '1px solid #EFDAB6', borderRadius: '9999px', padding: '10px 18px', fontSize: '13px', color: '#231418', outline: 'none', boxSizing: 'border-box' }}
                     placeholder="e.g. 📢 Attention Aspirants: SSC 80 WPM Parliamentary dictation begins in 5 mins. Keep shorthand pads ready!"
                     value={broadcastNoticeText}
                     onChange={(e) => setBroadcastNoticeText(e.target.value)}
                     required
                   />
-                  <div className="flex items-center justify-between mt-3 flex-wrap gap-2">
-                    <span className="text-[11px] text-[#8A7B7E]">
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '12px', flexWrap: 'wrap', gap: '8px' }}>
+                    <span style={{ fontSize: '11px', color: '#8A7B7E' }}>
                       Push banner directly to active student portals
                     </span>
-                    <div className="flex items-center gap-2">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <button
                         type="button"
-                        className="px-3.5 py-1.5 rounded-full text-xs font-medium text-[#594A4D] hover:text-[#231418] bg-transparent border border-transparent cursor-pointer"
+                        style={{ padding: '6px 14px', borderRadius: '9999px', fontSize: '12px', fontWeight: 500, color: '#594A4D', background: 'transparent', border: 'none', cursor: 'pointer' }}
                         onClick={() => setIsBroadcastingNotice(false)}
                       >
                         Cancel
                       </button>
                       <button
                         type="submit"
-                        className="bg-[#9A5B13] hover:bg-[#7D490E] text-white px-4 py-1.5 rounded-full text-xs font-semibold transition-colors cursor-pointer border-0"
+                        style={{ backgroundColor: '#9A5B13', color: '#FFFFFF', padding: '6px 16px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, border: 'none', cursor: 'pointer' }}
                       >
                         Publish Notice
                       </button>
@@ -3807,20 +3807,20 @@ export default function AdminPortalView({
               </form>
             )}
 
-            {/* Active Live Notice Sleek Bar */}
+            {/* 2. Active Live Notice Bar (When Active) */}
             {activeBroadcastNotice && (
-              <div className="mt-4 bg-[#FCEEEE] border border-[#EED2D2] rounded-xl px-4 py-2.5 flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#991B1B] bg-white/80 border border-[#EED2D2] rounded-full px-2.5 py-0.5 whitespace-nowrap shrink-0">
+              <div style={{ marginTop: '16px', backgroundColor: '#FCEEEE', border: '1px solid #EED2D2', borderRadius: '14px', padding: '10px 16px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1, minWidth: 0 }}>
+                  <span style={{ backgroundColor: '#991B1B', color: '#FFFFFF', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
                     LIVE NOTICE
                   </span>
-                  <p className="text-xs text-[#231418] font-medium m-0 truncate">
+                  <p style={{ fontSize: '12px', fontWeight: 500, color: '#231418', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {activeBroadcastNotice}
                   </p>
                 </div>
                 <button
                   type="button"
-                  className="bg-white hover:bg-[#FCEEEE] border border-[#EED2D2] text-[#991B1B] rounded-full px-3 py-1 text-xs font-semibold cursor-pointer shrink-0 transition-colors inline-flex items-center gap-1"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FFFFFF', color: '#594A4D', border: '1px solid #E5DBD0', borderRadius: '9999px', padding: '5px 14px', fontSize: '11px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                   onClick={handleClearNotice}
                   title="Clear active notice for students"
                 >
@@ -3830,18 +3830,18 @@ export default function AdminPortalView({
               </div>
             )}
 
-            {/* 2. Single-Layer Schedule Table Card */}
-            <div className="mt-5 bg-white border border-[#E8DFD3] rounded-2xl overflow-hidden shadow-[0_6px_24px_rgba(35,20,24,0.04)]">
+            {/* 3. Single-Layer Schedule Table Card */}
+            <div className="saas-card admin-content-card" style={{ marginTop: '20px', backgroundColor: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 6px 24px rgba(35, 20, 24, 0.04)', padding: 0 }}>
 
               {/* Top Filter & Search Toolbar */}
-              <div className="px-5 py-3.5 bg-[#FAF7F2] border-b border-[#EDE5DA] flex flex-wrap items-center justify-between gap-3">
-                {/* Left: Status Filter Pills */}
-                <div className="flex flex-wrap items-center gap-2">
+              <div style={{ padding: '14px 20px', backgroundColor: '#FAF7F2', borderBottom: '1px solid #EDE5DA', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+                {/* Left Status Pills */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px' }}>
                   <button
                     type="button"
-                    className={classFilterStatus === 'all'
-                      ? 'bg-[#231418] text-[#FAF6F0] rounded-full px-3.5 py-1.5 text-xs font-semibold cursor-pointer border-0 transition-colors inline-flex items-center gap-1.5'
-                      : 'bg-white hover:bg-[#EFE7DC] border border-[#E5DBD0] text-[#594A4D] rounded-full px-3.5 py-1.5 text-xs font-medium cursor-pointer transition-colors inline-flex items-center gap-1.5'
+                    style={classFilterStatus === 'all'
+                      ? { backgroundColor: '#231418', color: '#FAF6F0', border: '1px solid #231418', borderRadius: '9999px', padding: '6px 14px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }
+                      : { backgroundColor: '#FFFFFF', color: '#594A4D', border: '1px solid #E5DBD0', borderRadius: '9999px', padding: '6px 14px', fontSize: '12px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }
                     }
                     onClick={() => setClassFilterStatus('all')}
                   >
@@ -3850,102 +3850,110 @@ export default function AdminPortalView({
 
                   <button
                     type="button"
-                    className={classFilterStatus === 'live'
-                      ? 'bg-[#991B1B] text-white rounded-full px-3.5 py-1.5 text-xs font-semibold cursor-pointer border-0 transition-colors inline-flex items-center gap-1.5'
-                      : 'bg-white hover:bg-[#EFE7DC] border border-[#E5DBD0] text-[#594A4D] rounded-full px-3.5 py-1.5 text-xs font-medium cursor-pointer transition-colors inline-flex items-center gap-1.5'
+                    style={classFilterStatus === 'live'
+                      ? { backgroundColor: '#231418', color: '#FAF6F0', border: '1px solid #231418', borderRadius: '9999px', padding: '6px 14px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center', gap: '6px' }
+                      : { backgroundColor: '#FFFFFF', color: '#594A4D', border: '1px solid #E5DBD0', borderRadius: '9999px', padding: '6px 14px', fontSize: '12px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center', gap: '6px' }
                     }
                     onClick={() => setClassFilterStatus('live')}
                   >
-                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: classFilterStatus === 'live' ? '#FFFFFF' : '#991B1B' }} />
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: classFilterStatus === 'live' ? '#FAF6F0' : '#991B1B' }} />
                     <span>Live Now</span>
-                    <span className="text-[10px] opacity-75 font-mono">
+                    <span style={{ fontSize: '10px', opacity: 0.8, fontFamily: "'JetBrains Mono', monospace" }}>
                       ({onlineClasses.filter(c => c.status === 'live' || c.isLive).length})
                     </span>
                   </button>
 
                   <button
                     type="button"
-                    className={classFilterStatus === 'upcoming'
-                      ? 'bg-[#231418] text-[#FAF6F0] rounded-full px-3.5 py-1.5 text-xs font-semibold cursor-pointer border-0 transition-colors inline-flex items-center gap-1.5'
-                      : 'bg-white hover:bg-[#EFE7DC] border border-[#E5DBD0] text-[#594A4D] rounded-full px-3.5 py-1.5 text-xs font-medium cursor-pointer transition-colors inline-flex items-center gap-1.5'
+                    style={classFilterStatus === 'upcoming'
+                      ? { backgroundColor: '#231418', color: '#FAF6F0', border: '1px solid #231418', borderRadius: '9999px', padding: '6px 14px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }
+                      : { backgroundColor: '#FFFFFF', color: '#594A4D', border: '1px solid #E5DBD0', borderRadius: '9999px', padding: '6px 14px', fontSize: '12px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }
                     }
                     onClick={() => setClassFilterStatus('upcoming')}
                   >
                     <span>Upcoming</span>
-                    <span className="text-[10px] opacity-75 font-mono">
+                    <span style={{ fontSize: '10px', opacity: 0.8, fontFamily: "'JetBrains Mono', monospace", marginLeft: '4px' }}>
                       ({onlineClasses.filter(c => c.status === 'upcoming' || (!c.isLive && c.status !== 'completed' && c.status !== 'cancelled')).length})
                     </span>
                   </button>
 
                   <button
                     type="button"
-                    className={classFilterStatus === 'completed'
-                      ? 'bg-[#231418] text-[#FAF6F0] rounded-full px-3.5 py-1.5 text-xs font-semibold cursor-pointer border-0 transition-colors inline-flex items-center gap-1.5'
-                      : 'bg-white hover:bg-[#EFE7DC] border border-[#E5DBD0] text-[#594A4D] rounded-full px-3.5 py-1.5 text-xs font-medium cursor-pointer transition-colors inline-flex items-center gap-1.5'
+                    style={classFilterStatus === 'completed'
+                      ? { backgroundColor: '#231418', color: '#FAF6F0', border: '1px solid #231418', borderRadius: '9999px', padding: '6px 14px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }
+                      : { backgroundColor: '#FFFFFF', color: '#594A4D', border: '1px solid #E5DBD0', borderRadius: '9999px', padding: '6px 14px', fontSize: '12px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }
                     }
                     onClick={() => setClassFilterStatus('completed')}
                   >
                     <span>Completed</span>
-                    <span className="text-[10px] opacity-75 font-mono">
+                    <span style={{ fontSize: '10px', opacity: 0.8, fontFamily: "'JetBrains Mono', monospace", marginLeft: '4px' }}>
                       ({onlineClasses.filter(c => c.status === 'completed').length})
                     </span>
                   </button>
 
                   <button
                     type="button"
-                    className={classFilterStatus === 'cancelled'
-                      ? 'bg-[#231418] text-[#FAF6F0] rounded-full px-3.5 py-1.5 text-xs font-semibold cursor-pointer border-0 transition-colors inline-flex items-center gap-1.5'
-                      : 'bg-white hover:bg-[#EFE7DC] border border-[#E5DBD0] text-[#594A4D] rounded-full px-3.5 py-1.5 text-xs font-medium cursor-pointer transition-colors inline-flex items-center gap-1.5'
+                    style={classFilterStatus === 'cancelled'
+                      ? { backgroundColor: '#231418', color: '#FAF6F0', border: '1px solid #231418', borderRadius: '9999px', padding: '6px 14px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }
+                      : { backgroundColor: '#FFFFFF', color: '#594A4D', border: '1px solid #E5DBD0', borderRadius: '9999px', padding: '6px 14px', fontSize: '12px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }
                     }
                     onClick={() => setClassFilterStatus('cancelled')}
                   >
                     <span>Cancelled</span>
-                    <span className="text-[10px] opacity-75 font-mono">
+                    <span style={{ fontSize: '10px', opacity: 0.8, fontFamily: "'JetBrains Mono', monospace", marginLeft: '4px' }}>
                       ({onlineClasses.filter(c => c.status === 'cancelled').length})
                     </span>
                   </button>
                 </div>
 
-                {/* Right: Search Box */}
-                <div className="relative w-full sm:w-60">
-                  <div className="flex items-center rounded-full bg-white border border-[#DFD4C6] px-3.5 py-1.5 text-xs text-[#231418] focus-within:border-[#231418] transition-colors">
-                    <Search size={13} className="text-[#8A7B7E] shrink-0 mr-2" />
-                    <input
-                      type="text"
-                      placeholder="Search batch, topic, speed..."
-                      value={classSearchQuery}
-                      onChange={(e) => setClassSearchQuery(e.target.value)}
-                      className="w-full bg-transparent border-none outline-none text-xs text-[#231418] placeholder:text-[#8A7B7E] p-0"
-                    />
-                    {classSearchQuery && (
-                      <button
-                        type="button"
-                        onClick={() => setClassSearchQuery('')}
-                        className="bg-transparent border-0 cursor-pointer p-0 text-[#8A7B7E] hover:text-[#231418] ml-1"
-                      >
-                        <X size={12} />
-                      </button>
-                    )}
-                  </div>
+                {/* Right Search Input */}
+                <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                  <Search size={13} color="#8A7B7E" style={{ position: 'absolute', left: '12px', pointerEvents: 'none' }} />
+                  <input
+                    type="text"
+                    placeholder="Search batch, topic, speed..."
+                    value={classSearchQuery}
+                    onChange={(e) => setClassSearchQuery(e.target.value)}
+                    style={{ backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '7px 16px 7px 32px', fontSize: '12px', width: '240px', outline: 'none' }}
+                  />
+                  {classSearchQuery && (
+                    <button
+                      type="button"
+                      onClick={() => setClassSearchQuery('')}
+                      style={{ position: 'absolute', right: '10px', background: 'transparent', border: 'none', cursor: 'pointer', color: '#8A7B7E', padding: 0 }}
+                    >
+                      <X size={12} />
+                    </button>
+                  )}
                 </div>
               </div>
 
-              {/* Table Container */}
-              <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse">
+              {/* 4. Schedule Table Styling & Fixes */}
+              <div className="table-responsive" style={{ overflowX: 'auto' }}>
+                <table className="corporate-table candidate-registry-table" style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
                   <thead>
-                    <tr className="bg-[#F5EFE6] border-b border-[#E5DBD0] text-[10px] font-semibold uppercase tracking-[0.12em] text-[#8A7B7E]">
-                      <th className="px-5 py-3 whitespace-nowrap">TIME & STATUS</th>
-                      <th className="px-5 py-3">BATCH & DICTATION TOPIC</th>
-                      <th className="px-5 py-3 whitespace-nowrap">SPEED & ROOM</th>
-                      <th className="px-5 py-3 whitespace-nowrap">MEET CODE</th>
-                      <th className="px-5 py-3 text-right whitespace-nowrap">ACTIONS</th>
+                    <tr style={{ backgroundColor: '#F5EFE6', borderBottom: '1px solid #E5DBD0' }}>
+                      <th style={{ padding: '12px 20px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', whiteSpace: 'nowrap' }}>
+                        TIME & STATUS
+                      </th>
+                      <th style={{ padding: '12px 20px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E' }}>
+                        BATCH & DICTATION TOPIC
+                      </th>
+                      <th style={{ padding: '12px 20px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', whiteSpace: 'nowrap' }}>
+                        SPEED & ROOM
+                      </th>
+                      <th style={{ padding: '12px 20px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', whiteSpace: 'nowrap' }}>
+                        MEET CODE
+                      </th>
+                      <th style={{ padding: '12px 20px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                        ACTIONS
+                      </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#EDE5DA]">
+                  <tbody style={{ divideY: '1px solid #EDE5DA' }}>
                     {filteredOnlineClasses.length === 0 ? (
                       <tr>
-                        <td colSpan={5} className="px-5 py-12 text-center text-xs text-[#8A7B7E]">
+                        <td colSpan={5} style={{ padding: '32px 20px', textAlign: 'center', fontSize: '12px', color: '#8A7B7E' }}>
                           No classes found matching the selected filter or search query.
                         </td>
                       </tr>
@@ -3956,33 +3964,38 @@ export default function AdminPortalView({
                         const isCancelled = item.status === 'cancelled';
                         const meetCode = item.meetCode || item.zoomMeetingId || 'stenoplus-live';
 
+                        // Format time string cleanly without duplicate (60m)
+                        const baseTime = item.time || item.startTime || '8:30 AM';
+                        const displayTime = (baseTime.includes('(') || !item.durationMins)
+                          ? baseTime
+                          : `${baseTime} (${item.durationMins}m)`;
+
                         return (
                           <tr
                             key={item.id}
-                            className={`hover:bg-[#FAF7F2] transition-colors ${isLive ? 'bg-[#FFFDFB]' : 'bg-white'}`}
+                            style={{ borderBottom: '1px solid #EDE5DA', backgroundColor: isLive ? '#FFFDFB' : '#FFFFFF' }}
                           >
                             {/* Col 1: TIME & STATUS */}
-                            <td className="px-5 py-3.5 align-middle whitespace-nowrap">
-                              <div className="font-mono text-xs font-bold text-[#231418]">
-                                {item.time || item.startTime || '8:30 AM'}
-                                {item.durationMins ? ` · ${item.durationMins}m` : ''}
+                            <td style={{ padding: '16px 20px', verticalAlign: 'middle' }}>
+                              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12px', fontWeight: 700, color: '#231418', whiteSpace: 'nowrap' }}>
+                                {displayTime}
                               </div>
-                              <div className="mt-1">
+                              <div style={{ marginTop: '6px' }}>
                                 {isLive ? (
-                                  <span className="inline-flex items-center gap-1.5 bg-[#FCEEEE] border border-[#EED2D2] text-[#991B1B] rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B] animate-pulse" />
+                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2' }}>
+                                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
                                     <span>LIVE ON-AIR</span>
                                   </span>
                                 ) : isCompleted ? (
-                                  <span className="inline-flex items-center gap-1 bg-[#EFE7DC] border border-[#E0D5C7] text-[#594A4D] rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider">
+                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#EFE7DC', color: '#594A4D', border: '1px solid #E0D5C7' }}>
                                     <span>COMPLETED</span>
                                   </span>
                                 ) : isCancelled ? (
-                                  <span className="inline-flex items-center gap-1 bg-[#FCEEEE] border border-[#EED2D2] text-[#991B1B] rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider">
+                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2' }}>
                                     <span>CANCELLED</span>
                                   </span>
                                 ) : (
-                                  <span className="inline-flex items-center gap-1 bg-[#FDF5E7] border border-[#EFDAB6] text-[#9A5B13] rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider">
+                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FDF5E7', color: '#9A5B13', border: '1px solid #EFDAB6' }}>
                                     <span>SCHEDULED</span>
                                   </span>
                                 )}
@@ -3990,34 +4003,34 @@ export default function AdminPortalView({
                             </td>
 
                             {/* Col 2: BATCH & DICTATION TOPIC */}
-                            <td className="px-5 py-3.5 align-middle min-w-[220px] max-w-[340px]">
-                              <div className="font-semibold text-sm text-[#231418] leading-tight">
+                            <td style={{ padding: '16px 20px', verticalAlign: 'middle', minWidth: '220px', maxWidth: '340px' }}>
+                              <div style={{ fontSize: '13.5px', fontWeight: 700, color: '#231418', lineHeight: 1.35 }}>
                                 {item.title}
                               </div>
-                              <div className="text-xs text-[#594A4D] mt-0.5 line-clamp-1" title={item.todayTopic}>
+                              <div style={{ fontSize: '12px', color: '#594A4D', marginTop: '3px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={item.todayTopic}>
                                 {item.todayTopic || 'General Speed Dictation & Outline Feedback'}
                               </div>
                             </td>
 
                             {/* Col 3: SPEED & ROOM */}
-                            <td className="px-5 py-3.5 align-middle whitespace-nowrap">
-                              <span className="inline-block bg-[#EFE7DC] text-[#231418] rounded-full px-2.5 py-0.5 text-[11px] font-semibold">
+                            <td style={{ padding: '16px 20px', verticalAlign: 'middle', whiteSpace: 'nowrap' }}>
+                              <span style={{ display: 'inline-block', backgroundColor: '#EFE7DC', color: '#231418', borderRadius: '9999px', padding: '3px 10px', fontSize: '11px', fontWeight: 600, whiteSpace: 'nowrap' }}>
                                 {item.speed || '80 WPM Standard'}
                               </span>
-                              <div className="text-[11px] text-[#8A7B7E] mt-1">
+                              <div style={{ fontSize: '11px', color: '#8A7B7E', marginTop: '5px', whiteSpace: 'nowrap' }}>
                                 {item.roomNo || 'Studio Live'} · {item.attendees || 1} learners
                               </div>
                             </td>
 
                             {/* Col 4: MEET CODE */}
-                            <td className="px-5 py-3.5 align-middle whitespace-nowrap">
-                              <div className="inline-flex items-center gap-1.5">
-                                <span className="font-mono text-xs font-semibold text-[#231418] select-all">
+                            <td style={{ padding: '16px 20px', verticalAlign: 'middle', whiteSpace: 'nowrap' }}>
+                              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '9999px', padding: '4px 12px', whiteSpace: 'nowrap' }}>
+                                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11.5px', fontWeight: 600, color: '#231418', userSelect: 'all' }}>
                                   {meetCode}
                                 </span>
                                 <button
                                   type="button"
-                                  className="text-[#8A7B7E] hover:text-[#231418] p-1 rounded-full hover:bg-[#EFE7DC] transition-colors cursor-pointer bg-transparent border-0"
+                                  style={{ background: 'transparent', border: 'none', color: '#8A7B7E', cursor: 'pointer', padding: '2px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
                                   onClick={() => {
                                     navigator.clipboard?.writeText(meetCode).catch(() => {});
                                     setCopiedClassId(`code-${item.id}`);
@@ -4026,7 +4039,7 @@ export default function AdminPortalView({
                                   title="Copy Meet Code"
                                 >
                                   {copiedClassId === `code-${item.id}` ? (
-                                    <Check size={12} className="text-[#1F6B48]" />
+                                    <Check size={12} color="#1F6B48" />
                                   ) : (
                                     <Copy size={12} />
                                   )}
@@ -4035,50 +4048,50 @@ export default function AdminPortalView({
                             </td>
 
                             {/* Col 5: ACTIONS */}
-                            <td className="px-5 py-3.5 align-middle text-right whitespace-nowrap">
-                              <div className="flex items-center justify-end gap-2">
+                            <td style={{ padding: '16px 20px', verticalAlign: 'middle', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '8px', whiteSpace: 'nowrap' }}>
                                 {isLive ? (
                                   <>
                                     <button
                                       type="button"
-                                      className="bg-[#991B1B] hover:bg-[#7F1D1D] text-white px-3.5 py-1.5 rounded-full text-xs font-semibold transition-colors inline-flex items-center gap-1.5 cursor-pointer border-0"
+                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#991B1B', color: '#FFFFFF', borderRadius: '9999px', padding: '6px 14px', fontSize: '11.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
                                       onClick={() => {
                                         const targetUrl = item.meetUrl || item.googleMeetUrl || (item.meetCode ? `https://meet.google.com/${item.meetCode}` : 'https://meet.google.com/new');
                                         window.open(targetUrl, '_blank');
                                       }}
                                       title="Enter Google Meet as Host"
                                     >
-                                      <Video size={13} />
+                                      <Video size={13} color="#FFFFFF" />
                                       <span>Conduct Live</span>
-                                      <ExternalLink size={11} />
+                                      <ExternalLink size={11} color="#FFFFFF" />
                                     </button>
 
                                     <button
                                       type="button"
-                                      className="bg-[#231418] hover:bg-[#3A2228] text-[#FAF6F0] px-3 py-1.5 rounded-full text-xs font-semibold transition-colors inline-flex items-center gap-1 cursor-pointer border-0"
+                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '6px 13px', fontSize: '11.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
                                       onClick={() => handleCompleteClassAction(item.id)}
                                       title="Finish and complete this session"
                                     >
-                                      <CheckCircle2 size={12} className="text-[#1F6B48]" />
+                                      <CheckCircle2 size={12} color="#1F6B48" />
                                       <span>Complete</span>
                                     </button>
 
                                     <button
                                       type="button"
-                                      className="text-[#991B1B] hover:text-[#7F1D1D] hover:bg-[#FCEEEE] px-2 py-1.5 rounded-full text-xs font-medium transition-colors cursor-pointer bg-transparent border-0"
+                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '6px 12px', fontSize: '11.5px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                                       onClick={() => {
                                         setCancelModalClass(item);
                                         setCancelReasonText('');
                                       }}
                                       title="Cancel class"
                                     >
-                                      Cancel
+                                      <span>Cancel</span>
                                     </button>
                                   </>
                                 ) : isCompleted ? (
                                   <button
                                     type="button"
-                                    className="bg-white hover:bg-[#FAF7F2] border border-[#DFD4C6] text-[#594A4D] hover:text-[#231418] px-3 py-1.5 rounded-full text-xs font-medium transition-colors cursor-pointer inline-flex items-center gap-1"
+                                    style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#FFFFFF', color: '#594A4D', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '6px 14px', fontSize: '11.5px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
                                     onClick={() => setEditingClass({ ...item })}
                                     title="Edit class record"
                                   >
@@ -4086,13 +4099,13 @@ export default function AdminPortalView({
                                     <span>Edit Record</span>
                                   </button>
                                 ) : isCancelled ? (
-                                  <div className="flex items-center gap-2">
-                                    <span className="text-xs text-[#8A7B7E] italic">
+                                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                                    <span style={{ fontSize: '12px', color: '#8A7B7E', fontStyle: 'italic' }}>
                                       Cancelled
                                     </span>
                                     <button
                                       type="button"
-                                      className="text-[#8A7B7E] hover:text-[#991B1B] p-1.5 rounded-full hover:bg-[#FCEEEE] transition-colors cursor-pointer bg-transparent border-0"
+                                      style={{ background: 'transparent', border: 'none', color: '#8A7B7E', cursor: 'pointer', padding: '4px', borderRadius: '9999px' }}
                                       onClick={() => {
                                         if (confirm(`Delete cancelled class "${item.title}"?`)) {
                                           if (onDeleteOnlineClass) onDeleteOnlineClass(item.id);
@@ -4107,7 +4120,7 @@ export default function AdminPortalView({
                                   <>
                                     <button
                                       type="button"
-                                      className="bg-[#231418] hover:bg-[#3A2228] text-[#FAF6F0] px-3.5 py-1.5 rounded-full text-xs font-semibold transition-colors inline-flex items-center gap-1.5 cursor-pointer border-0"
+                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '6px 14px', fontSize: '11.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
                                       onClick={() => handleStartClassAction(item)}
                                       title="Start session and open Google Meet"
                                     >
@@ -4117,7 +4130,7 @@ export default function AdminPortalView({
 
                                     <button
                                       type="button"
-                                      className="bg-white hover:bg-[#FAF7F2] border border-[#DFD4C6] text-[#231418] px-3 py-1.5 rounded-full text-xs font-medium transition-colors cursor-pointer inline-flex items-center gap-1"
+                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '6px 13px', fontSize: '11.5px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
                                       onClick={() => setEditingClass({ ...item })}
                                       title="Edit schedule or details"
                                     >
@@ -4127,14 +4140,14 @@ export default function AdminPortalView({
 
                                     <button
                                       type="button"
-                                      className="text-[#991B1B] hover:text-[#7F1D1D] hover:bg-[#FCEEEE] px-2 py-1.5 rounded-full text-xs font-medium transition-colors cursor-pointer bg-transparent border-0"
+                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '6px 12px', fontSize: '11.5px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                                       onClick={() => {
                                         setCancelModalClass(item);
                                         setCancelReasonText('');
                                       }}
                                       title="Cancel class"
                                     >
-                                      Cancel
+                                      <span>Cancel</span>
                                     </button>
                                   </>
                                 )}
