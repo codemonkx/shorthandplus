@@ -3702,10 +3702,10 @@ export default function AdminPortalView({
 
         {/* TAB 5: Live Online Classes & Google Meet Broadcast Schedule Console */}
         {activeTab === 'classes' && (
-          <div className="max-w-7xl mx-auto px-6 pb-12" style={{ maxWidth: '80rem', margin: '0 auto', paddingLeft: '1.5rem', paddingRight: '1.5rem', paddingBottom: '3rem' }}>
+          <div style={{ width: '100%', paddingBottom: '3rem' }}>
 
             {/* 1. Single-Row Action Header */}
-            <div style={{ marginTop: '24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
+            <div style={{ marginTop: '24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px', width: '100%' }}>
               {/* Left */}
               <div>
                 <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: 0 }}>
@@ -3757,7 +3757,7 @@ export default function AdminPortalView({
             {isBroadcastingNotice && (
               <form
                 onSubmit={handlePostNotice}
-                style={{ marginTop: '16px', backgroundColor: '#FDF5E7', border: '1px solid #EFDAB6', borderRadius: '16px', padding: '16px 20px', transition: 'all 0.15s ease' }}
+                style={{ marginTop: '16px', backgroundColor: '#FDF5E7', border: '1px solid #EFDAB6', borderRadius: '16px', padding: '16px 20px', transition: 'all 0.15s ease', width: '100%', boxSizing: 'border-box' }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -3809,7 +3809,7 @@ export default function AdminPortalView({
 
             {/* 2. Active Live Notice Bar (When Active) */}
             {activeBroadcastNotice && (
-              <div style={{ marginTop: '16px', backgroundColor: '#FCEEEE', border: '1px solid #EED2D2', borderRadius: '14px', padding: '10px 16px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+              <div style={{ marginTop: '16px', backgroundColor: '#FCEEEE', border: '1px solid #EED2D2', borderRadius: '14px', padding: '10px 16px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px', width: '100%', boxSizing: 'border-box' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1, minWidth: 0 }}>
                   <span style={{ backgroundColor: '#991B1B', color: '#FFFFFF', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
                     LIVE NOTICE
@@ -3831,10 +3831,10 @@ export default function AdminPortalView({
             )}
 
             {/* 3. Single-Layer Schedule Card (Horizontal Broadcast Agenda) */}
-            <div style={{ marginTop: '20px', backgroundColor: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 6px 24px rgba(35, 20, 24, 0.04)' }}>
+            <div style={{ marginTop: '20px', backgroundColor: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 6px 24px rgba(35, 20, 24, 0.04)', width: '100%', boxSizing: 'border-box' }}>
 
               {/* Top Filter & Search Toolbar */}
-              <div style={{ padding: '14px 22px', backgroundColor: '#FAF7F2', borderBottom: '1px solid #EDE5DA', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+              <div style={{ padding: '16px 28px', backgroundColor: '#FAF7F2', borderBottom: '1px solid #EDE5DA', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '14px' }}>
                 {/* Left Status Pills */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px' }}>
                   <button
@@ -3914,7 +3914,7 @@ export default function AdminPortalView({
                     placeholder="Search batch, topic, speed..."
                     value={classSearchQuery}
                     onChange={(e) => setClassSearchQuery(e.target.value)}
-                    style={{ backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '7px 16px 7px 32px', fontSize: '12px', width: '240px', outline: 'none' }}
+                    style={{ backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '7px 16px 7px 32px', fontSize: '12px', width: '270px', outline: 'none' }}
                   />
                   {classSearchQuery && (
                     <button
@@ -3929,9 +3929,9 @@ export default function AdminPortalView({
               </div>
 
               {/* Horizontal Agenda List */}
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
                 {filteredOnlineClasses.length === 0 ? (
-                  <div style={{ padding: '36px 22px', textAlign: 'center', fontSize: '12.5px', color: '#8A7B7E' }}>
+                  <div style={{ padding: '36px 28px', textAlign: 'center', fontSize: '12.5px', color: '#8A7B7E' }}>
                     No classes found matching the selected filter or search query.
                   </div>
                 ) : (
@@ -3952,37 +3952,39 @@ export default function AdminPortalView({
                       <div
                         key={item.id}
                         style={{
-                          padding: '18px 22px',
+                          padding: '22px 28px',
                           borderBottom: isLast ? 'none' : '1px solid #EDE5DA',
                           backgroundColor: isLive ? '#FFFDFB' : '#FFFFFF',
                           display: 'flex',
                           flexWrap: 'wrap',
                           alignItems: 'center',
                           justifyContent: 'space-between',
-                          gap: '20px'
+                          gap: '24px',
+                          width: '100%',
+                          boxSizing: 'border-box'
                         }}
                       >
                         {/* Zone 1: Left Time & Status Rail */}
-                        <div style={{ width: '135px', flexShrink: 0 }}>
-                          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12.5px', fontWeight: 700, color: '#231418', whiteSpace: 'nowrap' }}>
+                        <div style={{ width: '155px', flexShrink: 0 }}>
+                          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '13.5px', fontWeight: 700, color: '#231418', whiteSpace: 'nowrap' }}>
                             {displayTime}
                           </div>
                           <div style={{ marginTop: '6px' }}>
                             {isLive ? (
-                              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2' }}>
+                              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '4px 11px', fontSize: '10.5px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2' }}>
                                 <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
                                 <span>LIVE ON-AIR</span>
                               </span>
                             ) : isCompleted ? (
-                              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#EFE7DC', color: '#594A4D', border: '1px solid #E0D5C7' }}>
+                              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '4px 11px', fontSize: '10.5px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#EFE7DC', color: '#594A4D', border: '1px solid #E0D5C7' }}>
                                 <span>COMPLETED</span>
                               </span>
                             ) : isCancelled ? (
-                              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2' }}>
+                              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '4px 11px', fontSize: '10.5px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2' }}>
                                 <span>CANCELLED</span>
                               </span>
                             ) : (
-                              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FDF5E7', color: '#9A5B13', border: '1px solid #EFDAB6' }}>
+                              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '4px 11px', fontSize: '10.5px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FDF5E7', color: '#9A5B13', border: '1px solid #EFDAB6' }}>
                                 <span>SCHEDULED</span>
                               </span>
                             )}
@@ -3991,23 +3993,23 @@ export default function AdminPortalView({
 
                         {/* Zone 2: Spacious Center Batch & Metadata Block */}
                         <div style={{ flex: '1 1 360px', minWidth: 0 }}>
-                          <div style={{ fontSize: '14.5px', fontWeight: 700, color: '#231418', lineHeight: 1.35 }}>
+                          <div style={{ fontSize: '15.5px', fontWeight: 700, color: '#231418', lineHeight: 1.35 }}>
                             {item.title}
                           </div>
-                          <div style={{ fontSize: '12.5px', color: '#594A4D', marginTop: '3px', lineHeight: 1.4 }} title={item.todayTopic}>
+                          <div style={{ fontSize: '13px', color: '#594A4D', marginTop: '3px', lineHeight: 1.4 }} title={item.todayTopic}>
                             {item.todayTopic || 'General Speed Dictation & Outline Feedback'}
                           </div>
 
                           {/* Inline Metadata Strip */}
                           <div style={{ marginTop: '10px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px' }}>
-                            <span style={{ backgroundColor: '#EFE7DC', color: '#231418', borderRadius: '9999px', padding: '3px 10px', fontSize: '11px', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                            <span style={{ backgroundColor: '#EFE7DC', color: '#231418', borderRadius: '9999px', padding: '4px 12px', fontSize: '12px', fontWeight: 600, whiteSpace: 'nowrap' }}>
                               {item.speed || '80 WPM Standard'}
                             </span>
-                            <span style={{ fontSize: '11.5px', color: '#8A7B7E', whiteSpace: 'nowrap' }}>
+                            <span style={{ fontSize: '12px', color: '#8A7B7E', whiteSpace: 'nowrap' }}>
                               {item.roomNo || 'Studio Live'} · {item.attendees || 1} learners
                             </span>
                             <div
-                              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '9999px', padding: '2px 10px', fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', fontWeight: 600, color: '#231418', cursor: 'pointer', whiteSpace: 'nowrap' }}
+                              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '9999px', padding: '4px 12px', fontFamily: "'JetBrains Mono', monospace", fontSize: '12px', fontWeight: 600, color: '#231418', cursor: 'pointer', whiteSpace: 'nowrap' }}
                               onClick={() => {
                                 navigator.clipboard?.writeText(meetCode).catch(() => {});
                                 setCopiedClassId(`code-${item.id}`);
@@ -4017,45 +4019,45 @@ export default function AdminPortalView({
                             >
                               <span>{meetCode}</span>
                               {copiedClassId === `code-${item.id}` ? (
-                                <Check size={11} color="#1F6B48" />
+                                <Check size={12} color="#1F6B48" />
                               ) : (
-                                <Copy size={11} color="#8A7B7E" />
+                                <Copy size={12} color="#8A7B7E" />
                               )}
                             </div>
                           </div>
                         </div>
 
                         {/* Zone 3: Right-Aligned Action Pills */}
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '8px', flexShrink: 0, whiteSpace: 'nowrap' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '10px', flexShrink: 0, whiteSpace: 'nowrap' }}>
                           {isLive ? (
                             <>
                               <button
                                 type="button"
-                                style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#991B1B', color: '#FFFFFF', borderRadius: '9999px', padding: '7px 15px', fontSize: '12px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#991B1B', color: '#FFFFFF', borderRadius: '9999px', padding: '8px 16px', fontSize: '12.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
                                 onClick={() => {
                                   const targetUrl = item.meetUrl || item.googleMeetUrl || (item.meetCode ? `https://meet.google.com/${item.meetCode}` : 'https://meet.google.com/new');
                                   window.open(targetUrl, '_blank');
                                 }}
                                 title="Enter Google Meet as Host"
                               >
-                                <Video size={13} color="#FFFFFF" />
+                                <Video size={14} color="#FFFFFF" />
                                 <span>Conduct Live</span>
-                                <ExternalLink size={11} color="#FFFFFF" />
+                                <ExternalLink size={12} color="#FFFFFF" />
                               </button>
 
                               <button
                                 type="button"
-                                style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '7px 14px', fontSize: '12px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '8px 16px', fontSize: '12.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
                                 onClick={() => handleCompleteClassAction(item.id)}
                                 title="Finish and complete this session"
                               >
-                                <CheckCircle2 size={12} color="#1F6B48" />
+                                <CheckCircle2 size={13} color="#1F6B48" />
                                 <span>Complete</span>
                               </button>
 
                               <button
                                 type="button"
-                                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '7px 13px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '8px 14px', fontSize: '12.5px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                                 onClick={() => {
                                   setCancelModalClass(item);
                                   setCancelReasonText('');
@@ -4068,16 +4070,16 @@ export default function AdminPortalView({
                           ) : isCompleted ? (
                             <button
                               type="button"
-                              style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#FFFFFF', color: '#594A4D', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '7px 15px', fontSize: '12px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#FFFFFF', color: '#594A4D', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '8px 16px', fontSize: '12.5px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
                               onClick={() => setEditingClass({ ...item })}
                               title="Edit class record"
                             >
-                              <Edit3 size={12} />
+                              <Edit3 size={13} />
                               <span>Edit Record</span>
                             </button>
                           ) : isCancelled ? (
                             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                              <span style={{ fontSize: '12px', color: '#8A7B7E', fontStyle: 'italic' }}>
+                              <span style={{ fontSize: '12.5px', color: '#8A7B7E', fontStyle: 'italic' }}>
                                 Cancelled
                               </span>
                               <button
@@ -4097,27 +4099,27 @@ export default function AdminPortalView({
                             <>
                               <button
                                 type="button"
-                                style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '7px 15px', fontSize: '12px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '8px 16px', fontSize: '12.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
                                 onClick={() => handleStartClassAction(item)}
                                 title="Start session and open Google Meet"
                               >
-                                <Play size={11} fill="currentColor" />
+                                <Play size={12} fill="currentColor" />
                                 <span>Start Class</span>
                               </button>
 
                               <button
                                 type="button"
-                                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '7px 14px', fontSize: '12px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '8px 15px', fontSize: '12.5px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
                                 onClick={() => setEditingClass({ ...item })}
                                 title="Edit schedule or details"
                               >
-                                <Edit3 size={12} />
+                                <Edit3 size={13} />
                                 <span>Edit</span>
                               </button>
 
                               <button
                                 type="button"
-                                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '7px 13px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '8px 14px', fontSize: '12.5px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                                 onClick={() => {
                                   setCancelModalClass(item);
                                   setCancelReasonText('');
