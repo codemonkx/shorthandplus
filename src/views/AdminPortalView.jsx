@@ -3831,7 +3831,7 @@ export default function AdminPortalView({
             )}
 
             {/* 3. Single-Layer Schedule Table Card */}
-            <div className="saas-card admin-content-card" style={{ marginTop: '20px', backgroundColor: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 6px 24px rgba(35, 20, 24, 0.04)', padding: 0 }}>
+            <div style={{ marginTop: '20px', backgroundColor: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 6px 24px rgba(35, 20, 24, 0.04)' }}>
 
               {/* Top Filter & Search Toolbar */}
               <div style={{ padding: '14px 20px', backgroundColor: '#FAF7F2', borderBottom: '1px solid #EDE5DA', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
@@ -3928,24 +3928,24 @@ export default function AdminPortalView({
                 </div>
               </div>
 
-              {/* 4. Schedule Table Styling & Fixes */}
-              <div className="table-responsive" style={{ overflowX: 'auto' }}>
-                <table className="corporate-table candidate-registry-table" style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+              {/* Schedule Table */}
+              <div style={{ overflowX: 'auto', width: '100%' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
                   <thead>
                     <tr style={{ backgroundColor: '#F5EFE6', borderBottom: '1px solid #E5DBD0' }}>
-                      <th style={{ padding: '12px 20px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', whiteSpace: 'nowrap' }}>
+                      <th style={{ width: '140px', padding: '12px 18px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', whiteSpace: 'nowrap' }}>
                         TIME & STATUS
                       </th>
-                      <th style={{ padding: '12px 20px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E' }}>
+                      <th style={{ minWidth: '280px', padding: '12px 18px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', whiteSpace: 'normal' }}>
                         BATCH & DICTATION TOPIC
                       </th>
-                      <th style={{ padding: '12px 20px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', whiteSpace: 'nowrap' }}>
+                      <th style={{ width: '215px', padding: '12px 18px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E' }}>
                         SPEED & ROOM
                       </th>
-                      <th style={{ padding: '12px 20px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', whiteSpace: 'nowrap' }}>
+                      <th style={{ width: '175px', padding: '12px 18px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', whiteSpace: 'nowrap' }}>
                         MEET CODE
                       </th>
-                      <th style={{ padding: '12px 20px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                      <th style={{ width: '245px', minWidth: '245px', padding: '12px 18px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8A7B7E', textAlign: 'right', whiteSpace: 'nowrap' }}>
                         ACTIONS
                       </th>
                     </tr>
@@ -3976,26 +3976,26 @@ export default function AdminPortalView({
                             style={{ borderBottom: '1px solid #EDE5DA', backgroundColor: isLive ? '#FFFDFB' : '#FFFFFF' }}
                           >
                             {/* Col 1: TIME & STATUS */}
-                            <td style={{ padding: '16px 20px', verticalAlign: 'middle' }}>
+                            <td style={{ width: '140px', padding: '14px 18px', verticalAlign: 'middle', whiteSpace: 'nowrap' }}>
                               <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12px', fontWeight: 700, color: '#231418', whiteSpace: 'nowrap' }}>
                                 {displayTime}
                               </div>
-                              <div style={{ marginTop: '6px' }}>
+                              <div style={{ marginTop: '5px' }}>
                                 {isLive ? (
-                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2' }}>
+                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 9px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2' }}>
                                     <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#991B1B' }} />
                                     <span>LIVE ON-AIR</span>
                                   </span>
                                 ) : isCompleted ? (
-                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#EFE7DC', color: '#594A4D', border: '1px solid #E0D5C7' }}>
+                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 9px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#EFE7DC', color: '#594A4D', border: '1px solid #E0D5C7' }}>
                                     <span>COMPLETED</span>
                                   </span>
                                 ) : isCancelled ? (
-                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2' }}>
+                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 9px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2' }}>
                                     <span>CANCELLED</span>
                                   </span>
                                 ) : (
-                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FDF5E7', color: '#9A5B13', border: '1px solid #EFDAB6' }}>
+                                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '9999px', padding: '3px 9px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap', backgroundColor: '#FDF5E7', color: '#9A5B13', border: '1px solid #EFDAB6' }}>
                                     <span>SCHEDULED</span>
                                   </span>
                                 )}
@@ -4003,8 +4003,8 @@ export default function AdminPortalView({
                             </td>
 
                             {/* Col 2: BATCH & DICTATION TOPIC */}
-                            <td style={{ padding: '16px 20px', verticalAlign: 'middle', minWidth: '220px', maxWidth: '340px' }}>
-                              <div style={{ fontSize: '13.5px', fontWeight: 700, color: '#231418', lineHeight: 1.35 }}>
+                            <td style={{ minWidth: '280px', padding: '14px 18px', verticalAlign: 'middle' }}>
+                              <div style={{ fontSize: '13.5px', fontWeight: 700, color: '#231418', lineHeight: 1.35, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                                 {item.title}
                               </div>
                               <div style={{ fontSize: '12px', color: '#594A4D', marginTop: '3px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={item.todayTopic}>
@@ -4013,17 +4013,17 @@ export default function AdminPortalView({
                             </td>
 
                             {/* Col 3: SPEED & ROOM */}
-                            <td style={{ padding: '16px 20px', verticalAlign: 'middle', whiteSpace: 'nowrap' }}>
+                            <td style={{ width: '215px', padding: '14px 18px', verticalAlign: 'middle' }}>
                               <span style={{ display: 'inline-block', backgroundColor: '#EFE7DC', color: '#231418', borderRadius: '9999px', padding: '3px 10px', fontSize: '11px', fontWeight: 600, whiteSpace: 'nowrap' }}>
                                 {item.speed || '80 WPM Standard'}
                               </span>
-                              <div style={{ fontSize: '11px', color: '#8A7B7E', marginTop: '5px', whiteSpace: 'nowrap' }}>
+                              <div style={{ fontSize: '11px', color: '#8A7B7E', marginTop: '4px', lineHeight: 1.3 }}>
                                 {item.roomNo || 'Studio Live'} · {item.attendees || 1} learners
                               </div>
                             </td>
 
                             {/* Col 4: MEET CODE */}
-                            <td style={{ padding: '16px 20px', verticalAlign: 'middle', whiteSpace: 'nowrap' }}>
+                            <td style={{ width: '175px', padding: '14px 18px', verticalAlign: 'middle', whiteSpace: 'nowrap' }}>
                               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#FBF8F3', border: '1px solid #E5DBD0', borderRadius: '9999px', padding: '4px 12px', whiteSpace: 'nowrap' }}>
                                 <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11.5px', fontWeight: 600, color: '#231418', userSelect: 'all' }}>
                                   {meetCode}
@@ -4048,13 +4048,13 @@ export default function AdminPortalView({
                             </td>
 
                             {/* Col 5: ACTIONS */}
-                            <td style={{ padding: '16px 20px', verticalAlign: 'middle', textAlign: 'right', whiteSpace: 'nowrap' }}>
-                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '8px', whiteSpace: 'nowrap' }}>
+                            <td style={{ width: '245px', minWidth: '245px', padding: '14px 18px', verticalAlign: 'middle', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '6px', whiteSpace: 'nowrap' }}>
                                 {isLive ? (
                                   <>
                                     <button
                                       type="button"
-                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#991B1B', color: '#FFFFFF', borderRadius: '9999px', padding: '6px 14px', fontSize: '11.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#991B1B', color: '#FFFFFF', borderRadius: '9999px', padding: '6px 12px', fontSize: '11.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
                                       onClick={() => {
                                         const targetUrl = item.meetUrl || item.googleMeetUrl || (item.meetCode ? `https://meet.google.com/${item.meetCode}` : 'https://meet.google.com/new');
                                         window.open(targetUrl, '_blank');
@@ -4068,7 +4068,7 @@ export default function AdminPortalView({
 
                                     <button
                                       type="button"
-                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '6px 13px', fontSize: '11.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '6px 12px', fontSize: '11.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
                                       onClick={() => handleCompleteClassAction(item.id)}
                                       title="Finish and complete this session"
                                     >
@@ -4078,7 +4078,7 @@ export default function AdminPortalView({
 
                                     <button
                                       type="button"
-                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '6px 12px', fontSize: '11.5px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '6px 10px', fontSize: '11.5px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                                       onClick={() => {
                                         setCancelModalClass(item);
                                         setCancelReasonText('');
@@ -4091,7 +4091,7 @@ export default function AdminPortalView({
                                 ) : isCompleted ? (
                                   <button
                                     type="button"
-                                    style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#FFFFFF', color: '#594A4D', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '6px 14px', fontSize: '11.5px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                    style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#FFFFFF', color: '#594A4D', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '6px 12px', fontSize: '11.5px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
                                     onClick={() => setEditingClass({ ...item })}
                                     title="Edit class record"
                                   >
@@ -4120,7 +4120,7 @@ export default function AdminPortalView({
                                   <>
                                     <button
                                       type="button"
-                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '6px 14px', fontSize: '11.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '6px 12px', fontSize: '11.5px', fontWeight: 600, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
                                       onClick={() => handleStartClassAction(item)}
                                       title="Start session and open Google Meet"
                                     >
@@ -4130,7 +4130,7 @@ export default function AdminPortalView({
 
                                     <button
                                       type="button"
-                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '6px 13px', fontSize: '11.5px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '6px 12px', fontSize: '11.5px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
                                       onClick={() => setEditingClass({ ...item })}
                                       title="Edit schedule or details"
                                     >
@@ -4140,7 +4140,7 @@ export default function AdminPortalView({
 
                                     <button
                                       type="button"
-                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '6px 12px', fontSize: '11.5px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '6px 10px', fontSize: '11.5px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                                       onClick={() => {
                                         setCancelModalClass(item);
                                         setCancelReasonText('');
