@@ -27613,3 +27613,65 @@ select option:checked {
     z-index: 9999999 !important;
   }
 }
+
+/* Warm Editorial Admin Modal Styles */
+.admin-modal-editorial {
+  background-color: #FBF8F3 !important;
+  border: 1px solid #E8DFD3 !important;
+  border-radius: 24px !important;
+  box-shadow: 0 24px 60px rgba(35, 20, 24, 0.22) !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+.admin-editorial-select .custom-select-trigger {
+  width: 100% !important;
+  background-color: #FFFFFF !important;
+  color: #231418 !important;
+  border: 1px solid #DFD4C6 !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  outline: none !important;
+  height: 42px !important;
+  box-shadow: none !important;
+  transition: border-color 0.15s ease !important;
+}
+
+.admin-editorial-select .custom-select-trigger:hover {
+  border-color: #231418 !important;
+}
+
+.admin-editorial-select .custom-select-trigger.is-focused {
+  border-color: #231418 !important;
+  box-shadow: 0 0 0 2px rgba(35, 20, 24, 0.08) !important;
+}
+
+.admin-editorial-select .custom-select-label {
+  color: #231418 !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+}
+
+.admin-editorial-select .custom-select-dropdown-menu {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E8DFD3 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 28px rgba(35, 20, 24, 0.12) !important;
+}
+
+.admin-editorial-select .custom-select-item {
+  color: #231418 !important;
+  font-size: 13px !important;
+}
+
+.admin-editorial-select .custom-select-item:hover {
+  background-color: #FAF7F2 !important;
+}
+
+.admin-editorial-select .custom-select-item.selected {
+  background-color: #F5EFE6 !important;
+  color: #231418 !important;
+  font-weight: 600 !important;
+}

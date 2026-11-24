@@ -5271,73 +5271,72 @@ export default function AdminPortalView({
 
       {/* MODAL 4: Schedule / Create New Live Online Google Meet Class */}
       {newClassModalOpen && (
-        <div className="modal-backdrop">
-          <div className="saas-card modal-window admin-modal-wide">
-            <form onSubmit={handlePublishOnlineClass} className="admin-modal-form-wrapper">
+        <div className="modal-backdrop" style={{ backgroundColor: 'rgba(35, 20, 24, 0.48)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'fixed', inset: 0, zIndex: 100, padding: '1rem' }}>
+          <div className="saas-card modal-window admin-modal-wide admin-modal-editorial" style={{ backgroundColor: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '24px', boxShadow: '0 24px 60px rgba(35, 20, 24, 0.22)', overflow: 'hidden', maxWidth: '820px', width: '100%', maxHeight: '90vh', display: 'flex', flexDirection: 'column', padding: 0 }}>
+            <form onSubmit={handlePublishOnlineClass} className="admin-modal-form-wrapper" style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden', margin: 0 }}>
               
               {/* Header */}
-              <div className="modal-header">
+              <div style={{ backgroundColor: '#FAF7F2', borderBottom: '1px solid #EDE5DA', padding: '20px 24px', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px' }}>
                 <div>
-                  <div className="modal-title-with-badge">
-                    <span className="badge-template-tag" style={{ background: '#FFFFFF', color: '#0F172A', borderColor: 'rgba(0, 0, 0, 0.08)' }}>
-                      <Video size={13} />
-                      <span>Live Classroom Studio</span>
-                    </span>
-                    <h3 className="modal-title">Schedule / Launch Live Online Class on Google Meet</h3>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#991B1B' }}>
+                    <Video size={13} color="#991B1B" />
+                    <span>LIVE CLASSROOM STUDIO</span>
                   </div>
-                  <p className="modal-subtitle">
-                    Create or go live with a real-time shorthand & dictation session. This class is instantly synced and displayed to all students with 1-click joining.
+                  <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#231418', marginTop: '4px', lineHeight: 1.25, margin: '4px 0 0' }}>
+                    Schedule / Launch Live Online Class
+                  </h3>
+                  <p style={{ fontSize: '13px', color: '#594A4D', marginTop: '4px', margin: '4px 0 0' }}>
+                    Create or go live with a real-time dictation session synced instantly to candidate portals.
                   </p>
                 </div>
                 <button 
                   type="button" 
-                  className="btn-modal-close" 
+                  style={{ width: '34px', height: '34px', borderRadius: '9999px', backgroundColor: '#EFE7DC', color: '#231418', border: '1px solid #E0D5C7', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0, padding: 0 }}
                   onClick={() => setNewClassModalOpen(false)}
+                  title="Close modal"
                 >
-                  <X size={18} />
+                  <X size={16} />
                 </button>
               </div>
 
-              {/* Quick Template Presets Bar */}
-              <div className="modal-quick-presets-strip" style={{ background: '#FFFFFF', borderBottom: '1px solid rgba(0, 0, 0, 0.08)', padding: '0.65rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
-                <span style={{ fontSize: '0.78rem', fontWeight: '700', color: '#57534e', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                  <Sparkles size={13} style={{ color: '#d97706' }} />
-                  <span>Quick Presets:</span>
+              {/* Single-Row Quick Presets Bar */}
+              <div style={{ backgroundColor: '#F5EFE6', borderBottom: '1px solid #EDE5DA', padding: '12px 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '11.5px', fontWeight: 600, color: '#594A4D', marginRight: '4px' }}>
+                  Quick Presets:
                 </span>
                 <button 
                   type="button" 
-                  className="btn-template-pill"
                   onClick={() => loadClassTemplate('ssc80')}
-                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid rgba(0, 0, 0, 0.08)', background: '#FFFFFF', cursor: 'pointer', fontWeight: '600', color: '#0F172A' }}
+                  style={{ backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '5px 13px', fontSize: '11.5px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                 >
-                  ⚡ SSC Steno (80 WPM Morning)
+                  SSC Steno · 80 WPM
                 </button>
                 <button 
                   type="button" 
-                  className="btn-template-pill"
                   onClick={() => loadClassTemplate('judicial100')}
-                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid rgba(0, 0, 0, 0.08)', background: '#FFFFFF', cursor: 'pointer', fontWeight: '600', color: '#0F172A' }}
+                  style={{ backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '5px 13px', fontSize: '11.5px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                 >
-                  ⚖️ High Court Bench (100 WPM)
+                  High Court Bench · 100 WPM
                 </button>
                 <button 
                   type="button" 
-                  className="btn-template-pill"
                   onClick={() => loadClassTemplate('reporter120')}
-                  style={{ fontSize: '0.75rem', padding: '0.28rem 0.65rem', borderRadius: '6px', border: '1px solid rgba(0, 0, 0, 0.08)', background: '#FFFFFF', cursor: 'pointer', fontWeight: '600', color: '#0F172A' }}
+                  style={{ backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '5px 13px', fontSize: '11.5px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                 >
-                  🏛️ Parliament Reporter (120+ WPM)
+                  Parliament Reporter · 120+ WPM
                 </button>
               </div>
 
               {/* Scrollable Body */}
-              <div className="modal-body admin-modal-scrollable-body">
+              <div className="modal-body admin-modal-scrollable-body" style={{ padding: '20px 24px', backgroundColor: '#FBF8F3', overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {/* Row 1: Class Title */}
-                <div className="form-group-field">
-                  <label className="field-label">Official Live Class Title *</label>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                    Official Live Class Title *
+                  </label>
                   <input 
                     type="text" 
-                    className="field-input" 
+                    style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box' }}
                     placeholder="e.g. SSC Stenographer Grade C & D — 80 WPM Live Speed Dictation & Transcription Lab"
                     value={newClassTitle}
                     onChange={(e) => setNewClassTitle(e.target.value)}
@@ -5346,9 +5345,12 @@ export default function AdminPortalView({
                 </div>
 
                 {/* Course Selection */}
-                <div className="form-group-field">
-                  <label className="field-label">Target Course (Enrolled candidates will see this class) *</label>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                    Target Course (Enrolled candidates will see this class) *
+                  </label>
                   <CustomSelect 
+                    className="admin-editorial-select"
                     value={newClassCourseId}
                     onChange={(val) => {
                       setNewClassCourseId(val);
@@ -5363,35 +5365,41 @@ export default function AdminPortalView({
                 </div>
 
                 {/* Date, Start Time & Duration */}
-                <div className="grid-3-fields">
-                  <div className="form-group-field">
-                    <label className="field-label">Scheduled Date *</label>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Scheduled Date *
+                    </label>
                     <input 
                       type="date" 
-                      className="field-input font-mono" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box', fontFamily: "'JetBrains Mono', monospace" }}
                       value={newClassScheduledDate}
                       onChange={(e) => setNewClassScheduledDate(e.target.value)}
                       required
                     />
                   </div>
-                  <div className="form-group-field">
-                    <label className="field-label">Starting Time *</label>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Starting Time *
+                    </label>
                     <input 
                       type="text" 
-                      className="field-input font-mono" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box', fontFamily: "'JetBrains Mono', monospace" }}
                       placeholder="e.g. 8:30 AM"
                       value={newClassStartTime}
                       onChange={(e) => setNewClassStartTime(e.target.value)}
                       required
                     />
                   </div>
-                  <div className="form-group-field">
-                    <label className="field-label">Duration (Minutes) *</label>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Duration (Minutes) *
+                    </label>
                     <input 
                       type="number" 
                       min="15"
                       step="15"
-                      className="field-input font-mono" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box', fontFamily: "'JetBrains Mono', monospace" }}
                       value={newClassDurationMins}
                       onChange={(e) => setNewClassDurationMins(e.target.value)}
                       required
@@ -5400,10 +5408,13 @@ export default function AdminPortalView({
                 </div>
 
                 {/* Row 2: Shift, Time, Speed Tier, Instructor */}
-                <div className="grid-2-fields">
-                  <div className="form-group-field">
-                    <label className="field-label">Batch Shift & Category</label>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Batch Shift & Category
+                    </label>
                     <CustomSelect 
+                      className="admin-editorial-select"
                       value={newClassShift}
                       onChange={(val) => setNewClassShift(val)}
                       options={[
@@ -5416,11 +5427,13 @@ export default function AdminPortalView({
                     />
                   </div>
 
-                  <div className="form-group-field">
-                    <label className="field-label">Schedule Timing</label>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Schedule Timing
+                    </label>
                     <input 
                       type="text" 
-                      className="field-input font-mono" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box', fontFamily: "'JetBrains Mono', monospace" }}
                       placeholder="e.g. 8:30 AM – 10:30 AM"
                       value={newClassTime}
                       onChange={(e) => setNewClassTime(e.target.value)}
@@ -5430,10 +5443,13 @@ export default function AdminPortalView({
                 </div>
 
                 {/* Row 3: Target Speed Tier & Faculty Instructor */}
-                <div className="grid-2-fields">
-                  <div className="form-group-field">
-                    <label className="field-label">Target Speed Tier</label>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Target Speed Tier
+                    </label>
                     <CustomSelect 
+                      className="admin-editorial-select"
                       value={newClassSpeed}
                       onChange={(val) => setNewClassSpeed(val)}
                       options={[
@@ -5445,9 +5461,12 @@ export default function AdminPortalView({
                     />
                   </div>
 
-                  <div className="form-group-field">
-                    <label className="field-label">Faculty / Master In-Charge</label>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Faculty / Master In-Charge
+                    </label>
                     <CustomSelect 
+                      className="admin-editorial-select"
                       value={newClassInstructor}
                       onChange={(val) => setNewClassInstructor(val)}
                       options={[
@@ -5460,38 +5479,44 @@ export default function AdminPortalView({
                   </div>
                 </div>
 
-                {/* Row 4: Google Meet Link & Live Status Switch */}
-                <div className="dictation-section-block" style={{ background: '#f0fdf4', borderColor: '#bbf7d0' }}>
-                  <div className="section-block-header">
-                    <div className="header-left">
-                      <span className="section-step-num" style={{ background: '#0f766e' }}>Google Meet</span>
+                {/* Row 4: Warm Editorial Google Meet Box */}
+                <div style={{ backgroundColor: '#F5EFE6', border: '1px solid #E0D5C7', borderRadius: '16px', padding: '16px 18px', marginTop: '8px' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <span style={{ backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '5px 13px', fontSize: '10.5px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+                        Google Meet
+                      </span>
                       <div>
-                        <h4 className="section-block-title" style={{ color: '#134e4a' }}>Google Meet Link & Live Broadcast Status *</h4>
-                        <p className="section-block-desc" style={{ color: '#115e59' }}>
-                          Enter your Google Meet URL or 10-letter meeting code. Candidates can join with 1-click without downloading any apps.
+                        <h4 style={{ fontSize: '13.5px', fontWeight: 700, color: '#231418', margin: 0 }}>
+                          Google Meet Link & Live Broadcast Status *
+                        </h4>
+                        <p style={{ fontSize: '12px', color: '#594A4D', marginTop: '2px', margin: '2px 0 0' }}>
+                          Enter your Google Meet URL or 10-letter meeting code. Candidates can join with 1-click.
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="grid-3-fields" style={{ marginTop: '0.75rem' }}>
-                    <div className="form-group-field" style={{ gridColumn: 'span 2' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                        <label className="field-label" style={{ color: '#134e4a', margin: 0 }}>Google Meet URL or Meeting Code *</label>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px', marginTop: '12px' }}>
+                    <div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                        <label style={{ fontSize: '12px', fontWeight: 600, color: '#594A4D', margin: 0 }}>
+                          Google Meet URL or Meeting Code *
+                        </label>
                         <a 
                           href="https://meet.google.com/new" 
                           target="_blank" 
                           rel="noreferrer" 
-                          style={{ fontSize: '0.72rem', color: '#0f766e', fontWeight: 700, textDecoration: 'underline', display: 'inline-flex', alignItems: 'center', gap: '3px' }}
-                          title="Open Google Meet in your browser to start instant room with stenoplus.in@gmail.com"
+                          style={{ fontSize: '11px', color: '#991B1B', fontWeight: 600, textDecoration: 'underline', display: 'inline-flex', alignItems: 'center', gap: '3px' }}
+                          title="Open Google Meet to start room with stenoplus.in@gmail.com"
                         >
                           <ExternalLink size={10} />
-                          <span>Generate on Meet (stenoplus.in@gmail.com)</span>
+                          <span>Generate on Meet</span>
                         </a>
                       </div>
                       <input 
                         type="text" 
-                        className="field-input font-mono font-bold" 
+                        style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 600, outline: 'none', boxSizing: 'border-box', fontFamily: "'JetBrains Mono', monospace" }}
                         placeholder="https://meet.google.com/xxx-yyyy-zzz or xxx-yyyy-zzz"
                         value={newClassMeetingId}
                         onChange={(e) => setNewClassMeetingId(e.target.value)}
@@ -5499,11 +5524,13 @@ export default function AdminPortalView({
                       />
                     </div>
 
-                    <div className="form-group-field">
-                      <label className="field-label" style={{ color: '#134e4a' }}>Google Meet Room</label>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                        Google Meet Room
+                      </label>
                       <input 
                         type="text" 
-                        className="field-input" 
+                        style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box' }}
                         placeholder="Google Meet Room #01 (Studio Live)"
                         value={newClassRoom}
                         onChange={(e) => setNewClassRoom(e.target.value)}
@@ -5511,36 +5538,36 @@ export default function AdminPortalView({
                     </div>
                   </div>
 
-                  {/* Immediate Go-Live Radio Selector */}
-                  <div style={{ marginTop: '0.85rem', padding: '0.75rem', background: '#FFFFFF', borderRadius: '8px', border: '1px solid #86efac', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                      <Radio size={18} style={{ color: newClassIsLive ? '#dc2626' : '#78716c' }} />
+                  {/* Immediate Go-Live Status Selector */}
+                  <div style={{ marginTop: '14px', padding: '12px 16px', backgroundColor: '#FFFFFF', borderRadius: '12px', border: '1px solid #DFD4C6', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '14px', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <Radio size={18} color={newClassIsLive ? '#991B1B' : '#8A7B7E'} />
                       <div>
-                        <div style={{ fontWeight: '700', fontSize: '0.85rem', color: '#0F172A' }}>
+                        <div style={{ fontWeight: 700, fontSize: '13px', color: '#231418' }}>
                           Broadcast Status for Students:
                         </div>
-                        <div style={{ fontSize: '0.75rem', color: '#78716c' }}>
+                        <div style={{ fontSize: '11.5px', color: '#594A4D', marginTop: '2px' }}>
                           {newClassIsLive 
-                            ? '🔴 Marked LIVE NOW — shows pulsing red badge and enables 1-click Google Meet launch.' 
-                            : '⏳ Scheduled for Upcoming — candidates see start time and can bookmark.'}
+                            ? 'Marked LIVE NOW — displays pulsing red badge and enables 1-click Google Meet launch.' 
+                            : 'Scheduled for Upcoming — candidates see start time and can bookmark.'}
                         </div>
                       </div>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <div style={{ display: 'flex', gap: '8px' }}>
                       <button 
                         type="button"
                         onClick={() => setNewClassIsLive(true)}
                         style={{
-                          padding: '0.35rem 0.75rem',
-                          borderRadius: '6px',
-                          border: '1px solid',
-                          fontSize: '0.76rem',
-                          fontWeight: '700',
+                          padding: '6px 14px',
+                          borderRadius: '9999px',
+                          border: newClassIsLive ? '1px solid #991B1B' : '1px solid #DFD4C6',
+                          fontSize: '12px',
+                          fontWeight: 700,
                           cursor: 'pointer',
-                          background: newClassIsLive ? '#DC2626' : '#F8FAFC',
-                          color: newClassIsLive ? '#FFFFFF' : '#64748B',
-                          borderColor: newClassIsLive ? '#dc2626' : '#d6d3d1'
+                          backgroundColor: newClassIsLive ? '#991B1B' : '#FFFFFF',
+                          color: newClassIsLive ? '#FFFFFF' : '#594A4D',
+                          transition: 'all 0.15s ease'
                         }}
                       >
                         ● Go Live Now
@@ -5549,15 +5576,15 @@ export default function AdminPortalView({
                         type="button"
                         onClick={() => setNewClassIsLive(false)}
                         style={{
-                          padding: '0.35rem 0.75rem',
-                          borderRadius: '6px',
-                          border: '1px solid',
-                          fontSize: '0.76rem',
-                          fontWeight: '700',
+                          padding: '6px 14px',
+                          borderRadius: '9999px',
+                          border: !newClassIsLive ? '1px solid #231418' : '1px solid #DFD4C6',
+                          fontSize: '12px',
+                          fontWeight: 700,
                           cursor: 'pointer',
-                          background: !newClassIsLive ? '#0F172A' : '#F5F5F7',
-                          color: !newClassIsLive ? '#FFFFFF' : '#64748B',
-                          borderColor: !newClassIsLive ? '#0F172A' : '#d6d3d1'
+                          backgroundColor: !newClassIsLive ? '#231418' : '#FFFFFF',
+                          color: !newClassIsLive ? '#FAF6F0' : '#594A4D',
+                          transition: 'all 0.15s ease'
                         }}
                       >
                         ⏳ Schedule Upcoming
@@ -5567,24 +5594,28 @@ export default function AdminPortalView({
                 </div>
 
                 {/* Row 5: Today's Dictation Topic & Live Whiteboard Master Passage */}
-                <div className="dictation-section-block" style={{ background: '#FFFFFF', borderColor: 'rgba(0, 0, 0, 0.08)', marginTop: '1rem' }}>
-                  <div className="section-block-header">
-                    <div className="header-left">
-                      <span className="section-step-num" style={{ background: '#0F172A', color: '#FFFFFF' }}>Dictation</span>
-                      <div>
-                        <h4 className="section-block-title">Today's Live Dictation Topic & Reference Passage *</h4>
-                        <p className="section-block-desc">
-                          This passage will be displayed on the student's reference card, whiteboard notes, and transcription review.
-                        </p>
-                      </div>
+                <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '16px', padding: '16px 18px', marginTop: '4px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
+                    <span style={{ backgroundColor: '#231418', color: '#FAF6F0', borderRadius: '9999px', padding: '4px 12px', fontSize: '10.5px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                      Dictation
+                    </span>
+                    <div>
+                      <h4 style={{ fontSize: '13.5px', fontWeight: 700, color: '#231418', margin: 0 }}>
+                        Today's Live Dictation Topic & Reference Passage *
+                      </h4>
+                      <p style={{ fontSize: '12px', color: '#594A4D', margin: '2px 0 0' }}>
+                        This passage will be displayed on student whiteboard notes and transcription review.
+                      </p>
                     </div>
                   </div>
 
-                  <div className="form-group-field" style={{ marginTop: '0.75rem' }}>
-                    <label className="field-label">Dictation Topic Header *</label>
+                  <div style={{ marginTop: '12px' }}>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Dictation Topic Header *
+                    </label>
                     <input 
                       type="text" 
-                      className="field-input" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box' }}
                       placeholder="e.g. Parliamentary Motion on State Infrastructure & Expenditure Audit"
                       value={newClassTopic}
                       onChange={(e) => setNewClassTopic(e.target.value)}
@@ -5592,13 +5623,14 @@ export default function AdminPortalView({
                     />
                   </div>
 
-                  <div className="form-group-field" style={{ marginTop: '0.75rem' }}>
-                    <label className="field-label">Reference Dictation Passage Text</label>
+                  <div style={{ marginTop: '12px' }}>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Reference Dictation Passage Text
+                    </label>
                     <textarea 
-                      className="transcript-textarea"
                       placeholder="Paste or type the master dictation passage to be spoken on Google Meet..."
                       rows={4}
-                      style={{ minHeight: '100px' }}
+                      style={{ width: '100%', minHeight: '100px', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit', resize: 'vertical' }}
                       value={newClassPassage}
                       onChange={(e) => setNewClassPassage(e.target.value)}
                     />
@@ -5606,57 +5638,51 @@ export default function AdminPortalView({
                 </div>
 
                 {/* Instant Availability Verification Strip */}
-                <div className="dictation-sync-verify-strip" style={{ background: '#FFFFFF', borderColor: 'rgba(0, 0, 0, 0.08)', marginTop: '0.75rem' }}>
-                  <div className="sync-col">
-                    <span className="sync-label" style={{ color: '#57534e' }}>Target Speed</span>
-                    <span className="sync-status is-ready font-mono" style={{ color: '#0F172A' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '14px', padding: '12px 18px', flexWrap: 'wrap', gap: '12px' }}>
+                  <div>
+                    <span style={{ display: 'block', fontSize: '11px', color: '#8A7B7E', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 600 }}>Target Speed</span>
+                    <span style={{ fontSize: '13px', fontWeight: 700, color: '#231418', fontFamily: "'JetBrains Mono', monospace" }}>
                       {newClassSpeed}
                     </span>
                   </div>
-                  <div className="sync-divider" style={{ background: 'rgba(0, 0, 0, 0.08)' }} />
-                  <div className="sync-col">
-                    <span className="sync-label" style={{ color: '#57534e' }}>Google Meet Link</span>
-                    <span className="sync-status is-ready font-mono" style={{ color: '#0F172A', fontSize: '0.75rem' }}>
+                  <div style={{ height: '24px', width: '1px', backgroundColor: '#EDE5DA' }} />
+                  <div>
+                    <span style={{ display: 'block', fontSize: '11px', color: '#8A7B7E', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 600 }}>Google Meet Link</span>
+                    <span style={{ fontSize: '12.5px', fontWeight: 600, color: '#231418', fontFamily: "'JetBrains Mono', monospace" }}>
                       {newClassMeetingId ? (newClassMeetingId.startsWith('http') ? newClassMeetingId : `meet.google.com/${newClassMeetingId}`) : 'meet.google.com/gsc-steno-live'}
                     </span>
                   </div>
-                  <div className="sync-divider" style={{ background: 'rgba(0, 0, 0, 0.08)' }} />
-                  <div className="sync-col">
-                    <span className="sync-label" style={{ color: '#57534e' }}>Student Real-Time Sync</span>
-                    <span className="sync-status is-ready font-mono" style={{ color: '#059669' }}>
+                  <div style={{ height: '24px', width: '1px', backgroundColor: '#EDE5DA' }} />
+                  <div>
+                    <span style={{ display: 'block', fontSize: '11px', color: '#8A7B7E', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 600 }}>Candidate Sync</span>
+                    <span style={{ fontSize: '12px', fontWeight: 600, color: '#1F6B48' }}>
                       ✓ Instant Push to Candidate Portal
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* Sticky Footer Actions */}
-              <div className="admin-modal-footer-sticky">
-                <span className="footer-hint-text">
-                  <ShieldCheck size={14} style={{ color: '#10b981' }} />
-                  <span>Google Workspace Classroom • Students can join via In-Browser Studio or Google Meet App</span>
+              {/* Sticky Warm Footer */}
+              <div style={{ backgroundColor: '#FAF7F2', borderTop: '1px solid #EDE5DA', padding: '14px 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+                <span style={{ fontSize: '11.5px', color: '#8A7B7E', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <ShieldCheck size={14} color="#8A7B7E" />
+                  <span>Google Workspace Classroom · 1-click candidate joining</span>
                 </span>
 
-                <div className="admin-modal-footer-actions">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <button 
                     type="button" 
-                    className="btn btn-secondary" 
+                    style={{ backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '9px 20px', fontSize: '12.5px', fontWeight: 600, cursor: 'pointer' }}
                     onClick={() => setNewClassModalOpen(false)}
                   >
                     Cancel
                   </button>
                   <button 
                     type="submit" 
-                    className="btn btn-primary"
-                    style={{ 
-                      background: 'linear-gradient(135deg, #18181b 0%, #4c0519 100%)', 
-                      borderColor: '#18181b', 
-                      color: '#FFFFFF',
-                      boxShadow: '0 4px 14px rgba(136, 19, 55, 0.3)' 
-                    }}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', backgroundColor: '#991B1B', color: '#FFFFFF', border: 'none', borderRadius: '9999px', padding: '9px 22px', fontSize: '12.5px', fontWeight: 600, cursor: 'pointer', boxShadow: '0 6px 18px rgba(153, 27, 27, 0.22)' }}
                   >
-                    <Video size={16} />
-                    <span>{newClassIsLive ? '🚀 Launch Class & Go Live Now' : '📅 Schedule Class for Students'}</span>
+                    <Video size={15} color="#FFFFFF" />
+                    <span>{newClassIsLive ? 'Launch Class & Go Live Now' : 'Schedule Class for Students'}</span>
                   </button>
                 </div>
               </div>
@@ -5668,34 +5694,52 @@ export default function AdminPortalView({
 
       {/* MODAL 5: Edit Online Class Details */}
       {editingClass && (
-        <div className="modal-backdrop">
-          <div className="saas-card modal-window admin-modal-wide">
-            <form onSubmit={handleSaveEditClass} className="admin-modal-form-wrapper">
-              <div className="modal-header">
+        <div className="modal-backdrop" style={{ backgroundColor: 'rgba(35, 20, 24, 0.48)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'fixed', inset: 0, zIndex: 100, padding: '1rem' }}>
+          <div className="saas-card modal-window admin-modal-wide admin-modal-editorial" style={{ backgroundColor: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '24px', boxShadow: '0 24px 60px rgba(35, 20, 24, 0.22)', overflow: 'hidden', maxWidth: '820px', width: '100%', maxHeight: '90vh', display: 'flex', flexDirection: 'column', padding: 0 }}>
+            <form onSubmit={handleSaveEditClass} className="admin-modal-form-wrapper" style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden', margin: 0 }}>
+              <div style={{ backgroundColor: '#FAF7F2', borderBottom: '1px solid #EDE5DA', padding: '20px 24px', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px' }}>
                 <div>
-                  <h3 className="modal-title">Edit Online Class Settings</h3>
-                  <p className="modal-subtitle">Update schedule time, Google Meet link, or today's dictation topic.</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#991B1B' }}>
+                    <Edit3 size={13} color="#991B1B" />
+                    <span>CLASS CONFIGURATION</span>
+                  </div>
+                  <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#231418', marginTop: '4px', lineHeight: 1.25, margin: '4px 0 0' }}>
+                    Edit Online Class Settings
+                  </h3>
+                  <p style={{ fontSize: '13px', color: '#594A4D', marginTop: '4px', margin: '4px 0 0' }}>
+                    Update schedule time, Google Meet link, or today's dictation topic.
+                  </p>
                 </div>
-                <button type="button" className="btn-modal-close" onClick={() => setEditingClass(null)}>
-                  <X size={18} />
+                <button 
+                  type="button" 
+                  style={{ width: '34px', height: '34px', borderRadius: '9999px', backgroundColor: '#EFE7DC', color: '#231418', border: '1px solid #E0D5C7', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0, padding: 0 }}
+                  onClick={() => setEditingClass(null)}
+                  title="Close modal"
+                >
+                  <X size={16} />
                 </button>
               </div>
 
-              <div className="modal-body admin-modal-scrollable-body">
-                <div className="form-group-field">
-                  <label className="field-label">Class Title *</label>
+              <div className="modal-body admin-modal-scrollable-body" style={{ padding: '20px 24px', backgroundColor: '#FBF8F3', overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                    Class Title *
+                  </label>
                   <input 
                     type="text" 
-                    className="field-input" 
+                    style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box' }}
                     value={editingClass.title} 
                     onChange={(e) => setEditingClass({ ...editingClass, title: e.target.value })} 
                     required 
                   />
                 </div>
 
-                <div className="form-group-field">
-                  <label className="field-label">Target Course</label>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                    Target Course
+                  </label>
                   <CustomSelect 
+                    className="admin-editorial-select"
                     value={editingClass.courseId || 'course-ssc'}
                     onChange={(val) => {
                       const found = (propCourses || INITIAL_ACADEMY_COURSES).find(c => c.id === val);
@@ -5712,41 +5756,50 @@ export default function AdminPortalView({
                   />
                 </div>
 
-                <div className="grid-3-fields">
-                  <div className="form-group-field">
-                    <label className="field-label">Scheduled Date</label>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Scheduled Date
+                    </label>
                     <input 
                       type="date" 
-                      className="field-input font-mono" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box', fontFamily: "'JetBrains Mono', monospace" }}
                       value={editingClass.scheduledDate || ''} 
                       onChange={(e) => setEditingClass({ ...editingClass, scheduledDate: e.target.value })} 
                     />
                   </div>
-                  <div className="form-group-field">
-                    <label className="field-label">Start Time</label>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Start Time
+                    </label>
                     <input 
                       type="text" 
-                      className="field-input font-mono" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box', fontFamily: "'JetBrains Mono', monospace" }}
                       value={editingClass.startTime || editingClass.time || '8:30 AM'} 
                       onChange={(e) => setEditingClass({ ...editingClass, startTime: e.target.value })} 
                     />
                   </div>
-                  <div className="form-group-field">
-                    <label className="field-label">Duration (Mins)</label>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Duration (Mins)
+                    </label>
                     <input 
                       type="number" 
                       min="15"
                       step="15"
-                      className="field-input font-mono" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box', fontFamily: "'JetBrains Mono', monospace" }}
                       value={editingClass.durationMins || 60} 
                       onChange={(e) => setEditingClass({ ...editingClass, durationMins: e.target.value })} 
                     />
                   </div>
                 </div>
 
-                <div className="form-group-field">
-                  <label className="field-label">Class Status</label>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                    Class Status
+                  </label>
                   <CustomSelect 
+                    className="admin-editorial-select"
                     value={editingClass.status || (editingClass.isLive ? 'live' : 'upcoming')}
                     onChange={(val) => setEditingClass({
                       ...editingClass,
@@ -5762,66 +5815,76 @@ export default function AdminPortalView({
                   />
                 </div>
 
-                <div className="grid-2-fields">
-                  <div className="form-group-field">
-                    <label className="field-label">Batch Shift</label>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Batch Shift
+                    </label>
                     <input 
                       type="text" 
-                      className="field-input" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box' }}
                       value={editingClass.shift} 
                       onChange={(e) => setEditingClass({ ...editingClass, shift: e.target.value })} 
                     />
                   </div>
-                  <div className="form-group-field">
-                    <label className="field-label">Schedule Time</label>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Schedule Time
+                    </label>
                     <input 
                       type="text" 
-                      className="field-input font-mono" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box', fontFamily: "'JetBrains Mono', monospace" }}
                       value={editingClass.time} 
                       onChange={(e) => setEditingClass({ ...editingClass, time: e.target.value })} 
                     />
                   </div>
                 </div>
 
-                <div className="grid-2-fields">
-                  <div className="form-group-field">
-                    <label className="field-label">Target Speed Tier</label>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Target Speed Tier
+                    </label>
                     <input 
                       type="text" 
-                      className="field-input" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box' }}
                       value={editingClass.speed} 
                       onChange={(e) => setEditingClass({ ...editingClass, speed: e.target.value })} 
                     />
                   </div>
-                  <div className="form-group-field">
-                    <label className="field-label">Faculty Instructor</label>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Faculty Instructor
+                    </label>
                     <input 
                       type="text" 
-                      className="field-input" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box' }}
                       value={editingClass.instructor} 
                       onChange={(e) => setEditingClass({ ...editingClass, instructor: e.target.value })} 
                     />
                   </div>
                 </div>
 
-                <div className="grid-2-fields">
-                  <div className="form-group-field">
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                      <label className="field-label" style={{ margin: 0 }}>Google Meet URL or Code *</label>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px' }}>
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                      <label style={{ fontSize: '12px', fontWeight: 600, color: '#594A4D', margin: 0 }}>
+                        Google Meet URL or Code *
+                      </label>
                       <a 
                         href="https://meet.google.com/new" 
                         target="_blank" 
                         rel="noreferrer" 
-                        style={{ fontSize: '0.72rem', color: '#0f766e', fontWeight: 700, textDecoration: 'underline', display: 'inline-flex', alignItems: 'center', gap: '3px' }}
-                        title="Open Google Meet in your browser to start instant room with stenoplus.in@gmail.com"
+                        style={{ fontSize: '11px', color: '#991B1B', fontWeight: 600, textDecoration: 'underline', display: 'inline-flex', alignItems: 'center', gap: '3px' }}
+                        title="Open Google Meet to start room with stenoplus.in@gmail.com"
                       >
                         <ExternalLink size={10} />
-                        <span>Generate on Meet (stenoplus.in@gmail.com)</span>
+                        <span>Generate on Meet</span>
                       </a>
                     </div>
                     <input 
                       type="text" 
-                      className="field-input font-mono font-bold" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 600, outline: 'none', boxSizing: 'border-box', fontFamily: "'JetBrains Mono', monospace" }}
                       value={editingClass.zoomMeetingId} 
                       onChange={(e) => {
                         const val = e.target.value.trim();
@@ -5839,50 +5902,64 @@ export default function AdminPortalView({
                       required 
                     />
                   </div>
-                  <div className="form-group-field">
-                    <label className="field-label">Studio Room</label>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Studio Room
+                    </label>
                     <input 
                       type="text" 
-                      className="field-input" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box' }}
                       value={editingClass.roomNo} 
                       onChange={(e) => setEditingClass({ ...editingClass, roomNo: e.target.value })} 
                     />
                   </div>
                 </div>
 
-                <div className="form-group-field">
-                  <label className="field-label">Today's Dictation Topic *</label>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                    Today's Dictation Topic *
+                  </label>
                   <input 
                     type="text" 
-                    className="field-input" 
+                    style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box' }}
                     value={editingClass.todayTopic} 
                     onChange={(e) => setEditingClass({ ...editingClass, todayTopic: e.target.value })} 
                     required 
                   />
                 </div>
 
-                <div className="form-group-field">
-                  <label className="field-label">Reference Dictation Passage Snippet</label>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                    Reference Dictation Passage Snippet
+                  </label>
                   <textarea 
-                    className="transcript-textarea" 
                     rows={4} 
+                    style={{ width: '100%', minHeight: '100px', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit', resize: 'vertical' }}
                     value={editingClass.passageSnippet || ''} 
                     onChange={(e) => setEditingClass({ ...editingClass, passageSnippet: e.target.value })} 
                   />
                 </div>
               </div>
 
-              <div className="admin-modal-footer-sticky">
-                <span className="footer-hint-text">
-                  <ShieldCheck size={14} className="text-emerald-600" />
+              <div style={{ backgroundColor: '#FAF7F2', borderTop: '1px solid #EDE5DA', padding: '14px 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+                <span style={{ fontSize: '11.5px', color: '#8A7B7E', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <ShieldCheck size={14} color="#8A7B7E" />
                   <span>Changes will immediately sync with all candidates</span>
                 </span>
-                <div className="admin-modal-footer-actions">
-                  <button type="button" className="btn btn-secondary" onClick={() => setEditingClass(null)}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <button 
+                    type="button" 
+                    style={{ backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '9px 20px', fontSize: '12.5px', fontWeight: 600, cursor: 'pointer' }}
+                    onClick={() => setEditingClass(null)}
+                  >
                     Cancel
                   </button>
-                  <button type="submit" className="btn btn-primary" style={{ background: '#18181b' }}>
-                    Save & Update Class
+                  <button 
+                    type="submit" 
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', backgroundColor: '#231418', color: '#FAF6F0', border: 'none', borderRadius: '9999px', padding: '9px 22px', fontSize: '12.5px', fontWeight: 600, cursor: 'pointer' }}
+                  >
+                    <CheckCircle2 size={15} color="#1F6B48" />
+                    <span>Save & Update Class</span>
                   </button>
                 </div>
               </div>
