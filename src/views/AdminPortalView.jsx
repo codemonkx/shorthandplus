@@ -4143,229 +4143,217 @@ export default function AdminPortalView({
 
         {/* TAB: Course Catalog & Examination Batches Management */}
         {activeTab === 'courses' && (
-          <div className="saas-card admin-content-card">
-            
-            {/* Top Header Control Row */}
-            <div className="table-header-control-row">
+          <div style={{ width: '100%', paddingBottom: '3rem' }}>
+
+            {/* 1. Single-Row Action Header */}
+            <div style={{ marginTop: '24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px', width: '100%' }}>
+              {/* Left */}
               <div>
-                <div className="flex items-center gap-2">
-                  <h3 className="section-title-sm">Academy Courses & Examination Batches</h3>
-                  <span className="badge badge-blue">
-                    {coursesList.length} Active Published Programs
-                  </span>
+                <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#231418', margin: 0 }}>
+                  Academy Courses & Examination Batches
+                </h3>
+                <div style={{ fontSize: '12px', color: '#8A7B7E', marginTop: '3px' }}>
+                  {coursesList.length} Active Published Programs · Changes sync live to /courses
                 </div>
-                <p className="section-sub-sm">
-                  Publish, modify, and manage institutional curriculum displayed to candidates on the public Courses page. Any changes or new batches automatically sync with the enrollment and checkout flow.
-                </p>
               </div>
 
-              <div className="flex items-center gap-2">
+              {/* Right */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px' }}>
                 <button 
                   type="button"
-                  className="btn btn-secondary btn-sm"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '8px 16px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                   onClick={() => setCurrentTab('courses')}
                   title="View how candidates see the course page"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
                 >
-                  <Eye size={14} />
+                  <Eye size={13} color="#231418" />
                   <span>View Public Page</span>
+                  <ExternalLink size={11} color="#8A7B7E" />
                 </button>
 
                 <button 
                   type="button"
-                  className="btn btn-primary btn-sm"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#231418', color: '#FAF6F0', border: '1px solid #231418', borderRadius: '9999px', padding: '8px 18px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                   onClick={handleOpenAddCourse}
-                  style={{ background: '#0F172A', borderColor: '#0F172A', color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: '0.45rem', fontWeight: '700' }}
+                  title="Create and configure a new course batch"
                 >
-                  <Plus size={15} />
-                  <span>+ Add New Course Batch</span>
+                  <Plus size={14} color="#FAF6F0" />
+                  <span>+ Add New Course</span>
                 </button>
               </div>
             </div>
 
-            {/* Filter and Search Bar */}
-            <div className="search-filter-pair mt-2" style={{ maxWidth: '100%' }}>
-              <div className="admin-search-box" style={{ flex: '1 1 320px' }}>
-                <Search size={15} className="text-muted" />
-                <input 
-                  type="text" 
-                  placeholder="Search courses by name, category, or speed target..."
-                  value={courseSearchQuery}
-                  onChange={(e) => setCourseSearchQuery(e.target.value)}
-                />
-                {courseSearchQuery && (
-                  <button 
-                    type="button" 
-                    onClick={() => setCourseSearchQuery('')} 
-                    style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#94a3b8' }}
+            {/* 2. Single-Layer Course Directory Card */}
+            <div style={{ marginTop: '20px', backgroundColor: '#FFFFFF', border: '1px solid #E8DFD3', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 6px 24px rgba(35, 20, 24, 0.04)', width: '100%', boxSizing: 'border-box' }}>
+
+              {/* Top Filter & Search Toolbar */}
+              <div style={{ padding: '16px 24px', backgroundColor: '#FAF7F2', borderBottom: '1px solid #EDE5DA', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+                {/* Left: Search input + Category dropdown */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px' }}>
+                  <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                    <Search size={13} color="#8A7B7E" style={{ position: 'absolute', left: '12px', pointerEvents: 'none' }} />
+                    <input 
+                      type="text" 
+                      placeholder="Search courses by name, target..."
+                      value={courseSearchQuery}
+                      onChange={(e) => setCourseSearchQuery(e.target.value)}
+                      style={{ backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '7px 16px 7px 32px', fontSize: '12px', width: '250px', outline: 'none' }}
+                    />
+                    {courseSearchQuery && (
+                      <button 
+                        type="button" 
+                        onClick={() => setCourseSearchQuery('')} 
+                        style={{ position: 'absolute', right: '10px', background: 'none', border: 'none', cursor: 'pointer', color: '#8A7B7E', padding: 0 }}
+                      >
+                        <X size={12} />
+                      </button>
+                    )}
+                  </div>
+
+                  <select
+                    value={courseFilterCategory}
+                    onChange={(e) => setCourseFilterCategory(e.target.value)}
+                    style={{ backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '7px 16px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', outline: 'none' }}
                   >
-                    <X size={14} />
-                  </button>
+                    <option value="All">All Categories</option>
+                    <option value="Foundation">Foundation (Pitman)</option>
+                    <option value="Judicial Bench">Judicial Bench (Court)</option>
+                    <option value="Central Govt">Central Govt (SSC)</option>
+                    <option value="Govt Diplomas">Govt Diplomas (DCA/ADCA)</option>
+                    <option value="State Exams">State & Police Exams</option>
+                  </select>
+                </div>
+
+                {/* Right: Count */}
+                <div style={{ fontSize: '12px', fontWeight: 500, color: '#8A7B7E', whiteSpace: 'nowrap' }}>
+                  Showing {filteredCoursesList.length} of {coursesList.length} courses
+                </div>
+              </div>
+
+              {/* Course Rows List */}
+              <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                {filteredCoursesList.length === 0 ? (
+                  <div style={{ padding: '36px 24px', textAlign: 'center', fontSize: '12.5px', color: '#8A7B7E' }}>
+                    No courses found matching the search or category filter.
+                  </div>
+                ) : (
+                  filteredCoursesList.map((course, index) => {
+                    const isLast = index === filteredCoursesList.length - 1;
+
+                    // Clean fee and billing label split
+                    const rawFee = course.fee || '₹3,500';
+                    let feeValue = rawFee;
+                    let billingCycle = 'Complete Program';
+                    if (rawFee.includes('(')) {
+                      const parts = rawFee.split('(');
+                      feeValue = parts[0].trim();
+                      billingCycle = parts[1].replace(')', '').trim();
+                    } else if (rawFee.toLowerCase().includes('/ month')) {
+                      feeValue = rawFee.replace(/\/ month/i, '').trim();
+                      billingCycle = 'Per Month';
+                    }
+
+                    return (
+                      <div
+                        key={course.id}
+                        style={{
+                          padding: '18px 24px',
+                          borderBottom: isLast ? 'none' : '1px solid #EDE5DA',
+                          backgroundColor: '#FFFFFF',
+                          display: 'flex',
+                          flexWrap: 'wrap',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: '20px',
+                          width: '100%',
+                          boxSizing: 'border-box'
+                        }}
+                      >
+                        {/* Zone 1 — Program Title, Summary & Editorial Tags */}
+                        <div style={{ flex: '1 1 380px', minWidth: 0 }}>
+                          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                            <span style={{ backgroundColor: '#EFE7DC', color: '#594A4D', borderRadius: '9999px', padding: '2px 10px', fontSize: '10.5px', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                              {course.badge || course.category}
+                            </span>
+                            {course.popular && (
+                              <span style={{ backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', padding: '2px 10px', fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', whiteSpace: 'nowrap' }}>
+                                ★ FLAGSHIP BATCH
+                              </span>
+                            )}
+                          </div>
+
+                          <div style={{ fontSize: '15px', fontWeight: 700, color: '#231418', lineHeight: 1.35 }}>
+                            {course.title}
+                          </div>
+
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '3px' }}>
+                            <p style={{ fontSize: '12.5px', color: '#594A4D', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '520px' }} title={course.description}>
+                              {course.description}
+                            </p>
+                            {Array.isArray(course.syllabus) && course.syllabus.length > 0 && (
+                              <span style={{ fontSize: '11px', color: '#8A7B7E', whiteSpace: 'nowrap', flexShrink: 0 }}>
+                                · {course.syllabus.length} topics
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Zone 2 — Speed, Duration & Delivery Mode */}
+                        <div style={{ width: '230px', flexShrink: 0 }}>
+                          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12px', fontWeight: 700, color: '#231418', whiteSpace: 'nowrap' }}>
+                            {course.speedTarget || '80 – 100 WPM'} {course.duration ? `· ${course.duration}` : ''}
+                          </div>
+                          <div style={{ fontSize: '11.5px', color: '#8A7B7E', marginTop: '3px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={course.mode}>
+                            {course.mode || 'Classroom + Online Audio Lab'}
+                          </div>
+                        </div>
+
+                        {/* Zone 3 — Fee */}
+                        <div style={{ width: '130px', flexShrink: 0, textAlign: 'right' }}>
+                          <div style={{ fontSize: '15px', fontWeight: 700, color: '#231418', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' }}>
+                            {feeValue}
+                          </div>
+                          <div style={{ fontSize: '11px', color: '#8A7B7E', marginTop: '2px', whiteSpace: 'nowrap' }}>
+                            {billingCycle}
+                          </div>
+                        </div>
+
+                        {/* Zone 4 — Right-Aligned Action Pills */}
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '8px', flexShrink: 0, whiteSpace: 'nowrap' }}>
+                          <button 
+                            type="button"
+                            style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#231418', color: '#FAF6F0', border: 'none', borderRadius: '9999px', padding: '7px 15px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                            onClick={() => handleOpenEditCourse(course)}
+                            title="Edit course details, fee or syllabus"
+                          >
+                            <Edit3 size={13} />
+                            <span>Edit</span>
+                          </button>
+
+                          <button 
+                            type="button"
+                            style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '7px 14px', fontSize: '12px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                            onClick={() => setCurrentTab('courses')}
+                            title="Preview on public course catalog page"
+                          >
+                            <span>Preview</span>
+                            <ArrowRight size={12} />
+                          </button>
+
+                          <button 
+                            type="button"
+                            style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FCEEEE', color: '#991B1B', border: '1px solid #EED2D2', borderRadius: '9999px', width: '32px', height: '32px', cursor: 'pointer', flexShrink: 0, padding: 0 }}
+                            onClick={() => handleDeleteCourseClick(course.id, course.title)}
+                            title="Delete course from catalog"
+                          >
+                            <Trash2 size={13} />
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })
                 )}
               </div>
-
-              <div className="admin-filter-select-wrapper" style={{ minWidth: '220px' }}>
-                <CustomSelect
-                  value={courseFilterCategory}
-                  onChange={(val) => setCourseFilterCategory(val)}
-                  options={[
-                    { value: 'All', label: 'All Categories' },
-                    { value: 'Foundation', label: 'Foundation (Pitman)' },
-                    { value: 'Judicial Bench', label: 'Judicial Bench (Court)' },
-                    { value: 'Central Govt', label: 'Central Govt (SSC)' },
-                    { value: 'Govt Diplomas', label: 'Govt Diplomas (DCA/ADCA)' },
-                    { value: 'State Exams', label: 'State & Police Exams' }
-                  ]}
-                />
-              </div>
-
-              <span className="text-xs text-muted font-mono" style={{ whiteSpace: 'nowrap' }}>
-                Showing {filteredCoursesList.length} of {coursesList.length} courses
-              </span>
             </div>
-
-            {/* Courses Cards Grid */}
-            {filteredCoursesList.length === 0 ? (
-              <div className="table-empty-state" style={{ padding: '3.5rem 2rem', textAlign: 'center' }}>
-                <GraduationCap size={40} className="text-stone-400 mx-auto mb-2" />
-                <h4 style={{ fontWeight: 700, color: '#0F172A', marginBottom: '0.35rem' }}>No Courses Found</h4>
-                <p style={{ color: '#78716c', fontSize: '0.875rem', marginBottom: '1.25rem' }}>
-                  No course matched your filter criteria. Try clearing the search or add a new course batch.
-                </p>
-                <button 
-                  type="button" 
-                  className="btn btn-primary btn-sm" 
-                  onClick={handleOpenAddCourse}
-                  style={{ background: '#0F172A', borderColor: '#0F172A', color: '#FFFFFF' }}
-                >
-                  <Plus size={14} />
-                  <span>Create New Course</span>
-                </button>
-              </div>
-            ) : (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '1.25rem', marginTop: '0.5rem' }}>
-                {filteredCoursesList.map((course) => (
-                  <div 
-                    key={course.id}
-                    style={{
-                      background: '#FFFFFF',
-                      border: course.popular ? '1.5px solid #d6d3d1' : '1px solid rgba(0, 0, 0, 0.08)',
-                      borderRadius: '16px',
-                      padding: '1.4rem',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      position: 'relative',
-                      boxShadow: course.popular ? '0 10px 25px -5px rgba(28, 25, 23, 0.08)' : '0 4px 12px -2px rgba(28, 25, 23, 0.03)',
-                      transition: 'all 0.2s ease'
-                    }}
-                  >
-                    {course.popular && (
-                      <div style={{
-                        position: 'absolute',
-                        top: '12px',
-                        right: '12px',
-                        background: '#0F172A',
-                        color: '#FFFFFF',
-                        fontSize: '0.68rem',
-                        fontWeight: '800',
-                        padding: '0.2rem 0.55rem',
-                        borderRadius: '9999px',
-                        letterSpacing: '0.04em'
-                      }}>
-                        ⭐ FLAGSHIP BATCH
-                      </div>
-                    )}
-
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.65rem' }}>
-                      <span className={`badge ${course.tagColor || 'badge-amber'}`} style={{ fontSize: '0.72rem' }}>
-                        {course.badge || course.category}
-                      </span>
-                      <span className="font-mono" style={{ fontSize: '0.75rem', fontWeight: '700', color: '#0F172A', background: '#FFFFFF', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '0.15rem 0.45rem', borderRadius: '4px' }}>
-                        {course.speedTarget}
-                      </span>
-                    </div>
-
-                    <h4 style={{ fontSize: '1.1rem', fontWeight: '800', color: '#0F172A', marginBottom: '0.4rem', lineHeight: 1.3 }}>
-                      {course.title}
-                    </h4>
-
-                    <p style={{ fontSize: '0.825rem', color: '#57534e', lineHeight: 1.45, marginBottom: '0.85rem', flex: '1 0 auto' }}>
-                      {course.description}
-                    </p>
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', background: '#FFFFFF', border: '1px solid rgba(0, 0, 0, 0.08)', padding: '0.75rem 0.85rem', borderRadius: '10px', marginBottom: '0.9rem', fontSize: '0.78rem', color: '#44403c' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                        <Clock size={13} style={{ color: '#78716c' }} />
-                        <span><strong>Duration:</strong> {course.duration}</span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                        <GraduationCap size={13} style={{ color: '#78716c' }} />
-                        <span><strong>Mode:</strong> {course.mode}</span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                        <CreditCard size={13} style={{ color: '#047857' }} />
-                        <span><strong>Fee:</strong> <strong className="font-mono" style={{ color: '#047857', fontSize: '0.875rem' }}>{course.fee}</strong></span>
-                      </div>
-                    </div>
-
-                    {/* Syllabus snippet */}
-                    {Array.isArray(course.syllabus) && course.syllabus.length > 0 && (
-                      <div style={{ marginBottom: '1rem', borderTop: '1px dashed rgba(0, 0, 0, 0.08)', paddingTop: '0.65rem' }}>
-                        <span style={{ fontSize: '0.72rem', fontWeight: '700', color: '#78716c', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                          Curriculum Highlights ({course.syllabus.length} Topics):
-                        </span>
-                        <ul style={{ margin: '0.4rem 0 0 0', paddingLeft: '1.1rem', fontSize: '0.75rem', color: '#57534e', lineHeight: 1.4 }}>
-                          {course.syllabus.slice(0, 3).map((item, idx) => (
-                            <li key={idx} style={{ marginBottom: '0.2rem' }}>{item}</li>
-                          ))}
-                          {course.syllabus.length > 3 && (
-                            <li style={{ color: '#0F172A', fontWeight: '600', listStyle: 'none', marginLeft: '-1.1rem', marginTop: '0.2rem' }}>
-                              +{course.syllabus.length - 3} more curriculum topics included
-                            </li>
-                          )}
-                        </ul>
-                      </div>
-                    )}
-
-                    {/* Actions Bar */}
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', borderTop: '1px solid rgba(0, 0, 0, 0.08)', paddingTop: '0.85rem' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                        <button 
-                          type="button"
-                          className="btn btn-secondary btn-sm"
-                          onClick={() => handleOpenEditCourse(course)}
-                          title="Edit course details, fee or syllabus"
-                          style={{ fontSize: '0.75rem', padding: '0.35rem 0.65rem', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
-                        >
-                          <Edit3 size={13} />
-                          <span>Edit</span>
-                        </button>
-                        <button 
-                          type="button"
-                          className="btn btn-secondary btn-sm"
-                          onClick={() => handleDeleteCourseClick(course.id, course.title)}
-                          title="Delete course from catalog"
-                          style={{ fontSize: '0.75rem', padding: '0.35rem 0.55rem', color: '#e11d48' }}
-                        >
-                          <Trash2 size={13} />
-                        </button>
-                      </div>
-
-                      <button 
-                        type="button"
-                        className="btn btn-sm"
-                        onClick={() => setCurrentTab('courses')}
-                        style={{ background: '#FFFFFF', color: '#0F172A', fontSize: '0.75rem', padding: '0.35rem 0.65rem', display: 'inline-flex', alignItems: 'center', gap: '0.3rem', border: '1px solid rgba(0, 0, 0, 0.08)' }}
-                        title="View on candidate course enrollment page"
-                      >
-                        <span>Preview</span>
-                        <ArrowRight size={12} />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
 
           </div>
         )}
@@ -6028,65 +6016,64 @@ export default function AdminPortalView({
       )}
 
       {/* MODAL 5: Add / Edit Course Catalog Batch */}
+      {/* MODAL: Create / Edit Academy Course Batch */}
       {newCourseModalOpen && (
-        <div className="modal-backdrop">
-          <div className="saas-card modal-window admin-modal-wide">
-            <form onSubmit={handleSaveCourse} className="admin-modal-form-wrapper">
+        <div className="modal-backdrop" style={{ backgroundColor: 'rgba(35, 20, 24, 0.48)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'fixed', inset: 0, zIndex: 100, padding: '1rem' }}>
+          <div className="saas-card modal-window admin-modal-wide admin-modal-editorial" style={{ backgroundColor: '#FBF8F3', border: '1px solid #E8DFD3', borderRadius: '24px', boxShadow: '0 24px 60px rgba(35, 20, 24, 0.22)', overflow: 'hidden', maxWidth: '820px', width: '100%', maxHeight: '90vh', display: 'flex', flexDirection: 'column', padding: 0 }}>
+            <form onSubmit={handleSaveCourse} className="admin-modal-form-wrapper" style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden', margin: 0 }}>
               
               {/* Header */}
-              <div className="modal-header">
+              <div style={{ backgroundColor: '#FAF7F2', borderBottom: '1px solid #EDE5DA', padding: '20px 24px', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px' }}>
                 <div>
-                  <div className="modal-title-with-badge">
-                    <span className="badge badge-blue">
-                      <GraduationCap size={13} />
-                      <span>Academy Curriculum</span>
-                    </span>
-                    <h3 className="modal-title">
-                      {editingCourse ? 'Edit Academy Course Batch' : 'Create New Academy Course Batch'}
-                    </h3>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#991B1B' }}>
+                    <GraduationCap size={13} color="#991B1B" />
+                    <span>ACADEMY CURRICULUM</span>
                   </div>
-                  <p className="modal-subtitle">
-                    Configure curriculum details, speed benchmarks, and tuition fee. Once saved, this batch immediately displays on the candidate portal with automatic checkout mapping.
+                  <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#231418', marginTop: '4px', lineHeight: 1.25, margin: '4px 0 0' }}>
+                    {editingCourse ? 'Edit Academy Course Batch' : 'Create New Academy Course Batch'}
+                  </h3>
+                  <p style={{ fontSize: '13px', color: '#594A4D', marginTop: '4px', margin: '4px 0 0' }}>
+                    Configure curriculum details, speed benchmarks, and tuition fee. Changes sync live to /courses.
                   </p>
                 </div>
                 <button 
                   type="button" 
-                  className="btn-modal-close" 
+                  style={{ width: '34px', height: '34px', borderRadius: '9999px', backgroundColor: '#EFE7DC', color: '#231418', border: '1px solid #E0D5C7', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0, padding: 0 }}
                   onClick={() => {
                     setNewCourseModalOpen(false);
                     setEditingCourse(null);
                   }}
+                  title="Close modal"
                 >
-                  <X size={18} />
+                  <X size={16} />
                 </button>
               </div>
 
               {/* Form Body */}
-              <div className="admin-modal-body-scrollable">
-                <div className="modal-grid-two-col">
-                  {/* Field: Title */}
-                  <div className="field-group span-two">
-                    <label className="field-label">
-                      <span>Course Title *</span>
-                      <span className="field-sub">Official name of the preparation program or batch</span>
-                    </label>
-                    <input 
-                      type="text" 
-                      className="field-input font-bold" 
-                      placeholder="e.g. RRB Stenographer & Clerk Exam Mastery 2026"
-                      value={courseForm.title}
-                      onChange={(e) => setCourseForm({ ...courseForm, title: e.target.value })}
-                      required
-                    />
-                  </div>
+              <div className="admin-modal-body-scrollable" style={{ padding: '20px 24px', backgroundColor: '#FBF8F3', overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                {/* Field: Title */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                    Course Title *
+                  </label>
+                  <input 
+                    type="text" 
+                    style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 700, outline: 'none', boxSizing: 'border-box' }}
+                    placeholder="e.g. RRB Stenographer & Clerk Exam Mastery 2026"
+                    value={courseForm.title}
+                    onChange={(e) => setCourseForm({ ...courseForm, title: e.target.value })}
+                    required
+                  />
+                </div>
 
-                  {/* Field: Category */}
-                  <div className="field-group">
-                    <label className="field-label">
-                      <span>Exam Category *</span>
-                      <span className="field-sub">Curriculum classification</span>
+                {/* Field: Category & Badge Tag */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Exam Category *
                     </label>
                     <CustomSelect
+                      className="admin-editorial-select"
                       value={courseForm.category}
                       onChange={(val) => setCourseForm({ ...courseForm, category: val })}
                       options={[
@@ -6099,30 +6086,29 @@ export default function AdminPortalView({
                     />
                   </div>
 
-                  {/* Field: Badge Tag */}
-                  <div className="field-group">
-                    <label className="field-label">
-                      <span>Badge / Tag Label</span>
-                      <span className="field-sub">e.g. Beginner to 80 WPM, Patna & Jharkhand HC</span>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Badge / Tag Label
                     </label>
                     <input 
                       type="text" 
-                      className="field-input" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box' }}
                       placeholder="e.g. SSC Grade C & D Special"
                       value={courseForm.badge}
                       onChange={(e) => setCourseForm({ ...courseForm, badge: e.target.value })}
                     />
                   </div>
+                </div>
 
-                  {/* Field: Target Speed */}
-                  <div className="field-group">
-                    <label className="field-label">
-                      <span>Target Speed Benchmark *</span>
-                      <span className="field-sub">e.g. 0 → 80 WPM, 80 & 100 WPM, 120 WPM</span>
+                {/* Target Speed, Duration & Fee */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Target Speed Benchmark *
                     </label>
                     <input 
                       type="text" 
-                      className="field-input font-mono" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box', fontFamily: "'JetBrains Mono', monospace" }}
                       placeholder="e.g. 80 → 110 WPM"
                       value={courseForm.speedTarget}
                       onChange={(e) => setCourseForm({ ...courseForm, speedTarget: e.target.value })}
@@ -6130,15 +6116,13 @@ export default function AdminPortalView({
                     />
                   </div>
 
-                  {/* Field: Duration */}
-                  <div className="field-group">
-                    <label className="field-label">
-                      <span>Duration *</span>
-                      <span className="field-sub">e.g. 3 to 4 Months, 1 Month Intensive</span>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Duration *
                     </label>
                     <input 
                       type="text" 
-                      className="field-input" 
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box' }}
                       placeholder="e.g. 3 Months Intensive"
                       value={courseForm.duration}
                       onChange={(e) => setCourseForm({ ...courseForm, duration: e.target.value })}
@@ -6146,97 +6130,92 @@ export default function AdminPortalView({
                     />
                   </div>
 
-                  {/* Field: Fee */}
-                  <div className="field-group">
-                    <label className="field-label">
-                      <span>Course Fee / Pricing *</span>
-                      <span className="field-sub">Display fee (e.g. ₹700 / Month, ₹6,000 (Complete))</span>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                      Course Fee / Pricing *
                     </label>
                     <input 
                       type="text" 
-                      className="field-input font-mono font-bold" 
-                      placeholder="e.g. ₹700 / Month"
+                      style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 700, outline: 'none', boxSizing: 'border-box', fontFamily: "'JetBrains Mono', monospace" }}
+                      placeholder="e.g. ₹700 / Month or ₹4,500 (Complete)"
                       value={courseForm.fee}
                       onChange={(e) => setCourseForm({ ...courseForm, fee: e.target.value })}
                       required
                     />
                   </div>
+                </div>
 
-                  {/* Field: Delivery Mode */}
-                  <div className="field-group">
-                    <label className="field-label">
-                      <span>Delivery Mode</span>
-                      <span className="field-sub">Offline Center or Online Live Google Meet</span>
-                    </label>
+                {/* Delivery Mode */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                    Delivery Mode
+                  </label>
+                  <input 
+                    type="text" 
+                    style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box' }}
+                    placeholder="e.g. Online Live Google Meet + Audio Lab Access"
+                    value={courseForm.mode}
+                    onChange={(e) => setCourseForm({ ...courseForm, mode: e.target.value })}
+                  />
+                </div>
+
+                {/* Flagship Popular Toggle */}
+                <div style={{ backgroundColor: '#F5EFE6', padding: '14px 18px', borderRadius: '14px', border: '1px solid #E0D5C7' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', margin: 0 }}>
                     <input 
-                      type="text" 
-                      className="field-input" 
-                      placeholder="e.g. Online Live Google Meet + Audio Lab Access"
-                      value={courseForm.mode}
-                      onChange={(e) => setCourseForm({ ...courseForm, mode: e.target.value })}
+                      type="checkbox" 
+                      checked={courseForm.popular}
+                      onChange={(e) => setCourseForm({ ...courseForm, popular: e.target.checked })}
+                      style={{ width: '18px', height: '18px', accentColor: '#991B1B', cursor: 'pointer' }}
                     />
-                  </div>
+                    <div>
+                      <strong style={{ color: '#231418', fontSize: '13.5px' }}>★ Flagship / Featured Course Badge</strong>
+                      <p style={{ margin: '2px 0 0', fontSize: '12px', color: '#594A4D' }}>
+                        Highlight this program at the top of the course catalog with a "FLAGSHIP BATCH" banner.
+                      </p>
+                    </div>
+                  </label>
+                </div>
 
-                  {/* Field: Flagship Popular Toggle */}
-                  <div className="field-group span-two" style={{ background: '#FFFFFF', padding: '0.85rem 1rem', borderRadius: '10px', border: '1px solid #e4e4e7' }}>
-                    <label style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', cursor: 'pointer' }}>
-                      <input 
-                        type="checkbox" 
-                        checked={courseForm.popular}
-                        onChange={(e) => setCourseForm({ ...courseForm, popular: e.target.checked })}
-                        style={{ width: '18px', height: '18px', accentColor: '#18181b', cursor: 'pointer' }}
-                      />
-                      <div>
-                        <strong style={{ color: '#18181b', fontSize: '0.9rem' }}>⭐ Flagship / Featured Course Badge</strong>
-                        <p style={{ margin: 0, fontSize: '0.78rem', color: '#78716c' }}>
-                          Highlight this program at the top of the course catalog with a golden "FLAGSHIP BATCH" banner.
-                        </p>
-                      </div>
-                    </label>
-                  </div>
+                {/* Description */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                    Course Overview & Summary
+                  </label>
+                  <textarea 
+                    rows={3}
+                    style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13.5px', fontWeight: 500, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit', resize: 'vertical' }}
+                    placeholder="Comprehensive shorthand training designed specifically for government exam aspirants..."
+                    value={courseForm.description}
+                    onChange={(e) => setCourseForm({ ...courseForm, description: e.target.value })}
+                  />
+                </div>
 
-                  {/* Field: Description */}
-                  <div className="field-group span-two">
-                    <label className="field-label">
-                      <span>Course Overview & Summary</span>
-                      <span className="field-sub">Explain who this course is for and the key benefits</span>
-                    </label>
-                    <textarea 
-                      className="field-textarea" 
-                      rows={3}
-                      placeholder="Comprehensive shorthand training designed specifically for government exam aspirants..."
-                      value={courseForm.description}
-                      onChange={(e) => setCourseForm({ ...courseForm, description: e.target.value })}
-                    />
-                  </div>
-
-                  {/* Field: Syllabus Textarea */}
-                  <div className="field-group span-two">
-                    <label className="field-label">
-                      <span>Curriculum & Syllabus Highlights (One topic per line)</span>
-                      <span className="field-sub">These will display as checkmark bullet points on the course card</span>
-                    </label>
-                    <textarea 
-                      className="field-textarea font-mono" 
-                      rows={5}
-                      placeholder="Complete Theory & Stroke Geometry&#10;Handwritten Outline Checks Daily&#10;Grammalogues & Phraseography Drills&#10;Previous 10 Years Solved Dictations"
-                      value={courseForm.syllabusText}
-                      onChange={(e) => setCourseForm({ ...courseForm, syllabusText: e.target.value })}
-                    />
-                  </div>
+                {/* Curriculum / Syllabus */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#594A4D', marginBottom: '6px' }}>
+                    Curriculum & Syllabus Highlights (One topic per line)
+                  </label>
+                  <textarea 
+                    rows={5}
+                    style={{ width: '100%', backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '12px', padding: '10px 14px', fontSize: '13px', fontWeight: 500, outline: 'none', boxSizing: 'border-box', fontFamily: "'JetBrains Mono', monospace", resize: 'vertical' }}
+                    placeholder={"Complete Theory & Stroke Geometry\nHandwritten Outline Checks Daily\nGrammalogues & Phraseography Drills\nPrevious 10 Years Solved Dictations"}
+                    value={courseForm.syllabusText}
+                    onChange={(e) => setCourseForm({ ...courseForm, syllabusText: e.target.value })}
+                  />
                 </div>
               </div>
 
               {/* Modal Footer */}
-              <div className="admin-modal-footer-sticky">
-                <span className="footer-hint-text">
-                  <ShieldCheck size={14} className="text-emerald-600" />
+              <div style={{ backgroundColor: '#FAF7F2', borderTop: '1px solid #EDE5DA', padding: '14px 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+                <span style={{ fontSize: '11.5px', color: '#8A7B7E', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <ShieldCheck size={14} color="#8A7B7E" />
                   <span>Immediate synchronization with public course catalog & checkout</span>
                 </span>
-                <div className="admin-modal-footer-actions">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <button 
                     type="button" 
-                    className="btn btn-secondary" 
+                    style={{ backgroundColor: '#FFFFFF', color: '#231418', border: '1px solid #DFD4C6', borderRadius: '9999px', padding: '9px 20px', fontSize: '12.5px', fontWeight: 600, cursor: 'pointer' }}
                     onClick={() => {
                       setNewCourseModalOpen(false);
                       setEditingCourse(null);
@@ -6246,10 +6225,9 @@ export default function AdminPortalView({
                   </button>
                   <button 
                     type="submit" 
-                    className="btn btn-primary" 
-                    style={{ background: '#0F172A', borderColor: '#0F172A', color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', backgroundColor: '#991B1B', color: '#FFFFFF', border: 'none', borderRadius: '9999px', padding: '9px 22px', fontSize: '12.5px', fontWeight: 600, cursor: 'pointer', boxShadow: '0 6px 18px rgba(153, 27, 27, 0.22)' }}
                   >
-                    <CheckCircle2 size={15} />
+                    <CheckCircle2 size={15} color="#FFFFFF" />
                     <span>{editingCourse ? 'Save & Update Course' : 'Publish Course Batch'}</span>
                   </button>
                 </div>
