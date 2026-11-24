@@ -1695,6 +1695,7 @@
   .sp-center-faq-grid {
     grid-template-columns: 0.9fr 1.1fr;
     gap: 4rem;
+    align-items: center !important;
   }
 }
 
@@ -1706,12 +1707,6 @@
   padding: 1.75rem !important;
   text-align: left;
   box-shadow: 0 4px 20px rgba(35, 20, 24, 0.04) !important;
-}
-
-@media (min-width: 1024px) {
-  .sp-center-card {
-    margin-top: -1.5rem !important;
-  }
 }
 
 .sp-center-heading {

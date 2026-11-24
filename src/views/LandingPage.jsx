@@ -2204,11 +2204,11 @@ export default function LandingPage({
       <section className="sp-center-faq-section bg-[#EFE7DC] border-t border-[#E3D9CC] py-16 lg:py-20">
         <div className="sp-container">
           
-          <div className="sp-center-faq-grid">
+          <div className="sp-center-faq-grid lg:items-center">
             
             {/* Left Column: Center Location & Helplines (Soft Ivory #F7F5F0) */}
-            <FadeUp>
-              <div className="sp-center-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl p-7 lg:-mt-6 shadow-[0_4px_20px_rgba(35,20,24,0.04)]">
+            <FadeUp className="lg:self-center w-full">
+              <div className="sp-center-card bg-[#FFFFFF] border border-[#E8DFD3] rounded-2xl p-7 shadow-[0_4px_20px_rgba(35,20,24,0.04)]">
                 <span className="sp-section-eyebrow text-[11px] font-semibold uppercase tracking-[0.16em] text-[#594A4D]">
                   VISIT OUR CENTER
                 </span>
